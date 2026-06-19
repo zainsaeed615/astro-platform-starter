@@ -2,28 +2,26 @@
 
 @theme {
     --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --color-primary: #f67280;
-    --color-primary-content: #101828;
-    --color-complementary: #355c7d;
-    --background-image-noise: linear-gradient(
-            to bottom,
-            color-mix(in oklab, var(--color-gray-950) 0%, transparent),
-            color-mix(in oklab, var(--color-gray-950) 100%, transparent)
-        ),
-        url('/images/noise.png');
+    --color-primary: #f97316;
+    --color-primary-content: #ffffff;
+    --color-complementary: #0f766e;
 }
 
 @layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
     h1 {
-        @apply text-4xl font-bold tracking-tight sm:text-5xl;
+        @apply text-4xl font-black tracking-tight text-slate-950 sm:text-5xl;
     }
 
     h2 {
-        @apply text-2xl font-bold sm:text-3xl;
+        @apply text-3xl font-black tracking-tight text-slate-950 sm:text-4xl;
     }
 
-    a:not(.btn) {
-        @apply underline transition hover:opacity-80;
+    a:not(.btn):not(.plain-link) {
+        @apply font-semibold text-primary underline underline-offset-4 transition hover:text-primary/80;
     }
 
     pre {
@@ -37,6 +35,18 @@
 }
 
 @layer components {
+    .section-shell {
+        @apply mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24;
+    }
+
+    .section-eyebrow {
+        @apply text-sm font-black uppercase tracking-[0.24em] text-primary;
+    }
+
+    .soft-card {
+        @apply rounded-[2rem] border border-slate-200/80 bg-white shadow-xl shadow-slate-900/5;
+    }
+
     .markdown {
         > * {
             @apply my-6;
@@ -56,13 +66,13 @@
     }
 
     .btn {
-        @apply inline-flex items-center justify-center gap-2 bg-primary text-primary-content cursor-pointer text-center font-semibold no-underline transition-colors;
+        @apply inline-flex cursor-pointer items-center justify-center gap-2 bg-primary text-center font-bold text-primary-content no-underline shadow-lg shadow-primary/25 transition;
         padding: var(--btn-py, 0.875rem) var(--btn-px, 1.25rem);
         font-size: var(--btn-font-size, 0.875rem);
-        border-radius: var(--btn-border-radius, 0.25rem);
+        border-radius: var(--btn-border-radius, 9999px);
 
         &:hover {
-            @apply bg-primary/85;
+            @apply -translate-y-0.5 bg-primary/90;
         }
 
         &:disabled {

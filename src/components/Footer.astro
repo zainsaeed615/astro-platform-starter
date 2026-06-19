@@ -1,9 +1,47 @@
 ---
-
+const quickLinks = [
+    { label: 'Services', href: '/#services' },
+    { label: 'How It Works', href: '/#process' },
+    { label: 'Projects', href: '/#projects' },
+    { label: 'Service Areas', href: '/#areas' }
+];
 ---
 
-<footer class="pt-16 pb-12 sm:pt-24 sm:pb-16">
-    <p class="text-sm">
-        <a href="https://docs.netlify.com/frameworks/astro/" class="decoration-dashed text-primary underline-offset-8"> Astro on Netlify </a>
-    </p>
+<footer class="bg-slate-950 text-white">
+    <div class="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.4fr_0.8fr_0.8fr] lg:px-8 lg:py-16">
+        <div>
+            <p class="text-sm font-bold uppercase tracking-[0.26em] text-primary">Koalaty Home Repairs LLC</p>
+            <h2 class="mt-4 max-w-xl text-3xl font-black tracking-tight text-white sm:text-4xl">Reliable repairs, smart installs, and home care done right.</h2>
+            <p class="mt-5 max-w-2xl text-base leading-8 text-slate-300">
+                Serving homeowners with professional handyman repairs, appliance installation, smart home setup, gutter care, and aerial inspections.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+                <a href="/#quote" class="plain-link rounded-full bg-primary px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-primary/90">Request Estimate</a>
+                <a href="tel:+15046717363" class="plain-link rounded-full border border-white/15 px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-primary/60">Call +1 504-671-7363</a>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-sm font-bold uppercase tracking-[0.22em] text-slate-400">Explore</h3>
+            <ul class="mt-5 space-y-3">
+                {quickLinks.map((link) => (
+                    <li>
+                        <a href={link.href} class="plain-link text-slate-300 transition hover:text-white">{link.label}</a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="text-sm font-bold uppercase tracking-[0.22em] text-slate-400">Contact</h3>
+            <ul class="mt-5 space-y-3 text-slate-300">
+                <li>New Orleans area</li>
+                <li><a href="tel:+15046717363" class="plain-link transition hover:text-white">+1 504-671-7363</a></li>
+                <li>Licensed & insured service</li>
+            </ul>
+        </div>
+    </div>
+    <div class="border-t border-white/10 px-4 py-6 sm:px-6 lg:px-8">
+        <p class="mx-auto max-w-7xl text-sm text-slate-400">© {new Date().getFullYear()} Koalaty Home Repairs LLC. All rights reserved.</p>
+    </div>
 </footer>

@@ -1,21 +1,318 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
 
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
+const services = [
+    {
+        title: 'Smart Home & Media Installation',
+        description: 'Clean TV mounting, entertainment setup, smart automation, security devices, and connected access systems.',
+        items: ['TV & media setup', 'Smart automation', 'Security & access'],
+        icon: 'M7 10h10M8 4h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5l-2 4-2-4H8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z'
+    },
+    {
+        title: 'Appliance Installation & Service',
+        description: 'Delivery coordination, appliance setup, performance checks, and dependable service for major home appliances.',
+        items: ['Major appliances', 'Delivery & setup', 'Maintenance care'],
+        icon: 'M8 3h8a2 2 0 0 1 2 2v14H6V5a2 2 0 0 1 2-2Zm0 5h8M9 15h.01M15 15h.01'
+    },
+    {
+        title: 'Roof, Gutter & Aerial Inspections',
+        description: 'Safe drone inspections, gutter maintenance, and early issue detection that helps protect your property.',
+        items: ['Drone inspections', 'Gutter maintenance', 'Preventive reports'],
+        icon: 'M4 13l8-7 8 7M6.5 11.5V20h11v-8.5M9 20v-5h6v5'
+    },
+    {
+        title: 'General Maintenance & Repairs',
+        description: 'Handyman repairs, trim work, small installs, punch-list projects, and reliable home maintenance support.',
+        items: ['Interior trim work', 'Handyman repairs', 'Small installs'],
+        icon: 'M14.7 6.3a3 3 0 0 0-3.9 3.9L4 17v3h3l6.8-6.8a3 3 0 0 0 3.9-3.9l2.3-2.3-3-3-2.3 2.3Z'
+    }
+];
 
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+const benefits = [
+    'Licensed & insured',
+    'Fast same-day service',
+    'Quality guarantee',
+    'Clean, safe installation'
+];
+
+const stats = [
+    { value: '61+', label: 'Google reviews' },
+    { value: '5.0', label: 'Average rating' },
+    { value: '4', label: 'Easy service steps' },
+    { value: '8+', label: 'Local areas served' }
+];
+
+const process = [
+    { step: '01', title: 'Request Estimate', description: 'Share the service you need online or by phone for a clear, fast estimate.' },
+    { step: '02', title: 'Schedule Appointment', description: 'Choose a visit window that fits your day and get confirmation before arrival.' },
+    { step: '03', title: 'Work Execution', description: 'A skilled technician completes the installation or repair with care and precision.' },
+    { step: '04', title: 'Satisfaction Confirmed', description: 'Review the finished work and know the job was completed to Koalaty standards.' }
+];
+
+const projects = [
+    { src: 'https://koalatyhome.aiwebdesignz.com/wp-content/uploads/2026/06/435432r.jpg', alt: 'Completed home repair project' },
+    { src: 'https://koalatyhome.aiwebdesignz.com/wp-content/uploads/2026/06/3432.jpg', alt: 'Smart home and media installation' },
+    { src: 'https://koalatyhome.aiwebdesignz.com/wp-content/uploads/2026/06/wd.jpg', alt: 'Appliance installation project' },
+    { src: 'https://koalatyhome.aiwebdesignz.com/wp-content/uploads/2026/06/45trt.jpg', alt: 'Interior handyman repair' },
+    { src: 'https://koalatyhome.aiwebdesignz.com/wp-content/uploads/2026/06/rewr.jpg', alt: 'Home maintenance result' },
+    { src: 'https://koalatyhome.aiwebdesignz.com/wp-content/uploads/2026/06/serew.jpg', alt: 'Quality installation detail' }
+];
+
+const serviceAreas = ['Metairie', 'Kenner', 'New Orleans East', 'Harahan', 'River Ridge', 'Avondale', 'Jefferson Parish', 'Elmwood', 'Terrytown'];
 ---
 
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-8" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title="Koalaty Home Repairs LLC | Professional Repairs & Installations">
+    <section class="relative isolate overflow-hidden bg-white pt-28 sm:pt-32">
+        <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(249,115,22,0.16),transparent_34%),radial-gradient(circle_at_80%_0%,rgba(15,118,110,0.14),transparent_32%),linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)]"></div>
+        <div class="absolute left-1/2 top-28 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl"></div>
+
+        <div class="section-shell grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+            <div>
+                <div class="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-bold text-orange-700 shadow-sm">
+                    <span class="size-2 rounded-full bg-primary"></span>
+                    Licensed, insured, and trusted locally
+                </div>
+                <h1 class="mt-6 max-w-4xl text-5xl leading-[1.02] sm:text-6xl lg:text-7xl">
+                    Reliable home repairs, smart installs, and maintenance you can trust.
+                </h1>
+                <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
+                    From TV mounting and smart home setup to appliance installation, gutter care, and handyman repairs, Koalaty Home Repairs LLC delivers polished work for every corner of your home.
+                </p>
+                <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                    <a href="#quote" class="btn btn-lg">Get Free Quote</a>
+                    <a href="tel:+15046717363" class="plain-link inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-4 text-base font-black text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary">
+                        Call +1 504-671-7363
+                    </a>
+                </div>
+                <div class="mt-9 grid gap-3 sm:grid-cols-2">
+                    {benefits.map((benefit) => (
+                        <div class="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white/80 p-3 shadow-sm">
+                            <span class="grid size-8 shrink-0 place-items-center rounded-full bg-teal-50 text-complementary">
+                                <svg class="size-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </span>
+                            <span class="text-sm font-bold text-slate-800">{benefit}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="absolute -left-6 top-10 hidden rounded-3xl bg-white p-4 shadow-2xl shadow-slate-900/10 sm:block">
+                    <p class="text-sm font-black text-slate-950">5.0 Rating</p>
+                    <p class="mt-1 text-xs font-semibold text-slate-500">Based on 61 Google reviews</p>
+                </div>
+                <div class="absolute -right-3 bottom-12 z-10 hidden rounded-3xl bg-slate-950 p-5 text-white shadow-2xl shadow-slate-900/20 md:block">
+                    <p class="text-3xl font-black">Same-day</p>
+                    <p class="text-sm font-semibold text-slate-300">service available</p>
+                </div>
+                <div class="overflow-hidden rounded-[2.5rem] border-8 border-white bg-slate-200 shadow-2xl shadow-slate-900/15">
+                    <img
+                        src="https://koalatyhome.aiwebdesignz.com/wp-content/uploads/2026/06/3432.jpg"
+                        alt="Koalaty Home Repairs technician work example"
+                        class="h-[520px] w-full object-cover"
+                        loading="eager"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <div class="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+            <div class="grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-xl shadow-slate-900/5 sm:grid-cols-2 lg:grid-cols-4">
+                {stats.map((stat) => (
+                    <div class="border-b border-slate-200 p-6 last:border-b-0 sm:border-r sm:last:border-r-0 lg:border-b-0">
+                        <p class="text-4xl font-black tracking-tight text-slate-950">{stat.value}</p>
+                        <p class="mt-2 text-sm font-bold uppercase tracking-[0.16em] text-slate-500">{stat.label}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section-shell">
+        <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+            <div class="grid grid-cols-2 gap-4">
+                <img src="https://koalatyhome.aiwebdesignz.com/wp-content/uploads/2026/06/wd.jpg" alt="Finished appliance installation" class="h-64 w-full rounded-[2rem] object-cover shadow-xl shadow-slate-900/10" loading="lazy" />
+                <img src="https://koalatyhome.aiwebdesignz.com/wp-content/uploads/2026/06/45trt.jpg" alt="Home repair detail" class="mt-10 h-64 w-full rounded-[2rem] object-cover shadow-xl shadow-slate-900/10" loading="lazy" />
+            </div>
+            <div>
+                <p class="section-eyebrow">Who we are</p>
+                <h2 class="mt-4">Professional repair and installation services for a better home.</h2>
+                <p class="mt-5 text-lg leading-8 text-slate-600">
+                    Koalaty Home Repairs LLC makes home maintenance easier with reliable technicians, clear communication, and workmanship that looks as good as it performs.
+                </p>
+                <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                    {['Experienced technicians', 'Transparent pricing', 'Reliable on-time service', 'Customer-focused approach'].map((item) => (
+                        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                            <p class="font-black text-slate-950">{item}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="bg-slate-950 text-white">
+        <div class="section-shell">
+            <div class="mx-auto max-w-3xl text-center">
+                <p class="section-eyebrow">Our services</p>
+                <h2 class="mt-4 text-white">Complete home repair and installation solutions.</h2>
+                <p class="mt-5 text-lg leading-8 text-slate-300">
+                    Professional, reliable service across smart home, appliance, inspection, and general repair needs.
+                </p>
+            </div>
+
+            <div class="mt-12 grid gap-5 md:grid-cols-2">
+                {services.map((service) => (
+                    <article class="group rounded-[2rem] border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-black/10 transition hover:-translate-y-1 hover:border-primary/50 hover:bg-white/[0.09] sm:p-8">
+                        <div class="grid size-14 place-items-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/25">
+                            <svg class="size-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d={service.icon} stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <h3 class="mt-6 text-2xl font-black tracking-tight text-white">{service.title}</h3>
+                        <p class="mt-3 leading-7 text-slate-300">{service.description}</p>
+                        <ul class="mt-6 grid gap-3">
+                            {service.items.map((item) => (
+                                <li class="flex items-center gap-3 text-sm font-bold text-slate-200">
+                                    <span class="size-1.5 rounded-full bg-primary"></span>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </article>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="section-shell">
+        <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+                <p class="section-eyebrow">Simple process</p>
+                <h2 class="mt-4">Get your home fixed in 4 easy steps.</h2>
+                <p class="mt-5 text-lg leading-8 text-slate-600">
+                    A smooth experience from the first estimate through final walkthrough, designed to keep your project clear and stress-free.
+                </p>
+                <a href="#quote" class="btn mt-8">Start Your Request</a>
+            </div>
+            <div class="grid gap-4 sm:grid-cols-2">
+                {process.map((item) => (
+                    <article class="soft-card p-6 transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-900/10">
+                        <p class="text-sm font-black text-primary">{item.step}</p>
+                        <h3 class="mt-4 text-xl font-black text-slate-950">{item.title}</h3>
+                        <p class="mt-3 leading-7 text-slate-600">{item.description}</p>
+                    </article>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="bg-white">
+        <div class="section-shell">
+            <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+                <div>
+                    <p class="section-eyebrow">Real results</p>
+                    <h2 class="mt-4 max-w-2xl">Quality work you can see and trust.</h2>
+                </div>
+                <p class="max-w-xl text-lg leading-8 text-slate-600">
+                    Clean installation details, finished repairs, and practical improvements that make homes safer, smarter, and easier to enjoy.
+                </p>
+            </div>
+            <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {projects.map((project, index) => (
+                    <div class={`group overflow-hidden rounded-[2rem] bg-slate-100 shadow-xl shadow-slate-900/5 ${index === 0 ? 'sm:col-span-2' : ''}`}>
+                        <img src={project.src} alt={project.alt} class="h-72 w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="section-shell">
+        <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+            <div class="soft-card overflow-hidden bg-slate-950 p-8 text-white sm:p-10">
+                <p class="section-eyebrow">What clients say</p>
+                <div class="mt-8 flex items-end gap-4">
+                    <p class="text-7xl font-black tracking-tight text-white">5.0</p>
+                    <div class="pb-2">
+                        <p class="font-black text-primary">Five-star rated</p>
+                        <p class="text-sm font-semibold text-slate-300">Excellent, based on 61 Google reviews</p>
+                    </div>
+                </div>
+                <p class="mt-8 text-xl leading-9 text-slate-200">
+                    "Fast, professional, and detail-oriented. The work was clean, the communication was clear, and everything was finished exactly as promised."
+                </p>
+            </div>
+            <div>
+                <p class="section-eyebrow">Why homeowners trust Koalaty</p>
+                <h2 class="mt-4">Professional service with guaranteed care.</h2>
+                <div class="mt-8 grid gap-4">
+                    {[
+                        ['Experienced technicians', 'Hands-on expertise helps repairs and installations get done right the first time.'],
+                        ['Clean and safe installation', 'Every job is handled with respect for your home, your schedule, and your space.'],
+                        ['Transparent pricing', 'Clear, upfront estimates help you know what to expect before work begins.']
+                    ].map(([title, description]) => (
+                        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                            <h3 class="font-black text-slate-950">{title}</h3>
+                            <p class="mt-2 leading-7 text-slate-600">{description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="areas" class="bg-slate-100">
+        <div class="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+                <p class="section-eyebrow">Proudly serving your area</p>
+                <h2 class="mt-4">Local home repair you can depend on.</h2>
+                <p class="mt-5 text-lg leading-8 text-slate-600">
+                    Fast response, reliable scheduling, and trusted results across local neighborhoods and surrounding communities.
+                </p>
+                <div class="mt-8 flex flex-wrap gap-3">
+                    {serviceAreas.map((area) => (
+                        <span class="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm">{area}</span>
+                    ))}
+                </div>
+            </div>
+
+            <form id="quote" name="estimate" method="POST" data-netlify="true" class="soft-card scroll-mt-28 p-6 sm:p-8">
+                <input type="hidden" name="form-name" value="estimate" />
+                <p class="section-eyebrow">Request service today</p>
+                <h2 class="mt-3 text-3xl">Tell us what you need.</h2>
+                <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                    <label class="grid gap-2 text-sm font-bold text-slate-700">
+                        Full Name
+                        <input required name="name" class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base font-medium outline-none transition focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10" />
+                    </label>
+                    <label class="grid gap-2 text-sm font-bold text-slate-700">
+                        Email
+                        <input required type="email" name="email" class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base font-medium outline-none transition focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10" />
+                    </label>
+                    <label class="grid gap-2 text-sm font-bold text-slate-700 sm:col-span-2">
+                        Service Needed
+                        <select name="service" class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base font-medium outline-none transition focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10">
+                            <option>Smart Home & Media Installation</option>
+                            <option>Appliance Installation & Services</option>
+                            <option>Roof, Gutter & Aerial Inspections</option>
+                            <option>General Home Maintenance & Repairs</option>
+                            <option>Other</option>
+                        </select>
+                    </label>
+                    <label class="grid gap-2 text-sm font-bold text-slate-700 sm:col-span-2">
+                        Address
+                        <input name="address" class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base font-medium outline-none transition focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10" />
+                    </label>
+                    <label class="grid gap-2 text-sm font-bold text-slate-700 sm:col-span-2">
+                        Message
+                        <textarea name="message" rows="4" class="resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base font-medium outline-none transition focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"></textarea>
+                    </label>
+                </div>
+                <button class="btn btn-lg mt-6 w-full" type="submit">Request Estimate</button>
+            </form>
+        </div>
+    </section>
 </Layout>

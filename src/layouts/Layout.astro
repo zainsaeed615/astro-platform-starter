@@ -7,9 +7,10 @@ import Footer from '../components/Footer.astro';
 
 interface Props {
     title: string;
+    description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description = 'Reliable home repairs, smart installations, appliance setup, and handyman services from Koalaty Home Repairs LLC.' } = Astro.props;
 ---
 
 <!doctype html>
@@ -17,18 +18,17 @@ const { title } = Astro.props;
     <head>
         <meta charset="UTF-8" />
         <title>{title}</title>
-        <meta name="viewport" content="width=device-width" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="generator" content={Astro.generator} />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="preload" as="font" type="font/woff2" href={interWoff2} crossorigin />
     </head>
-    <body class="antialiased text-white bg-complementary">
-        <div class="flex flex-col min-h-screen px-6 bg-noise sm:px-12">
-            <div class="flex flex-col w-full max-w-5xl mx-auto grow">
-                <Header />
-                <main class="grow"><slot /></main>
-                <Footer />
-            </div>
+    <body class="bg-slate-50 font-sans text-slate-700 antialiased">
+        <div class="min-h-screen overflow-hidden">
+            <Header />
+            <main><slot /></main>
+            <Footer />
         </div>
     </body>
 </html>
