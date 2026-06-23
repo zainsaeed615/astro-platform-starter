@@ -1,21 +1,320 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
-
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+import {
+    site,
+    stats,
+    coreServices,
+    processSteps,
+    opportunities,
+    developments,
+    testimonials,
+    faqs,
+    sitemap,
+    seoHeadings,
+    ctaRecommendations,
+    contentRecommendations,
+    designDirection
+} from '../content/vidian';
 ---
 
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-8" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title={site.title} description={site.description}>
+    <section class="relative isolate flex min-h-screen items-center overflow-hidden bg-luxury pt-28 text-white">
+        <video
+            class="absolute inset-0 -z-20 h-full w-full object-cover opacity-45"
+            src="/images/vidian/hero-video.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="/images/vidian/london-skyline.png"></video>
+        <div class="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950 via-slate-950/82 to-slate-950/42"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-slate-950 to-transparent"></div>
+
+        <div class="section-shell grid items-center gap-12 py-20 lg:grid-cols-[1.05fr_0.95fr]">
+            <div class="reveal">
+                <p class="eyebrow">Strategic. Secure. Scalable.</p>
+                <h1 class="max-w-4xl text-balance">Strategic UK & Dubai Property Investment</h1>
+                <p class="mt-6 max-w-2xl text-lg leading-8 text-white/75 sm:text-xl">
+                    We design property investment strategies across the UK and Dubai to grow, protect, and optimise your capital.
+                </p>
+                <div class="mt-9 flex flex-col gap-4 sm:flex-row">
+                    <a href="/contact-us" class="btn btn-lg btn-gold">Book Your Strategy Call</a>
+                    <a href="/about-us" class="btn btn-lg btn-outline">About Us</a>
+                    <a href="/services" class="btn btn-lg btn-outline">Our Process</a>
+                </div>
+            </div>
+
+            <div class="reveal grid gap-4 sm:grid-cols-2">
+                {
+                    stats.map((item) => (
+                        <div class="dark-card">
+                            <p class="font-display text-4xl font-semibold text-gold">{item.value}</p>
+                            <p class="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-white/60">{item.label}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-slate-950 pb-16 text-white">
+        <div class="section-shell">
+            <div class="grid gap-4 rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 backdrop-blur md:grid-cols-4">
+                {stats.map((item) => <div class="rounded-3xl bg-white/[0.04] p-5"><p class="text-3xl font-semibold text-gold">{item.value}</p><p class="mt-2 text-xs uppercase tracking-[0.2em] text-white/55">{item.label}</p></div>)}
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 sm:py-28">
+        <div class="section-shell grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+            <div class="reveal">
+                <img src="/images/vidian/brand-logo.png" alt="Vidian Capital office logo" class="aspect-[4/3] rounded-[2rem] object-cover shadow-2xl shadow-slate-950/15" loading="lazy" />
+            </div>
+            <div class="reveal">
+                <p class="eyebrow">About Vidian Capital</p>
+                <h2>Property investment built around research, planning, and long-term strategy.</h2>
+                <div class="mt-6 space-y-5 text-base leading-8 text-slate-600">
+                    <p>
+                        With years of hands-on experience in property investment, our visionary team at VIDIAN CAPITAL has created a new approach to building wealth through real estate. We do not just sell properties, we craft investment opportunities that are Strategic. Secure. Scalable.
+                    </p>
+                    <p>
+                        Whether you are a first-time investor, expanding your portfolio, or a family office seeking structured opportunities, we help you build investments that deliver income today and create generational wealth for tomorrow.
+                    </p>
+                </div>
+                <a href="/about-us" class="btn mt-8">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-slate-50 py-20 sm:py-28">
+        <div class="section-shell">
+            <div class="reveal max-w-3xl">
+                <p class="eyebrow">Our Services</p>
+                <h2>Strategic property investment solutions across the UK and Dubai.</h2>
+                <p class="mt-5 text-lg leading-8 text-slate-600">Designed to grow and protect your wealth through structured market allocation, careful opportunity selection, and ongoing advisory.</p>
+            </div>
+            <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                {
+                    coreServices.map((service) => (
+                        <a href={`/services/${service.slug}`} class="premium-card group overflow-hidden p-0">
+                            <img src={service.image} alt="" class="h-56 w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+                            <div class="p-6">
+                                <h3>{service.title}</h3>
+                                <p class="mt-3 leading-7 text-slate-600">{service.summary}</p>
+                                <span class="mt-6 inline-flex text-sm font-bold text-primary">Learn More -></span>
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-luxury py-20 text-white sm:py-28">
+        <div class="section-shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+            <div class="reveal">
+                <p class="eyebrow">Why Work With Us?</p>
+                <h2 class="text-white">Strategy-led support for global property investors.</h2>
+                <p class="mt-5 text-lg leading-8 text-white/70">Vidian Capital combines market specialist insight with end-to-end support, helping investors move from strategy to acquisition and portfolio evolution with clarity.</p>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2">
+                {['Strategy Led', 'End To End Support', 'Market Specialists', 'Trusted Expertise'].map((item) => <div class="dark-card reveal"><span class="text-sm font-bold uppercase tracking-[0.25em] text-gold">Vidian</span><h3 class="mt-5 text-2xl text-white">{item}</h3><p class="mt-3 text-sm leading-7 text-white/65">A disciplined, relationship-led approach focused on your investment priorities and long-term future.</p></div>)}
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 sm:py-28">
+        <div class="section-shell">
+            <div class="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end">
+                <div class="max-w-3xl">
+                    <p class="eyebrow">Our Process</p>
+                    <h2>Six-step investment framework.</h2>
+                    <p class="mt-5 text-lg leading-8 text-slate-600">A structured, disciplined approach designed to take you from initial strategy to long-term portfolio growth.</p>
+                </div>
+                <a href="/services" class="btn">See the Full Process</a>
+            </div>
+            <div class="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {
+                    processSteps.map((step) => (
+                        <div class="premium-card reveal">
+                            <p class="font-display text-5xl text-gold">{step.number}</p>
+                            <h3 class="mt-5">{step.title}</h3>
+                            <p class="mt-3 leading-7 text-slate-600">{step.text}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-slate-50 py-20 sm:py-28">
+        <div class="section-shell">
+            <div class="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end">
+                <div class="max-w-3xl">
+                    <p class="eyebrow">Curated Portfolio</p>
+                    <h2>Investment opportunities selected for yield, growth, and security.</h2>
+                </div>
+                <a href="/investment-opportunities" class="btn">View All Developments</a>
+            </div>
+            <div class="mt-12 grid gap-6 lg:grid-cols-2">
+                {
+                    opportunities.map((item) => (
+                        <article class="premium-card overflow-hidden p-0 reveal">
+                            <img src={item.image} alt="" class="h-72 w-full object-cover" loading="lazy" />
+                            <div class="p-7">
+                                <p class="text-sm font-bold uppercase tracking-[0.22em] text-gold">{item.location}</p>
+                                <h3 class="mt-3 text-2xl">{item.title}</h3>
+                                <div class="mt-4 flex flex-wrap gap-2">{item.tags.map((tag) => <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-primary">{tag}</span>)}</div>
+                                <p class="mt-5 leading-7 text-slate-600">{item.text}</p>
+                            </div>
+                        </article>
+                    ))
+                }
+            </div>
+
+            <div class="mt-14 grid gap-6 md:grid-cols-3">
+                {
+                    developments.map((item) => (
+                        <a href="/case-studies" class="premium-card group p-0 reveal">
+                            <img src={item.image} alt="" class="h-52 w-full rounded-t-[2rem] object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy" />
+                            <div class="p-6">
+                                <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold">{item.location}</p>
+                                <h3 class="mt-3">{item.title}</h3>
+                                <p class="mt-3 text-sm leading-7 text-slate-600">{item.text}</p>
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-luxury py-20 text-white sm:py-28">
+        <div class="section-shell">
+            <div class="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end">
+                <div>
+                    <p class="eyebrow">Trusted by Global Investors</p>
+                    <h2 class="text-white">Join hundreds of satisfied investors who have built their wealth with Vidian Capital.</h2>
+                </div>
+                <div class="flex gap-3">
+                    <button class="h-12 w-12 rounded-full border border-white/20 text-white transition hover:bg-white/10" data-slider-button="#testimonial-slider" data-direction="prev" aria-label="Previous testimonial">Prev</button>
+                    <button class="h-12 w-12 rounded-full border border-white/20 text-white transition hover:bg-white/10" data-slider-button="#testimonial-slider" data-direction="next" aria-label="Next testimonial">Next</button>
+                </div>
+            </div>
+            <div id="testimonial-slider" class="testimonial-track mt-12 flex snap-x gap-5 overflow-x-auto scroll-smooth pb-4">
+                {
+                    testimonials.map((item) => (
+                        <figure class="dark-card min-w-[86%] snap-start sm:min-w-[30rem]">
+                            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gold text-sm font-bold text-slate-950">{item.initials}</div>
+                            <blockquote class="mt-8 text-xl leading-9 text-white/86">"{item.quote}"</blockquote>
+                            <figcaption class="mt-8 text-sm font-semibold text-white">{item.name}, <span class="text-white/55">{item.location}</span></figcaption>
+                        </figure>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 sm:py-28">
+        <div class="section-shell grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
+            <div class="reveal">
+                <p class="eyebrow">FAQ</p>
+                <h2>Common investor questions.</h2>
+                <p class="mt-5 leading-8 text-slate-600">Clear answers for investors reviewing UK and Dubai property strategy with Vidian Capital.</p>
+            </div>
+            <div class="space-y-4">
+                {
+                    faqs.map((item) => (
+                        <details class="faq-item reveal rounded-3xl border border-slate-200 bg-white p-6 shadow-lg shadow-slate-950/5">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-bold text-slate-950">
+                                {item.question}
+                                <span class="text-2xl text-gold">+</span>
+                            </summary>
+                            <p class="mt-4 leading-8 text-slate-600">{item.answer}</p>
+                        </details>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-slate-50 py-20 sm:py-28">
+        <div class="section-shell">
+            <div class="gold-gradient reveal overflow-hidden rounded-[2.5rem] border border-gold/20 bg-white p-8 shadow-2xl shadow-slate-950/10 sm:p-12 lg:p-16">
+                <div class="grid items-center gap-10 lg:grid-cols-[1fr_0.8fr]">
+                    <div>
+                        <p class="eyebrow">Final CTA</p>
+                        <h2>Ready to start your investment journey?</h2>
+                        <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-600">Book a focused strategy call to discuss your objectives, capital, and investment priorities.</p>
+                    </div>
+                    <div class="flex flex-col gap-4 sm:flex-row lg:justify-end">
+                        <a href="/contact-us" class="btn btn-lg btn-gold">Book Your Strategy Call</a>
+                        <a href="/investment-opportunities" class="btn btn-lg">View Opportunities</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 sm:py-28">
+        <div class="section-shell grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+            <div class="reveal">
+                <p class="eyebrow">Contact</p>
+                <h2>Get in touch with us.</h2>
+                <p class="mt-5 text-lg leading-8 text-slate-600">Ready to start your investment journey? Send us a message.</p>
+                <div class="mt-8 space-y-5 text-slate-700">
+                    <p><strong class="text-slate-950">London Office</strong><br />{site.address}</p>
+                    <p><strong class="text-slate-950">Phone</strong><br /><a href={`tel:${site.phone.replaceAll(' ', '')}`} class="text-primary hover:text-blue-700">{site.phone}</a></p>
+                    <p><strong class="text-slate-950">Email</strong><br /><a href={`mailto:${site.email}`} class="text-primary hover:text-blue-700">{site.email}</a></p>
+                </div>
+            </div>
+            <form name="contact" method="POST" data-netlify="true" class="premium-card reveal grid gap-5">
+                <input type="hidden" name="form-name" value="contact" />
+                <div class="grid gap-5 sm:grid-cols-2">
+                    <label class="grid gap-2 text-sm font-semibold text-slate-950">Full Name<input class="field" name="name" autocomplete="name" required /></label>
+                    <label class="grid gap-2 text-sm font-semibold text-slate-950">Phone Number<input class="field" name="phone" autocomplete="tel" required /></label>
+                </div>
+                <label class="grid gap-2 text-sm font-semibold text-slate-950">Email Address<input class="field" type="email" name="email" autocomplete="email" required /></label>
+                <label class="grid gap-2 text-sm font-semibold text-slate-950">Message<textarea class="field min-h-36" name="message" required></textarea></label>
+                <button class="btn btn-gold justify-self-start" type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="bg-slate-950 py-20 text-white sm:py-24">
+        <div class="section-shell">
+            <div class="reveal max-w-3xl">
+                <p class="eyebrow">Website Strategy Output</p>
+                <h2 class="text-white">Sitemap, page structure, SEO, and content direction.</h2>
+                <p class="mt-5 text-white/65">This rebuild preserves Vidian Capital's services, content, branding, and business identity while presenting the firm with a premium luxury-corporate structure.</p>
+            </div>
+            <div class="mt-10 grid gap-6 lg:grid-cols-2">
+                <div class="dark-card">
+                    <h3 class="text-white">Complete Sitemap</h3>
+                    <div class="mt-5 grid gap-3">
+                        {sitemap.map((item) => <p class="text-sm leading-6 text-white/65"><strong class="text-white">{item.page}</strong> - {item.path}</p>)}
+                    </div>
+                </div>
+                <div class="dark-card">
+                    <h3 class="text-white">Homepage Wireframe</h3>
+                    <ol class="mt-5 list-decimal space-y-2 pl-5 text-sm leading-6 text-white/65">
+                        {['Hero video and primary CTA', 'Trust statistics', 'About overview', 'Services cards', 'Why choose us', 'Six-step process', 'Opportunities and case studies', 'Testimonials slider', 'FAQ accordion', 'Final CTA and contact form'].map((item) => <li>{item}</li>)}
+                    </ol>
+                </div>
+                <div class="dark-card">
+                    <h3 class="text-white">SEO Headings</h3>
+                    <div class="mt-5 grid gap-2 text-sm leading-6 text-white/65">{seoHeadings.map((item) => <p>{item}</p>)}</div>
+                </div>
+                <div class="dark-card">
+                    <h3 class="text-white">Recommendations</h3>
+                    <div class="mt-5 grid gap-5 text-sm leading-6 text-white/65">
+                        <div><strong class="text-gold">CTAs</strong>{ctaRecommendations.map((item) => <p>{item}</p>)}</div>
+                        <div><strong class="text-gold">Content</strong>{contentRecommendations.slice(0, 3).map((item) => <p>{item}</p>)}</div>
+                        <div><strong class="text-gold">Design</strong>{designDirection.slice(0, 2).map((item) => <p>{item}</p>)}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </Layout>

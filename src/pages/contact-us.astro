@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../content/vidian';
+---
+
+<Layout title={`Contact Us | ${site.name}`} description="Contact Vidian Capital to book a property investment strategy call." noHeaderOverlay>
+    <section class="bg-luxury pt-36 pb-20 text-white sm:pb-28">
+        <div class="section-shell max-w-5xl">
+            <p class="eyebrow">Contact</p>
+            <h1>Get in Touch with Us</h1>
+            <p class="mt-6 max-w-3xl text-lg leading-8 text-white/72">Ready to start your investment journey? Send us a message.</p>
+        </div>
+    </section>
+
+    <section class="py-20 sm:py-28">
+        <div class="section-shell grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+            <div class="reveal">
+                <p class="eyebrow">London Office</p>
+                <h2>Book your strategy call.</h2>
+                <div class="mt-8 space-y-5 text-lg leading-8 text-slate-700">
+                    <p><strong class="text-slate-950">London Office</strong><br />{site.address}</p>
+                    <p><strong class="text-slate-950">Phone</strong><br /><a href={`tel:${site.phone.replaceAll(' ', '')}`} class="text-primary hover:text-blue-700">{site.phone}</a></p>
+                    <p><strong class="text-slate-950">Email</strong><br /><a href={`mailto:${site.email}`} class="text-primary hover:text-blue-700">{site.email}</a></p>
+                </div>
+            </div>
+            <form name="strategy-call" method="POST" data-netlify="true" class="premium-card reveal grid gap-5">
+                <input type="hidden" name="form-name" value="strategy-call" />
+                <div class="grid gap-5 sm:grid-cols-2">
+                    <label class="grid gap-2 text-sm font-semibold text-slate-950">Full Name<input class="field" name="name" autocomplete="name" required /></label>
+                    <label class="grid gap-2 text-sm font-semibold text-slate-950">Phone Number<input class="field" name="phone" autocomplete="tel" required /></label>
+                </div>
+                <label class="grid gap-2 text-sm font-semibold text-slate-950">Email Address<input class="field" type="email" name="email" autocomplete="email" required /></label>
+                <label class="grid gap-2 text-sm font-semibold text-slate-950">Investment Focus<select class="field" name="focus"><option>UK Property Investment</option><option>Dubai Property Investment</option><option>Cross Border Portfolio Strategy</option><option>Ongoing Portfolio Advisory</option></select></label>
+                <label class="grid gap-2 text-sm font-semibold text-slate-950">Message<textarea class="field min-h-36" name="message" required></textarea></label>
+                <button class="btn btn-gold justify-self-start" type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+</Layout>

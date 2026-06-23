@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, testimonials } from '../content/vidian';
+---
+
+<Layout title={`Testimonials | ${site.name}`} description="Read testimonials from global investors who have worked with Vidian Capital." noHeaderOverlay>
+    <section class="bg-luxury pt-36 pb-20 text-white sm:pb-28">
+        <div class="section-shell max-w-5xl">
+            <p class="eyebrow">Trusted by Global Investors</p>
+            <h1>Testimonials</h1>
+            <p class="mt-6 max-w-3xl text-lg leading-8 text-white/72">Join hundreds of satisfied investors who have built their wealth with Vidian Capital.</p>
+        </div>
+    </section>
+
+    <section class="py-20 sm:py-28">
+        <div class="section-shell grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {testimonials.map((item) => (
+                <figure class="premium-card reveal">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gold text-sm font-bold text-slate-950">{item.initials}</div>
+                    <blockquote class="mt-8 text-xl leading-9 text-slate-800">"{item.quote}"</blockquote>
+                    <figcaption class="mt-8 text-sm font-semibold text-slate-950">{item.name}, <span class="text-slate-500">{item.location}</span></figcaption>
+                </figure>
+            ))}
+        </div>
+    </section>
+</Layout>

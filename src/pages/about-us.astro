@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, stats, processSteps } from '../content/vidian';
+---
+
+<Layout title={`About Us | ${site.name}`} description="Learn about Vidian Capital's strategy-led approach to UK and Dubai property investment." noHeaderOverlay>
+    <section class="bg-luxury pt-36 pb-20 text-white sm:pb-28">
+        <div class="section-shell grid items-center gap-12 lg:grid-cols-[1fr_0.9fr]">
+            <div class="reveal">
+                <p class="eyebrow">About Vidian Capital</p>
+                <h1>Strategic property investment for long-term wealth creation.</h1>
+                <p class="mt-6 max-w-2xl text-lg leading-8 text-white/72">
+                    VIDIAN CAPITAL has created a new approach to building wealth through real estate. We do not just sell properties, we craft investment opportunities that are Strategic. Secure. Scalable.
+                </p>
+            </div>
+            <img src="/images/vidian/brand-logo.png" alt="Vidian Capital office signage" class="reveal rounded-[2rem] shadow-2xl shadow-black/30" />
+        </div>
+    </section>
+
+    <section class="py-20 sm:py-28">
+        <div class="section-shell grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+            <div class="reveal">
+                <p class="eyebrow">Our Identity</p>
+                <h2>Research, planning, and relationship-led advisory.</h2>
+            </div>
+            <div class="reveal space-y-6 text-lg leading-9 text-slate-600">
+                <p>
+                    When you work with VIDIAN CAPITAL, you are partnering with a team of dedicated experts who understand the power of research, planning, and long-term strategy.
+                </p>
+                <p>
+                    Whether you are a first-time investor, expanding your portfolio, or a family office seeking structured opportunities, we help you build investments that deliver income today and create generational wealth for tomorrow.
+                </p>
+                <p>
+                    We are not here just to work with you now, we are here to build lasting relationships focused on your future, guiding you every step of the way as your investment journey grows.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-slate-50 py-20 sm:py-28">
+        <div class="section-shell">
+            <div class="grid gap-5 md:grid-cols-4">
+                {stats.map((item) => <div class="premium-card reveal"><p class="font-display text-5xl text-gold">{item.value}</p><p class="mt-3 text-sm font-bold uppercase tracking-[0.18em] text-slate-500">{item.label}</p></div>)}
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 sm:py-28">
+        <div class="section-shell">
+            <div class="reveal max-w-3xl">
+                <p class="eyebrow">How We Work</p>
+                <h2>A disciplined framework for investment decisions.</h2>
+                <p class="mt-5 text-lg leading-8 text-slate-600">Every relationship starts with strategy before moving into curated opportunities, due diligence, completion oversight, and portfolio evolution.</p>
+            </div>
+            <div class="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {processSteps.map((step) => <div class="premium-card reveal"><p class="font-display text-5xl text-gold">{step.number}</p><h3 class="mt-5">{step.title}</h3><p class="mt-3 leading-7 text-slate-600">{step.text}</p></div>)}
+            </div>
+        </div>
+    </section>
+</Layout>

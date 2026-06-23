@@ -1,15 +1,23 @@
 ---
 import '../../src/styles/globals.css';
 import '@fontsource-variable/inter/wght.css';
+import '@fontsource/playfair-display/400.css';
+import '@fontsource/playfair-display/600.css';
+import '@fontsource/playfair-display/700.css';
 import interWoff2 from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { site } from '../content/vidian';
 
 interface Props {
     title: string;
+    description?: string;
+    canonicalPath?: string;
+    noHeaderOverlay?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, description = site.description, canonicalPath = Astro.url.pathname, noHeaderOverlay = false } = Astro.props;
+const canonical = new URL(canonicalPath, Astro.site ?? 'https://www.vidiancapital.com').toString();
 ---
 
 <!doctype html>
@@ -17,18 +25,66 @@ const { title } = Astro.props;
     <head>
         <meta charset="UTF-8" />
         <title>{title}</title>
-        <meta name="viewport" content="width=device-width" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="generator" content={Astro.generator} />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="canonical" href={canonical} />
         <link rel="preload" as="font" type="font/woff2" href={interWoff2} crossorigin />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:image" content="/images/vidian/brand-logo.png" />
+        <meta property="og:site_name" content={site.name} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <script type="application/ld+json" set:html={JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FinancialService',
+            name: site.name,
+            description,
+            url: canonical,
+            telephone: site.phone,
+            email: site.email,
+            address: {
+                '@type': 'PostalAddress',
+                streetAddress: site.address,
+                addressLocality: 'London',
+                addressCountry: 'GB'
+            },
+            areaServed: ['United Kingdom', 'Dubai'],
+            serviceType: ['Property Investment', 'Property Portfolio Management', 'Investment Consultancy', 'Real Estate Advisory']
+        })} />
     </head>
-    <body class="antialiased text-white bg-complementary">
-        <div class="flex flex-col min-h-screen px-6 bg-noise sm:px-12">
-            <div class="flex flex-col w-full max-w-5xl mx-auto grow">
-                <Header />
-                <main class="grow"><slot /></main>
-                <Footer />
-            </div>
-        </div>
+    <body>
+        <Header overlay={!noHeaderOverlay} />
+        <main><slot /></main>
+        <Footer />
+        <script>
+            const revealObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.14 }
+            );
+
+            document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+
+            document.querySelectorAll('[data-slider-button]').forEach((button) => {
+                button.addEventListener('click', () => {
+                    const target = document.querySelector(button.getAttribute('data-slider-button') ?? '');
+                    if (!target) return;
+                    const direction = button.getAttribute('data-direction') === 'prev' ? -1 : 1;
+                    target.scrollBy({ left: direction * target.clientWidth * 0.85, behavior: 'smooth' });
+                });
+            });
+        </script>
     </body>
 </html>

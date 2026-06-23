@@ -1,9 +1,53 @@
 ---
-
+import Logo from './Logo.astro';
+import { navItems, site, coreServices, supportServices } from '../content/vidian';
 ---
 
-<footer class="pt-16 pb-12 sm:pt-24 sm:pb-16">
-    <p class="text-sm">
-        <a href="https://docs.netlify.com/frameworks/astro/" class="decoration-dashed text-primary underline-offset-8"> Astro on Netlify </a>
-    </p>
+<footer class="bg-slate-950 text-white">
+    <div class="section-shell py-16 sm:py-20">
+        <div class="grid gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr_1fr]">
+            <div>
+                <a href="/" class="inline-flex rounded-2xl bg-white px-4 py-3">
+                    <Logo class="h-11 w-auto" />
+                </a>
+                <p class="mt-6 max-w-sm text-sm leading-7 text-white/65">
+                    We design property investment strategies across the UK and Dubai to grow, protect, and optimise your capital.
+                </p>
+                <p class="mt-6 text-xs uppercase tracking-[0.28em] text-gold">Strategic. Secure. Scalable.</p>
+            </div>
+
+            <div>
+                <h2 class="font-sans text-sm font-bold uppercase tracking-[0.2em] text-white">Company</h2>
+                <div class="mt-5 grid gap-3">
+                    {navItems.map((item) => <a href={item.href} class="text-sm text-white/65 hover:text-white">{item.label}</a>)}
+                </div>
+            </div>
+
+            <div>
+                <h2 class="font-sans text-sm font-bold uppercase tracking-[0.2em] text-white">Services</h2>
+                <div class="mt-5 grid gap-3">
+                    {[...coreServices.slice(0, 4), ...supportServices.slice(0, 2)].map((service) => (
+                        <a href={`/services/${service.slug}`} class="text-sm text-white/65 hover:text-white">{service.title}</a>
+                    ))}
+                </div>
+            </div>
+
+            <div>
+                <h2 class="font-sans text-sm font-bold uppercase tracking-[0.2em] text-white">Contact</h2>
+                <div class="mt-5 space-y-4 text-sm leading-6 text-white/65">
+                    <p>{site.address}</p>
+                    <p><a href={`tel:${site.phone.replaceAll(' ', '')}`} class="hover:text-white">{site.phone}</a></p>
+                    <p><a href={`mailto:${site.email}`} class="hover:text-white">{site.email}</a></p>
+                </div>
+                <a href="/contact-us" class="btn btn-gold mt-6">Start Your Investment Journey</a>
+            </div>
+        </div>
+
+        <div class="mt-14 border-t border-white/10 pt-8 text-xs leading-6 text-white/50 md:flex md:items-center md:justify-between">
+            <p>&copy; {new Date().getFullYear()} Vidian Capital. All rights reserved.</p>
+            <p class="mt-3 max-w-2xl md:mt-0">
+                Risk Warning: Property values can decrease as well as increase. Past performance is not a guide to future performance.
+            </p>
+        </div>
+    </div>
 </footer>

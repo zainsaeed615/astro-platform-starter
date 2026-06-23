@@ -2,28 +2,45 @@
 
 @theme {
     --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --color-primary: #f67280;
-    --color-primary-content: #101828;
-    --color-complementary: #355c7d;
+    --font-serif: 'Playfair Display', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --color-primary: #1e40af;
+    --color-primary-content: #ffffff;
+    --color-complementary: #0f172a;
+    --color-gold: #d4af37;
+    --color-ink: #0f172a;
+    --color-muted: #64748b;
     --background-image-noise: linear-gradient(
             to bottom,
-            color-mix(in oklab, var(--color-gray-950) 0%, transparent),
-            color-mix(in oklab, var(--color-gray-950) 100%, transparent)
+            color-mix(in oklab, var(--color-complementary) 82%, transparent),
+            color-mix(in oklab, var(--color-complementary) 96%, transparent)
         ),
         url('/images/noise.png');
 }
 
 @layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-white text-slate-700 antialiased;
+        text-rendering: optimizeLegibility;
+    }
+
     h1 {
-        @apply text-4xl font-bold tracking-tight sm:text-5xl;
+        @apply font-serif text-5xl leading-[0.95] font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl;
     }
 
     h2 {
-        @apply text-2xl font-bold sm:text-3xl;
+        @apply font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl;
+    }
+
+    h3 {
+        @apply text-xl font-semibold tracking-tight text-slate-950;
     }
 
     a:not(.btn) {
-        @apply underline transition hover:opacity-80;
+        @apply no-underline transition;
     }
 
     pre {
@@ -37,32 +54,13 @@
 }
 
 @layer components {
-    .markdown {
-        > * {
-            @apply my-6;
-        }
-
-        :where(h1, h2) {
-            @apply mt-12 mb-6;
-        }
-
-        > :first-child {
-            @apply mt-0;
-        }
-
-        > :last-child {
-            @apply mb-0;
-        }
-    }
-
     .btn {
-        @apply inline-flex items-center justify-center gap-2 bg-primary text-primary-content cursor-pointer text-center font-semibold no-underline transition-colors;
+        @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-content shadow-lg shadow-blue-950/20 transition duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-950/25;
         padding: var(--btn-py, 0.875rem) var(--btn-px, 1.25rem);
         font-size: var(--btn-font-size, 0.875rem);
-        border-radius: var(--btn-border-radius, 0.25rem);
 
         &:hover {
-            @apply bg-primary/85;
+            @apply opacity-100;
         }
 
         &:disabled {
@@ -71,8 +69,88 @@
     }
 
     .btn-lg {
-        --btn-font-size: 1.125rem;
-        --btn-px: 1.5rem;
-        --btn-py: 1.125rem;
+        --btn-font-size: 1rem;
+        --btn-px: 1.75rem;
+        --btn-py: 1rem;
+    }
+
+    .btn-gold {
+        @apply bg-gold text-slate-950 hover:bg-yellow-400;
+    }
+
+    .btn-outline {
+        @apply border border-white/30 bg-white/10 text-white shadow-none backdrop-blur hover:border-white/60 hover:bg-white/15;
+    }
+
+    .section-shell {
+        @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+    }
+
+    .eyebrow {
+        @apply mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.28em] text-gold;
+    }
+
+    .eyebrow::before {
+        @apply block h-px w-8 bg-gold content-[''];
+    }
+
+    .premium-card {
+        @apply rounded-[2rem] border border-slate-200/80 bg-white p-6 shadow-xl shadow-slate-900/5 transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-950/10;
+    }
+
+    .dark-card {
+        @apply rounded-[2rem] border border-white/10 bg-white/[0.06] p-6 text-white shadow-2xl shadow-black/20 backdrop-blur;
+    }
+
+    .field {
+        @apply w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-primary focus:ring-4 focus:ring-blue-100;
+    }
+
+    .reveal {
+        @apply translate-y-6 opacity-0;
+        transition:
+            opacity 700ms ease,
+            transform 700ms ease;
+    }
+
+    .reveal.is-visible {
+        @apply translate-y-0 opacity-100;
+    }
+
+    .testimonial-track {
+        scrollbar-width: none;
+    }
+
+    .testimonial-track::-webkit-scrollbar {
+        display: none;
+    }
+
+    .faq-item[open] summary {
+        @apply text-primary;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .gold-gradient {
+        background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(30, 64, 175, 0.08));
+    }
+}
+
+@layer utilities {
+    .font-display {
+        font-family: var(--font-serif);
+    }
+
+    .text-balance {
+        text-wrap: balance;
+    }
+
+    .bg-luxury {
+        background:
+            radial-gradient(circle at top left, rgba(30, 64, 175, 0.32), transparent 36rem),
+            radial-gradient(circle at 85% 18%, rgba(212, 175, 55, 0.18), transparent 30rem),
+            #0f172a;
     }
 }

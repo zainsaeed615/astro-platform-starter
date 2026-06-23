@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, insights, contentRecommendations, seoHeadings, ctaRecommendations, designDirection } from '../content/vidian';
+---
+
+<Layout title={`Insights | ${site.name}`} description="Property investment insights for UK and Dubai portfolio strategy." noHeaderOverlay>
+    <section class="bg-luxury pt-36 pb-20 text-white sm:pb-28">
+        <div class="section-shell max-w-5xl">
+            <p class="eyebrow">Blog / Insights</p>
+            <h1>Investment Insights</h1>
+            <p class="mt-6 max-w-3xl text-lg leading-8 text-white/72">Educational content recommendations aligned to Vidian Capital's UK and Dubai property investment focus.</p>
+        </div>
+    </section>
+
+    <section class="py-20 sm:py-28">
+        <div class="section-shell grid gap-6 md:grid-cols-3">
+            {insights.map((item) => (
+                <article class="premium-card reveal">
+                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold">{item.category}</p>
+                    <h2 class="mt-4 text-3xl">{item.title}</h2>
+                    <p class="mt-4 leading-7 text-slate-600">{item.summary}</p>
+                    <a href="/contact-us" class="mt-7 inline-flex text-sm font-bold text-primary">Discuss This Topic -></a>
+                </article>
+            ))}
+        </div>
+    </section>
+
+    <section class="bg-slate-50 py-20 sm:py-28">
+        <div class="section-shell grid gap-6 lg:grid-cols-2">
+            <div class="premium-card reveal">
+                <p class="eyebrow">SEO Headings</p>
+                <h2 class="text-4xl">Recommended heading hierarchy.</h2>
+                <div class="mt-6 grid gap-3 text-slate-600">{seoHeadings.map((item) => <p>{item}</p>)}</div>
+            </div>
+            <div class="premium-card reveal">
+                <p class="eyebrow">CTA Recommendations</p>
+                <h2 class="text-4xl">Conversion paths.</h2>
+                <div class="mt-6 grid gap-3 text-slate-600">{ctaRecommendations.map((item) => <p>{item}</p>)}</div>
+            </div>
+            <div class="premium-card reveal">
+                <p class="eyebrow">Content Recommendations</p>
+                <h2 class="text-4xl">Next content priorities.</h2>
+                <div class="mt-6 grid gap-3 text-slate-600">{contentRecommendations.map((item) => <p>{item}</p>)}</div>
+            </div>
+            <div class="premium-card reveal">
+                <p class="eyebrow">Design Direction</p>
+                <h2 class="text-4xl">Premium luxury-corporate system.</h2>
+                <div class="mt-6 grid gap-3 text-slate-600">{designDirection.map((item) => <p>{item}</p>)}</div>
+            </div>
+        </div>
+    </section>
+</Layout>
