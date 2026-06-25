@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, developments, ukPropertyFaqs } from '../content/vidian';
+const uk = developments.filter((item) => item.country === 'UK');
+const dubai = developments.filter((item) => item.country === 'Dubai');
+---
+
+<Layout title={`Investment Opportunities | ${site.name}`} description="Curated UK and Dubai investment opportunities from Vidian Capital." noHeaderOverlay>
+    <section class="bg-luxury pt-40 pb-24 text-white sm:pb-32">
+        <div class="section-shell max-w-5xl">
+            <p class="eyebrow">Investment Opportunities</p>
+            <h1>UK Investments</h1>
+            <p class="mt-6 max-w-3xl text-xl leading-9 text-white/75">A curated selection of premium UK developments hand-picked for our investor clients.</p>
+            <div class="mt-8 flex gap-3"><a href="#uk" class="btn btn-gold">UK</a><a href="#dubai" class="btn btn-outline">Dubai</a></div>
+        </div>
+    </section>
+
+    <section id="uk" class="py-24 sm:py-32">
+        <div class="section-shell">
+            <p class="eyebrow">UK</p>
+            <h2>Premium UK Developments</h2>
+            <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                {uk.map((item) => <article class="premium-card overflow-hidden p-0"><img src={item.image} alt="" class="h-64 w-full object-cover" /><div class="p-6"><span class="text-xs font-bold uppercase tracking-[0.18em] text-primary">{item.status}</span><h3 class="mt-3">{item.title}</h3><p class="mt-2">{item.location}</p><p class="mt-4 font-bold text-ink">{item.price}</p></div></article>)}
+            </div>
+        </div>
+    </section>
+
+    <section id="dubai" class="bg-white py-24 sm:py-32">
+        <div class="section-shell">
+            <p class="eyebrow">Dubai</p>
+            <h2>Dubai Growth Opportunities</h2>
+            <div class="mt-12 grid gap-6 md:grid-cols-2">
+                {dubai.map((item) => <article class="premium-card overflow-hidden p-0"><img src={item.image} alt="" class="h-80 w-full object-cover" /><div class="p-8"><span class="text-xs font-bold uppercase tracking-[0.18em] text-primary">{item.status}</span><h3 class="mt-3 text-4xl">{item.title}</h3><p class="mt-2">{item.location}</p><p class="mt-4 font-bold text-ink">{item.price} · {item.yield}</p></div></article>)}
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 sm:py-32">
+        <div class="section-shell grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+            <div class="reveal"><p class="eyebrow">UK Property FAQs</p><h2>Everything You Need To Know About Investing In UK Property</h2></div>
+            <div class="space-y-4">{ukPropertyFaqs.map((question) => <details class="faq-item premium-card"><summary class="cursor-pointer list-none text-lg font-bold text-ink">{question}</summary><p class="mt-4">Our team explains this during your consultation and provides structured guidance based on your investor profile.</p></details>)}</div>
+        </div>
+    </section>
+
+    <section class="bg-luxury py-24 text-white sm:py-32">
+        <div class="section-shell grid items-center gap-8 lg:grid-cols-[1fr_auto]">
+            <div><p class="eyebrow">Start Your Investment Journey</p><h2 class="text-white">Whether you're looking for your first buy-to-let or expanding a global portfolio, our team is here to help.</h2></div>
+            <div class="flex flex-col gap-4 sm:flex-row"><a href="/contact-us" class="btn btn-gold">Book Free Consultation</a><a href="/contact-us" class="btn btn-outline">Contact Us</a></div>
+        </div>
+    </section>
+</Layout>

@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { site, calculators } from '../../content/vidian';
+---
+
+<Layout title={`Property Investment Calculators | ${site.name}`} description="Stamp duty, rental yield, and mortgage calculators for property investors." noHeaderOverlay>
+    <section class="bg-luxury pt-40 pb-24 text-white sm:pb-32"><div class="section-shell max-w-5xl"><p class="eyebrow">Property Investment Calculators</p><h1>Essential Tools To Help You Plan Your Property Investment Journey.</h1><div class="mt-8 flex flex-wrap gap-3">{calculators.map((calc) => <a href={`#${calc.title.split(' ')[0].toLowerCase()}`} class="btn btn-outline">{calc.title.split(' ')[0]}</a>)}</div></div></section>
+    <section class="py-24 sm:py-32"><div class="section-shell grid gap-6 lg:grid-cols-3">{calculators.map((calc) => <form id={calc.title.split(' ')[0].toLowerCase()} class="premium-card grid gap-5"><h3>{calc.title}</h3>{calc.fields.map((field) => <label class="grid gap-2 font-semibold text-ink">{field}<input class="field" placeholder={field} /></label>)}<button class="btn btn-gold">{calc.cta}</button></form>)}</div></section>
+    <section class="bg-luxury py-24 text-white sm:py-32"><div class="section-shell grid items-center gap-8 lg:grid-cols-[1fr_auto]"><div><p class="eyebrow">Start Your Investment Journey</p><h2 class="text-white">Whether you're looking for your first buy-to-let or expanding a global portfolio, our team is here to help.</h2></div><div class="flex gap-4"><a href="/contact-us" class="btn btn-gold">Book Free Consultation</a><a href="/contact-us" class="btn btn-outline">Contact Us</a></div></div></section>
+</Layout>

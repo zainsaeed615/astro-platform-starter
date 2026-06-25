@@ -11,17 +11,17 @@ const { overlay = true } = Astro.props;
 
 <header class:list={[
     'fixed inset-x-0 top-0 z-50 border-b transition duration-300',
-    overlay ? 'border-white/10 bg-slate-950/30 text-white backdrop-blur-xl' : 'border-slate-200 bg-slate-950/95 text-white shadow-lg'
+    overlay ? 'border-white/10 bg-[#0e1824]/45 text-white backdrop-blur-xl' : 'border-white/10 bg-[#0e1824]/95 text-white shadow-lg'
 ]}>
-    <div class="section-shell flex h-20 items-center justify-between gap-6">
-        <a href="/" class="rounded-2xl bg-white px-3 py-2 shadow-xl shadow-black/10 transition hover:-translate-y-0.5" aria-label="Vidian Capital home">
+    <div class="section-shell flex h-24 items-center justify-between gap-6">
+        <a href="/" class="bg-white px-4 py-3 shadow-xl shadow-black/10 transition hover:-translate-y-0.5" aria-label="Vidian Capital home">
             <Logo class="h-9 w-auto sm:h-10" />
         </a>
 
         <nav class="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
             {
                 navItems.map((item) => (
-                    <a href={item.href} class="text-sm font-medium text-white/80 hover:text-white">
+                    <a href={item.href} class="text-sm font-medium uppercase tracking-[0.08em] text-white/80 hover:text-white">
                         {item.label}
                     </a>
                 ))
@@ -29,7 +29,7 @@ const { overlay = true } = Astro.props;
         </nav>
 
         <div class="hidden items-center gap-3 lg:flex">
-            <a href="/investment-opportunities" class="text-sm font-semibold text-white/80 hover:text-white">View Opportunities</a>
+            <a href="/developments" class="text-sm font-semibold uppercase tracking-[0.08em] text-white/80 hover:text-white">View Opportunities</a>
             <a href="/contact-us" class="btn btn-gold">Book Strategy Call</a>
         </div>
 
@@ -39,7 +39,7 @@ const { overlay = true } = Astro.props;
                 <span class="block h-0.5 w-5 bg-current transition group-open:rotate-45 group-open:translate-y-1"></span>
                 <span class="absolute block h-0.5 w-5 translate-y-1.5 bg-current transition group-open:-rotate-45 group-open:translate-y-1"></span>
             </summary>
-            <div class="absolute right-0 mt-4 w-[min(88vw,24rem)] rounded-[1.5rem] border border-white/10 bg-slate-950 p-4 shadow-2xl shadow-black/30">
+            <div class="absolute right-0 mt-4 w-[min(88vw,24rem)] border border-white/10 bg-[#0e1824] p-4 shadow-2xl shadow-black/30">
                 <nav class="grid gap-1" aria-label="Mobile navigation">
                     {
                         navItems.map((item) => (

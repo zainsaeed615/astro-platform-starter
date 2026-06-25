@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { site } from '../../content/vidian';
+const cards = [
+    { title: 'Property Investment Guide', href: '/resources/guide', text: 'Download the comprehensive 2026 guide to investing in UK property.' },
+    { title: 'UK Area Guides', href: '/resources/area-guides', text: "Explore the UK's top property investment destinations." },
+    { title: 'News & Articles', href: '/resources/news', text: 'Market updates, investment insights, and upcoming articles.' },
+    { title: 'Calculators', href: '/tools/calculators', text: 'Stamp duty, rental yield, and mortgage planning tools.' }
+];
+---
+
+<Layout title={`Resources | ${site.name}`} description="Vidian Capital property investment resources, guides, news, and calculators." noHeaderOverlay>
+    <section class="bg-luxury pt-40 pb-24 text-white sm:pb-32"><div class="section-shell max-w-5xl"><p class="eyebrow">Resources</p><h1>Investor Resources</h1><p class="mt-6 text-xl text-white/75">Guides, calculators, area insights, and news for structured UK and Dubai property investment.</p></div></section>
+    <section class="py-24 sm:py-32"><div class="section-shell grid gap-6 md:grid-cols-2 xl:grid-cols-4">{cards.map((card) => <a href={card.href} class="premium-card"><h3>{card.title}</h3><p class="mt-4">{card.text}</p><span class="mt-6 inline-flex font-bold uppercase tracking-[0.08em] text-primary">Open</span></a>)}</div></section>
+</Layout>

@@ -1,0 +1,9 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { site, guideIncludes } from '../../content/vidian';
+---
+
+<Layout title={`Free Property Investment Guide | ${site.name}`} description="Download Vidian Capital's comprehensive 2026 UK property investment guide." noHeaderOverlay>
+    <section class="bg-luxury pt-40 pb-24 text-white sm:pb-32"><div class="section-shell max-w-5xl"><p class="eyebrow">Free Property Investment Guide</p><h1>Download Our Comprehensive 2026 Guide To Investing In UK Property</h1><p class="mt-6 text-xl text-white/75">Essential insights for global investors.</p></div></section>
+    <section class="py-24 sm:py-32"><div class="section-shell grid gap-12 lg:grid-cols-[0.85fr_1.15fr]"><div><p class="eyebrow">What's Inside?</p><h2>Essential Insights For Global Investors</h2><div class="mt-8 grid gap-4">{guideIncludes.map((item) => <div class="premium-card">{item}</div>)}</div></div><form class="premium-card grid gap-5" name="download-guide" method="POST" data-netlify="true"><input type="hidden" name="form-name" value="download-guide" /><h3>Get Your Free Copy</h3><input class="field" name="name" placeholder="Full Name" required /><input class="field" name="phone" placeholder="Phone Number" required /><input class="field" type="email" name="email" placeholder="Email Address" required /><textarea class="field min-h-32" name="message" placeholder="Message (Optional)"></textarea><button class="btn btn-gold justify-self-start">Download Guide Now</button><p class="text-sm">By downloading, you agree to our privacy policy. Your data is secure.</p></form></div></section>
+</Layout>

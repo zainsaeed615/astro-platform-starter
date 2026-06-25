@@ -11,11 +11,11 @@ export const site = {
 
 export const navItems = [
     { label: 'Home', href: '/' },
-    { label: 'About', href: '/about-us' },
+    { label: 'About', href: '/about' },
     { label: 'Services', href: '/services' },
-    { label: 'Opportunities', href: '/investment-opportunities' },
-    { label: 'Case Studies', href: '/case-studies' },
-    { label: 'Insights', href: '/insights' },
+    { label: 'Developments', href: '/developments' },
+    { label: 'Process', href: '/how-it-works' },
+    { label: 'Resources', href: '/resources' },
     { label: 'Contact', href: '/contact-us' }
 ];
 
@@ -23,7 +23,7 @@ export const stats = [
     { value: '17+', label: 'Years combined experience' },
     { value: '42+', label: 'Live developments' },
     { value: '\u00a33BN+', label: 'GDV portfolio' },
-    { value: '\u00a3295M', label: 'Transactions supported' }
+    { value: '\u00a3296M', label: 'Transactions supported' }
 ];
 
 export const coreServices = [
@@ -67,22 +67,34 @@ export const coreServices = [
 
 export const supportServices = [
     {
-        slug: 'specialist-mortgages',
+        slug: 'mortgages',
         title: 'Specialist Mortgages',
         summary:
             'Connecting you with experienced, whole-of-market mortgage brokers specializing in Buy-to-Let finance for UK and international investors.',
         description:
-            'Vidian Capital helps investors access experienced whole-of-market mortgage broker support for Buy-to-Let finance across UK and international investor profiles.',
-        bullets: ['Buy-to-Let finance guidance', 'UK and international investor support', 'Broker introductions']
+            'We connect UK and global investors with experienced, whole-of-market mortgage brokers who specialise in Buy-to-Let finance for the UK property market.',
+        bullets: ['Expertise in Buy-to-Let', 'Whole-of-market access', 'Tailored for UK & international investors', 'Streamlined process'],
+        sections: [
+            { label: 'Overview', title: 'Specialist Mortgages for UK & International Investors', text: 'Whether purchasing a new build, off-plan property, or an existing rental home, investors can access brokers who understand domestic and international requirements.' },
+            { label: 'Benefits', title: 'Why Work with Our Mortgage Partners?', text: 'Brokers understand UK lending rules, rental income calculations, deposits, documentation, currency considerations, and investor requirements.' },
+            { label: 'Who We Help', title: 'Who Can They Help?', text: 'First-time buyers, UK residents investing in additional Buy-to-Let properties, international buyers, and investors acquiring off-plan, new build, or rental properties.' },
+            { label: 'Process', title: 'How It Works', text: 'Tell us your goals, receive an introduction to a specialist broker, get broker guidance, then progress toward approval and completion.' }
+        ]
     },
     {
-        slug: 'conveyancing-legal-support',
+        slug: 'solicitors',
         title: 'Conveyancing & Legal Support',
         summary:
             'Independent solicitors who specialise in UK property transactions, ensuring your purchase is secure, compliant, and efficient.',
         description:
-            'Independent legal partners support the transaction process so investors can progress purchases with clear documentation and confidence.',
-        bullets: ['Independent solicitors', 'Secure transaction process', 'Compliance-focused guidance']
+            'We connect you with independent solicitors who specialise in UK property transactions, ensuring your purchase is secure, compliant, and efficient.',
+        bullets: ['Off-plan property contracts', 'New build conveyancing', 'International client verification', 'Limited company structures'],
+        sections: [
+            { label: 'Overview', title: 'Why Independent Legal Advice Matters', text: 'Independent legal advice ensures your interests are fully protected throughout the transaction, from contract review to completion.' },
+            { label: 'Expertise', title: 'Our Panel of Specialist Solicitors Can Help With', text: 'Off-plan contracts, new build conveyancing, AML checks for overseas buyers, and guidance for purchases via corporate entities.' },
+            { label: 'Process', title: 'The Conveyancing Process', text: 'Contract review, enquiries, local authority searches, funds and Stamp Duty, and Land Registry registration.' },
+            { label: 'Why Us', title: 'Why Work With Our Legal Partners?', text: 'Specialist knowledge, international expertise, and end-to-end legal support from contract review to completion.' }
+        ]
     },
     {
         slug: 'reservation-exchange',
@@ -90,25 +102,43 @@ export const supportServices = [
         summary: 'A clear, step-by-step guide to help you secure your property investment efficiently and confidently.',
         description:
             'A transparent reservation and exchange process that keeps investors informed from opportunity selection through documentation and developer coordination.',
-        bullets: ['Step-by-step reservation guidance', 'Developer coordination', 'Transparent documentation']
+        bullets: ['Step-by-step reservation guidance', 'Developer coordination', 'Transparent documentation'],
+        sections: [
+            { label: 'Overview', title: 'Secure Your Property Investment Efficiently', text: 'A clear reservation and exchange pathway designed to help investors move confidently once an opportunity is aligned.' },
+            { label: 'Reservation', title: 'Reservation Process', text: 'Unit selection, reservation forms, payment instructions, developer coordination, and documentation checks.' },
+            { label: 'Exchange', title: 'Exchange Support', text: 'Legal timelines, contract progression, investor updates, and structured milestone management.' },
+            { label: 'Next Step', title: 'Move Forward With Confidence', text: 'The process remains transparent so investors understand what happens before, during, and after reservation.' }
+        ]
     },
     {
-        slug: 'furnishing-solutions',
+        slug: 'furnishing',
         title: 'Furnishing Solutions',
         summary:
             'High-quality, durable furniture packages tailored for the UK rental market to maximise rental appeal and income.',
         description:
-            'Furniture package coordination designed to improve rental appeal while supporting a hands-off ownership experience.',
-        bullets: ['Rental-market ready packages', 'Durable furnishing options', 'Tenant appeal and income focus']
+            'To attract high-quality tenants and achieve maximum rental returns, your property needs complete furniture packs designed for the rental sector.',
+        bullets: ['Higher rents', 'Faster lettings', 'Tax deductible replacement items', 'Turnkey solutions'],
+        sections: [
+            { label: 'Overview', title: 'Turnkey Furnishing for Investors', text: 'We partner with leading interior design firms to provide complete furniture packs so your property is move-in ready.' },
+            { label: 'Benefits', title: 'Why Furnish Your Property?', text: 'Furnished city apartments can command a premium, reduce void periods, and support a professional rental presentation.' },
+            { label: "What's Included", title: "What's in a Typical Investor Pack?", text: 'Living room furniture, bedroom essentials, soft furnishings, and optional kitchenware, linen, and cleaning equipment.' },
+            { label: 'Why Us', title: 'Why Work With Our Furnishing Partners?', text: 'Investor-tailored, durable, high-quality packages designed to save time and maximise rental appeal.' }
+        ]
     },
     {
-        slug: 'lettings-property-management',
+        slug: 'lettings-management',
         title: 'Lettings & Property Management',
         summary:
             'Hands-off ownership with our network of top-tier local letting agents handling every aspect of property management.',
         description:
             'Local letting and management support helps investors move from acquisition to operation with practical, hands-off portfolio oversight.',
-        bullets: ['Local letting agent network', 'Hands-off ownership support', 'Ongoing property management']
+        bullets: ['Local letting agent network', 'Hands-off ownership support', 'Ongoing property management'],
+        sections: [
+            { label: 'Overview', title: 'Hands-Off Ownership Support', text: 'Our network of local letting agents helps investors move from acquisition to operation with professional management support.' },
+            { label: 'Lettings', title: 'Tenanting and Rental Setup', text: 'Marketing, viewings, tenant referencing, rental setup, and move-in coordination through local specialists.' },
+            { label: 'Management', title: 'Ongoing Property Management', text: 'Day-to-day management support, maintenance coordination, tenant communication, and portfolio oversight.' },
+            { label: 'Why Us', title: 'Support Beyond Acquisition', text: 'A joined-up approach from investment strategy to lettings and long-term portfolio performance.' }
+        ]
     }
 ];
 
@@ -166,22 +196,64 @@ export const opportunities = [
 
 export const developments = [
     {
-        title: 'Manchester Residential Opportunity',
-        location: 'Manchester, United Kingdom',
-        text: 'A modern apartment-led opportunity in one of the UK rental markets supported by regeneration and strong tenant demand.',
+        title: 'Waterhouse Gardens',
+        location: 'Manchester',
+        country: 'UK',
+        price: 'From \u00a3300,000',
+        yield: 'Yield 6%',
+        status: 'Available',
+        text: 'A premium Manchester development selected for investor clients reviewing long-term UK rental demand.',
         image: '/images/vidian/manchester-building.png'
     },
     {
-        title: 'Birmingham Canal Quarter',
-        location: 'Birmingham, United Kingdom',
-        text: 'A canal-side residential setting positioned for income-focused investors reviewing UK city centre demand.',
+        title: 'Edition Birmingham',
+        location: 'Birmingham',
+        country: 'UK',
+        price: 'From \u00a3296,958',
+        yield: 'Investor focused',
+        status: 'Available',
+        text: 'A Birmingham opportunity positioned around regeneration, connectivity, and city centre rental demand.',
         image: '/images/vidian/birmingham-canal.png'
     },
     {
-        title: 'Liverpool Waterfront Living',
-        location: 'Liverpool, United Kingdom',
-        text: 'A waterfront-led opportunity for investors considering rental appeal, lifestyle demand, and portfolio diversification.',
+        title: 'Obsidian',
+        location: 'Manchester',
+        country: 'UK',
+        price: 'From \u00a3249,000',
+        yield: 'Income focused',
+        status: 'Available',
+        text: 'A Manchester city investment opportunity aligned to income-focused and leverage-driven strategies.',
+        image: '/images/vidian/uk-opportunity.png'
+    },
+    {
+        title: 'Westminster Point',
+        location: 'Liverpool',
+        country: 'UK',
+        price: 'From \u00a3186,000',
+        yield: 'High yield potential',
+        status: 'Available',
+        text: 'A Liverpool opportunity with accessible entry pricing and strong regional rental appeal.',
         image: '/images/vidian/liverpool-waterfront.png'
+    },
+    {
+        title: 'Mercesdes-Benz Places - Binghatti City',
+        location: 'Meydan Area - Nad Al Sheba District',
+        country: 'Dubai',
+        price: 'From \u00a3272,344',
+        yield: 'Yield 8-10%',
+        status: 'Available',
+        text: 'A Dubai growth-focused opportunity in one of the world\u2019s fastest moving real estate environments.',
+        image: '/images/vidian/dubai-skyline.png'
+    },
+    {
+        title: 'Canal Heights 2 - Damac',
+        location: 'Business Bay',
+        country: 'Dubai',
+        price: 'From \u00a3219,921',
+        yield: 'Yield 7-9%',
+        status: 'Available',
+        text: 'A Business Bay opportunity designed for investors reviewing capital growth and strong rental yields.',
+        image: '/images/vidian/apartment-interior.png'
     }
 ];
 
@@ -237,6 +309,16 @@ export const faqs = [
             'The current focus is the UK and Dubai, combining UK income-focused opportunities with Dubai growth-focused assets.'
     },
     {
+        question: 'What types of property investment opportunities do you offer?',
+        answer:
+            'We provide access to carefully selected property investment opportunities across the UK and Dubai, including residential, off-plan, and income-generating developments designed to suit a range of investment goals.'
+    },
+    {
+        question: 'How does Vidian Capital support investors throughout the process?',
+        answer:
+            'Our team offers end-to-end guidance, from identifying suitable opportunities and conducting due diligence to portfolio strategy, financing assistance, and ongoing investment support.'
+    },
+    {
         question: 'Does Vidian Capital support investors after acquisition?',
         answer:
             'Yes. Ongoing portfolio advisory covers reviews, refinements, reinvestment planning, and rebalancing strategy.'
@@ -246,6 +328,87 @@ export const faqs = [
         answer:
             'It begins with a strategy call to understand objectives, capital, and priorities before building an investment blueprint.'
     }
+];
+
+export const ukPropertyFaqs = [
+    'What is an off-plan property?',
+    'What are new build properties?',
+    'Can overseas buyers invest in UK property?',
+    'What types of properties can I invest in?',
+    "What's the difference between short-term and long-term rental strategies?",
+    'How do I reserve an off-plan property?',
+    'Are there risks in buying off-plan?',
+    'What taxes do I need to consider?',
+    'Do I need to visit the UK to invest?',
+    'Why choose your agency?',
+    'Is the UK property market safe for investment?',
+    'Can overseas investors get a UK mortgage?'
+];
+
+export const aboutSections = [
+    {
+        eyebrow: 'About VIDIAN CAPITAL',
+        title: 'Strategy Led Property Investment in the UK & Dubai',
+        text: 'VIDIAN CAPITAL is a strategy-led property investment firm operating across the UK and Dubai, delivering structured property investment opportunities for global investors seeking secure, scalable, and cross border wealth creation.',
+        bullets: ['UK property investment', 'Dubai real estate investment', 'Cross border portfolio structuring', 'Income producing assets', 'Capital growth strategies', 'Long-term wealth preservation through property']
+    },
+    {
+        eyebrow: 'Our Story',
+        title: 'Bridging Global Capital with the UK & Dubai Property Markets',
+        text: 'VIDIAN CAPITAL was founded in response to a market often driven by short-term thinking and transaction-led advice. International investors needed Structure. Clarity. Discipline.',
+        bullets: ['Established UK legal framework', 'Strong UK rental demand', 'Dubai high rental yield environment', 'Zero personal income tax in Dubai', 'Prime freehold investment zones', 'Powerful balance of stability and growth']
+    },
+    {
+        eyebrow: 'What We Do',
+        title: 'Structured UK & Dubai Property Investment',
+        text: 'We source, structure, and deliver strategic property investments aligned with long-term wealth objectives. Our framework is built on Strategic, Secure, and Scalable pillars.',
+        bullets: ['Strategic portfolio pathways', 'Embedded risk management', 'Scalable cross-border frameworks']
+    },
+    {
+        eyebrow: 'Who We Work With',
+        title: 'Global Investors Entering the UK & Dubai Property Markets',
+        text: 'VIDIAN CAPITAL partners with global investors from Europe, Asia, the Middle East, Africa, and North America seeking structured access to the UK and Dubai real estate markets.',
+        bullets: ['International investors', 'Overseas Dubai buyers', 'Global entrepreneurs', 'HNW and UHNW individuals', 'Family offices', 'Private investors']
+    },
+    {
+        eyebrow: 'Our Investment Philosophy',
+        title: 'Research-Led. Data-Driven. Long-Term Focused.',
+        text: 'Every opportunity must answer one defining question: Does this strengthen the portfolio over the next 5-15 years?',
+        bullets: ['Economic fundamentals', 'Rental demand data', 'Conservative financial projections', 'Market timing', 'Exit strategy clarity', 'Portfolio diversification impact']
+    },
+    {
+        eyebrow: 'Our Vision',
+        title: 'Building Cross-Border Wealth That Endures',
+        text: 'VIDIAN CAPITAL exists to help global investors generate sustainable rental income, achieve capital growth, diversify, protect wealth, and build generational property portfolios.',
+        bullets: ['Sustainable rental income', 'Long-term capital growth', 'UK and Dubai diversification', 'Protection across cycles', 'Generational portfolios']
+    }
+];
+
+export const areaGuides = [
+    { city: 'Manchester', text: "The UK's second city for investment, offering exceptional rental yields and capital growth potential.", yield: '6-8%', growth: '+45%', image: '/images/vidian/manchester-aerial.png' },
+    { city: 'Birmingham', text: 'Major regeneration and HS2 connectivity make Birmingham a top choice for property investors.', yield: '5-7%', growth: '+38%', image: '/images/vidian/birmingham-canal.png' },
+    { city: 'Liverpool', text: 'Heritage city with strong rental demand and affordable entry points for investors.', yield: '7-9%', growth: '+42%', image: '/images/vidian/liverpool-waterfront.png' },
+    { city: 'London', text: "The world's leading financial centre, offering unparalleled capital appreciation potential.", yield: '3-5%', growth: '+55%', image: '/images/vidian/london-skyline.png' },
+    { city: 'Nottingham', text: 'University city with strong student rental market and growing professional sector.', yield: '6-8%', growth: '+35%', image: '/images/vidian/uk-opportunity.png' }
+];
+
+export const upcomingArticles = [
+    { category: 'Market Analysis', title: 'UK Property Market Outlook 2026: What Investors Need to Know', text: 'An in-depth analysis of UK property market trends, predictions, and key opportunities for international investors in 2026.', meta: 'Coming Soon 8 min read', featured: true },
+    { category: 'Investment Strategy', title: 'Regional Cities vs London: Where Should You Invest?', text: "Comparing rental yields, capital growth, and investment potential across the UK's major cities.", meta: 'Coming Soon 6 min read' },
+    { category: 'Tax & Legal', title: 'Understanding Stamp Duty for International Investors', text: 'A comprehensive guide to stamp duty land tax rates, surcharges, and planning strategies for overseas buyers.', meta: 'Coming Soon 5 min read' }
+];
+
+export const guideIncludes = [
+    'Market Analysis: Detailed breakdown of top performing UK cities.',
+    'Tax & Legal: Essential guide for overseas investors.',
+    'Process: Step-by-step guide from reservation to completion.',
+    'Case Studies: Real examples of returns achieved.'
+];
+
+export const calculators = [
+    { title: 'Stamp Duty Land Tax (SDLT) Calculator', fields: ['Property Price (\u00a3)', 'Buyer Type', 'Non-UK Resident (+2% surcharge applies)'], cta: 'Calculate Stamp Duty' },
+    { title: 'Rental Yield Calculator', fields: ['Property Price (\u00a3)', 'Monthly Rent (\u00a3)', 'Annual Costs (\u00a3)'], cta: 'Calculate Rental Yield' },
+    { title: 'Mortgage Calculator', fields: ['Loan Amount (\u00a3)', 'Interest Rate (%)', 'Mortgage Term (Years)'], cta: 'Calculate Mortgage' }
 ];
 
 export const insights = [

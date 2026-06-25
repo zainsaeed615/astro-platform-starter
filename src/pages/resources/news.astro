@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { site, upcomingArticles } from '../../content/vidian';
+---
+
+<Layout title={`News & Articles | ${site.name}`} description="Vidian Capital property market updates and investment insights." noHeaderOverlay>
+    <section class="bg-luxury pt-40 pb-24 text-white sm:pb-32"><div class="section-shell max-w-5xl"><p class="eyebrow">News & Articles</p><h1>Stay Informed With The Latest Property Market Updates</h1><p class="mt-6 text-xl text-white/75">Investment insights and industry news from Vidian Capital.</p></div></section>
+    <section class="py-24 sm:py-32"><div class="section-shell"><div class="premium-card bg-white"><p class="eyebrow">Coming Soon</p><h2>We're Preparing Expert Articles And Market Updates</h2><p class="mt-6 text-lg leading-8">Check back soon for the latest insights from our team, or book a consultation for personalised advice.</p><a href="/contact-us" class="btn btn-gold mt-8">Get Personalised Advice</a></div><h2 class="mt-16">Upcoming Articles</h2><div class="mt-10 grid gap-6 md:grid-cols-3">{upcomingArticles.map((article) => <article class="premium-card"><p class="text-xs font-bold uppercase tracking-[0.2em] text-gold">{article.category}{article.featured ? ' / Featured' : ''}</p><h3 class="mt-4">{article.title}</h3><p class="mt-4">{article.text}</p><p class="mt-6 font-bold text-primary">{article.meta}</p></article>)}</div></div></section>
+    <section class="bg-luxury py-24 text-white sm:py-32"><div class="section-shell grid items-center gap-8 lg:grid-cols-[1fr_auto]"><div><p class="eyebrow">Want to Stay Updated?</p><h2 class="text-white">Book a consultation to receive personalised market insights and recommendations.</h2></div><a href="/contact-us" class="btn btn-gold">Book Free Consultation</a></div></section>
+</Layout>

@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { site, areaGuides } from '../../content/vidian';
+---
+
+<Layout title={`UK Area Guides | ${site.name}`} description="Explore UK property investment area guides from Vidian Capital." noHeaderOverlay>
+    <section class="bg-luxury pt-40 pb-24 text-white sm:pb-32"><div class="section-shell max-w-5xl"><p class="eyebrow">UK Area Guides</p><h1>Explore The UK's Top Property Investment Destinations</h1><p class="mt-6 text-xl text-white/75">Discover areas with strong growth and rental potential.</p></div></section>
+    <section class="py-24 sm:py-32"><div class="section-shell"><div class="max-w-4xl"><p class="eyebrow">UK Investment Destination</p><h2>The UK Remains A Leading Investment Destination</h2><p class="mt-6 text-lg leading-8">Vidian Capital connects global investors with the best developments across the UK, with access to high-quality opportunities designed for long-term success.</p></div><div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">{areaGuides.map((area) => <a href={`/uk-investments/${area.city.toLowerCase()}`} class="premium-card overflow-hidden p-0"><img src={area.image} alt="" class="h-56 w-full object-cover" /><div class="p-6"><h3>Why {area.city}?</h3><p class="mt-4">{area.text}</p><div class="mt-6 grid grid-cols-2 gap-3"><span class="bg-cream p-3 font-bold text-primary">Yield {area.yield}</span><span class="bg-cream p-3 font-bold text-primary">5yr Growth {area.growth}</span></div><span class="mt-6 inline-flex font-bold uppercase tracking-[0.08em] text-primary">View Area Guide</span></div></a>)}</div></div></section>
+    <section class="bg-luxury py-24 text-white sm:py-32"><div class="section-shell grid items-center gap-8 lg:grid-cols-[1fr_auto]"><div><p class="eyebrow">Ready to Explore Investment Opportunities?</p><h2 class="text-white">Contact our team today to begin exploring opportunities in the UK property market.</h2></div><div class="flex gap-4"><a href="/contact-us" class="btn btn-gold">Book a Consultation</a><a href="/contact-us" class="btn btn-outline">Contact Us</a></div></div></section>
+</Layout>

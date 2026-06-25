@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../content/vidian';
+
+const steps = [
+    { number: '01', title: 'Initial Strategy Consultation', bullets: ['Capital available', 'Investment objectives', 'Income vs growth priorities', 'Risk tolerance', 'Time horizon', 'UK vs Dubai considerations'], note: 'This is not a sales call. It is a strategy conversation.' },
+    { number: '02', title: 'Investment Blueprint', bullets: ['Market allocation (UK, Dubai, or blended)', 'Target returns range', 'Capital deployment structure', 'Risk considerations', 'Exit pathways'], note: 'You receive clarity before making decisions.' },
+    { number: '03', title: 'Curated Opportunity Selection', bullets: ['Market rationale', 'Demand fundamentals', 'Risk profile', 'Long-term outlook'], note: 'No mass listings. No volume driven pushing.' },
+    { number: '04', title: 'Due Diligence & Reservation', bullets: ['Unit selection', 'Reservation process', 'Documentation', 'Developer coordination', 'Legal introductions'], note: 'Everything is handled with structure and transparency.' },
+    { number: '05', title: 'Transaction & Completion Oversight', bullets: ['Contract progression', 'Payment milestones', 'Build updates', 'Completion process'], note: 'You are supported from exchange to handover.' },
+    { number: '06', title: 'Portfolio Review & Evolution', bullets: ['Portfolio check-ins', 'Reinvestment planning', 'Refinancing discussions', 'UK vs Dubai rebalancing strategy'], note: 'Our role is long term alignment, not one-time transactions.' }
+];
+---
+
+<Layout title={`How It Works | ${site.name}`} description="A structured 6 step investment process for UK and Dubai property investors." noHeaderOverlay>
+    <section class="bg-luxury pt-40 pb-24 text-white sm:pb-32">
+        <div class="section-shell max-w-5xl">
+            <p class="eyebrow">A Structured 6 Step Investment Process</p>
+            <h1>Our Approach Is Simple, Disciplined, And Built Around Long-Term Outcomes.</h1>
+        </div>
+    </section>
+    {steps.map((step, index) => (
+        <section class:list={[index % 2 === 0 ? 'bg-cream' : 'bg-white', 'py-20 sm:py-28']}>
+            <div class="section-shell grid gap-10 lg:grid-cols-[0.65fr_1.35fr]">
+                <div class="reveal"><p class="font-accent text-8xl italic text-gold">Step {step.number}</p></div>
+                <div class="reveal premium-card">
+                    <h2>{step.title}</h2>
+                    <ul class="mt-8 grid gap-3 sm:grid-cols-2">
+                        {step.bullets.map((item) => <li class="border border-[#0e18242b] bg-cream p-4 font-semibold text-ink">{item}</li>)}
+                    </ul>
+                    <p class="mt-8 text-xl leading-9">{step.note}</p>
+                </div>
+            </div>
+        </section>
+    ))}
+    <section class="bg-luxury py-24 text-white sm:py-32">
+        <div class="section-shell grid items-center gap-8 lg:grid-cols-[1fr_auto]">
+            <div><p class="eyebrow">Book Your Strategy Call</p><h2 class="text-white">Begin building your UK & Dubai property portfolio with a structured, disciplined approach.</h2></div>
+            <a href="/contact-us" class="btn btn-gold">Book Your Strategy Call</a>
+        </div>
+    </section>
+</Layout>

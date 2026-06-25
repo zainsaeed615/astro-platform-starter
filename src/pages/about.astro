@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, aboutSections } from '../content/vidian';
+---
+
+<Layout title={`About | ${site.name}`} description="Strategy led property investment in the UK and Dubai." noHeaderOverlay>
+    <section class="bg-luxury pt-40 pb-24 text-white sm:pb-32">
+        <div class="section-shell grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr]">
+            <div class="reveal">
+                <p class="eyebrow">Iqbal Hussain</p>
+                <h1>Founder & Managing Director</h1>
+                <blockquote class="mt-8 border-l border-gold pl-6 font-accent text-3xl italic leading-tight text-white/85">
+                    "Our greatest reward is seeing our clients grow, knowing we played a part in their journey."
+                </blockquote>
+            </div>
+            <img src="/images/vidian/investment-meeting.png" alt="Vidian Capital strategy meeting" class="reveal h-[34rem] w-full object-cover shadow-2xl shadow-black/30" />
+        </div>
+    </section>
+
+    {aboutSections.map((section, index) => (
+        <section class:list={[index % 2 === 0 ? 'bg-cream' : 'bg-white', 'py-24 sm:py-32']}>
+            <div class="section-shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+                <div class="reveal">
+                    <p class="eyebrow">{section.eyebrow}</p>
+                    <h2>{section.title}</h2>
+                    <p class="mt-6 text-lg leading-9">{section.text}</p>
+                </div>
+                <div class="reveal grid gap-4 sm:grid-cols-2">
+                    {section.bullets.map((item) => <div class="premium-card"><span class="font-accent text-4xl italic text-gold">+</span><p class="mt-4 font-semibold text-ink">{item}</p></div>)}
+                </div>
+            </div>
+        </section>
+    ))}
+
+    <section class="bg-luxury py-24 text-white sm:py-32">
+        <div class="section-shell grid items-center gap-10 lg:grid-cols-[1fr_auto]">
+            <div>
+                <p class="eyebrow">Book Your Strategy Call</p>
+                <h2 class="text-white">Begin Building Your UK & Dubai Property Portfolio</h2>
+            </div>
+            <div class="flex flex-col gap-4 sm:flex-row">
+                <a href="/contact-us" class="btn btn-gold">Book Your Strategy Call</a>
+                <a href="/contact-us" class="btn btn-outline">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+</Layout>
