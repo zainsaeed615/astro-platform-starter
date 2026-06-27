@@ -6,46 +6,166 @@ const dubai = developments.filter((item) => item.country === 'Dubai');
 ---
 
 <Layout title={`Investment Opportunities | ${site.name}`} description="Curated UK and Dubai investment opportunities from Vidian Capital." noHeaderOverlay>
-    <section class="bg-luxury pt-40 pb-24 text-white sm:pb-32">
-        <div class="section-shell max-w-5xl">
-            <p class="eyebrow">Investment Opportunities</p>
-            <h1>UK Investments</h1>
-            <p class="mt-6 max-w-3xl text-xl leading-9 text-white/75">A curated selection of premium UK developments hand-picked for our investor clients.</p>
-            <div class="mt-8 flex gap-3"><a href="#uk" class="btn btn-gold">UK</a><a href="#dubai" class="btn btn-outline">Dubai</a></div>
+    <section class="relative isolate overflow-hidden bg-black pt-40 text-white">
+        <div class="absolute inset-y-0 right-0 -z-10 w-full opacity-35 lg:w-1/2">
+            <img src="/images/vidian/manchester-aerial.png" alt="" class="h-full w-full object-cover grayscale" />
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/20"></div>
         </div>
-    </section>
+        <div class="section-shell grid gap-12 pb-20 sm:pb-28 lg:grid-cols-[1.05fr_0.95fr]">
+            <div class="reveal">
+                <div class="mb-8 h-px w-24 bg-primary"></div>
+                <p class="text-xs font-semibold uppercase tracking-[0.35em] text-white/55">Investment Opportunities / United Kingdom</p>
+                <h1 class="mt-6 max-w-5xl text-balance">UK Property Investment Opportunities</h1>
+                <p class="mt-8 max-w-2xl text-xl leading-9 text-white/70">
+                    A curated selection of premium UK developments hand-picked for investor clients reviewing income, leverage, regeneration, and long-term rental demand.
+                </p>
+                <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+                    <a href="#uk" class="btn bg-white text-black hover:bg-primary hover:text-white">View UK Developments</a>
+                    <a href="#faq" class="btn border border-white/25 bg-transparent text-white shadow-none hover:border-primary hover:bg-primary">Investor FAQs</a>
+                </div>
+            </div>
 
-    <section id="uk" class="py-24 sm:py-32">
-        <div class="section-shell">
-            <p class="eyebrow">UK</p>
-            <h2>Premium UK Developments</h2>
-            <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-                {uk.map((item) => <article class="premium-card overflow-hidden p-0"><img src={item.image} alt="" class="h-64 w-full object-cover" /><div class="p-6"><span class="text-xs font-bold uppercase tracking-[0.18em] text-primary">{item.status}</span><h3 class="mt-3">{item.title}</h3><p class="mt-2">{item.location}</p><p class="mt-4 font-bold text-ink">{item.price}</p></div></article>)}
+            <div class="reveal grid content-end gap-4 sm:grid-cols-2">
+                <div class="border border-white/15 bg-white/[0.04] p-6 backdrop-blur">
+                    <p class="font-display text-5xl text-white">{uk.length}</p>
+                    <p class="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/50">UK developments</p>
+                </div>
+                <div class="border border-white/15 bg-white/[0.04] p-6 backdrop-blur">
+                    <p class="font-display text-5xl text-white">6-9%</p>
+                    <p class="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/50">Yield themes</p>
+                </div>
+                <div class="border border-white/15 bg-white/[0.04] p-6 backdrop-blur">
+                    <p class="font-display text-5xl text-white">3</p>
+                    <p class="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/50">Core cities</p>
+                </div>
+                <div class="border border-white/15 bg-white/[0.04] p-6 backdrop-blur">
+                    <p class="font-display text-5xl text-white">£186k+</p>
+                    <p class="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/50">Entry point</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="dubai" class="bg-white py-24 sm:py-32">
+    <section class="border-b border-black/10 bg-white py-8">
         <div class="section-shell">
-            <p class="eyebrow">Dubai</p>
-            <h2>Dubai Growth Opportunities</h2>
-            <div class="mt-12 grid gap-6 md:grid-cols-2">
-                {dubai.map((item) => <article class="premium-card overflow-hidden p-0"><img src={item.image} alt="" class="h-80 w-full object-cover" /><div class="p-8"><span class="text-xs font-bold uppercase tracking-[0.18em] text-primary">{item.status}</span><h3 class="mt-3 text-4xl">{item.title}</h3><p class="mt-2">{item.location}</p><p class="mt-4 font-bold text-ink">{item.price} · {item.yield}</p></div></article>)}
+            <div class="grid gap-4 text-sm font-semibold uppercase tracking-[0.2em] text-black/55 md:grid-cols-4">
+                <a href="#uk" class="border-l-2 border-primary pl-4 text-black">UK Investments</a>
+                <a href="#strategy" class="pl-4 hover:text-primary">Investment Criteria</a>
+                <a href="#dubai" class="pl-4 hover:text-primary">Dubai Reference</a>
+                <a href="#faq" class="pl-4 hover:text-primary">FAQs</a>
             </div>
         </div>
     </section>
 
-    <section class="py-24 sm:py-32">
+    <section id="uk" class="bg-white py-24 text-black sm:py-32">
+        <div class="section-shell">
+            <div class="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
+                <div class="reveal">
+                    <p class="text-xs font-bold uppercase tracking-[0.3em] text-primary">Current UK Pipeline</p>
+                    <h2 class="mt-4 text-black">Premium UK Developments</h2>
+                    <p class="mt-6 text-lg leading-8 text-black/60">Each opportunity is presented as part of a portfolio strategy, not as a generic property listing.</p>
+                </div>
+                <div class="grid gap-5">
+                    {uk.map((item, index) => (
+                        <article class="group grid overflow-hidden border border-black/10 bg-white transition duration-300 hover:border-primary/40 hover:shadow-2xl hover:shadow-black/10 lg:grid-cols-[0.72fr_1.28fr]">
+                            <div class="relative min-h-72 overflow-hidden bg-black">
+                                <img src={item.image} alt="" class="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+                                <span class="absolute left-5 top-5 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-black">{String(index + 1).padStart(2, '0')}</span>
+                            </div>
+                            <div class="flex flex-col justify-between p-7 sm:p-9">
+                                <div>
+                                    <div class="flex flex-wrap gap-3 text-xs font-bold uppercase tracking-[0.18em]">
+                                        <span class="text-primary">{item.status}</span>
+                                        <span class="text-black/35">/</span>
+                                        <span class="text-black/55">{item.location}</span>
+                                    </div>
+                                    <h3 class="mt-5 text-4xl text-black">{item.title}</h3>
+                                    <p class="mt-5 max-w-2xl text-lg leading-8 text-black/60">{item.text}</p>
+                                </div>
+                                <div class="mt-8 grid gap-3 border-t border-black/10 pt-6 sm:grid-cols-3">
+                                    <div><span class="block text-xs uppercase tracking-[0.18em] text-black/40">Price</span><strong class="mt-1 block text-black">{item.price}</strong></div>
+                                    <div><span class="block text-xs uppercase tracking-[0.18em] text-black/40">Profile</span><strong class="mt-1 block text-black">{item.yield}</strong></div>
+                                    <div><a href="/contact-us" class="inline-flex border-b border-primary pb-1 text-sm font-bold uppercase tracking-[0.12em] text-primary">Request Details</a></div>
+                                </div>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="strategy" class="bg-black py-24 text-white sm:py-32">
+        <div class="section-shell">
+            <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+                <div class="reveal">
+                    <p class="text-xs font-bold uppercase tracking-[0.3em] text-primary">Investment Criteria</p>
+                    <h2 class="mt-4 text-white">How We Filter UK Opportunities</h2>
+                </div>
+                <div class="grid gap-4 sm:grid-cols-2">
+                    {['Rental demand fundamentals', 'Regeneration and infrastructure', 'Entry price and leverage fit', 'Developer track record', 'Exit liquidity', 'Portfolio diversification role'].map((item) => (
+                        <div class="border border-white/15 p-6 transition hover:border-primary/70">
+                            <span class="mb-6 block h-px w-10 bg-primary"></span>
+                            <p class="text-lg font-semibold text-white">{item}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dubai" class="bg-white py-24 text-black sm:py-32">
+        <div class="section-shell">
+            <div class="mb-12 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+                <div class="max-w-3xl">
+                    <p class="text-xs font-bold uppercase tracking-[0.3em] text-primary">Dubai Reference</p>
+                    <h2 class="mt-4 text-black">Growth Opportunities For Cross-Border Balance</h2>
+                </div>
+                <a href="/contact-us" class="btn bg-black text-white hover:bg-primary">Discuss UK vs Dubai</a>
+            </div>
+            <div class="grid gap-6 md:grid-cols-2">
+                {dubai.map((item) => (
+                    <article class="grid border border-black/10 bg-white lg:grid-cols-[0.9fr_1.1fr]">
+                        <img src={item.image} alt="" class="h-full min-h-80 w-full object-cover grayscale" />
+                        <div class="p-8">
+                            <p class="text-xs font-bold uppercase tracking-[0.18em] text-primary">{item.location}</p>
+                            <h3 class="mt-4 text-3xl text-black">{item.title}</h3>
+                            <p class="mt-4 text-black/60">{item.text}</p>
+                            <p class="mt-6 font-bold text-black">{item.price} · {item.yield}</p>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="bg-[#f7f7f7] py-24 text-black sm:py-32">
         <div class="section-shell grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-            <div class="reveal"><p class="eyebrow">UK Property FAQs</p><h2>Everything You Need To Know About Investing In UK Property</h2></div>
-            <div class="space-y-4">{ukPropertyFaqs.map((question) => <details class="faq-item premium-card"><summary class="cursor-pointer list-none text-lg font-bold text-ink">{question}</summary><p class="mt-4">Our team explains this during your consultation and provides structured guidance based on your investor profile.</p></details>)}</div>
+            <div class="reveal">
+                <p class="text-xs font-bold uppercase tracking-[0.3em] text-primary">UK Property FAQs</p>
+                <h2 class="mt-4 text-black">Everything You Need To Know About Investing In UK Property</h2>
+            </div>
+            <div class="space-y-3">
+                {ukPropertyFaqs.map((question) => (
+                    <details class="faq-item border border-black/10 bg-white p-6">
+                        <summary class="cursor-pointer list-none text-lg font-bold text-black">{question}</summary>
+                        <p class="mt-4 leading-8 text-black/60">Our team explains this during your consultation and provides structured guidance based on your investor profile.</p>
+                    </details>
+                ))}
+            </div>
         </div>
     </section>
 
-    <section class="bg-luxury py-24 text-white sm:py-32">
+    <section class="bg-black py-24 text-white sm:py-32">
         <div class="section-shell grid items-center gap-8 lg:grid-cols-[1fr_auto]">
-            <div><p class="eyebrow">Start Your Investment Journey</p><h2 class="text-white">Whether you're looking for your first buy-to-let or expanding a global portfolio, our team is here to help.</h2></div>
-            <div class="flex flex-col gap-4 sm:flex-row"><a href="/contact-us" class="btn btn-gold">Book Free Consultation</a><a href="/contact-us" class="btn btn-outline">Contact Us</a></div>
+            <div>
+                <p class="text-xs font-bold uppercase tracking-[0.3em] text-primary">Start Your Investment Journey</p>
+                <h2 class="mt-4 text-white">Review UK Developments With A Strategy-Led Advisor.</h2>
+            </div>
+            <div class="flex flex-col gap-4 sm:flex-row">
+                <a href="/contact-us" class="btn bg-white text-black hover:bg-primary hover:text-white">Book Free Consultation</a>
+                <a href="/contact-us" class="btn border border-white/25 bg-transparent text-white shadow-none hover:border-primary hover:bg-primary">Contact Us</a>
+            </div>
         </div>
     </section>
 </Layout>
