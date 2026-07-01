@@ -1,0 +1,4 @@
+.vp-repeater-row .button { flex-shrink: 0; }
+.vp-repeater { margin-bottom: 10px; }
+#vp_gallery_preview img { display:block; }
+.vp-remove-gallery-item:hover { background:#900 !important; }
