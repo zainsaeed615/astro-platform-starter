@@ -1,0 +1,474 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Roboto+Condensed:wght@400;500;700&display=swap');
+
+:root {
+    --vidian-blue: #052c8f;
+    --vidian-blue-dark: #001f78;
+    --vidian-ink: #07101f;
+    --vidian-white: #ffffff;
+    --vidian-soft: #f4f7fb;
+    --vidian-line: rgba(7, 16, 31, 0.12);
+}
+
+.vidian-development,
+.vidian-dev-grid {
+    color: var(--vidian-ink);
+    font-family: "Inter Tight", Arial, sans-serif;
+}
+
+.vidian-development h1,
+.vidian-development h2,
+.vidian-development h3,
+.vidian-dev-grid h3 {
+    font-family: "Roboto Condensed", Arial, sans-serif;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+}
+
+.vidian-wrap {
+    margin: 0 auto;
+    max-width: 1180px;
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+.vidian-hero {
+    background: var(--vidian-blue-dark);
+    color: var(--vidian-white);
+    min-height: 720px;
+    overflow: hidden;
+    position: relative;
+}
+
+.vidian-hero__media,
+.vidian-hero__media img,
+.vidian-hero__placeholder,
+.vidian-hero__overlay {
+    inset: 0;
+    position: absolute;
+}
+
+.vidian-hero__media img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.vidian-hero__placeholder {
+    background: linear-gradient(135deg, #001c64, #0a42bd);
+}
+
+.vidian-hero__overlay {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 31, 120, 0.92));
+}
+
+.vidian-hero__content {
+    padding-bottom: 64px;
+    padding-top: 340px;
+    position: relative;
+    z-index: 2;
+}
+
+.vidian-back,
+.vidian-status-row span,
+.vidian-kicker {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.vidian-back {
+    color: rgba(255, 255, 255, 0.72);
+    display: inline-flex;
+    margin-bottom: 24px;
+    text-decoration: none;
+}
+
+.vidian-status-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.vidian-status-row span {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 9px 13px;
+}
+
+.vidian-hero h1 {
+    color: var(--vidian-white);
+    font-size: clamp(52px, 8vw, 104px);
+    margin: 22px 0 0;
+    max-width: 820px;
+}
+
+.vidian-subtitle {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 20px;
+    max-width: 680px;
+}
+
+.vidian-metrics {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(6, 1fr);
+    margin-top: 42px;
+}
+
+.vidian-metrics div {
+    background: var(--vidian-white);
+    color: var(--vidian-ink);
+    padding: 22px;
+}
+
+.vidian-metrics span {
+    color: rgba(7, 16, 31, 0.55);
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.vidian-metrics strong {
+    display: block;
+    font-size: 24px;
+    margin-top: 8px;
+}
+
+.vidian-gallery {
+    padding-bottom: 76px;
+    padding-top: 76px;
+}
+
+.vidian-gallery__main {
+    background: #000;
+    height: min(68vw, 620px);
+    overflow: hidden;
+    position: relative;
+}
+
+.vidian-gallery__item {
+    background: transparent;
+    border: 0;
+    cursor: zoom-in;
+    display: none;
+    height: 100%;
+    padding: 0;
+    width: 100%;
+}
+
+.vidian-gallery__item.is-active {
+    display: block;
+}
+
+.vidian-gallery__item img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.vidian-gallery__thumbs {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(6, 1fr);
+    margin-top: 14px;
+}
+
+.vidian-gallery__thumbs button {
+    background: #000;
+    border: 3px solid transparent;
+    cursor: pointer;
+    height: 96px;
+    padding: 0;
+}
+
+.vidian-gallery__thumbs button.is-active {
+    border-color: var(--vidian-blue);
+}
+
+.vidian-gallery__thumbs img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.vidian-overview {
+    display: grid;
+    gap: 56px;
+    grid-template-columns: minmax(0, 1fr) 390px;
+    padding-bottom: 90px;
+}
+
+.vidian-kicker {
+    color: var(--vidian-blue);
+    margin: 0 0 18px;
+}
+
+.vidian-summary {
+    border-bottom: 1px solid var(--vidian-line);
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.55;
+    margin-bottom: 42px;
+    padding-bottom: 42px;
+}
+
+.vidian-richtext {
+    color: rgba(7, 16, 31, 0.72);
+    font-size: 17px;
+    line-height: 1.85;
+}
+
+.vidian-enquiry {
+    align-self: start;
+    background: var(--vidian-soft);
+    border: 1px solid var(--vidian-line);
+    box-shadow: 0 24px 60px rgba(7, 16, 31, 0.08);
+    display: grid;
+    gap: 14px;
+    padding: 28px;
+    position: sticky;
+    top: 30px;
+}
+
+.vidian-enquiry h3 {
+    font-size: 28px;
+    margin: 0 0 8px;
+}
+
+.vidian-enquiry label {
+    display: grid;
+    font-size: 13px;
+    font-weight: 800;
+    gap: 7px;
+}
+
+.vidian-enquiry input {
+    border: 1px solid var(--vidian-line);
+    border-radius: 0;
+    min-height: 48px;
+    padding: 12px 14px;
+}
+
+.vidian-enquiry button,
+.vidian-cta a {
+    background: var(--vidian-blue);
+    border: 0;
+    color: var(--vidian-white);
+    cursor: pointer;
+    display: inline-flex;
+    font-weight: 800;
+    justify-content: center;
+    letter-spacing: 0.08em;
+    padding: 15px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.vidian-enquiry__success {
+    background: #e9f7ef;
+    color: #176b3a;
+    padding: 12px;
+}
+
+.vidian-section {
+    padding-bottom: 88px;
+    padding-top: 88px;
+}
+
+.vidian-section--blue {
+    background: var(--vidian-blue-dark);
+    color: var(--vidian-white);
+}
+
+.vidian-section--blue .vidian-kicker,
+.vidian-section--blue h2,
+.vidian-section--blue h3 {
+    color: var(--vidian-white);
+}
+
+.vidian-section--light {
+    background: var(--vidian-soft);
+}
+
+.vidian-section--white {
+    background: var(--vidian-white);
+}
+
+.vidian-section h2,
+.vidian-cta h2 {
+    font-size: clamp(38px, 5vw, 62px);
+    margin: 0;
+    max-width: 760px;
+}
+
+.vidian-point-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 42px;
+}
+
+.vidian-point-grid article {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 24px;
+}
+
+.vidian-point-grid p {
+    color: rgba(255, 255, 255, 0.74);
+    line-height: 1.7;
+}
+
+.vidian-section__grid {
+    display: grid;
+    gap: 54px;
+    grid-template-columns: 0.76fr 1.24fr;
+}
+
+.vidian-section__grid > div > p:last-child {
+    color: rgba(7, 16, 31, 0.66);
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.vidian-bullets {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.vidian-bullets div {
+    background: var(--vidian-white);
+    border: 1px solid var(--vidian-line);
+    padding: 18px;
+}
+
+.vidian-section--white .vidian-bullets div {
+    background: var(--vidian-soft);
+}
+
+.vidian-cta {
+    background: var(--vidian-blue-dark);
+    color: var(--vidian-white);
+    padding-bottom: 96px;
+    padding-top: 96px;
+    text-align: center;
+}
+
+.vidian-cta .vidian-kicker,
+.vidian-cta h2 {
+    color: var(--vidian-white);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vidian-cta p {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 18px;
+    margin: 18px auto 28px;
+    max-width: 680px;
+}
+
+.vidian-dev-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.vidian-dev-card {
+    border: 1px solid var(--vidian-line);
+    overflow: hidden;
+}
+
+.vidian-dev-card__image {
+    background: var(--vidian-blue-dark);
+    display: block;
+    height: 260px;
+}
+
+.vidian-dev-card__image img,
+.vidian-dev-card__image span {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.vidian-dev-card__image span {
+    background: linear-gradient(135deg, #001f78, #052c8f);
+}
+
+.vidian-dev-card__body {
+    padding: 24px;
+}
+
+.vidian-dev-card__body > p {
+    color: var(--vidian-blue);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.vidian-dev-card h3 {
+    font-size: 32px;
+    margin: 10px 0 18px;
+}
+
+.vidian-dev-card h3 a {
+    color: var(--vidian-ink);
+    text-decoration: none;
+}
+
+.vidian-dev-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.vidian-dev-card__meta span {
+    background: var(--vidian-soft);
+    padding: 8px 10px;
+}
+
+@media (max-width: 1024px) {
+    .vidian-metrics,
+    .vidian-point-grid,
+    .vidian-dev-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .vidian-overview,
+    .vidian-section__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vidian-enquiry {
+        position: static;
+    }
+}
+
+@media (max-width: 700px) {
+    .vidian-hero {
+        min-height: 620px;
+    }
+
+    .vidian-hero__content {
+        padding-top: 220px;
+    }
+
+    .vidian-metrics,
+    .vidian-gallery__thumbs,
+    .vidian-point-grid,
+    .vidian-bullets,
+    .vidian-dev-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vidian-gallery__thumbs button {
+        height: 120px;
+    }
+}
