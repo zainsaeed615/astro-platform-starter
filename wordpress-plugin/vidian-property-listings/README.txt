@@ -19,6 +19,11 @@ VIDIAN PROPERTY LISTINGS — Setup Guide
      thumbnails banengi.
    - Imported/default properties me remote image URLs bhi editable hain:
      "Remote Gallery Image URLs" me ek URL per line update/remove kar sakte hain.
+     Agar imported images remove/change karni hon to:
+     - Featured Image box me apni image set karein
+     - "Fallback Feature Image URL" ko blank/change karein
+     - "Remote Gallery Image URLs" me old URLs delete karke apni image URLs add karein
+     - Ya "Add Gallery Images" se WordPress media gallery images select karein
    - "Icon Stat Boxes": Expected Yields, Completion, Bedrooms, Deposit,
      Tenure jese boxes — icon field me koi Dashicon class daal sakte hain
      (list: https://developer.wordpress.org/resource/dashicons/), e.g.

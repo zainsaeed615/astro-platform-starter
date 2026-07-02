@@ -50,22 +50,23 @@
 .vp-details { background:#fff; color: var(--vp-text); max-width: 1440px; margin: 0 auto; padding: 0 28px 80px; }
 .vp-breadcrumb-hero {
 	background-position:center; background-size:cover; color:#fff; left:50%; margin: -60px 0 70px; min-height:500px; overflow:hidden; position:relative; transform:translateX(-50%); width:100vw;
+	display:flex; align-items:center;
 }
 .vp-breadcrumb-hero--uk { background-image:url('https://www.vidiancapital.com/objects/uploads/a1201e51-a892-4bc9-bb7e-6c0595378a5e.jpg'); }
 .vp-breadcrumb-hero--dubai { background-image:url('https://www.vidiancapital.com/objects/uploads/0306d6a1-eb95-4a68-88de-25c2b778924a.png'), linear-gradient(135deg, #07101f, #0f2167); }
-.vp-breadcrumb-overlay { position:absolute; inset:0; background:rgba(0,0,0,.62); }
+.vp-breadcrumb-overlay { position:absolute; inset:0; background:rgba(0,0,0,.58); }
 .vp-breadcrumb-inner {
-	align-items:center; display:flex; margin:0 auto; max-width:1440px; min-height:500px; padding:40px 28px; position:relative; z-index:2;
+	align-items:center; display:flex; justify-content:center; margin:0 auto; max-width:1440px; min-height:500px; padding:120px 28px 80px; position:relative; z-index:2; width:100%;
 }
-.vp-breadcrumb-content { max-width: 760px; }
+.vp-breadcrumb-content { max-width: 860px; text-align:center; }
 .vp-breadcrumb-kicker {
 	color:rgba(255,255,255,.72); font-size:12px; font-weight:900; letter-spacing:.22em; margin:0 0 16px; text-transform:uppercase;
 }
 .vp-breadcrumb-market-title {
-	color:#fff; font-size:clamp(46px, 7vw, 96px); font-weight:900; line-height:.95; margin:0 0 22px; text-transform:uppercase;
+	color:#fff !important; font-size:clamp(46px, 7vw, 86px); font-weight:900; line-height:1.02; margin:0 0 18px; text-transform:none; text-shadow:0 3px 24px rgba(0,0,0,.45);
 }
 .vp-breadcrumb-trail {
-	align-items:center; display:flex; flex-wrap:wrap; gap:10px; font-size:13px; font-weight:800; letter-spacing:.12em; line-height:1.6; text-transform:uppercase;
+	align-items:center; display:flex; flex-wrap:wrap; gap:10px; justify-content:center; font-size:13px; font-weight:800; letter-spacing:.12em; line-height:1.6; text-transform:uppercase;
 }
 .vp-breadcrumb-trail a { color:#fff !important; text-decoration:none; }
 .vp-breadcrumb-trail span { color:rgba(255,255,255,.62); }
@@ -76,7 +77,7 @@
 
 .vp-loc { display:flex; align-items:center; gap:6px; color: var(--vp-muted); font-size:14px; margin-bottom:10px; }
 .vp-title { font-size:clamp(42px, 5vw, 76px); font-weight:900; margin:0 0 18px; line-height:.98; }
-.vp-subhead { font-size:18px; font-weight:800; margin:0 0 8px; }
+.vp-subhead { font-size:14px; font-weight:900; letter-spacing:.12em; margin:0 0 8px; text-transform:uppercase; }
 .vp-lead { color: var(--vp-muted); font-size:17px; line-height:1.75; margin-bottom:26px; max-width:620px; }
 
 .vp-hero-actions { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
@@ -188,11 +189,11 @@
 @media (max-width: 782px) {
 	.vp-details { padding: 0 16px 56px; }
 	.vp-breadcrumb-hero { min-height:360px; margin-top:-40px; margin-bottom:42px; }
-	.vp-breadcrumb-inner { min-height:360px; padding:34px 20px; }
-	.vp-breadcrumb-content { max-width:100%; }
-	.vp-breadcrumb-kicker { font-size:10px; letter-spacing:.18em; margin-bottom:12px; }
-	.vp-breadcrumb-market-title { font-size:40px; line-height:1; margin-bottom:18px; }
-	.vp-breadcrumb-trail { align-items:flex-start; flex-direction:column; gap:4px; font-size:11px; letter-spacing:.08em; }
+	.vp-breadcrumb-inner { justify-content:flex-start; min-height:360px; padding:96px 18px 52px; }
+	.vp-breadcrumb-content { max-width:100%; text-align:left; }
+	.vp-breadcrumb-kicker { font-size:10px; letter-spacing:.16em; margin-bottom:10px; }
+	.vp-breadcrumb-market-title { font-size:34px; line-height:1.05; margin-bottom:14px; }
+	.vp-breadcrumb-trail { align-items:flex-start; flex-direction:column; gap:4px; font-size:11px; justify-content:flex-start; letter-spacing:.06em; line-height:1.45; }
 	.vp-breadcrumb-trail > span:nth-of-type(1),
 	.vp-breadcrumb-trail > span:nth-of-type(2) { display:none; }
 	.vp-title { font-size:34px; }
