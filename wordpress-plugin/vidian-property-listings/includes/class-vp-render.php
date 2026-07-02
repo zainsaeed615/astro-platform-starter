@@ -102,7 +102,10 @@ class VP_Render {
 		$price      = get_post_meta( $post_id, '_vp_price', true );
 		$price_lbl  = get_post_meta( $post_id, '_vp_price_label', true ) ?: 'Prices From';
 		$cta_txt    = get_post_meta( $post_id, '_vp_cta_button_text', true ) ?: 'Book Your Strategy Call';
-		$cta_link   = get_post_meta( $post_id, '_vp_cta_button_link', true ) ?: '#vp-inquiry-form';
+		$cta_link   = get_post_meta( $post_id, '_vp_cta_button_link', true ) ?: 'https://iqbalhussain.aiwebdesignz.com/consultation';
+		if ( empty( $cta_link ) || $cta_link === '#vp-inquiry-form' || $cta_link === '#' ) {
+			$cta_link = 'https://iqbalhussain.aiwebdesignz.com/consultation';
+		}
 		$summary    = get_post_meta( $post_id, '_vp_summary', true );
 		$overview   = get_post_meta( $post_id, '_vp_overview', true );
 		$stats      = get_post_meta( $post_id, '_vp_stats', true );
@@ -127,6 +130,16 @@ class VP_Render {
 		ob_start();
 		?>
 		<div class="vp-details">
+			<div class="vp-breadcrumb-hero <?php echo stripos( $location, 'Dubai' ) !== false ? 'vp-breadcrumb-hero--dubai' : 'vp-breadcrumb-hero--uk'; ?>">
+				<div class="vp-breadcrumb-overlay"></div>
+				<div class="vp-breadcrumb-inner">
+					<a href="<?php echo esc_url( get_post_type_archive_link( 'vp_property' ) ); ?>">Developments</a>
+					<span>/</span>
+					<span><?php echo esc_html( $location ?: 'Investment Opportunity' ); ?></span>
+					<span>/</span>
+					<strong><?php echo esc_html( $title ); ?></strong>
+				</div>
+			</div>
 			<div class="vp-details-hero">
 				<div class="vp-details-hero-left">
 					<?php if ( $location ) : ?><div class="vp-loc"><span class="dashicons dashicons-location"></span><?php echo esc_html( $location ); ?></div><?php endif; ?>
@@ -135,7 +148,7 @@ class VP_Render {
 					<div class="vp-hero-actions">
 						<a class="vp-btn-primary" href="<?php echo esc_url( $cta_link ); ?>"><?php echo esc_html( $cta_txt ); ?></a>
 						<?php if ( $price ) : ?>
-						<div class="vp-price-badge"><span class="dashicons dashicons-money-alt"></span><div><strong><?php echo esc_html( $price_lbl ); ?></strong><br><?php echo esc_html( $price ); ?></div></div>
+						<div class="vp-price-badge"><span class="dashicons dashicons-money-alt"></span><div><strong><?php echo esc_html( $price_lbl ); ?></strong><em><?php echo esc_html( $price ); ?></em></div></div>
 						<?php endif; ?>
 					</div>
 				</div>

@@ -1466,7 +1466,7 @@ JSON;
 		update_post_meta( $post_id, '_vp_card_button_text', 'View Development' );
 		update_post_meta( $post_id, '_vp_card_button_link', get_permalink( $post_id ) );
 		update_post_meta( $post_id, '_vp_cta_button_text', 'Book Your Strategy Call' );
-		update_post_meta( $post_id, '_vp_cta_button_link', '#vp-inquiry-form' );
+		update_post_meta( $post_id, '_vp_cta_button_link', 'https://iqbalhussain.aiwebdesignz.com/consultation' );
 		update_post_meta( $post_id, '_vp_summary', wp_kses_post( $data['summary'] ?? '' ) );
 		update_post_meta( $post_id, '_vp_overview', wp_kses_post( $data['overview'] ?? '' ) );
 		update_post_meta( $post_id, '_vp_stats', self::clean_rows( $data['stats'] ?? array() ) );

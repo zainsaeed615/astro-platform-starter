@@ -17,6 +17,8 @@ VIDIAN PROPERTY LISTINGS — Setup Guide
    - "Feature Image + Gallery" box: "Add Gallery Images" se multiple
      images add karein — yeh detail page pr scroll hone wali gallery
      thumbnails banengi.
+   - Imported/default properties me remote image URLs bhi editable hain:
+     "Remote Gallery Image URLs" me ek URL per line update/remove kar sakte hain.
    - "Icon Stat Boxes": Expected Yields, Completion, Bedrooms, Deposit,
      Tenure jese boxes — icon field me koi Dashicon class daal sakte hain
      (list: https://developer.wordpress.org/resource/dashicons/), e.g.
@@ -56,6 +58,9 @@ VIDIAN PROPERTY LISTINGS — Setup Guide
                                 - All Properties = sab properties
                                 - Only Selected Category = sirf selected
                                   category/market (UK, Dubai, Manchester etc.)
+                                Style tab me title font size/color, location
+                                background/color, price color, button color,
+                                aur card height change kar sakte hain.
 
    c) "Property Full Details" -> Single property page pr poori detail
                                   (gallery, icon stats, summary, overview,
@@ -76,6 +81,11 @@ VIDIAN PROPERTY LISTINGS — Setup Guide
    - Activation/update par plugin default 8 developments add karta hai:
      4 UK + 4 Dubai. Ye sab WordPress admin > Properties me editable hain.
      Aap inko edit/delete kar sakte hain aur new properties add kar sakte hain.
+   - Detail page plugin template se auto render hota hai. Elementor Theme
+     Builder se custom single property template banana possible hai, lekin
+     default plugin template blank/title-only issue avoid karne ke liye active
+     rahega. Agar aap custom Elementor single template chahte hain to
+     "Property Full Details" widget use karein.
    - Sab colors/spacing "assets/css/frontend.css" file me hain — agar
      brand colors change karni hon to wahan "--vp-navy" variable update
      kar dein.

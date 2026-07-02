@@ -18,6 +18,9 @@ class VP_Templates {
 	 */
 	public function auto_content( $content ) {
 		if ( is_singular( 'vp_property' ) && in_the_loop() && is_main_query() ) {
+			if ( get_post_meta( get_the_ID(), '_elementor_edit_mode', true ) === 'builder' ) {
+				return $content;
+			}
 			require_once VP_PLUGIN_DIR . 'includes/class-vp-render.php';
 			if ( strpos( $content, 'vp-details' ) === false && ! has_shortcode( $content, 'vp_property_details' ) ) {
 				$content .= VP_Render::details( get_the_ID() );
@@ -40,6 +43,10 @@ class VP_Templates {
 
 	public function template_include( $template ) {
 		if ( is_singular( 'vp_property' ) ) {
+			$post_id = get_queried_object_id();
+			if ( $post_id && get_post_meta( $post_id, '_elementor_edit_mode', true ) === 'builder' ) {
+				return $template;
+			}
 			$plugin_template = VP_PLUGIN_DIR . 'templates/single-vp-property.php';
 			if ( file_exists( $plugin_template ) ) {
 				return $plugin_template;

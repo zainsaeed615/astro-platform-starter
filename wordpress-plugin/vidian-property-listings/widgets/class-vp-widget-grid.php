@@ -61,6 +61,89 @@ class VP_Widget_Grid extends Widget_Base {
 		) );
 
 		$this->end_controls_section();
+
+		$this->start_controls_section( 'card_style', array(
+			'label' => 'Card Style',
+			'tab'   => Controls_Manager::TAB_STYLE,
+		) );
+
+		$this->add_control( 'title_color', array(
+			'label'     => 'Title Color',
+			'type'      => Controls_Manager::COLOR,
+			'default'   => '#ffffff',
+			'selectors' => array(
+				'{{WRAPPER}} .vp-card-title' => 'color: {{VALUE}} !important;',
+			),
+		) );
+
+		$this->add_responsive_control( 'title_size', array(
+			'label'      => 'Title Font Size',
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => array( 'px' ),
+			'range'      => array( 'px' => array( 'min' => 18, 'max' => 60 ) ),
+			'default'    => array( 'size' => 32, 'unit' => 'px' ),
+			'selectors'  => array(
+				'{{WRAPPER}} .vp-card-title' => 'font-size: {{SIZE}}{{UNIT}};',
+			),
+		) );
+
+		$this->add_control( 'location_bg', array(
+			'label'     => 'Location Background',
+			'type'      => Controls_Manager::COLOR,
+			'default'   => 'rgba(20,20,30,0.62)',
+			'selectors' => array(
+				'{{WRAPPER}} .vp-card-location' => 'background: {{VALUE}};',
+			),
+		) );
+
+		$this->add_control( 'location_color', array(
+			'label'     => 'Location Text Color',
+			'type'      => Controls_Manager::COLOR,
+			'default'   => '#ffffff',
+			'selectors' => array(
+				'{{WRAPPER}} .vp-card-location' => 'color: {{VALUE}};',
+			),
+		) );
+
+		$this->add_control( 'price_color', array(
+			'label'     => 'Price Text Color',
+			'type'      => Controls_Manager::COLOR,
+			'default'   => '#ffffff',
+			'selectors' => array(
+				'{{WRAPPER}} .vp-card-price' => 'color: {{VALUE}};',
+			),
+		) );
+
+		$this->add_control( 'button_text_color', array(
+			'label'     => 'Button Text Color',
+			'type'      => Controls_Manager::COLOR,
+			'default'   => '#ffffff',
+			'selectors' => array(
+				'{{WRAPPER}} .vp-card-btn' => 'color: {{VALUE}};',
+			),
+		) );
+
+		$this->add_control( 'button_border_color', array(
+			'label'     => 'Button Border Color',
+			'type'      => Controls_Manager::COLOR,
+			'default'   => 'rgba(255,255,255,0.85)',
+			'selectors' => array(
+				'{{WRAPPER}} .vp-card-btn' => 'border-color: {{VALUE}};',
+			),
+		) );
+
+		$this->add_responsive_control( 'card_min_height', array(
+			'label'      => 'Card Image Height',
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => array( 'px' ),
+			'range'      => array( 'px' => array( 'min' => 260, 'max' => 700 ) ),
+			'default'    => array( 'size' => 420, 'unit' => 'px' ),
+			'selectors'  => array(
+				'{{WRAPPER}} .vp-card-img' => 'min-height: {{SIZE}}{{UNIT}};',
+			),
+		) );
+
+		$this->end_controls_section();
 	}
 
 	protected function render() {

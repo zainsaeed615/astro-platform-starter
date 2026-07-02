@@ -64,6 +64,9 @@ class VP_Metaboxes {
 	public function render_gallery( $post ) {
 		$gallery = get_post_meta( $post->ID, '_vp_gallery', true );
 		$ids     = $gallery ? explode( ',', $gallery ) : array();
+		$remote_photos = get_post_meta( $post->ID, '_vp_remote_photos', true );
+		$remote_photos = is_array( $remote_photos ) ? implode( "\n", $remote_photos ) : '';
+		$feature_url = get_post_meta( $post->ID, '_vp_feature_image_url', true );
 		echo '<p>Feature image ke liye upar/side "Featured Image" box use karein. Neeche gallery images add karein (jo detail page pr thumbnails/carousel ki tarah scroll hongi).</p>';
 		echo '<input type="hidden" id="vp_gallery_ids" name="_vp_gallery" value="' . esc_attr( $gallery ) . '" />';
 		echo '<div id="vp_gallery_preview" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;">';
@@ -78,6 +81,8 @@ class VP_Metaboxes {
 		}
 		echo '</div>';
 		echo '<button type="button" class="button button-primary" id="vp_add_gallery_images">Add Gallery Images</button>';
+		self::text_row( 'Fallback Feature Image URL (optional)', '_vp_feature_image_url', $feature_url, 'https://...' );
+		self::textarea_row( 'Remote Gallery Image URLs (one per line)', '_vp_remote_photos', $remote_photos, 6 );
 	}
 
 	/* ---------------- STATS ---------------- */
@@ -198,6 +203,7 @@ class VP_Metaboxes {
 			'_vp_cta_button_text', '_vp_cta_button_link',
 			'_vp_gallery', '_vp_why_invest_title',
 			'_vp_map_address', '_vp_map_link', '_vp_notify_email',
+			'_vp_feature_image_url',
 		);
 		foreach ( $text_fields as $f ) {
 			if ( isset( $_POST[ $f ] ) ) {
@@ -210,6 +216,17 @@ class VP_Metaboxes {
 		}
 		if ( isset( $_POST['_vp_overview'] ) ) {
 			update_post_meta( $post_id, '_vp_overview', wp_kses_post( wp_unslash( $_POST['_vp_overview'] ) ) );
+		}
+		if ( isset( $_POST['_vp_remote_photos'] ) ) {
+			$raw_urls = preg_split( '/\r\n|\r|\n/', sanitize_textarea_field( wp_unslash( $_POST['_vp_remote_photos'] ) ) );
+			$urls = array();
+			foreach ( $raw_urls as $url ) {
+				$url = trim( $url );
+				if ( $url !== '' ) {
+					$urls[] = esc_url_raw( $url );
+				}
+			}
+			update_post_meta( $post_id, '_vp_remote_photos', $urls );
 		}
 
 		// Stats repeater

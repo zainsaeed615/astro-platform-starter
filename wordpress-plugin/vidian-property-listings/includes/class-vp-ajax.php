@@ -25,6 +25,9 @@ class VP_Ajax {
 		}
 
 		$property_title = $property_id ? get_the_title( $property_id ) : 'Website';
+		$property_url   = $property_id ? get_permalink( $property_id ) : home_url( '/' );
+		$property_loc   = $property_id ? get_post_meta( $property_id, '_vp_location', true ) : '';
+		$property_price = $property_id ? get_post_meta( $property_id, '_vp_price', true ) : '';
 		$to = $property_id ? get_post_meta( $property_id, '_vp_notify_email', true ) : '';
 		if ( empty( $to ) ) {
 			$to = get_option( 'vp_default_notify_email', get_option( 'admin_email' ) );
@@ -33,6 +36,10 @@ class VP_Ajax {
 
 		$body  = "New inquiry received:\n\n";
 		$body .= "Property: {$property_title}\n";
+		$body .= "Property ID: {$property_id}\n";
+		$body .= "Property URL: {$property_url}\n";
+		$body .= "Location: {$property_loc}\n";
+		$body .= "Price: {$property_price}\n\n";
 		$body .= "Name: {$name}\n";
 		$body .= "Email: {$email}\n";
 		$body .= "Phone: {$phone}\n";
