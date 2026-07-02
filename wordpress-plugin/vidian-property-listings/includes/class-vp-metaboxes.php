@@ -119,8 +119,20 @@ class VP_Metaboxes {
 	public function render_content( $post ) {
 		$summary  = get_post_meta( $post->ID, '_vp_summary', true );
 		$overview = get_post_meta( $post->ID, '_vp_overview', true );
-		self::textarea_row( 'Summary', '_vp_summary', $summary, 4 );
-		echo '<label style="display:block;font-weight:600;margin:10px 0 4px;">Overview</label>';
+		$summary_label = get_post_meta( $post->ID, '_vp_summary_label', true ) ?: 'Summary';
+		$overview_label = get_post_meta( $post->ID, '_vp_overview_label', true ) ?: 'Overview';
+		$dev_label = get_post_meta( $post->ID, '_vp_dev_highlights_label', true ) ?: 'Development Highlights';
+		$amenities_label = get_post_meta( $post->ID, '_vp_amenities_label', true ) ?: 'Amenities';
+		$location_label = get_post_meta( $post->ID, '_vp_location_highlights_label', true ) ?: 'Location Highlights';
+		echo '<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;">';
+		self::text_row( 'Summary Label', '_vp_summary_label', $summary_label, 'Summary' );
+		self::text_row( 'Overview Label', '_vp_overview_label', $overview_label, 'Overview' );
+		self::text_row( 'Development Highlights Label', '_vp_dev_highlights_label', $dev_label, 'Development Highlights' );
+		self::text_row( 'Amenities Label', '_vp_amenities_label', $amenities_label, 'Amenities' );
+		self::text_row( 'Location Highlights Label', '_vp_location_highlights_label', $location_label, 'Location Highlights' );
+		echo '</div>';
+		self::textarea_row( 'Summary Text', '_vp_summary', $summary, 4 );
+		echo '<label style="display:block;font-weight:600;margin:10px 0 4px;">Overview Text</label>';
 		wp_editor( $overview, 'vp_overview', array( 'textarea_name' => '_vp_overview', 'textarea_rows' => 8, 'media_buttons' => false ) );
 	}
 
@@ -204,6 +216,9 @@ class VP_Metaboxes {
 			'_vp_gallery', '_vp_why_invest_title',
 			'_vp_map_address', '_vp_map_link', '_vp_notify_email',
 			'_vp_feature_image_url',
+			'_vp_summary_label', '_vp_overview_label',
+			'_vp_dev_highlights_label', '_vp_amenities_label',
+			'_vp_location_highlights_label',
 		);
 		foreach ( $text_fields as $f ) {
 			if ( isset( $_POST[ $f ] ) ) {

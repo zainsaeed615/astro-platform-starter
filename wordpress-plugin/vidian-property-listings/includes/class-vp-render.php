@@ -108,6 +108,11 @@ class VP_Render {
 		}
 		$summary    = get_post_meta( $post_id, '_vp_summary', true );
 		$overview   = get_post_meta( $post_id, '_vp_overview', true );
+		$summary_label = get_post_meta( $post_id, '_vp_summary_label', true ) ?: 'Summary';
+		$overview_label = get_post_meta( $post_id, '_vp_overview_label', true ) ?: 'Overview';
+		$dev_label = get_post_meta( $post_id, '_vp_dev_highlights_label', true ) ?: 'Development Highlights';
+		$amenities_label = get_post_meta( $post_id, '_vp_amenities_label', true ) ?: 'Amenities';
+		$location_label_heading = get_post_meta( $post_id, '_vp_location_highlights_label', true ) ?: 'Location Highlights';
 		$stats      = get_post_meta( $post_id, '_vp_stats', true );
 		$dev        = get_post_meta( $post_id, '_vp_dev_highlights', true );
 		$amenities  = get_post_meta( $post_id, '_vp_amenities', true );
@@ -144,7 +149,7 @@ class VP_Render {
 				<div class="vp-details-hero-left">
 					<?php if ( $location ) : ?><div class="vp-loc"><span class="dashicons dashicons-location"></span><?php echo esc_html( $location ); ?></div><?php endif; ?>
 					<h1 class="vp-title"><?php echo esc_html( $title ); ?></h1>
-					<?php if ( $summary ) : ?><h2 class="vp-subhead">Summary</h2><p class="vp-lead"><?php echo esc_html( $summary ); ?></p><?php endif; ?>
+					<?php if ( $summary ) : ?><h2 class="vp-subhead"><?php echo esc_html( $summary_label ); ?></h2><p class="vp-lead"><?php echo esc_html( $summary ); ?></p><?php endif; ?>
 					<div class="vp-hero-actions">
 						<a class="vp-btn-primary" href="<?php echo esc_url( $cta_link ); ?>"><?php echo esc_html( $cta_txt ); ?></a>
 						<?php if ( $price ) : ?>
@@ -189,20 +194,17 @@ class VP_Render {
 
 			<div class="vp-details-body">
 				<div class="vp-details-main">
-					<?php if ( $summary ) : ?>
-						<h2>Summary</h2><p><?php echo esc_html( $summary ); ?></p>
-					<?php endif; ?>
 					<?php if ( $overview ) : ?>
-						<h2>Overview</h2><div class="vp-overview"><?php echo wp_kses_post( wpautop( $overview ) ); ?></div>
+						<h2><?php echo esc_html( $overview_label ); ?></h2><div class="vp-overview"><?php echo wp_kses_post( wpautop( $overview ) ); ?></div>
 					<?php endif; ?>
 					<?php if ( ! empty( $dev ) ) : ?>
-						<h2>Development Highlights</h2><?php echo self::icon_list( $dev, 'dashicons-marker' ); ?>
+						<h2><?php echo esc_html( $dev_label ); ?></h2><?php echo self::icon_list( $dev, 'dashicons-marker' ); ?>
 					<?php endif; ?>
 					<?php if ( ! empty( $amenities ) ) : ?>
-						<h2>Amenities</h2><?php echo self::icon_list( $amenities, 'dashicons-yes' ); ?>
+						<h2><?php echo esc_html( $amenities_label ); ?></h2><?php echo self::icon_list( $amenities, 'dashicons-yes' ); ?>
 					<?php endif; ?>
 					<?php if ( ! empty( $loc_high ) ) : ?>
-						<h2>Location Highlights</h2><?php echo self::icon_list( $loc_high, 'dashicons-location' ); ?>
+						<h2><?php echo esc_html( $location_label_heading ); ?></h2><?php echo self::icon_list( $loc_high, 'dashicons-location' ); ?>
 					<?php endif; ?>
 				</div>
 

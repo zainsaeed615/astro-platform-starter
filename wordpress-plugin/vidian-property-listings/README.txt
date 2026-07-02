@@ -25,6 +25,8 @@ VIDIAN PROPERTY LISTINGS — Setup Guide
      dashicons-chart-bar, dashicons-calendar-alt, dashicons-yes,
      dashicons-location, dashicons-star-filled.
    - Summary / Overview box.
+     Is box me Summary, Overview, Development Highlights, Amenities aur
+     Location Highlights ke heading labels bhi editable hain.
    - Development Highlights / Amenities / Location Highlights — "+ Add
      Item" se jitni chahein lines add karein, har ek ka icon bhi editable.
    - "Why Invest In..." sidebar box — title + list items.
@@ -86,6 +88,9 @@ VIDIAN PROPERTY LISTINGS — Setup Guide
      default plugin template blank/title-only issue avoid karne ke liye active
      rahega. Agar aap custom Elementor single template chahte hain to
      "Property Full Details" widget use karein.
+   - Detail page breadcrumb hero 500px full-width background image ke sath
+     render hota hai, inner breadcrumb content 1440px container me centered
+     hota hai.
    - Sab colors/spacing "assets/css/frontend.css" file me hain — agar
      brand colors change karni hon to wahan "--vp-navy" variable update
      kar dein.
