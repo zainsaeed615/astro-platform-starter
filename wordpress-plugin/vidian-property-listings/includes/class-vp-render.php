@@ -15,6 +15,14 @@ class VP_Render {
 			$btn_link = get_permalink( $post_id );
 		}
 		$img      = get_the_post_thumbnail_url( $post_id, 'large' );
+		if ( ! $img ) {
+			$remote_photos = get_post_meta( $post_id, '_vp_remote_photos', true );
+			if ( is_array( $remote_photos ) && ! empty( $remote_photos[0] ) ) {
+				$img = esc_url_raw( $remote_photos[0] );
+			} else {
+				$img = get_post_meta( $post_id, '_vp_feature_image_url', true );
+			}
+		}
 		$image_style = $img ? "background-image:url('" . esc_url( $img ) . "');" : '';
 
 		ob_start();
@@ -108,6 +116,11 @@ class VP_Render {
 		$notify     = get_post_meta( $post_id, '_vp_notify_email', true );
 
 		$feat_img   = get_the_post_thumbnail_url( $post_id, 'large' );
+		$remote_photos = get_post_meta( $post_id, '_vp_remote_photos', true );
+		$remote_photos = is_array( $remote_photos ) ? array_filter( $remote_photos ) : array();
+		if ( ! $feat_img && ! empty( $remote_photos[0] ) ) {
+			$feat_img = esc_url_raw( $remote_photos[0] );
+		}
 		$gallery_m  = get_post_meta( $post_id, '_vp_gallery', true );
 		$gallery_ids= $gallery_m ? explode( ',', $gallery_m ) : array();
 
@@ -134,6 +147,15 @@ class VP_Render {
 							$src = wp_get_attachment_image_url( $gid, 'medium' );
 							if ( ! $src ) continue; ?>
 							<div class="vp-gallery-thumb" style="background-image:url('<?php echo esc_url( $src ); ?>');"></div>
+						<?php endforeach; ?>
+						<?php foreach ( $remote_photos as $remote_src ) : ?>
+							<div class="vp-gallery-thumb" style="background-image:url('<?php echo esc_url( $remote_src ); ?>');"></div>
+						<?php endforeach; ?>
+					</div>
+					<?php elseif ( ! empty( $remote_photos ) ) : ?>
+					<div class="vp-gallery-scroll">
+						<?php foreach ( $remote_photos as $remote_src ) : ?>
+							<div class="vp-gallery-thumb" style="background-image:url('<?php echo esc_url( $remote_src ); ?>');"></div>
 						<?php endforeach; ?>
 					</div>
 					<?php endif; ?>

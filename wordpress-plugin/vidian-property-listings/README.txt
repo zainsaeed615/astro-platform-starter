@@ -52,6 +52,10 @@ VIDIAN PROPERTY LISTINGS — Setup Guide
                                 Multiple properties dikhani hon to YE widget
                                 use karein. Default count -1 hai, yani all
                                 published properties show hongi.
+                                "What to show" me:
+                                - All Properties = sab properties
+                                - Only Selected Category = sirf selected
+                                  category/market (UK, Dubai, Manchester etc.)
 
    c) "Property Full Details" -> Single property page pr poori detail
                                   (gallery, icon stats, summary, overview,
@@ -69,6 +73,9 @@ VIDIAN PROPERTY LISTINGS — Setup Guide
      ho. Is se title-only / blank page ka masla fix hota hai.
    - Archive URL (/properties/) par bhi plugin grid fallback template load
      karta hai.
+   - Activation/update par plugin default 8 developments add karta hai:
+     4 UK + 4 Dubai. Ye sab WordPress admin > Properties me editable hain.
+     Aap inko edit/delete kar sakte hain aur new properties add kar sakte hain.
    - Sab colors/spacing "assets/css/frontend.css" file me hain — agar
      brand colors change karni hon to wahan "--vp-navy" variable update
      kar dein.

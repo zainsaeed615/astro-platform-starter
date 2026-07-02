@@ -30,16 +30,27 @@ class VP_Widget_Grid extends Widget_Base {
 			),
 		) );
 
+		$this->add_control( 'display_scope', array(
+			'label'   => 'What to show',
+			'type'    => Controls_Manager::SELECT,
+			'options' => array(
+				'all'      => 'All Properties',
+				'category' => 'Only Selected Category',
+			),
+			'default' => 'all',
+		) );
+
 		$terms = get_terms( array( 'taxonomy' => 'vp_property_category', 'hide_empty' => false ) );
 		$cat_options = array( '' => 'All Categories' );
 		if ( ! is_wp_error( $terms ) ) {
 			foreach ( $terms as $t ) $cat_options[ $t->slug ] = $t->name;
 		}
 		$this->add_control( 'category', array(
-			'label'   => 'Filter by Category',
+			'label'   => 'Category / Market',
 			'type'    => Controls_Manager::SELECT,
 			'options' => $cat_options,
 			'default' => '',
+			'description' => 'Use with "Only Selected Category". Seeded categories include UK, Dubai, Manchester, Birmingham, Liverpool, Business Bay, etc.',
 		) );
 
 		$this->add_control( 'orderby', array(
@@ -55,10 +66,11 @@ class VP_Widget_Grid extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 		require_once VP_PLUGIN_DIR . 'includes/class-vp-render.php';
+		$category = ( isset( $settings['display_scope'] ) && $settings['display_scope'] === 'category' ) ? $settings['category'] : '';
 		echo VP_Render::grid( array(
 			'posts_per_page' => $settings['posts_per_page'],
 			'columns'        => $settings['columns'],
-			'category'       => $settings['category'],
+			'category'       => $category,
 			'orderby'        => $settings['orderby'],
 		) );
 	}

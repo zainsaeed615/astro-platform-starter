@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Vidian Property Listings
  * Description: Custom property listing system with Elementor widgets (Card, Grid, Full Details) matching the Vidian Capital design — icon stats, gallery, highlights, amenities, map, and inquiry form with email notifications.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Vidian Capital
  * Text Domain: vidian-property
  * Requires Plugins: elementor
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define( 'VP_PLUGIN_FILE', __FILE__ );
 define( 'VP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'VP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'VP_VERSION', '1.0.1' );
+define( 'VP_VERSION', '1.0.2' );
 
 final class Vidian_Property_Listings {
 
@@ -37,6 +37,7 @@ final class Vidian_Property_Listings {
 		add_action( 'plugins_loaded', array( $this, 'load_elementor_integration' ) );
 
 		add_action( 'admin_notices', array( $this, 'maybe_elementor_notice' ) );
+		add_action( 'admin_init', array( $this, 'maybe_seed_defaults' ) );
 	}
 
 	public function includes() {
@@ -46,6 +47,7 @@ final class Vidian_Property_Listings {
 		require_once VP_PLUGIN_DIR . 'includes/class-vp-ajax.php';
 		require_once VP_PLUGIN_DIR . 'includes/class-vp-render.php';
 		require_once VP_PLUGIN_DIR . 'includes/class-vp-templates.php';
+		require_once VP_PLUGIN_DIR . 'includes/class-vp-seeder.php';
 
 		new VP_CPT();
 		new VP_Metaboxes();
@@ -90,10 +92,24 @@ final class Vidian_Property_Listings {
 		$cpt->register_post_type();
 		$cpt->register_taxonomy();
 		flush_rewrite_rules();
+		require_once VP_PLUGIN_DIR . 'includes/class-vp-seeder.php';
+		VP_Seeder::seed_defaults();
 	}
 
 	public function deactivate() {
 		flush_rewrite_rules();
+	}
+
+	public function maybe_seed_defaults() {
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			return;
+		}
+		if ( get_option( 'vp_default_developments_seeded' ) === VP_VERSION ) {
+			return;
+		}
+		if ( class_exists( 'VP_Seeder' ) ) {
+			VP_Seeder::seed_defaults();
+		}
 	}
 }
 
