@@ -1,11 +1,10 @@
 <?php
 /**
  * Plugin Name: Vidian Property Listings
- * Description: Custom property listing system with Elementor widgets (Card, Grid, Full Details) matching the Vidian Capital design — icon stats, gallery, highlights, amenities, map, and inquiry form with email notifications.
- * Version: 1.0.2
+ * Description: Custom property listing system with Elementor widgets, cards, grids, full detail pages, galleries, highlights, amenities, maps, and inquiry forms.
+ * Version: 1.0.3
  * Author: Vidian Capital
  * Text Domain: vidian-property
- * Requires Plugins: elementor
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -13,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define( 'VP_PLUGIN_FILE', __FILE__ );
 define( 'VP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'VP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'VP_VERSION', '1.0.2' );
+define( 'VP_VERSION', '1.0.3' );
 
 final class Vidian_Property_Listings {
 
