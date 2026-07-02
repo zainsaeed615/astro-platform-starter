@@ -17,7 +17,10 @@ VIDIAN PROPERTY LISTINGS — Setup Guide
    - "Feature Image + Gallery" box: "Add Gallery Images" se multiple
      images add karein — yeh detail page pr scroll hone wali gallery
      thumbnails banengi.
-   - Imported/default properties me remote image URLs bhi editable hain:
+   - Imported/default properties ki images plugin ZIP ke andar local assets
+     me included hain. External Vidian domain band bhi ho jaye to default
+     images load hoti rahengi.
+   - Imported/default properties me image URLs editable hain:
      "Remote Gallery Image URLs" me ek URL per line update/remove kar sakte hain.
      Agar imported images remove/change karni hon to:
      - Featured Image box me apni image set karein

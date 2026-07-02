@@ -20,21 +20,21 @@ class VP_Seeder {
     "summary": "Waterhouse Gardens is a premium residential development in Manchester city centre, offering high-spec 1, 2, and 3-bedroom apartments within a vibrant mixed-use neighbourhood. Positioned in a major regeneration zone, it delivers strong rental demand and long-term capital growth potential.",
     "overview": "Waterhouse Gardens is a landmark Manchester property investment opportunity, delivering 556 high-spec apartments across five architecturally striking towers. Designed as a vibrant mixed-use neighbourhood, the development also includes over 30,000 sq. ft of commercial, retail, and leisure space—creating a dynamic destination for modern city living.\n\nLocated in the heart of Manchester city centre, between key districts such as Greengate, NOMA, and the historic core, the development benefits from excellent connectivity to major employment hubs, universities, and transport links. This prime positioning supports consistent tenant demand from professionals, graduates, and city workers.\n\nAs part of the wider Great Ducie Street regeneration masterplan, Waterhouse Gardens sits within one of Manchester’s most exciting growth areas—making it a strong addition to any property investment portfolio.",
     "photos": [
-      "https://www.vidiancapital.com/objects/uploads/a1201e51-a892-4bc9-bb7e-6c0595378a5e.jpg",
-      "https://www.vidiancapital.com/objects/uploads/b207c50f-4b2c-48e8-a24a-2a6fa269ee19.jpg",
-      "https://www.vidiancapital.com/objects/uploads/07a4aa84-f6d7-4c71-aa5d-91dacefbcc26.jpg",
-      "https://www.vidiancapital.com/objects/uploads/7632f790-7c55-4486-9836-101e06b838c1.jpg",
-      "https://www.vidiancapital.com/objects/uploads/8a2b705c-b391-4c01-9d35-02685d11baed.jpg",
-      "https://www.vidiancapital.com/objects/uploads/96241188-3389-4be4-99c3-4c9887949573.jpg",
-      "https://www.vidiancapital.com/objects/uploads/5aa80d34-9f98-4113-a45b-4ba598b45a77.jpg",
-      "https://www.vidiancapital.com/objects/uploads/6606b820-ed49-46da-98a8-478e03a74bb7.jpg",
-      "https://www.vidiancapital.com/objects/uploads/d2c80db7-8897-460b-bc48-a9e6d2a703e4.jpg",
-      "https://www.vidiancapital.com/objects/uploads/acf7abc0-5787-426e-9787-087a57cde7c3.jpg",
-      "https://www.vidiancapital.com/objects/uploads/7d5f88ba-9666-43ad-aa2a-565bf6a1578a.jpg",
-      "https://www.vidiancapital.com/objects/uploads/0a4ad016-6d8d-46e6-8367-6ef20552a23d.jpg",
-      "https://www.vidiancapital.com/objects/uploads/1dea09c6-863c-47a1-8ea1-8bce9fb9ebbf.jpg",
-      "https://www.vidiancapital.com/objects/uploads/567d323c-82e9-4fd5-8288-ee3e91755170.jpg",
-      "https://www.vidiancapital.com/objects/uploads/3298690e-b19d-4114-a29a-a27567e23a05.jpg"
+      "assets/images/defaults/waterhouse-gardens/01.jpg",
+      "assets/images/defaults/waterhouse-gardens/02.jpg",
+      "assets/images/defaults/waterhouse-gardens/03.jpg",
+      "assets/images/defaults/waterhouse-gardens/04.jpg",
+      "assets/images/defaults/waterhouse-gardens/05.jpg",
+      "assets/images/defaults/waterhouse-gardens/06.jpg",
+      "assets/images/defaults/waterhouse-gardens/07.jpg",
+      "assets/images/defaults/waterhouse-gardens/08.jpg",
+      "assets/images/defaults/waterhouse-gardens/09.jpg",
+      "assets/images/defaults/waterhouse-gardens/10.jpg",
+      "assets/images/defaults/waterhouse-gardens/11.jpg",
+      "assets/images/defaults/waterhouse-gardens/12.jpg",
+      "assets/images/defaults/waterhouse-gardens/13.jpg",
+      "assets/images/defaults/waterhouse-gardens/14.jpg",
+      "assets/images/defaults/waterhouse-gardens/15.jpg"
     ],
     "stats": [
       {
@@ -200,18 +200,18 @@ class VP_Seeder {
     "summary": "Edition is a landmark luxury development in Birmingham city centre, offering high-spec apartments with five-star amenities. Positioned in a prime location near Centenary Square, it delivers strong rental demand and long-term capital growth in one of the UK’s fastest-growing property markets.",
     "overview": "Edition is a flagship Birmingham property investment opportunity, delivering over 580 luxury apartments across two architecturally striking buildings, including a 45-storey tower. Designed to a five-star standard, the development combines modern design with a hotel-style living experience.\n\nLocated just off Centenary Square, Birmingham’s cultural and business hub, Edition places residents within walking distance of major employers, retail districts, and transport links. With the £700 million Paradise regeneration scheme nearby and the future HS2 rail link set to transform connectivity, the development is ideally positioned for long-term growth.\n\nWith strong tenant demand and a growing population, Edition offers investors a balanced opportunity for both rental income and capital appreciation in the UK’s second city.",
     "photos": [
-      "https://www.vidiancapital.com/objects/uploads/6837693f-8e18-4184-8f6f-87804ba6309b.png",
-      "https://www.vidiancapital.com/objects/uploads/20e1e4d2-8571-49ef-a94b-5a33cbecfbc4.png",
-      "https://www.vidiancapital.com/objects/uploads/c5acde5f-3eb6-4bdb-a1e1-2e918bb354c6.png",
-      "https://www.vidiancapital.com/objects/uploads/f47b9361-2bc1-4f6e-82b0-8f9bbb46dbaf.png",
-      "https://www.vidiancapital.com/objects/uploads/d311965c-c7df-402b-b20c-80bab9d04af2.png",
-      "https://www.vidiancapital.com/objects/uploads/954bfa50-b98b-402d-b012-25cf694ad06c.png",
-      "https://www.vidiancapital.com/objects/uploads/ed092d46-2397-4159-af81-5ba63b29f672.png",
-      "https://www.vidiancapital.com/objects/uploads/3b2016d2-63b6-49cd-98b9-a787702fbf4c.png",
-      "https://www.vidiancapital.com/objects/uploads/55a2cb7c-c0f6-4ac6-bde9-aa58005adeaf.png",
-      "https://www.vidiancapital.com/objects/uploads/2c071b25-eabe-4c88-b46c-cc48d120fc0f.png",
-      "https://www.vidiancapital.com/objects/uploads/59a3544b-f9f9-4efc-85b2-877d077a359b.png",
-      "https://www.vidiancapital.com/objects/uploads/28b26fd6-e8ec-452a-b1bd-6c07594e7b78.png"
+      "assets/images/defaults/edition-birmingham/01.jpg",
+      "assets/images/defaults/edition-birmingham/02.jpg",
+      "assets/images/defaults/edition-birmingham/03.jpg",
+      "assets/images/defaults/edition-birmingham/04.jpg",
+      "assets/images/defaults/edition-birmingham/05.jpg",
+      "assets/images/defaults/edition-birmingham/06.jpg",
+      "assets/images/defaults/edition-birmingham/07.jpg",
+      "assets/images/defaults/edition-birmingham/08.jpg",
+      "assets/images/defaults/edition-birmingham/09.jpg",
+      "assets/images/defaults/edition-birmingham/10.jpg",
+      "assets/images/defaults/edition-birmingham/11.jpg",
+      "assets/images/defaults/edition-birmingham/12.jpg"
     ],
     "stats": [
       {
@@ -377,18 +377,18 @@ class VP_Seeder {
     "summary": "Obsidian is a modern high-rise residential development in Manchester city centre, offering stylish apartments with premium amenities. Designed for urban living, it delivers strong rental demand and long-term capital growth in one of the UK’s fastest-growing property markets.",
     "overview": "Obsidian is a landmark Manchester property investment opportunity, comprising a 26-storey tower delivering 250 high-quality apartments in the heart of the city. Designed to combine modern architecture with the industrial heritage of the area, the development creates a bold addition to Manchester’s skyline.\n\nLocated at the intersection of Blackfriars Road, Chapel Street, and Trinity Way, Obsidian sits adjacent to the highly desirable Greengate district, placing residents within walking distance of Manchester city centre and Spinningfields.\n\nWith a mix of studio to three-bedroom apartments, alongside best-in-class amenities and strong connectivity, Obsidian is designed to meet the needs of modern city living—making it highly attractive to both tenants and investors.",
     "photos": [
-      "https://www.vidiancapital.com/objects/uploads/a9b8ae46-1585-4b06-8e0d-ecd162eb49db.jpg",
-      "https://www.vidiancapital.com/objects/uploads/d5b31003-77ca-4224-a555-8a9576b8afb1.jpg",
-      "https://www.vidiancapital.com/objects/uploads/fbec2483-a6bd-4798-a395-57304c156500.jpg",
-      "https://www.vidiancapital.com/objects/uploads/3184ebe7-72f4-4804-9e03-ae5cf26c00e6.jpg",
-      "https://www.vidiancapital.com/objects/uploads/8c960e72-fca9-4941-96c9-97a405ab7652.jpg",
-      "https://www.vidiancapital.com/objects/uploads/de40d867-a423-46c9-9493-78b99eda0392.jpg",
-      "https://www.vidiancapital.com/objects/uploads/d6e6b06d-94ec-44e0-ad4a-4c8845d5016b.jpg",
-      "https://www.vidiancapital.com/objects/uploads/0751fcb0-e511-4267-b54f-ea2082c697bf.jpg",
-      "https://www.vidiancapital.com/objects/uploads/c1da2483-5c50-403e-a0ea-e81277bae235.jpg",
-      "https://www.vidiancapital.com/objects/uploads/cfd60d52-6327-47ad-bc1c-82280b6880dd.jpg",
-      "https://www.vidiancapital.com/objects/uploads/cbc1a3ba-acc3-43e5-b745-9a289caedc14.jpg",
-      "https://www.vidiancapital.com/objects/uploads/d1f76a41-40a4-40fe-a882-fddc798b968b.jpg"
+      "assets/images/defaults/obsidian/01.jpg",
+      "assets/images/defaults/obsidian/02.jpg",
+      "assets/images/defaults/obsidian/03.jpg",
+      "assets/images/defaults/obsidian/04.jpg",
+      "assets/images/defaults/obsidian/05.jpg",
+      "assets/images/defaults/obsidian/06.jpg",
+      "assets/images/defaults/obsidian/07.jpg",
+      "assets/images/defaults/obsidian/08.jpg",
+      "assets/images/defaults/obsidian/09.jpg",
+      "assets/images/defaults/obsidian/10.jpg",
+      "assets/images/defaults/obsidian/11.jpg",
+      "assets/images/defaults/obsidian/12.jpg"
     ],
     "stats": [
       {
@@ -554,14 +554,14 @@ class VP_Seeder {
     "summary": "Westminster Point is a high-yield residential development in Liverpool city centre, offering modern apartments with short-term let approval. Designed for strong rental income, this development is ideal for investors seeking flexible strategies and above-average returns in a fast-growing UK market.",
     "overview": "Westminster Point is a modern Liverpool property investment opportunity comprising 200 high-spec apartments designed to meet strong demand from both short-term visitors and long-term tenants.\n\nLocated at the gateway to Liverpool city centre, the development benefits from proximity to key transport links, retail hubs, and major tourist destinations such as Liverpool ONE and the Royal Albert Dock. This prime positioning makes it highly attractive for short-term lets, allowing investors to maximise rental income.\n\nWith Liverpool undergoing over £14 billion in regeneration and continued growth in tourism, Westminster Point offers investors the opportunity to capitalise on both high yields and long-term capital appreciation.",
     "photos": [
-      "https://www.vidiancapital.com/objects/uploads/fefcb632-9b93-441d-b3e4-fb9cd55fba18.jpg",
-      "https://www.vidiancapital.com/objects/uploads/cc1c2880-2f13-4996-9097-83b44ae5f376.jpg",
-      "https://www.vidiancapital.com/objects/uploads/28161ef9-1045-4683-895a-14f7e11bbd6a.jpg",
-      "https://www.vidiancapital.com/objects/uploads/b05cbc2a-3a5f-421f-ba3b-b1a4e823fcdb.jpg",
-      "https://www.vidiancapital.com/objects/uploads/4f752efd-12bf-46a9-9845-8cc2412f9417.png",
-      "https://www.vidiancapital.com/objects/uploads/675465b6-499e-4c7a-8d9a-430edbcb08ec.jpg",
-      "https://www.vidiancapital.com/objects/uploads/725becde-e2d1-48c6-9345-fbffaf27f408.jpg",
-      "https://www.vidiancapital.com/objects/uploads/247b0cd2-019e-46cc-8111-62094059b8f3.jpg"
+      "assets/images/defaults/westminster-point/01.jpg",
+      "assets/images/defaults/westminster-point/02.jpg",
+      "assets/images/defaults/westminster-point/03.jpg",
+      "assets/images/defaults/westminster-point/04.jpg",
+      "assets/images/defaults/westminster-point/05.jpg",
+      "assets/images/defaults/westminster-point/06.jpg",
+      "assets/images/defaults/westminster-point/07.jpg",
+      "assets/images/defaults/westminster-point/08.jpg"
     ],
     "stats": [
       {
@@ -719,17 +719,17 @@ class VP_Seeder {
     "summary": "Mercedes-Benz Places | Binghatti City is the world’s first Mercedes-Benz branded residential city, delivering a large-scale masterplanned development in Dubai. Combining iconic design, luxury living, and global brand prestige, it offers investors a rare opportunity to secure property in a landmark, city-scale project.",
     "overview": "Mercedes-Benz Places | Binghatti City is a groundbreaking Dubai property investment opportunity, redefining the concept of urban living through a fully masterplanned branded city. Rather than a single tower, the development consists of a large-scale residential community integrating multiple towers, retail, and lifestyle experiences.\n\nThe project is designed as a city-scale vision, blending Mercedes-Benz’s iconic automotive design philosophy with cutting-edge architecture and urban planning. Every element reflects precision, innovation, and luxury—creating a unique living environment that stands apart from traditional developments.\n\nComprising 12 architecturally striking towers, the development creates a powerful skyline presence, with flowing forms inspired by automotive engineering and performance design.\n\nLocated in Nad Al Sheba, one of Dubai’s emerging and affluent districts, the project offers excellent connectivity to key destinations including Downtown Dubai, Dubai Mall, and major transport routes—ensuring strong long-term demand from residents and investors alike.",
     "photos": [
-      "https://www.vidiancapital.com/objects/uploads/0306d6a1-eb95-4a68-88de-25c2b778924a.png",
-      "https://www.vidiancapital.com/objects/uploads/698801cb-9969-4ece-b0e5-a212fa8709e4.png",
-      "https://www.vidiancapital.com/objects/uploads/c388c7f6-6ef6-4bb7-9b93-49c5915886e4.png",
-      "https://www.vidiancapital.com/objects/uploads/93d5bc98-3110-4613-8a36-256607e99985.png",
-      "https://www.vidiancapital.com/objects/uploads/cda4d6fc-e22a-42e4-a05b-c34bfdf3578d.png",
-      "https://www.vidiancapital.com/objects/uploads/35d56d84-9712-4189-bded-c37c787f4c1d.png",
-      "https://www.vidiancapital.com/objects/uploads/6415c3fe-c0dc-4c6f-820b-b57b130f6887.png",
-      "https://www.vidiancapital.com/objects/uploads/32d86dcd-aae4-49fc-8e57-02f693eb2fbd.png",
-      "https://www.vidiancapital.com/objects/uploads/1b6a7226-ae71-4c2c-ab72-d110b35e3e61.png",
-      "https://www.vidiancapital.com/objects/uploads/fdcafe73-c92e-4b97-be58-c1388b23bf72.png",
-      "https://www.vidiancapital.com/objects/uploads/6dbf1659-fc66-40e8-a607-b89850fb52b7.png"
+      "assets/images/defaults/mercesdes-benz-places-binghatti-city/01.jpg",
+      "assets/images/defaults/mercesdes-benz-places-binghatti-city/02.jpg",
+      "assets/images/defaults/mercesdes-benz-places-binghatti-city/03.jpg",
+      "assets/images/defaults/mercesdes-benz-places-binghatti-city/04.jpg",
+      "assets/images/defaults/mercesdes-benz-places-binghatti-city/05.jpg",
+      "assets/images/defaults/mercesdes-benz-places-binghatti-city/06.jpg",
+      "assets/images/defaults/mercesdes-benz-places-binghatti-city/07.jpg",
+      "assets/images/defaults/mercesdes-benz-places-binghatti-city/08.jpg",
+      "assets/images/defaults/mercesdes-benz-places-binghatti-city/09.jpg",
+      "assets/images/defaults/mercesdes-benz-places-binghatti-city/10.jpg",
+      "assets/images/defaults/mercesdes-benz-places-binghatti-city/11.jpg"
     ],
     "stats": [
       {
@@ -903,14 +903,14 @@ class VP_Seeder {
     "summary": "Canal Heights 2 is a luxury waterfront development in Business Bay, Dubai, offering branded residences inspired by the elegance of de GRISOGONO. Positioned along the Dubai Canal, it combines premium lifestyle living with strong rental demand and capital growth potential in one of Dubai’s most sought-after locations.",
     "overview": "Canal Heights 2 is an iconic Dubai property investment opportunity developed by DAMAC in collaboration with luxury jewellery brand de GRISOGONO. Inspired by the beauty of the blue topaz gemstone, the development blends high-end design with waterfront living to create a truly distinctive residential experience.\n\nLocated in Business Bay, Dubai’s financial district, the development sits directly along the Dubai Canal, surrounded by premium high-rise towers, hotels, and lifestyle destinations. This prime positioning ensures strong demand from both residents and short-term tenants.\n\nAs a continuation of the success of Canal Heights, this second phase elevates luxury living with enhanced design, curated amenities, and branded interiors—making it a standout option for investors seeking both prestige and performance.",
     "photos": [
-      "https://www.vidiancapital.com/objects/uploads/5b1bc36e-1420-4be3-9d80-b92ea46ad737.png",
-      "https://www.vidiancapital.com/objects/uploads/3cef7fad-a2b5-4f07-879c-5dd50e729ef2.png",
-      "https://www.vidiancapital.com/objects/uploads/d750af9b-c723-4a7f-a37d-38df0a174987.png",
-      "https://www.vidiancapital.com/objects/uploads/298a37bf-e01c-4a64-9346-a83806077fa1.png",
-      "https://www.vidiancapital.com/objects/uploads/406b26e6-4936-4e59-bc3d-9cf50d489218.png",
-      "https://www.vidiancapital.com/objects/uploads/cd7f72e7-8d4f-4f37-ac19-6ce81943072d.png",
-      "https://www.vidiancapital.com/objects/uploads/eeb574a9-589b-4fe5-9e6f-5a42024f7530.png",
-      "https://www.vidiancapital.com/objects/uploads/eedf3fdd-c1de-447b-9d6c-7708611b1d81.png"
+      "assets/images/defaults/canal-heights-2/01.jpg",
+      "assets/images/defaults/canal-heights-2/02.jpg",
+      "assets/images/defaults/canal-heights-2/03.jpg",
+      "assets/images/defaults/canal-heights-2/04.jpg",
+      "assets/images/defaults/canal-heights-2/05.jpg",
+      "assets/images/defaults/canal-heights-2/06.jpg",
+      "assets/images/defaults/canal-heights-2/07.jpg",
+      "assets/images/defaults/canal-heights-2/08.jpg"
     ],
     "stats": [
       {
@@ -1076,14 +1076,14 @@ class VP_Seeder {
     "summary": "Binghatti Flare is a landmark residential development in Jumeirah Village Triangle (JVT), Dubai, offering design-led apartments within an iconic twin-tower project. Combining striking architecture with strong rental demand, it presents a high-growth investment opportunity in one of Dubai’s emerging residential hubs.",
     "overview": "Binghatti Flare is a bold Dubai property investment opportunity, redefining modern urban living through architecture that blends light, movement, and form. Designed as a striking twin-tower development, Flare rises as a sculptural landmark, setting a new benchmark for contemporary residential design.\n\nComprising over 1,300 residential units across two towers, the development offers a wide range of apartments from studios to four-bedroom residences, catering to both investors and end-users. Integrated retail and lifestyle spaces further enhance the appeal, creating a self-contained urban environment.\n\nLocated in Jumeirah Village Triangle (JVT), a fast-growing residential district, Flare benefits from strong connectivity to Dubai’s key destinations while offering a more community-focused living environment—supporting both tenant demand and long-term capital appreciation.",
     "photos": [
-      "https://www.vidiancapital.com/objects/uploads/6c5fa7ac-be7c-47ba-b69a-949a9caf592f.png",
-      "https://www.vidiancapital.com/objects/uploads/5b58b931-b472-4ee4-b097-32c6fdf6727f.png",
-      "https://www.vidiancapital.com/objects/uploads/a9f8db91-f08c-4f5e-85ef-2fcd4b8ceeb5.png",
-      "https://www.vidiancapital.com/objects/uploads/badee72e-6f4a-407c-a1b8-59c380f0cadb.png",
-      "https://www.vidiancapital.com/objects/uploads/5bb8f8a5-3044-4bb1-8959-2f78c510d012.png",
-      "https://www.vidiancapital.com/objects/uploads/fe5712e0-7c23-40a5-8b87-d822dcc79283.png",
-      "https://www.vidiancapital.com/objects/uploads/4e531d25-94ce-4ae9-8a21-44e25af9b9bd.png",
-      "https://www.vidiancapital.com/objects/uploads/fedae76b-f20b-4907-abf5-deb4b891b18a.png"
+      "assets/images/defaults/binghatti-flare/01.jpg",
+      "assets/images/defaults/binghatti-flare/02.jpg",
+      "assets/images/defaults/binghatti-flare/03.jpg",
+      "assets/images/defaults/binghatti-flare/04.jpg",
+      "assets/images/defaults/binghatti-flare/05.jpg",
+      "assets/images/defaults/binghatti-flare/06.jpg",
+      "assets/images/defaults/binghatti-flare/07.jpg",
+      "assets/images/defaults/binghatti-flare/08.jpg"
     ],
     "stats": [
       {
@@ -1257,12 +1257,12 @@ class VP_Seeder {
     "summary": "Arisha Terraces is a premium low-rise residential development in Dubai Studio City, offering resort-style apartments designed around a central courtyard oasis. Combining strong rental demand with lifestyle-led living, it presents a compelling opportunity for both investors and end-users.",
     "overview": "Arisha Terraces is a boutique Dubai property investment opportunity, inspired by the concept of an Arabian pergola—creating a shaded, tranquil living environment centred around community and nature. The development consists of four low-rise buildings, each eight storeys high, arranged around a landscaped courtyard to deliver a peaceful, resort-style atmosphere.\n\nLocated in Dubai Studio City, one of the city’s fastest-growing districts, the development benefits from strong connectivity and proximity to key lifestyle destinations, schools, and employment hubs. Studio City is rapidly emerging as a prime investment location, driven by its role as Dubai’s media and creative hub and its expected growth over the coming years.\n\nWith over 64,000 sq. ft of amenities (almost 20% of the project area) and a wide range of apartment layouts, Arisha Terraces offers a unique combination of lifestyle, flexibility, and long-term investment potential.",
     "photos": [
-      "https://www.vidiancapital.com/objects/uploads/c84549db-1d9d-4735-a644-1a4813c83b2c.png",
-      "https://www.vidiancapital.com/objects/uploads/a1dbb682-e29b-4b93-8e5e-864d62fffe63.png",
-      "https://www.vidiancapital.com/objects/uploads/4eeafcf2-8fc4-4059-a2a7-821b86ab85ff.png",
-      "https://www.vidiancapital.com/objects/uploads/6ed9f116-df78-4dba-b359-10f9bb70dedc.png",
-      "https://www.vidiancapital.com/objects/uploads/06d14c10-1a0a-4c5a-ab1f-69467f9aa9c1.png",
-      "https://www.vidiancapital.com/objects/uploads/66f2736d-057b-4a06-8825-7397cf69385b.png"
+      "assets/images/defaults/arisha-terraces/01.jpg",
+      "assets/images/defaults/arisha-terraces/02.jpg",
+      "assets/images/defaults/arisha-terraces/03.jpg",
+      "assets/images/defaults/arisha-terraces/04.jpg",
+      "assets/images/defaults/arisha-terraces/05.jpg",
+      "assets/images/defaults/arisha-terraces/06.jpg"
     ],
     "stats": [
       {
@@ -1480,7 +1480,15 @@ JSON;
 		update_post_meta( $post_id, '_vp_dev_highlights', self::clean_rows( $data['highlights'] ?? array() ) );
 		update_post_meta( $post_id, '_vp_amenities', self::clean_rows( $data['amenities'] ?? array() ) );
 		update_post_meta( $post_id, '_vp_location_highlights', self::clean_rows( $data['location_highlights'] ?? array() ) );
-		$photos = array_map( 'esc_url_raw', (array) ( $data['photos'] ?? array() ) );
+		$photos = array();
+		foreach ( (array) ( $data['photos'] ?? array() ) as $photo ) {
+			$photo = (string) $photo;
+			if ( strpos( $photo, 'assets/' ) === 0 ) {
+				$photos[] = esc_url_raw( VP_PLUGIN_URL . $photo );
+			} else {
+				$photos[] = esc_url_raw( $photo );
+			}
+		}
 		update_post_meta( $post_id, '_vp_remote_photos', $photos );
 		if ( empty( get_post_meta( $post_id, '_thumbnail_id', true ) ) && ! empty( $photos[0] ) ) {
 			update_post_meta( $post_id, '_vp_feature_image_url', $photos[0] );
