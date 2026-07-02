@@ -55,12 +55,21 @@
 .vp-breadcrumb-hero--dubai { background-image:url('https://www.vidiancapital.com/objects/uploads/0306d6a1-eb95-4a68-88de-25c2b778924a.png'), linear-gradient(135deg, #07101f, #0f2167); }
 .vp-breadcrumb-overlay { position:absolute; inset:0; background:rgba(0,0,0,.62); }
 .vp-breadcrumb-inner {
-	align-items:center; display:flex; flex-wrap:wrap; gap:10px; margin:0 auto; max-width:1440px; min-height:500px; padding:40px 28px; position:relative; z-index:2;
-	font-size:13px; font-weight:800; letter-spacing:.12em; text-transform:uppercase;
+	align-items:center; display:flex; margin:0 auto; max-width:1440px; min-height:500px; padding:40px 28px; position:relative; z-index:2;
 }
-.vp-breadcrumb-inner a { color:#fff !important; text-decoration:none; }
-.vp-breadcrumb-inner span { color:rgba(255,255,255,.62); }
-.vp-breadcrumb-inner strong { color:#fff; }
+.vp-breadcrumb-content { max-width: 760px; }
+.vp-breadcrumb-kicker {
+	color:rgba(255,255,255,.72); font-size:12px; font-weight:900; letter-spacing:.22em; margin:0 0 16px; text-transform:uppercase;
+}
+.vp-breadcrumb-market-title {
+	color:#fff; font-size:clamp(46px, 7vw, 96px); font-weight:900; line-height:.95; margin:0 0 22px; text-transform:uppercase;
+}
+.vp-breadcrumb-trail {
+	align-items:center; display:flex; flex-wrap:wrap; gap:10px; font-size:13px; font-weight:800; letter-spacing:.12em; line-height:1.6; text-transform:uppercase;
+}
+.vp-breadcrumb-trail a { color:#fff !important; text-decoration:none; }
+.vp-breadcrumb-trail span { color:rgba(255,255,255,.62); }
+.vp-breadcrumb-trail strong { color:#fff; }
 .vp-details-hero { align-items:center; display:flex; gap:56px; flex-wrap:wrap; margin-bottom: 48px; }
 .vp-details-hero-left { flex: 1 1 460px; min-width: 300px; display:flex; flex-direction:column; justify-content:center; }
 .vp-details-hero-right { flex: 1.15 1 560px; min-width: 300px; }
@@ -179,7 +188,13 @@
 @media (max-width: 782px) {
 	.vp-details { padding: 0 16px 56px; }
 	.vp-breadcrumb-hero { min-height:360px; margin-top:-40px; margin-bottom:42px; }
-	.vp-breadcrumb-inner { min-height:360px; padding:28px 16px; }
+	.vp-breadcrumb-inner { min-height:360px; padding:34px 20px; }
+	.vp-breadcrumb-content { max-width:100%; }
+	.vp-breadcrumb-kicker { font-size:10px; letter-spacing:.18em; margin-bottom:12px; }
+	.vp-breadcrumb-market-title { font-size:40px; line-height:1; margin-bottom:18px; }
+	.vp-breadcrumb-trail { align-items:flex-start; flex-direction:column; gap:4px; font-size:11px; letter-spacing:.08em; }
+	.vp-breadcrumb-trail > span:nth-of-type(1),
+	.vp-breadcrumb-trail > span:nth-of-type(2) { display:none; }
 	.vp-title { font-size:34px; }
 	.vp-details-hero { gap:28px; }
 	.vp-feat-img { height:320px; }

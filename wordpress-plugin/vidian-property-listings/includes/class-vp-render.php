@@ -131,18 +131,26 @@ class VP_Render {
 		}
 		$gallery_m  = get_post_meta( $post_id, '_vp_gallery', true );
 		$gallery_ids= $gallery_m ? explode( ',', $gallery_m ) : array();
+		$is_dubai = stripos( $location, 'Dubai' ) !== false;
+		$market_title = $is_dubai ? 'Dubai Investments' : 'UK Investments';
 
 		ob_start();
 		?>
 		<div class="vp-details">
-			<div class="vp-breadcrumb-hero <?php echo stripos( $location, 'Dubai' ) !== false ? 'vp-breadcrumb-hero--dubai' : 'vp-breadcrumb-hero--uk'; ?>">
+			<div class="vp-breadcrumb-hero <?php echo $is_dubai ? 'vp-breadcrumb-hero--dubai' : 'vp-breadcrumb-hero--uk'; ?>">
 				<div class="vp-breadcrumb-overlay"></div>
 				<div class="vp-breadcrumb-inner">
-					<a href="<?php echo esc_url( get_post_type_archive_link( 'vp_property' ) ); ?>">Developments</a>
-					<span>/</span>
-					<span><?php echo esc_html( $location ?: 'Investment Opportunity' ); ?></span>
-					<span>/</span>
-					<strong><?php echo esc_html( $title ); ?></strong>
+					<div class="vp-breadcrumb-content">
+						<p class="vp-breadcrumb-kicker">Vidian Capital Developments</p>
+						<h1 class="vp-breadcrumb-market-title"><?php echo esc_html( $market_title ); ?></h1>
+						<nav class="vp-breadcrumb-trail" aria-label="Breadcrumb">
+							<a href="<?php echo esc_url( get_post_type_archive_link( 'vp_property' ) ); ?>">Developments</a>
+							<span>/</span>
+							<span><?php echo esc_html( $location ?: 'Investment Opportunity' ); ?></span>
+							<span>/</span>
+							<strong><?php echo esc_html( $title ); ?></strong>
+						</nav>
+					</div>
 				</div>
 			</div>
 			<div class="vp-details-hero">
