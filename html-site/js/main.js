@@ -27,4 +27,30 @@ document.addEventListener('DOMContentLoaded', () => {
       if (success) success.style.display = 'block';
     });
   }
+
+  // Home page: sticky header + scroll reveal
+  const homeHeader = document.querySelector('.home-header');
+  if (homeHeader) {
+    const onScroll = () => {
+      homeHeader.classList.toggle('scrolled', window.scrollY > 24);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  const revealEls = document.querySelectorAll('.reveal');
+  if (revealEls.length) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+  }
 });
