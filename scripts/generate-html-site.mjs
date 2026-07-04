@@ -381,7 +381,7 @@ function employmentFormHtml(theme) {
 </div>`;
 }
 
-function ticketCard(ticket, theme) {
+function ticketCard(ticket, theme, featured = false) {
   const badge = ticket.badge
     ? `<span class="price-badge">${escapeHtml(ticket.badge)}</span>`
     : '';
@@ -394,7 +394,8 @@ function ticketCard(ticket, theme) {
   const warning = ticket.warning
     ? `<div class="alert-box mb-6">⚠ ${escapeHtml(ticket.warning)}</div>`
     : '';
-  return `<div class="card">
+  const featuredClass = featured && theme === 'ipsh' ? ' ipsh-ticket-featured' : '';
+  return `<div class="card${featuredClass}">
   <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;flex-wrap:wrap;gap:0.5rem">
     <h3 class="card-title">${escapeHtml(ticket.name)}</h3>
     ${badge}
@@ -408,14 +409,20 @@ function ticketCard(ticket, theme) {
 
 function attractionsHtml(attractions, theme) {
   return attractions
-    .map((a) => {
+    .map((a, index) => {
       const emoji = ICON_EMOJI[a.icon] || '✦';
       const price = a.price
         ? `<span class="price-badge">${escapeHtml(a.price)}</span>`
         : '';
       const taglineClass =
         theme === 'ipsh' ? 'card-tagline font-cormorant' : 'card-tagline';
-      return `<article class="card">
+      const ipshExtra =
+        theme === 'ipsh'
+          ? `<span class="ipsh-attraction-num">${String(index + 1).padStart(2, '0')}</span>`
+          : '';
+      const ipshClass = theme === 'ipsh' ? ' ipsh-attraction-card' : '';
+      return `<article class="card${ipshClass}">
+  ${ipshExtra}
   <div class="card-row">
     <div class="card-icon">${emoji}</div>
     <div>
@@ -565,12 +572,32 @@ function generateSleepyHollowAbout() {
     theme: 'ipsh',
     assetPrefix: '../',
     body: `${heroBlock({ label: 'Our Story', title: 'About Us' })}
+<div class="ipsh-ornament">✦ ✦ ✦</div>
 <section class="container-narrow">
-  <div class="card prose text-muted" style="font-size:1.125rem;line-height:1.75">
-    <p>Owner and creator Amanda Limoges has always had a deep love for Halloween—so much so that she married on Friday the 13th to a man born on Halloween. For her, the thrill of transforming yourself and the world around you, even for one night, has always been irresistible.</p>
-    <p>When their son Hank arrived, that love grew into a shared family tradition. Together they built a free home haunt for neighborhood kids to trick‑or‑treat and explore. Each year the haunt expanded, with new themes designed and created by Amanda and Hank: Area 51, Mad Scientist Lab, Haunted Swamp, Wild West Ghost Town, and more.</p>
-    <p>By 2026, an incredible opportunity appeared—the chance to bring that joy, creativity, and Halloween magic to the public. What began as a family tradition is now a growing seasonal experience for the entire community.</p>
-    <p class="font-cormorant text-center" style="color:var(--ipsh-gold);font-size:1.25rem;font-style:italic;padding-top:1rem">We hope you'll spend many Halloween seasons with us as we continue to grow, imagine, and share our ideas with you.</p>
+  <div class="card">
+    <div class="ipsh-story-card">
+      <p class="text-muted" style="font-size:1.0625rem;line-height:1.8">Owner and creator <strong style="color:var(--ipsh-gold)">Amanda Limoges</strong> has always had a deep love for Halloween—so much so that she married on Friday the 13th to a man born on Halloween. For her, the thrill of transforming yourself and the world around you, even for one night, has always been irresistible.</p>
+    </div>
+    <div class="ipsh-story-card">
+      <p class="text-muted" style="font-size:1.0625rem;line-height:1.8">When their son Hank arrived, that love grew into a shared family tradition. Together they built a free home haunt for neighborhood kids to trick‑or‑treat and explore. Each year the haunt expanded, with new themes designed and created by Amanda and Hank:</p>
+      <div class="ipsh-themes">
+        <span class="ipsh-theme-tag">Area 51</span>
+        <span class="ipsh-theme-tag">Mad Scientist Lab</span>
+        <span class="ipsh-theme-tag">Haunted Swamp</span>
+        <span class="ipsh-theme-tag">Wild West Ghost Town</span>
+        <span class="ipsh-theme-tag">And more</span>
+      </div>
+    </div>
+    <div class="ipsh-story-card">
+      <p class="text-muted" style="font-size:1.0625rem;line-height:1.8">By 2026, an incredible opportunity appeared—the chance to bring that joy, creativity, and Halloween magic to the public. What began as a family tradition is now a growing seasonal experience for the entire community.</p>
+    </div>
+    <blockquote class="ipsh-pull-quote">We hope you'll spend many Halloween seasons with us as we continue to grow, imagine, and share our ideas with you.</blockquote>
+  </div>
+  <div class="ipsh-quick-links">
+    <a href="attractions.html" class="ipsh-quick-link"><span>🎃</span>Attractions</a>
+    <a href="tickets.html" class="ipsh-quick-link"><span>🎟</span>Tickets</a>
+    <a href="hours.html" class="ipsh-quick-link"><span>🕐</span>Hours</a>
+    <a href="faq.html" class="ipsh-quick-link"><span>❓</span>FAQ</a>
   </div>
   <div class="btn-group">
     <a href="attractions.html" class="btn btn-ipsh">Explore Attractions</a>
@@ -596,9 +623,11 @@ function generateSleepyHollowAttractions() {
 
 function generateSleepyHollowTickets() {
   const notes = sleepyHollowTickets.notes
-    .map((n) => `<li style="display:flex;gap:0.5rem"><span style="color:var(--ipsh-gold)">•</span>${escapeHtml(n)}</li>`)
+    .map((n) => `<li>${escapeHtml(n)}</li>`)
     .join('');
-  const tickets = sleepyHollowTickets.tickets.map((t) => ticketCard(t, 'ipsh')).join('\n');
+  const tickets = sleepyHollowTickets.tickets
+    .map((t, i) => ticketCard(t, 'ipsh', i === 0))
+    .join('\n');
   const combo = sleepyHollowTickets.comboTickets
     .filter((t) => t.id !== 'fast-pass')
     .map((t) => ticketCard(t, 'ipsh'))
@@ -614,13 +643,16 @@ function generateSleepyHollowTickets() {
     assetPrefix: '../',
     body: `${heroBlock({ label: 'Plan Your Visit', title: 'Tickets & Pricing' })}
 <section class="container">
-  <div class="card mb-6"><ul class="text-muted" style="font-size:0.875rem;list-style:none">${notes}</ul></div>
-  <h2 class="card-title font-cinzel mb-6">Sleepy Hollow Tickets</h2>
+  <div class="ipsh-notes-banner">
+    <h3>Important Information</h3>
+    <ul>${notes}</ul>
+  </div>
+  <h2 class="ipsh-section-head">Sleepy Hollow Tickets</h2>
   <div class="card-grid card-grid-2 mb-6">${tickets}</div>
   <div class="divider text-center"><span style="color:var(--ipsh-gold)">✦</span></div>
-  <h2 class="card-title font-cinzel mb-6">Combo &amp; Season Passes</h2>
+  <h2 class="ipsh-section-head">Combo &amp; Season Passes</h2>
   <div class="card-grid card-grid-2 mb-6">${combo}</div>
-  <h2 class="card-title font-cinzel mb-6">Fast Pass</h2>
+  <h2 class="ipsh-section-head">Fast Pass</h2>
   ${fastPass}
   <div class="btn-group"><a href="${escapeHtml(siteInfo.ticketsUrl)}" class="btn btn-ipsh">Purchase Tickets</a></div>
 </section>`,
@@ -637,7 +669,13 @@ function generateSleepyHollowHours() {
       title: 'Hours of Operation',
       subtitle: 'September 19 – October 31, 2026',
     })}
-<section class="container-narrow">${hoursHtml(sleepyHollowHours, 'ipsh')}</section>`,
+<section class="container-narrow">
+  <div class="ipsh-hours-banner">
+    <p>Open every Saturday &amp; Sunday · 11am – 5pm · Halloween opens at 10am</p>
+  </div>
+  ${hoursHtml(sleepyHollowHours, 'ipsh')}
+  <div class="btn-group"><a href="tickets.html" class="btn btn-ipsh">Get Tickets</a></div>
+</section>`,
   });
 }
 
@@ -647,7 +685,14 @@ function generateSleepyHollowFaq() {
     theme: 'ipsh',
     assetPrefix: '../',
     body: `${heroBlock({ label: 'Got Questions?', title: 'Frequently Asked Questions' })}
-<section class="container-narrow"><div class="faq-list">${faqAccordion(sleepyHollowFaq)}</div></section>`,
+<section class="container-narrow">
+  <p class="ipsh-faq-intro">Everything you need to know before visiting Ichabod Payne's Sleepy Hollow. Click any question below to expand the answer.</p>
+  <div class="faq-list">${faqAccordion(sleepyHollowFaq)}</div>
+  <div class="btn-group">
+    <a href="tickets.html" class="btn btn-ipsh">View Tickets</a>
+    <a href="weather.html" class="btn btn-outline-ipsh">Weather Policy</a>
+  </div>
+</section>`,
   });
 }
 
