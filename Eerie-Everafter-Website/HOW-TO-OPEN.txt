@@ -1,0 +1,16 @@
+EERIE EVER AFTER EVENTS - WEBSITE
+==================================
+
+1. Double-click "index.html" to open the home page in your browser.
+
+2. Folder structure:
+   - index.html          = Home page (start here)
+   - sleepy-hollow/      = Ichabod Payne's Sleepy Hollow pages
+   - paynes-labyrinth/   = Payne's Labyrinth pages
+   - css/                = Styles
+   - js/                 = Navigation & forms
+   - images/             = Logos (home page only)
+
+3. To upload to your web host: upload this entire folder to your hosting.
+
+4. Contact: 903-503-5181 | eerie.ever.after.events@gmail.com
