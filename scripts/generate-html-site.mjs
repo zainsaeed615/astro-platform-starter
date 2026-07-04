@@ -561,12 +561,12 @@ function generateIndex() {
   </a>
 </section>
 <section class="container-narrow text-center">
-  <div class="card">
+  <div class="home-plan-card">
     <h3 class="card-title">Plan Your Visit</h3>
-    <p class="text-muted mb-6">${escapeHtml(address.full)}</p>
+    <p class="text-muted mb-6" style="color:#525252">${escapeHtml(address.full)}</p>
     <div class="btn-group">
-      <a href="${escapeHtml(ticketsUrl)}" class="btn btn-lab">Get Tickets</a>
-      <a href="tel:${escapeHtml(phone)}" class="btn btn-outline-lab">${escapeHtml(phone)}</a>
+      <a href="${escapeHtml(ticketsUrl)}" class="btn btn-ipsh">Get Tickets</a>
+      <a href="tel:${escapeHtml(phone)}" class="btn btn-outline-ipsh">${escapeHtml(phone)}</a>
     </div>
   </div>
 </section>`,
@@ -583,7 +583,7 @@ function generateSleepyHollowAbout() {
 <section class="container-narrow">
   <div class="card">
     <div class="ipsh-story-card">
-      <p class="text-muted" style="font-size:1.0625rem;line-height:1.8">Owner and creator <strong style="color:var(--ipsh-gold)">Amanda Limoges</strong> has always had a deep love for Halloween—so much so that she married on Friday the 13th to a man born on Halloween. For her, the thrill of transforming yourself and the world around you, even for one night, has always been irresistible.</p>
+      <p class="text-muted" style="font-size:1.0625rem;line-height:1.8">Owner and creator <strong>Amanda Limoges</strong> has always had a deep love for Halloween—so much so that she married on Friday the 13th to a man born on Halloween. For her, the thrill of transforming yourself and the world around you, even for one night, has always been irresistible.</p>
     </div>
     <div class="ipsh-story-card">
       <p class="text-muted" style="font-size:1.0625rem;line-height:1.8">When their son Hank arrived, that love grew into a shared family tradition. Together they built a free home haunt for neighborhood kids to trick‑or‑treat and explore. Each year the haunt expanded, with new themes designed and created by Amanda and Hank:</p>
@@ -656,7 +656,7 @@ function generateSleepyHollowTickets() {
   </div>
   <h2 class="ipsh-section-head">Sleepy Hollow Tickets</h2>
   <div class="card-grid card-grid-2 mb-6">${tickets}</div>
-  <div class="divider text-center"><span style="color:var(--ipsh-gold)">✦</span></div>
+  <div class="divider text-center"><span>✦</span></div>
   <h2 class="ipsh-section-head">Combo &amp; Season Passes</h2>
   <div class="card-grid card-grid-2 mb-6">${combo}</div>
   <h2 class="ipsh-section-head">Fast Pass</h2>
@@ -713,7 +713,7 @@ function generateLabyrinthAbout() {
 <section class="container-narrow">
   <div class="card">
     <div class="lab-story-card">
-      <p class="text-muted" style="font-size:1.0625rem;line-height:1.8"><strong style="color:var(--lab-orange)">Darian Butler's</strong> household runs on adrenaline and a healthy appreciation for a good scare. Drawn to the paranormal from a young age, her obsession with the macabre only deepened over time. Today, one of her and her husband's favorite pastimes is cueing up a retro B-movie for a night of campy creeps and laughs.</p>
+      <p class="text-muted" style="font-size:1.0625rem;line-height:1.8"><strong>Darian Butler's</strong> household runs on adrenaline and a healthy appreciation for a good scare. Drawn to the paranormal from a young age, her obsession with the macabre only deepened over time. Today, one of her and her husband's favorite pastimes is cueing up a retro B-movie for a night of campy creeps and laughs.</p>
     </div>
     <div class="lab-story-card">
       <p class="text-muted" style="font-size:1.0625rem;line-height:1.8">With a background in theater—both commanding the stage and pulling strings behind the scenes—Darian treats the world of haunts as the ultimate stage production. Having spent her adult life in the hospitality industry, she views immersive customer service as just another form of performance art.</p>
@@ -778,7 +778,7 @@ function generateLabyrinthTickets() {
   </div>
   <h2 class="lab-section-head">Labyrinth Tickets</h2>
   <div class="card-grid card-grid-2 mb-6">${tickets}</div>
-  <div class="divider text-center"><span style="color:var(--lab-orange)">☠</span></div>
+  <div class="divider text-center"><span>☠</span></div>
   <h2 class="lab-section-head">Combo &amp; Season Passes</h2>
   <div class="card-grid card-grid-2 mb-6">${combo}</div>
   <div class="btn-group"><a href="${escapeHtml(siteInfo.ticketsUrl)}" class="btn btn-lab">Purchase Tickets</a></div>

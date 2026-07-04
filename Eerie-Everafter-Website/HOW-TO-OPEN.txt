@@ -1,26 +1,45 @@
-EERIE EVER AFTER EVENTS - WEBSITE
-==================================
+EERIE EVER AFTER EVENTS — COMPLETE WEBSITE DRAFT
+=================================================
+
+COLOR SCHEME: Black & White
+  • Sleepy Hollow pages  = WHITE background
+  • Payne's Labyrinth pages = BLACK background
+  • Home page = Light gray / white
 
 HOW TO OPEN:
-1. Double-click "index.html" — website browser mein khul jayegi.
+  Double-click "index.html" in this folder.
+
+COMPLETE SITE INCLUDES:
+  HOME PAGE
+    index.html — Landing page with both portal links
+
+  ICHABOD PAYNE'S SLEEPY HOLLOW (white background) — 8 pages:
+    sleepy-hollow/about.html
+    sleepy-hollow/attractions.html
+    sleepy-hollow/tickets.html
+    sleepy-hollow/hours.html
+    sleepy-hollow/faq.html
+    sleepy-hollow/weather.html
+    sleepy-hollow/employment.html
+    sleepy-hollow/employment-faq.html
+
+  PAYNE'S LABYRINTH (black background) — 10 pages:
+    paynes-labyrinth/about.html
+    paynes-labyrinth/attractions.html
+    paynes-labyrinth/tickets.html
+    paynes-labyrinth/hours.html
+    paynes-labyrinth/faq.html
+    paynes-labyrinth/warnings.html
+    paynes-labyrinth/special-events.html
+    paynes-labyrinth/weather.html
+    paynes-labyrinth/employment.html
+    paynes-labyrinth/employment-faq.html
 
 FOLDER STRUCTURE:
-├── index.html                 ← Home page (yahan se start karein)
-├── sleepy-hollow/             ← Ichabod Payne's Sleepy Hollow (8 pages)
-├── paynes-labyrinth/          ← Payne's Labyrinth (10 pages)
-├── css/                       ← Styles
-├── js/                        ← Navigation & forms
-└── images/                    ← Logos (sirf home page par)
+  css/       — Styles (black & white theme)
+  js/        — Navigation & forms
+  images/    — Logos (home page only)
 
-PAYNE'S LABYRINTH PAGES:
-  about.html | attractions.html | tickets.html | hours.html
-  faq.html | warnings.html | special-events.html | weather.html
-  employment.html | employment-faq.html
-
-SLEEPY HOLLOW PAGES:
-  about.html | attractions.html | tickets.html | hours.html
-  faq.html | weather.html | employment.html | employment-faq.html
-
-WEB HOSTING: Poora folder upload karein (cPanel, Netlify, etc.)
+WEB HOSTING: Upload this entire folder to your host.
 
 CONTACT: 903-503-5181 | eerie.ever.after.events@gmail.com
