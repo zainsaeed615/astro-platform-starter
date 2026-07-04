@@ -63,7 +63,7 @@ function writeFile(relPath, content) {
 const FONTS =
   '<link rel="preconnect" href="https://fonts.googleapis.com">' +
   '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
-  '<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">';
+  '<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">';
 
 const ICON_EMOJI = {
   compass: '🧭',
@@ -541,6 +541,10 @@ function generateIndex() {
     body: `<header class="home-header">
   <div class="home-header-inner">
     <a href="index.html" class="home-header-brand font-cinzel">Eerie Ever After</a>
+    <nav class="home-header-nav" aria-label="Home">
+      <a href="#choose-path">Experiences</a>
+      <a href="#visit">Visit</a>
+    </nav>
     <div class="home-header-actions">
       <a href="tel:${escapeHtml(phone)}" class="home-header-phone">${escapeHtml(phone)}</a>
       <a href="${escapeHtml(ticketsUrl)}" class="btn btn-ipsh home-header-cta">Get Tickets</a>
@@ -548,119 +552,165 @@ function generateIndex() {
   </div>
 </header>
 
-<section class="home-hero-premium">
-  <div class="home-hero-grid" aria-hidden="true"></div>
-  <div class="home-hero-inner">
-    <p class="home-eyebrow">Wills Point, Texas · Seasonal Destination</p>
-    <div class="home-hero-divider"></div>
-    <img src="images/eerie-ever-after-logo.svg" alt="Eerie Ever After Events" class="home-logo-premium">
-    <h1 class="home-headline font-cinzel">Two Worlds.<br>One Destination.</h1>
-    <p class="home-tagline">Choose your path into the supernatural — family legends or living nightmare.</p>
-    <a href="#choose-path" class="home-scroll-cue">
-      <span>Select Your Experience</span>
-      <span class="home-scroll-arrow" aria-hidden="true">↓</span>
+<section class="home-hero">
+  <div class="home-hero-bg" aria-hidden="true">
+    <div class="home-hero-vignette"></div>
+    <div class="home-hero-grain"></div>
+    <span class="home-hero-watermark font-bebas">SUPERNATURAL</span>
+    <div class="home-hero-orb home-hero-orb-1"></div>
+    <div class="home-hero-orb home-hero-orb-2"></div>
+    <div class="home-hero-orb home-hero-orb-3"></div>
+  </div>
+  <div class="home-frame home-frame-tl" aria-hidden="true"></div>
+  <div class="home-frame home-frame-tr" aria-hidden="true"></div>
+  <div class="home-frame home-frame-bl" aria-hidden="true"></div>
+  <div class="home-frame home-frame-br" aria-hidden="true"></div>
+
+  <div class="home-hero-content">
+    <p class="home-eyebrow hero-stagger" style="--d:0.1s">Wills Point, Texas · Seasonal Destination</p>
+    <div class="home-hero-ornament hero-stagger" style="--d:0.2s" aria-hidden="true">✦</div>
+    <div class="home-logo-wrap hero-stagger" style="--d:0.3s">
+      <img src="images/eerie-ever-after-logo.svg" alt="Eerie Ever After Events" class="home-logo">
+    </div>
+    <h1 class="home-headline font-cinzel">
+      <span class="hero-stagger" style="--d:0.45s">Two Worlds.</span>
+      <span class="hero-stagger home-headline-accent" style="--d:0.55s">One Destination.</span>
+    </h1>
+    <p class="home-tagline font-cormorant hero-stagger" style="--d:0.65s">Choose your path into the supernatural — family legends or living nightmare.</p>
+    <div class="home-hero-actions hero-stagger" style="--d:0.75s">
+      <a href="#choose-path" class="home-btn-primary">Explore Experiences</a>
+      <a href="${escapeHtml(ticketsUrl)}" class="home-btn-ghost">Get Tickets</a>
+    </div>
+    <a href="#choose-path" class="home-scroll-cue hero-stagger" style="--d:0.9s">
+      <span class="home-scroll-line"></span>
+      <span>Scroll</span>
     </a>
   </div>
 </section>
 
-<section id="choose-path" class="home-portals-section">
-  <div class="home-portals-intro">
+<div class="home-marquee" aria-hidden="true">
+  <div class="home-marquee-track">
+    <span>Halloween Season · Ichabod Payne's Sleepy Hollow · Payne's Labyrinth · Wills Point, TX · Family &amp; Horror · </span>
+    <span>Halloween Season · Ichabod Payne's Sleepy Hollow · Payne's Labyrinth · Wills Point, TX · Family &amp; Horror · </span>
+  </div>
+</div>
+
+<section class="home-quote reveal">
+  <div class="home-quote-inner">
+    <p class="home-quote-text font-cormorant">Two worlds await at one gate — legends for the curious, nightmares for the fearless.</p>
+    <div class="home-quote-rule" aria-hidden="true"><span>✦</span></div>
+  </div>
+</section>
+
+<section id="choose-path" class="home-gateways">
+  <div class="home-gateways-head reveal">
     <p class="section-label">The Experience</p>
-    <h2 class="home-portals-title font-cinzel">Choose Your Path</h2>
-    <p class="home-portals-sub">Two distinct attractions. One unforgettable Halloween season.</p>
+    <h2 class="home-gateways-title font-cinzel">Choose Your Path</h2>
   </div>
 
-  <div class="home-portals-split">
-    <a href="sleepy-hollow/about.html" class="home-portal home-portal-ipsh">
-      <div class="home-portal-top">
-        <span class="home-portal-num">01</span>
-        <span class="home-portal-badge">Family Adventure</span>
-      </div>
-      <div class="home-portal-body">
-        <img src="images/sleepy-hollow-logo.svg" alt="Ichabod Payne's Sleepy Hollow" class="home-portal-logo">
-        <h3 class="home-portal-title font-cinzel">Ichabod Payne's Sleepy Hollow</h3>
-        <p class="home-portal-desc">Explore the legends. Family-friendly Halloween adventures, carnival games, and immersive themed attractions for all ages.</p>
-        <ul class="home-portal-features">
+  <div class="home-gateways-grid">
+    <a href="sleepy-hollow/about.html" class="home-gateway home-gateway-ipsh" data-tilt>
+      <span class="home-gw-watermark font-bebas" aria-hidden="true">01</span>
+      <div class="home-gw-lines" aria-hidden="true"></div>
+      <div class="home-gw-shine" aria-hidden="true"></div>
+      <div class="home-gw-inner">
+        <div class="home-gw-top">
+          <span class="home-gw-num">01</span>
+          <span class="home-gw-badge">Family Adventure</span>
+        </div>
+        <div class="home-gw-logo-frame">
+          <img src="images/sleepy-hollow-logo.svg" alt="Ichabod Payne's Sleepy Hollow" class="home-gw-logo">
+        </div>
+        <h3 class="home-gw-title font-cinzel">Ichabod Payne's Sleepy Hollow</h3>
+        <p class="home-gw-desc">Explore the legends. Family-friendly Halloween adventures, carnival games, and immersive themed attractions for all ages.</p>
+        <ul class="home-gw-tags">
           <li>Themed Walkthroughs</li>
           <li>Carnival Games</li>
-          <li>All Ages Welcome</li>
+          <li>All Ages</li>
         </ul>
-      </div>
-      <div class="home-portal-footer">
-        <span>Enter Sleepy Hollow</span>
-        <span class="home-portal-arrow" aria-hidden="true">→</span>
+        <div class="home-gw-cta">
+          <span>Enter Sleepy Hollow</span>
+          <span class="home-gw-arrow">→</span>
+        </div>
       </div>
     </a>
 
-    <div class="home-portals-divider" aria-hidden="true"></div>
-
-    <a href="paynes-labyrinth/about.html" class="home-portal home-portal-lab">
-      <div class="home-portal-top">
-        <span class="home-portal-num">02</span>
-        <span class="home-portal-badge">Intense Horror</span>
-      </div>
-      <div class="home-portal-body">
-        <img src="images/paynes-labyrinth-logo.svg" alt="Payne's Labyrinth" class="home-portal-logo">
-        <h3 class="home-portal-title font-bebas">Payne's Labyrinth</h3>
-        <p class="home-portal-desc">Step past the curtain into chaos. A living nightmare of haunted attractions designed for the brave.</p>
-        <ul class="home-portal-features">
+    <a href="paynes-labyrinth/about.html" class="home-gateway home-gateway-lab" data-tilt>
+      <span class="home-gw-watermark font-bebas" aria-hidden="true">02</span>
+      <div class="home-gw-lines" aria-hidden="true"></div>
+      <div class="home-gw-shine" aria-hidden="true"></div>
+      <div class="home-gw-inner">
+        <div class="home-gw-top">
+          <span class="home-gw-num">02</span>
+          <span class="home-gw-badge">Intense Horror</span>
+        </div>
+        <div class="home-gw-logo-frame">
+          <img src="images/paynes-labyrinth-logo.svg" alt="Payne's Labyrinth" class="home-gw-logo">
+        </div>
+        <h3 class="home-gw-title font-bebas">Payne's Labyrinth</h3>
+        <p class="home-gw-desc">Step past the curtain into chaos. A living nightmare of haunted attractions designed for the brave.</p>
+        <ul class="home-gw-tags">
           <li>Haunted Attractions</li>
           <li>Live Actors</li>
           <li>18+ Recommended</li>
         </ul>
-      </div>
-      <div class="home-portal-footer">
-        <span>Enter the Labyrinth</span>
-        <span class="home-portal-arrow" aria-hidden="true">→</span>
+        <div class="home-gw-cta">
+          <span>Enter the Labyrinth</span>
+          <span class="home-gw-arrow">→</span>
+        </div>
       </div>
     </a>
   </div>
 </section>
 
-<section class="home-stats">
-  <div class="home-stats-grid">
-    <div class="home-stat reveal">
-      <span class="home-stat-icon" aria-hidden="true">◆</span>
-      <h3 class="home-stat-title">Two Experiences</h3>
-      <p class="home-stat-text">Family-friendly legends and intense horror — side by side at one destination.</p>
-    </div>
-    <div class="home-stat reveal">
-      <span class="home-stat-icon" aria-hidden="true">◆</span>
-      <h3 class="home-stat-title">East Texas</h3>
-      <p class="home-stat-text">${escapeHtml(address.city)}, ${escapeHtml(address.state)} — a seasonal Halloween destination for the entire community.</p>
-    </div>
-    <div class="home-stat reveal">
-      <span class="home-stat-icon" aria-hidden="true">◆</span>
-      <h3 class="home-stat-title">Plan Ahead</h3>
-      <p class="home-stat-text">Review hours, weather policies, and tickets before you arrive for the best experience.</p>
-    </div>
+<section class="home-bento">
+  <div class="home-bento-grid">
+    <article class="home-bento-cell reveal">
+      <span class="home-bento-num font-bebas">02</span>
+      <h3 class="home-bento-title font-cinzel">Two Experiences</h3>
+      <p class="home-bento-text">Family-friendly legends and intense horror — side by side at one destination.</p>
+    </article>
+    <article class="home-bento-cell reveal">
+      <span class="home-bento-num font-bebas">TX</span>
+      <h3 class="home-bento-title font-cinzel">East Texas</h3>
+      <p class="home-bento-text">${escapeHtml(address.city)}, ${escapeHtml(address.state)} — a seasonal Halloween destination for the entire community.</p>
+    </article>
+    <article class="home-bento-cell home-bento-wide reveal">
+      <div class="home-bento-wide-inner">
+        <div>
+          <h3 class="home-bento-title font-cinzel">Plan Ahead for the Best Night</h3>
+          <p class="home-bento-text">Review hours, weather policies, and tickets before you arrive.</p>
+        </div>
+        <div class="home-bento-links">
+          <a href="sleepy-hollow/hours.html">Sleepy Hollow Hours</a>
+          <a href="paynes-labyrinth/hours.html">Labyrinth Hours</a>
+          <a href="paynes-labyrinth/warnings.html">Warnings</a>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
-<section class="home-visit">
-  <div class="home-visit-card reveal">
-    <div class="home-visit-content">
+<section id="visit" class="home-visit">
+  <div class="home-visit-shell reveal">
+    <div class="home-visit-map" aria-hidden="true">
+      <div class="home-visit-map-grid"></div>
+      <div class="home-visit-pin"></div>
+    </div>
+    <div class="home-visit-panel">
       <p class="section-label">Visit Us</p>
       <h2 class="home-visit-title font-cinzel">Plan Your Visit</h2>
-      <p class="home-visit-address">${escapeHtml(address.full)}</p>
+      <p class="home-visit-address font-cormorant">${escapeHtml(address.full)}</p>
       <div class="home-visit-actions">
         <a href="${escapeHtml(ticketsUrl)}" class="btn btn-ipsh">Get Tickets</a>
         <a href="tel:${escapeHtml(phone)}" class="btn btn-outline-ipsh">${escapeHtml(phone)}</a>
         <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-ipsh">Open in Maps</a>
       </div>
-    </div>
-    <div class="home-visit-aside">
-      <div class="home-visit-block">
-        <h4>Quick Links</h4>
-        <a href="sleepy-hollow/hours.html">Sleepy Hollow Hours</a>
-        <a href="paynes-labyrinth/hours.html">Labyrinth Hours</a>
-        <a href="sleepy-hollow/tickets.html">Ticket Pricing</a>
-        <a href="paynes-labyrinth/warnings.html">Warnings &amp; Advisories</a>
-      </div>
-      <div class="home-visit-block">
-        <h4>Connect</h4>
+      <div class="home-visit-social">
         <a href="https://www.facebook.com/eerieeverafter" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <span aria-hidden="true">·</span>
         <a href="https://www.instagram.com/eerie.ever.after.events/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <span aria-hidden="true">·</span>
         <a href="https://www.tiktok.com/@eerieeverafter" target="_blank" rel="noopener noreferrer">TikTok</a>
       </div>
     </div>

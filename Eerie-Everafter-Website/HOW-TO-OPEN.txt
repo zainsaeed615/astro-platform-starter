@@ -4,48 +4,17 @@ EERIE EVER AFTER EVENTS — COMPLETE WEBSITE DRAFT
 COLOR SCHEME: Black & White
   • Sleepy Hollow pages  = WHITE background
   • Payne's Labyrinth pages = BLACK background
-  • Home page = Premium light layout with split portals
+  • Home page = Premium editorial layout
 
 HOW TO OPEN:
   Double-click "index.html" in this folder.
 
-LANDING PAGE (NEW):
-  • Fixed header with Get Tickets
-  • Full-screen cinematic hero
-  • Split-screen portal cards (white + black)
-  • Stats section + Plan Your Visit card
+LANDING PAGE FEATURES:
+  • Cinematic full-screen hero with animations
+  • Scrolling marquee band
+  • Immersive split portal cards (white + black)
+  • Bento info grid + Plan Your Visit section
 
-COMPLETE SITE INCLUDES:
-  HOME PAGE
-    index.html — Premium landing page with both portal links
-
-  ICHABOD PAYNE'S SLEEPY HOLLOW (white background) — 8 pages:
-    sleepy-hollow/about.html
-    sleepy-hollow/attractions.html
-    sleepy-hollow/tickets.html
-    sleepy-hollow/hours.html
-    sleepy-hollow/faq.html
-    sleepy-hollow/weather.html
-    sleepy-hollow/employment.html
-    sleepy-hollow/employment-faq.html
-
-  PAYNE'S LABYRINTH (black background) — 10 pages:
-    paynes-labyrinth/about.html
-    paynes-labyrinth/attractions.html
-    paynes-labyrinth/tickets.html
-    paynes-labyrinth/hours.html
-    paynes-labyrinth/faq.html
-    paynes-labyrinth/warnings.html
-    paynes-labyrinth/special-events.html
-    paynes-labyrinth/weather.html
-    paynes-labyrinth/employment.html
-    paynes-labyrinth/employment-faq.html
-
-FOLDER STRUCTURE:
-  css/       — Styles (black & white theme)
-  js/        — Navigation & scroll animations
-  images/    — Logos (home page only)
-
-WEB HOSTING: Upload this entire folder to your host.
+COMPLETE SITE: 19 pages (home + 8 Sleepy Hollow + 10 Labyrinth)
 
 CONTACT: 903-503-5181 | eerie.ever.after.events@gmail.com

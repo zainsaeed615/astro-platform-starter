@@ -53,4 +53,19 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     revealEls.forEach((el) => observer.observe(el));
   }
+
+  // Subtle 3D tilt on gateway cards (desktop only)
+  if (window.matchMedia('(hover: hover) and (min-width: 1024px)').matches) {
+    document.querySelectorAll('[data-tilt]').forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `perspective(900px) rotateY(${x * 4}deg) rotateX(${y * -4}deg) scale(1.01)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
 });
