@@ -102,28 +102,28 @@ export const labyrinthTickets = {
 export const labyrinthAttractions = [
   {
     name: 'The Labyrinth',
-    tagline: 'The walls have a mind of their own.',
+    tagline: 'Step into The Labyrinth—where the walls have a mind of their own.',
     description:
-      'Think you can find your way out? Think again. The Labyrinth isn\'t just a maze; it\'s a living, breathing nightmare that shifts, mutates, and rewrites itself while you\'re trapped inside. Every corner hides a new terror, and every dead end brings you closer to what\'s hunting you. This attraction mutates overnight, so your experience will not be the same from one day to the next!',
+      'Think you can find your way out? Think again. The Labyrinth isn\'t just a maze; it\'s a living, breathing nightmare that shifts, mutates, and rewrites itself while you\'re trapped inside. The path you took to get in? Gone. The exit you thought you saw? A dead end. Every corner hides a new terror, and every dead end brings you closer to what\'s hunting you. In this ever-changing hellscape, your sense of direction won\'t save you. Only your survival instinct will. This attraction mutates overnight, so your experience will not be the same from one day to the next!',
     icon: 'route',
   },
   {
     name: 'The Barn',
-    tagline: 'Your time is running out.',
+    tagline: 'The engine is idling. The door is locked. Your time is running out.',
     description:
-      'Off the beaten path sits The Barn—a dilapidated, rusted structure that reeks of copper and old rot. You thought you were just taking a detour, but now you\'re locked inside the butcher shop of a twisted, cannibalistic family. You have 30 minutes to piece together the family\'s sick puzzles and find a way out before the butcher comes back to finish his work.',
+      'Off the beaten path sits The Barn—a dilapidated, rusted structure that reeks of copper and old rot. You thought you were just taking a detour, but now you\'re locked inside the butcher shop of a twisted, cannibalistic family. The floorboards are stained, the meat hooks are waiting, and the sickening rev of a chainsaw is echoing from just behind the walls. You have 30 minutes to piece together the family\'s sick puzzles and find a way out before the butcher comes back to finish his work.',
     icon: 'warehouse',
   },
   {
     name: 'Magician\'s Escape Room',
-    tagline: 'Can you escape?',
+    tagline: 'Can you escape before time runs out?',
     description:
       'Test your wits against the Magician\'s twisted puzzles in this immersive escape room experience.',
     icon: 'wand-2',
   },
   {
     name: 'Hayride',
-    tagline: 'A one-way trip into darkness',
+    tagline: 'Your descent begins the moment you leave your car.',
     description:
       'Your descent into the festival begins the moment you leave your car. This isn\'t just a ride from the parking lot—it\'s a one-way trip across an isolated, dark pasture where the boundary between our world and the supernatural wears dangerously thin.',
     icon: 'tractor',
@@ -139,7 +139,7 @@ export const labyrinthAttractions = [
     name: 'Cotton Candy Cauldron',
     tagline: 'Spun from the silk of your deepest nightmares…',
     description:
-      'Follow the sweet, hypnotic scent of burning sugar to our most twisted concession station. Looking suspiciously like thick, tangled cobwebs pulled straight from a crypt, this classic treat has been given a dark, eerie makeover.',
+      'Follow the sweet, hypnotic scent of burning sugar to our most twisted concession station, where the treats are sweet but the atmosphere is downright chilling. Looking suspiciously like thick, tangled cobwebs pulled straight from a crypt, this classic treat has been given a dark, eerie makeover. It\'s a sweet, fluffy reward for surviving the horrors of the night—or perhaps it\'s just bait to lure you closer.',
     price: '$3 per serving',
     icon: 'sparkles',
   },
@@ -151,6 +151,23 @@ export const labyrinthAttractions = [
     icon: 'utensils',
   },
 ];
+
+export const labyrinthWarningPoster = {
+  headline: 'WARNING',
+  subhead: 'READ THIS WARNING BEFORE ENTERING ANY OF THE ATTRACTIONS!',
+  footer: 'THERE ARE NO REFUNDS. ENTER AT YOUR OWN RISK!',
+  paragraphs: [
+    'THIS ATTRACTION RESERVES THE RIGHT TO REFUSE ADMISSION TO ANYONE.',
+    'YOU MAY EXPERIENCE INTENSE AUDIO, LIGHTING, EXTREME LOW VISIBILITY, STROBE LIGHTS, FOG, DAMP OR WET CONDITIONS, SPECIAL EFFECTS, SUDDEN ACTIONS, AND AN OVERALL PHYSICALLY DEMANDING ENVIRONMENT.',
+    'YOU SHOULD NOT ENTER A HAUNTED HOUSE IF YOU SUFFER FROM ASTHMA, HEART CONDITIONS, ARE PRONE TO SEIZURES, PHYSICAL AILMENTS, RESPIRATORY AILMENTS, OR ANY TYPE OF MEDICAL PROBLEM, OR ARE PREGNANT OR SUFFER FROM ANY FORM OF MENTAL DISEASE, INCLUDING CLAUSTROPHOBIA.',
+    'DO NOT ENTER THE ATTRACTION IF YOU ARE INTOXICATED, WEARING ANY FORM OF CAST, MEDICAL BRACE, ARE USING CRUTCHES, OR HAVE ANY TYPE OF PHYSICAL LIMITATION. DO NOT ENTER THE ATTRACTION IF YOU ARE TAKING MEDICATION OR USING DRUGS OF ANY TYPE.',
+    'YOU WILL NOT BE ADMITTED IF THESE CONDITIONS ARE NOTICED BY STAFF.',
+    'DO NOT SMOKE, RUN, EAT, OR DRINK INSIDE THE ATTRACTIONS.',
+    'DO NOT TOUCH THE ACTORS, CUSTOMERS, OR PROPS INSIDE THE ATTRACTIONS.',
+    'NO VIDEO OR FLASH PHOTOGRAPHY MAY BE TAKEN INSIDE THE ATTRACTIONS.',
+    'YOU WILL NOT BE ADMITTED, OR YOU MAY BE ASKED TO LEAVE THE PROPERTY, IF ANY OF THE RULES ARE NOT FOLLOWED, OR FOR ANY REASON WHATSOEVER.',
+  ],
+};
 
 export const labyrinthWarnings = [
   {

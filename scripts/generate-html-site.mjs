@@ -38,6 +38,7 @@ const {
   labyrinthTickets,
   labyrinthAttractions,
   labyrinthWarnings,
+  labyrinthWarningPoster,
   labyrinthFaq,
   specialEvents,
 } = labyrinth;
@@ -394,7 +395,7 @@ function ticketCard(ticket, theme, featured = false) {
   const warning = ticket.warning
     ? `<div class="alert-box mb-6">⚠ ${escapeHtml(ticket.warning)}</div>`
     : '';
-  const featuredClass = featured && theme === 'ipsh' ? ' ipsh-ticket-featured' : '';
+  const featuredClass = featured && theme === 'ipsh' ? ' ipsh-ticket-featured' : featured && theme === 'labyrinth' ? ' lab-ticket-featured' : '';
   return `<div class="card${featuredClass}">
   <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;flex-wrap:wrap;gap:0.5rem">
     <h3 class="card-title">${escapeHtml(ticket.name)}</h3>
@@ -420,14 +421,20 @@ function attractionsHtml(attractions, theme) {
         theme === 'ipsh'
           ? `<span class="ipsh-attraction-num">${String(index + 1).padStart(2, '0')}</span>`
           : '';
+      const labExtra =
+        theme === 'labyrinth'
+          ? `<span class="lab-attraction-num">${String(index + 1).padStart(2, '0')}</span>`
+          : '';
       const ipshClass = theme === 'ipsh' ? ' ipsh-attraction-card' : '';
-      return `<article class="card${ipshClass}">
-  ${ipshExtra}
+      const labClass = theme === 'labyrinth' ? ' lab-attraction-card' : '';
+      const titleClass = theme === 'ipsh' ? 'card-title font-cinzel' : 'card-title font-bebas';
+      return `<article class="card${ipshClass}${labClass}">
+  ${ipshExtra}${labExtra}
   <div class="card-row">
     <div class="card-icon">${emoji}</div>
     <div>
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:0.5rem;margin-bottom:0.5rem">
-        <h2 class="card-title font-cinzel">${escapeHtml(a.name)}</h2>
+        <h2 class="${titleClass}">${escapeHtml(a.name)}</h2>
         ${price}
       </div>
       <p class="${taglineClass}">${escapeHtml(a.tagline)}</p>
@@ -702,12 +709,25 @@ function generateLabyrinthAbout() {
     theme: 'labyrinth',
     assetPrefix: '../',
     body: `${heroBlock({ label: 'The Director', title: 'About Us', titleClass: 'page-title font-bebas' })}
+<div class="lab-ornament">☠ ☠ ☠</div>
 <section class="container-narrow">
-  <div class="card prose text-muted" style="font-size:1.125rem;line-height:1.75">
-    <p>Darian Butler's household runs on adrenaline and a healthy appreciation for a good scare. Drawn to the paranormal from a young age, her obsession with the macabre only deepened over time. Today, one of her and her husband's favorite pastimes is cueing up a retro B-movie for a night of campy creeps and laughs.</p>
-    <p>With a background in theater—both commanding the stage and pulling strings behind the scenes—Darian treats the world of haunts as the ultimate stage production. Having spent her adult life in the hospitality industry, she views immersive customer service as just another form of performance art.</p>
-    <p>Enter her role as the Director of Design for Payne's Labyrinth: the perfect culmination of her theatrical flair, hospitality roots, and lifelong love of things that go bump in the night.</p>
-    <p class="font-bebas text-center" style="color:var(--lab-orange);font-size:1.25rem;padding-top:1rem">She cordially invites you to step past the curtain and into the chaos—just don't expect her to hold your hand when the lights go out.</p>
+  <div class="card">
+    <div class="lab-story-card">
+      <p class="text-muted" style="font-size:1.0625rem;line-height:1.8"><strong style="color:var(--lab-orange)">Darian Butler's</strong> household runs on adrenaline and a healthy appreciation for a good scare. Drawn to the paranormal from a young age, her obsession with the macabre only deepened over time. Today, one of her and her husband's favorite pastimes is cueing up a retro B-movie for a night of campy creeps and laughs.</p>
+    </div>
+    <div class="lab-story-card">
+      <p class="text-muted" style="font-size:1.0625rem;line-height:1.8">With a background in theater—both commanding the stage and pulling strings behind the scenes—Darian treats the world of haunts as the ultimate stage production. Having spent her adult life in the hospitality industry, she views immersive customer service as just another form of performance art.</p>
+    </div>
+    <div class="lab-story-card">
+      <p class="text-muted" style="font-size:1.0625rem;line-height:1.8">Enter her role as the Director of Design for Payne's Labyrinth: the perfect culmination of her theatrical flair, hospitality roots, and lifelong love of things that go bump in the night.</p>
+    </div>
+    <blockquote class="lab-pull-quote">She cordially invites you to step past the curtain and into the chaos—just don't expect her to hold your hand when the lights go out.</blockquote>
+  </div>
+  <div class="lab-quick-links">
+    <a href="attractions.html" class="lab-quick-link"><span>🌀</span>Attractions</a>
+    <a href="tickets.html" class="lab-quick-link"><span>🎟</span>Tickets</a>
+    <a href="warnings.html" class="lab-quick-link"><span>⚠</span>Warnings</a>
+    <a href="hours.html" class="lab-quick-link"><span>🕐</span>Hours</a>
   </div>
   <div class="btn-group">
     <a href="attractions.html" class="btn btn-lab">Enter the Attractions</a>
@@ -733,10 +753,13 @@ function generateLabyrinthAttractions() {
 }
 
 function generateLabyrinthTickets() {
-  const notes = labyrinthTickets.notes
-    .map((n) => `<li style="display:flex;gap:0.5rem"><span style="color:var(--lab-orange)">•</span>${escapeHtml(n)}</li>`)
-    .join('');
-  const tickets = labyrinthTickets.tickets.map((t) => ticketCard(t, 'labyrinth')).join('\n');
+  const notes = labyrinthTickets.notes.map((n) => `<li>${escapeHtml(n)}</li>`).join('');
+  const regular = labyrinthTickets.tickets.filter((t) => t.id === 'regular');
+  const other = labyrinthTickets.tickets.filter((t) => t.id !== 'regular');
+  const tickets = [
+    ...regular.map((t) => ticketCard(t, 'labyrinth', true)),
+    ...other.map((t) => ticketCard(t, 'labyrinth')),
+  ].join('\n');
   const combo = labyrinthTickets.comboTickets.map((t) => ticketCard(t, 'labyrinth')).join('\n');
 
   return pageShell({
@@ -744,16 +767,19 @@ function generateLabyrinthTickets() {
     theme: 'labyrinth',
     assetPrefix: '../',
     body: `${heroBlock({
-      label: 'Plan Your Visit',
+      label: 'Face Your Fears',
       title: 'Tickets & Pricing',
       titleClass: 'page-title font-bebas',
     })}
 <section class="container">
-  <div class="card mb-6"><ul class="text-muted" style="font-size:0.875rem;list-style:none">${notes}</ul></div>
-  <h2 class="card-title font-bebas mb-6">Labyrinth Tickets</h2>
+  <div class="lab-notes-banner">
+    <h3>Important Information</h3>
+    <ul>${notes}</ul>
+  </div>
+  <h2 class="lab-section-head">Labyrinth Tickets</h2>
   <div class="card-grid card-grid-2 mb-6">${tickets}</div>
   <div class="divider text-center"><span style="color:var(--lab-orange)">☠</span></div>
-  <h2 class="card-title font-bebas mb-6">Combo &amp; Season Passes</h2>
+  <h2 class="lab-section-head">Combo &amp; Season Passes</h2>
   <div class="card-grid card-grid-2 mb-6">${combo}</div>
   <div class="btn-group"><a href="${escapeHtml(siteInfo.ticketsUrl)}" class="btn btn-lab">Purchase Tickets</a></div>
 </section>`,
@@ -771,7 +797,13 @@ function generateLabyrinthHours() {
       subtitle: 'September 18 – November 1, 2026',
       titleClass: 'page-title font-bebas',
     })}
-<section class="container-narrow">${hoursHtml(labyrinthHours, 'labyrinth')}</section>`,
+<section class="container-narrow">
+  <div class="lab-hours-banner">
+    <p>Fridays – Sundays · Evenings · Extended hours on Halloween</p>
+  </div>
+  ${hoursHtml(labyrinthHours, 'labyrinth')}
+  <div class="btn-group"><a href="tickets.html" class="btn btn-lab">Get Tickets</a></div>
+</section>`,
   });
 }
 
@@ -781,27 +813,32 @@ function generateLabyrinthFaq() {
     theme: 'labyrinth',
     assetPrefix: '../',
     body: `${heroBlock({
-      label: 'Got Questions?',
+      label: 'Before You Enter',
       title: 'Frequently Asked Questions',
       titleClass: 'page-title font-bebas',
     })}
-<section class="container-narrow"><div class="faq-list">${faqAccordion(labyrinthFaq)}</div></section>`,
+<section class="container-narrow">
+  <p class="lab-faq-intro">Everything you need to know before entering Payne's Labyrinth. Click any question below to expand the answer.</p>
+  <div class="faq-list">${faqAccordion(labyrinthFaq)}</div>
+  <div class="btn-group">
+    <a href="tickets.html" class="btn btn-lab">View Tickets</a>
+    <a href="warnings.html" class="btn btn-outline-lab">Read Warnings</a>
+  </div>
+</section>`,
   });
 }
 
 function generateLabyrinthWarnings() {
-  const cards = labyrinthWarnings
+  const posterBody = labyrinthWarningPoster.paragraphs
+    .map((p) => `<p>${escapeHtml(p)}</p>`)
+    .join('\n      ');
+
+  const extraCards = labyrinthWarnings
     .map((w) => {
       const cls = w.severity === 'high' ? 'warning-high' : 'warning-medium';
-      const icon = w.severity === 'high' ? '⚠️' : 'ℹ️';
       return `<div class="card ${cls}">
-  <div class="card-row">
-    <div class="card-icon">${icon}</div>
-    <div>
-      <h2 class="card-title">${escapeHtml(w.title)}</h2>
-      <p class="text-muted" style="font-size:0.875rem">${escapeHtml(w.content)}</p>
-    </div>
-  </div>
+  <h3 class="card-title font-bebas" style="font-size:1rem;letter-spacing:0.05em;margin-bottom:0.5rem">${escapeHtml(w.title)}</h3>
+  <p class="text-muted" style="font-size:0.875rem">${escapeHtml(w.content)}</p>
 </div>`;
     })
     .join('\n');
@@ -813,17 +850,27 @@ function generateLabyrinthWarnings() {
     body: `${heroBlock({
       label: 'Read Before Entering',
       title: 'Warnings',
-      subtitle: "Payne's Labyrinth is an intense haunted attraction. Please review all advisories before purchasing tickets.",
       titleClass: 'page-title font-bebas',
     })}
-<section class="container-narrow space-y">${cards}</section>`,
+<section class="container-narrow">
+  <div class="warning-poster">
+    <h2 class="warning-poster-title">${escapeHtml(labyrinthWarningPoster.headline)}</h2>
+    <p class="warning-poster-subhead">${escapeHtml(labyrinthWarningPoster.subhead)}</p>
+    <div class="warning-poster-body">
+      ${posterBody}
+    </div>
+    <p class="warning-poster-footer">${escapeHtml(labyrinthWarningPoster.footer)}</p>
+  </div>
+  <h2 class="lab-section-head" style="margin-top:2.5rem">Additional Advisories</h2>
+  <div class="space-y">${extraCards}</div>
+</section>`,
   });
 }
 
 function generateLabyrinthSpecialEvents() {
   const events = specialEvents
     .map(
-      (event, i) => `<article id="${EVENT_IDS[i]}" class="card text-center" style="padding:2.5rem;scroll-margin-top:6rem">
+      (event, i) => `<article id="${EVENT_IDS[i]}" class="card lab-event-card" style="scroll-margin-top:6rem">
   <p class="section-label">${escapeHtml(event.date)}</p>
   <h2 class="font-bebas" style="font-size:2rem;margin-bottom:1rem">${escapeHtml(event.name)}</h2>
   <span class="price-badge">🕐 ${escapeHtml(event.status)}</span>
@@ -841,7 +888,10 @@ function generateLabyrinthSpecialEvents() {
       subtitle: "The terror doesn't end when October does.",
       titleClass: 'page-title font-bebas',
     })}
-<section class="container-narrow space-y">${events}</section>`,
+<section class="container-narrow">
+  <div class="space-y">${events}</div>
+  <div class="btn-group"><a href="tickets.html" class="btn btn-lab">Get Tickets</a></div>
+</section>`,
   });
 }
 

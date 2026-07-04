@@ -342,3 +342,133 @@ main { flex: 1; }
 }
 .ipsh-quick-link:hover { border-color: var(--ipsh-gold); background: rgba(201,162,39,0.08); color: var(--ipsh-gold); }
 .ipsh-quick-link span { display: block; font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+/* ===== Payne's Labyrinth Premium Inner Pages ===== */
+.lab-ornament {
+  text-align: center; margin: 1.5rem 0 2rem; color: var(--lab-orange); font-size: 1.5rem; letter-spacing: 0.4em;
+}
+
+.lab-story-card {
+  border-left: 3px solid var(--lab-orange);
+  padding-left: 1.5rem; margin-bottom: 2rem;
+}
+
+.lab-pull-quote {
+  margin-top: 2rem; padding: 2rem; text-align: center;
+  border-top: 1px solid rgba(243,166,65,0.3); border-bottom: 1px solid rgba(243,166,65,0.3);
+  color: var(--lab-orange); font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.35rem; letter-spacing: 0.05em; line-height: 1.5;
+}
+
+.lab-attraction-card { position: relative; padding-left: 4.5rem !important; }
+.lab-attraction-num {
+  position: absolute; left: 1.5rem; top: 1.5rem;
+  width: 2.5rem; height: 2.5rem; border-radius: 0.25rem;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.05em;
+  background: rgba(243,166,65,0.12); border: 1px solid rgba(243,166,65,0.4);
+  color: var(--lab-orange);
+}
+
+.lab-section-head {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+  font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.05em;
+}
+.lab-section-head::before { content: ''; width: 2rem; height: 2px; background: var(--lab-orange); }
+
+.lab-notes-banner {
+  background: rgba(243,166,65,0.06); border: 1px solid rgba(243,166,65,0.25);
+  border-radius: 1rem; padding: 1.5rem 2rem; margin-bottom: 2.5rem;
+}
+.lab-notes-banner h3 {
+  font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.15em;
+  color: var(--lab-orange); margin-bottom: 1rem;
+}
+.lab-notes-banner ul { list-style: none; }
+.lab-notes-banner li {
+  display: flex; gap: 0.75rem; font-size: 0.875rem; opacity: 0.85; padding: 0.35rem 0;
+}
+.lab-notes-banner li::before { content: '☠'; color: var(--lab-orange); flex-shrink: 0; font-size: 0.75rem; }
+
+.lab-ticket-featured {
+  border-color: rgba(243,166,65,0.6) !important;
+  background: rgba(243,166,65,0.08) !important;
+  grid-column: 1 / -1;
+}
+@media (min-width: 768px) { .lab-ticket-featured { grid-column: span 2; } }
+
+.lab-hours-banner {
+  text-align: center; padding: 1.25rem; margin-bottom: 2rem;
+  border-radius: 0.75rem; background: rgba(243,166,65,0.08);
+  border: 1px solid rgba(243,166,65,0.25);
+}
+.lab-hours-banner p {
+  font-family: 'Bebas Neue', sans-serif; font-size: 1.125rem; letter-spacing: 0.05em;
+  color: var(--lab-orange);
+}
+
+.lab-faq-intro {
+  text-align: center; max-width: 36rem; margin: 0 auto 2.5rem;
+  opacity: 0.75; font-size: 0.9375rem; line-height: 1.7;
+}
+
+.lab-quick-links {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem; margin-top: 2.5rem;
+}
+.lab-quick-link {
+  text-align: center; padding: 1.25rem 1rem; border-radius: 0.75rem;
+  border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s;
+  font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.lab-quick-link:hover { border-color: var(--lab-orange); background: rgba(243,166,65,0.08); color: var(--lab-orange); }
+.lab-quick-link span { display: block; font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+.lab-event-card {
+  text-align: center; padding: 2.5rem 2rem !important;
+  border-color: rgba(243,166,65,0.2) !important;
+}
+.lab-event-card:hover { border-color: rgba(243,166,65,0.5) !important; }
+
+/* Warning Poster (CSS-only, no image) */
+.warning-poster {
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+  border: 2px solid rgba(243,166,65,0.4); border-radius: 1rem;
+  padding: 2.5rem 2rem; margin-bottom: 2rem;
+}
+.warning-poster::before {
+  content: ''; position: absolute; top: -20px; right: -20px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,200,200,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.warning-poster-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 10vw, 5rem);
+  color: var(--lab-orange); text-align: center;
+  letter-spacing: 0.1em; line-height: 1;
+  text-shadow: 0 0 30px rgba(243,166,65,0.4);
+  margin-bottom: 1rem;
+}
+.warning-poster-subhead {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+  color: var(--lab-orange); text-align: center;
+  letter-spacing: 0.05em; margin-bottom: 2rem;
+  padding-bottom: 1.5rem; border-bottom: 1px solid rgba(243,166,65,0.3);
+}
+.warning-poster-body p {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(0.6875rem, 1.8vw, 0.8125rem);
+  color: #e5e5e5; text-transform: uppercase;
+  letter-spacing: 0.03em; line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+.warning-poster-footer {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  color: var(--lab-orange); text-align: center;
+  letter-spacing: 0.08em; margin-top: 2rem;
+  padding-top: 1.5rem; border-top: 1px solid rgba(243,166,65,0.3);
+}
