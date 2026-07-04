@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" fill="#0a0a0a"/>
+  <!-- Spiderweb -->
+  <g stroke="#ffffff" stroke-width="0.8" opacity="0.25">
+    <line x1="200" y1="200" x2="200" y2="20"/>
+    <line x1="200" y1="200" x2="370" y2="80"/>
+    <line x1="200" y1="200" x2="380" y2="250"/>
+    <line x1="200" y1="200" x2="280" y2="380"/>
+    <line x1="200" y1="200" x2="120" y2="380"/>
+    <line x1="200" y1="200" x2="20" y2="250"/>
+    <line x1="200" y1="200" x2="30" y2="80"/>
+    <line x1="200" y1="200" x2="120" y2="30"/>
+    <ellipse cx="200" cy="200" rx="60" ry="60" fill="none"/>
+    <ellipse cx="200" cy="200" rx="120" ry="120" fill="none"/>
+    <ellipse cx="200" cy="200" rx="180" ry="180" fill="none"/>
+  </g>
+  <text x="200" y="175" text-anchor="middle" font-family="Bebas Neue, Impact, sans-serif" font-size="48" fill="#ffffff" letter-spacing="2">PAYNE'S</text>
+  <text x="200" y="240" text-anchor="middle" font-family="Bebas Neue, Impact, sans-serif" font-size="52" fill="#f3a641" letter-spacing="4">LABYRINTH</text>
+</svg>

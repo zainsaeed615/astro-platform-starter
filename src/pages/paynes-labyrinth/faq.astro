@@ -1,0 +1,18 @@
+---
+import LabyrinthLayout from '../../layouts/LabyrinthLayout.astro';
+import FaqAccordion from '../../components/FaqAccordion';
+import { labyrinthFaq } from '../../data/labyrinth';
+---
+
+<LabyrinthLayout title="FAQ | Payne's Labyrinth">
+  <section class="page-hero">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="section-label">Before You Enter</p>
+      <h1 class="text-4xl md:text-6xl font-bold font-[Bebas_Neue] tracking-wider text-white mb-4">Frequently Asked Questions</h1>
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 pb-20">
+    <FaqAccordion client:load items={labyrinthFaq} theme="labyrinth" />
+  </section>
+</LabyrinthLayout>

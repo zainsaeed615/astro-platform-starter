@@ -1,21 +1,92 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
-
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteInfo } from '../data/shared';
 ---
 
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-8" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
-</Layout>
+<BaseLayout title="Eerie Ever After Events | Home" description="Choose your adventure — Ichabod Payne's Sleepy Hollow or Payne's Labyrinth">
+  <div class="min-h-screen bg-[#0c0c0e]">
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-[#1a1510]/40 via-transparent to-[#0c0c0e]"></div>
+      <div class="absolute inset-0 opacity-20" style="background: radial-gradient(ellipse at 50% 0%, rgba(243,166,65,0.3), transparent 60%)"></div>
+
+      <div class="relative max-w-7xl mx-auto px-6 pt-16 pb-8 text-center">
+        <img
+          src="/images/eerie-ever-after-logo.svg"
+          alt="Eerie Ever After Events"
+          class="mx-auto h-20 md:h-28 w-auto mb-8"
+        />
+        <p class="text-gray-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+          Two worlds. One destination. Choose your path into the supernatural.
+        </p>
+      </div>
+    </section>
+
+    <!-- Portal Cards -->
+    <section class="max-w-6xl mx-auto px-6 py-12 md:py-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <!-- Sleepy Hollow -->
+        <a
+          href="/sleepy-hollow/about"
+          class="group relative overflow-hidden rounded-2xl border border-[#8b7355]/30 bg-gradient-to-br from-[#1a1510] to-[#2a2018] no-underline transition-all duration-500 hover:border-[#c9a227]/60 hover:shadow-2xl hover:shadow-[#c9a227]/10 hover:-translate-y-1"
+        >
+          <div class="absolute inset-0 bg-gradient-to-t from-[#1a1510] via-transparent to-transparent opacity-80"></div>
+          <div class="relative p-8 md:p-10">
+            <img
+              src="/images/sleepy-hollow-logo.svg"
+              alt="Ichabod Payne's Sleepy Hollow"
+              class="w-full max-w-[280px] mx-auto mb-6 rounded-xl shadow-lg transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+            <p class="text-center text-[#c9a227] text-xs uppercase tracking-[0.25em] font-semibold mb-2">Family Adventure</p>
+            <h2 class="text-center text-2xl md:text-3xl font-bold text-[#f4ead5] font-[Cinzel] mb-3">Ichabod Payne's Sleepy Hollow</h2>
+            <p class="text-center text-[#f4ead5]/60 text-sm leading-relaxed mb-6">
+              Explore the legends. Family-friendly Halloween adventures, carnival games, and immersive themed attractions.
+            </p>
+            <div class="flex justify-center">
+              <span class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#c9a227] text-[#1a1510] font-semibold text-sm transition-all group-hover:bg-[#d4b23a]">
+                Click here to enter →
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Payne's Labyrinth -->
+        <a
+          href="/paynes-labyrinth/about"
+          class="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#0a0a0a] to-[#1a1010] no-underline transition-all duration-500 hover:border-[#f3a641]/50 hover:shadow-2xl hover:shadow-[#f3a641]/10 hover:-translate-y-1"
+        >
+          <div class="absolute inset-0 opacity-30 web-pattern"></div>
+          <div class="relative p-8 md:p-10">
+            <img
+              src="/images/paynes-labyrinth-logo.svg"
+              alt="Payne's Labyrinth"
+              class="w-full max-w-[280px] mx-auto mb-6 rounded-xl shadow-lg transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+            <p class="text-center text-[#f3a641] text-xs uppercase tracking-[0.25em] font-semibold mb-2">Intense Horror</p>
+            <h2 class="text-center text-2xl md:text-3xl font-bold text-white font-[Bebas_Neue] tracking-wider mb-3">Payne's Labyrinth</h2>
+            <p class="text-center text-gray-400 text-sm leading-relaxed mb-6">
+              Step past the curtain into chaos. A living nightmare of haunted attractions for the brave.
+            </p>
+            <div class="flex justify-center">
+              <span class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#f3a641] text-black font-semibold text-sm transition-all group-hover:bg-[#ffb85c]">
+                Click here to enter →
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Quick Info -->
+    <section class="max-w-4xl mx-auto px-6 pb-20 text-center">
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-8 md:p-10">
+        <h3 class="text-lg font-semibold text-white mb-4">Plan Your Visit</h3>
+        <p class="text-gray-400 text-sm mb-6">{siteInfo.address.full}</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href={siteInfo.ticketsUrl} class="btn-primary-labyrinth text-sm">Get Tickets</a>
+          <a href={`tel:${siteInfo.phone}`} class="btn-outline-labyrinth text-sm">{siteInfo.phone}</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

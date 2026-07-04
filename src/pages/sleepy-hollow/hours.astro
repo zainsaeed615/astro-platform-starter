@@ -1,0 +1,29 @@
+---
+import SleepyHollowLayout from '../../layouts/SleepyHollowLayout.astro';
+import { sleepyHollowHours } from '../../data/sleepy-hollow';
+---
+
+<SleepyHollowLayout title="Hours of Operation | Ichabod Payne's Sleepy Hollow">
+  <section class="page-hero">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="section-label">When We Open</p>
+      <h1 class="text-4xl md:text-5xl font-bold font-[Cinzel] text-[#f4ead5] mb-4">Hours of Operation</h1>
+      <p class="text-[#f4ead5]/60">September 19 – October 31, 2026</p>
+    </div>
+  </section>
+
+  <section class="max-w-2xl mx-auto px-6 pb-20">
+    <div class="content-card overflow-hidden p-0">
+      <div class="grid grid-cols-[1fr_auto] gap-4 px-6 py-4 bg-[#c9a227]/10 border-b border-[#8b7355]/30 text-xs uppercase tracking-wider font-semibold text-[#c9a227]">
+        <span>Date</span>
+        <span>Hours</span>
+      </div>
+      {sleepyHollowHours.map((row, i) => (
+        <div class={`grid grid-cols-[1fr_auto] gap-4 px-6 py-4 ${i % 2 === 0 ? '' : 'bg-[#f4ead5]/3'} ${row.date.includes('October 31') ? 'bg-[#c9a227]/10 font-semibold' : ''}`}>
+          <span class="text-[#f4ead5]">{row.date}</span>
+          <span class="text-[#c9a227] font-medium whitespace-nowrap">{row.hours}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+</SleepyHollowLayout>

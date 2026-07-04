@@ -1,0 +1,74 @@
+---
+import LabyrinthLayout from '../../layouts/LabyrinthLayout.astro';
+import { labyrinthTickets } from '../../data/labyrinth';
+import { siteInfo } from '../../data/shared';
+---
+
+<LabyrinthLayout title="Tickets & Pricing | Payne's Labyrinth">
+  <section class="page-hero">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="section-label">Face Your Fears</p>
+      <h1 class="text-4xl md:text-6xl font-bold font-[Bebas_Neue] tracking-wider text-white mb-4">Tickets & Pricing</h1>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 pb-8">
+    <div class="content-card mb-8">
+      <ul class="space-y-2 text-gray-400 text-sm">
+        {labyrinthTickets.notes.map((note) => (
+          <li class="flex gap-2"><span class="text-[#f3a641]">•</span>{note}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="labyrinth" class="max-w-5xl mx-auto px-6 pb-12 scroll-mt-24">
+    <h2 class="text-2xl font-bold font-[Bebas_Neue] tracking-wide text-white mb-6 flex items-center gap-3">
+      <span class="w-8 h-px bg-[#f3a641]"></span> Labyrinth Tickets
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {labyrinthTickets.tickets.filter(t => t.id !== 'fast-pass').map((ticket) => (
+        <div class="content-card">
+          <div class="flex items-start justify-between mb-4">
+            <h3 class="text-xl font-bold text-white">{ticket.name}</h3>
+            {ticket.badge && <span class="text-xs font-bold uppercase tracking-wider text-[#f3a641] bg-[#f3a641]/10 px-2 py-1 rounded">{ticket.badge}</span>}
+          </div>
+          <p class="text-3xl font-bold text-[#f3a641] mb-1">{ticket.price}{ticket.per && <span class="text-base font-normal text-gray-500 ml-1">{ticket.per}</span>}</p>
+          <p class="text-gray-400 text-sm leading-relaxed">{ticket.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="combo" class="max-w-5xl mx-auto px-6 pb-12 scroll-mt-24">
+    <div class="ornate-divider"><span class="text-[#f3a641]">☠</span></div>
+    <h2 class="text-2xl font-bold font-[Bebas_Neue] tracking-wide text-white mb-6 flex items-center gap-3">
+      <span class="w-8 h-px bg-[#f3a641]"></span> Combo & Season Passes
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {labyrinthTickets.comboTickets.map((ticket) => (
+        <div class="content-card">
+          <h3 class="text-xl font-bold text-white mb-2">{ticket.name}</h3>
+          <p class="text-3xl font-bold text-[#f3a641] mb-1">{ticket.price}{ticket.per && <span class="text-base font-normal text-gray-500 ml-1">{ticket.per}</span>}</p>
+          <p class="text-gray-400 text-sm leading-relaxed">{ticket.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="fast-pass" class="max-w-5xl mx-auto px-6 pb-20 scroll-mt-24">
+    <h2 class="text-2xl font-bold font-[Bebas_Neue] tracking-wide text-white mb-6 flex items-center gap-3">
+      <span class="w-8 h-px bg-[#f3a641]"></span> Fast Pass
+    </h2>
+    {labyrinthTickets.tickets.filter(t => t.id === 'fast-pass').map((ticket) => (
+      <div class="content-card border-[#f3a641]/30">
+        <h3 class="text-xl font-bold text-white mb-2">{ticket.name}</h3>
+        <p class="text-3xl font-bold text-[#f3a641] mb-3">{ticket.price}</p>
+        <p class="text-gray-400 text-sm leading-relaxed">{ticket.description}</p>
+      </div>
+    ))}
+    <div class="text-center mt-10">
+      <a href={siteInfo.ticketsUrl} class="btn-primary-labyrinth">Purchase Tickets</a>
+    </div>
+  </section>
+</LabyrinthLayout>

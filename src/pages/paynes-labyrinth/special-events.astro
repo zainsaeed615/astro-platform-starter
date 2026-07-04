@@ -1,0 +1,29 @@
+---
+import LabyrinthLayout from '../../layouts/LabyrinthLayout.astro';
+import { specialEvents } from '../../data/labyrinth';
+
+const eventIds = ['friday-13th', 'black-friday', 'new-years-eve', 'bloody-valentine'];
+---
+
+<LabyrinthLayout title="Special Events | Payne's Labyrinth">
+  <section class="page-hero">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="section-label">Beyond the Season</p>
+      <h1 class="text-4xl md:text-6xl font-bold font-[Bebas_Neue] tracking-wider text-white mb-4">Special Events</h1>
+      <p class="text-gray-400">The terror doesn't end when October does.</p>
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 pb-20 space-y-6">
+    {specialEvents.map((event, i) => (
+      <article id={eventIds[i]} class="content-card scroll-mt-24 text-center py-10">
+        <p class="section-label">{event.date}</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-[Bebas_Neue] tracking-wider text-white mb-4">{event.name}</h2>
+        <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#f3a641]/30 bg-[#f3a641]/5 text-[#f3a641] text-sm font-medium">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          {event.status}
+        </div>
+      </article>
+    ))}
+  </section>
+</LabyrinthLayout>

@@ -1,0 +1,48 @@
+---
+import LabyrinthLayout from '../../layouts/LabyrinthLayout.astro';
+import { labyrinthAttractions } from '../../data/labyrinth';
+
+const iconPaths: Record<string, string> = {
+  route: 'M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7',
+  warehouse: 'M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6M9 9h.01M15 9h.01M9 13h.01M15 13h.01',
+  'wand-2': 'M15 4V2M15 16v-2M8 9h2M18 9h2M12 18l-2-2M12 6L10 4M3 21l9-9M12 6l2-2',
+  tractor: 'M14 18V6a2 2 0 00-2-2H4a2 2 0 00-2 2v11M14 18H2M14 18h2a2 2 0 002-2v-3.65M22 18h-2M18 18V9a2 2 0 00-2-2h-1M6 18a2 2 0 100-4 2 2 0 000 4zM18 18a2 2 0 100-4 2 2 0 000 4z',
+  eye: 'M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8zM12 15a3 3 0 100-6 3 3 0 000 6z',
+  sparkles: 'M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z',
+  utensils: 'M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2M7 2v20M21 15V2v0a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zM21 15v7',
+};
+---
+
+<LabyrinthLayout title="Attractions | Payne's Labyrinth">
+  <section class="page-hero">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="section-label">Enter If You Dare</p>
+      <h1 class="text-4xl md:text-6xl font-bold font-[Bebas_Neue] tracking-wider text-white mb-4">Attractions</h1>
+      <p class="text-gray-400 max-w-2xl mx-auto">Each corridor holds a new terror. Each night, the nightmare evolves.</p>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 pb-20 space-y-6">
+    {labyrinthAttractions.map((attraction) => (
+      <article class="content-card group">
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="shrink-0 w-14 h-14 rounded-xl bg-[#f3a641]/10 border border-[#f3a641]/30 flex items-center justify-center">
+            <svg class="w-7 h-7 text-[#f3a641]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[attraction.icon] || iconPaths.route} />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+              <h2 class="text-2xl font-bold font-[Bebas_Neue] tracking-wide text-white">{attraction.name}</h2>
+              {attraction.price && (
+                <span class="text-sm font-semibold text-[#f3a641] bg-[#f3a641]/10 px-3 py-1 rounded-full">{attraction.price}</span>
+              )}
+            </div>
+            <p class="text-[#f3a641] text-lg mb-3 tracking-wide">{attraction.tagline}</p>
+            <p class="text-gray-400 leading-relaxed">{attraction.description}</p>
+          </div>
+        </div>
+      </article>
+    ))}
+  </section>
+</LabyrinthLayout>

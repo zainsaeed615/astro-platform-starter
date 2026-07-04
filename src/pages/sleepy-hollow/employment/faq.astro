@@ -1,0 +1,21 @@
+---
+import SleepyHollowLayout from '../../../layouts/SleepyHollowLayout.astro';
+import FaqAccordion from '../../../components/FaqAccordion';
+import { employmentFaq } from '../../../data/shared';
+---
+
+<SleepyHollowLayout title="Employment FAQ | Ichabod Payne's Sleepy Hollow">
+  <section class="page-hero">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="section-label">Working With Us</p>
+      <h1 class="text-4xl md:text-5xl font-bold font-[Cinzel] text-[#f4ead5] mb-4">Employment FAQ</h1>
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 pb-20">
+    <FaqAccordion client:load items={employmentFaq} theme="ipsh" />
+    <div class="text-center mt-10">
+      <a href="/sleepy-hollow/employment" class="btn-primary-ipsh">Apply Now</a>
+    </div>
+  </section>
+</SleepyHollowLayout>

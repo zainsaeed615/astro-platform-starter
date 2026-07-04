@@ -1,0 +1,46 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import AttractionNav from '../components/AttractionNav';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+
+const navLinks = [
+  { label: 'About Us', href: '/sleepy-hollow/about' },
+  { label: 'Attractions', href: '/sleepy-hollow/attractions' },
+  {
+    label: 'Tickets & Pricing',
+    items: [
+      { label: 'Sleepy Hollow Tickets', href: '/sleepy-hollow/tickets#sleepy-hollow' },
+      { label: 'Combo & Season Passes', href: '/sleepy-hollow/tickets#combo' },
+      { label: 'Fast Pass', href: '/sleepy-hollow/tickets#fast-pass' },
+    ],
+  },
+  { label: 'Hours', href: '/sleepy-hollow/hours' },
+  {
+    label: 'Employment',
+    items: [
+      { label: 'Apply Now', href: '/sleepy-hollow/employment' },
+      { label: 'Employment FAQ', href: '/sleepy-hollow/employment/faq' },
+    ],
+  },
+  { label: 'FAQ', href: '/sleepy-hollow/faq' },
+  { label: 'Weather Policy', href: '/sleepy-hollow/weather' },
+];
+---
+
+<BaseLayout title={title} description={description} themeClass="theme-ipsh">
+  <AttractionNav
+    slot="nav"
+    client:load
+    brand="Ichabod Payne's Sleepy Hollow"
+    brandHref="/sleepy-hollow/about"
+    links={navLinks}
+    theme="ipsh"
+  />
+  <slot />
+</BaseLayout>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" fill="none">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f3a641"/>
+      <stop offset="100%" style="stop-color:#c9a227"/>
+    </linearGradient>
+  </defs>
+  <text x="200" y="45" text-anchor="middle" font-family="Cinzel, serif" font-size="28" font-weight="700" fill="url(#gold)">EERIE EVER AFTER</text>
+  <text x="200" y="75" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" letter-spacing="6" fill="#9ca3af">EVENTS</text>
+  <path d="M80 95 L320 95" stroke="#f3a641" stroke-width="1" opacity="0.5"/>
+  <circle cx="200" cy="95" r="3" fill="#f3a641"/>
+</svg>

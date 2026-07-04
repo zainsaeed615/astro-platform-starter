@@ -1,0 +1,56 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import AttractionNav from '../components/AttractionNav';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+
+const navLinks = [
+  { label: 'About Us', href: '/paynes-labyrinth/about' },
+  { label: 'Attractions', href: '/paynes-labyrinth/attractions' },
+  {
+    label: 'Tickets & Pricing',
+    items: [
+      { label: 'Labyrinth Tickets', href: '/paynes-labyrinth/tickets#labyrinth' },
+      { label: 'Combo & Season Passes', href: '/paynes-labyrinth/tickets#combo' },
+      { label: 'Fast Pass', href: '/paynes-labyrinth/tickets#fast-pass' },
+    ],
+  },
+  { label: 'Hours', href: '/paynes-labyrinth/hours' },
+  { label: 'Warnings', href: '/paynes-labyrinth/warnings' },
+  { label: 'FAQ', href: '/paynes-labyrinth/faq' },
+  { label: 'Weather Policy', href: '/paynes-labyrinth/weather' },
+  {
+    label: 'Employment',
+    items: [
+      { label: 'Apply Now', href: '/paynes-labyrinth/employment' },
+      { label: 'Employment FAQ', href: '/paynes-labyrinth/employment/faq' },
+    ],
+  },
+  {
+    label: 'Special Events',
+    items: [
+      { label: 'Friday the 13th', href: '/paynes-labyrinth/special-events#friday-13th' },
+      { label: 'Black Friday', href: '/paynes-labyrinth/special-events#black-friday' },
+      { label: "New Year's Eve", href: '/paynes-labyrinth/special-events#new-years-eve' },
+      { label: 'Bloody Valentine', href: '/paynes-labyrinth/special-events#bloody-valentine' },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description} themeClass="theme-labyrinth web-pattern">
+  <AttractionNav
+    slot="nav"
+    client:load
+    brand="Payne's Labyrinth"
+    brandHref="/paynes-labyrinth/about"
+    links={navLinks}
+    theme="labyrinth"
+  />
+  <slot />
+</BaseLayout>

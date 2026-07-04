@@ -1,0 +1,29 @@
+---
+import LabyrinthLayout from '../../layouts/LabyrinthLayout.astro';
+import { labyrinthHours } from '../../data/labyrinth';
+---
+
+<LabyrinthLayout title="Hours of Operation | Payne's Labyrinth">
+  <section class="page-hero">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="section-label">When Darkness Falls</p>
+      <h1 class="text-4xl md:text-6xl font-bold font-[Bebas_Neue] tracking-wider text-white mb-4">Hours of Operation</h1>
+      <p class="text-gray-400">September 18 – November 1, 2026</p>
+    </div>
+  </section>
+
+  <section class="max-w-2xl mx-auto px-6 pb-20">
+    <div class="content-card overflow-hidden p-0">
+      <div class="grid grid-cols-[1fr_auto] gap-4 px-6 py-4 bg-[#f3a641]/10 border-b border-white/10 text-xs uppercase tracking-wider font-semibold text-[#f3a641]">
+        <span>Date</span>
+        <span>Hours</span>
+      </div>
+      {labyrinthHours.map((row, i) => (
+        <div class={`grid grid-cols-[1fr_auto] gap-4 px-6 py-4 ${i % 2 === 0 ? '' : 'bg-white/3'} ${row.date === 'HALLOWEEN' ? 'bg-[#f3a641]/15 font-bold text-[#f3a641]' : ''}`}>
+          <span class="text-white">{row.date}</span>
+          <span class="text-[#f3a641] font-medium whitespace-nowrap">{row.hours}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+</LabyrinthLayout>
