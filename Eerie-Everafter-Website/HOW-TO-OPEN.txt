@@ -1,21 +1,26 @@
 EERIE EVER AFTER EVENTS - WEBSITE
 ==================================
 
-1. Double-click "index.html" to open the home page in your browser.
+HOW TO OPEN:
+1. Double-click "index.html" — website browser mein khul jayegi.
 
-2. Folder structure:
-   - index.html              = Home page (start here)
-   - sleepy-hollow/          = Ichabod Payne's Sleepy Hollow (8 pages)
-   - paynes-labyrinth/       = Payne's Labyrinth (10 pages)
-   - css/                    = Styles
-   - js/                     = Navigation & forms
-   - images/                 = Logos (home page only)
+FOLDER STRUCTURE:
+├── index.html                 ← Home page (yahan se start karein)
+├── sleepy-hollow/             ← Ichabod Payne's Sleepy Hollow (8 pages)
+├── paynes-labyrinth/          ← Payne's Labyrinth (10 pages)
+├── css/                       ← Styles
+├── js/                        ← Navigation & forms
+└── images/                    ← Logos (sirf home page par)
 
-3. Payne's Labyrinth pages:
-   - about.html, attractions.html, tickets.html, hours.html
-   - faq.html, warnings.html, weather.html
-   - employment.html, employment-faq.html, special-events.html
+PAYNE'S LABYRINTH PAGES:
+  about.html | attractions.html | tickets.html | hours.html
+  faq.html | warnings.html | special-events.html | weather.html
+  employment.html | employment-faq.html
 
-4. To upload to your web host: upload this entire folder.
+SLEEPY HOLLOW PAGES:
+  about.html | attractions.html | tickets.html | hours.html
+  faq.html | weather.html | employment.html | employment-faq.html
 
-5. Contact: 903-503-5181 | eerie.ever.after.events@gmail.com
+WEB HOSTING: Poora folder upload karein (cPanel, Netlify, etc.)
+
+CONTACT: 903-503-5181 | eerie.ever.after.events@gmail.com
