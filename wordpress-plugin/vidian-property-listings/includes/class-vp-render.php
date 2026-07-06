@@ -133,6 +133,11 @@ class VP_Render {
 		$gallery_ids= $gallery_m ? explode( ',', $gallery_m ) : array();
 		$is_dubai = stripos( $location, 'Dubai' ) !== false;
 		$market_title = $is_dubai ? 'Dubai Investments' : 'UK Investments';
+		$visual_photos = array_values( $remote_photos );
+		$overview_image = $visual_photos[1] ?? $feat_img;
+		$highlights_image = $visual_photos[2] ?? $feat_img;
+		$amenities_image = $visual_photos[3] ?? $feat_img;
+		$location_image = $visual_photos[4] ?? $feat_img;
 
 		ob_start();
 		?>
@@ -200,19 +205,55 @@ class VP_Render {
 			</div>
 			<?php endif; ?>
 
-			<div class="vp-details-body">
+			<div class="vp-details-body vp-details-body--modern">
 				<div class="vp-details-main">
 					<?php if ( $overview ) : ?>
-						<h2><?php echo esc_html( $overview_label ); ?></h2><div class="vp-overview"><?php echo wp_kses_post( wpautop( $overview ) ); ?></div>
+						<section class="vp-visual-section vp-visual-section--overview">
+							<div class="vp-visual-copy">
+								<span class="vp-section-kicker">Investment Detail</span>
+								<h2><?php echo esc_html( $overview_label ); ?></h2>
+								<div class="vp-overview"><?php echo wp_kses_post( wpautop( $overview ) ); ?></div>
+							</div>
+							<?php if ( $overview_image ) : ?>
+								<div class="vp-visual-image" style="background-image:url('<?php echo esc_url( $overview_image ); ?>');"></div>
+							<?php endif; ?>
+						</section>
 					<?php endif; ?>
 					<?php if ( ! empty( $dev ) ) : ?>
-						<h2><?php echo esc_html( $dev_label ); ?></h2><?php echo self::icon_list( $dev, 'dashicons-marker' ); ?>
+						<section class="vp-visual-section vp-visual-section--reverse">
+							<?php if ( $highlights_image ) : ?>
+								<div class="vp-visual-image" style="background-image:url('<?php echo esc_url( $highlights_image ); ?>');"></div>
+							<?php endif; ?>
+							<div class="vp-visual-copy">
+								<span class="vp-section-kicker">At A Glance</span>
+								<h2><?php echo esc_html( $dev_label ); ?></h2>
+								<?php echo self::icon_list( $dev, 'dashicons-marker' ); ?>
+							</div>
+						</section>
 					<?php endif; ?>
 					<?php if ( ! empty( $amenities ) ) : ?>
-						<h2><?php echo esc_html( $amenities_label ); ?></h2><?php echo self::icon_list( $amenities, 'dashicons-yes' ); ?>
+						<section class="vp-visual-section vp-visual-section--amenities">
+							<div class="vp-visual-copy">
+								<span class="vp-section-kicker">Lifestyle</span>
+								<h2><?php echo esc_html( $amenities_label ); ?></h2>
+								<?php echo self::icon_list( $amenities, 'dashicons-yes' ); ?>
+							</div>
+							<?php if ( $amenities_image ) : ?>
+								<div class="vp-visual-image" style="background-image:url('<?php echo esc_url( $amenities_image ); ?>');"></div>
+							<?php endif; ?>
+						</section>
 					<?php endif; ?>
 					<?php if ( ! empty( $loc_high ) ) : ?>
-						<h2><?php echo esc_html( $location_label_heading ); ?></h2><?php echo self::icon_list( $loc_high, 'dashicons-location' ); ?>
+						<section class="vp-visual-section vp-visual-section--location vp-visual-section--reverse">
+							<?php if ( $location_image ) : ?>
+								<div class="vp-visual-image" style="background-image:url('<?php echo esc_url( $location_image ); ?>');"></div>
+							<?php endif; ?>
+							<div class="vp-visual-copy">
+								<span class="vp-section-kicker">Location</span>
+								<h2><?php echo esc_html( $location_label_heading ); ?></h2>
+								<?php echo self::icon_list( $loc_high, 'dashicons-location' ); ?>
+							</div>
+						</section>
 					<?php endif; ?>
 				</div>
 
