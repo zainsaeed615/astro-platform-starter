@@ -31,18 +31,27 @@ class Autoloader {
 	 * @param string $class Class name.
 	 */
 	public static function autoload( string $class ): void {
-		$prefix   = 'SacredSpaces\\Booking\\';
-		$base_dir = SSB_PLUGIN_DIR . 'includes/classes/';
+		$prefix = 'SacredSpaces\\Booking\\';
 
 		if ( strncmp( $prefix, $class, strlen( $prefix ) ) !== 0 ) {
 			return;
 		}
 
 		$relative = substr( $class, strlen( $prefix ) );
-		$file     = $base_dir . str_replace( '\\', '/', $relative ) . '.php';
 
-		if ( file_exists( $file ) ) {
-			require_once $file;
+		// PSR-4 classes under includes/classes/.
+		$psr4_file = SSB_PLUGIN_DIR . 'includes/classes/' . str_replace( '\\', '/', $relative ) . '.php';
+		if ( file_exists( $psr4_file ) ) {
+			require_once $psr4_file;
+			return;
+		}
+
+		// Core bootstrap classes: includes/class-{name}.php (e.g. Plugin, Activator).
+		if ( false === strpos( $relative, '\\' ) ) {
+			$legacy_file = SSB_PLUGIN_DIR . 'includes/class-' . strtolower( $relative ) . '.php';
+			if ( file_exists( $legacy_file ) ) {
+				require_once $legacy_file;
+			}
 		}
 	}
 }

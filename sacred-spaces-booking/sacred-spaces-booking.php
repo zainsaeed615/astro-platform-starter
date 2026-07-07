@@ -5,7 +5,7 @@
  * Description:       A luxury booking experience for Sacred Spaces by Sharon — intentional design consultations and private client experiences.
  * Version:           1.0.0
  * Requires at least: 6.0
- * Requires PHP:      8.2
+ * Requires PHP:      8.0
  * Author:            Sacred Spaces by Sharon
  * Author URI:        https://sacredspacesbysharon.com
  * License:           GPL-2.0-or-later
@@ -31,6 +31,9 @@ define( 'SSB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SSB_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 require_once SSB_PLUGIN_DIR . 'includes/class-autoloader.php';
+require_once SSB_PLUGIN_DIR . 'includes/class-activator.php';
+require_once SSB_PLUGIN_DIR . 'includes/class-deactivator.php';
+require_once SSB_PLUGIN_DIR . 'includes/class-plugin.php';
 
 Autoloader::register();
 
