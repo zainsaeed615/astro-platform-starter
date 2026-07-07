@@ -3,7 +3,7 @@
  * Plugin Name:       Sacred Spaces Booking
  * Plugin URI:        https://sacredspacesbysharon.com
  * Description:       A luxury booking experience for Sacred Spaces by Sharon — intentional design consultations and private client experiences.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.0
  * Requires PHP:      8.0
  * Author:            Sacred Spaces by Sharon
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SSB_VERSION', '1.0.0' );
+define( 'SSB_VERSION', '1.0.1' );
 define( 'SSB_PLUGIN_FILE', __FILE__ );
 define( 'SSB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SSB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

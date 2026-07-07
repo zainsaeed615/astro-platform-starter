@@ -602,6 +602,10 @@
 }
 
 /* Loading */
+.ssb-loading[hidden] {
+	display: none !important;
+}
+
 .ssb-loading {
 	position: fixed;
 	inset: 0;

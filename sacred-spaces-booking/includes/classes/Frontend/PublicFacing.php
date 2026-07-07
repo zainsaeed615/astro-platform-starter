@@ -102,6 +102,35 @@ class PublicFacing {
 			'paymentReturn' => $this->get_payment_return_state(),
 			'i18n'          => $this->get_i18n_strings(),
 			'steps'         => $this->get_step_labels(),
+			'services'      => $this->format_services_for_js(),
+		);
+	}
+
+	/**
+	 * Format services for JavaScript.
+	 *
+	 * @return array<int, array<string, mixed>>
+	 */
+	private function format_services_for_js(): array {
+		$services = ( new ServiceRepository() )->get_active();
+
+		return array_map(
+			static function ( $s ) {
+				return array(
+					'id'                 => (int) $s->id,
+					'name'               => $s->name,
+					'slug'               => $s->slug,
+					'description'        => $s->description,
+					'investment_display' => $s->investment_display,
+					'investment_min'     => $s->investment_min ? (float) $s->investment_min : null,
+					'investment_max'     => $s->investment_max ? (float) $s->investment_max : null,
+					'duration_minutes'   => (int) $s->duration_minutes,
+					'payment_mode'       => $s->payment_mode,
+					'payment_amount'     => $s->payment_amount ? (float) $s->payment_amount : null,
+					'locations'          => explode( ',', $s->locations ),
+				);
+			},
+			$services
 		);
 	}
 

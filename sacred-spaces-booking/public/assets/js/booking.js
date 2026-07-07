@@ -54,15 +54,27 @@
 	const loading = $('#ssb-loading');
 
 	/* ── API ── */
-	async function api(path, options = {}) {
+	async function api(path, options = {}, timeoutMs = 12000) {
 		const url = `${config.restUrl}${path}`;
 		const headers = { 'Content-Type': 'application/json' };
 		if (config.nonce) headers['X-WP-Nonce'] = config.nonce;
 
-		const res = await fetch(url, { ...options, headers });
-		const data = await res.json().catch(() => ({}));
-		if (!res.ok) throw new Error(data.message || i18n.error);
-		return data;
+		const controller = new AbortController();
+		const timer = setTimeout(() => controller.abort(), timeoutMs);
+
+		try {
+			const res = await fetch(url, { ...options, headers, signal: controller.signal });
+			const data = await res.json().catch(() => ({}));
+			if (!res.ok) throw new Error(data.message || i18n.error);
+			return data;
+		} catch (err) {
+			if (err.name === 'AbortError') {
+				throw new Error(i18n.error || 'Request timed out. Please try again.');
+			}
+			throw err;
+		} finally {
+			clearTimeout(timer);
+		}
 	}
 
 	function showLoading(show) {
@@ -642,14 +654,22 @@
 		return $$('.ssb-service-option[data-service-id]', panelsEl).map((btn) => ({
 			id: parseInt(btn.dataset.serviceId, 10),
 			name: $('.ssb-service-option__name', btn)?.textContent?.trim() || '',
+			slug: btn.dataset.slug || '',
 			investment_display: $('.ssb-service-option__investment', btn)?.textContent?.trim() || '',
 			description: $('.ssb-service-option__desc', btn)?.textContent?.trim() || '',
 			duration_minutes: parseInt($('.ssb-service-option__meta', btn)?.textContent, 10) || 90,
-			payment_mode: 'none',
-			payment_amount: null,
-			locations: ['virtual', 'in_home'],
-			slug: ''
+			payment_mode: btn.dataset.paymentMode || 'none',
+			payment_amount: btn.dataset.paymentAmount ? parseFloat(btn.dataset.paymentAmount) : null,
+			locations: (btn.dataset.locations || 'virtual,in_home').split(',').map((l) => l.trim()).filter(Boolean)
 		}));
+	}
+
+	function loadServices() {
+		if (Array.isArray(config.services) && config.services.length) {
+			state.services = config.services;
+			return;
+		}
+		state.services = parseServicesFromDom();
 	}
 
 	async function init() {
@@ -667,51 +687,29 @@
 			}
 		});
 
+		loadServices();
+
 		const initialPanel = $('.ssb-panel[data-step="0"]', panelsEl);
 		if (initialPanel) {
 			bindPanelEvents(initialPanel);
 			state.step = 0;
 			renderProgress();
 			updateNextButton();
+		} else if (state.services.length) {
+			renderProgress();
+			goToStep(0);
 		}
 
-		showLoading(true);
-		try {
-			if (!config.restUrl) {
-				throw new Error(i18n.error || 'Booking configuration missing.');
-			}
-
-			state.services = await api('/services');
-
-			if (state.services.length) {
-				const panel = $(`.ssb-panel[data-step="0"]`, panelsEl);
-				if (panel) {
-					panel.remove();
-				}
-				renderPanel();
-				const newPanel = $(`.ssb-panel[data-step="0"]`, panelsEl);
-				if (newPanel) {
-					newPanel.classList.add('is-active');
-					bindPanelEvents(newPanel);
-				}
-			}
-
-			if (config.paymentReturn) {
+		// Payment return is the only init path that needs a blocking loader.
+		if (config.paymentReturn) {
+			showLoading(true);
+			try {
 				await handlePaymentReturn();
-			} else if (!initialPanel && !$(`.ssb-panel[data-step="0"]`, panelsEl)) {
-				renderProgress();
-				goToStep(0);
+			} catch (e) {
+				console.error('SSB payment return error:', e);
+			} finally {
+				showLoading(false);
 			}
-		} catch (e) {
-			state.services = parseServicesFromDom();
-			if (initialPanel && state.services.length) {
-				bindPanelEvents(initialPanel);
-				console.warn('SSB: using server-rendered services.', e.message);
-			} else if (!initialPanel) {
-				panelsEl.innerHTML = `<p class="ssb-panel__subtitle" style="text-align:center">${esc(e.message)}</p>`;
-			}
-		} finally {
-			showLoading(false);
 		}
 	}
 

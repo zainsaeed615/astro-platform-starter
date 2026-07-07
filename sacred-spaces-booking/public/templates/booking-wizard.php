@@ -45,7 +45,16 @@ $services = $services ?? array();
 						<p class="ssb-panel__subtitle"><?php esc_html_e( 'Loading services...', 'sacred-spaces-booking' ); ?></p>
 					<?php else : ?>
 						<?php foreach ( $services as $service ) : ?>
-							<button type="button" class="ssb-service-option" data-service-id="<?php echo esc_attr( (string) $service->id ); ?>" aria-pressed="false">
+							<?php
+							$locations = array_map( 'trim', explode( ',', $service->locations ) );
+							?>
+							<button type="button" class="ssb-service-option"
+								data-service-id="<?php echo esc_attr( (string) $service->id ); ?>"
+								data-slug="<?php echo esc_attr( $service->slug ); ?>"
+								data-payment-mode="<?php echo esc_attr( $service->payment_mode ); ?>"
+								data-payment-amount="<?php echo esc_attr( $service->payment_amount ? (string) $service->payment_amount : '' ); ?>"
+								data-locations="<?php echo esc_attr( implode( ',', $locations ) ); ?>"
+								aria-pressed="false">
 								<span class="ssb-service-option__name"><?php echo esc_html( $service->name ); ?></span>
 								<span class="ssb-service-option__investment"><?php echo esc_html( $service->investment_display ); ?></span>
 								<span class="ssb-service-option__meta"><?php echo esc_html( (string) $service->duration_minutes ); ?> <?php esc_html_e( 'Minutes', 'sacred-spaces-booking' ); ?></span>
