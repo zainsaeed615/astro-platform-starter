@@ -1,0 +1,17 @@
+{
+    "name": "sacredspaces/booking",
+    "description": "Sacred Spaces Booking - Luxury WordPress booking plugin",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "SacredSpaces\\Booking\\": "includes/classes/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "sacred-spaces/booking",
+	"version": "1.0.0",
+	"title": "Sacred Spaces Booking",
+	"category": "widgets",
+	"icon": "calendar-alt",
+	"description": "Luxury 8-step booking wizard for Sacred Spaces by Sharon.",
+	"keywords": ["booking", "sacred spaces", "appointment"],
+	"textdomain": "sacred-spaces-booking",
+	"editorScript": "ssb-block-editor",
+	"attributes": {
+		"showHero": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"]
+	}
+}

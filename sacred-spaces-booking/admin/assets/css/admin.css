@@ -1,0 +1,458 @@
+/**
+ * Sacred Spaces Booking — Admin Styles
+ */
+
+.ssb-admin-wrap {
+	--ssb-primary: #C9A04F;
+	--ssb-primary-dark: #B28C43;
+	--ssb-cream: #F6F1E8;
+	--ssb-white: #FCFAF6;
+	--ssb-text: #111111;
+	--ssb-text-light: #6A6A6A;
+	--ssb-border: #E6DAC5;
+	--ssb-sage: #7E8163;
+	--ssb-radius: 12px;
+	font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+	color: var(--ssb-text);
+	max-width: 1200px;
+	margin: 20px 20px 40px 0;
+}
+
+.ssb-admin-wrap h1,
+.ssb-admin-wrap h2,
+.ssb-admin-wrap h3 {
+	font-family: 'Cormorant Garamond', Georgia, serif;
+	font-weight: 500;
+}
+
+.ssb-admin-header {
+	margin-bottom: 32px;
+}
+
+.ssb-admin-header--row {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
+.ssb-admin-header h1 {
+	font-size: 42px;
+	margin: 0 0 4px;
+	line-height: 1.1;
+}
+
+.ssb-admin-subtitle {
+	color: var(--ssb-text-light);
+	font-size: 15px;
+	margin: 0;
+}
+
+.ssb-stats-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 20px;
+	margin-bottom: 32px;
+}
+
+.ssb-stat-card {
+	background: var(--ssb-white);
+	border: 1px solid var(--ssb-border);
+	border-radius: var(--ssb-radius);
+	padding: 24px;
+	transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.ssb-stat-card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 24px rgba(17, 17, 17, 0.06);
+}
+
+.ssb-stat-card--wide {
+	grid-column: span 2;
+}
+
+.ssb-stat-label {
+	display: block;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--ssb-sage);
+	margin-bottom: 8px;
+}
+
+.ssb-stat-value {
+	font-family: 'Cormorant Garamond', Georgia, serif;
+	font-size: 36px;
+	color: var(--ssb-primary);
+}
+
+.ssb-admin-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	gap: 24px;
+}
+
+.ssb-card {
+	background: var(--ssb-white);
+	border: 1px solid var(--ssb-border);
+	border-radius: var(--ssb-radius);
+	padding: 28px;
+	margin-bottom: 24px;
+}
+
+.ssb-card h2 {
+	font-size: 28px;
+	margin: 0 0 20px;
+}
+
+.ssb-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+
+.ssb-table th,
+.ssb-table td {
+	padding: 12px 14px;
+	text-align: left;
+	border-bottom: 1px solid var(--ssb-border);
+}
+
+.ssb-table th {
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--ssb-text-light);
+	font-weight: 500;
+}
+
+.ssb-table tbody tr:hover {
+	background: var(--ssb-cream);
+}
+
+.ssb-badge {
+	display: inline-block;
+	padding: 4px 10px;
+	border-radius: 20px;
+	font-size: 12px;
+	font-weight: 500;
+	text-transform: capitalize;
+}
+
+.ssb-badge--pending { background: #FFF8E7; color: #8B6914; }
+.ssb-badge--approved,
+.ssb-badge--confirmed { background: #EEF2E8; color: var(--ssb-sage); }
+.ssb-badge--declined,
+.ssb-badge--cancelled { background: #F5EDED; color: #8B4545; }
+.ssb-badge--rescheduled { background: #EDF0F5; color: #4A5568; }
+
+.ssb-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ssb-list li {
+	padding: 14px 0;
+	border-bottom: 1px solid var(--ssb-border);
+}
+
+.ssb-list li:last-child {
+	border-bottom: none;
+}
+
+.ssb-list strong {
+	display: block;
+	margin-bottom: 2px;
+}
+
+.ssb-list span {
+	color: var(--ssb-text-light);
+	font-size: 14px;
+}
+
+.ssb-empty {
+	color: var(--ssb-text-light);
+	font-style: italic;
+	padding: 20px 0;
+}
+
+.ssb-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 12px 24px;
+	background: var(--ssb-primary);
+	color: #fff;
+	border: none;
+	border-radius: var(--ssb-radius);
+	font-family: 'Lato', sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	letter-spacing: 0.04em;
+	cursor: pointer;
+	transition: background 250ms ease, transform 250ms ease;
+	text-decoration: none;
+}
+
+.ssb-btn:hover {
+	background: var(--ssb-primary-dark);
+	color: #fff;
+	transform: scale(1.02);
+}
+
+.ssb-btn--outline {
+	background: transparent;
+	color: var(--ssb-primary);
+	border: 1px solid var(--ssb-primary);
+}
+
+.ssb-btn--outline:hover {
+	background: var(--ssb-primary);
+	color: #fff;
+}
+
+.ssb-btn--small {
+	padding: 6px 12px;
+	font-size: 12px;
+}
+
+.ssb-input,
+.ssb-select,
+.ssb-textarea {
+	width: 100%;
+	padding: 10px 14px;
+	border: 1px solid var(--ssb-border);
+	border-radius: var(--ssb-radius);
+	background: var(--ssb-white);
+	font-family: 'Lato', sans-serif;
+	font-size: 14px;
+	color: var(--ssb-text);
+	transition: border-color 250ms ease;
+}
+
+.ssb-input:focus,
+.ssb-select:focus,
+.ssb-textarea:focus {
+	outline: none;
+	border-color: var(--ssb-primary);
+	box-shadow: 0 0 0 3px rgba(201, 160, 79, 0.15);
+}
+
+.ssb-form-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 20px;
+	margin-bottom: 20px;
+}
+
+.ssb-field {
+	margin-bottom: 16px;
+}
+
+.ssb-field label {
+	display: block;
+	font-size: 13px;
+	font-weight: 500;
+	margin-bottom: 6px;
+	color: var(--ssb-text-light);
+}
+
+.ssb-field--full {
+	grid-column: 1 / -1;
+}
+
+.ssb-field--checkbox label {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+}
+
+.ssb-help {
+	font-size: 13px;
+	color: var(--ssb-text-light);
+	margin-top: 6px;
+}
+
+.ssb-filters {
+	margin-bottom: 20px;
+}
+
+.ssb-filter-form {
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.ssb-filter-form .ssb-input,
+.ssb-filter-form .ssb-select {
+	width: auto;
+	min-width: 180px;
+}
+
+.ssb-actions .ssb-select {
+	width: auto;
+	min-width: 120px;
+}
+
+.ssb-day-checkboxes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-bottom: 20px;
+}
+
+.ssb-day-check {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 12px 16px;
+	background: var(--ssb-cream);
+	border-radius: var(--ssb-radius);
+	cursor: pointer;
+	transition: background 250ms ease;
+}
+
+.ssb-day-check:hover {
+	background: #EDE6D8;
+}
+
+.ssb-inline-form {
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.ssb-blocked-list li {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.ssb-admin-calendar__head,
+.ssb-admin-calendar__grid {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 4px;
+}
+
+.ssb-admin-calendar__head span {
+	text-align: center;
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--ssb-text-light);
+	padding: 8px;
+}
+
+.ssb-admin-calendar__day {
+	min-height: 90px;
+	padding: 8px;
+	border: 1px solid var(--ssb-border);
+	border-radius: 8px;
+	background: var(--ssb-white);
+}
+
+.ssb-admin-calendar__day--empty {
+	background: transparent;
+	border-color: transparent;
+}
+
+.ssb-admin-calendar__day--has {
+	background: var(--ssb-cream);
+}
+
+.ssb-admin-calendar__num {
+	font-weight: 500;
+	font-size: 13px;
+}
+
+.ssb-admin-calendar__event {
+	font-size: 11px;
+	padding: 2px 4px;
+	margin-top: 4px;
+	background: var(--ssb-primary);
+	color: #fff;
+	border-radius: 4px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ssb-questionnaire-card .ssb-questionnaire-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	margin-bottom: 12px;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.ssb-questionnaire-card h3 {
+	margin: 0;
+	font-size: 22px;
+}
+
+.ssb-questionnaire-card blockquote {
+	margin: 8px 0 0;
+	padding: 16px;
+	background: var(--ssb-cream);
+	border-left: 3px solid var(--ssb-primary);
+	border-radius: 0 var(--ssb-radius) var(--ssb-radius) 0;
+	font-style: italic;
+}
+
+.ssb-premium-features {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin-bottom: 24px;
+}
+
+.ssb-premium-features label {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+}
+
+.ssb-shortcode-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ssb-shortcode-list li {
+	padding: 10px 0;
+	border-bottom: 1px solid var(--ssb-border);
+}
+
+.ssb-shortcode-list code {
+	background: var(--ssb-cream);
+	padding: 4px 8px;
+	border-radius: 4px;
+	color: var(--ssb-primary-dark);
+}
+
+.ssb-toast {
+	position: fixed;
+	bottom: 24px;
+	right: 24px;
+	padding: 14px 24px;
+	background: var(--ssb-text);
+	color: #fff;
+	border-radius: var(--ssb-radius);
+	z-index: 99999;
+	animation: ssbFadeIn 300ms ease;
+}
+
+@keyframes ssbFadeIn {
+	from { opacity: 0; transform: translateY(10px); }
+	to { opacity: 1; transform: translateY(0); }
+}
