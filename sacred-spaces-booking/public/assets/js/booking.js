@@ -638,7 +638,25 @@
 	}
 
 	/* ── Init ── */
+	function parseServicesFromDom() {
+		return $$('.ssb-service-option[data-service-id]', panelsEl).map((btn) => ({
+			id: parseInt(btn.dataset.serviceId, 10),
+			name: $('.ssb-service-option__name', btn)?.textContent?.trim() || '',
+			investment_display: $('.ssb-service-option__investment', btn)?.textContent?.trim() || '',
+			description: $('.ssb-service-option__desc', btn)?.textContent?.trim() || '',
+			duration_minutes: parseInt($('.ssb-service-option__meta', btn)?.textContent, 10) || 90,
+			payment_mode: 'none',
+			payment_amount: null,
+			locations: ['virtual', 'in_home'],
+			slug: ''
+		}));
+	}
+
 	async function init() {
+		if (!btnBack || !btnNext || !panelsEl) {
+			return;
+		}
+
 		btnBack.addEventListener('click', handleBack);
 		btnNext.addEventListener('click', handleNext);
 
@@ -649,21 +667,57 @@
 			}
 		});
 
+		const initialPanel = $('.ssb-panel[data-step="0"]', panelsEl);
+		if (initialPanel) {
+			bindPanelEvents(initialPanel);
+			state.step = 0;
+			renderProgress();
+			updateNextButton();
+		}
+
 		showLoading(true);
 		try {
+			if (!config.restUrl) {
+				throw new Error(i18n.error || 'Booking configuration missing.');
+			}
+
 			state.services = await api('/services');
+
+			if (state.services.length) {
+				const panel = $(`.ssb-panel[data-step="0"]`, panelsEl);
+				if (panel) {
+					panel.remove();
+				}
+				renderPanel();
+				const newPanel = $(`.ssb-panel[data-step="0"]`, panelsEl);
+				if (newPanel) {
+					newPanel.classList.add('is-active');
+					bindPanelEvents(newPanel);
+				}
+			}
+
 			if (config.paymentReturn) {
 				await handlePaymentReturn();
-			} else {
+			} else if (!initialPanel && !$(`.ssb-panel[data-step="0"]`, panelsEl)) {
 				renderProgress();
 				goToStep(0);
 			}
 		} catch (e) {
-			panelsEl.innerHTML = `<p class="ssb-panel__subtitle" style="text-align:center">${esc(e.message)}</p>`;
+			state.services = parseServicesFromDom();
+			if (initialPanel && state.services.length) {
+				bindPanelEvents(initialPanel);
+				console.warn('SSB: using server-rendered services.', e.message);
+			} else if (!initialPanel) {
+				panelsEl.innerHTML = `<p class="ssb-panel__subtitle" style="text-align:center">${esc(e.message)}</p>`;
+			}
 		} finally {
 			showLoading(false);
 		}
 	}
 
-	init();
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', init);
+	} else {
+		init();
+	}
 })();
