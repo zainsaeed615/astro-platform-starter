@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Bat Animation</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                background: #000;
+                overflow: hidden;
+            }
+
+            .scene {
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            canvas {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="scene">
+            <canvas data-bat-animation data-image="images/gothic-hero.png" aria-label="Animated gothic hero"></canvas>
+        </div>
+
+        <script type="module">
+            import { initBatAnimation } from './js/bat-animation.js';
+            initBatAnimation('[data-bat-animation]');
+        </script>
+    </body>
+</html>
