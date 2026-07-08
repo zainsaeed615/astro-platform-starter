@@ -1,0 +1,35 @@
+BAT ANIMATION PREVIEW — Kaise kholein
+======================================
+
+OPTION 1 (Sab se aasaan)
+------------------------
+Is folder mein "index.html" par double-click karein.
+Chrome / Edge / Firefox mein preview khul jayegi.
+
+
+OPTION 2 (ZIP download)
+-----------------------
+Repo ya folder se "bat-animation-preview.zip" download karein.
+Extract karein, phir andar "index.html" open karein.
+
+
+Folder structure
+----------------
+bat-animation-preview/
+  index.html          <- yahan se preview kholein
+  js/bat-animation.js
+  images/gothic-hero.png
+
+
+Apni image lagani ho
+--------------------
+Apni picture ko is naam se replace karein:
+  images/gothic-hero.png
+
+Phir dubara index.html open karein.
+
+
+Note
+----
+- Internet ki zaroorat nahi — sab local files hain.
+- Castle, moon, tree static rehte hain; sirf bats animate hoti hain.

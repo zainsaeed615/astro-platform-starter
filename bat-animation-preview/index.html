@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Bat Animation Preview</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                background: #000;
+                overflow: hidden;
+                font-family: system-ui, sans-serif;
+            }
+
+            .scene {
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            canvas {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+
+            .hint {
+                position: fixed;
+                left: 50%;
+                bottom: 1.25rem;
+                transform: translateX(-50%);
+                padding: 0.55rem 1rem;
+                border-radius: 999px;
+                background: rgba(0, 0, 0, 0.55);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                color: rgba(255, 255, 255, 0.72);
+                font-size: 0.8rem;
+                backdrop-filter: blur(8px);
+                pointer-events: none;
+                user-select: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="scene">
+            <canvas data-bat-animation data-image="images/gothic-hero.png" aria-label="Gothic landscape with animated bats"></canvas>
+        </div>
+        <p class="hint">Sirf bats move ho rahi hain — baaki image static hai</p>
+
+        <script src="js/bat-animation.js"></script>
+        <script>
+            initBatAnimation('[data-bat-animation]');
+        </script>
+    </body>
+</html>
