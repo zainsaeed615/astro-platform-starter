@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Floor Plan Details | Outlandis Corp</title>
+  <link rel="icon" href="assets/images/logo.webp" type="image/webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/listings-mw.css" />
+</head>
+<body>
+
+  <header class="site-header scrolled">
+    <div class="container header-inner">
+      <a href="index.html" class="logo"><img src="assets/images/logo.webp" alt="Outlandis Corp" /></a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="listings.html" class="active">Floor Plans</a>
+        <div class="nav-dropdown">
+          <a href="shop-by-brand.html">Shop by Brand ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="brands/cavco.html">Cavco</a>
+            <a href="brands/clayton.html">Clayton</a>
+            <a href="brands/champion.html">Champion</a>
+          </div>
+        </div>
+        <a href="about.html">About Us</a>
+        <a href="financing.html">Financing</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+      <a href="contact.html" class="btn btn-gold btn-sm header-cta">Get Started</a>
+      <button class="mobile-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main class="plan-detail-page" id="plan-detail-root">
+    <div class="container" style="padding:120px 0;text-align:center;color:var(--text-muted)">Loading floor plan...</div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding-top:40px">
+        <span>&copy; 2026 Outlandis Corp. All rights reserved.</span>
+        <span class="footer-licenses">Dealer License: 35784 · Sales License: 37098</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/listings-data.js"></script>
+  <script src="js/listings-app.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

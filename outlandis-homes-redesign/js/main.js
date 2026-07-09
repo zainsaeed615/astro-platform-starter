@@ -80,6 +80,7 @@ function createListingCard(listing, showFeatured = true) {
 }
 
 function initListingFilters() {
+  if (document.getElementById('mw-featured-grid') || document.getElementById('mw-plans-grid')) return;
   const grid = document.getElementById('featured-listings');
   const filters = document.querySelectorAll('.listings-filters .filter-btn');
   if (!grid || typeof OUTLANDIS_LISTINGS === 'undefined') return;
@@ -109,6 +110,7 @@ function renderListings(container, listings) {
 }
 
 function initListingsPage() {
+  if (document.getElementById('mw-plans-grid')) return;
   const grid = document.getElementById('all-listings');
   const searchInput = document.getElementById('listing-search');
   const brandSelect = document.getElementById('brand-filter');

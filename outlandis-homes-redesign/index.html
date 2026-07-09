@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/listings-mw.css" />
 </head>
 <body>
 
@@ -150,29 +151,29 @@
     </div>
   </div>
 
-  <!-- Featured Listings -->
-  <section class="listings-section" id="featured-homes">
+  <!-- Featured Homes — MW Style -->
+  <section class="mw-featured-section" id="featured-homes">
     <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-label">Curated Collection</span>
-        <h2 class="section-title display-title">Featured <span class="text-gradient">Homes</span></h2>
-        <p class="section-subtitle" style="margin: 0 auto;">Hand-selected floor plans from America's finest builders — engineered for comfort, style, and lasting value.</p>
+      <div class="mw-featured-header fade-up">
+        <span class="section-label" style="justify-content:center">Inventory</span>
+        <h2>Featured Homes</h2>
+        <p class="section-subtitle" style="margin:0 auto">Premium manufactured & modular floor plans from America's best builders</p>
       </div>
 
-      <div class="listings-filters fade-up">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="cavco">Cavco</button>
-        <button class="filter-btn" data-filter="clayton">Clayton</button>
-        <button class="filter-btn" data-filter="champion">Champion</button>
-        <button class="filter-btn" data-filter="single">Single Wide</button>
-        <button class="filter-btn" data-filter="double">Double Wide</button>
-        <button class="filter-btn" data-filter="triple">Triple Wide</button>
+      <div class="mw-featured-tabs fade-up">
+        <button class="mw-tab active" data-filter="all">All Homes</button>
+        <button class="mw-tab" data-filter="cavco">Cavco</button>
+        <button class="mw-tab" data-filter="clayton">Clayton</button>
+        <button class="mw-tab" data-filter="champion">Champion</button>
+        <button class="mw-tab" data-filter="single">Single Wide</button>
+        <button class="mw-tab" data-filter="double">Double Wide</button>
+        <button class="mw-tab" data-filter="triple">Triple Wide</button>
       </div>
 
-      <div class="listings-grid" id="featured-listings"></div>
+      <div class="mw-plans-grid" id="mw-featured-grid"></div>
 
-      <div style="text-align: center; margin-top: 56px;" class="fade-up">
-        <a href="listings.html" class="btn btn-primary">Explore All Floor Plans</a>
+      <div class="mw-see-all fade-up">
+        <a href="listings.html" class="btn btn-primary">See All Floor Plans</a>
       </div>
     </div>
   </section>
@@ -391,6 +392,7 @@
   </footer>
 
   <script src="js/listings-data.js"></script>
+  <script src="js/listings-app.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
