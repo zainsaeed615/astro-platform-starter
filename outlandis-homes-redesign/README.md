@@ -23,9 +23,11 @@ A luxury, professional HTML redesign of [outlandiscorp.com](https://outlandiscor
 | File | Description |
 |------|-------------|
 | `index.html` | Homepage with hero, featured listings, brands, values |
-| `about.html` | Company story and team |
-| `contact.html` | Contact form and team details |
-| `listings.html` | Full floor plan catalog with search & filters |
+| `listings.html` | Floor Plans — full catalog with search & filters |
+| `shop-by-brand.html` | Shop by Brand — Cavco, Clayton, Champion hub |
+| `about.html` | About Us — company story and team |
+| `financing.html` | Financing — options and apply |
+| `contact.html` | Contact Us — form and team details |
 | `brands/cavco.html` | Cavco brand page |
 | `brands/clayton.html` | Clayton brand page |
 | `brands/champion.html` | Champion brand page |
