@@ -12,9 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
 function initHeader() {
   const header = document.querySelector('.site-header');
   if (!header) return;
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 50);
-  });
+
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
 }
 
 function initMobileNav() {
@@ -51,7 +54,7 @@ function createListingCard(listing, showFeatured = true) {
   const baths = listing.baths % 1 === 0 ? listing.baths : listing.baths.toFixed(1);
 
   return `
-    <article class="listing-card fade-up" data-brand="${listing.brand}" data-width="${listing.width || ''}">
+    <article class="listing-card fade-up visible" data-brand="${listing.brand}" data-width="${listing.width || ''}">
       <div class="listing-card-image">
         <img src="${listing.image}" alt="${listing.name}" loading="lazy" />
         ${badge}
@@ -64,7 +67,7 @@ function createListingCard(listing, showFeatured = true) {
           <div class="spec-item"><strong>${listing.beds}</strong><span>Beds</span></div>
           <div class="spec-item"><strong>${baths}</strong><span>Baths</span></div>
           <div class="spec-item"><strong>${listing.sqft.toLocaleString()}</strong><span>Sq Ft</span></div>
-          <div class="spec-item"><strong>${listing.dimensions || '—'}</strong><span>Size</span></div>
+          <div class="spec-item"><strong style="font-size:0.85rem">${(listing.dimensions || '—').split(' ')[0]}</strong><span>Size</span></div>
         </div>
         ${listing.description ? `<p class="listing-desc">${listing.description}</p>` : ''}
         <div class="listing-actions">

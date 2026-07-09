@@ -8,12 +8,11 @@
   <link rel="icon" href="assets/images/logo.webp" type="image/webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
-  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo">
@@ -33,7 +32,7 @@
         <a href="financing.html">Financing</a>
         <a href="contact.html">Contact Us</a>
       </nav>
-      <a href="contact.html" class="btn btn-primary btn-sm header-cta">Get Started</a>
+      <a href="contact.html" class="btn btn-gold btn-sm header-cta">Get Started</a>
       <button class="mobile-toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -42,58 +41,110 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="container hero-content">
-      <p class="hero-eyebrow">South Carolina's Trusted Home Dealer</p>
-      <h1>Everyone Deserves to Be a Homeowner</h1>
-      <p>Family-owned and operated since 2011, Outlandis Corp delivers affordable luxury through high-quality manufactured housing across South Carolina.</p>
-      <div class="hero-actions">
-        <a href="listings.html" class="btn btn-primary">Shop Floor Plans</a>
-        <a href="contact.html" class="btn btn-outline">Contact Us</a>
+    <div class="hero-bg">
+      <img src="assets/images/hero-luxury.jpg" alt="" aria-hidden="true" />
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-orbs">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+    </div>
+
+    <div class="container hero-grid">
+      <div class="hero-content fade-up">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          South Carolina's Premier Home Dealer
+        </div>
+        <h1>Everyone Deserves to Be a <em>Homeowner</em></h1>
+        <p class="hero-desc">Family-owned since 2011 — we deliver affordable luxury through Cavco, Clayton & Champion manufactured homes across South Carolina.</p>
+        <div class="hero-actions">
+          <a href="listings.html" class="btn btn-primary">
+            Shop Floor Plans
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="contact.html" class="btn btn-outline">Schedule a Visit</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong data-count="2011">2011</strong>
+            <span>Established</span>
+          </div>
+          <div class="hero-stat">
+            <strong><span data-count="150">150</span><span class="stat-suffix">+</span></strong>
+            <span>Community Pads</span>
+          </div>
+          <div class="hero-stat">
+            <strong data-count="3">3</strong>
+            <span>Premium Brands</span>
+          </div>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <strong>2011</strong>
-          <span>Established</span>
+
+      <div class="hero-visual fade-up">
+        <div class="hero-float-badge">
+          <strong>SC</strong>
+          <span>#1 Affordable</span>
         </div>
-        <div class="hero-stat">
-          <strong>150+</strong>
-          <span>Community Pads</span>
-        </div>
-        <div class="hero-stat">
-          <strong>3</strong>
-          <span>Premium Brands</span>
+        <div class="hero-card-stack">
+          <img src="assets/images/home-exterior.jpg" alt="Premium manufactured home" />
+          <div class="hero-card-info">
+            <span>Featured Home</span>
+            <h3>Clayton Summit</h3>
+            <div class="hero-card-specs">
+              <div><strong>4</strong> Beds</div>
+              <div><strong>3</strong> Baths</div>
+              <div><strong>2,280</strong> Sq Ft</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="trust-marquee">
+      <div class="trust-item"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Family-Owned Since 2011</div>
+      <div class="trust-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Veteran-Led Leadership</div>
+      <div class="trust-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg> Most Affordable in SC — Guaranteed</div>
+      <div class="trust-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> Cavco · Clayton · Champion</div>
+      <div class="trust-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Turnkey Land-Home Packages</div>
+      <div class="trust-item"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Family-Owned Since 2011</div>
+      <div class="trust-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Veteran-Led Leadership</div>
+      <div class="trust-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg> Most Affordable in SC — Guaranteed</div>
+      <div class="trust-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> Cavco · Clayton · Champion</div>
+      <div class="trust-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Turnkey Land-Home Packages</div>
+    </div>
+  </div>
+
   <!-- Quick Actions -->
-  <div class="container">
+  <div class="container quick-actions-wrap">
     <div class="quick-actions">
       <div class="quick-actions-grid">
         <a href="listings.html" class="quick-action">
           <div class="quick-action-icon">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
-          <span>Shop Floor Plans</span>
+          <span>Floor Plans</span>
         </a>
-        <a href="listings.html" class="quick-action">
+        <a href="shop-by-brand.html" class="quick-action">
           <div class="quick-action-icon">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
           </div>
-          <span>Manufactured Homes</span>
+          <span>Shop by Brand</span>
         </a>
         <a href="financing.html" class="quick-action">
           <div class="quick-action-icon">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
           </div>
           <span>Financing</span>
         </a>
-        <a href="about.html" class="quick-action">
+        <a href="contact.html" class="quick-action">
           <div class="quick-action-icon">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           </div>
-          <span>Our Team</span>
+          <span>Contact Us</span>
         </a>
       </div>
     </div>
@@ -103,14 +154,13 @@
   <section class="listings-section" id="featured-homes">
     <div class="container">
       <div class="section-header fade-up">
-        <span class="section-label">Floor Plans</span>
-        <h2 class="section-title display-title">Featured Homes</h2>
-        <div class="accent-line" style="margin: 24px auto;"></div>
-        <p class="section-subtitle" style="margin: 0 auto;">Browse our selection of premium manufactured homes from America's best builders — Cavco, Clayton, and Champion.</p>
+        <span class="section-label">Curated Collection</span>
+        <h2 class="section-title display-title">Featured <span class="text-gradient">Homes</span></h2>
+        <p class="section-subtitle" style="margin: 0 auto;">Hand-selected floor plans from America's finest builders — engineered for comfort, style, and lasting value.</p>
       </div>
 
       <div class="listings-filters fade-up">
-        <button class="filter-btn active" data-filter="all">All Homes</button>
+        <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="cavco">Cavco</button>
         <button class="filter-btn" data-filter="clayton">Clayton</button>
         <button class="filter-btn" data-filter="champion">Champion</button>
@@ -121,33 +171,34 @@
 
       <div class="listings-grid" id="featured-listings"></div>
 
-      <div style="text-align: center; margin-top: 48px;" class="fade-up">
-        <a href="listings.html" class="btn btn-primary">See All Floor Plans</a>
+      <div style="text-align: center; margin-top: 56px;" class="fade-up">
+        <a href="listings.html" class="btn btn-primary">Explore All Floor Plans</a>
       </div>
     </div>
   </section>
 
   <!-- Brands -->
-  <section class="section-alt">
+  <section class="section-dark">
     <div class="container">
       <div class="section-header fade-up">
-        <span class="section-label">Our Partners</span>
-        <h2 class="section-title display-title">Brands You Can Rely On</h2>
-        <div class="accent-line" style="margin: 24px auto;"></div>
+        <span class="section-label">Trusted Partners</span>
+        <h2 class="section-title display-title" style="color: #fff;">Brands You Can <span class="text-gradient">Rely On</span></h2>
+        <p class="section-subtitle" style="margin: 0 auto;">Proudly offering homes from America's best factory-built home manufacturers.</p>
       </div>
 
       <div class="brands-grid">
         <article class="brand-card fade-up">
           <div class="brand-card-image">
             <img src="assets/images/cavco-cover.webp" alt="Cavco Homes" />
+            <span class="brand-card-tag">Phoenix Series</span>
+            <div class="brand-card-title-overlay"><h3>Cavco</h3></div>
           </div>
           <div class="brand-card-body">
-            <h3>Cavco</h3>
-            <p>Cavco manufactured homes offering modern design, durability, and everyday comfort.</p>
+            <p>Modern design, durable construction, and everyday comfort at an exceptional value.</p>
             <ul class="brand-features">
-              <li>Modern open-concept floor plans</li>
-              <li>Durable, quality Cavco construction</li>
-              <li>Stylish homes at an affordable price</li>
+              <li>Open-concept floor plans</li>
+              <li>Quality Cavco construction</li>
+              <li>Single, double & triple wide</li>
             </ul>
             <a href="brands/cavco.html" class="btn btn-primary btn-sm">Explore Cavco</a>
           </div>
@@ -156,14 +207,15 @@
         <article class="brand-card fade-up">
           <div class="brand-card-image">
             <img src="assets/images/clayton-cover.webp" alt="Clayton Homes" />
+            <span class="brand-card-tag">Epic Experiences</span>
+            <div class="brand-card-title-overlay"><h3>Clayton</h3></div>
           </div>
           <div class="brand-card-body">
-            <h3>Clayton</h3>
-            <p>Clayton homes designed for efficiency, customization, and long-term value.</p>
+            <p>Efficiency, customization, and long-term value in every floor plan.</p>
             <ul class="brand-features">
-              <li>Energy-efficient features that help lower utility costs</li>
-              <li>Customizable floor plans and interior finishes</li>
-              <li>Quality factory construction at an affordable price</li>
+              <li>Energy-efficient features</li>
+              <li>Customizable finishes</li>
+              <li>Factory-built quality</li>
             </ul>
             <a href="brands/clayton.html" class="btn btn-primary btn-sm">Explore Clayton</a>
           </div>
@@ -172,14 +224,15 @@
         <article class="brand-card fade-up">
           <div class="brand-card-image">
             <img src="assets/images/champion-cover.webp" alt="Champion Homes" />
+            <span class="brand-card-tag">Ironclad Series</span>
+            <div class="brand-card-title-overlay"><h3>Champion</h3></div>
           </div>
           <div class="brand-card-body">
-            <h3>Champion</h3>
-            <p>Champion homes built with innovative layouts and dependable craftsmanship.</p>
+            <p>Innovative layouts and dependable craftsmanship you can trust for generations.</p>
             <ul class="brand-features">
-              <li>Innovative floor plans with modern design</li>
-              <li>Energy-efficient construction for long-term savings</li>
-              <li>Trusted build quality from Champion Homes</li>
+              <li>Modern innovative design</li>
+              <li>Energy-efficient builds</li>
+              <li>3D virtual tours available</li>
             </ul>
             <a href="brands/champion.html" class="btn btn-primary btn-sm">Explore Champion</a>
           </div>
@@ -194,14 +247,18 @@
       <div class="experience-grid">
         <div class="experience-image fade-up">
           <img src="assets/images/team.jpg" alt="Outlandis Corp Team" />
+          <div class="experience-badge">
+            <strong>15+</strong>
+            <span>Years of Excellence</span>
+          </div>
         </div>
         <div class="experience-content fade-up">
-          <span class="section-label">Our Story</span>
-          <h2>Over a Decade of Experience</h2>
+          <span class="section-label">Our Legacy</span>
+          <h2>Over a Decade of <em style="font-family: var(--font-display); color: var(--gold-dark);">Experience</em></h2>
           <div class="accent-line"></div>
           <p>Family-owned and operated since 2011, Outlandis Corp is dedicated to making homeownership possible through affordable, high-quality manufactured housing across South Carolina.</p>
-          <p>We combine discipline, integrity, and a personal touch in every interaction — guiding you from your first question to the final delivery of your home.</p>
-          <a href="about.html" class="btn btn-primary" style="margin-top: 24px;">Read More About Us</a>
+          <p>We combine discipline, integrity, and a personal touch — guiding you from your first question to the final delivery of your forever home.</p>
+          <a href="about.html" class="btn btn-primary" style="margin-top: 28px;">Discover Our Story</a>
         </div>
       </div>
     </div>
@@ -211,40 +268,76 @@
   <section class="section-alt">
     <div class="container">
       <div class="section-header fade-up">
-        <span class="section-label">Why Outlandis</span>
-        <h2 class="section-title display-title">How We Make Homeownership Easy</h2>
-        <div class="accent-line" style="margin: 24px auto;"></div>
+        <span class="section-label">The Outlandis Difference</span>
+        <h2 class="section-title display-title">How We Make Homeownership <span class="text-gradient">Effortless</span></h2>
       </div>
 
       <div class="values-grid">
         <div class="value-card fade-up">
           <div class="value-icon">
-            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <h4>Family-Owned & Veteran-Led</h4>
-          <p>Outlandis Corp combines discipline, integrity, and a personal touch in every interaction.</p>
+          <p>Discipline, integrity, and a personal touch in every interaction.</p>
         </div>
         <div class="value-card fade-up">
           <div class="value-icon">
-            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
           <h4>Transparent Guidance</h4>
-          <p>Hands-on support from contract to completion for a smooth home-buying experience.</p>
+          <p>Hands-on support from contract to completion — zero surprises.</p>
         </div>
         <div class="value-card fade-up">
           <div class="value-icon">
-            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <h4>Affordable Luxury</h4>
-          <p>High-quality manufactured homes designed for comfort, style, and long-term value.</p>
+          <p>Premium homes designed for comfort, style, and long-term value.</p>
         </div>
         <div class="value-card fade-up">
           <div class="value-icon">
-            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
           </div>
-          <h4>Most Affordable Guaranteed</h4>
-          <p>We have the most affordable pricing in SC guaranteed.</p>
+          <h4>Best Price Guaranteed</h4>
+          <p>The most affordable pricing in South Carolina — guaranteed.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section-dark">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label">Client Stories</span>
+        <h2 class="section-title display-title" style="color: #fff;">What Families <span class="text-gradient">Say</span></h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <article class="testimonial-card fade-up">
+          <div class="testimonial-stars">★★★★★</div>
+          <p>Outlandis walked us through every step — from permits to delivery. Oliver and his team treated us like family, not just another sale. We couldn't be happier in our new Clayton home.</p>
+          <div class="testimonial-author">
+            <strong>The Williams Family</strong>
+            <span>Columbia, SC</span>
+          </div>
+        </article>
+        <article class="testimonial-card fade-up">
+          <div class="testimonial-stars">★★★★★</div>
+          <p>Olivia was incredibly patient with all our questions. She helped us find the perfect Champion floor plan within our budget. The whole process was smooth and stress-free.</p>
+          <div class="testimonial-author">
+            <strong>Maria & James T.</strong>
+            <span>Lexington, SC</span>
+          </div>
+        </article>
+        <article class="testimonial-card fade-up">
+          <div class="testimonial-stars">★★★★★</div>
+          <p>Griffin went above and beyond to make our land-home package work. True turnkey experience — site prep, septic, everything handled. Best decision we ever made.</p>
+          <div class="testimonial-author">
+            <strong>Robert & Linda K.</strong>
+            <span>Greenville, SC</span>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -252,11 +345,11 @@
   <!-- CTA -->
   <section class="cta-banner">
     <div class="container fade-up">
-      <h2>Looking for Your Dream Home?</h2>
-      <p>Ready to find your perfect home? Reach out today and let our team guide you every step of the way.</p>
+      <h2>Your Dream Home Awaits</h2>
+      <p>Ready to take the first step? Our team is standing by to guide you every step of the way.</p>
       <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-        <a href="contact.html" class="btn btn-primary">Contact Us Today</a>
-        <a href="about.html" class="btn btn-outline">Meet Our Team</a>
+        <a href="contact.html" class="btn btn-gold">Contact Us Today</a>
+        <a href="financing.html" class="btn btn-outline">Explore Financing</a>
       </div>
     </div>
   </section>
