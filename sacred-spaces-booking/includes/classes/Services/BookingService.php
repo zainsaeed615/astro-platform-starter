@@ -82,37 +82,21 @@ class BookingService {
 			return new WP_Error( 'client_error', __( 'Unable to save client information.', 'sacred-spaces-booking' ) );
 		}
 
-		$payment_mode   = $service->payment_mode;
-		$payment_amount = null;
-		$payment_status = 'none';
-		$status         = 'pending';
-
-		if ( 'full' === $payment_mode && $service->payment_amount ) {
-			$payment_amount = (float) $service->payment_amount;
-			$payment_status = 'pending';
-		} elseif ( 'deposit' === $payment_mode && $service->payment_amount ) {
-			$payment_amount = (float) $service->payment_amount;
-			$payment_status = 'pending';
-		}
-
-		$booking_date = $data['booking_date'];
-		$booking_time = $data['booking_time'];
-
 		$booking_id = $this->bookings->create(
 			array(
 				'booking_ref'          => Sanitizer::booking_ref(),
 				'service_id'           => $data['service_id'],
 				'client_id'            => $client_id,
 				'location'             => $data['location'] ?: 'virtual',
-				'booking_date'         => $booking_date,
-				'booking_time'         => $booking_time,
-				'status'               => $status,
+				'booking_date'         => $data['booking_date'],
+				'booking_time'         => $data['booking_time'],
+				'status'               => 'pending',
 				'project_type'         => $data['project_type'],
 				'referral_source'      => $data['referral_source'],
 				'transformation_goals' => $data['transformation_goals'],
 				'intentional_ack'      => $data['intentional_ack'],
-				'payment_status'       => $payment_status,
-				'payment_amount'       => $payment_amount,
+				'payment_status'       => 'none',
+				'payment_amount'       => null,
 			)
 		);
 
@@ -122,19 +106,13 @@ class BookingService {
 
 		$booking = $this->bookings->find( $booking_id );
 
-		$requires_payment = in_array( $payment_mode, array( 'full', 'deposit' ), true ) && $payment_amount > 0;
-
-		if ( ! $requires_payment ) {
-			$this->email->send_client_confirmation( $booking );
-			$this->email->send_admin_notification( $booking );
-		}
+		$this->email->send_client_confirmation( $booking );
+		$this->email->send_admin_notification( $booking );
 
 		return array(
-			'booking_id'       => $booking_id,
-			'booking_ref'      => $booking->booking_ref,
-			'requires_payment' => $requires_payment,
-			'payment_amount'   => $payment_amount,
-			'service_name'     => $service->name,
+			'booking_id'   => $booking_id,
+			'booking_ref'  => $booking->booking_ref,
+			'service_name' => $service->name,
 		);
 	}
 
@@ -185,8 +163,6 @@ class BookingService {
 
 	/**
 	 * Reschedule booking.
-	 *
-	 * @param array<string, mixed> $data Reschedule data.
 	 */
 	public function reschedule( int $id, string $date, string $time ): bool|WP_Error {
 		if ( ! $this->availability->is_slot_bookable( $date, $time, $id ) ) {
@@ -217,29 +193,5 @@ class BookingService {
 			)
 		);
 		return false !== $result;
-	}
-
-	/**
-	 * Mark booking as paid.
-	 */
-	public function mark_paid( int $id, string $intent_id = '' ): bool {
-		$updated = $this->bookings->update(
-			$id,
-			array(
-				'payment_status'            => 'paid',
-				'status'                    => 'confirmed',
-				'stripe_payment_intent_id'  => $intent_id,
-			)
-		);
-
-		if ( $updated ) {
-			$booking = $this->bookings->find( $id );
-			if ( $booking ) {
-				$this->email->send_client_confirmation( $booking );
-				$this->email->send_admin_notification( $booking );
-			}
-		}
-
-		return $updated;
 	}
 }

@@ -39,18 +39,6 @@ $services = ( new ServiceRepository() )->get_all();
 						<input type="number" name="duration_minutes" value="<?php echo esc_attr( (string) $service->duration_minutes ); ?>" class="ssb-input">
 					</div>
 					<div class="ssb-field">
-						<label><?php esc_html_e( 'Payment Mode', 'sacred-spaces-booking' ); ?></label>
-						<select name="payment_mode" class="ssb-select">
-							<option value="none" <?php selected( $service->payment_mode, 'none' ); ?>><?php esc_html_e( 'No Payment', 'sacred-spaces-booking' ); ?></option>
-							<option value="full" <?php selected( $service->payment_mode, 'full' ); ?>><?php esc_html_e( 'Full Payment', 'sacred-spaces-booking' ); ?></option>
-							<option value="deposit" <?php selected( $service->payment_mode, 'deposit' ); ?>><?php esc_html_e( 'Deposit', 'sacred-spaces-booking' ); ?></option>
-						</select>
-					</div>
-					<div class="ssb-field">
-						<label><?php esc_html_e( 'Payment Amount', 'sacred-spaces-booking' ); ?></label>
-						<input type="number" step="0.01" name="payment_amount" value="<?php echo esc_attr( $service->payment_amount ? (string) $service->payment_amount : '' ); ?>" class="ssb-input">
-					</div>
-					<div class="ssb-field">
 						<label><?php esc_html_e( 'Locations', 'sacred-spaces-booking' ); ?></label>
 						<input type="text" name="locations" value="<?php echo esc_attr( $service->locations ); ?>" class="ssb-input" placeholder="virtual,in_home">
 					</div>

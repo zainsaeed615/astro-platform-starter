@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $templates = get_option( 'ssb_email_templates', array() );
-$tokens = '{first_name}, {last_name}, {email}, {phone}, {service_name}, {booking_date}, {booking_time}, {location}, {investment}, {booking_ref}, {project_type}, {referral_source}, {transformation_goals}, {address}';
+$tokens = '{first_name}, {last_name}, {email}, {phone}, {preferred_contact}, {address}, {service_name}, {booking_date}, {booking_time}, {location}, {investment}, {booking_ref}, {project_type}, {referral_source}, {transformation_goals}';
 ?>
 <div class="ssb-admin-wrap">
 	<header class="ssb-admin-header">

@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace SacredSpaces\Booking\Frontend;
 
 use SacredSpaces\Booking\Repositories\ServiceRepository;
-use SacredSpaces\Booking\Services\StripeService;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -96,13 +95,11 @@ class PublicFacing {
 	 */
 	private function get_script_data(): array {
 		return array(
-			'restUrl'       => esc_url_raw( rest_url( 'sacred-spaces-booking/v1' ) ),
-			'nonce'         => wp_create_nonce( 'wp_rest' ),
-			'stripeKey'     => StripeService::get_publishable_key(),
-			'paymentReturn' => $this->get_payment_return_state(),
-			'i18n'          => $this->get_i18n_strings(),
-			'steps'         => $this->get_step_labels(),
-			'services'      => $this->format_services_for_js(),
+			'restUrl'  => esc_url_raw( rest_url( 'sacred-spaces-booking/v1' ) ),
+			'nonce'    => wp_create_nonce( 'wp_rest' ),
+			'i18n'     => $this->get_i18n_strings(),
+			'steps'    => $this->get_step_labels(),
+			'services' => $this->format_services_for_js(),
 		);
 	}
 
@@ -125,8 +122,6 @@ class PublicFacing {
 					'investment_min'     => $s->investment_min ? (float) $s->investment_min : null,
 					'investment_max'     => $s->investment_max ? (float) $s->investment_max : null,
 					'duration_minutes'   => (int) $s->duration_minutes,
-					'payment_mode'       => $s->payment_mode,
-					'payment_amount'     => $s->payment_amount ? (float) $s->payment_amount : null,
 					'locations'          => explode( ',', $s->locations ),
 				);
 			},
@@ -182,21 +177,6 @@ class PublicFacing {
 	}
 
 	/**
-	 * Payment return state from URL.
-	 *
-	 * @return array<string, string>|null
-	 */
-	private function get_payment_return_state(): ?array {
-		if ( isset( $_GET['ssb_payment'], $_GET['ref'] ) ) {
-			return array(
-				'status' => sanitize_text_field( wp_unslash( $_GET['ssb_payment'] ) ),
-				'ref'    => sanitize_text_field( wp_unslash( $_GET['ref'] ) ),
-			);
-		}
-		return null;
-	}
-
-	/**
 	 * I18n strings for JS.
 	 *
 	 * @return array<string, string>
@@ -214,7 +194,6 @@ class PublicFacing {
 			'next'           => __( 'Continue', 'sacred-spaces-booking' ),
 			'back'           => __( 'Back', 'sacred-spaces-booking' ),
 			'submit'         => __( 'Submit Request', 'sacred-spaces-booking' ),
-			'payNow'         => __( 'Complete Payment', 'sacred-spaces-booking' ),
 			'virtual'        => __( 'Virtual', 'sacred-spaces-booking' ),
 			'inHome'         => __( 'In Home', 'sacred-spaces-booking' ),
 			'investment'     => __( 'Investment', 'sacred-spaces-booking' ),

@@ -2,8 +2,8 @@
 
 A premium luxury WordPress booking plugin designed exclusively for [Sacred Spaces by Sharon](https://sacredspacesbysharon.com).
 
-![Version](https://img.shields.io/badge/version-1.0.0-C9A04F)
-![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4)
+![Version](https://img.shields.io/badge/version-1.1.0-C9A04F)
+![PHP](https://img.shields.io/badge/PHP-8.0%2B-777BB4)
 ![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-21759B)
 
 ## Overview
@@ -36,11 +36,13 @@ Sacred Spaces Booking delivers an intentional, eight-step booking experience wit
 
 ### Services (Pre-configured)
 
-| Service | Investment | Payment |
+| Service | Investment | Booking |
 |---------|-----------|---------|
-| Private Consultation | $900 · 90 min | Full payment via Stripe |
-| Spatial Reset – Private Client Experience | $4,000–$6,500 | Inquiry only |
-| Private Retainer | $3,500–$5,000/mo | Inquiry only |
+| Private Consultation | $900 · 90 min | Inquiry & scheduling |
+| Spatial Reset – Private Client Experience | $4,000–$6,500 | Inquiry & scheduling |
+| Private Retainer | $3,500–$5,000/mo | Inquiry & scheduling |
+
+All bookings submit client details and send a **luxury admin email** with the full intake questionnaire. No online payment is collected.
 
 ### Calendar & Availability
 
@@ -50,28 +52,20 @@ Sacred Spaces Booking delivers an intentional, eight-step booking experience wit
 - Double-booking prevention
 - Vacation/date blocking
 
-### Payments (Stripe)
-
-- Full payment, deposit, or no payment per service
-- Stripe Checkout Sessions
-- Webhook support for payment confirmation
-- Test and live mode
-
 ### Email Notifications
 
 - Luxury HTML emails matching brand colors
+- **Admin email** with full client details, address, questionnaire, and booking summary
 - Client confirmation with booking summary
-- Admin notification with questionnaire responses
 - Customizable templates in admin
 
 ### WordPress Admin
 
-- **Dashboard** — Today's appointments, upcoming bookings, revenue, recent clients
+- **Dashboard** — Today's appointments, upcoming bookings, confirmed sessions, recent clients
 - **Bookings** — Approve, decline, cancel, reschedule, export CSV
 - **Calendar** — Monthly overview
-- **Services** — Edit services, pricing, payment modes
+- **Services** — Edit services and investment display
 - **Availability** — Days, time slots, blocked dates
-- **Payments** — Stripe configuration
 - **Questionnaires** — Client intake responses
 - **Reports** — Analytics overview
 - **Settings** — General configuration, premium feature toggles
@@ -96,9 +90,8 @@ Sacred Spaces Booking delivers an intentional, eight-step booking experience wit
 ### Requirements
 
 - WordPress 6.0+
-- PHP 8.2+
+- PHP 8.0+
 - MySQL 5.7+ or MariaDB 10.3+
-- SSL certificate (required for Stripe)
 
 ### Quick Install
 
@@ -127,17 +120,9 @@ wp plugin activate sacred-spaces-booking
 2. **Configure settings**
    - Go to **Sacred Spaces → Settings**
    - Set the **Booking Page URL** to your booking page
-   - Set admin notification email
+   - Set **Admin Email** to receive booking notifications
 
-3. **Configure Stripe** (for Private Consultation payments)
-   - Go to **Sacred Spaces → Payments**
-   - Enter Stripe API keys (test mode first)
-   - Create a webhook in Stripe Dashboard:
-     - URL: `https://yoursite.com/wp-json/sacred-spaces-booking/v1/stripe-webhook`
-     - Events: `checkout.session.completed`
-   - Copy webhook signing secret into plugin settings
-
-4. **Review availability**
+3. **Review availability**
    - Go to **Sacred Spaces → Availability**
    - Confirm days and time slots match your schedule
 
@@ -223,10 +208,8 @@ sacred-spaces-booking/
 | GET | `/wp-json/sacred-spaces-booking/v1/services` | List active services |
 | GET | `/wp-json/sacred-spaces-booking/v1/availability/dates` | Available dates for month |
 | GET | `/wp-json/sacred-spaces-booking/v1/availability/slots` | Available slots for date |
-| POST | `/wp-json/sacred-spaces-booking/v1/bookings` | Create booking |
+| POST | `/wp-json/sacred-spaces-booking/v1/bookings` | Create booking (sends admin + client emails) |
 | GET | `/wp-json/sacred-spaces-booking/v1/bookings/{ref}` | Get booking by reference |
-| POST | `/wp-json/sacred-spaces-booking/v1/payments/checkout` | Create Stripe session |
-| POST | `/wp-json/sacred-spaces-booking/v1/stripe-webhook` | Stripe webhook handler |
 
 ## Development
 

@@ -51,8 +51,6 @@ $services = $services ?? array();
 							<button type="button" class="ssb-service-option"
 								data-service-id="<?php echo esc_attr( (string) $service->id ); ?>"
 								data-slug="<?php echo esc_attr( $service->slug ); ?>"
-								data-payment-mode="<?php echo esc_attr( $service->payment_mode ); ?>"
-								data-payment-amount="<?php echo esc_attr( $service->payment_amount ? (string) $service->payment_amount : '' ); ?>"
 								data-locations="<?php echo esc_attr( implode( ',', $locations ) ); ?>"
 								aria-pressed="false">
 								<span class="ssb-service-option__name"><?php echo esc_html( $service->name ); ?></span>

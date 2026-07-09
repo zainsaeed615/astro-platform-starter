@@ -102,7 +102,7 @@
 					.done((res) => SSBAdmin.toast(res.success ? res.data.message : ssbAdmin.i18n.error, !res.success));
 			});
 
-			$('#ssb-general-settings, #ssb-payments-settings').on('submit', function (e) {
+			$('#ssb-general-settings').on('submit', function (e) {
 				e.preventDefault();
 				const data = {};
 				$(this).serializeArray().forEach((item) => { data[item.name] = item.value; });

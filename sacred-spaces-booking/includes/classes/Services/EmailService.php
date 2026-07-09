@@ -83,6 +83,7 @@ class EmailService {
 			'{referral_source}'      => $booking->referral_source ?? '',
 			'{transformation_goals}' => nl2br( esc_html( $booking->transformation_goals ?? '' ) ),
 			'{address}'              => $this->format_address( $booking ),
+			'{preferred_contact}'    => ucfirst( $booking->preferred_contact ?? '' ),
 		);
 
 		return str_replace( array_keys( $tokens ), array_values( $tokens ), $content );

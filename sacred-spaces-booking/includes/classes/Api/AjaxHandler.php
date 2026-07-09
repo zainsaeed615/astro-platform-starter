@@ -193,8 +193,8 @@ class AjaxHandler {
 			'investment_min'     => floatval( $_POST['investment_min'] ?? 0 ) ?: null,
 			'investment_max'     => floatval( $_POST['investment_max'] ?? 0 ) ?: null,
 			'duration_minutes'   => absint( $_POST['duration_minutes'] ?? 90 ),
-			'payment_mode'       => sanitize_text_field( wp_unslash( $_POST['payment_mode'] ?? 'none' ) ),
-			'payment_amount'     => floatval( $_POST['payment_amount'] ?? 0 ) ?: null,
+			'payment_mode'       => 'none',
+			'payment_amount'     => null,
 			'locations'          => sanitize_text_field( wp_unslash( $_POST['locations'] ?? 'virtual,in_home' ) ),
 			'is_active'          => ! empty( $_POST['is_active'] ) ? 1 : 0,
 		);
@@ -216,9 +216,7 @@ class AjaxHandler {
 	public function handle_save_settings(): void {
 		$this->verify_admin();
 		$fields = array(
-			'stripe_mode', 'stripe_test_publishable', 'stripe_test_secret',
-			'stripe_live_publishable', 'stripe_live_secret', 'stripe_webhook_secret',
-			'default_payment_mode', 'admin_email', 'from_name', 'from_email',
+			'admin_email', 'from_name', 'from_email',
 			'booking_lead_days', 'booking_horizon_days', 'booking_page_url',
 			'google_calendar_enabled', 'outlook_sync_enabled', 'zoom_enabled',
 			'sms_reminders_enabled', 'client_portal_enabled',

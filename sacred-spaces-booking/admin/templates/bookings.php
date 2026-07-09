@@ -62,13 +62,12 @@ $statuses = array( '', 'pending', 'approved', 'confirmed', 'declined', 'cancelle
 					<th><?php esc_html_e( 'Date', 'sacred-spaces-booking' ); ?></th>
 					<th><?php esc_html_e( 'Time', 'sacred-spaces-booking' ); ?></th>
 					<th><?php esc_html_e( 'Status', 'sacred-spaces-booking' ); ?></th>
-					<th><?php esc_html_e( 'Payment', 'sacred-spaces-booking' ); ?></th>
 					<th><?php esc_html_e( 'Actions', 'sacred-spaces-booking' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php if ( empty( $bookings ) ) : ?>
-					<tr><td colspan="8" class="ssb-empty"><?php esc_html_e( 'No bookings found.', 'sacred-spaces-booking' ); ?></td></tr>
+					<tr><td colspan="7" class="ssb-empty"><?php esc_html_e( 'No bookings found.', 'sacred-spaces-booking' ); ?></td></tr>
 				<?php else : ?>
 					<?php foreach ( $bookings as $b ) : ?>
 						<tr data-booking-id="<?php echo esc_attr( (string) $b->id ); ?>">
@@ -81,7 +80,6 @@ $statuses = array( '', 'pending', 'approved', 'confirmed', 'declined', 'cancelle
 							<td><?php echo esc_html( gmdate( 'M j, Y', strtotime( $b->booking_date ) ) ); ?></td>
 							<td><?php echo esc_html( gmdate( 'g:i A', strtotime( $b->booking_time ) ) ); ?></td>
 							<td><span class="ssb-badge ssb-badge--<?php echo esc_attr( $b->status ); ?>"><?php echo esc_html( ucfirst( $b->status ) ); ?></span></td>
-							<td><?php echo esc_html( ucfirst( $b->payment_status ) ); ?></td>
 							<td class="ssb-actions">
 								<select class="ssb-select ssb-status-select" data-id="<?php echo esc_attr( (string) $b->id ); ?>">
 									<?php foreach ( $statuses as $s ) : ?>

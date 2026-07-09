@@ -37,8 +37,8 @@ class Seeder {
 					'investment_min'     => 900.00,
 					'investment_max'     => 900.00,
 					'duration_minutes'   => 90,
-					'payment_mode'       => 'full',
-					'payment_amount'     => 900.00,
+					'payment_mode'       => 'none',
+					'payment_amount'     => null,
 					'locations'          => 'virtual,in_home',
 					'is_active'          => 1,
 					'sort_order'         => 1,
@@ -111,13 +111,6 @@ class Seeder {
 		}
 
 		$defaults = array(
-			'stripe_mode'              => 'test',
-			'stripe_test_publishable'  => '',
-			'stripe_test_secret'       => '',
-			'stripe_live_publishable'  => '',
-			'stripe_live_secret'       => '',
-			'stripe_webhook_secret'    => '',
-			'default_payment_mode'     => 'full',
 			'admin_email'              => get_option( 'admin_email' ),
 			'from_name'                => 'Sacred Spaces by Sharon',
 			'from_email'               => get_option( 'admin_email' ),
@@ -174,9 +167,12 @@ class Seeder {
 <p><strong>Client:</strong> {first_name} {last_name}<br>
 <strong>Email:</strong> {email}<br>
 <strong>Phone:</strong> {phone}<br>
-<strong>Service:</strong> {service_name}<br>
+<strong>Preferred Contact:</strong> {preferred_contact}<br>
+<strong>Address:</strong> {address}</p>
+<p><strong>Service:</strong> {service_name}<br>
 <strong>Date:</strong> {booking_date} at {booking_time}<br>
-<strong>Location:</strong> {location}</p>
+<strong>Location:</strong> {location}<br>
+<strong>Investment:</strong> {investment}</p>
 <p><strong>Project Type:</strong> {project_type}<br>
 <strong>Referral:</strong> {referral_source}</p>
 <p><strong>Transformation Goals:</strong><br>{transformation_goals}</p>';

@@ -12,7 +12,6 @@ namespace SacredSpaces\Booking\Api;
 use SacredSpaces\Booking\Repositories\ServiceRepository;
 use SacredSpaces\Booking\Services\AvailabilityService;
 use SacredSpaces\Booking\Services\BookingService;
-use SacredSpaces\Booking\Services\StripeService;
 use WP_REST_Request;
 use WP_REST_Response;
 
@@ -101,16 +100,6 @@ class RestController {
 				'permission_callback' => '__return_true',
 			)
 		);
-
-		register_rest_route(
-			$namespace,
-			'/payments/checkout',
-			array(
-				'methods'             => 'POST',
-				'callback'            => array( $this, 'create_checkout' ),
-				'permission_callback' => array( $this, 'verify_nonce' ),
-			)
-		);
 	}
 
 	/**
@@ -139,8 +128,6 @@ class RestController {
 					'investment_min'     => $s->investment_min ? (float) $s->investment_min : null,
 					'investment_max'     => $s->investment_max ? (float) $s->investment_max : null,
 					'duration_minutes'   => (int) $s->duration_minutes,
-					'payment_mode'       => $s->payment_mode,
-					'payment_amount'     => $s->payment_amount ? (float) $s->payment_amount : null,
 					'locations'          => explode( ',', $s->locations ),
 				);
 			},
@@ -201,7 +188,7 @@ class RestController {
 	 * Get booking by reference.
 	 */
 	public function get_booking( WP_REST_Request $request ): WP_REST_Response {
-		$ref = sanitize_text_field( $request->get_param( 'ref' ) );
+		$ref     = sanitize_text_field( $request->get_param( 'ref' ) );
 		$booking = ( new \SacredSpaces\Booking\Repositories\BookingRepository() )->find_by_ref( $ref );
 
 		if ( ! $booking ) {
@@ -218,31 +205,8 @@ class RestController {
 				'investment_display' => $booking->investment_display,
 				'first_name'         => $booking->first_name,
 				'status'             => $booking->status,
-				'payment_status'     => $booking->payment_status,
 			),
 			200
 		);
-	}
-
-	/**
-	 * Create Stripe checkout session.
-	 */
-	public function create_checkout( WP_REST_Request $request ): WP_REST_Response {
-		$data       = $request->get_json_params();
-		$booking_id = absint( $data['booking_id'] ?? 0 );
-		$amount     = (float) ( $data['amount'] ?? 0 );
-		$mode       = sanitize_text_field( $data['mode'] ?? 'full' );
-
-		$stripe = new StripeService();
-		$result = $stripe->create_checkout_session( $booking_id, $amount, $mode );
-
-		if ( is_wp_error( $result ) ) {
-			return new WP_REST_Response(
-				array( 'message' => $result->get_error_message() ),
-				400
-			);
-		}
-
-		return new WP_REST_Response( $result, 200 );
 	}
 }

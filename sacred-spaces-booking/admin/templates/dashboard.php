@@ -19,7 +19,7 @@ $clients  = new ClientRepository();
 
 $today       = $bookings->get_today();
 $upcoming    = $bookings->get_upcoming( 8 );
-$revenue     = $bookings->get_revenue_total();
+$confirmed   = $bookings->count_by_status( 'confirmed' );
 $pending     = $bookings->count_by_status( 'pending' );
 $recent      = $clients->get_recent( 6 );
 ?>
@@ -39,8 +39,8 @@ $recent      = $clients->get_recent( 6 );
 			<span class="ssb-stat-value"><?php echo esc_html( (string) $pending ); ?></span>
 		</div>
 		<div class="ssb-stat-card">
-			<span class="ssb-stat-label"><?php esc_html_e( 'Revenue', 'sacred-spaces-booking' ); ?></span>
-			<span class="ssb-stat-value">$<?php echo esc_html( number_format( $revenue, 0 ) ); ?></span>
+			<span class="ssb-stat-label"><?php esc_html_e( 'Confirmed', 'sacred-spaces-booking' ); ?></span>
+			<span class="ssb-stat-value"><?php echo esc_html( (string) $confirmed ); ?></span>
 		</div>
 		<div class="ssb-stat-card">
 			<span class="ssb-stat-label"><?php esc_html_e( 'Upcoming', 'sacred-spaces-booking' ); ?></span>

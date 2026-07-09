@@ -17,7 +17,7 @@ $bookings = new BookingRepository();
 $total    = count( $bookings->list( array( 'limit' => 10000 ) ) );
 $pending  = $bookings->count_by_status( 'pending' );
 $confirmed = $bookings->count_by_status( 'confirmed' );
-$revenue  = $bookings->get_revenue_total();
+$approved  = $bookings->count_by_status( 'approved' );
 $cancelled = $bookings->count_by_status( 'cancelled' );
 ?>
 <div class="ssb-admin-wrap">
@@ -44,8 +44,8 @@ $cancelled = $bookings->count_by_status( 'cancelled' );
 			<span class="ssb-stat-value"><?php echo esc_html( (string) $cancelled ); ?></span>
 		</div>
 		<div class="ssb-stat-card ssb-stat-card--wide">
-			<span class="ssb-stat-label"><?php esc_html_e( 'Total Revenue', 'sacred-spaces-booking' ); ?></span>
-			<span class="ssb-stat-value">$<?php echo esc_html( number_format( $revenue, 2 ) ); ?></span>
+			<span class="ssb-stat-label"><?php esc_html_e( 'Approved', 'sacred-spaces-booking' ); ?></span>
+			<span class="ssb-stat-value"><?php echo esc_html( (string) $approved ); ?></span>
 		</div>
 	</div>
 </div>

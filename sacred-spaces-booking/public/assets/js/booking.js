@@ -134,11 +134,6 @@
 		return !!state.data.service;
 	}
 
-	function requiresPayment() {
-		const s = state.data.service;
-		return s && (s.payment_mode === 'full' || s.payment_mode === 'deposit') && s.payment_amount > 0;
-	}
-
 	/* ── Validation ── */
 	function validateStep() {
 		clearErrors();
@@ -361,11 +356,6 @@
 		const d = state.data;
 		const locLabel = d.location === 'in_home' ? (i18n.inHome || 'In Home') : (i18n.virtual || 'Virtual');
 
-		let paymentBtn = '';
-		if (r?.requires_payment) {
-			paymentBtn = `<button type="button" class="ssb-btn ssb-btn--primary" id="ssb-pay-btn" style="margin-top:24px">${i18n.payNow || 'Complete Payment'}</button>`;
-		}
-
 		return `
 			<div class="ssb-confirmation">
 				<div class="ssb-confirmation__check" aria-hidden="true">✔</div>
@@ -382,7 +372,6 @@
 						<div class="ssb-review__row"><strong>${esc('Investment')}</strong><span>${esc(d.service?.investment_display || '')}</span></div>
 					</div>
 				</div>
-				${paymentBtn}
 			</div>
 		`;
 	}
@@ -440,10 +429,6 @@
 				el.addEventListener('change', () => syncFormFields(panel));
 				el.addEventListener('input', () => syncFormFields(panel));
 			});
-		}
-
-		if (step === 7) {
-			$('#ssb-pay-btn', panel)?.addEventListener('click', handlePayment);
 		}
 	}
 
@@ -549,30 +534,6 @@
 		}
 	}
 
-	async function handlePayment() {
-		const r = state.bookingResult;
-		if (!r?.requires_payment) return;
-
-		showLoading(true);
-		try {
-			const checkout = await api('/payments/checkout', {
-				method: 'POST',
-				body: JSON.stringify({
-					booking_id: r.booking_id,
-					amount: r.payment_amount,
-					mode: state.data.service?.payment_mode || 'full'
-				})
-			});
-			if (checkout.url) {
-				window.location.href = checkout.url;
-			}
-		} catch (e) {
-			alert(e.message);
-		} finally {
-			showLoading(false);
-		}
-	}
-
 	async function handleNext() {
 		syncCurrentPanelFields();
 		if (!validateStep()) return;
@@ -627,28 +588,6 @@
 		return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
 	}
 
-	/* ── Payment return ── */
-	async function handlePaymentReturn() {
-		const ret = config.paymentReturn;
-		if (!ret?.ref) return;
-
-		showLoading(true);
-		try {
-			const booking = await api(`/bookings/${ret.ref}`);
-			state.bookingResult = { booking_ref: ret.ref, requires_payment: false };
-			state.data.service = { name: booking.service_name, investment_display: booking.investment_display };
-			state.data.booking_date = booking.booking_date;
-			state.data.booking_time = booking.booking_time;
-			state.data.location = booking.location;
-			state.data.first_name = booking.first_name;
-			goToStep(7);
-		} catch (e) {
-			console.error(e);
-		} finally {
-			showLoading(false);
-		}
-	}
-
 	/* ── Init ── */
 	function parseServicesFromDom() {
 		return $$('.ssb-service-option[data-service-id]', panelsEl).map((btn) => ({
@@ -658,8 +597,6 @@
 			investment_display: $('.ssb-service-option__investment', btn)?.textContent?.trim() || '',
 			description: $('.ssb-service-option__desc', btn)?.textContent?.trim() || '',
 			duration_minutes: parseInt($('.ssb-service-option__meta', btn)?.textContent, 10) || 90,
-			payment_mode: btn.dataset.paymentMode || 'none',
-			payment_amount: btn.dataset.paymentAmount ? parseFloat(btn.dataset.paymentAmount) : null,
 			locations: (btn.dataset.locations || 'virtual,in_home').split(',').map((l) => l.trim()).filter(Boolean)
 		}));
 	}
@@ -698,18 +635,6 @@
 		} else if (state.services.length) {
 			renderProgress();
 			goToStep(0);
-		}
-
-		// Payment return is the only init path that needs a blocking loader.
-		if (config.paymentReturn) {
-			showLoading(true);
-			try {
-				await handlePaymentReturn();
-			} catch (e) {
-				console.error('SSB payment return error:', e);
-			} finally {
-				showLoading(false);
-			}
 		}
 	}
 

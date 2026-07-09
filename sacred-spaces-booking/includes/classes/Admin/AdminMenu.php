@@ -32,7 +32,6 @@ class AdminMenu {
 			array( 'slug' => 'sacred-spaces-calendar', 'title' => 'Calendar', 'callback' => 'calendar' ),
 			array( 'slug' => 'sacred-spaces-services', 'title' => 'Services', 'callback' => 'services' ),
 			array( 'slug' => 'sacred-spaces-availability', 'title' => 'Availability', 'callback' => 'availability' ),
-			array( 'slug' => 'sacred-spaces-payments', 'title' => 'Payments', 'callback' => 'payments' ),
 			array( 'slug' => 'sacred-spaces-questionnaires', 'title' => 'Questionnaires', 'callback' => 'questionnaires' ),
 			array( 'slug' => 'sacred-spaces-reports', 'title' => 'Reports', 'callback' => 'reports' ),
 			array( 'slug' => 'sacred-spaces-settings', 'title' => 'Settings', 'callback' => 'settings' ),
@@ -89,7 +88,6 @@ class AdminMenu {
 	public function render_calendar(): void { $this->render( 'calendar' ); }
 	public function render_services(): void { $this->render( 'services' ); }
 	public function render_availability(): void { $this->render( 'availability' ); }
-	public function render_payments(): void { $this->render( 'payments' ); }
 	public function render_questionnaires(): void { $this->render( 'questionnaires' ); }
 	public function render_reports(): void { $this->render( 'reports' ); }
 	public function render_settings(): void { $this->render( 'settings' ); }
