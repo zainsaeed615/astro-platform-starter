@@ -2,8 +2,8 @@
 /**
  * Plugin Name:       Vidian Property Calculators
  * Plugin URI:        https://www.vidiancapital.com/tools/calculators
- * Description:       Property investment calculators (Stamp Duty, Rental Yield, Mortgage). Embed with shortcode [calculator_plugin].
- * Version:           1.0.2
+ * Description:       Property investment calculators (Stamp Duty, Rental Yield, Mortgage). Embed with shortcode [vidian_calculators].
+ * Version:           1.0.3
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Vidian Capital
@@ -16,7 +16,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'VCP_VERSION', '1.0.2' );
+define( 'VCP_VERSION', '1.0.3' );
 define( 'VCP_PLUGIN_FILE', __FILE__ );
 define( 'VCP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'VCP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -32,6 +32,7 @@ require_once VCP_PLUGIN_DIR . 'includes/class-vcp-elementor.php';
 function vcp_register_shortcode() {
 	add_shortcode( 'calculator_plugin', 'vcp_render_calculator_shortcode' );
 	add_shortcode( 'vidian_calculator', 'vcp_render_calculator_shortcode' );
+	add_shortcode( 'vidian_calculators', 'vcp_render_calculator_shortcode' );
 }
 add_action( 'init', 'vcp_register_shortcode', 5 );
 
@@ -74,7 +75,8 @@ function vcp_maybe_enqueue_assets() {
 
 	if (
 		has_shortcode( $post->post_content, 'calculator_plugin' ) ||
-		has_shortcode( $post->post_content, 'vidian_calculator' )
+		has_shortcode( $post->post_content, 'vidian_calculator' ) ||
+		has_shortcode( $post->post_content, 'vidian_calculators' )
 	) {
 		VCP_Plugin::instance()->enqueue_assets();
 	}
@@ -88,7 +90,7 @@ add_action( 'wp_enqueue_scripts', 'vcp_maybe_enqueue_assets', 20 );
  * @return array
  */
 function vcp_plugin_action_links( $links ) {
-	$links[] = '<strong>' . esc_html__( 'Shortcode:', 'vidian-property-calculators' ) . '</strong> <code>[calculator_plugin]</code>';
+	$links[] = '<strong>' . esc_html__( 'Shortcode:', 'vidian-property-calculators' ) . '</strong> <code>[vidian_calculators]</code>';
 	return $links;
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'vcp_plugin_action_links' );
@@ -116,7 +118,7 @@ function vcp_admin_notice() {
 		<p>
 			<strong><?php esc_html_e( 'Vidian Property Calculators is active.', 'vidian-property-calculators' ); ?></strong>
 			<?php esc_html_e( 'Use shortcode', 'vidian-property-calculators' ); ?>
-			<code>[calculator_plugin]</code>
+			<code>[vidian_calculators]</code>
 			<?php esc_html_e( 'inside Elementor → Shortcode widget (not Text Editor).', 'vidian-property-calculators' ); ?>
 		</p>
 	</div>

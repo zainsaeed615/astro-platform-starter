@@ -37,7 +37,8 @@ class VCP_Elementor {
 
 		if (
 			false !== strpos( $content, '[calculator_plugin' ) ||
-			false !== strpos( $content, '[vidian_calculator' )
+			false !== strpos( $content, '[vidian_calculator' ) ||
+			false !== strpos( $content, '[vidian_calculators' )
 		) {
 			$content = do_shortcode( $content );
 		}
@@ -67,7 +68,8 @@ class VCP_Elementor {
 
 		if (
 			false !== strpos( $elementor_data, 'calculator_plugin' ) ||
-			false !== strpos( $elementor_data, 'vidian_calculator' )
+			false !== strpos( $elementor_data, 'vidian_calculator' ) ||
+			false !== strpos( $elementor_data, 'vidian_calculators' )
 		) {
 			VCP_Plugin::instance()->enqueue_assets();
 		}
