@@ -3,7 +3,7 @@
  * Plugin Name:       Vidian Property Calculators
  * Plugin URI:        https://www.vidiancapital.com/tools/calculators
  * Description:       Property investment calculators (Stamp Duty, Rental Yield, Mortgage). Embed with shortcode [calculator_plugin].
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Vidian Capital

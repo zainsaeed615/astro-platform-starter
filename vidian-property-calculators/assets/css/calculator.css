@@ -22,6 +22,9 @@
 	line-height: 1.5;
 	color: var(--vcp-foreground);
 	background: var(--vcp-background);
+	width: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -45,15 +48,8 @@
 	max-width: 56rem;
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: 1rem;
-	padding-right: 1rem;
-}
-
-@media (min-width: 768px) {
-	.vcp-container {
-		padding-left: 1.5rem;
-		padding-right: 1.5rem;
-	}
+	padding-left: clamp(0.75rem, 4vw, 1.5rem);
+	padding-right: clamp(0.75rem, 4vw, 1.5rem);
 }
 
 /* Hero */
@@ -124,12 +120,12 @@
 
 /* Main section */
 .vcp-main {
-	padding: 3rem 0;
+	padding: 2rem 0;
 }
 
 @media (min-width: 640px) {
 	.vcp-main {
-		padding: 4rem 0;
+		padding: 3rem 0;
 	}
 }
 
@@ -142,12 +138,19 @@
 /* Tabs */
 .vcp-tabs {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(3, minmax(0, 1fr));
 	gap: 0.25rem;
 	padding: 0.25rem;
-	margin-bottom: 3rem;
+	margin-bottom: 2rem;
 	background: hsla(220, 14%, 96%, 0.2);
 	border-radius: var(--vcp-radius-lg);
+	width: 100%;
+}
+
+@media (min-width: 768px) {
+	.vcp-tabs {
+		margin-bottom: 3rem;
+	}
 }
 
 .vcp-tab {
@@ -156,16 +159,21 @@
 	align-items: center;
 	justify-content: center;
 	gap: 0.25rem;
-	padding: 0.75rem 0.5rem;
+	min-width: 0;
+	width: 100%;
+	padding: 0.75rem 0.25rem;
 	border: none;
 	border-radius: calc(var(--vcp-radius-lg) - 2px);
 	background: transparent;
 	color: var(--vcp-muted-foreground);
 	font-family: 'Inter', sans-serif;
-	font-size: 0.75rem;
+	font-size: 0.6875rem;
 	font-weight: 700;
+	line-height: 1.2;
+	text-align: center;
 	cursor: pointer;
 	transition: all 0.2s ease;
+	-webkit-tap-highlight-color: transparent;
 }
 
 @media (min-width: 768px) {
@@ -206,7 +214,22 @@
 }
 
 .vcp-tab__label {
-	white-space: nowrap;
+	display: block;
+	width: 100%;
+	white-space: normal;
+	word-break: break-word;
+	hyphens: auto;
+}
+
+@media (min-width: 480px) {
+	.vcp-tab {
+		font-size: 0.75rem;
+		padding: 0.75rem 0.5rem;
+	}
+
+	.vcp-tab__label {
+		white-space: nowrap;
+	}
 }
 
 /* Panels */
@@ -240,23 +263,50 @@
 }
 
 .vcp-card__header {
-	padding: 1.5rem 1.5rem 0;
+	padding: 1.25rem 1rem 0;
+}
+
+@media (min-width: 768px) {
+	.vcp-card__header {
+		padding: 1.5rem 1.5rem 0;
+	}
 }
 
 .vcp-card__title {
 	font-family: 'Outfit', sans-serif;
-	font-size: 1.5rem;
+	font-size: 1.125rem;
 	font-weight: 600;
+	line-height: 1.35;
 	text-align: center;
 	margin: 0;
 	color: var(--vcp-foreground);
 }
 
+@media (min-width: 480px) {
+	.vcp-card__title {
+		font-size: 1.25rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.vcp-card__title {
+		font-size: 1.5rem;
+		line-height: 1.25;
+	}
+}
+
 .vcp-card__body {
-	padding: 1.5rem;
+	padding: 1rem;
 	display: flex;
 	flex-direction: column;
-	gap: 1.5rem;
+	gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+	.vcp-card__body {
+		padding: 1.5rem;
+		gap: 1.5rem;
+	}
 }
 
 @media (min-width: 768px) {
@@ -341,8 +391,16 @@
 
 .vcp-input--lg,
 .vcp-select.vcp-input--lg {
-	height: 3rem;
-	font-size: 1.125rem;
+	height: 2.75rem;
+	font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+	.vcp-input--lg,
+	.vcp-select.vcp-input--lg {
+		height: 3rem;
+		font-size: 1.125rem;
+	}
 }
 
 .vcp-input:focus,
@@ -364,6 +422,7 @@
 	background-position: right 0.75rem center;
 	background-size: 1rem;
 	cursor: pointer;
+	text-overflow: ellipsis;
 }
 
 .vcp-field-hint {
@@ -376,11 +435,18 @@
 /* Checkbox */
 .vcp-checkbox-row {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	gap: 0.75rem;
-	padding: 1rem;
+	padding: 0.875rem;
 	background: hsla(220, 14%, 96%, 0.2);
 	border-radius: var(--vcp-radius-lg);
+}
+
+@media (min-width: 768px) {
+	.vcp-checkbox-row {
+		align-items: center;
+		padding: 1rem;
+	}
 }
 
 .vcp-checkbox {
@@ -394,14 +460,25 @@
 .vcp-checkbox-label {
 	font-size: 0.875rem;
 	font-weight: 500;
+	line-height: 1.4;
 	cursor: pointer;
 	margin: 0;
+	flex: 1;
+	min-width: 0;
 }
 
 .vcp-checkbox-hint {
+	display: inline;
 	color: var(--vcp-muted-foreground);
-	font-size: 0.875rem;
+	font-size: 0.8125rem;
 	font-weight: 400;
+}
+
+@media (max-width: 479px) {
+	.vcp-checkbox-hint {
+		display: block;
+		margin-top: 0.125rem;
+	}
 }
 
 /* Buttons */
@@ -444,8 +521,16 @@
 
 .vcp-btn--full {
 	width: 100%;
-	height: 3.5rem;
-	font-size: 1.125rem;
+	height: 3rem;
+	font-size: 0.9375rem;
+	letter-spacing: 0.04em;
+}
+
+@media (min-width: 768px) {
+	.vcp-btn--full {
+		height: 3.5rem;
+		font-size: 1.125rem;
+	}
 }
 
 .vcp-btn--cta {
@@ -465,12 +550,18 @@
 /* Results */
 .vcp-result {
 	margin-top: 0.5rem;
-	padding: 2rem;
+	padding: 1.25rem 1rem;
 	background: hsla(220, 14%, 96%, 0.1);
 	border: 2px solid hsla(226, 100%, 22%, 0.1);
 	border-radius: var(--vcp-radius-xl);
 	text-align: center;
 	animation: vcp-fade-in 0.4s ease;
+}
+
+@media (min-width: 768px) {
+	.vcp-result {
+		padding: 2rem;
+	}
 }
 
 .vcp-result--hidden {
@@ -492,7 +583,7 @@
 
 .vcp-result__value {
 	font-family: 'Outfit', sans-serif;
-	font-size: 1.875rem;
+	font-size: 1.5rem;
 	font-weight: 700;
 	color: var(--vcp-primary);
 	margin: 0;
@@ -595,9 +686,16 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
-	font-size: 0.875rem;
+	font-size: 0.8125rem;
 	color: var(--vcp-muted-foreground);
-	padding: 0 1rem;
+	padding: 0;
+}
+
+@media (min-width: 640px) {
+	.vcp-yield-summary {
+		font-size: 0.875rem;
+		padding: 0 1rem;
+	}
 }
 
 @media (min-width: 640px) {
@@ -676,6 +774,69 @@
 }
 
 /* Elementor / theme isolation */
-.elementor-widget-shortcode .vcp-calculators {
+.elementor-widget-shortcode .vcp-calculators,
+.elementor-element .vcp-calculators {
 	width: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+.elementor-widget-shortcode .vcp-container,
+.elementor-element .vcp-container {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.elementor-widget-shortcode .elementor-widget-container,
+.elementor-element .elementor-widget-container {
+	overflow-x: hidden;
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 767px) {
+	.vcp-calculators .vcp-input,
+	.vcp-calculators .vcp-select {
+		font-size: 16px; /* Prevents iOS zoom on focus */
+	}
+
+	.vcp-hero {
+		padding: 2rem 0;
+	}
+
+	.vcp-hero__title {
+		font-size: 1.25rem;
+	}
+
+	.vcp-hero__subtitle {
+		font-size: 0.9375rem;
+	}
+
+	.vcp-form-grid--wide {
+		gap: 1.5rem;
+	}
+
+	.vcp-form-grid--nested {
+		grid-template-columns: 1fr;
+	}
+
+	.vcp-yield-box {
+		padding: 1.25rem 1rem;
+	}
+
+	.vcp-yield-box__value {
+		font-size: 1.375rem;
+	}
+
+	.vcp-cta {
+		padding: 2.5rem 0;
+	}
+
+	.vcp-cta__title {
+		font-size: 1.5rem;
+	}
+
+	.vcp-cta__text {
+		font-size: 0.9375rem;
+		margin-bottom: 1.5rem;
+	}
 }
