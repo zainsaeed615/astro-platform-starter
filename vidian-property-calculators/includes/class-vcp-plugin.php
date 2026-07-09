@@ -40,19 +40,39 @@ class VCP_Plugin {
 	}
 
 	/**
+	 * Whether the shortcode was rendered on this request.
+	 *
+	 * @var bool
+	 */
+	private $shortcode_rendered = false;
+
+	/**
 	 * Constructor.
 	 */
 	private function __construct() {
-		add_action( 'init', array( $this, 'register_shortcode' ) );
+		add_action( 'wp_footer', array( $this, 'ensure_footer_assets' ), 1 );
 	}
 
 	/**
-	 * Register the calculator shortcode.
+	 * Ensure CSS/JS load even when shortcode renders after wp_enqueue_scripts.
 	 *
 	 * @return void
 	 */
-	public function register_shortcode() {
-		add_shortcode( 'calculator_plugin', array( $this, 'render_shortcode' ) );
+	public function ensure_footer_assets() {
+		if ( ! $this->shortcode_rendered ) {
+			return;
+		}
+
+		if ( wp_style_is( 'vcp-calculator', 'done' ) ) {
+			return;
+		}
+
+		if ( ! wp_style_is( 'vcp-calculator', 'enqueued' ) ) {
+			$this->enqueue_assets();
+		}
+
+		wp_print_styles( array( 'vcp-google-fonts', 'vcp-calculator' ) );
+		wp_print_scripts( array( 'vcp-calculator' ) );
 	}
 
 	/**
@@ -97,6 +117,8 @@ class VCP_Plugin {
 	 * @return string
 	 */
 	public function render_shortcode( $atts ) {
+		$this->shortcode_rendered = true;
+
 		$atts = shortcode_atts(
 			array(
 				'show_hero'          => 'true',
@@ -113,8 +135,8 @@ class VCP_Plugin {
 
 		$show_hero        = filter_var( $atts['show_hero'], FILTER_VALIDATE_BOOLEAN );
 		$show_cta         = filter_var( $atts['show_cta'], FILTER_VALIDATE_BOOLEAN );
-		$consultation_url = esc_url( $atts['consultation_url'] );
-		$contact_url      = esc_url( $atts['contact_url'] );
+		$consultation_url = $this->sanitize_link( $atts['consultation_url'] );
+		$contact_url      = $this->sanitize_link( $atts['contact_url'] );
 		$default_tab      = sanitize_key( $atts['default_tab'] );
 
 		$allowed_tabs = array( 'stamp-duty', 'yield', 'mortgage' );
@@ -127,5 +149,25 @@ class VCP_Plugin {
 		include VCP_PLUGIN_DIR . 'templates/calculators.php';
 
 		return ob_get_clean();
+	}
+
+	/**
+	 * Sanitize internal or external URLs.
+	 *
+	 * @param string $url Raw URL.
+	 * @return string
+	 */
+	private function sanitize_link( $url ) {
+		$url = trim( (string) $url );
+
+		if ( '' === $url ) {
+			return '#';
+		}
+
+		if ( 0 === strpos( $url, '/' ) ) {
+			return esc_url( home_url( $url ) );
+		}
+
+		return esc_url( $url );
 	}
 }

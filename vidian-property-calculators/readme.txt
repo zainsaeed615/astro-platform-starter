@@ -4,7 +4,7 @@ Tags: calculator, property, stamp duty, rental yield, mortgage, shortcode
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,6 +39,12 @@ Embed the Vidian Capital property investment calculators on any WordPress page u
 3. Add `[calculator_plugin]` to any page or Elementor Shortcode widget
 
 == Changelog ==
+
+= 1.0.2 =
+* Fix shortcode not rendering (earlier registration + Elementor compatibility)
+* Process shortcode inside Elementor Text/Heading widgets automatically
+* Ensure CSS/JS load when shortcode renders late on page
+* Added alternate shortcode: [vidian_calculator]
 
 = 1.0.1 =
 * Improved mobile responsiveness for tabs, cards, inputs, and Elementor embeds
