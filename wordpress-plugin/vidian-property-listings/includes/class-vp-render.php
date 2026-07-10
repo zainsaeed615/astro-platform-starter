@@ -272,20 +272,12 @@ class VP_Render {
 					</div>
 					<?php endif; ?>
 
-					<div class="vp-sidebar-box vp-form-box" id="vp-inquiry-form">
+					<div class="vp-sidebar-box vp-form-box vp-close-form-box" id="vp-inquiry-form">
 						<h3>Request Information</h3>
-						<form class="vp-inquiry-form" data-property-id="<?php echo esc_attr( $post_id ); ?>">
-							<label>Full Name</label>
-							<input type="text" name="name" required placeholder="Enter your full name" />
-							<label>Email Address</label>
-							<input type="email" name="email" required placeholder="email@example.com" />
-							<label>Phone Number</label>
-							<input type="text" name="phone" placeholder="+44 7700 900000" />
-							<label>Message</label>
-							<textarea name="message" rows="4" placeholder="Type about your inquiry..."></textarea>
-							<button type="submit" class="vp-btn-primary vp-form-submit">Send Message</button>
-							<div class="vp-form-response"></div>
-						</form>
+						<p class="vp-close-form-context">Enquiry for: <strong><?php echo esc_html( $title ); ?></strong></p>
+						<div class="vp-close-form-embed">
+							<close-form id="form_033lwpMM1CK7Y0Won3ZBek"></close-form>
+						</div>
 					</div>
 				</div>
 			</div>

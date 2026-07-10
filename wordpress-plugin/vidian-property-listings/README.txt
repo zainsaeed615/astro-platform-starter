@@ -40,9 +40,10 @@ VIDIAN PROPERTY LISTINGS — Setup Guide
    - "Why Invest In..." sidebar box — title + list items.
    - Map box — sirf address/city likhein (e.g. "Manchester, UK"), map
      khud-b-khud embed ho jayega. "Open in Maps" ka link optional hai.
-   - "Inquiry Notification Email" — agar iss property ki inquiries kisi
-     alag email pr chahiye to yahan daalein, warna global default use
-     hoga (neeche settings dekhen).
+   - Detail page sidebar me built-in custom inquiry form ki jagah Close.io
+     webform embed use hota hai:
+     <close-form id="form_033lwpMM1CK7Y0Won3ZBek"></close-form>
+     Close form script plugin automatically load karta hai.
 
 3) GLOBAL SETTINGS (Inquiry Email)
    - Properties > Settings me jayein.

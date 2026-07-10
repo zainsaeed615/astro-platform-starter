@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Vidian Property Listings
- * Description: Custom property listing system with Elementor widgets, cards, grids, full detail pages, galleries, highlights, amenities, maps, and inquiry forms.
- * Version: 1.0.9
+ * Description: Custom property listing system with Elementor widgets, cards, grids, full detail pages, galleries, highlights, amenities, maps, and Close webforms.
+ * Version: 1.1.0
  * Author: Vidian Capital
  * Text Domain: vidian-property
  */
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define( 'VP_PLUGIN_FILE', __FILE__ );
 define( 'VP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'VP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'VP_VERSION', '1.0.9' );
+define( 'VP_VERSION', '1.1.0' );
 
 final class Vidian_Property_Listings {
 
@@ -32,6 +32,7 @@ final class Vidian_Property_Listings {
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_assets' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_assets' ) );
+		add_filter( 'script_loader_tag', array( $this, 'close_webforms_script_tag' ), 10, 3 );
 
 		add_action( 'plugins_loaded', array( $this, 'load_elementor_integration' ) );
 
@@ -79,10 +80,19 @@ final class Vidian_Property_Listings {
 	public function frontend_assets() {
 		wp_enqueue_style( 'vp-frontend-css', VP_PLUGIN_URL . 'assets/css/frontend.css', array(), VP_VERSION );
 		wp_enqueue_script( 'vp-frontend-js', VP_PLUGIN_URL . 'assets/js/frontend.js', array( 'jquery' ), VP_VERSION, true );
+		wp_enqueue_script( 'vp-close-webforms', 'https://webforms.closeiocdn.com/webforms.js', array(), null, true );
 		wp_localize_script( 'vp-frontend-js', 'VP_Ajax', array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
 			'nonce'    => wp_create_nonce( 'vp_inquiry_nonce' ),
 		) );
+	}
+
+	public function close_webforms_script_tag( $tag, $handle, $src ) {
+		if ( $handle !== 'vp-close-webforms' ) {
+			return $tag;
+		}
+
+		return '<script src="' . esc_url( $src ) . '" type="module" crossorigin="anonymous" defer></script>';
 	}
 
 	public function activate() {
