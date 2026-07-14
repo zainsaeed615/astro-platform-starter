@@ -1,0 +1,19 @@
+/* MW Homes – admin */
+.mwh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 18px;margin:8px 0}
+.mwh-f label{display:block;font-weight:600;margin-bottom:4px}
+.mwh-f input[type=text],.mwh-f input[type=number],.mwh-f input[type=url],.mwh-f textarea{width:100%}
+.mwh-f--full{margin-top:14px}
+.mwh-f .description{font-weight:400}
+.mwh-media-preview img{max-width:220px;height:auto;display:block;margin:6px 0;border:1px solid #dcdcde;border-radius:4px}
+.mwh-media-single .button,.mwh-media-gallery .button{margin-right:6px}
+.mwh-gallery-list{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0;padding:0;list-style:none}
+.mwh-gallery-list li{position:relative;width:80px;height:80px;border:1px solid #dcdcde;border-radius:4px;overflow:hidden;cursor:move}
+.mwh-gallery-list li img{width:100%;height:100%;object-fit:cover}
+.mwh-gallery-remove{position:absolute;top:2px;right:2px;width:18px;height:18px;line-height:16px;border:0;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;cursor:pointer;padding:0}
+.mwh-spec-nav{display:flex;flex-wrap:wrap;gap:2px;margin:10px 0 0;padding:0;list-style:none;border-bottom:1px solid #dcdcde}
+.mwh-spec-nav a{display:block;padding:8px 14px;background:#f0f0f1;text-decoration:none;color:#1d2327;border:1px solid #dcdcde;border-bottom:0;border-radius:4px 4px 0 0}
+.mwh-spec-nav a.active{background:#fff;font-weight:600}
+.mwh-spec-pane{display:none;padding:12px 0}
+.mwh-spec-pane.active{display:block}
+.mwh-spec-pane textarea{width:100%;font-family:Menlo,Consolas,monospace;font-size:12px}
+@media(max-width:782px){.mwh-grid{grid-template-columns:1fr}}
