@@ -1,0 +1,140 @@
+/*
+  VUZE Horizon — mobile header only (max-width: 749px)
+  Option A: paste into Header section → Custom CSS
+  Option B: replace the matching mobile block inside sections/header.liquid
+*/
+
+@media screen and (max-width: 749px) {
+  .header__columns {
+    --header-template-columns: 1fr var(--header-mobile-bookend, 44px) auto var(--header-mobile-bookend, 44px);
+    grid-template-areas: 'logo search actions menu';
+    column-gap: 0;
+    align-items: center;
+    padding-inline: 0 var(--padding-3xs, 4px);
+  }
+
+  .header__columns .header-logo {
+    grid-area: logo;
+    justify-self: start;
+    justify-content: flex-start;
+    align-items: center;
+    width: auto;
+    max-width: min(230px, 52vw);
+    margin-inline-end: 0;
+    padding-inline-start: var(--padding-sm, 12px);
+  }
+
+  .header__columns .header-logo img,
+  .header__columns .header-logo svg,
+  .header__columns .header-logo .header-logo__image {
+    width: auto !important;
+    max-width: 100% !important;
+    max-height: 40px !important;
+    height: auto !important;
+    padding-left: 0 !important;
+    object-fit: contain;
+    display: block;
+  }
+
+  .header__columns .search-action {
+    grid-area: search;
+    justify-self: center;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .header__columns header-actions {
+    grid-area: actions;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    gap: 0;
+    margin-inline-start: 0 !important;
+  }
+
+  /* Even profile + cart icons */
+  .header__columns header-actions > *,
+  .header__columns header-actions .header-actions__action,
+  .header__columns header-actions shopify-account,
+  .header__columns header-actions cart-icon,
+  .header__columns header-actions .account-button {
+    width: 44px !important;
+    min-width: 44px !important;
+    max-width: 44px !important;
+    height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+  }
+
+  .header__columns header-actions .header-actions__action svg,
+  .header__columns header-actions .svg-wrapper,
+  .header__columns header-actions .account-button__icon,
+  .header__columns header-actions .account-button__icon svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .header__columns header-menu,
+  .header__columns .header__icon--menu,
+  .header__columns .header__drawer {
+    grid-area: menu;
+    justify-self: end;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Horizon drawer mode uses higher-specificity rules — keep logo left there too */
+#header-component[data-menu-style='drawer'] .header__columns {
+  --header-template-columns: 1fr var(--header-mobile-bookend, 44px) auto var(--header-mobile-bookend, 44px);
+  grid-template-areas: 'logo search actions menu';
+  column-gap: 0;
+  align-items: center;
+  padding-inline: 0 var(--padding-3xs, 4px);
+}
+
+#header-component[data-menu-style='drawer'] .header__columns .header-logo {
+  grid-area: logo;
+  justify-self: start;
+  justify-content: flex-start;
+  max-width: min(230px, 52vw);
+  padding-inline-start: var(--padding-sm, 12px);
+}
+
+#header-component[data-menu-style='drawer'] .header__columns header-actions {
+  grid-area: actions;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-inline-start: 0 !important;
+}
+
+#header-component[data-menu-style='drawer'] .header__columns header-actions > *,
+#header-component[data-menu-style='drawer'] .header__columns header-actions .header-actions__action,
+#header-component[data-menu-style='drawer'] .header__columns header-actions shopify-account,
+#header-component[data-menu-style='drawer'] .header__columns header-actions cart-icon,
+#header-component[data-menu-style='drawer'] .header__columns header-actions .account-button {
+  width: 44px !important;
+  min-width: 44px !important;
+  max-width: 44px !important;
+  height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
