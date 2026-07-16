@@ -1,0 +1,200 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/shared/PageHero.astro';
+import CTABanner from '../components/sections/CTABanner.astro';
+import { site } from '../content/site';
+import { aboutContent, whyChooseUs } from '../content/testimonials';
+
+const title = `About | ${site.name} — Sacramento General Contractor`;
+const description =
+  'Learn about PDQ Construction — a licensed Class B general building contractor in Citrus Heights serving Sacramento County with remodeling, additions, and new construction since 2016.';
+---
+
+<Layout title={title} description={description}>
+  <PageHero
+    title={aboutContent.heroTitle}
+    subtitle={aboutContent.heroSubtitle}
+    image="/images/about/about-1.jpg"
+  />
+
+  <!-- Story -->
+  <section class="section-pdq bg-white">
+    <div class="container-pdq">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+        <div>
+          <p class="section-eyebrow">Who We Are</p>
+          <h2 class="section-heading">{aboutContent.storyTitle}</h2>
+          <div class="mt-8 space-y-5 text-base md:text-lg leading-relaxed text-slate-600">
+            {aboutContent.story.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+          <div class="mt-8 flex flex-wrap gap-6 text-sm font-semibold text-pdq-navy">
+            <span>Est. {site.foundedYear}</span>
+            <span class="text-pdq-border">|</span>
+            <span>{site.licenseLabel}</span>
+            <span class="text-pdq-border">|</span>
+            <span>{site.licenseClass}</span>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="overflow-hidden aspect-[4/3]">
+            <img
+              src="/images/about/about-1.jpg"
+              alt="PDQ Construction crew at work on a Sacramento-area project"
+              class="img-cover"
+              loading="lazy"
+              width="800"
+              height="600"
+            />
+          </div>
+          <div
+            class="absolute -bottom-6 -left-6 hidden md:block w-40 h-40 bg-pdq-red"
+            aria-hidden="true"
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="section-pdq bg-pdq-light">
+    <div class="container-pdq">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <p class="section-eyebrow">Purpose</p>
+        <h2 class="section-heading">Mission & Vision</h2>
+        <p class="section-lead mx-auto">
+          Every project we take on is guided by a clear purpose: deliver construction that is honest,
+          code-compliant, and finished Pretty Darn Quick — without sacrificing craftsmanship.
+        </p>
+      </div>
+      <div class="grid gap-8 md:grid-cols-2">
+        <div class="card-premium">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pdq-red mb-3">Mission</p>
+          <h3 class="font-display text-2xl text-pdq-navy mb-4">What Drives Us Daily</h3>
+          <p class="text-slate-600 leading-relaxed text-base md:text-lg">{aboutContent.mission}</p>
+        </div>
+        <div class="card-premium">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pdq-red mb-3">Vision</p>
+          <h3 class="font-display text-2xl text-pdq-navy mb-4">Where We Are Headed</h3>
+          <p class="text-slate-600 leading-relaxed text-base md:text-lg">{aboutContent.vision}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section-pdq bg-white">
+    <div class="container-pdq">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <p class="section-eyebrow">Our Standards</p>
+        <h2 class="section-heading">Values We Build By</h2>
+        <p class="section-lead mx-auto">
+          These principles shape how we estimate, how we communicate, and how we leave your job site
+          every day.
+        </p>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          aboutContent.values.map((value) => (
+            <div class="border border-pdq-border/80 p-6 md:p-8 hover:border-pdq-navy/25 transition duration-300">
+              <h3 class="font-display text-xl text-pdq-navy mb-3">{value.title}</h3>
+              <p class="text-slate-600 leading-relaxed">{value.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Why choose + image -->
+  <section class="section-pdq bg-pdq-navy-dark text-white">
+    <div class="container-pdq">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 overflow-hidden aspect-[4/3]">
+          <img
+            src="/images/about/about-2.jpg"
+            alt="Finished construction craftsmanship by PDQ Construction"
+            class="img-cover"
+            loading="lazy"
+            width="800"
+            height="600"
+          />
+        </div>
+        <div class="order-1 lg:order-2">
+          <p class="section-eyebrow !text-pdq-red">Why Homeowners Choose PDQ</p>
+          <h2 class="section-heading !text-white">Accountable Construction You Can Trust</h2>
+          <p class="mt-4 text-white/75 text-base md:text-lg leading-relaxed max-w-xl">
+            From the first estimate to final walkthrough, you work with a licensed Class B general
+            contractor who owns the schedule, the trades, and the finish quality.
+          </p>
+          <ul class="mt-8 space-y-5">
+            {
+              whyChooseUs.slice(0, 4).map((item) => (
+                <li class="flex gap-4">
+                  <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-pdq-red" aria-hidden="true" />
+                  <div>
+                    <p class="font-semibold text-white">{item.title}</p>
+                    <p class="mt-1 text-sm text-white/70 leading-relaxed">{item.description}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- License block -->
+  <section class="section-pdq bg-pdq-light">
+    <div class="container-pdq">
+      <div
+        class="border border-pdq-border bg-white p-8 md:p-12 lg:p-14 grid gap-8 md:grid-cols-[1fr_auto] md:items-center"
+      >
+        <div>
+          <p class="section-eyebrow">Credentials</p>
+          <h2 class="section-heading text-3xl md:text-4xl">Licensed. Bonded. Local.</h2>
+          <p class="mt-4 text-slate-600 leading-relaxed max-w-2xl text-base md:text-lg">
+            PDQ Construction operates under California Contractors State License Board credentials as
+            a Class B General Building contractor. We are based in Citrus Heights and serve homeowners
+            and businesses throughout Sacramento County and the surrounding valley. Always verify our
+            license at{' '}
+            <a
+              href="https://www.cslb.ca.gov"
+              class="text-pdq-navy font-semibold underline underline-offset-2 hover:text-pdq-red"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              cslb.ca.gov
+            </a>
+            .
+          </p>
+          <dl class="mt-8 grid gap-4 sm:grid-cols-3">
+            <div>
+              <dt class="text-xs uppercase tracking-wider text-pdq-muted font-semibold">License</dt>
+              <dd class="mt-1 font-display text-xl text-pdq-navy">#{site.license}</dd>
+            </div>
+            <div>
+              <dt class="text-xs uppercase tracking-wider text-pdq-muted font-semibold">
+                Classification
+              </dt>
+              <dd class="mt-1 font-display text-xl text-pdq-navy">Class B</dd>
+            </div>
+            <div>
+              <dt class="text-xs uppercase tracking-wider text-pdq-muted font-semibold">
+                Home Base
+              </dt>
+              <dd class="mt-1 font-display text-xl text-pdq-navy">Citrus Heights, CA</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="flex flex-col gap-3 sm:flex-row md:flex-col">
+          <a href={site.phoneHref} class="btn-primary text-center">{site.phone}</a>
+          <a href="/contact" class="btn-outline text-center">Request Estimate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner />
+</Layout>

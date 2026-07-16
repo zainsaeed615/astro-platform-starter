@@ -1,0 +1,149 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/shared/PageHero.astro';
+import CTABanner from '../components/sections/CTABanner.astro';
+import ContactForm from '../components/ui/ContactForm';
+import { site, serviceAreas } from '../content/site';
+import { services } from '../content/services';
+
+const title = `Contact | ${site.name} — Sacramento General Contractor`;
+const description =
+  'Request a free estimate from PDQ Construction. Call 916-871-4325, email info@pdqbuilt.com, or send a project inquiry — licensed Class B contractor serving Citrus Heights and Sacramento County.';
+
+const serviceOptions = services.map((s) => ({ slug: s.slug, title: s.title }));
+---
+
+<Layout title={title} description={description}>
+  <PageHero
+    title="Let's Build Something Great"
+    subtitle="Tell us about your remodel, addition, kitchen & bath project, or commercial build-out. We respond promptly with next steps and a path to a free written estimate."
+    image="/images/hero/hero-3.jpg"
+  />
+
+  <section class="section-pdq bg-white">
+    <div class="container-pdq">
+      <div class="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16 items-start">
+        <!-- Form column -->
+        <div>
+          <p class="section-eyebrow">Free Estimate Request</p>
+          <h2 class="section-heading text-3xl md:text-4xl">Send Project Details</h2>
+          <p class="section-lead">
+            Include your location, project type, and any photos or notes about timeline and budget.
+            The more we know up front, the faster we can prepare for a useful site visit.
+          </p>
+          <div class="mt-10">
+            <ContactForm client:load services={serviceOptions} />
+          </div>
+        </div>
+
+        <!-- Info sidebar -->
+        <aside class="space-y-6 lg:sticky lg:top-28">
+          <div class="bg-pdq-navy text-white p-8 md:p-10">
+            <h3 class="font-display text-2xl text-white mb-6">Direct Contact</h3>
+            <ul class="space-y-5 text-sm">
+              <li>
+                <p class="text-xs uppercase tracking-wider text-white/50 font-semibold mb-1">
+                  Phone / Text
+                </p>
+                <a
+                  href={site.phoneHref}
+                  class="no-underline text-lg font-bold text-white hover:text-pdq-red transition"
+                >
+                  {site.phone}
+                </a>
+              </li>
+              <li>
+                <p class="text-xs uppercase tracking-wider text-white/50 font-semibold mb-1">
+                  Email
+                </p>
+                <a
+                  href={`mailto:${site.email}`}
+                  class="no-underline text-base font-semibold text-white hover:text-pdq-red transition"
+                >
+                  {site.email}
+                </a>
+              </li>
+              <li>
+                <p class="text-xs uppercase tracking-wider text-white/50 font-semibold mb-1">
+                  License
+                </p>
+                <p class="text-white font-semibold">{site.licenseLabel}</p>
+                <p class="text-white/70 mt-0.5">{site.licenseClass}</p>
+              </li>
+              <li>
+                <p class="text-xs uppercase tracking-wider text-white/50 font-semibold mb-1">
+                  Hours
+                </p>
+                <p class="text-white/90 leading-relaxed">{site.hours}</p>
+              </li>
+              <li>
+                <p class="text-xs uppercase tracking-wider text-white/50 font-semibold mb-1">
+                  Location
+                </p>
+                <p class="text-white/90">{site.location}</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="border border-pdq-border p-8 bg-pdq-light">
+            <h3 class="font-display text-xl text-pdq-navy mb-4">Service Areas</h3>
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">
+              Based in Citrus Heights and serving the greater Sacramento Valley:
+            </p>
+            <p class="text-sm text-pdq-navy/80 leading-relaxed font-medium">
+              {serviceAreas.join(' · ')}
+            </p>
+          </div>
+
+          <div class="border border-pdq-border p-8">
+            <h3 class="font-display text-xl text-pdq-navy mb-3">What Happens Next</h3>
+            <ol class="space-y-3 text-sm text-slate-600">
+              <li class="flex gap-3">
+                <span class="font-display text-pdq-red font-bold">1</span>
+                <span>We review your inquiry and follow up by phone or email.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="font-display text-pdq-red font-bold">2</span>
+                <span>Schedule an on-site evaluation when the project needs measurements.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="font-display text-pdq-red font-bold">3</span>
+                <span>Receive a detailed written estimate with clear scope and timeline.</span>
+              </li>
+            </ol>
+            <a href="/process" class="inline-block mt-5 text-sm font-bold uppercase tracking-wide text-pdq-navy hover:text-pdq-red no-underline">
+              Full process →
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section class="section-pdq bg-pdq-light !pt-0">
+    <div class="container-pdq">
+      <div class="mb-8 max-w-2xl">
+        <p class="section-eyebrow">Find Us</p>
+        <h2 class="section-heading text-3xl">Serving Citrus Heights & Sacramento County</h2>
+        <p class="section-lead">
+          We are locally rooted in Citrus Heights and travel throughout the Sacramento Valley for
+          residential and commercial projects.
+        </p>
+      </div>
+      <div class="overflow-hidden border border-pdq-border aspect-[21/9] min-h-[280px] bg-white">
+        <iframe
+          title="PDQ Construction service area — Citrus Heights, California"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d99736.8!2d-121.281061!3d38.707124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ae51f6c0b0b0b%3A0x0!2sCitrus%20Heights%2C%20CA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+          class="h-full w-full border-0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        >
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner />
+</Layout>

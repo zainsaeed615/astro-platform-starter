@@ -1,0 +1,144 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/shared/PageHero.astro';
+import CTABanner from '../components/sections/CTABanner.astro';
+import { site } from '../content/site';
+import { services } from '../content/services';
+
+const title = `Services | ${site.name} — Sacramento General Contractor`;
+const description =
+  'Explore PDQ Construction services: residential remodeling, home additions, kitchen & bath, new construction, commercial build-outs, and custom projects across Sacramento County.';
+---
+
+<Layout title={title} description={description}>
+  <PageHero
+    title="Construction Services Built for Sacramento Living"
+    subtitle="From single-room remodels to full additions and commercial build-outs, PDQ Construction delivers licensed Class B general contracting with clear scopes, skilled trades, and finishes that last."
+    image="/images/hero/hero-2.jpg"
+  />
+
+  <!-- Services overview intro -->
+  <section class="section-pdq bg-white !pb-10 md:!pb-12">
+    <div class="container-pdq">
+      <div class="max-w-3xl">
+        <p class="section-eyebrow">Full-Service General Contractor</p>
+        <h2 class="section-heading">Six Ways We Build for You</h2>
+        <p class="section-lead">
+          Every service below is backed by California CSLB License #{site.license}. You get one
+          accountable team for planning, permits when required, construction, and final walkthrough —
+          so nothing falls through the cracks between trades.
+        </p>
+      </div>
+      <nav class="mt-10 flex flex-wrap gap-3" aria-label="Jump to service">
+        {
+          services.map((service) => (
+            <a
+              href={`#${service.slug}`}
+              class="no-underline text-sm font-semibold uppercase tracking-wide px-4 py-2 border border-pdq-border text-pdq-navy hover:border-pdq-red hover:text-pdq-red transition"
+            >
+              {service.shortTitle}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </section>
+
+  <!-- Detailed service sections -->
+  {
+    services.map((service, index) => {
+      const imageLeft = index % 2 === 0;
+      return (
+        <section
+          id={service.slug}
+          class:list={['section-pdq scroll-mt-28', index % 2 === 0 ? 'bg-pdq-light' : 'bg-white']}
+        >
+          <div class="container-pdq">
+            <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
+              <div class:list={[imageLeft ? 'lg:order-1' : 'lg:order-2']}>
+                <div class="overflow-hidden aspect-[4/3] border border-pdq-border/60">
+                  <img
+                    src={service.image}
+                    alt={`${service.title} by PDQ Construction`}
+                    class="img-cover"
+                    loading="lazy"
+                    width="900"
+                    height="675"
+                  />
+                </div>
+              </div>
+
+              <div class:list={[imageLeft ? 'lg:order-2' : 'lg:order-1']}>
+                <p class="section-eyebrow">
+                  Service {String(index + 1).padStart(2, '0')}
+                </p>
+                <h2 class="section-heading">{service.title}</h2>
+                <p class="mt-3 text-lg font-medium text-pdq-navy/80">{service.summary}</p>
+                <p class="mt-5 text-slate-600 leading-relaxed text-base md:text-lg">
+                  {service.description}
+                </p>
+
+                <div class="mt-10">
+                  <h3 class="font-display text-xl text-pdq-navy mb-4">What’s Included</h3>
+                  <ul class="space-y-3">
+                    {service.details.map((detail) => (
+                      <li class="flex gap-3 text-slate-600 leading-relaxed">
+                        <span
+                          class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-pdq-red"
+                          aria-hidden="true"
+                        />
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="mt-10 border-t border-pdq-border pt-8">
+                  <h3 class="font-display text-xl text-pdq-navy mb-4">Client Benefits</h3>
+                  <ul class="grid gap-3 sm:grid-cols-2">
+                    {service.benefits.map((benefit) => (
+                      <li class="flex gap-3 text-slate-600 leading-relaxed text-sm md:text-base">
+                        <span class="text-pdq-red font-bold shrink-0" aria-hidden="true">
+                          ✓
+                        </span>
+                        <span>{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="mt-10">
+                  <a href="/contact" class="btn-primary">
+                    Get a Free Estimate
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    })
+  }
+
+  <!-- Bottom reassurance -->
+  <section class="section-pdq bg-pdq-navy text-white !py-16 md:!py-20">
+    <div class="container-pdq text-center max-w-3xl mx-auto">
+      <h2 class="font-display text-3xl md:text-4xl text-white">
+        Not Sure Which Service Fits?
+      </h2>
+      <p class="mt-4 text-white/75 text-base md:text-lg leading-relaxed">
+        Many projects combine remodeling, kitchen & bath work, or an addition under one roof. Call or
+        text {site.phone} and we will help you define the right scope — with a free written estimate
+        and no obligation.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href={site.phoneHref} class="btn-secondary">Call {site.phone}</a>
+        <a href="/process" class="btn border-2 border-white/40 text-white hover:bg-white hover:text-pdq-navy">
+          See Our Process
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner />
+</Layout>
