@@ -1,43 +1,46 @@
-# PDQ Construction — Preview Guide
+# PDQ Construction — Shah G Preview Folder
 
-How to preview the Astro site locally from the workspace root.
+Yahan se aap site assets aur preview dekh sakte ho.
 
-## Asset locations
+## Folder structure
 
-| Folder | Purpose |
-|--------|---------|
-| `shah g/drive-assets/` | Original Drive downloads / source assets |
-| `shah g/web-images/` | Optimized web-ready images (about, hero, logo, projects) |
-| `public/images/` | Images served by the site at `/images/...` |
+| Path | Contents |
+|------|----------|
+| `shah g/drive-assets/` | Google Drive se download ki hui **original** photos/videos (local only, ~688MB) |
+| `shah g/web-images/` | Web-optimized JPG/SVG/PNG jo site use karti hai |
+| `shah g/preview/` | Latest `npm run build` output — HTML pages for quick look |
+| `shah g/drive-assets-index.txt` | Original Drive files ki list |
 
-Copy or sync web images into `public/images/` when updating photography so the site can serve them.
+## Website preview (recommended)
 
-## Develop
-
-From the workspace root (`/workspace`):
+Workspace root se:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open the local URL Astro prints (usually `http://localhost:4321`).
+Browser: `http://localhost:4321`
 
-## Build & static preview
+Routes: `/` `/about` `/services` `/portfolio` `/process` `/faq` `/contact`
+
+## Static preview files
+
+Build ke baad HTML yahan milti hai:
+
+- `shah g/preview/index.html`
+- `shah g/preview/about/index.html`
+- ... baaki pages
+
+Ya:
 
 ```bash
-npm run build
-npm run preview
+npm run build && npm run preview
 ```
 
-Production output lands in `dist/`. After build you can also open files under `dist/` or serve that folder with any static server.
+## Brand
 
-## Main routes
-
-- `/` — Homepage
-- `/about` — About
-- `/services` — Services
-- `/portfolio` — Portfolio
-- `/process` — Process
-- `/faq` — FAQ
-- `/contact` — Contact
+- Colors: Navy `#1B3A6B` + Red `#C8102E`
+- Phone: 916-871-4325
+- License: #1013079
+- Domain: pdqbuilt.com

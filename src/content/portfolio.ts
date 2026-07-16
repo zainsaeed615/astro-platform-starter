@@ -125,8 +125,8 @@ export const projects: Project[] = [
   {
     id: 'p10',
     title: 'Exterior Construction Phase',
-    category: 'new' as ProjectCategory,
-    categoryLabel: 'New Construction',
+    category: 'custom',
+    categoryLabel: 'Custom',
     location: 'Elk Grove, CA',
     description:
       'Exterior shell and site work progressing on a residential construction project.',
@@ -213,9 +213,5 @@ export const projects: Project[] = [
     image: '/images/projects/project-15.jpg',
   },
 ];
-
-// Fix p10 category - 'new' isn't valid, use remodeling or custom
-projects[9].category = 'custom';
-projects[9].categoryLabel = 'Custom';
 
 export const featuredProjects = projects.filter((p) => p.featured).slice(0, 6);
