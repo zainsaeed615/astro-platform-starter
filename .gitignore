@@ -28,3 +28,4 @@ shah g/drive-assets/
 
 # Build copy for local preview — regenerate with npm run build
 shah g/preview/
+shah g/web-images/

@@ -44,3 +44,12 @@ npm run build && npm run preview
 - Phone: 916-871-4325
 - License: #1013079
 - Domain: pdqbuilt.com
+
+## Downloadable HTML website
+
+Offline HTML package (double-click `index.html` to open):
+
+- Folder: `shah g/pdq-html-website/`
+- ZIP: `shah g/PDQ-Construction-HTML-Website.zip`
+
+Unzip karke `index.html` kholen — browser mein poori site chalegi (images/CSS included).

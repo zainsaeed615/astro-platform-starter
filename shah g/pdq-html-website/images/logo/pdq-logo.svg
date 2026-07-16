@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 200" role="img" aria-label="PDQ Construction">
+  <defs>
+    <style>
+      .pdq{font-family:Arial Black,Arial,Helvetica,sans-serif;font-weight:900;font-style:italic;fill:#1B3A6B}
+      .cons{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:700;fill:#fff;font-size:28px}
+      .url{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-style:italic;fill:#C8102E;font-size:18px;letter-spacing:1px}
+      .meta{font-family:Arial,Helvetica,sans-serif;font-weight:700;fill:#1B3A6B;font-size:14px}
+    </style>
+  </defs>
+  <!-- speed lines -->
+  <g fill="#1B3A6B">
+    <rect x="8" y="38" width="42" height="6" transform="skewX(-18)"/>
+    <rect x="18" y="52" width="32" height="6" transform="skewX(-18)"/>
+    <rect x="28" y="66" width="22" height="6" transform="skewX(-18)"/>
+  </g>
+  <!-- PDQ text -->
+  <text x="70" y="88" class="pdq" font-size="78">PDQ</text>
+  <!-- hammer claw on Q tip approximation -->
+  <g fill="#1B3A6B" transform="translate(268,52)">
+    <rect x="0" y="18" width="10" height="48" rx="2" transform="rotate(28 5 42)"/>
+    <path d="M-6 8 h28 l4 14 h-10 l-4 12 h-12 l-4-12 h-10 z"/>
+  </g>
+  <!-- Construction banner -->
+  <polygon points="78,102 340,102 328,142 66,142" fill="#C8102E"/>
+  <text x="100" y="132" class="cons">Construction</text>
+  <!-- URL -->
+  <text x="110" y="168" class="url">PDQBUILT.COM</text>
+  <text x="125" y="188" class="meta">916 - 871 - 4325</text>
+</svg>
