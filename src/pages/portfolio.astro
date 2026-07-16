@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/shared/PageHero.astro';
+import CTABanner from '../components/sections/CTABanner.astro';
+import PortfolioFilter from '../components/ui/PortfolioFilter';
+import { site } from '../content/site';
+import { projects, portfolioFilters } from '../content/portfolio';
+
+const title = `Portfolio | ${site.name} — Sacramento General Contractor`;
+const description =
+  'Browse real PDQ Construction project photography — remodeling, additions, kitchen & bath, commercial build-outs, and custom work across the Sacramento Valley.';
+---
+
+<Layout title={title} description={description}>
+  <PageHero
+    title="Work That Speaks for Itself"
+    subtitle="Real project photography from Sacramento County job sites — framing, interiors, kitchens, additions, and commercial build-outs executed by our licensed Class B team."
+    image="/images/projects/project-01.jpg"
+  />
+
+  <section class="section-pdq bg-white !pt-12 md:!pt-16">
+    <div class="container-pdq">
+      <div class="max-w-3xl mb-12">
+        <p class="section-eyebrow">Project Gallery</p>
+        <h2 class="section-heading">Filter by Project Type</h2>
+        <p class="section-lead">
+          Explore {projects.length}+ documented projects. Filter by category to find work similar to
+          what you are planning — then request a free estimate and we will walk you through relevant
+          past jobs in more detail.
+        </p>
+      </div>
+
+      <PortfolioFilter client:load projects={projects} filters={[...portfolioFilters]} />
+    </div>
+  </section>
+
+  <section class="section-pdq bg-pdq-light !py-16 md:!py-20">
+    <div class="container-pdq">
+      <div class="grid gap-10 md:grid-cols-3">
+        <div>
+          <h3 class="font-display text-xl text-pdq-navy mb-3">Craftsmanship On Display</h3>
+          <p class="text-slate-600 leading-relaxed">
+            Our portfolio captures active construction and finished spaces — structure, systems, and
+            the finish details that separate a rushed job from lasting quality.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-display text-xl text-pdq-navy mb-3">Local Sacramento Work</h3>
+          <p class="text-slate-600 leading-relaxed">
+            Projects span Citrus Heights, Sacramento, Roseville, Folsom, Elk Grove, and neighboring
+            communities. We know how valley homes are built — and how to improve them.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-display text-xl text-pdq-navy mb-3">Want a Closer Look?</h3>
+          <p class="text-slate-600 leading-relaxed">
+            Call {site.phone} or use our contact form. During your consultation we can share
+            additional photos and discuss timelines for a project like yours.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner />
+</Layout>

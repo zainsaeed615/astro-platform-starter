@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/shared/PageHero.astro';
+import CTABanner from '../components/sections/CTABanner.astro';
+import FAQAccordion from '../components/ui/FAQAccordion';
+import { site } from '../content/site';
+import { faqs } from '../content/faq';
+
+const title = `FAQ | ${site.name} — Sacramento General Contractor`;
+const description =
+  'Answers to common questions about PDQ Construction estimates, licensing, service areas, timelines, permits, payments, and how to get started on your Sacramento project.';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <PageHero
+    title="Questions Homeowners Ask Before They Build"
+    subtitle="Licensing, timelines, permits, pricing, and how to request a free estimate — straightforward answers from a Sacramento Class B general contractor."
+    image="/images/hero/hero-2.jpg"
+  />
+
+  <section class="section-pdq bg-white">
+    <div class="container-pdq">
+      <div class="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-16 items-start">
+        <aside class="lg:sticky lg:top-28">
+          <p class="section-eyebrow">Help Center</p>
+          <h2 class="section-heading text-3xl md:text-4xl">
+            {faqs.length} Answers Before You Call
+          </h2>
+          <p class="section-lead">
+            Still deciding whether a remodel, addition, or commercial build-out is right for your
+            property? These FAQs cover the questions we hear most from Sacramento Valley clients.
+          </p>
+          <div class="mt-8 p-6 border border-pdq-border bg-pdq-light">
+            <p class="font-semibold text-pdq-navy">Need a faster answer?</p>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+              Call or text{' '}
+              <a href={site.phoneHref} class="font-bold text-pdq-navy hover:text-pdq-red">
+                {site.phone}
+              </a>{' '}
+              or email{' '}
+              <a
+                href={`mailto:${site.email}`}
+                class="font-bold text-pdq-navy hover:text-pdq-red"
+              >
+                {site.email}
+              </a>
+              . We typically respond during business hours ({site.hours}).
+            </p>
+            <a href="/contact" class="btn-primary mt-5 w-full text-center">Contact PDQ</a>
+          </div>
+        </aside>
+
+        <div>
+          <FAQAccordion client:load items={faqs} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pdq bg-pdq-light !py-16 md:!py-20">
+    <div class="container-pdq">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="section-heading">Ready for a Written Estimate?</h2>
+        <p class="section-lead mx-auto">
+          Share a few photos and a short description of the work. We will follow up to schedule a
+          site visit and deliver a clear scope — no obligation, no pressure.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="/contact" class="btn-primary">Request Free Estimate</a>
+          <a href="/process" class="btn-outline">Review Our Process</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner />
+</Layout>

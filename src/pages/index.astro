@@ -1,21 +1,81 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
+import Hero from '../components/sections/Hero.astro';
+import AboutPreview from '../components/sections/AboutPreview.astro';
+import ServicesGrid from '../components/sections/ServicesGrid.astro';
+import StatsBar from '../components/sections/StatsBar.astro';
+import PortfolioPreview from '../components/sections/PortfolioPreview.astro';
+import ProcessSteps from '../components/sections/ProcessSteps.astro';
+import WhyChooseUs from '../components/sections/WhyChooseUs.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import ServiceAreas from '../components/sections/ServiceAreas.astro';
+import FAQPreview from '../components/sections/FAQPreview.astro';
+import CTABanner from '../components/sections/CTABanner.astro';
+import { site, serviceAreas } from '../content/site';
 
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
+const title = `Home | ${site.name} — Sacramento General Contractor`;
+const description = site.description;
 
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'GeneralContractor',
+  name: site.name,
+  description: site.description,
+  url: site.websiteUrl,
+  telephone: site.phone,
+  email: site.email,
+  image: site.logoPng,
+  logo: site.logoPng,
+  priceRange: '$$',
+  foundingDate: String(site.foundedYear),
+  areaServed: serviceAreas.map((city) => ({
+    '@type': 'City',
+    name: city,
+  })),
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Citrus Heights',
+    addressRegion: 'CA',
+    addressCountry: 'US',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 38.7071,
+    longitude: -121.2811,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '18:00',
+    },
+  ],
+  hasCredential: {
+    '@type': 'EducationalOccupationalCredential',
+    credentialCategory: 'license',
+    name: `California CSLB ${site.licenseLabel}`,
+    recognizedBy: {
+      '@type': 'Organization',
+      name: 'California Contractors State License Board',
+    },
+  },
+  slogan: site.tagline,
+  sameAs: [site.websiteUrl],
+};
 ---
 
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-8" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  <Hero />
+  <AboutPreview />
+  <ServicesGrid />
+  <StatsBar />
+  <PortfolioPreview />
+  <ProcessSteps />
+  <WhyChooseUs />
+  <Testimonials />
+  <ServiceAreas />
+  <FAQPreview />
+  <CTABanner />
 </Layout>

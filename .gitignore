@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # Local Netlify folder
 .netlify
+
+# Large original Drive downloads (~688MB) — keep locally in shah g/drive-assets/
+shah g/drive-assets/
+
+# Build copy for local preview — regenerate with npm run build
+shah g/preview/
+shah g/web-images/

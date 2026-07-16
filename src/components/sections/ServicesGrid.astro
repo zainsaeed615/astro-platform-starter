@@ -1,0 +1,68 @@
+---
+import { services } from '../../content/services';
+---
+
+<section class="section-pdq surface-grid overflow-hidden">
+  <div class="container-pdq">
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between reveal">
+      <div class="max-w-2xl">
+        <p class="section-eyebrow">What We Build</p>
+        <h2 class="section-heading">
+          Full-Service Construction
+          <span class="text-pdq-red"> Solutions</span>
+        </h2>
+        <p class="section-lead">
+          One licensed team for every phase — from kitchen remodels to commercial build-outs.
+        </p>
+      </div>
+      <a href="/services" class="btn-navy shrink-0 self-start lg:self-auto">Explore All Services</a>
+    </div>
+
+    <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        services.map((service, i) => (
+          <a
+            href={`/services#${service.slug}`}
+            class:list={[
+              'group relative isolate overflow-hidden no-underline min-h-[320px] reveal',
+              i === 0 && 'sm:col-span-2 lg:col-span-1 lg:row-span-1',
+            ]}
+            style={`transition-delay: ${i * 70}ms`}
+          >
+            <img
+              src={service.image}
+              alt=""
+              class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
+              width="800"
+              height="600"
+              loading="lazy"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-pdq-navy-dark via-pdq-navy-dark/55 to-pdq-navy/10 transition duration-500 group-hover:via-pdq-navy-dark/70"
+              aria-hidden="true"
+            />
+            <div class="absolute left-0 top-0 h-full w-1 bg-pdq-red opacity-0 transition group-hover:opacity-100" />
+
+            <div class="relative z-10 flex h-full flex-col justify-end p-6 md:p-7">
+              <span class="mb-3 font-display text-5xl text-white/15 leading-none">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="font-display text-2xl md:text-[1.75rem] text-white leading-none">
+                {service.title}
+              </h3>
+              <p class="mt-3 max-w-sm text-sm leading-relaxed text-white/80 normal-case tracking-normal font-medium line-clamp-2 transition duration-500 group-hover:line-clamp-none">
+                {service.summary}
+              </p>
+              <span class="mt-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-pdq-red">
+                View Service
+                <svg class="h-3.5 w-3.5 transition group-hover:translate-x-1.5" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

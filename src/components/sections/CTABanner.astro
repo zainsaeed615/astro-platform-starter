@@ -1,0 +1,38 @@
+---
+import { site } from '../../content/site';
+---
+
+<section class="relative overflow-hidden">
+  <img
+    src="/images/hero/hero-3.jpg"
+    alt=""
+    class="absolute inset-0 h-full w-full object-cover ken-burns"
+    width="1920"
+    height="900"
+    loading="lazy"
+  />
+  <div class="absolute inset-0 bg-pdq-navy-dark/85" aria-hidden="true"></div>
+  <div
+    class="absolute inset-0 bg-gradient-to-r from-pdq-red/40 via-transparent to-pdq-navy/30"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10 container-pdq section-pdq">
+    <div class="mx-auto max-w-3xl text-center reveal">
+      <p class="section-eyebrow !text-white !before:bg-white/70 justify-center mx-auto">
+        Ready to Build?
+      </p>
+      <h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[0.95] text-white">
+        Your Next Project Starts
+        <span class="text-pdq-red"> Here</span>
+      </h2>
+      <p class="mt-6 text-base md:text-lg text-white/85 leading-relaxed font-medium normal-case tracking-normal">
+        Free, no-obligation estimate. Call {site.phone} or send project details — we respond Pretty Darn Quick.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a href="/contact" class="btn-primary">Request Free Estimate</a>
+        <a href={site.phoneHref} class="btn-secondary">Call {site.phone}</a>
+      </div>
+    </div>
+  </div>
+</section>

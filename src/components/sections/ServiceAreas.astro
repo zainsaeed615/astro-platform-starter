@@ -1,0 +1,39 @@
+---
+import { serviceAreas, site } from '../../content/site';
+---
+
+<section class="section-pdq bg-white overflow-hidden">
+  <div class="container-pdq">
+    <div class="max-w-3xl mx-auto text-center reveal">
+      <p class="section-eyebrow !mx-auto">Service Area</p>
+      <h2 class="section-heading">
+        Across the Greater
+        <span class="text-pdq-red"> Sacramento Valley</span>
+      </h2>
+      <p class="section-lead mx-auto">
+        Based in {site.location.split(',')[0]} — building where Sacramento lives and works.
+      </p>
+    </div>
+
+    <ul class="mt-14 flex flex-wrap justify-center gap-3">
+      {
+        serviceAreas.map((city, i) => (
+          <li
+            class="border border-pdq-border bg-pdq-light/80 px-5 py-3 text-sm font-bold uppercase tracking-[0.12em] text-pdq-navy transition hover:border-pdq-red hover:bg-pdq-navy hover:text-white reveal"
+            style={`transition-delay: ${i * 30}ms`}
+          >
+            {city}
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="mt-10 text-center text-sm text-pdq-muted font-medium">
+      Outside this list?{' '}
+      <a href="/contact" class="font-bold text-pdq-red no-underline hover:underline">
+        Contact us
+      </a>{' '}
+      — we may still be able to help.
+    </p>
+  </div>
+</section>

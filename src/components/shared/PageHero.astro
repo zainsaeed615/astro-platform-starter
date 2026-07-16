@@ -1,0 +1,44 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  image?: string;
+}
+
+const {
+  title,
+  subtitle,
+  image = '/images/hero/hero-2.jpg',
+} = Astro.props;
+---
+
+<section class="relative min-h-[48vh] md:min-h-[56vh] flex items-end overflow-hidden bg-pdq-navy-dark">
+  <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+    <img
+      src={image}
+      alt=""
+      class="absolute inset-0 h-full w-full object-cover ken-burns"
+      width="1920"
+      height="900"
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+  <div class="absolute inset-0 overlay-navy" aria-hidden="true"></div>
+  <div class="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-pdq-red via-pdq-red to-transparent"></div>
+
+  <div class="relative z-10 container-pdq w-full pb-14 pt-32 md:pb-20 md:pt-40">
+    <p class="section-eyebrow !text-pdq-red mb-4">PDQ Construction</p>
+    <h1 class="font-display text-4xl md:text-6xl lg:text-7xl leading-[0.92] text-white max-w-4xl">
+      {title}
+    </h1>
+    {
+      subtitle && (
+        <p class="mt-6 max-w-2xl text-base md:text-lg text-white/85 leading-relaxed font-medium normal-case tracking-normal">
+          {subtitle}
+        </p>
+      )
+    }
+    <div class="mt-7 h-1 w-20 bg-pdq-red"></div>
+  </div>
+</section>

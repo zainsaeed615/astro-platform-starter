@@ -1,0 +1,29 @@
+---
+import { homeFaqs } from '../../content/faq';
+import FAQAccordion from '../ui/FAQAccordion';
+---
+
+<section class="section-pdq surface-grid overflow-hidden">
+  <div class="container-pdq">
+    <div class="mx-auto max-w-3xl">
+      <div class="text-center reveal">
+        <p class="section-eyebrow !mx-auto">FAQ</p>
+        <h2 class="section-heading">
+          Questions,
+          <span class="text-pdq-red"> Answered</span>
+        </h2>
+        <p class="section-lead mx-auto">
+          Quick answers before you request an estimate.
+        </p>
+      </div>
+
+      <div class="mt-12 reveal">
+        <FAQAccordion client:load items={homeFaqs} />
+      </div>
+
+      <div class="mt-10 text-center reveal">
+        <a href="/faq" class="btn-outline">View All FAQs</a>
+      </div>
+    </div>
+  </div>
+</section>

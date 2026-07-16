@@ -1,0 +1,104 @@
+---
+import { site, navItems, serviceAreas } from '../../content/site';
+import { services } from '../../content/services';
+
+const year = new Date().getFullYear();
+const topServices = services.slice(0, 4);
+---
+
+<footer class="relative overflow-hidden surface-dark text-white">
+  <div class="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-pdq-red via-pdq-red/40 to-transparent"></div>
+  <div class="container-pdq pt-16 pb-8 md:pt-20 md:pb-10 relative z-10">
+    <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+      <div>
+        <a href="/" class="inline-block no-underline mb-5">
+          <img
+            src={site.logo}
+            alt={site.name}
+            class="h-14 w-auto brightness-0 invert"
+            width="180"
+            height="58"
+          />
+        </a>
+        <p class="font-display text-3xl tracking-wide text-white mb-3 leading-none">{site.tagline}</p>
+        <p class="text-sm leading-relaxed text-white/70 max-w-xs">
+          Licensed Class B general building contractor serving Sacramento County and the surrounding valley.
+        </p>
+        <p class="mt-4 text-sm font-semibold text-pdq-red">{site.licenseLabel}</p>
+      </div>
+
+      <div>
+        <h3 class="font-display text-lg text-white mb-5">Quick Links</h3>
+        <ul class="space-y-2.5">
+          {
+            navItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="no-underline text-sm text-white/75 hover:text-white transition"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-display text-lg text-white mb-5">Services</h3>
+        <ul class="space-y-2.5">
+          {
+            topServices.map((service) => (
+              <li>
+                <a
+                  href="/services"
+                  class="no-underline text-sm text-white/75 hover:text-white transition"
+                >
+                  {service.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-display text-lg text-white mb-5">Contact</h3>
+        <ul class="space-y-3 text-sm text-white/75">
+          <li>
+            <a href={site.phoneHref} class="no-underline text-white font-semibold hover:text-pdq-red transition">
+              {site.phone}
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${site.email}`} class="no-underline hover:text-white transition">
+              {site.email}
+            </a>
+          </li>
+          <li>
+            <a href={site.websiteUrl} class="no-underline hover:text-white transition">
+              {site.website}
+            </a>
+          </li>
+          <li>{site.location}</li>
+          <li class="pt-1 text-white/60">{site.hours}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-white/10">
+      <p class="text-xs uppercase tracking-wider text-white/50 mb-3">Serving</p>
+      <p class="text-sm text-white/70 leading-relaxed">
+        {serviceAreas.join(' · ')}
+      </p>
+    </div>
+
+    <div
+      class="mt-10 pt-6 border-t border-white/10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-xs text-white/50"
+    >
+      <p>© {year} {site.name}. All rights reserved.</p>
+      <p>{site.licenseLabel} · {site.licenseClass} · {site.website}</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,39 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  align?: 'left' | 'center';
+  light?: boolean;
+  class?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  lead,
+  align = 'left',
+  light = false,
+  class: className = '',
+} = Astro.props;
+
+const alignClass = align === 'center' ? 'text-center mx-auto items-center' : '';
+const titleColor = light ? 'text-white' : 'text-pdq-navy';
+const leadColor = light ? '!text-white/80' : '';
+---
+
+<div class:list={['flex flex-col', alignClass, className]}>
+  {
+    eyebrow && (
+      <p class:list={['section-eyebrow', align === 'center' && '!mx-auto', light && '!text-pdq-red']}>
+        {eyebrow}
+      </p>
+    )
+  }
+  <h2 class:list={['section-heading', titleColor]}>{title}</h2>
+  {
+    lead && (
+      <p class:list={['section-lead', leadColor, align === 'center' && 'mx-auto']}>{lead}</p>
+    )
+  }
+</div>

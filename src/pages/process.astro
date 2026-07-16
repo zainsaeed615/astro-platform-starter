@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/shared/PageHero.astro';
+import CTABanner from '../components/sections/CTABanner.astro';
+import { site } from '../content/site';
+import { processSteps, whatToExpect } from '../content/process';
+
+const title = `Process | ${site.name} — Sacramento General Contractor`;
+const description =
+  'See how PDQ Construction works: consultation, on-site evaluation, written estimate, construction with updates, and final walkthrough — clear steps from first call to handover.';
+---
+
+<Layout title={title} description={description}>
+  <PageHero
+    title="A Clear Path From Idea to Handover"
+    subtitle="Pretty Darn Quick does not mean cutting corners. It means a disciplined five-step process with transparent estimates, protected job sites, and communication you can count on."
+    image="/images/hero/hero-3.jpg"
+  />
+
+  <!-- Intro -->
+  <section class="section-pdq bg-white !pb-8 md:!pb-10">
+    <div class="container-pdq">
+      <div class="max-w-3xl">
+        <p class="section-eyebrow">How We Work</p>
+        <h2 class="section-heading">Five Steps. Full Accountability.</h2>
+        <p class="section-lead">
+          Whether you are remodeling a kitchen in Fair Oaks or framing an addition in Roseville, the
+          path is the same: listen carefully, document the scope, build with care, and walk you
+          through every finished surface before we call the job done.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed steps -->
+  <section class="section-pdq bg-pdq-light !pt-10">
+    <div class="container-pdq">
+      <ol class="space-y-10 md:space-y-14">
+        {
+          processSteps.map((step, index) => (
+            <li class="grid gap-8 lg:grid-cols-[140px_1fr] lg:gap-12 items-start">
+              <div class="flex lg:flex-col items-center lg:items-start gap-4">
+                <span class="font-display text-5xl md:text-6xl font-bold text-pdq-red leading-none">
+                  {step.number}
+                </span>
+                {index < processSteps.length - 1 && (
+                  <span
+                    class="hidden lg:block w-px h-16 bg-pdq-border ml-6 mt-2"
+                    aria-hidden="true"
+                  />
+                )}
+              </div>
+              <div class="border border-pdq-border bg-white p-6 md:p-10">
+                <h3 class="font-display text-2xl md:text-3xl text-pdq-navy">{step.title}</h3>
+                <p class="mt-3 text-lg text-pdq-navy/80 font-medium leading-relaxed">
+                  {step.summary}
+                </p>
+                <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+                  {step.details.map((detail) => (
+                    <li class="flex gap-3 text-slate-600 leading-relaxed">
+                      <span
+                        class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-pdq-red"
+                        aria-hidden="true"
+                      />
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- What to expect -->
+  <section class="section-pdq bg-white">
+    <div class="container-pdq">
+      <div class="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+        <div>
+          <p class="section-eyebrow">Planning Ahead</p>
+          <h2 class="section-heading">What to Expect</h2>
+          <p class="section-lead">
+            Good construction starts with realistic expectations. Here is how we handle timelines,
+            permits, payments, and communication on every PDQ project.
+          </p>
+          <div class="mt-8 space-y-3">
+            <a href={site.phoneHref} class="btn-primary w-full sm:w-auto text-center">
+              Call {site.phone}
+            </a>
+            <p class="text-sm text-pdq-muted">
+              Or email{' '}
+              <a href={`mailto:${site.email}`} class="text-pdq-navy font-semibold hover:text-pdq-red">
+                {site.email}
+              </a>{' '}
+              to start step one today.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2">
+          {
+            whatToExpect.map((item) => (
+              <div class="border border-pdq-border/80 p-6 md:p-7 hover:border-pdq-navy/20 transition">
+                <h3 class="font-display text-xl text-pdq-navy mb-3">{item.title}</h3>
+                <p class="text-slate-600 leading-relaxed text-sm md:text-base">{item.body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust strip -->
+  <section class="bg-pdq-navy py-14 md:py-16">
+    <div class="container-pdq">
+      <div class="grid gap-8 md:grid-cols-3 text-center md:text-left">
+        <div>
+          <p class="font-display text-2xl text-white">Written Scopes</p>
+          <p class="mt-2 text-sm text-white/70 leading-relaxed">
+            Inclusions and exclusions documented before work begins — so pricing stays honest.
+          </p>
+        </div>
+        <div>
+          <p class="font-display text-2xl text-white">Permit Coordination</p>
+          <p class="mt-2 text-sm text-white/70 leading-relaxed">
+            When permits are required, we manage applications and inspections with the local
+            building department.
+          </p>
+        </div>
+        <div>
+          <p class="font-display text-2xl text-white">Final Walkthrough</p>
+          <p class="mt-2 text-sm text-white/70 leading-relaxed">
+            Punch list completed and site cleaned before final payment. You only sign off when it is
+            right.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner />
+</Layout>
