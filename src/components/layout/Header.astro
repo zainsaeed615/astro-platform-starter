@@ -2,75 +2,84 @@
 import { site, navItems } from '../../content/site';
 ---
 
-<header
-  id="site-header"
-  class="sticky top-0 z-50 border-b border-pdq-border/60 bg-white/95 backdrop-blur-md transition-shadow duration-300"
->
-  <div class="container-pdq">
-    <div class="flex h-20 lg:h-24 items-center justify-between gap-4">
-      <a href="/" class="flex shrink-0 items-center no-underline" aria-label={site.name}>
-        <img
-          src={site.logo}
-          alt={site.name}
-          class="h-12 w-auto md:h-14"
-          width="180"
-          height="58"
-        />
+<header id="site-header" class="sticky top-0 z-50 transition-all duration-300">
+  <div class="hidden md:block bg-pdq-navy-dark text-white">
+    <div class="container-pdq flex h-9 items-center justify-between text-[11px] font-bold uppercase tracking-[0.16em]">
+      <p class="text-white/75">
+        <span class="text-pdq-red">Lic. #{site.license}</span>
+        <span class="mx-2 text-white/30">|</span>
+        Sacramento County, CA
+      </p>
+      <a href={site.phoneHref} class="no-underline text-white hover:text-pdq-red transition">
+        Call {site.phone}
       </a>
-
-      <nav class="hidden xl:flex items-center gap-1" aria-label="Primary">
-        {
-          navItems.map((item) => (
-            <a href={item.href} class="link-nav px-3 py-2">
-              {item.label}
-            </a>
-          ))
-        }
-      </nav>
-
-      <div class="hidden md:flex items-center gap-4 lg:gap-5">
-        <a
-          href={site.phoneHref}
-          class="no-underline text-sm font-bold text-pdq-navy hover:text-pdq-red transition"
-        >
-          {site.phone}
-        </a>
-        <a href="/contact" class="btn-primary !py-3 !px-5 text-xs">Get Free Estimate</a>
-      </div>
-
-      <button
-        id="menu-toggle"
-        type="button"
-        class="xl:hidden inline-flex h-11 w-11 items-center justify-center border border-pdq-border text-pdq-navy"
-        aria-label="Open menu"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <span class="menu-icon flex flex-col gap-1.5">
-          <span class="block h-0.5 w-5 bg-current"></span>
-          <span class="block h-0.5 w-5 bg-current"></span>
-          <span class="block h-0.5 w-5 bg-current"></span>
-        </span>
-      </button>
     </div>
   </div>
 
-  <div
-    id="mobile-menu"
-    class="hidden xl:hidden border-t border-pdq-border bg-white"
-  >
+  <div class="border-b border-pdq-border/50 bg-white/90 backdrop-blur-xl">
+    <div class="container-pdq">
+      <div class="flex h-[4.5rem] lg:h-20 items-center justify-between gap-4">
+        <a href="/" class="flex shrink-0 items-center no-underline group" aria-label={site.name}>
+          <img
+            src={site.logoPng}
+            alt={site.name}
+            class="h-12 w-auto md:h-14 object-contain transition duration-300 group-hover:scale-[1.02]"
+            width="200"
+            height="70"
+          />
+        </a>
+
+        <nav class="hidden xl:flex items-center gap-0.5" aria-label="Primary">
+          {
+            navItems.map((item) => (
+              <a href={item.href} class="link-nav px-3 py-2">
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+
+        <div class="hidden md:flex items-center gap-3 lg:gap-4">
+          <a
+            href={site.phoneHref}
+            class="no-underline text-sm font-extrabold text-pdq-navy hover:text-pdq-red transition"
+          >
+            {site.phone}
+          </a>
+          <a href="/contact" class="btn-primary !py-2.5 !px-5 !text-[10px]">Get Free Estimate</a>
+        </div>
+
+        <button
+          id="menu-toggle"
+          type="button"
+          class="xl:hidden inline-flex h-11 w-11 items-center justify-center border border-pdq-border text-pdq-navy bg-white"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="menu-icon flex flex-col gap-1.5">
+            <span class="block h-0.5 w-5 bg-current"></span>
+            <span class="block h-0.5 w-5 bg-current"></span>
+            <span class="block h-0.5 w-5 bg-current"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden xl:hidden border-b border-pdq-border bg-white shadow-xl">
     <nav class="container-pdq flex flex-col gap-1 py-6" aria-label="Mobile">
       {
         navItems.map((item) => (
           <a
             href={item.href}
-            class="no-underline px-2 py-3 text-base font-semibold uppercase tracking-wide text-pdq-navy hover:text-pdq-red"
+            class="no-underline px-2 py-3 text-sm font-bold uppercase tracking-[0.16em] text-pdq-navy hover:text-pdq-red"
           >
             {item.label}
           </a>
         ))
       }
-      <a href={site.phoneHref} class="no-underline px-2 py-3 font-bold text-pdq-navy">
+      <a href={site.phoneHref} class="no-underline px-2 py-3 font-extrabold text-pdq-navy">
         {site.phone}
       </a>
       <a href="/contact" class="btn-primary mt-3 w-full">Get Free Estimate</a>
@@ -86,9 +95,9 @@ import { site, navItems } from '../../content/site';
   const onScroll = () => {
     if (!header) return;
     if (window.scrollY > 8) {
-      header.classList.add('shadow-md', 'shadow-pdq-navy/5');
+      header.classList.add('shadow-[0_12px_40px_-20px_rgba(15,36,64,0.45)]');
     } else {
-      header.classList.remove('shadow-md', 'shadow-pdq-navy/5');
+      header.classList.remove('shadow-[0_12px_40px_-20px_rgba(15,36,64,0.45)]');
     }
   };
 

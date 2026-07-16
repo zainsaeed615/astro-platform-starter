@@ -19,17 +19,18 @@ const {
 
 const alignClass = align === 'center' ? 'text-center mx-auto items-center' : '';
 const titleColor = light ? 'text-white' : 'text-pdq-navy';
-const leadColor = light ? 'text-white/80' : 'text-slate-600';
+const leadColor = light ? '!text-white/80' : '';
 ---
 
 <div class:list={['flex flex-col', alignClass, className]}>
   {
     eyebrow && (
-      <p class:list={['section-eyebrow', light && 'text-pdq-red']}>{eyebrow}</p>
+      <p class:list={['section-eyebrow', align === 'center' && '!mx-auto', light && '!text-pdq-red']}>
+        {eyebrow}
+      </p>
     )
   }
   <h2 class:list={['section-heading', titleColor]}>{title}</h2>
-  <div class:list={['divider-accent mt-5', align === 'center' && 'mx-auto']}></div>
   {
     lead && (
       <p class:list={['section-lead', leadColor, align === 'center' && 'mx-auto']}>{lead}</p>

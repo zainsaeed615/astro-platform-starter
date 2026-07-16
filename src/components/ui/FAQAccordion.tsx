@@ -18,32 +18,36 @@ export default function FAQAccordion({ items }: Props) {
   };
 
   return (
-    <div className="divide-y divide-pdq-border border border-pdq-border bg-white">
+    <div className="divide-y divide-pdq-border/80 border border-pdq-border/80 bg-white shadow-[0_20px_50px_-32px_rgba(15,36,64,0.4)]">
       {items.map((item, index) => {
         const isOpen = openIndex === index;
         const panelId = `faq-panel-${index}`;
         const buttonId = `faq-button-${index}`;
 
         return (
-          <div key={item.question}>
+          <div key={item.question} className={isOpen ? 'bg-pdq-light/40' : ''}>
             <h3>
               <button
                 id={buttonId}
                 type="button"
-                className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left transition hover:bg-pdq-light/60 md:px-6"
+                className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left transition hover:bg-pdq-light/70 md:px-7"
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => toggle(index)}
               >
-                <span className="font-display text-base font-semibold text-pdq-navy md:text-lg">
+                <span className="text-sm font-extrabold tracking-tight text-pdq-navy md:text-base normal-case">
                   {item.question}
                 </span>
-                <ChevronDown
-                  className={`h-5 w-5 shrink-0 text-pdq-red transition-transform duration-300 ${
-                    isOpen ? 'rotate-180' : ''
+                <span
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center bg-pdq-navy text-white transition ${
+                    isOpen ? 'bg-pdq-red' : ''
                   }`}
-                  aria-hidden
-                />
+                >
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    aria-hidden
+                  />
+                </span>
               </button>
             </h3>
             <div
@@ -55,7 +59,7 @@ export default function FAQAccordion({ items }: Props) {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="px-5 pb-5 text-sm leading-relaxed text-slate-600 md:px-6 md:text-base">
+                <p className="px-5 pb-6 text-sm leading-relaxed text-pdq-muted md:px-7 md:text-base font-medium">
                   {item.answer}
                 </p>
               </div>

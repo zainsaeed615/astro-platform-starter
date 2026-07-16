@@ -13,6 +13,8 @@
     "@astrojs/netlify": "^6.2.3",
     "@astrojs/react": "^4.2.1",
     "@fontsource-variable/inter": "^5.2.5",
+    "@fontsource/bebas-neue": "^5.2.7",
+    "@fontsource/manrope": "^5.2.8",
     "@fontsource/oswald": "^5.2.8",
     "@fontsource/source-sans-3": "^5.2.9",
     "@netlify/blobs": "^8.2.0",

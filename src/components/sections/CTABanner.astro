@@ -3,35 +3,35 @@ import { site } from '../../content/site';
 ---
 
 <section class="relative overflow-hidden">
+  <img
+    src="/images/hero/hero-3.jpg"
+    alt=""
+    class="absolute inset-0 h-full w-full object-cover ken-burns"
+    width="1920"
+    height="900"
+    loading="lazy"
+  />
+  <div class="absolute inset-0 bg-pdq-navy-dark/85" aria-hidden="true"></div>
   <div
-    class="absolute inset-0 bg-gradient-to-br from-pdq-navy-dark via-pdq-navy to-pdq-navy-mid"
-    aria-hidden="true"
-  ></div>
-  <div
-    class="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-pdq-red/40 to-transparent"
-    aria-hidden="true"
-  ></div>
-  <div
-    class="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-pdq-red/20 blur-3xl"
+    class="absolute inset-0 bg-gradient-to-r from-pdq-red/40 via-transparent to-pdq-navy/30"
     aria-hidden="true"
   ></div>
 
   <div class="relative z-10 container-pdq section-pdq">
-    <div class="mx-auto max-w-3xl text-center">
-      <p class="section-eyebrow !text-white/90 mb-4">Ready to Build?</p>
-      <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-        Request Your Free Estimate
+    <div class="mx-auto max-w-3xl text-center reveal">
+      <p class="section-eyebrow !text-white !before:bg-white/70 justify-center mx-auto">
+        Ready to Build?
+      </p>
+      <h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[0.95] text-white">
+        Your Next Project Starts
+        <span class="text-pdq-red"> Here</span>
       </h2>
-      <div class="divider-accent mx-auto mt-6"></div>
-      <p class="mt-6 text-base md:text-lg text-white/85 leading-relaxed">
-        Tell us about your remodel, addition, or commercial project. We will follow up with a clear
-        next step — no obligation.
+      <p class="mt-6 text-base md:text-lg text-white/85 leading-relaxed font-medium normal-case tracking-normal">
+        Free, no-obligation estimate. Call {site.phone} or send project details — we respond Pretty Darn Quick.
       </p>
       <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
         <a href="/contact" class="btn-primary">Request Free Estimate</a>
-        <a href={site.phoneHref} class="btn-secondary">
-          Call {site.phone}
-        </a>
+        <a href={site.phoneHref} class="btn-secondary">Call {site.phone}</a>
       </div>
     </div>
   </div>

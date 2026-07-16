@@ -1,69 +1,83 @@
 ---
 import { site } from '../../content/site';
-import SectionHeading from '../ui/SectionHeading.astro';
 
 const bullets = [
-  'Licensed Class B general building contractor (CSLB #1013079)',
-  'Residential remodeling, additions, kitchen & bath, and new construction',
-  'Commercial build-outs and custom specialty projects',
-  'Clear written estimates, clean job sites, and accountable timelines',
+  'Clear written estimates before work begins',
+  'Code-compliant Class B craftsmanship',
+  'Clean, respectful Sacramento job sites',
 ];
 ---
 
-<section class="section-pdq bg-white">
+<section class="section-pdq bg-white overflow-hidden">
   <div class="container-pdq">
-    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-      <div class="relative aspect-[4/5] overflow-hidden md:aspect-[5/6] lg:aspect-auto lg:min-h-[520px]">
-        <img
-          src="/images/about/about-1.jpg"
-          alt="PDQ Construction craftsmanship on site"
-          class="img-cover absolute inset-0"
-          width="800"
-          height="1000"
-          loading="lazy"
-          decoding="async"
-        />
+    <div class="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+      <div class="relative lg:col-span-6 reveal">
+        <div class="absolute -left-4 -top-4 h-24 w-24 border-l-2 border-t-2 border-pdq-red/70" aria-hidden="true"></div>
+        <div class="relative aspect-[4/5] overflow-hidden md:aspect-[5/6]">
+          <img
+            src="/images/about/about-1.jpg"
+            alt="PDQ Construction craftsmanship on site"
+            class="img-cover transition duration-700 hover:scale-105"
+            width="800"
+            height="1000"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-pdq-navy-dark/80 via-transparent to-transparent"></div>
+        </div>
+
         <div
-          class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-pdq-navy-dark/90 to-transparent p-6 md:p-8"
+          class="absolute -bottom-6 -right-2 md:-right-6 red-slash bg-pdq-red px-8 py-5 text-white shadow-xl float-soft"
         >
-          <p class="font-display text-2xl text-white tracking-wide">Since {site.foundedYear}</p>
-          <p class="mt-1 text-sm text-white/75">Serving Sacramento County</p>
+          <p class="font-display text-4xl leading-none tracking-wide">Since {site.foundedYear}</p>
+          <p class="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-white/85">
+            Sacramento Valley
+          </p>
+        </div>
+
+        <div class="absolute -bottom-10 left-6 hidden md:block w-40 aspect-[3/4] overflow-hidden border-4 border-white shadow-2xl">
+          <img
+            src="/images/about/about-2.jpg"
+            alt=""
+            class="img-cover"
+            width="320"
+            height="420"
+            loading="lazy"
+          />
         </div>
       </div>
 
-      <div>
-        <SectionHeading
-          eyebrow="About PDQ"
-          title="Experience You Can See in Every Detail"
-          lead={`Since ${site.foundedYear}, PDQ Construction has delivered remodeling, additions, and commercial work with the same standard: honest scopes, code-compliant craftsmanship, and a clean handover you can be proud of.`}
-        />
+      <div class="lg:col-span-6 lg:pl-8 reveal">
+        <p class="section-eyebrow">About PDQ</p>
+        <h2 class="section-heading">
+          Experience You Can
+          <span class="text-pdq-red"> See in Every Detail</span>
+        </h2>
+        <p class="section-lead">
+          Since {site.foundedYear}, PDQ Construction has transformed homes and commercial spaces across
+          the Sacramento Valley — honest quotes, proper planning, and skilled execution. Never shortcuts.
+        </p>
 
-        <ul class="mt-8 space-y-3.5">
+        <ul class="mt-9 space-y-4">
           {
             bullets.map((bullet) => (
-              <li class="flex gap-3 text-slate-700 leading-relaxed">
-                <span
-                  class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center bg-pdq-red text-white"
-                  aria-hidden="true"
-                >
-                  <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M2 6.5L4.5 9L10 3"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
+              <li class="flex items-start gap-4 border-l-2 border-pdq-red/30 pl-4 py-1">
+                <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center bg-pdq-navy text-white" aria-hidden="true">
+                  <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 6.5L4.5 9L10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </span>
-                <span>{bullet}</span>
+                <span class="text-base font-semibold text-pdq-navy/90 normal-case tracking-normal">
+                  {bullet}
+                </span>
               </li>
             ))
           }
         </ul>
 
-        <div class="mt-10">
-          <a href="/about" class="btn-outline">Learn More About Us</a>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href="/about" class="btn-navy">Learn About PDQ</a>
+          <a href="/portfolio" class="btn-outline">See Our Work</a>
         </div>
       </div>
     </div>

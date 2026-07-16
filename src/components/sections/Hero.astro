@@ -1,59 +1,85 @@
 ---
-import { trustItems } from '../../content/site';
+import { site, trustItems } from '../../content/site';
 
 const heroSubtext =
-  'Licensed Class B general contractor serving Sacramento, Citrus Heights, and surrounding communities — remodeling, additions, kitchen & bath, and commercial build-outs.';
+  'Licensed Class B general contractor for Sacramento remodeling, additions, kitchen & bath, and commercial builds — crafted with speed and precision.';
 ---
 
-<section class="relative min-h-[85vh] flex flex-col justify-end overflow-hidden">
-  <img
-    src="/images/hero/hero-main.jpg"
-    alt="PDQ Construction project site"
-    class="absolute inset-0 h-full w-full object-cover"
-    width="1920"
-    height="1080"
-    loading="eager"
-    decoding="async"
-    fetchpriority="high"
-  />
+<section class="relative min-h-[92vh] flex flex-col justify-end overflow-hidden bg-pdq-navy-dark">
+  <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+    <img
+      src="/images/hero/hero-main.jpg"
+      alt=""
+      class="absolute inset-0 h-full w-full object-cover ken-burns"
+      width="1920"
+      height="1080"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
+  </div>
   <div class="absolute inset-0 overlay-navy" aria-hidden="true"></div>
 
-  <div class="relative z-10 container-pdq pb-10 pt-32 md:pb-14 md:pt-40">
-    <p class="section-eyebrow !text-white/90 mb-5">
-      Licensed General Contractor · Sacramento County
-    </p>
-    <h1
-      class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.08] max-w-3xl"
-    >
-      Quality Construction, Delivered PDQ
-    </h1>
-    <p class="mt-6 max-w-xl text-base md:text-lg text-white/85 leading-relaxed">
-      {heroSubtext}
-    </p>
-    <div class="mt-9 flex flex-wrap gap-4">
-      <a href="/contact" class="btn-primary">Request Free Estimate</a>
-      <a href="/portfolio" class="btn-secondary">View Our Work</a>
+  <!-- decorative brand watermark -->
+  <div
+    class="pointer-events-none absolute -right-6 top-24 hidden select-none font-display text-[14rem] leading-none text-white/[0.04] md:block lg:text-[18rem]"
+    aria-hidden="true"
+  >
+    PDQ
+  </div>
+
+  <!-- red accent bar -->
+  <div
+    class="absolute left-0 top-0 z-20 h-1 w-full bg-gradient-to-r from-pdq-red via-pdq-red to-transparent"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10 container-pdq pb-12 pt-36 md:pb-16 md:pt-44">
+    <div class="reveal max-w-4xl">
+      <div class="mb-6 inline-flex items-center gap-3 border border-white/20 bg-white/5 px-4 py-2 backdrop-blur-md">
+        <span class="h-1.5 w-1.5 rounded-full bg-pdq-red animate-pulse"></span>
+        <p class="text-[11px] font-bold uppercase tracking-[0.24em] text-white/90">
+          Licensed General Contractor · Sacramento County
+        </p>
+      </div>
+
+      <p class="font-display text-pdq-red text-2xl md:text-3xl tracking-[0.08em] mb-3">
+        {site.name}
+      </p>
+
+      <h1
+        class="font-display text-[3.25rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.9] text-white max-w-4xl"
+      >
+        Quality Built.
+        <span class="block text-gradient-light">Delivered PDQ.</span>
+      </h1>
+
+      <p class="mt-7 max-w-xl text-base md:text-lg text-white/85 leading-relaxed font-medium normal-case tracking-normal">
+        {heroSubtext}
+      </p>
+
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="/contact" class="btn-primary">Request Free Estimate</a>
+        <a href="/portfolio" class="btn-secondary">View Our Work</a>
+      </div>
     </div>
   </div>
 
-  <div class="relative z-10 border-t border-white/15 bg-pdq-navy-dark/70 backdrop-blur-sm">
+  <div class="relative z-10 border-t border-white/10 bg-pdq-navy-dark/80 backdrop-blur-md">
     <div class="container-pdq py-5 md:py-6">
-      <ul
-        class="flex flex-wrap items-center gap-x-8 gap-y-3 md:gap-x-12"
-        aria-label="Trust signals"
-      >
+      <ul class="grid grid-cols-2 gap-4 md:flex md:flex-wrap md:items-center md:gap-x-10 md:gap-y-3" aria-label="Trust signals">
         {
           trustItems.map((item) => (
-            <li class="flex items-center gap-2.5 text-sm font-semibold tracking-wide text-white/90">
+            <li class="flex items-center gap-2.5 text-xs md:text-sm font-bold uppercase tracking-[0.12em] text-white/90">
               <span
-                class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-pdq-red/20 text-pdq-red"
+                class="flex h-6 w-6 shrink-0 items-center justify-center bg-pdq-red text-white"
                 aria-hidden="true"
               >
-                <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none">
                   <path
                     d="M2 6.5L4.5 9L10 3"
                     stroke="currentColor"
-                    stroke-width="1.8"
+                    stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />

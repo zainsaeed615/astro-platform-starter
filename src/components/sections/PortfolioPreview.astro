@@ -1,47 +1,64 @@
 ---
 import { featuredProjects } from '../../content/portfolio';
-import SectionHeading from '../ui/SectionHeading.astro';
 ---
 
-<section class="section-pdq bg-white">
+<section class="section-pdq bg-white overflow-hidden">
   <div class="container-pdq">
-    <div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-      <SectionHeading
-        eyebrow="Our Work"
-        title="Featured Projects"
-        lead="Real Sacramento-area construction — remodeling, additions, kitchen & bath, and custom builds."
-      />
-      <a href="/portfolio" class="btn-outline shrink-0 self-start md:self-auto">View Full Portfolio</a>
+    <div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between reveal">
+      <div class="max-w-2xl">
+        <p class="section-eyebrow">Portfolio</p>
+        <h2 class="section-heading">
+          Work That Speaks
+          <span class="text-pdq-red"> Louder Than Words</span>
+        </h2>
+        <p class="section-lead">
+          Real Sacramento-area projects — remodeling, additions, kitchens, and custom builds.
+        </p>
+      </div>
+      <a href="/portfolio" class="btn-outline shrink-0 self-start md:self-auto">Full Portfolio</a>
     </div>
 
-    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-14 grid gap-4 md:grid-cols-12 md:auto-rows-[220px]">
       {
-        featuredProjects.map((project) => (
-          <article class="group overflow-hidden border border-pdq-border/80 bg-white transition hover:shadow-xl hover:shadow-pdq-navy/5">
-            <div class="relative aspect-[4/3] overflow-hidden">
+        featuredProjects.map((project, i) => {
+          const spans = [
+            'md:col-span-7 md:row-span-2',
+            'md:col-span-5 md:row-span-1',
+            'md:col-span-5 md:row-span-1',
+            'md:col-span-4 md:row-span-1',
+            'md:col-span-4 md:row-span-1',
+            'md:col-span-4 md:row-span-1',
+          ];
+          return (
+            <a
+              href="/portfolio"
+              class:list={[
+                'group relative isolate overflow-hidden no-underline min-h-[240px] reveal',
+                spans[i] || 'md:col-span-4',
+              ]}
+              style={`transition-delay: ${i * 60}ms`}
+            >
               <img
                 src={project.image}
                 alt={project.title}
-                class="img-cover transition duration-500 group-hover:scale-105"
-                width="800"
-                height="600"
+                class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                width="900"
+                height="700"
                 loading="lazy"
-                decoding="async"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-pdq-navy-dark/70 via-transparent to-transparent opacity-80" />
-              <span class="absolute bottom-4 left-4 text-xs font-semibold uppercase tracking-wider text-white">
-                {project.categoryLabel}
-              </span>
-            </div>
-            <div class="p-6">
-              <h3 class="font-display text-xl text-pdq-navy leading-snug">{project.title}</h3>
-              <p class="mt-1.5 text-sm text-pdq-muted">{project.location}</p>
-              <p class="mt-3 text-sm leading-relaxed text-slate-600 line-clamp-2">
-                {project.description}
-              </p>
-            </div>
-          </article>
-        ))
+              <div class="absolute inset-0 bg-gradient-to-t from-pdq-navy-dark via-pdq-navy-dark/30 to-transparent opacity-90 transition group-hover:opacity-100" />
+              <div class="absolute inset-x-0 bottom-0 p-5 md:p-7">
+                <span class="inline-block bg-pdq-red px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white">
+                  {project.categoryLabel}
+                </span>
+                <h3 class="mt-3 font-display text-2xl md:text-3xl text-white leading-none">
+                  {project.title}
+                </h3>
+                <p class="mt-2 text-sm text-white/75 normal-case tracking-normal">{project.location}</p>
+              </div>
+            </a>
+          );
+        })
       }
     </div>
   </div>

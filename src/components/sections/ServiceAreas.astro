@@ -1,32 +1,36 @@
 ---
 import { serviceAreas, site } from '../../content/site';
-import SectionHeading from '../ui/SectionHeading.astro';
 ---
 
-<section class="section-pdq bg-white">
+<section class="section-pdq bg-white overflow-hidden">
   <div class="container-pdq">
-    <SectionHeading
-      eyebrow="Service Area"
-      title="Serving Sacramento County & Beyond"
-      lead={`Based in ${site.location.split(',')[0]}, we build across the greater Sacramento Valley.`}
-      align="center"
-      class="max-w-3xl"
-    />
+    <div class="max-w-3xl mx-auto text-center reveal">
+      <p class="section-eyebrow !mx-auto">Service Area</p>
+      <h2 class="section-heading">
+        Across the Greater
+        <span class="text-pdq-red"> Sacramento Valley</span>
+      </h2>
+      <p class="section-lead mx-auto">
+        Based in {site.location.split(',')[0]} — building where Sacramento lives and works.
+      </p>
+    </div>
 
-    <ul class="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+    <ul class="mt-14 flex flex-wrap justify-center gap-3">
       {
-        serviceAreas.map((city) => (
-          <li class="flex items-center gap-2.5 border border-pdq-border bg-pdq-light/60 px-4 py-3.5 text-sm font-semibold text-pdq-navy">
-            <span class="h-1.5 w-1.5 shrink-0 bg-pdq-red" aria-hidden="true"></span>
+        serviceAreas.map((city, i) => (
+          <li
+            class="border border-pdq-border bg-pdq-light/80 px-5 py-3 text-sm font-bold uppercase tracking-[0.12em] text-pdq-navy transition hover:border-pdq-red hover:bg-pdq-navy hover:text-white reveal"
+            style={`transition-delay: ${i * 30}ms`}
+          >
             {city}
           </li>
         ))
       }
     </ul>
 
-    <p class="mt-10 text-center text-sm text-slate-600">
+    <p class="mt-10 text-center text-sm text-pdq-muted font-medium">
       Outside this list?{' '}
-      <a href="/contact" class="font-semibold text-pdq-red no-underline hover:underline">
+      <a href="/contact" class="font-bold text-pdq-red no-underline hover:underline">
         Contact us
       </a>{' '}
       — we may still be able to help.

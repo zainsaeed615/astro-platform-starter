@@ -1,10 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 90" role="img" aria-label="PDQ Construction">
-  <g fill="#1B3A6B">
-    <rect x="2" y="18" width="28" height="4" transform="skewX(-18)"/>
-    <rect x="8" y="28" width="22" height="4" transform="skewX(-18)"/>
-    <rect x="14" y="38" width="16" height="4" transform="skewX(-18)"/>
-  </g>
-  <text x="42" y="52" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-style="italic" font-size="48" fill="#1B3A6B">PDQ</text>
-  <polygon points="48,58 230,58 222,84 40,84" fill="#C8102E"/>
-  <text x="58" y="78" font-family="Georgia,serif" font-style="italic" font-weight="700" font-size="18" fill="#fff">Construction</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 78" role="img" aria-label="PDQ Construction">
+  <text x="4" y="46" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-style="italic" font-size="44" fill="#1B3A6B">PDQ</text>
+  <polygon points="8,52 178,52 170,74 0,74" fill="#C8102E"/>
+  <text x="16" y="69" font-family="Georgia,serif" font-style="italic" font-weight="700" font-size="16" fill="#fff">Construction</text>
 </svg>

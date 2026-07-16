@@ -1,38 +1,43 @@
 ---
 import { whyChooseUs } from '../../content/testimonials';
-import SectionHeading from '../ui/SectionHeading.astro';
 ---
 
-<section class="section-pdq bg-white">
+<section class="section-pdq bg-white overflow-hidden">
   <div class="container-pdq">
-    <SectionHeading
-      eyebrow="Why PDQ"
-      title="Built for Homeowners Who Expect More"
-      lead="Licensed accountability, transparent pricing, and craftsmanship that holds up long after the punch list."
-      align="center"
-      class="max-w-3xl"
-    />
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-4 reveal">
+        <p class="section-eyebrow">Why PDQ</p>
+        <h2 class="section-heading">
+          Built for Clients Who
+          <span class="text-pdq-red"> Expect More</span>
+        </h2>
+        <p class="section-lead">
+          Licensed accountability, transparent pricing, and craftsmanship that lasts.
+        </p>
+        <a href="/contact" class="btn-navy mt-8">Start Your Project</a>
+      </div>
 
-    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        whyChooseUs.map((item) => (
-          <div class="card-premium">
-            <div class="mb-4 flex h-10 w-10 items-center justify-center bg-pdq-red text-white" aria-hidden="true">
-              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M4 10.5L8 14.5L16 5.5"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+      <div class="lg:col-span-8 grid gap-4 sm:grid-cols-2">
+        {
+          whyChooseUs.map((item, i) => (
+            <div
+              class="group relative overflow-hidden border border-pdq-border/80 bg-pdq-light/60 p-6 transition duration-500 hover:bg-pdq-navy hover:border-pdq-navy reveal"
+              style={`transition-delay: ${i * 60}ms`}
+            >
+              <span class="font-display text-4xl text-pdq-red/30 transition group-hover:text-pdq-red/60">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="mt-3 font-display text-xl text-pdq-navy leading-none transition group-hover:text-white">
+                {item.title}
+              </h3>
+              <p class="mt-3 text-sm leading-relaxed text-pdq-muted normal-case tracking-normal font-medium transition group-hover:text-white/80">
+                {item.description}
+              </p>
+              <div class="absolute bottom-0 left-0 h-0.5 w-0 bg-pdq-red transition-all duration-500 group-hover:w-full" />
             </div>
-            <h3 class="font-display text-lg text-pdq-navy">{item.title}</h3>
-            <p class="mt-3 text-sm leading-relaxed text-slate-600">{item.description}</p>
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>

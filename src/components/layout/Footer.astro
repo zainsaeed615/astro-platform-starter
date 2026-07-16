@@ -6,8 +6,9 @@ const year = new Date().getFullYear();
 const topServices = services.slice(0, 4);
 ---
 
-<footer class="bg-pdq-navy-dark text-white">
-  <div class="container-pdq pt-16 pb-8 md:pt-20 md:pb-10">
+<footer class="relative overflow-hidden surface-dark text-white">
+  <div class="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-pdq-red via-pdq-red/40 to-transparent"></div>
+  <div class="container-pdq pt-16 pb-8 md:pt-20 md:pb-10 relative z-10">
     <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
       <div>
         <a href="/" class="inline-block no-underline mb-5">
@@ -19,7 +20,7 @@ const topServices = services.slice(0, 4);
             height="58"
           />
         </a>
-        <p class="font-display text-xl tracking-wide text-white mb-3">{site.tagline}</p>
+        <p class="font-display text-3xl tracking-wide text-white mb-3 leading-none">{site.tagline}</p>
         <p class="text-sm leading-relaxed text-white/70 max-w-xs">
           Licensed Class B general building contractor serving Sacramento County and the surrounding valley.
         </p>
