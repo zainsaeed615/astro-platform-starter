@@ -1,0 +1,46 @@
+---
+import { testimonials } from '../../content/testimonials';
+import SectionHeading from '../ui/SectionHeading.astro';
+
+const featured = testimonials.slice(0, 3);
+---
+
+<section class="section-pdq bg-pdq-light">
+  <div class="container-pdq">
+    <SectionHeading
+      eyebrow="Client Feedback"
+      title="What Sacramento Homeowners Say"
+      lead="Real results from licensed construction across the Sacramento Valley."
+      align="center"
+      class="max-w-3xl"
+    />
+
+    <div class="mt-14 grid gap-6 md:grid-cols-3">
+      {
+        featured.map((item) => (
+          <blockquote class="card-premium flex flex-col">
+            <div class="mb-4 flex gap-1" aria-label={`${item.rating} out of 5 stars`}>
+              {Array.from({ length: item.rating }).map(() => (
+                <svg
+                  class="h-4 w-4 text-pdq-red"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.4l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z" />
+                </svg>
+              ))}
+            </div>
+            <p class="flex-1 text-base leading-relaxed text-slate-700">
+              “{item.quote}”
+            </p>
+            <footer class="mt-6 border-t border-pdq-border pt-5">
+              <cite class="not-italic font-display text-lg text-pdq-navy">{item.name}</cite>
+              <p class="mt-1 text-sm text-pdq-muted">{item.location}</p>
+            </footer>
+          </blockquote>
+        ))
+      }
+    </div>
+  </div>
+</section>

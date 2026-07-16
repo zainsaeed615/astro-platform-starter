@@ -1,0 +1,38 @@
+---
+import { whyChooseUs } from '../../content/testimonials';
+import SectionHeading from '../ui/SectionHeading.astro';
+---
+
+<section class="section-pdq bg-white">
+  <div class="container-pdq">
+    <SectionHeading
+      eyebrow="Why PDQ"
+      title="Built for Homeowners Who Expect More"
+      lead="Licensed accountability, transparent pricing, and craftsmanship that holds up long after the punch list."
+      align="center"
+      class="max-w-3xl"
+    />
+
+    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        whyChooseUs.map((item) => (
+          <div class="card-premium">
+            <div class="mb-4 flex h-10 w-10 items-center justify-center bg-pdq-red text-white" aria-hidden="true">
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M4 10.5L8 14.5L16 5.5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3 class="font-display text-lg text-pdq-navy">{item.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">{item.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+---
+import { homeProcessSteps } from '../../content/process';
+import SectionHeading from '../ui/SectionHeading.astro';
+---
+
+<section class="section-pdq bg-pdq-light">
+  <div class="container-pdq">
+    <SectionHeading
+      eyebrow="How We Work"
+      title="A Clear Path From First Call to Final Walkthrough"
+      lead="Transparent steps so you always know what happens next — Pretty Darn Quick, without cutting corners."
+      align="center"
+      class="max-w-3xl"
+    />
+
+    <ol class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {
+        homeProcessSteps.map((step) => (
+          <li class="card-premium relative">
+            <span
+              class="font-display text-5xl font-bold text-pdq-navy/10 leading-none"
+              aria-hidden="true"
+            >
+              {step.number}
+            </span>
+            <h3 class="mt-4 font-display text-xl text-pdq-navy">{step.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">{step.summary}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="mt-12 text-center">
+      <a href="/process" class="btn-navy">See Our Full Process</a>
+    </div>
+  </div>
+</section>

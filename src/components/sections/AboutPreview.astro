@@ -1,0 +1,71 @@
+---
+import { site } from '../../content/site';
+import SectionHeading from '../ui/SectionHeading.astro';
+
+const bullets = [
+  'Licensed Class B general building contractor (CSLB #1013079)',
+  'Residential remodeling, additions, kitchen & bath, and new construction',
+  'Commercial build-outs and custom specialty projects',
+  'Clear written estimates, clean job sites, and accountable timelines',
+];
+---
+
+<section class="section-pdq bg-white">
+  <div class="container-pdq">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div class="relative aspect-[4/5] overflow-hidden md:aspect-[5/6] lg:aspect-auto lg:min-h-[520px]">
+        <img
+          src="/images/about/about-1.jpg"
+          alt="PDQ Construction craftsmanship on site"
+          class="img-cover absolute inset-0"
+          width="800"
+          height="1000"
+          loading="lazy"
+          decoding="async"
+        />
+        <div
+          class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-pdq-navy-dark/90 to-transparent p-6 md:p-8"
+        >
+          <p class="font-display text-2xl text-white tracking-wide">Since {site.foundedYear}</p>
+          <p class="mt-1 text-sm text-white/75">Serving Sacramento County</p>
+        </div>
+      </div>
+
+      <div>
+        <SectionHeading
+          eyebrow="About PDQ"
+          title="Experience You Can See in Every Detail"
+          lead={`Since ${site.foundedYear}, PDQ Construction has delivered remodeling, additions, and commercial work with the same standard: honest scopes, code-compliant craftsmanship, and a clean handover you can be proud of.`}
+        />
+
+        <ul class="mt-8 space-y-3.5">
+          {
+            bullets.map((bullet) => (
+              <li class="flex gap-3 text-slate-700 leading-relaxed">
+                <span
+                  class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center bg-pdq-red text-white"
+                  aria-hidden="true"
+                >
+                  <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M2 6.5L4.5 9L10 3"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span>{bullet}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="mt-10">
+          <a href="/about" class="btn-outline">Learn More About Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,69 @@
+---
+import { trustItems } from '../../content/site';
+
+const heroSubtext =
+  'Licensed Class B general contractor serving Sacramento, Citrus Heights, and surrounding communities — remodeling, additions, kitchen & bath, and commercial build-outs.';
+---
+
+<section class="relative min-h-[85vh] flex flex-col justify-end overflow-hidden">
+  <img
+    src="/images/hero/hero-main.jpg"
+    alt="PDQ Construction project site"
+    class="absolute inset-0 h-full w-full object-cover"
+    width="1920"
+    height="1080"
+    loading="eager"
+    decoding="async"
+    fetchpriority="high"
+  />
+  <div class="absolute inset-0 overlay-navy" aria-hidden="true"></div>
+
+  <div class="relative z-10 container-pdq pb-10 pt-32 md:pb-14 md:pt-40">
+    <p class="section-eyebrow !text-white/90 mb-5">
+      Licensed General Contractor · Sacramento County
+    </p>
+    <h1
+      class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.08] max-w-3xl"
+    >
+      Quality Construction, Delivered PDQ
+    </h1>
+    <p class="mt-6 max-w-xl text-base md:text-lg text-white/85 leading-relaxed">
+      {heroSubtext}
+    </p>
+    <div class="mt-9 flex flex-wrap gap-4">
+      <a href="/contact" class="btn-primary">Request Free Estimate</a>
+      <a href="/portfolio" class="btn-secondary">View Our Work</a>
+    </div>
+  </div>
+
+  <div class="relative z-10 border-t border-white/15 bg-pdq-navy-dark/70 backdrop-blur-sm">
+    <div class="container-pdq py-5 md:py-6">
+      <ul
+        class="flex flex-wrap items-center gap-x-8 gap-y-3 md:gap-x-12"
+        aria-label="Trust signals"
+      >
+        {
+          trustItems.map((item) => (
+            <li class="flex items-center gap-2.5 text-sm font-semibold tracking-wide text-white/90">
+              <span
+                class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-pdq-red/20 text-pdq-red"
+                aria-hidden="true"
+              >
+                <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M2 6.5L4.5 9L10 3"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

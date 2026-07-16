@@ -1,0 +1,27 @@
+---
+import { stats } from '../../content/site';
+---
+
+<section class="bg-pdq-navy text-white">
+  <div class="container-pdq py-14 md:py-16 lg:py-20">
+    <div class="grid grid-cols-2 gap-8 lg:grid-cols-4 lg:gap-6">
+      {
+        stats.map((stat, index) => (
+          <div
+            class:list={[
+              'text-center lg:text-left',
+              index > 0 && 'lg:border-l lg:border-white/15 lg:pl-8',
+            ]}
+          >
+            <p class="font-display text-4xl md:text-5xl font-bold tracking-tight text-white">
+              {stat.value}
+            </p>
+            <p class="mt-2 text-sm font-medium uppercase tracking-wider text-white/70">
+              {stat.label}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

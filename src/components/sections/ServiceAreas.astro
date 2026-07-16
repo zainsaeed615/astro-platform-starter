@@ -1,0 +1,35 @@
+---
+import { serviceAreas, site } from '../../content/site';
+import SectionHeading from '../ui/SectionHeading.astro';
+---
+
+<section class="section-pdq bg-white">
+  <div class="container-pdq">
+    <SectionHeading
+      eyebrow="Service Area"
+      title="Serving Sacramento County & Beyond"
+      lead={`Based in ${site.location.split(',')[0]}, we build across the greater Sacramento Valley.`}
+      align="center"
+      class="max-w-3xl"
+    />
+
+    <ul class="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      {
+        serviceAreas.map((city) => (
+          <li class="flex items-center gap-2.5 border border-pdq-border bg-pdq-light/60 px-4 py-3.5 text-sm font-semibold text-pdq-navy">
+            <span class="h-1.5 w-1.5 shrink-0 bg-pdq-red" aria-hidden="true"></span>
+            {city}
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="mt-10 text-center text-sm text-slate-600">
+      Outside this list?{' '}
+      <a href="/contact" class="font-semibold text-pdq-red no-underline hover:underline">
+        Contact us
+      </a>{' '}
+      — we may still be able to help.
+    </p>
+  </div>
+</section>
