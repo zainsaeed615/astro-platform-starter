@@ -1,21 +1,226 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
+import CertBadges from '../components/CertBadges.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { applicationLinks, SPEC_SHEET_URL } from '../data/site';
 
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
+const heroSlides = [
+    '/images/hero/running.jpg',
+    '/images/hero/hiking.jpg',
+    '/images/hero/yoga.jpg',
+    '/images/hero/focus.jpg',
+    '/images/hero/strength.jpg'
+];
 
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+const studies = [
+    {
+        journal: 'J. of Cachexia, Sarcopenia and Muscle',
+        citation: 'Bideshki et al., 2025',
+        finding: 'HMB may enhance muscle mass and strength without weight gain.'
+    },
+    {
+        journal: 'Amino Acids',
+        citation: 'Rodrigues Ribeiro et al., 2024',
+        finding: 'HMB-Ca reached absorption in under 45 minutes — ideal for preworkout.'
+    },
+    {
+        journal: 'Nutrients',
+        citation: 'Courel-Ibáñez & Pallarés, 2019',
+        finding: 'HMB may support protein synthesis and reduce muscle damage in older adults.'
+    },
+    {
+        journal: 'Cell Reports',
+        citation: 'Paidi et al., 2023',
+        finding: 'Suggests that HMB supports neuronal growth, memory, and learning.'
+    }
+];
+
+const stats = [
+    { value: 30, suffix: '+', label: 'Years of Vesta quality' },
+    { value: 20, suffix: '+', label: 'Years supplying UltraHMB™' },
+    { value: 3, suffix: '', label: 'Research-backed platforms' },
+    { value: 7, suffix: '', label: 'Quality certifications' }
+];
+
+const particles = Array.from({ length: 18 }, (_, i) => ({
+    left: `${6 + ((i * 17) % 88)}%`,
+    top: `${12 + ((i * 23) % 70)}%`,
+    delay: `${(i % 9) * 0.4}s`,
+    duration: `${4 + (i % 5)}s`
+}));
 ---
 
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-8" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title="UltraHMB™ — Build. Recover. Get Stronger.">
+    <section class="relative min-h-[92vh] overflow-hidden bg-navy text-white">
+        <div class="absolute inset-0" data-parallax="0.15">
+            {
+                heroSlides.map((src) => (
+                    <img
+                        src={src}
+                        alt=""
+                        class="hero-slide absolute inset-0 h-full w-full object-cover opacity-0"
+                        aria-hidden="true"
+                    />
+                ))
+            }
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-br from-navy via-navy/88 to-blue/40"></div>
+        <div class="blob left-[8%] top-[18%] h-80 w-80 bg-blue/35"></div>
+        <div class="blob floating-delayed right-[12%] top-[40%] h-72 w-72 bg-cyan/20"></div>
+
+        {
+            particles.map((p) => (
+                <span
+                    class="particle"
+                    style={`left:${p.left};top:${p.top};animation-delay:${p.delay};animation-duration:${p.duration}`}
+                    aria-hidden="true"
+                />
+            ))
+        }
+
+        <div class="container-site relative flex min-h-[92vh] flex-col justify-center py-24">
+            <p class="reveal font-semibold tracking-[0.04em] text-white">
+                <span class="text-4xl sm:text-5xl">Ultra</span>
+                <span class="text-4xl text-blue-soft sm:text-5xl">HMB</span>
+                <span class="align-super text-sm">™</span>
+            </p>
+            <p
+                class="reveal mt-4 max-w-xl text-sm font-medium uppercase tracking-[0.18em] text-blue-soft"
+                style="transition-delay: 80ms"
+            >
+                β-Hydroxy β-MethylButyrate Calcium
+            </p>
+            <h1 class="reveal mt-5 max-w-3xl text-white" style="transition-delay: 140ms">
+                BUILD. RECOVER.<br class="hidden sm:block" /> GET STRONGER.
+            </h1>
+            <p class="reveal mt-6 max-w-2xl text-lg text-white/85" style="transition-delay: 200ms">
+                Clinically researched HMB-Ca for the products you formulate. A food-grade, non-GMO calcium salt of
+                HMB — built for sports nutrition, healthy aging, and cognitive health formulations.
+            </p>
+            <div class="reveal mt-9 flex flex-wrap gap-4" style="transition-delay: 280ms">
+                <a href={SPEC_SHEET_URL} target="_blank" rel="noopener noreferrer" class="btn pulse-glow">
+                    Download Spec Sheet
+                </a>
+                <a href="/about" class="btn-outline">Explore the Science</a>
+            </div>
+        </div>
+
+        <a
+            href="#trusted"
+            class="scroll-indicator absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-white/70 no-underline"
+            aria-label="Scroll to content"
+        >
+            <span>Scroll</span>
+            <span class="flex h-9 w-5 items-start justify-center rounded-full border border-white/40 p-1">
+                <span class="h-2 w-1 rounded-full bg-white/80"></span>
+            </span>
+        </a>
+    </section>
+
+    <section id="trusted" class="section-pad surface-alt">
+        <div class="container-site relative grid items-center gap-12 lg:grid-cols-2">
+            <div class="reveal-left">
+                <p class="eyebrow">A Trusted Source</p>
+                <h2 class="mt-4">Quality ingredients. Decades of formulation trust.</h2>
+                <div class="prose-site mt-6">
+                    <p>
+                        For more than 30 years, Vesta Nutra has taken pride in using only the highest quality natural
+                        ingredients in our dietary supplements. Our team of experts is dedicated to ensuring that our
+                        customers receive products that are safe, effective, and exceed their expectations.
+                    </p>
+                    <p>
+                        Our dedication to quality and customer satisfaction has made us a trusted leader in the dietary
+                        supplement industry.
+                    </p>
+                </div>
+            </div>
+            <div>
+                <CertBadges />
+            </div>
+        </div>
+
+        <div class="container-site relative mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {
+                stats.map((stat, i) => (
+                    <div class="glass-card reveal text-center" style={`transition-delay: ${i * 80}ms`}>
+                        <p class="text-4xl font-bold text-navy">
+                            <span data-counter={stat.value} data-suffix={stat.suffix}>0</span>
+                        </p>
+                        <p class="mt-2 text-sm text-muted">{stat.label}</p>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+
+    <section class="section-pad">
+        <div class="container-site">
+            <div class="mx-auto max-w-3xl text-center reveal">
+                <p class="eyebrow">Formulation applications</p>
+                <h2 class="mt-4">One ingredient, three research-backed platforms.</h2>
+                <p class="mt-4 text-muted">
+                    UltraHMB™ is a single, well-characterized active to build across performance, aging, and cognitive
+                    categories.
+                </p>
+            </div>
+            <div class="stagger mt-12 grid gap-6 md:grid-cols-3">
+                {
+                    applicationLinks.map((app, i) => (
+                        <a
+                            href={app.href}
+                            class="group reveal-scale relative overflow-hidden rounded-[1.5rem] border border-white/20 bg-navy text-white no-underline shadow-lift"
+                            style={`--i: ${i}`}
+                        >
+                            <img
+                                src={heroSlides[i] ?? heroSlides[0]}
+                                alt=""
+                                class="absolute inset-0 h-full w-full object-cover opacity-40 transition duration-700 group-hover:scale-110"
+                                loading="lazy"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/70 to-navy/20"></div>
+                            <div class="relative flex h-full min-h-[280px] flex-col p-8">
+                                <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 backdrop-blur transition group-hover:rotate-6 group-hover:bg-blue">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                        <path d="M5 12h14M13 6l6 6-6 6" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">{app.label}</h3>
+                                <p class="mt-3 grow text-sm leading-relaxed text-white/85">{app.description}</p>
+                                <span class="mt-6 text-sm font-semibold text-blue-soft transition group-hover:translate-x-1">
+                                    Learn more →
+                                </span>
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pad surface-alt">
+        <div class="container-site relative">
+            <div class="mx-auto max-w-3xl text-center reveal">
+                <p class="eyebrow">Peer-reviewed evidence</p>
+                <h2 class="mt-4">Supported by published research</h2>
+                <p class="mt-4 text-muted">
+                    The benefits of UltraHMB™ are supported by published, peer-reviewed research. The full body of
+                    evidence — with citations you can hand to your regulatory team — lives on the science and
+                    application pages.
+                </p>
+            </div>
+            <div class="stagger mt-12 grid gap-5 sm:grid-cols-2">
+                {
+                    studies.map((study, i) => (
+                        <article class="study-card reveal" style={`--i: ${i}`}>
+                            <p class="text-xs font-semibold uppercase tracking-wider text-blue">{study.journal}</p>
+                            <p class="mt-2 text-sm font-medium text-navy">{study.citation}</p>
+                            <p class="mt-3 text-sm leading-relaxed text-slate-600">{study.finding}</p>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <CtaBand />
 </Layout>

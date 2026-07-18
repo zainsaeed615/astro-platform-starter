@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+---
+
+<Layout
+    title="About / The Science of HMB-Ca"
+    description="Learn what HMB is, how HMB-Ca works through dual anabolic and anti-catabolic mechanisms, and why UltraHMB™ is the preferred calcium salt form for formulation."
+>
+    <PageHero
+        eyebrow="About UltraHMB™"
+        title="The Science of HMB-Ca"
+        subtitle="Understanding β-hydroxy-β-methylbutyrate — a key metabolite for muscle protein turnover, sports nutrition, and healthy aging."
+    />
+
+    <section class="section-pad">
+        <div class="container-site grid gap-12 lg:grid-cols-2 lg:items-start">
+            <div class="prose-site reveal-left">
+                <h2>What is HMB?</h2>
+                <p>
+                    First discovered in the late 1980s by Dr. Steven L. Nissen at Iowa State University,
+                    beta-hydroxy-beta-methylbutyrate — commonly known as HMB — has established itself as a key
+                    ingredient in sports nutrition and muscle preservation. The molecule is widely recognized for its
+                    role in regulating muscle protein turnover through direct interaction with cellular signaling
+                    pathways, in a manner distinctly from its parent amino acid, leucine.
+                </p>
+            </div>
+            <div class="reveal-scale glass-card !p-4">
+                <img
+                    src="/images/science/hmb-mechanism.png"
+                    alt="HMB dual mechanism diagram showing anabolic and anti-catabolic pathways"
+                    class="mx-auto w-full max-w-md transition duration-700 hover:scale-[1.02]"
+                    loading="lazy"
+                />
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pad surface-alt">
+        <div class="container-site relative max-w-4xl">
+            <h2 class="reveal">How does HMB Work?</h2>
+            <div class="prose-site mt-6 reveal" style="transition-delay: 80ms">
+                <p>
+                    The primary function of HMB is to shift the balance of muscle protein turnover away from catabolism
+                    (breakdown) and toward anabolism (building) through two distinct mechanisms.
+                </p>
+            </div>
+            <div class="mt-8 grid gap-5 md:grid-cols-2">
+                <article class="study-card reveal" style="transition-delay: 120ms">
+                    <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-blue/10 text-blue">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+                    </div>
+                    <h3>Anabolism</h3>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                        HMB stimulates the mTOR pathway, activating downstream effectors such as p70S6K and 4E-BP1 to
+                        drive muscle protein synthesis.
+                    </p>
+                </article>
+                <article class="study-card reveal" style="transition-delay: 200ms">
+                    <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-blue/10 text-blue">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                    </div>
+                    <h3>Anti-catabolism</h3>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                        Simultaneously, HMB suppresses the Ubiquitin-Proteasome System that is responsible for targeting
+                        and degrading structural muscle proteins during stress, illness, or exercise.
+                    </p>
+                </article>
+            </div>
+            <p class="mt-8 text-base leading-relaxed text-slate-600 reveal" style="transition-delay: 240ms">
+                This dual mechanism (synthesis ↑, and breakdown ↓) is drawing more and more interest in HMB’s
+                application beyond athletic performance, extending to sarcopenia, cachexia, and other clinical
+                conditions involving muscle wasting.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-pad">
+        <div class="container-site max-w-4xl prose-site reveal">
+            <h2>Where do I Get HMB?</h2>
+            <p>
+                HMB is produced endogenously, but only in minute quantities. It has been estimated that 5% of dietary
+                L-leucine is converted to HMB through oxidation. As a result, obtaining meaningful amounts of HMB from
+                whole food sources alone, such as catfish, grapefruit, and alfalfa, could be challenging for some at
+                times.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-pad surface-alt">
+        <div class="container-site relative max-w-4xl">
+            <h2 class="reveal">Which Common Forms of HMB are on Sale?</h2>
+            <p class="mt-4 text-base leading-relaxed text-slate-600 reveal" style="transition-delay: 80ms">
+                Commercial HMB supplements are available in two distinct chemical forms.
+            </p>
+            <div class="mt-8 grid gap-5 md:grid-cols-2">
+                <article class="study-card reveal" style="transition-delay: 120ms">
+                    <h3>HMB-FA (Free Acid)</h3>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                        Often marketed for immediate pre-workout delivery. As a liquid or gel at room temperature,
+                        however, the free acid entails additional handling requirements during manufacturing and offers
+                        limited formulation flexibility.
+                    </p>
+                </article>
+                <article class="study-card reveal border-blue/30 !bg-navy text-white" style="transition-delay: 200ms">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-blue-soft">Preferred for scale-up</p>
+                    <h3 class="mt-2 text-white">HMB-Ca (Calcium Salt)</h3>
+                    <p class="mt-3 text-sm leading-relaxed text-white/85">
+                        The most popular form — a stable, white crystalline powder at ambient temperature. It is
+                        well-suited for scale-up and long-term storage, and offers a wide variety of formulation
+                        options. UltraHMB™ is HMB-Ca.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <CtaBand
+        title="Formulate with UltraHMB™"
+        text="Explore application evidence or speak with a Vesta® ingredient specialist about bringing HMB-Ca into your next product."
+    />
+</Layout>

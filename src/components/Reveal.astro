@@ -1,0 +1,15 @@
+---
+interface Props {
+    as?: keyof HTMLElementTagNameMap;
+    class?: string;
+    variant?: 'up' | 'scale' | 'left';
+    delay?: number;
+}
+
+const { as: Tag = 'div', class: className = '', variant = 'up', delay = 0 } = Astro.props;
+const variantClass = variant === 'scale' ? 'reveal-scale' : variant === 'left' ? 'reveal-left' : 'reveal';
+---
+
+<Tag class:list={[variantClass, className]} style={`--i: ${delay}; transition-delay: ${delay * 90}ms`}>
+    <slot />
+</Tag>

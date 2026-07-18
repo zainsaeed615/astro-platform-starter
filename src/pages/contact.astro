@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import { contactInfo } from '../data/site';
+---
+
+<Layout
+    title="Contact"
+    description="Contact Vesta Nutra about UltraHMB™ — talk with an ingredient specialist about your next HMB-Ca formulation."
+>
+    <PageHero
+        eyebrow="Get in touch"
+        title="Contact Us"
+        subtitle="If you have any questions, we would be happy to discuss how UltraHMB™ can support your dietary supplement and nutraceutical manufacturing needs."
+    />
+
+    <section class="section-pad surface-alt">
+        <div class="container-site relative grid gap-12 lg:grid-cols-2">
+            <div class="reveal-left">
+                <h2>Talk to a specialist</h2>
+                <p class="mt-4 text-base leading-relaxed text-slate-600">
+                    We are confident that Vesta can be your trusted partner in the dietary supplement and nutraceutical
+                    industry. Send a message or reach us directly.
+                </p>
+                <ul class="mt-8 space-y-4">
+                    {
+                        [
+                            ['Address', contactInfo.address],
+                            ['Email', contactInfo.email],
+                            ['Phone', `${contactInfo.phone} · Toll-free ${contactInfo.phoneAlt}`],
+                            ['Fax', contactInfo.fax],
+                            ['Hours', contactInfo.hours]
+                        ].map(([label, value], i) => (
+                            <li class="glass-card reveal !p-4" style={`transition-delay: ${i * 70}ms`}>
+                                <span class="block text-[11px] font-semibold uppercase tracking-wider text-blue">{label}</span>
+                                {label === 'Email' ? (
+                                    <a href={`mailto:${value}`} class="mt-1 block text-sm text-navy no-underline hover:text-blue">
+                                        {value}
+                                    </a>
+                                ) : (
+                                    <span class="mt-1 block text-sm text-slate-700">{value}</span>
+                                )}
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+
+            <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                class="reveal glass-card !p-7 sm:!p-8"
+                style="transition-delay: 120ms"
+            >
+                <input type="hidden" name="form-name" value="contact" />
+                <p class="hidden">
+                    <label>
+                        Don’t fill this out: <input name="bot-field" />
+                    </label>
+                </p>
+                <div class="space-y-5">
+                    <div class="field">
+                        <input type="text" name="name" id="name" required placeholder=" " />
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="field">
+                        <input type="email" name="email" id="email" required placeholder=" " />
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="field">
+                        <input type="text" name="company" id="company" placeholder=" " />
+                        <label for="company">Company</label>
+                    </div>
+                    <div class="field">
+                        <textarea name="message" id="message" required rows="5" placeholder=" "></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <button type="submit" class="btn w-full sm:w-auto">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</Layout>
