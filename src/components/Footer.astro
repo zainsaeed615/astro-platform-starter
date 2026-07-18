@@ -1,9 +1,163 @@
 ---
+import Logo from './Logo.astro';
+import {
+    applicationLinks,
+    contactInfo,
+    developmentalDisclaimer,
+    fdaDisclaimer,
+    portfolioBrands,
+    socialLinks
+} from '../data/site';
 
+const quickLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'FAQ', href: '/faq' },
+    { label: 'Contact', href: '/contact' }
+];
+
+const year = new Date().getFullYear();
 ---
 
-<footer class="pt-16 pb-12 sm:pt-24 sm:pb-16">
-    <p class="text-sm">
-        <a href="https://docs.netlify.com/frameworks/astro/" class="decoration-dashed text-primary underline-offset-8"> Astro on Netlify </a>
-    </p>
+<footer class="mt-auto bg-navy-deep text-white">
+    <div class="container-site section-pad pb-12">
+        <div class="grid gap-12 lg:grid-cols-4">
+            <div class="space-y-5">
+                <Logo variant="light" />
+                <p class="text-sm leading-relaxed text-white/80">
+                    Vesta UltraHMB™ — Your Partner in The Dietary Supplement and Nutraceutical Industry.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    {
+                        socialLinks.map((social) => (
+                            <a
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-navy no-underline hover:bg-blue hover:text-white"
+                                aria-label={social.name}
+                            >
+                                {social.icon === 'linkedin' && (
+                                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.8v2.1h.05c.53-1 1.83-2.1 3.75-2.1 4 0 4.75 2.6 4.75 6V24h-4v-7.1c0-1.7-.03-3.9-2.4-3.9-2.4 0-2.77 1.85-2.77 3.77V24h-4V8.5z"/></svg>
+                                )}
+                                {social.icon === 'facebook' && (
+                                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-3h2.5V9.5c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.5V12H17l-.4 3h-2.6v7A10 10 0 0022 12z"/></svg>
+                                )}
+                                {social.icon === 'instagram' && (
+                                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5A4.5 4.5 0 1112 16a4.5 4.5 0 010-9zm0 2A2.5 2.5 0 1014.5 12 2.5 2.5 0 0012 7.5zM17.8 6.2a1 1 0 11-1 1 1 1 0 011-1z"/></svg>
+                                )}
+                                {social.icon === 'youtube' && (
+                                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.8 15.5v-7l6.2 3.5-6.2 3.5z"/></svg>
+                                )}
+                                {social.icon === 'x' && (
+                                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.2 2H21l-6.5 7.4L22 22h-6.2l-4.9-6.4L5.5 22H2.7l7-8L2 2h6.3l4.4 5.9L18.2 2zm-1.1 18h1.7L7 3.9H5.2L17.1 20z"/></svg>
+                                )}
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <div>
+                <h3 class="mb-4 text-base font-semibold text-white">Quick Links</h3>
+                <ul class="space-y-2">
+                    {quickLinks.map((link) => (
+                        <li>
+                            <a href={link.href} class="footer-link">
+                                {link.label}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+                <details class="mt-4 group">
+                    <summary class="cursor-pointer list-none text-sm font-medium text-white/90">
+                        Applications
+                        <span class="ml-1 inline-block transition group-open:rotate-180">∨</span>
+                    </summary>
+                    <ul class="mt-2 space-y-2 pl-2">
+                        {applicationLinks.map((link) => (
+                            <li>
+                                <a href={link.href} class="footer-link">
+                                    {link.label}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </details>
+            </div>
+
+            <div class="space-y-4">
+                <div class="inline-block bg-white px-4 py-3">
+                    <img
+                        src="/images/portfolio/vesta-nutra.png"
+                        alt="Vesta Nutra"
+                        class="h-10 w-auto"
+                        width="200"
+                        height="36"
+                    />
+                </div>
+                <p class="text-sm leading-relaxed text-white/80">
+                    Vesta® Nutra proudly services the entire global market with our Made in the USA products.
+                </p>
+                <p class="text-sm leading-relaxed text-white/70">
+                    Kami mengalu-alukan rakan-rakan kami dari Singapura. Sila hubungi kami untuk semua keperluan
+                    ramuan anda.
+                </p>
+                <p class="text-sm leading-relaxed text-white/70">
+                    Wir begrüßen unsere Freunde aus der Schweiz. Bitte kontaktieren Sie uns für alle Ihre
+                    Inhaltsstoffe.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="mb-4 text-base font-semibold text-white">Get In Touch</h3>
+                <ul class="space-y-3 text-sm text-white/80">
+                    <li>{contactInfo.address}</li>
+                    <li>
+                        <a href={`mailto:${contactInfo.email}`} class="footer-link">
+                            {contactInfo.email}
+                        </a>
+                    </li>
+                    <li>Phone: {contactInfo.phone}</li>
+                    <li>Fax: {contactInfo.fax}</li>
+                    <li>Hours: {contactInfo.hours}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-12 space-y-3 border-t border-white/15 pt-8 text-xs leading-relaxed text-white/60">
+            <p class="italic">{fdaDisclaimer.replace(/^\*|\*$/g, '')}</p>
+            <p>{developmentalDisclaimer}</p>
+        </div>
+    </div>
+
+    <div class="border-t border-white/10 bg-navy">
+        <div class="container-site py-10">
+            <a
+                href="https://www.vestanutra.com/ingredients"
+                class="mb-8 block text-center text-base font-semibold text-white underline decoration-white/40 underline-offset-8 no-underline hover:decoration-white"
+            >
+                Explore Vesta® Nutra’s Portfolio
+            </a>
+            <div class="grid grid-cols-2 items-center gap-6 sm:grid-cols-3 lg:grid-cols-5">
+                {
+                    portfolioBrands.map((brand) => (
+                        <a
+                            href={brand.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="flex h-16 items-center justify-center bg-white/95 px-3 no-underline transition hover:bg-white"
+                            aria-label={brand.name}
+                        >
+                            <img src={brand.logo} alt={brand.name} class="max-h-10 w-auto object-contain" />
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-[#16357a] py-4 text-center text-xs text-white/80">
+        Vesta UltraHMB™ © Copyright {year} | All Rights Reserved
+    </div>
 </footer>

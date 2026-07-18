@@ -1,0 +1,108 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+const studies = [
+    {
+        title: 'Muscle-building supplement β-hydroxy β-methylbutyrate binds to PPARα to improve hippocampal functions in mice (2023)',
+        journal: 'Cell Reports',
+        doi: '10.1016/j.celrep.2023.112717',
+        finding:
+            'Suggests that HMB supports neuronal growth, memory, and learning through PPARα-linked hippocampal pathways.',
+        meaning:
+            'This work positions HMB beyond muscle metabolism alone, highlighting a differentiated angle for cognitive and brain-health formulations built on UltraHMB™ (HMB-Ca).'
+    },
+    {
+        title: 'Cognitive function is preserved in aged mice following long-term β-hydroxy β-methylbutyrate supplementation (2018/2020)',
+        journal: 'Nutritional Neuroscience',
+        citation: 'Munroe et al.',
+        finding:
+            'Long-term HMB supplementation was associated with preserved cognitive function in aged animal models, including active-avoidance learning outcomes.',
+        meaning:
+            'These findings support exploring HMB-Ca in healthy-aging formulas that target both physical function and cognitive preservation.'
+    },
+    {
+        title: 'Health benefits of β-Hydroxy-β-Methylbutyrate (HMB) supplementation in addition to physical exercise in older adults (2019)',
+        journal: 'Nutrients',
+        doi: '10.3390/nu11092082',
+        finding:
+            'Confirmed anticatabolic effects and enhanced protein synthesis in older adults, particularly when combined with exercise.',
+        meaning:
+            'While primarily muscle-focused, this evidence base underpins broader vitality positioning — physical capability that supports independent, cognitively engaged aging.'
+    }
+];
+---
+
+<Layout
+    title="Cognitive Wellness"
+    description="Emerging research on HMB-Ca for neuronal support, memory, learning, and cognitive preservation — a differentiated formulation platform with UltraHMB™."
+>
+    <PageHero
+        eyebrow="Applications"
+        title="Cognitive Wellness"
+        subtitle="Emerging research points to neuronal support, memory, and learning — offering a differentiated angle for cognitive and brain-health formulations with UltraHMB™."
+    />
+
+    <section class="section-pad">
+        <div class="container-site max-w-4xl prose-site">
+            <p>
+                Beyond its established role in sports nutrition and muscle preservation, HMB-Ca is gaining attention for
+                potential neuroprotective and cognitive applications. As endogenous HMB production declines with age and
+                physical stress, supplementation may help support pathways involved in learning, memory, and neuronal
+                integrity.
+            </p>
+            <p>
+                UltraHMB™ gives formulators a stable, food-grade calcium salt of HMB to explore this emerging category
+                alongside performance and healthy-aging platforms — one ingredient, three research-backed opportunities.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+        <div class="container-site max-w-4xl space-y-6">
+            {
+                studies.map((study) => (
+                    <article class="study-card">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-blue">{study.journal}</p>
+                        <h3 class="mt-2 text-lg">{study.title}</h3>
+                        {study.doi ? (
+                            <p class="mt-2 text-sm text-muted">
+                                DOI:{' '}
+                                <a
+                                    href={`https://doi.org/${study.doi}`}
+                                    class="text-blue no-underline hover:underline"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {study.doi}
+                                </a>
+                            </p>
+                        ) : (
+                            <p class="mt-2 text-sm text-muted">{study.citation}</p>
+                        )}
+                        <p class="mt-4 text-sm font-medium text-navy">Finding</p>
+                        <p class="mt-1 text-sm italic leading-relaxed text-slate-600">{study.finding}</p>
+                        <p class="mt-4 text-sm font-medium text-navy">What that means</p>
+                        <p class="mt-1 text-sm leading-relaxed text-slate-600">{study.meaning}</p>
+                    </article>
+                ))
+            }
+        </div>
+    </section>
+
+    <section class="section-pad">
+        <div class="container-site max-w-4xl">
+            <h2>Overall Assessment</h2>
+            <p class="mt-4 text-base leading-relaxed text-slate-700">
+                Cognitive research on HMB is earlier-stage than the muscle literature, but peer-reviewed work —
+                including Cell Reports (Paidi et al., 2023) and Nutritional Neuroscience (Munroe et al.) — supports a
+                credible narrative around neuronal growth, memory, and age-related cognitive preservation. For brands
+                building brain-health or healthy-aging stacks, UltraHMB™ offers a well-characterized HMB-Ca active with
+                dual muscle and cognitive storytelling potential.
+            </p>
+        </div>
+    </section>
+
+    <CtaBand />
+</Layout>

@@ -1,0 +1,19 @@
+---
+import { certs } from '../data/site';
+
+interface Props {
+    class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-7 ${className}`}>
+    {
+        certs.map((cert) => (
+            <div class="flex h-24 items-center justify-center border border-line bg-white p-3">
+                <img src={cert.src} alt={cert.name} class="max-h-16 w-auto object-contain" loading="lazy" />
+            </div>
+        ))
+    }
+</div>

@@ -1,78 +1,125 @@
 @import 'tailwindcss';
 
 @theme {
-    --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --color-primary: #f67280;
-    --color-primary-content: #101828;
-    --color-complementary: #355c7d;
-    --background-image-noise: linear-gradient(
-            to bottom,
-            color-mix(in oklab, var(--color-gray-950) 0%, transparent),
-            color-mix(in oklab, var(--color-gray-950) 100%, transparent)
-        ),
-        url('/images/noise.png');
+    --font-sans: 'DM Sans Variable', ui-sans-serif, system-ui, sans-serif;
+    --color-navy: #0f2662;
+    --color-navy-deep: #0a1a45;
+    --color-blue: #1f65e9;
+    --color-blue-soft: #4b86f0;
+    --color-ink: #0f172a;
+    --color-muted: #64748b;
+    --color-surface: #f4f7fc;
+    --color-line: #d9e2f2;
 }
 
 @layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-white text-ink font-sans antialiased;
+    }
+
+    h1,
+    h2,
+    h3 {
+        @apply text-navy tracking-tight;
+    }
+
     h1 {
-        @apply text-4xl font-bold tracking-tight sm:text-5xl;
+        @apply text-4xl font-bold sm:text-5xl lg:text-6xl;
     }
 
     h2 {
-        @apply text-2xl font-bold sm:text-3xl;
+        @apply text-3xl font-bold sm:text-4xl;
     }
 
-    a:not(.btn) {
-        @apply underline transition hover:opacity-80;
+    h3 {
+        @apply text-xl font-semibold sm:text-2xl;
     }
 
-    pre {
-        @apply p-6 overflow-x-auto rounded-lg;
-    }
-
-    :not(pre) > code {
-        @apply px-1 py-0.5 font-mono rounded bg-gray-900 text-primary;
-        font-size: 0.9em;
+    a {
+        @apply transition-colors;
     }
 }
 
 @layer components {
-    .markdown {
-        > * {
-            @apply my-6;
-        }
-
-        :where(h1, h2) {
-            @apply mt-12 mb-6;
-        }
-
-        > :first-child {
-            @apply mt-0;
-        }
-
-        > :last-child {
-            @apply mb-0;
-        }
+    .container-site {
+        @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
     }
 
     .btn {
-        @apply inline-flex items-center justify-center gap-2 bg-primary text-primary-content cursor-pointer text-center font-semibold no-underline transition-colors;
-        padding: var(--btn-py, 0.875rem) var(--btn-px, 1.25rem);
-        font-size: var(--btn-font-size, 0.875rem);
-        border-radius: var(--btn-border-radius, 0.25rem);
-
-        &:hover {
-            @apply bg-primary/85;
-        }
-
-        &:disabled {
-            @apply text-gray-400 bg-gray-700;
-        }
+        @apply inline-flex items-center justify-center gap-2 rounded-md bg-blue px-5 py-3 text-sm font-semibold text-white no-underline transition hover:bg-blue-soft;
     }
 
-    .btn-lg {
-        --btn-font-size: 1.125rem;
-        --btn-px: 1.5rem;
-        --btn-py: 1.125rem;
+    .btn-outline {
+        @apply inline-flex items-center justify-center gap-2 rounded-md border border-white/70 bg-transparent px-5 py-3 text-sm font-semibold text-white no-underline transition hover:bg-white hover:text-navy;
     }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center gap-2 rounded-md border border-navy/20 bg-white px-5 py-3 text-sm font-semibold text-navy no-underline transition hover:border-blue hover:text-blue;
+    }
+
+    .section-pad {
+        @apply py-16 sm:py-24;
+    }
+
+    .eyebrow {
+        @apply text-xs font-semibold uppercase tracking-[0.18em] text-blue;
+    }
+
+    .prose-site p {
+        @apply mb-4 text-base leading-relaxed text-slate-700;
+    }
+
+    .prose-site p:last-child {
+        @apply mb-0;
+    }
+
+    .study-card {
+        @apply border border-line bg-white p-6 transition hover:border-blue/40 hover:shadow-lg hover:shadow-navy/5;
+    }
+
+    .nav-link {
+        @apply text-sm font-medium text-navy/80 no-underline hover:text-blue;
+    }
+
+    .footer-link {
+        @apply text-sm text-white/80 no-underline hover:text-white;
+    }
+}
+
+@keyframes hero-fade {
+    0%,
+    16% {
+        opacity: 1;
+    }
+    20%,
+    96% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.hero-slide {
+    animation: hero-fade 20s infinite;
+}
+
+.hero-slide:nth-child(1) {
+    animation-delay: 0s;
+}
+.hero-slide:nth-child(2) {
+    animation-delay: 4s;
+}
+.hero-slide:nth-child(3) {
+    animation-delay: 8s;
+}
+.hero-slide:nth-child(4) {
+    animation-delay: 12s;
+}
+.hero-slide:nth-child(5) {
+    animation-delay: 16s;
 }

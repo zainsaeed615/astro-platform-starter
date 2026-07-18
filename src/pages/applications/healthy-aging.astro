@@ -1,0 +1,131 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+const studies = [
+    {
+        title: 'Ergogenic Benefits of β-Hydroxy-β-Methyl Butyrate (HMB) Supplementation on Body Composition and Muscle Strength: An Umbrella Review of Meta-Analyses (2025)',
+        journal: 'Journal of Cachexia, Sarcopenia and Muscle',
+        doi: '10.1002/jcsm.13671',
+        finding:
+            '“HMB supplementation significantly increased muscle mass…, muscle strength index… and fat-free mass…. No significant changes were observed in fat mass… or body mass....”',
+        meaning:
+            'Synthesizing the available meta-analyses, the authors concluded that HMB could significantly increase muscle mass and the muscle strength index, with both effects notably more pronounced in the seniors (60 years or older) and with longer duration. The benefit was, however, limited to muscle rather than body composition overall.'
+    },
+    {
+        title: 'The Effects of β-hydroxy-β-Methylbutyrate or HMB-rich Nutritional Supplements on Sarcopenia Patients: A Systematic Review and Meta-Analysis (2024)',
+        journal: 'Frontiers in Medicine',
+        doi: '10.3389/fmed.2024.1348212',
+        finding:
+            '“HMB or HMB-rich nutritional supplements showed a statistically significant difference in Hand Grip Strength for sarcopenia patients, …”',
+        meaning:
+            'This meta-analysis found that HMB or HMB-rich nutritional supplements produced a statistically significant improvement in hand grip strength, when the intervention lasted no less than 12 weeks. It seems to position HMB as a potentially effective therapeutic approach, particularly for those unable to engage in physical exercise due to sarcopenia.'
+    },
+    {
+        title: 'Effects of Oral Supplementation of β-hydroxy-β-Methylbutyrate on Muscle Mass and Strength in Individuals Over the Age of 50: A Meta-Analysis (2025)',
+        journal: 'Frontiers in Nutrition',
+        doi: '10.3389/fnut.2025.1522287',
+        finding:
+            '“Results showed a positive impact of HMB oral supplementation in improving muscle mass (appendicular skeletal muscle mass and lean mass), strength (handgrip strength and five-time chair stand test), and physical function (gait speed).”',
+        meaning:
+            'The review concentrated solely on the improvement in physical function: the group receiving HMB showed significantly better gait speed than the placebo control. This effect became, again, more pronounced when HMB supplement was combined with exercise.'
+    },
+    {
+        title: 'Effects of Exercise With or Without β-hydroxy-β-Methylbutyrate Supplementation on Muscle mass, Muscle strength, and Physical Performance in Patients with Sarcopenia: A Systematic Review and Meta-analysis (2024)',
+        journal: 'Frontiers in Nutrition',
+        doi: '10.3389/fnut.2024.1460133',
+        finding:
+            '“Meta-analysis showed that in terms of physical performance, exercise with HMB supplementation significantly increased gait speed in sarcopenic patients compared to the exercise combined with the placebo group…”',
+        meaning:
+            'This meta-analysis uniquely isolated the added effect of HMB by comparing exercise plus HMB against exercise plus placebo, with all trials using resistance training over roughly 12 weeks. The one significant finding was in physical performance: adding HMB significantly improved gait speed.'
+    }
+];
+---
+
+<Layout
+    title="Healthy Aging"
+    description="Independent evidence on HMB for healthy aging, sarcopenia, muscle preservation, grip strength, and gait speed in older adults."
+>
+    <PageHero
+        eyebrow="Applications"
+        title="HMB and Healthy Aging: What the Most Recent Independent Evidence Actually Shows"
+        subtitle="With aging comes an accelerating loss of muscle. After age 50, each year leg muscle loses approximately 1–2% in weight and 1.5–5% in strength."
+    />
+
+    <section class="section-pad">
+        <div class="container-site max-w-4xl prose-site">
+            <p>
+                Sarcopenia, now with its own ICD-10 disease code, is prevalent (~13%) among older adults. Not
+                surprisingly, in recent years multiple studies have been conducted to evaluate HMB for its effect on
+                preserving muscle for people of advanced age.
+            </p>
+            <p>
+                As mentioned elsewhere, the mechanistic rationale is straightforward: HMB acts on both sides of the
+                equation: a potent stimulator for muscle protein synthesis as well as an effective inhibitor for muscle
+                protein breakdown. As evident in latest literature, researchers are turning their attention to clinical
+                evidence that links the molecular mechanism with functional improvement. Four recent reviews (below),
+                all excluding industrial authorship, offer a more complete picture.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+        <div class="container-site max-w-4xl space-y-6">
+            {
+                studies.map((study) => (
+                    <article class="study-card">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-blue">{study.journal}</p>
+                        <h3 class="mt-2 text-lg">{study.title}</h3>
+                        <p class="mt-2 text-sm text-muted">
+                            DOI:{' '}
+                            <a
+                                href={`https://doi.org/${study.doi}`}
+                                class="text-blue no-underline hover:underline"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {study.doi}
+                            </a>
+                        </p>
+                        <p class="mt-4 text-sm font-medium text-navy">Finding</p>
+                        <p class="mt-1 text-sm italic leading-relaxed text-slate-600">{study.finding}</p>
+                        <p class="mt-4 text-sm font-medium text-navy">What that means</p>
+                        <p class="mt-1 text-sm leading-relaxed text-slate-600">{study.meaning}</p>
+                    </article>
+                ))
+            }
+        </div>
+    </section>
+
+    <section class="section-pad">
+        <div class="container-site max-w-4xl">
+            <h2>Overall Assessment</h2>
+            <p class="mt-4 text-base leading-relaxed text-slate-700">
+                Together, these reviews paint a reasonably coherent picture: the current best-evidence synthesis
+                supports HMB as a modest adjunct for preserving muscle mass in older adults, most credibly when combined
+                with exercise and used for at least three months. Both adequate duration and pairing with resistance or
+                multicomponent exercise could potentially help amplify the result.
+            </p>
+            <div class="mt-8 border border-line bg-surface p-6">
+                <h3 class="text-base">References</h3>
+                <ul class="mt-3 space-y-2 text-sm text-slate-600">
+                    <li>
+                        DOI:{' '}
+                        <a href="https://doi.org/10.1007/s13539-010-0014-2" class="text-blue no-underline hover:underline" target="_blank" rel="noopener noreferrer">
+                            10.1007/s13539-010-0014-2
+                        </a>
+                    </li>
+                    <li>
+                        DOI:{' '}
+                        <a href="https://doi.org/10.1002/jcsm.12147" class="text-blue no-underline hover:underline" target="_blank" rel="noopener noreferrer">
+                            10.1002/jcsm.12147
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <CtaBand />
+</Layout>

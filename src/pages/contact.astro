@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import { contactInfo } from '../data/site';
+---
+
+<Layout
+    title="Contact"
+    description="Contact Vesta Nutra about UltraHMB™ — talk with an ingredient specialist about your next HMB-Ca formulation."
+>
+    <PageHero
+        eyebrow="Get in touch"
+        title="Contact Us"
+        subtitle="If you have any questions, we would be happy to discuss how UltraHMB™ can support your dietary supplement and nutraceutical manufacturing needs."
+    />
+
+    <section class="section-pad">
+        <div class="container-site grid gap-12 lg:grid-cols-2">
+            <div>
+                <h2>Talk to a specialist</h2>
+                <p class="mt-4 text-base leading-relaxed text-slate-700">
+                    We are confident that Vesta can be your trusted partner in the dietary supplement and nutraceutical
+                    industry. Send a message or reach us directly.
+                </p>
+                <ul class="mt-8 space-y-4 text-sm text-slate-700">
+                    <li>
+                        <span class="block text-xs font-semibold uppercase tracking-wider text-blue">Address</span>
+                        {contactInfo.address}
+                    </li>
+                    <li>
+                        <span class="block text-xs font-semibold uppercase tracking-wider text-blue">Email</span>
+                        <a href={`mailto:${contactInfo.email}`} class="text-navy no-underline hover:text-blue">
+                            {contactInfo.email}
+                        </a>
+                    </li>
+                    <li>
+                        <span class="block text-xs font-semibold uppercase tracking-wider text-blue">Phone</span>
+                        {contactInfo.phone} · Toll-free {contactInfo.phoneAlt}
+                    </li>
+                    <li>
+                        <span class="block text-xs font-semibold uppercase tracking-wider text-blue">Fax</span>
+                        {contactInfo.fax}
+                    </li>
+                    <li>
+                        <span class="block text-xs font-semibold uppercase tracking-wider text-blue">Hours</span>
+                        {contactInfo.hours}
+                    </li>
+                </ul>
+            </div>
+
+            <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                class="border border-line bg-surface p-6 sm:p-8"
+            >
+                <input type="hidden" name="form-name" value="contact" />
+                <p class="hidden">
+                    <label>
+                        Don’t fill this out: <input name="bot-field" />
+                    </label>
+                </p>
+                <div class="space-y-5">
+                    <label class="block">
+                        <span class="mb-1.5 block text-sm font-medium text-navy">Name</span>
+                        <input
+                            type="text"
+                            name="name"
+                            required
+                            class="w-full border border-line bg-white px-3 py-2.5 text-sm outline-none focus:border-blue"
+                        />
+                    </label>
+                    <label class="block">
+                        <span class="mb-1.5 block text-sm font-medium text-navy">Email</span>
+                        <input
+                            type="email"
+                            name="email"
+                            required
+                            class="w-full border border-line bg-white px-3 py-2.5 text-sm outline-none focus:border-blue"
+                        />
+                    </label>
+                    <label class="block">
+                        <span class="mb-1.5 block text-sm font-medium text-navy">Company</span>
+                        <input
+                            type="text"
+                            name="company"
+                            class="w-full border border-line bg-white px-3 py-2.5 text-sm outline-none focus:border-blue"
+                        />
+                    </label>
+                    <label class="block">
+                        <span class="mb-1.5 block text-sm font-medium text-navy">Message</span>
+                        <textarea
+                            name="message"
+                            required
+                            rows="5"
+                            class="w-full border border-line bg-white px-3 py-2.5 text-sm outline-none focus:border-blue"
+                        ></textarea>
+                    </label>
+                    <button type="submit" class="btn w-full sm:w-auto">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</Layout>

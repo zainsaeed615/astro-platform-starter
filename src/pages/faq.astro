@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const faqs = [
+    {
+        q: 'What is UltraHMB™?',
+        a: 'UltraHMB™ is Vesta Nutra’s food-grade, non-GMO calcium salt of β-Hydroxy β-MethylButyrate (HMB-Ca) — a clinically researched ingredient for sports nutrition, healthy aging, and cognitive health formulations.'
+    },
+    {
+        q: 'What is HMB?',
+        a: 'HMB (beta-hydroxy-beta-methylbutyrate) was first characterized in the late 1980s by Dr. Steven L. Nissen at Iowa State University. It is a metabolite of the essential amino acid L-leucine and is widely recognized for regulating muscle protein turnover through cellular signaling pathways distinct from leucine itself.'
+    },
+    {
+        q: 'How does HMB work?',
+        a: 'HMB shifts muscle protein turnover toward building and away from breakdown via two mechanisms: stimulating the mTOR pathway to drive protein synthesis (anabolism), and suppressing the ubiquitin-proteasome system that degrades muscle proteins during stress or exercise (anti-catabolism).'
+    },
+    {
+        q: 'Why choose HMB-Ca over HMB free acid?',
+        a: 'HMB-Ca is a stable white crystalline powder suited for scale-up, long-term storage, and flexible dosage forms. HMB free acid is often positioned for rapid pre-workout delivery but can require more complex handling as a liquid or gel and offers less formulation flexibility.'
+    },
+    {
+        q: 'Can I get enough HMB from food?',
+        a: 'The body produces HMB endogenously in minute amounts — roughly 5% of dietary L-leucine is converted to HMB. Meaningful supplemental levels are difficult to obtain from whole foods alone (such as catfish, grapefruit, or alfalfa).'
+    },
+    {
+        q: 'What dose appears most often in research?',
+        a: 'Across many clinical and review papers cited on our application pages, HMB-Ca at approximately 3 g/day is the predominant studied dose, especially in muscle and sarcopenia research.'
+    },
+    {
+        q: 'What formulation applications does UltraHMB™ support?',
+        a: 'One ingredient, three platforms: muscle growth and recovery, healthy aging / mobility, and emerging cognitive wellness formulations — including capsules, tablets, sachets, and bulk powder applications.'
+    },
+    {
+        q: 'What quality credentials does UltraHMB™ carry?',
+        a: 'Vesta Nutra supplies UltraHMB™ with industry certifications including NSF cGMP, Made in USA, Non-GMO, Halal, Kosher, Allergen Free, and FDA-related facility credentials as shown on our home page.'
+    },
+    {
+        q: 'Where can I get a spec sheet or talk to formulators?',
+        a: 'Download the current HMB-Ca brochure from the Download Spec Sheet buttons on this site, or contact Vesta Nutra via the Contact page to speak with an ingredient specialist.'
+    }
+];
+---
+
+<Layout
+    title="FAQ"
+    description="Frequently asked questions about UltraHMB™, HMB-Ca science, dosing, forms, certifications, and formulation applications."
+>
+    <PageHero
+        eyebrow="Support"
+        title="Frequently Asked Questions"
+        subtitle="Quick answers about UltraHMB™, HMB science, and formulating with HMB-Ca."
+    />
+
+    <section class="section-pad">
+        <div class="container-site max-w-3xl space-y-4">
+            {
+                faqs.map((item) => (
+                    <details class="group border border-line bg-white open:border-blue/30">
+                        <summary class="cursor-pointer list-none px-5 py-4 text-base font-semibold text-navy marker:content-none">
+                            <span class="flex items-center justify-between gap-4">
+                                {item.q}
+                                <span class="text-blue transition group-open:rotate-45">+</span>
+                            </span>
+                        </summary>
+                        <div class="border-t border-line px-5 py-4 text-sm leading-relaxed text-slate-600">{item.a}</div>
+                    </details>
+                ))
+            }
+        </div>
+    </section>
+
+    <CtaBand />
+</Layout>

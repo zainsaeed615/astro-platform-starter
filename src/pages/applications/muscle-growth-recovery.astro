@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+const studies = [
+    {
+        title: 'Ergogenic Benefits of β-Hydroxy-β-Methyl Butyrate (HMB) Supplementation on Body Composition and Muscle Strength: An Umbrella Review of Meta-Analyses (2025)',
+        journal: 'Journal of Cachexia, Sarcopenia and Muscle',
+        doi: '10.1002/jcsm.13671',
+        finding:
+            '“HMB supplementation significantly increased muscle mass…, muscle strength index… and fat-free mass…. No significant changes were observed in fat mass… or body mass....”',
+        meaning:
+            'This review offers the strongest level of evidence available as it aggregates findings from multiple independent meta-analyses. It confirmed HMB’s overall favorable effects on lean mass and strength. Both HMB-Ca and HMB-FA forms were represented.'
+    },
+    {
+        title: 'The Role of HMB Supplementation in Enhancing the Effects of Resistance Training in Older Adults: A Systematic Review and Meta-Analysis on Muscle Quality, Body Composition, and Physical Function (2025)',
+        journal: 'Frontiers in Nutrition',
+        doi: '10.3390/nu17223624',
+        finding:
+            '“Resistance training + HMB produced modest and borderline significant improvements in handgrip strength… and moderate benefits in Short Physical Performance Battery (SPPB) scores.…”',
+        meaning:
+            'We consider this analysis methodologically sound — pre-registered, multi-database, and openly accessible. The review concluded that an oral HMB supplementation can improve muscle mass, strength, and body function. The most pronounced effects were observed in the 50–65 age group. A dose with HMB-Ca at 3 g/day dominated studies cited in this paper.'
+    },
+    {
+        title: 'The Effects of HMB or HMB-rich Nutritional Supplements on Sarcopenia Patients: A Systematic Review and Meta-analysis (2024)',
+        journal: 'Frontiers in Medicine',
+        doi: '10.3389/fmed.2024.1348212',
+        finding:
+            '“HMB or HMB-rich nutritional supplements showed a statistically significant difference in Hand Grip Strength (HGS) for sarcopenia patients, …”',
+        meaning:
+            'The analysis concluded that combining HMB with exercise may produce meaningful improvements in muscle mass and strength beyond exercise alone, reinforcing the additive value of supplementation. HMB-Ca was the predominant form across included trials.'
+    },
+    {
+        title: 'Effects of HMB Supplementation on Older Adults with Sarcopenia: A Randomized, Double-Blind, Placebo-Controlled Study (2023)',
+        journal: 'Journal of Nutrition, Health and Aging',
+        doi: '10.1007/s12603-023-1911-1',
+        finding:
+            '“After the 12-week intervention, the HMBG demonstrated significantly greater improvements in handgrip strength …, gait speed …, five-time chair stand test …, muscle quality and tumor necrosis factor like weak inducer of apoptosis … compared with the PG…” (Note: HMBG: HMB group; PG: placebo group)',
+        meaning:
+            'In older adults with sarcopenia, muscle strength, physical performance, muscle quality, and reduced inflammatory factors are all improved by adding HMB to resistance exercise training. The relatively modest sample size and single-center design are the primary limitations, but the double-blind, placebo-controlled structure supports its credibility. The form used was HMB-Ca at 3 g/day.'
+    }
+];
+---
+
+<Layout
+    title="Muscle Growth & Recovery"
+    description="Independent evidence on HMB for muscle growth, recovery, lean mass, and strength — with a focus on HMB-Ca at 3 g/day."
+>
+    <PageHero
+        eyebrow="Applications"
+        title="HMB for Muscle Growth and Recovery: Where Are the Evidence?"
+        subtitle="With its dual mechanisms, HMB continues to attract sustained academic interest as a nutraceutical supplement with great potential for muscle preservation and recovery."
+    />
+
+    <section class="section-pad">
+        <div class="container-site max-w-4xl">
+            <p class="text-base leading-relaxed text-slate-700">
+                Below are three example results from three review papers, plus one clinical investigation, all published
+                within the past 4 years. They are selected primarily based on the quality of study as well as the
+                independence from commercial sponsorship.
+            </p>
+
+            <div class="mt-10 space-y-6">
+                {
+                    studies.map((study) => (
+                        <article class="study-card">
+                            <p class="text-xs font-semibold uppercase tracking-wider text-blue">{study.journal}</p>
+                            <h3 class="mt-2 text-lg">{study.title}</h3>
+                            <p class="mt-2 text-sm text-muted">
+                                DOI:{' '}
+                                <a
+                                    href={`https://doi.org/${study.doi}`}
+                                    class="text-blue no-underline hover:underline"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {study.doi}
+                                </a>
+                            </p>
+                            <p class="mt-4 text-sm font-medium text-navy">Finding</p>
+                            <p class="mt-1 text-sm italic leading-relaxed text-slate-600">{study.finding}</p>
+                            <p class="mt-4 text-sm font-medium text-navy">What that means</p>
+                            <p class="mt-1 text-sm leading-relaxed text-slate-600">{study.meaning}</p>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+        <div class="container-site max-w-4xl">
+            <h2>Overall Assessment</h2>
+            <p class="mt-4 text-base leading-relaxed text-slate-700">
+                As shown above, the strongest and most independent evidence comes from meta-analyses and systematic
+                reviews published in open-access academic journals with no known industry sponsorship. These
+                publications consistently, if cautiously, support one conclusion: HMB — primarily in the calcium salt
+                at 3 g/day — meaningfully preserves and improves muscle mass and strength, particularly in older adults,
+                sarcopenic populations, and individuals under catabolic stress.
+            </p>
+        </div>
+    </section>
+
+    <CtaBand />
+</Layout>

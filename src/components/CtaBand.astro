@@ -1,0 +1,26 @@
+---
+import { SPEC_SHEET_URL } from '../data/site';
+
+interface Props {
+    title?: string;
+    text?: string;
+}
+
+const {
+    title = 'Get Started with UltraHMB™',
+    text = 'Bring UltraHMB™ into your next formulation. Pull the technical documentation or talk through your formulation with a Vesta® ingredient specialist.'
+} = Astro.props;
+---
+
+<section class="bg-navy text-white">
+    <div class="container-site section-pad text-center">
+        <h2 class="text-white">{title}</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base text-white/80 sm:text-lg">{text}</p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <a href={SPEC_SHEET_URL} target="_blank" rel="noopener noreferrer" class="btn">
+                Download Spec Sheet
+            </a>
+            <a href="/contact" class="btn-outline">Contact Us</a>
+        </div>
+    </div>
+</section>
