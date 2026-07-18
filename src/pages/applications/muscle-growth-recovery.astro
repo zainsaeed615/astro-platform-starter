@@ -55,7 +55,7 @@ const studies = [
 
     <section class="section-pad">
         <div class="container-site max-w-4xl">
-            <p class="text-base leading-relaxed text-slate-700">
+            <p class="reveal text-base leading-relaxed text-slate-600">
                 Below are three example results from three review papers, plus one clinical investigation, all published
                 within the past 4 years. They are selected primarily based on the quality of study as well as the
                 independence from commercial sponsorship.
@@ -63,8 +63,8 @@ const studies = [
 
             <div class="mt-10 space-y-6">
                 {
-                    studies.map((study) => (
-                        <article class="study-card">
+                    studies.map((study, i) => (
+                        <article class="study-card reveal" style={`transition-delay: ${i * 70}ms`}>
                             <p class="text-xs font-semibold uppercase tracking-wider text-blue">{study.journal}</p>
                             <h3 class="mt-2 text-lg">{study.title}</h3>
                             <p class="mt-2 text-sm text-muted">
@@ -89,10 +89,10 @@ const studies = [
         </div>
     </section>
 
-    <section class="section-pad bg-surface">
-        <div class="container-site max-w-4xl">
-            <h2>Overall Assessment</h2>
-            <p class="mt-4 text-base leading-relaxed text-slate-700">
+    <section class="section-pad surface-alt">
+        <div class="container-site relative max-w-4xl">
+            <h2 class="reveal">Overall Assessment</h2>
+            <p class="mt-4 text-base leading-relaxed text-slate-600 reveal" style="transition-delay: 80ms">
                 As shown above, the strongest and most independent evidence comes from meta-analyses and systematic
                 reviews published in open-access academic journals with no known industry sponsorship. These
                 publications consistently, if cautiously, support one conclusion: HMB — primarily in the calcium salt

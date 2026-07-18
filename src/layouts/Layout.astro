@@ -15,6 +15,7 @@ const {
     description = 'UltraHMB™ (β-Hydroxy β-MethylButyrate Calcium) — clinically researched HMB-Ca for sports nutrition, healthy aging, and cognitive health formulations.'
 } = Astro.props;
 const fullTitle = title.includes('UltraHMB') ? title : `${title} | UltraHMB™`;
+const pathname = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -28,9 +29,13 @@ const fullTitle = title.includes('UltraHMB') ? title : `${title} | UltraHMB™`;
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="preload" as="font" type="font/woff2" href={dmSansWoff2} crossorigin />
     </head>
-    <body class="flex min-h-screen flex-col">
-        <Header />
-        <main class="grow"><slot /></main>
+    <body class="flex min-h-screen flex-col overflow-x-hidden" data-path={pathname}>
+        <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
+        <Header currentPath={pathname} />
+        <main class="page-enter grow"><slot /></main>
         <Footer />
+        <script>
+            import '../scripts/ui.ts';
+        </script>
     </body>
 </html>

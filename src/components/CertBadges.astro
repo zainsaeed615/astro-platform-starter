@@ -8,10 +8,13 @@ interface Props {
 const { class: className = '' } = Astro.props;
 ---
 
-<div class={`grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-7 ${className}`}>
+<div class={`stagger grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-7 ${className}`}>
     {
-        certs.map((cert) => (
-            <div class="flex h-24 items-center justify-center border border-line bg-white p-3">
+        certs.map((cert, i) => (
+            <div
+                class="reveal-scale flex h-24 items-center justify-center rounded-2xl border border-white/70 bg-white/80 p-3 shadow-soft backdrop-blur transition duration-500 hover:-translate-y-1 hover:shadow-lift"
+                style={`--i: ${i}`}
+            >
                 <img src={cert.src} alt={cert.name} class="max-h-16 w-auto object-contain" loading="lazy" />
             </div>
         ))

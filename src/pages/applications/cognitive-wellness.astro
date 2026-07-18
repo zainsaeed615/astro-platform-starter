@@ -45,7 +45,7 @@ const studies = [
     />
 
     <section class="section-pad">
-        <div class="container-site max-w-4xl prose-site">
+        <div class="container-site max-w-4xl prose-site reveal">
             <p>
                 Beyond its established role in sports nutrition and muscle preservation, HMB-Ca is gaining attention for
                 potential neuroprotective and cognitive applications. As endogenous HMB production declines with age and
@@ -59,11 +59,11 @@ const studies = [
         </div>
     </section>
 
-    <section class="section-pad bg-surface">
-        <div class="container-site max-w-4xl space-y-6">
+    <section class="section-pad surface-alt">
+        <div class="container-site relative max-w-4xl space-y-6">
             {
-                studies.map((study) => (
-                    <article class="study-card">
+                studies.map((study, i) => (
+                    <article class="study-card reveal" style={`transition-delay: ${i * 70}ms`}>
                         <p class="text-xs font-semibold uppercase tracking-wider text-blue">{study.journal}</p>
                         <h3 class="mt-2 text-lg">{study.title}</h3>
                         {study.doi ? (
@@ -93,8 +93,8 @@ const studies = [
 
     <section class="section-pad">
         <div class="container-site max-w-4xl">
-            <h2>Overall Assessment</h2>
-            <p class="mt-4 text-base leading-relaxed text-slate-700">
+            <h2 class="reveal">Overall Assessment</h2>
+            <p class="mt-4 text-base leading-relaxed text-slate-600 reveal" style="transition-delay: 80ms">
                 Cognitive research on HMB is earlier-stage than the muscle literature, but peer-reviewed work —
                 including Cell Reports (Paidi et al., 2023) and Nutritional Neuroscience (Munroe et al.) — supports a
                 credible narrative around neuronal growth, memory, and age-related cognitive preservation. For brands

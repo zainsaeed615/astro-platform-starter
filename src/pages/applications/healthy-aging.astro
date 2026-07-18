@@ -54,7 +54,7 @@ const studies = [
     />
 
     <section class="section-pad">
-        <div class="container-site max-w-4xl prose-site">
+        <div class="container-site max-w-4xl prose-site reveal">
             <p>
                 Sarcopenia, now with its own ICD-10 disease code, is prevalent (~13%) among older adults. Not
                 surprisingly, in recent years multiple studies have been conducted to evaluate HMB for its effect on
@@ -70,11 +70,11 @@ const studies = [
         </div>
     </section>
 
-    <section class="section-pad bg-surface">
-        <div class="container-site max-w-4xl space-y-6">
+    <section class="section-pad surface-alt">
+        <div class="container-site relative max-w-4xl space-y-6">
             {
-                studies.map((study) => (
-                    <article class="study-card">
+                studies.map((study, i) => (
+                    <article class="study-card reveal" style={`transition-delay: ${i * 70}ms`}>
                         <p class="text-xs font-semibold uppercase tracking-wider text-blue">{study.journal}</p>
                         <h3 class="mt-2 text-lg">{study.title}</h3>
                         <p class="mt-2 text-sm text-muted">
@@ -100,14 +100,14 @@ const studies = [
 
     <section class="section-pad">
         <div class="container-site max-w-4xl">
-            <h2>Overall Assessment</h2>
-            <p class="mt-4 text-base leading-relaxed text-slate-700">
+            <h2 class="reveal">Overall Assessment</h2>
+            <p class="mt-4 text-base leading-relaxed text-slate-600 reveal" style="transition-delay: 80ms">
                 Together, these reviews paint a reasonably coherent picture: the current best-evidence synthesis
                 supports HMB as a modest adjunct for preserving muscle mass in older adults, most credibly when combined
                 with exercise and used for at least three months. Both adequate duration and pairing with resistance or
                 multicomponent exercise could potentially help amplify the result.
             </p>
-            <div class="mt-8 border border-line bg-surface p-6">
+            <div class="mt-8 glass-card reveal" style="transition-delay: 140ms">
                 <h3 class="text-base">References</h3>
                 <ul class="mt-3 space-y-2 text-sm text-slate-600">
                     <li>

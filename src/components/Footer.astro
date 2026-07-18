@@ -18,16 +18,19 @@ const quickLinks = [
 const year = new Date().getFullYear();
 ---
 
-<footer class="mt-auto bg-navy-deep text-white">
-    <div class="container-site section-pad pb-12">
+<footer class="relative mt-auto overflow-hidden bg-navy-deep text-white">
+    <div class="blob -left-20 top-10 h-80 w-80 bg-blue/20"></div>
+    <div class="blob -right-16 bottom-40 h-72 w-72 bg-cyan/10"></div>
+
+    <div class="container-site section-pad relative pb-12">
         <div class="grid gap-12 lg:grid-cols-4">
-            <div class="space-y-5">
+            <div class="space-y-5 reveal">
                 <a href="/" class="inline-block no-underline" aria-label="UltraHMB home">
                     <span class="text-2xl font-semibold tracking-tight text-white">
                         Ultra<span class="text-blue-soft">HMB</span><span class="align-super text-xs">™</span>
                     </span>
                 </a>
-                <p class="text-sm leading-relaxed text-white/80">
+                <p class="text-sm leading-relaxed text-white/75">
                     Vesta UltraHMB™ — Your Partner in The Dietary Supplement and Nutraceutical Industry.
                 </p>
                 <div class="flex flex-wrap gap-3">
@@ -37,7 +40,7 @@ const year = new Date().getFullYear();
                                 href={social.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-navy no-underline hover:bg-blue hover:text-white"
+                                class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/95 text-navy no-underline shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-blue hover:text-white hover:shadow-lg"
                                 aria-label={social.name}
                             >
                                 {social.icon === 'linkedin' && (
@@ -61,16 +64,18 @@ const year = new Date().getFullYear();
                 </div>
             </div>
 
-            <div>
+            <div class="reveal" style="transition-delay: 80ms">
                 <h3 class="mb-4 text-base font-semibold text-white">Quick Links</h3>
-                <ul class="space-y-2">
-                    {quickLinks.map((link) => (
-                        <li>
-                            <a href={link.href} class="footer-link">
-                                {link.label}
-                            </a>
-                        </li>
-                    ))}
+                <ul class="space-y-2.5">
+                    {
+                        quickLinks.map((link) => (
+                            <li>
+                                <a href={link.href} class="footer-link">
+                                    {link.label}
+                                </a>
+                            </li>
+                        ))
+                    }
                 </ul>
                 <details class="mt-4 group">
                     <summary class="cursor-pointer list-none text-sm font-medium text-white/90">
@@ -78,43 +83,46 @@ const year = new Date().getFullYear();
                         <span class="ml-1 inline-block transition group-open:rotate-180">∨</span>
                     </summary>
                     <ul class="mt-2 space-y-2 pl-2">
-                        {applicationLinks.map((link) => (
-                            <li>
-                                <a href={link.href} class="footer-link">
-                                    {link.label}
-                                </a>
-                            </li>
-                        ))}
+                        {
+                            applicationLinks.map((link) => (
+                                <li>
+                                    <a href={link.href} class="footer-link">
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))
+                        }
                     </ul>
                 </details>
             </div>
 
-            <div class="space-y-4">
-                <div class="inline-block bg-white px-4 py-3">
+            <div class="space-y-4 reveal" style="transition-delay: 140ms">
+                <div class="inline-block rounded-2xl bg-white px-4 py-3 shadow-soft">
                     <img
                         src="/images/portfolio/vesta-nutra.png"
                         alt="Vesta Nutra"
                         class="h-10 w-auto"
                         width="200"
                         height="36"
+                        loading="lazy"
                     />
                 </div>
-                <p class="text-sm leading-relaxed text-white/80">
+                <p class="text-sm leading-relaxed text-white/75">
                     Vesta® Nutra proudly services the entire global market with our Made in the USA products.
                 </p>
-                <p class="text-sm leading-relaxed text-white/70">
+                <p class="text-sm leading-relaxed text-white/60">
                     Kami mengalu-alukan rakan-rakan kami dari Singapura. Sila hubungi kami untuk semua keperluan
                     ramuan anda.
                 </p>
-                <p class="text-sm leading-relaxed text-white/70">
+                <p class="text-sm leading-relaxed text-white/60">
                     Wir begrüßen unsere Freunde aus der Schweiz. Bitte kontaktieren Sie uns für alle Ihre
                     Inhaltsstoffe.
                 </p>
             </div>
 
-            <div>
+            <div class="reveal" style="transition-delay: 200ms">
                 <h3 class="mb-4 text-base font-semibold text-white">Get In Touch</h3>
-                <ul class="space-y-3 text-sm text-white/80">
+                <ul class="space-y-3 text-sm text-white/75">
                     <li>{contactInfo.address}</li>
                     <li>
                         <a href={`mailto:${contactInfo.email}`} class="footer-link">
@@ -128,31 +136,32 @@ const year = new Date().getFullYear();
             </div>
         </div>
 
-        <div class="mt-12 space-y-3 border-t border-white/15 pt-8 text-xs leading-relaxed text-white/60">
+        <div class="mt-12 space-y-3 border-t border-white/10 pt-8 text-xs leading-relaxed text-white/55">
             <p class="italic">{fdaDisclaimer.replace(/^\*|\*$/g, '')}</p>
             <p>{developmentalDisclaimer}</p>
         </div>
     </div>
 
-    <div class="border-t border-white/10 bg-navy">
-        <div class="container-site py-10">
+    <div class="relative border-t border-white/10 bg-navy/80 backdrop-blur">
+        <div class="container-site py-12">
             <a
                 href="https://www.vestanutra.com/ingredients"
-                class="mb-8 block text-center text-base font-semibold text-white underline decoration-white/40 underline-offset-8 no-underline hover:decoration-white"
+                class="mb-8 block text-center text-base font-semibold text-white underline decoration-white/30 underline-offset-8 transition hover:decoration-white"
             >
                 Explore Vesta® Nutra’s Portfolio
             </a>
-            <div class="grid grid-cols-2 items-center gap-6 sm:grid-cols-3 lg:grid-cols-5">
+            <div class="stagger grid grid-cols-2 items-center gap-4 sm:grid-cols-3 lg:grid-cols-5">
                 {
-                    portfolioBrands.map((brand) => (
+                    portfolioBrands.map((brand, i) => (
                         <a
                             href={brand.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="flex h-16 items-center justify-center bg-white/95 px-3 no-underline transition hover:bg-white"
+                            class="reveal-scale flex h-16 items-center justify-center rounded-2xl bg-white/95 px-3 no-underline shadow-soft transition duration-500 hover:-translate-y-1 hover:bg-white hover:shadow-lift"
+                            style={`--i: ${i}`}
                             aria-label={brand.name}
                         >
-                            <img src={brand.logo} alt={brand.name} class="max-h-10 w-auto object-contain" />
+                            <img src={brand.logo} alt={brand.name} class="max-h-10 w-auto object-contain" loading="lazy" />
                         </a>
                     ))
                 }
@@ -160,7 +169,7 @@ const year = new Date().getFullYear();
         </div>
     </div>
 
-    <div class="bg-[#16357a] py-4 text-center text-xs text-white/80">
+    <div class="bg-[#122f6d] py-4 text-center text-xs text-white/75">
         Vesta UltraHMB™ © Copyright {year} | All Rights Reserved
     </div>
 </footer>

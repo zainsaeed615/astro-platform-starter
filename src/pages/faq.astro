@@ -53,18 +53,23 @@ const faqs = [
         subtitle="Quick answers about UltraHMB™, HMB science, and formulating with HMB-Ca."
     />
 
-    <section class="section-pad">
-        <div class="container-site max-w-3xl space-y-4">
+    <section class="section-pad surface-alt">
+        <div class="container-site relative max-w-3xl space-y-4">
             {
-                faqs.map((item) => (
-                    <details class="group border border-line bg-white open:border-blue/30">
+                faqs.map((item, i) => (
+                    <details
+                        class="group reveal overflow-hidden rounded-2xl border border-white/70 bg-white/80 shadow-soft backdrop-blur transition open:border-blue/25 open:shadow-lift"
+                        style={`transition-delay: ${i * 50}ms`}
+                    >
                         <summary class="cursor-pointer list-none px-5 py-4 text-base font-semibold text-navy marker:content-none">
                             <span class="flex items-center justify-between gap-4">
                                 {item.q}
-                                <span class="text-blue transition group-open:rotate-45">+</span>
+                                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue/10 text-blue transition duration-300 group-open:rotate-45 group-open:bg-blue group-open:text-white">
+                                    +
+                                </span>
                             </span>
                         </summary>
-                        <div class="border-t border-line px-5 py-4 text-sm leading-relaxed text-slate-600">{item.a}</div>
+                        <div class="border-t border-line/70 px-5 py-4 text-sm leading-relaxed text-slate-600">{item.a}</div>
                     </details>
                 ))
             }
