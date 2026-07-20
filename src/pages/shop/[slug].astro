@@ -1,0 +1,98 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { products, getProduct } from '../../data/products';
+
+export function getStaticPaths() {
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+const related = products.filter((p) => p.slug !== product.slug && p.category === product.category).slice(0, 2);
+---
+
+<MainLayout title={product.name} description={product.description}>
+  <section class="section-padding">
+    <div class="container-site">
+      <nav class="mb-8 text-sm text-white/40">
+        <a href="/shop" class="text-white/40 no-underline hover:text-blue-400">Shop</a>
+        <span class="mx-2">/</span>
+        <span class="text-white">{product.name}</span>
+      </nav>
+
+      <div class="grid gap-12 lg:grid-cols-2">
+        <!-- Image -->
+        <div class="overflow-hidden rounded-sm border border-white/10 bg-[#141414]">
+          <img src={product.image} alt={product.name} class="aspect-square w-full object-cover" />
+        </div>
+
+        <!-- Details -->
+        <div>
+          <span class="section-label">{product.category}</span>
+          <h1 class="mb-4">{product.name}</h1>
+          <p class="mb-6 text-3xl font-bold text-white">${product.price.toFixed(2)}</p>
+          <p class="mb-8 text-white/60 leading-relaxed">{product.description}</p>
+
+          {product.sizes && (
+            <div class="mb-6">
+              <label class="label-text">Size</label>
+              <div class="flex flex-wrap gap-2">
+                {
+                  product.sizes.map((size) => (
+                    <button class="rounded-sm border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:border-blue-500">
+                      {size}
+                    </button>
+                  ))
+                }
+              </div>
+            </div>
+          )}
+
+          {product.colors && (
+            <div class="mb-8">
+              <label class="label-text">Color</label>
+              <div class="flex flex-wrap gap-2">
+                {
+                  product.colors.map((color) => (
+                    <button class="rounded-sm border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:border-blue-500">
+                      {color}
+                    </button>
+                  ))
+                }
+              </div>
+            </div>
+          )}
+
+          <button class="btn-primary w-full sm:w-auto">Add to Cart</button>
+
+          <div class="mt-8 rounded-sm border border-white/10 bg-white/5 p-4">
+            <p class="text-sm text-white/50">
+              <strong class="text-white">Mission Impact:</strong> Every purchase directly funds decoy phone bills, travel for operations, and essential resources to identify and pursue child predators.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {
+        related.length > 0 && (
+          <div class="mt-20">
+            <h2 class="mb-8">You May Also Like</h2>
+            <div class="grid gap-6 sm:grid-cols-2">
+              {related.map((p) => (
+                <a href={`/shop/${p.slug}`} class="card flex items-center gap-4 no-underline">
+                  <img src={p.image} alt={p.name} class="h-20 w-20 rounded-sm object-cover" />
+                  <div>
+                    <h3 class="text-sm font-semibold uppercase text-white">{p.name}</h3>
+                    <p class="text-blue-400">${p.price.toFixed(2)}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </section>
+</MainLayout>

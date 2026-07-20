@@ -1,0 +1,43 @@
+---
+import type { Product } from '../data/products';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<a href={`/shop/${product.slug}`} class="group card block overflow-hidden p-0 no-underline">
+  <div class="relative aspect-square overflow-hidden bg-[#1a1a1a]">
+    <img
+      src={product.image}
+      alt={product.name}
+      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+      loading="lazy"
+    />
+    {product.featured && (
+      <span class="absolute left-3 top-3 rounded-sm bg-gradient-accent px-2 py-1 text-xs font-semibold uppercase tracking-wider text-white">
+        Featured
+      </span>
+    )}
+  </div>
+  <div class="p-5">
+    <h3 class="mb-1 text-base font-semibold uppercase tracking-wide text-white group-hover:text-blue-400 transition-colors">
+      {product.name}
+    </h3>
+    <p class="text-sm text-white/50 line-clamp-2">{product.description}</p>
+    <div class="mt-4 flex items-center justify-between">
+      <span class="text-lg font-bold text-white">${product.price.toFixed(2)}</span>
+      <span class="text-sm font-medium uppercase tracking-wider text-blue-400 opacity-0 transition-opacity group-hover:opacity-100">
+        View →
+      </span>
+    </div>
+  </div>
+</a>
+
+<style>
+  .bg-gradient-accent {
+    background-image: linear-gradient(135deg, #1e40af, #3b82f6);
+  }
+</style>

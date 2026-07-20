@@ -1,0 +1,87 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { site } from '../data/site';
+---
+
+<MainLayout title="Contact" description="Contact Operation 17:2 with questions, support requests, or to learn how you can help protect children.">
+  <section class="border-b border-white/10 bg-[#0a0a0a]">
+    <div class="container-site py-16 sm:py-20">
+      <span class="section-label">Get In Touch</span>
+      <h1 class="mb-4">Contact Us</h1>
+      <p class="max-w-2xl text-lg text-white/60">
+        Located in Illinois, Operation 17:2 is an online organization dedicated to protecting children. Feel free to reach out with any questions or support.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <!-- Contact Form -->
+        <div>
+          <h2 class="mb-6">Send a Message</h2>
+          <form class="space-y-6">
+            <div>
+              <label class="label-text" for="name">Name</label>
+              <input type="text" id="name" name="name" class="input-field" required />
+            </div>
+            <div>
+              <label class="label-text" for="email">Email Address</label>
+              <input type="email" id="email" name="email" class="input-field" required />
+            </div>
+            <div>
+              <label class="label-text" for="subject">Subject</label>
+              <select id="subject" name="subject" class="input-field">
+                <option value="general">General Inquiry</option>
+                <option value="volunteer">Volunteer / Get Involved</option>
+                <option value="donation">Donation Question</option>
+                <option value="order">Order Support</option>
+                <option value="media">Media Inquiry</option>
+              </select>
+            </div>
+            <div>
+              <label class="label-text" for="message">Message</label>
+              <textarea id="message" name="message" rows="5" class="input-field" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full sm:w-auto">Submit Message</button>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="space-y-6">
+          <div class="card">
+            <h3 class="mb-4 text-blue-400">Our Hub</h3>
+            <p class="text-white/60">{site.location}</p>
+            <p class="mt-2 text-sm text-white/40">While our impact is global, our roots are local.</p>
+          </div>
+
+          <div class="card">
+            <h3 class="mb-4 text-blue-400">Email</h3>
+            <a href={`mailto:${site.email}`} class="text-lg font-semibold text-white no-underline hover:text-blue-400">
+              {site.email}
+            </a>
+          </div>
+
+          <div class="card">
+            <h3 class="mb-4 text-blue-400">Donations</h3>
+            <div class="space-y-2 text-white/60">
+              <p>Venmo: <span class="text-white">{site.donations.venmo}</span></p>
+              <p>PayPal: <span class="text-white">{site.donations.paypal}</span></p>
+            </div>
+            <a href="/donate" class="btn-outline mt-4 inline-flex text-sm">Donate Online</a>
+          </div>
+
+          <div class="card">
+            <h3 class="mb-4 text-blue-400">Quick Links</h3>
+            <ul class="space-y-2">
+              <li><a href="/get-involved/apply" class="text-sm text-white/60 no-underline hover:text-blue-400">Apply to Join</a></li>
+              <li><a href="/live-prayer-calls" class="text-sm text-white/60 no-underline hover:text-blue-400">Prayer Calls</a></li>
+              <li><a href="/shop" class="text-sm text-white/60 no-underline hover:text-blue-400">Shop Apparel</a></li>
+              <li><a href="/resources" class="text-sm text-white/60 no-underline hover:text-blue-400">Resources & FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

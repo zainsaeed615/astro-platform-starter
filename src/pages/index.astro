@@ -1,21 +1,215 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ProductCard from '../components/ProductCard.astro';
+import RoleCard from '../components/RoleCard.astro';
+import { site } from '../data/site';
+import { products } from '../data/products';
 
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+const featuredProducts = products.filter((p) => p.featured);
+const goalPercent = Math.round((site.donations.raised / site.donations.goal) * 100);
 ---
 
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-8" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
-</Layout>
+<MainLayout title={site.name} description={site.description}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-blue-900/20 via-transparent to-black"></div>
+    <div class="container-site relative py-24 sm:py-32 lg:py-40">
+      <div class="max-w-4xl">
+        <span class="section-label">Christ-Centered Mission</span>
+        <h1 class="mb-6 leading-tight">
+          Protecting the <span class="gradient-text">Innocent</span>
+        </h1>
+        <p class="mb-8 max-w-2xl text-lg leading-relaxed text-white/70 sm:text-xl">
+          {site.description}
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/about" class="btn-primary">Learn Our Mission</a>
+          <a href="/get-involved/apply" class="btn-outline">Get Involved</a>
+          <a href="/donate" class="btn-ghost">Donate Now</a>
+        </div>
+      </div>
+
+      <!-- Stats bar -->
+      <div class="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:gap-6">
+        {
+          [
+            { value: '17:2', label: 'Our Guiding Verse' },
+            { value: '100%', label: 'Mission-Focused' },
+            { value: 'Global', label: 'Impact Reach' },
+            { value: 'IL', label: 'Based in Illinois' },
+          ].map((stat) => (
+            <div class="card text-center">
+              <div class="font-display text-2xl font-bold text-blue-400 sm:text-3xl">{stat.value}</div>
+              <div class="mt-1 text-xs uppercase tracking-wider text-white/50">{stat.label}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission snippet -->
+  <section class="border-y border-white/10 bg-[#0a0a0a] section-padding">
+    <div class="container-site">
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div>
+          <SectionHeading
+            label="Our Mission"
+            title="Shielding Our Children"
+            description="When you visit Operation 17:2, we want you to grasp the urgency and clarity of our mission: to protect children and ensure child predators are brought to justice. Every day, the innocence of children is threatened, and it is our collective responsibility to put a stop to it."
+          />
+          <a href="/about#mission" class="btn-outline mt-8 inline-flex">Learn How We Act</a>
+        </div>
+        <blockquote class="card border-l-4 border-l-blue-500 italic">
+          <p class="text-lg leading-relaxed text-white/80">"{site.verse}"</p>
+          <footer class="mt-4 text-sm font-semibold uppercase tracking-wider text-blue-400">
+            — {site.verseRef}
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Donation Goal -->
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="card gradient-border overflow-hidden p-0">
+        <div class="grid lg:grid-cols-2">
+          <div class="p-8 sm:p-12">
+            <SectionHeading
+              label="Support the Mission"
+              title="Fund the Fight"
+              description="Every dollar goes directly back into our mission — funding decoy phone bills, travel for operations, and essential resources to identify and pursue child predators."
+            />
+            <div class="mt-8">
+              <div class="mb-2 flex justify-between text-sm">
+                <span class="text-white/60">Raised: ${site.donations.raised.toLocaleString()}</span>
+                <span class="text-white/60">Goal: ${site.donations.goal.toLocaleString()}</span>
+              </div>
+              <div class="h-3 overflow-hidden rounded-full bg-white/10">
+                <div
+                  class="h-full rounded-full bg-gradient-accent transition-all duration-1000"
+                  style={`width: ${goalPercent}%`}
+                ></div>
+              </div>
+              <p class="mt-2 text-sm text-blue-400">{goalPercent}% of goal reached</p>
+            </div>
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a href={site.donations.donorbox} target="_blank" rel="noopener" class="btn-primary">
+                Donate Now
+              </a>
+              <a href="/donate/fundraiser" class="btn-outline">Start a Fundraiser</a>
+            </div>
+          </div>
+          <div class="flex flex-col justify-center bg-blue-500/5 p-8 sm:p-12">
+            <h3 class="mb-6 text-xl">Other Ways to Give</h3>
+            <div class="space-y-4">
+              <div class="flex items-center gap-4">
+                <span class="text-sm uppercase tracking-wider text-white/50">Venmo</span>
+                <span class="font-semibold text-white">{site.donations.venmo}</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="text-sm uppercase tracking-wider text-white/50">PayPal</span>
+                <span class="font-semibold text-white">{site.donations.paypal}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get Involved -->
+  <section class="border-t border-white/10 bg-[#0a0a0a] section-padding">
+    <div class="container-site">
+      <SectionHeading
+        label="Join the Movement"
+        title="Get Involved"
+        description="Together, we can make a significant impact. By supporting Operation 17:2, you become an integral part of a dedicated community committed to child safety."
+        align="center"
+      />
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <RoleCard
+          title="Prayer Team"
+          description="Cover our operations, team members, and the children we protect through dedicated intercession."
+          icon="heart"
+          href="/get-involved/prayer-team"
+        />
+        <RoleCard
+          title="Media Team"
+          description="Amplify our mission through content creation, social media, and awareness campaigns."
+          icon="camera"
+          href="/get-involved/media-team"
+        />
+        <RoleCard
+          title="Online Decoy Team"
+          description="Join the front lines of online operations to identify and pursue child predators."
+          icon="target"
+          href="/get-involved/online-decoy-team"
+        />
+        <RoleCard
+          title="Operations Team"
+          description="Support field operations, logistics, and coordination for mission-critical activities."
+          icon="shield"
+          href="/get-involved/operations-team"
+        />
+      </div>
+      <div class="mt-10 text-center">
+        <a href="/get-involved/apply" class="btn-primary">Apply to Join</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop -->
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+        <SectionHeading
+          label="Mission Apparel"
+          title="Wear the Message"
+          description="Every purchase directly funds decoy operations — from phones and travel to essential equipment."
+        />
+        <a href="/shop" class="btn-outline shrink-0">View All Products</a>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {featuredProducts.map((product) => <ProductCard product={product} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Prayer Calls CTA -->
+  <section class="border-t border-white/10 bg-[#0a0a0a] section-padding">
+    <div class="container-site text-center">
+      <SectionHeading
+        label="Pray With Us"
+        title="Live Prayer Calls"
+        description="Join our community for scheduled live prayer calls. Stand with us in intercession for the children we protect and the teams on the front lines."
+        align="center"
+      />
+      <a href="/live-prayer-calls" class="btn-primary mt-8 inline-flex">View Schedule & Register</a>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="card gradient-border text-center">
+        <h2 class="mb-4">Connect With Us</h2>
+        <p class="mx-auto mb-8 max-w-xl text-white/60">
+          Located in Illinois, Operation 17:2 is dedicated to protecting children globally. Reach out with questions, support, or to learn how you can help.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/contact" class="btn-primary">Contact Us</a>
+          <a href={`mailto:${site.email}`} class="btn-outline">{site.email}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .bg-gradient-accent {
+    background-image: linear-gradient(135deg, #1e40af, #3b82f6);
+  }
+</style>
