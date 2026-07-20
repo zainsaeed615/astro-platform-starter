@@ -1,0 +1,45 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import { teamPages } from '../../data/teams';
+
+export function getStaticPaths() {
+  return Object.keys(teamPages).map((team) => ({
+    params: { team },
+    props: { team: teamPages[team as keyof typeof teamPages] },
+  }));
+}
+
+const { team } = Astro.props;
+---
+
+<MainLayout title={team.title} description={team.description}>
+  <section class="border-b border-white/10 bg-[#0a0a0a]">
+    <div class="container-site py-16 sm:py-20">
+      <span class="section-label">{team.label}</span>
+      <h1 class="mb-4">{team.title}</h1>
+      <p class="max-w-2xl text-lg text-white/60">{team.description}</p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-site max-w-3xl">
+      <SectionHeading label="Responsibilities" title="What You'll Do" />
+      <ul class="mt-8 space-y-4">
+        {
+          team.responsibilities.map((item) => (
+            <li class="flex items-start gap-3">
+              <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-blue-500/20 text-xs text-blue-400">✓</span>
+              <span class="text-white/70">{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-12 flex flex-wrap gap-4">
+        <a href="/get-involved/apply" class="btn-primary">Apply for This Role</a>
+        <a href="/get-involved" class="btn-outline">View All Roles</a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

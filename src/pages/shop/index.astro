@@ -1,0 +1,72 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { products, categories } from '../../data/products';
+
+const categoryParam = Astro.url.searchParams.get('category') || 'all';
+const filteredProducts = categoryParam === 'all' ? products : products.filter((p) => p.category === categoryParam);
+---
+
+<MainLayout title="Shop" description="Shop Operation 17:2 mission apparel. Every purchase funds decoy operations and child protection efforts.">
+  <section class="border-b border-white/10 bg-[#0a0a0a]">
+    <div class="container-site py-16 sm:py-20">
+      <span class="section-label">Mission Apparel</span>
+      <h1 class="mb-4">Shop</h1>
+      <p class="max-w-2xl text-lg text-white/60">
+        Every piece of apparel carries a powerful message. Your purchase directly funds decoy operations — phones, travel, and essential equipment.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-site">
+      <!-- Categories -->
+      <div class="mb-10 flex flex-wrap gap-2">
+        {
+          categories.map((cat) => (
+            <a
+              href={cat.slug === 'all' ? '/shop' : `/shop?category=${cat.slug}`}
+              class:list={[
+                'rounded-sm px-4 py-2 text-sm font-medium uppercase tracking-wider no-underline transition-colors',
+                categoryParam === cat.slug
+                  ? 'bg-gradient-accent text-white'
+                  : 'border border-white/10 text-white/60 hover:border-blue-500 hover:text-white',
+              ]}
+            >
+              {cat.label}
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Products Grid -->
+      {
+        filteredProducts.length > 0 ? (
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredProducts.map((product) => (
+              <ProductCard product={product} />
+            ))}
+          </div>
+        ) : (
+          <p class="text-center text-white/50">No products found in this category.</p>
+        )
+      }
+
+      <!-- Info -->
+      <div class="card mt-16">
+        <SectionHeading
+          label="Important"
+          title="Shipping & Returns"
+          description="All sales are final — every purchase directly supports our vital mission. Shipping typically takes 5–7 business days within the United States. For questions, email op17two@gmail.com."
+        />
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .bg-gradient-accent {
+    background-image: linear-gradient(135deg, #1e40af, #3b82f6);
+  }
+</style>

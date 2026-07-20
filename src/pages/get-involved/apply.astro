@@ -1,0 +1,78 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { site } from '../../data/site';
+---
+
+<MainLayout title="Apply to Join" description="Apply to join Operation 17:2 and become part of the mission to protect children.">
+  <section class="border-b border-white/10 bg-[#0a0a0a]">
+    <div class="container-site py-16 sm:py-20">
+      <span class="section-label">Application</span>
+      <h1 class="mb-4">Apply to Join</h1>
+      <p class="max-w-2xl text-lg text-white/60">
+        Take the first step toward joining Operation 17:2. Tell us about yourself, your skills, and how you'd like to serve.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-site max-w-2xl">
+      <form class="space-y-6">
+        <div class="grid gap-6 sm:grid-cols-2">
+          <div>
+            <label class="label-text" for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" class="input-field" required />
+          </div>
+          <div>
+            <label class="label-text" for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" class="input-field" required />
+          </div>
+        </div>
+
+        <div>
+          <label class="label-text" for="email">Email Address</label>
+          <input type="email" id="email" name="email" class="input-field" required />
+        </div>
+
+        <div>
+          <label class="label-text" for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" class="input-field" />
+        </div>
+
+        <div>
+          <label class="label-text" for="role">Preferred Role</label>
+          <select id="role" name="role" class="input-field" required>
+            <option value="">Select a role...</option>
+            <option value="prayer">Prayer Team</option>
+            <option value="media">Media Team</option>
+            <option value="decoy">Online Decoy Team</option>
+            <option value="operations">Operations Team</option>
+            <option value="other">Other / General Support</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="label-text" for="experience">Relevant Experience</label>
+          <textarea id="experience" name="experience" rows="4" class="input-field" placeholder="Tell us about your background, skills, and why you want to join..."></textarea>
+        </div>
+
+        <div>
+          <label class="label-text" for="faith">Statement of Faith Alignment</label>
+          <textarea id="faith" name="faith" rows="3" class="input-field" placeholder="Briefly share how Luke 17:2 and our mission resonate with you..."></textarea>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <input type="checkbox" id="agree" name="agree" class="mt-1" required />
+          <label for="agree" class="text-sm text-white/60">
+            I agree to Operation 17:2's statement of faith, values, and confidentiality requirements for all team members.
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary w-full sm:w-auto">Submit Application</button>
+      </form>
+
+      <p class="mt-8 text-sm text-white/40">
+        Questions? Contact us at <a href={`mailto:${site.email}`} class="text-blue-400 no-underline hover:underline">{site.email}</a>
+      </p>
+    </div>
+  </section>
+</MainLayout>

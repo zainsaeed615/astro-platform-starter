@@ -1,0 +1,79 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { prayerSchedule } from '../data/site';
+---
+
+<MainLayout title="Live Prayer Calls" description="Join Operation 17:2's scheduled live prayer calls. Register and stand with us in intercession.">
+  <section class="border-b border-white/10 bg-[#0a0a0a]">
+    <div class="container-site py-16 sm:py-20">
+      <span class="section-label">Pray With Us</span>
+      <h1 class="mb-4">Live Prayer Calls</h1>
+      <p class="max-w-2xl text-lg text-white/60">
+        Join our community for scheduled live prayer calls. Stand with us in intercession for the children we protect and the teams on the front lines.
+      </p>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section class="section-padding">
+    <div class="container-site">
+      <SectionHeading label="Weekly Schedule" title="Upcoming Prayer Calls" align="center" />
+      <div class="mt-12 grid gap-4 sm:grid-cols-2">
+        {
+          prayerSchedule.map((call) => (
+            <div class="card">
+              <div class="mb-3 flex items-center justify-between">
+                <span class="font-display text-lg font-bold text-blue-400">{call.day}</span>
+                <span class="rounded-sm bg-white/5 px-3 py-1 text-xs uppercase tracking-wider text-white/50">
+                  {call.time}
+                </span>
+              </div>
+              <h3 class="mb-2 text-base">{call.topic}</h3>
+              <p class="text-sm text-white/50">Hosted by {call.host}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Register -->
+  <section class="border-t border-white/10 bg-[#0a0a0a] section-padding">
+    <div class="container-site max-w-2xl">
+      <SectionHeading label="Register" title="Join a Prayer Call" description="Register below to receive call links, reminders, and prayer points before each session." align="center" />
+      <form class="mt-10 space-y-6">
+        <div class="grid gap-6 sm:grid-cols-2">
+          <div>
+            <label class="label-text" for="name">Full Name</label>
+            <input type="text" id="name" name="name" class="input-field" required />
+          </div>
+          <div>
+            <label class="label-text" for="email">Email Address</label>
+            <input type="email" id="email" name="email" class="input-field" required />
+          </div>
+        </div>
+        <div>
+          <label class="label-text" for="calls">Which calls would you like to join?</label>
+          <div class="mt-2 space-y-2">
+            {
+              prayerSchedule.map((call) => (
+                <label class="flex items-center gap-3 rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70">
+                  <input type="checkbox" name="calls" value={call.day} />
+                  {call.day} — {call.time} — {call.topic}
+                </label>
+              ))
+            }
+          </div>
+        </div>
+        <button type="submit" class="btn-primary w-full sm:w-auto">Register for Prayer Calls</button>
+      </form>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .font-display {
+    font-family: 'Oswald', sans-serif;
+  }
+</style>

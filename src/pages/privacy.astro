@@ -1,0 +1,26 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { site } from '../data/site';
+---
+
+<MainLayout title="Privacy Policy" description="Operation 17:2 privacy policy.">
+  <section class="section-padding">
+    <div class="container-site max-w-3xl">
+      <h1 class="mb-8">Privacy Policy</h1>
+      <div class="legal-content text-white/60 leading-relaxed">
+        <p>Last updated: {new Date().getFullYear()}</p>
+        <p>
+          {site.name} ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website or interact with our services.
+        </p>
+        <h2 class="text-white">Information We Collect</h2>
+        <p>We may collect personal information you voluntarily provide, including your name, email address, phone number, and payment information when you donate, purchase products, register for prayer calls, or submit an application.</p>
+        <h2 class="text-white">How We Use Your Information</h2>
+        <p>We use your information to process donations and orders, communicate about our mission, send prayer call reminders and newsletters (with your consent), and manage volunteer applications.</p>
+        <h2 class="text-white">Data Security</h2>
+        <p>We implement appropriate security measures to protect your personal information. However, no method of transmission over the Internet is 100% secure.</p>
+        <h2 class="text-white">Contact Us</h2>
+        <p>For privacy-related questions, contact us at <a href={`mailto:${site.email}`} class="text-blue-400 no-underline">{site.email}</a>.</p>
+      </div>
+    </div>
+  </section>
+</MainLayout>

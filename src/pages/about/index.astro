@@ -1,0 +1,183 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import { site, leadership } from '../../data/site';
+---
+
+<MainLayout title="About Us" description="Learn about Operation 17:2's mission, values, and leadership team dedicated to protecting children.">
+  <!-- Page Hero -->
+  <section class="border-b border-white/10 bg-[#0a0a0a]">
+    <div class="container-site py-16 sm:py-20">
+      <span class="section-label">Who We Are</span>
+      <h1 class="mb-4">About Us</h1>
+      <p class="max-w-2xl text-lg text-white/60">
+        A Christ-centered non-profit driven by an unwavering conviction to protect the innocent and bring predators to justice.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section id="mission" class="section-padding scroll-mt-20">
+    <div class="container-site">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <div>
+          <SectionHeading
+            label="Mission"
+            title="Our Unwavering Mission: Protecting the Innocent"
+            description="At Operation 17:2, our heart beats with a singular purpose: to safeguard children. Inspired by the profound words of Luke 17:2, we are driven by an unwavering conviction. This verse isn't just our namesake; it's the moral compass guiding every action we take."
+          />
+        </div>
+        <div class="space-y-6">
+          <div class="card">
+            <h3 class="mb-2 text-blue-400">Primary Goal</h3>
+            <p class="text-white/60">
+              To protect children and ensure child predators are brought to justice. Every day, the innocence of children is threatened, and it is our collective responsibility to put a stop to it.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mb-2 text-blue-400">Our Conviction</h3>
+            <p class="text-white/60">
+              We are actively working to create a safer environment for the next generation through bold action, compassion, and unwavering biblical conviction.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="border-t border-white/10 bg-[#0a0a0a] section-padding scroll-mt-20">
+    <div class="container-site">
+      <SectionHeading
+        label="How It Works"
+        title="From Support to Action"
+        description="Your support goes directly into action. Every purchase, donation, and volunteer hour empowers our mission."
+        align="center"
+      />
+      <div class="mt-12 grid gap-8 md:grid-cols-3">
+        {
+          [
+            {
+              step: '01',
+              title: 'Support the Mission',
+              desc: 'Donate, purchase mission apparel, or join as a volunteer. Every contribution fuels our operations.',
+            },
+            {
+              step: '02',
+              title: 'Fund Operations',
+              desc: 'Resources go directly to decoy phones, travel expenses, equipment, and operational costs.',
+            },
+            {
+              step: '03',
+              title: 'Protect Children',
+              desc: 'Our teams conduct online decoy operations to identify predators and bring them to justice.',
+            },
+          ].map((item) => (
+            <div class="card text-center">
+              <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-sm bg-gradient-accent font-display text-xl font-bold text-white">
+                {item.step}
+              </div>
+              <h3 class="mb-3">{item.title}</h3>
+              <p class="text-sm text-white/50">{item.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Statement of Faith / Values -->
+  <section id="values" class="section-padding scroll-mt-20">
+    <div class="container-site">
+      <SectionHeading
+        label="Statement of Faith"
+        title="Our Values & Convictions"
+        description="Operation 17:2 is built on a foundation of biblical truth, justice, and compassion."
+      />
+      <div class="mt-12 grid gap-6 sm:grid-cols-2">
+        {
+          [
+            {
+              title: 'Biblical Foundation',
+              desc: 'Guided by Luke 17:2 and the teachings of Jesus Christ, we act with moral clarity and conviction.',
+            },
+            {
+              title: 'Justice & Mercy',
+              desc: 'We pursue justice for the innocent while reflecting the mercy and truth of Jesus in all we do.',
+            },
+            {
+              title: 'Protection of the Vulnerable',
+              desc: 'Children who cannot speak for themselves are our highest priority. We defend the defenseless.',
+            },
+            {
+              title: 'Bold Action',
+              desc: 'We do not stand idle. Through decoy operations and community mobilization, we take decisive action.',
+            },
+            {
+              title: 'Community & Unity',
+              desc: 'Together, we are stronger. Our community of supporters, volunteers, and prayer warriors multiplies our impact.',
+            },
+            {
+              title: 'Integrity & Accountability',
+              desc: 'Every operation is conducted with integrity, transparency, and accountability before God and our community.',
+            },
+          ].map((value) => (
+            <div class="card">
+              <h3 class="mb-2 text-lg">{value.title}</h3>
+              <p class="text-sm text-white/50">{value.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <blockquote class="card mt-12 border-l-4 border-l-blue-500 text-center italic">
+        <p class="text-xl text-white/80">"{site.verse}"</p>
+        <footer class="mt-4 text-sm font-semibold uppercase tracking-wider text-blue-400">— {site.verseRef}</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Leadership -->
+  <section id="leadership" class="border-t border-white/10 bg-[#0a0a0a] section-padding scroll-mt-20">
+    <div class="container-site">
+      <SectionHeading
+        label="Leadership & Team"
+        title="Meet the Team"
+        description="Dedicated leaders and volunteers committed to protecting children and advancing the mission of Operation 17:2."
+        align="center"
+      />
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          leadership.map((member) => (
+            <div class="card text-center">
+              <div class="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-accent font-display text-2xl font-bold text-white">
+                {member.name.charAt(0)}
+              </div>
+              <h3 class="mb-1 text-base">{member.name}</h3>
+              <p class="mb-3 text-xs uppercase tracking-wider text-blue-400">{member.role}</p>
+              <p class="text-sm text-white/50">{member.bio}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-padding">
+    <div class="container-site text-center">
+      <h2 class="mb-4">Ready to Join the Mission?</h2>
+      <p class="mx-auto mb-8 max-w-xl text-white/60">Become part of a dedicated community committed to child safety.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/get-involved/apply" class="btn-primary">Apply Now</a>
+        <a href="/donate" class="btn-outline">Donate</a>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .bg-gradient-accent {
+    background-image: linear-gradient(135deg, #1e40af, #3b82f6);
+  }
+</style>

@@ -1,0 +1,72 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import { site } from '../../data/site';
+---
+
+<MainLayout title="Start a Fundraiser" description="Create a peer-to-peer fundraiser for Operation 17:2 and rally your community to protect children.">
+  <section class="border-b border-white/10 bg-[#0a0a0a]">
+    <div class="container-site py-16 sm:py-20">
+      <span class="section-label">Peer-to-Peer Fundraising</span>
+      <h1 class="mb-4">Start a Fundraiser</h1>
+      <p class="max-w-2xl text-lg text-white/60">
+        Rally your community, church, or organization to raise funds for Operation 17:2. Every dollar raised goes directly to protecting children.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-site max-w-2xl">
+      <SectionHeading label="How It Works" title="Three Simple Steps" />
+      <div class="mt-8 space-y-6">
+        {
+          [
+            { step: '1', title: 'Create Your Page', desc: 'Set a personal fundraising goal and share your story about why you support Operation 17:2.' },
+            { step: '2', title: 'Share With Your Network', desc: 'Send your fundraising link to friends, family, church members, and social media followers.' },
+            { step: '3', title: 'Track Your Impact', desc: 'Watch your progress in real-time. Every dollar raised funds decoy operations and child protection.' },
+          ].map((item) => (
+            <div class="card flex items-start gap-4">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-gradient-accent font-display font-bold text-white">
+                {item.step}
+              </div>
+              <div>
+                <h3 class="mb-1 text-base">{item.title}</h3>
+                <p class="text-sm text-white/50">{item.desc}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <form class="mt-12 space-y-6">
+        <div>
+          <label class="label-text" for="name">Your Name</label>
+          <input type="text" id="name" name="name" class="input-field" required />
+        </div>
+        <div>
+          <label class="label-text" for="email">Email Address</label>
+          <input type="email" id="email" name="email" class="input-field" required />
+        </div>
+        <div>
+          <label class="label-text" for="goal">Fundraising Goal ($)</label>
+          <input type="number" id="goal" name="goal" class="input-field" min="100" placeholder="1000" required />
+        </div>
+        <div>
+          <label class="label-text" for="story">Your Story</label>
+          <textarea id="story" name="story" rows="4" class="input-field" placeholder="Why are you fundraising for Operation 17:2?"></textarea>
+        </div>
+        <button type="submit" class="btn-primary w-full sm:w-auto">Create Fundraiser Page</button>
+      </form>
+
+      <p class="mt-8 text-sm text-white/40">
+        Need help? Contact <a href={`mailto:${site.email}`} class="text-blue-400 no-underline">{site.email}</a>
+      </p>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .bg-gradient-accent {
+    background-image: linear-gradient(135deg, #1e40af, #3b82f6);
+  }
+</style>

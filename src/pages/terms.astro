@@ -1,0 +1,28 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { site } from '../data/site';
+---
+
+<MainLayout title="Terms of Service" description="Operation 17:2 terms of service.">
+  <section class="section-padding">
+    <div class="container-site max-w-3xl">
+      <h1 class="mb-8">Terms of Service</h1>
+      <div class="legal-content text-white/60 leading-relaxed">
+        <p class="mb-6">Last updated: {new Date().getFullYear()}</p>
+        <p class="mb-6">
+          By accessing and using the {site.name} website, you agree to be bound by these Terms of Service. If you do not agree, please do not use our website.
+        </p>
+        <h2 class="text-white">Use of Website</h2>
+        <p class="mb-6">You may use our website for lawful purposes only. You agree not to use the site in any way that could damage, disable, or impair our services.</p>
+        <h2 class="text-white">Purchases & Donations</h2>
+        <p class="mb-6">All apparel purchases are final — no returns or exchanges. Every sale directly supports our mission. Donations are voluntary and non-refundable unless required by law.</p>
+        <h2 class="text-white">Volunteer Applications</h2>
+        <p class="mb-6">Submitting an application does not guarantee acceptance. All team members must agree to our statement of faith and confidentiality requirements.</p>
+        <h2 class="text-white">Intellectual Property</h2>
+        <p class="mb-6">All content on this website, including logos, text, and images, is the property of {site.name} and may not be reproduced without permission.</p>
+        <h2 class="text-white">Contact</h2>
+        <p>For questions about these terms, contact <a href={`mailto:${site.email}`} class="text-blue-400 no-underline">{site.email}</a>.</p>
+      </div>
+    </div>
+  </section>
+</MainLayout>

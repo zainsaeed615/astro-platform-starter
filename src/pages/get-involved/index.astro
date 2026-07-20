@@ -1,0 +1,64 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import RoleCard from '../../components/RoleCard.astro';
+---
+
+<MainLayout title="Get Involved" description="Join Operation 17:2 — explore volunteer roles and apply to be part of the mission to protect children.">
+  <section class="border-b border-white/10 bg-[#0a0a0a]">
+    <div class="container-site py-16 sm:py-20">
+      <span class="section-label">Join the Movement</span>
+      <h1 class="mb-4">Get Involved</h1>
+      <p class="max-w-2xl text-lg text-white/60">
+        We believe that together, we can make a significant impact. Your involvement helps us expand our reach, enhance our operations, and protect more children from harm.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-site">
+      <SectionHeading
+        label="Roles Overview"
+        title="Find Your Place in the Mission"
+        description="Operation 17:2 needs dedicated individuals across multiple teams. Whether you pray, create content, operate in the field, or support logistics — there's a role for you."
+        align="center"
+      />
+      <div class="mt-12 grid gap-6 sm:grid-cols-2">
+        <RoleCard
+          title="Prayer Team"
+          description="Join our intercession community. Cover operations, team members, and the children we protect through scheduled and spontaneous prayer."
+          icon="heart"
+          href="/get-involved/prayer-team"
+        />
+        <RoleCard
+          title="Media Team"
+          description="Help amplify our mission through social media, video production, graphic design, and content creation."
+          icon="camera"
+          href="/get-involved/media-team"
+        />
+        <RoleCard
+          title="Online Decoy Team"
+          description="Serve on the front lines of online operations. Help identify and pursue child predators through controlled decoy operations."
+          icon="target"
+          href="/get-involved/online-decoy-team"
+        />
+        <RoleCard
+          title="Operations Team"
+          description="Support field operations with logistics, coordination, travel planning, and operational security."
+          icon="shield"
+          href="/get-involved/operations-team"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-white/10 bg-[#0a0a0a] section-padding">
+    <div class="container-site text-center">
+      <h2 class="mb-4">Ready to Serve?</h2>
+      <p class="mx-auto mb-8 max-w-xl text-white/60">
+        Fill out our application to begin the onboarding process. All roles require a commitment to our statement of faith and mission values.
+      </p>
+      <a href="/get-involved/apply" class="btn-primary">Apply to Join</a>
+    </div>
+  </section>
+</MainLayout>

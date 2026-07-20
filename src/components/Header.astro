@@ -1,30 +1,138 @@
 ---
-import Logo from '../components/Logo.astro';
+import { site, navigation } from '../data/site';
 
-const navItems = [
-    { linkText: 'Home', href: '/' },
-    { linkText: 'Revalidation', href: '/revalidation' },
-    { linkText: 'Image CDN', href: '/image-cdn' },
-    { linkText: 'Edge Function', href: '/edge' },
-    { linkText: 'Blobs', href: '/blobs' }
-];
+const currentPath = Astro.url.pathname;
 ---
 
-<nav class="flex flex-wrap items-center gap-4 pt-6 pb-16 sm:pt-12 sm:pb-24">
-    <a href="/">
-        <Logo />
-    </a>
-    {
-        !!navItems?.length && (
-            <ul class="flex flex-wrap gap-x-4 gap-y-1">
-                {navItems.map((item) => (
-                    <li>
-                        <a href={item.href} class="inline-block px-1.5 py-1 sm:px-3 sm:py-2">
-                            {item.linkText}
-                        </a>
-                    </li>
+<header class="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-md">
+  <div class="container-site">
+    <div class="flex h-16 items-center justify-between lg:h-20">
+      <a href="/" class="group flex items-center gap-3 no-underline">
+        <div
+          class="flex h-10 w-10 items-center justify-center rounded-sm bg-gradient-accent text-sm font-bold text-white"
+        >
+          17:2
+        </div>
+        <div class="hidden sm:block">
+          <span class="font-display text-lg font-bold uppercase tracking-wider text-white group-hover:text-blue-400 transition-colors">
+            {site.name}
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
+        {
+          navigation.map((item) => (
+            <div class="group relative">
+              <a
+                href={item.href}
+                class:list={[
+                  'px-3 py-2 text-sm font-medium uppercase tracking-wider no-underline transition-colors',
+                  currentPath === item.href || currentPath.startsWith(item.href + '/')
+                    ? 'text-blue-400'
+                    : 'text-white/70 hover:text-white',
+                ]}
+              >
+                {item.label}
+              </a>
+              {'children' in item && item.children && (
+                <div class="invisible absolute left-0 top-full z-50 min-w-[220px] translate-y-2 opacity-0 transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                  <div class="mt-1 rounded-sm border border-white/10 bg-[#141414] py-2 shadow-xl">
+                    {item.children.map((child) => (
+                      <a
+                        href={child.href}
+                        class="block px-4 py-2 text-sm text-white/70 no-underline transition-colors hover:bg-white/5 hover:text-white"
+                      >
+                        {child.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))
+        }
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="/donate" class="btn-primary hidden px-4 py-2 text-xs sm:inline-flex"> Donate </a>
+        <a
+          href="/shop"
+          class="relative flex h-10 w-10 items-center justify-center rounded-sm border border-white/10 text-white/70 no-underline transition-colors hover:border-blue-500 hover:text-white"
+          aria-label="Shop cart"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </a>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="flex h-10 w-10 items-center justify-center rounded-sm border border-white/10 text-white lg:hidden"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Nav -->
+  <nav id="mobile-menu" class="hidden border-t border-white/10 lg:hidden" aria-label="Mobile navigation">
+    <div class="container-site space-y-1 py-4">
+      {
+        navigation.map((item) => (
+          <div>
+            <a
+              href={item.href}
+              class:list={[
+                'block rounded-sm px-4 py-3 text-sm font-medium uppercase tracking-wider no-underline transition-colors',
+                currentPath === item.href ? 'bg-blue-500/10 text-blue-400' : 'text-white/70 hover:bg-white/5 hover:text-white',
+              ]}
+            >
+              {item.label}
+            </a>
+            {'children' in item && item.children && (
+              <div class="ml-4 space-y-1 pb-2">
+                {item.children.map((child) => (
+                  <a
+                    href={child.href}
+                    class="block rounded-sm px-4 py-2 text-sm text-white/50 no-underline hover:text-white"
+                  >
+                    {child.label}
+                  </a>
                 ))}
-            </ul>
-        )
-    }
-</nav>
+              </div>
+            )}
+          </div>
+        ))
+      }
+      <a href="/donate" class="btn-primary mt-4 block w-full text-center"> Donate Now </a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', String(isOpen));
+    menuIcon?.classList.toggle('hidden', isOpen);
+    closeIcon?.classList.toggle('hidden', !isOpen);
+  });
+</script>
+
+<style>
+  .bg-gradient-accent {
+    background-image: linear-gradient(135deg, #1e40af, #3b82f6);
+  }
+  .font-display {
+    font-family: 'Oswald', sans-serif;
+  }
+</style>
