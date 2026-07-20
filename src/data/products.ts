@@ -28,7 +28,7 @@ export const products: Product[] = [
         category: 'shirts',
         description:
             'Make a statement with our signature design. This high-quality, soft cotton t-shirt features a bold design that embodies the spirit of Operation 17:2. More than apparel — a visible declaration against child predators.',
-        image: '/products/protector-tee.svg',
+        image: '/products/protector-tee.jpg',
         badge: 'Best Seller',
         sizes: ['S', 'M', 'L', 'XL', '2XL'],
         colors: ['Black', 'Navy'],
@@ -42,8 +42,8 @@ export const products: Product[] = [
         category: 'shirts',
         description:
             'Premium heavyweight hoodie with the Operation 17:2 tagline across the chest. Built for comfort and durability — perfect for prayer calls, events, and everyday wear.',
-        image: '/products/hoodie.svg',
-        badge: 'New',
+        image: '/products/hoodie.jpg',
+        badge: 'New Arrival',
         sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL'],
         colors: ['Black'],
         featured: true
@@ -56,7 +56,7 @@ export const products: Product[] = [
         category: 'shirts',
         description:
             'Classic fit tee featuring the full Operation 17:2 logo. Every purchase directly supports our mission to protect children and hunt predators.',
-        image: '/products/logo-tee.svg',
+        image: '/products/protector-tee.jpg',
         sizes: ['S', 'M', 'L', 'XL', '2XL'],
         colors: ['Black', 'Charcoal']
     },
@@ -68,7 +68,7 @@ export const products: Product[] = [
         category: 'hats',
         description:
             'Structured snapback with embroidered Operation 17:2 mission patch. Adjustable fit with premium stitching.',
-        image: '/products/snapback.svg',
+        image: '/products/snapback.jpg',
         badge: 'Popular',
         colors: ['Black/Blue']
     },
@@ -79,7 +79,7 @@ export const products: Product[] = [
         price: 24.99,
         category: 'hats',
         description: 'Warm knit beanie with subtle embroidered logo. Stay covered in the field and in prayer.',
-        image: '/products/beanie.svg',
+        image: '/products/snapback.jpg',
         sizes: ['One Size'],
         colors: ['Black']
     },
@@ -90,7 +90,7 @@ export const products: Product[] = [
         price: 9.99,
         category: 'accessories',
         description: 'Set of 5 weatherproof vinyl stickers featuring Operation 17:2 branding. Spread the mission everywhere you go.',
-        image: '/products/stickers.svg'
+        image: '/products/protector-tee.jpg'
     },
     {
         id: '7',
@@ -99,7 +99,7 @@ export const products: Product[] = [
         price: 7.99,
         category: 'accessories',
         description: 'Silicone wristband with embossed Luke 17:2 reference. A daily reminder of why we fight.',
-        image: '/products/wristband.svg',
+        image: '/products/protector-tee.jpg',
         sizes: ['One Size']
     },
     {
@@ -109,7 +109,7 @@ export const products: Product[] = [
         price: 28.99,
         category: 'hats',
         description: 'Low-profile tactical cap with laser-cut ventilation and embroidered logo. Built for the mission.',
-        image: '/products/tactical-cap.svg',
+        image: '/products/snapback.jpg',
         colors: ['Black', 'OD Green']
     }
 ];

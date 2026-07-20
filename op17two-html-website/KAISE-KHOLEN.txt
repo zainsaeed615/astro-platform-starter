@@ -1,0 +1,41 @@
+OPERATION 17:2 — HTML WEBSITE PREVIEW
+=====================================
+
+YE FILE KAISE KHOLEN / HOW TO OPEN
+----------------------------------
+
+1. Is folder ko apne computer par rakhein
+2. "index.html" par DOUBLE-CLICK karein
+3. Website browser mein khul jayegi!
+
+Koi install ya internet ki zaroorat nahi.
+
+
+SAARI PAGES / ALL PAGES
+-----------------------
+
+- index.html          → Home
+- about.html          → About Us
+- about/mission.html  → Mission
+- about/how-it-works.html
+- about/values.html
+- about/leadership.html
+- get-involved.html   → Get Involved
+- get-involved/apply.html
+- get-involved/prayer-team.html
+- get-involved/media-team.html
+- get-involved/decoy-team.html
+- get-involved/operations-team.html
+- donate.html
+- live-prayer.html
+- shop.html
+- shop/product/*.html → Product pages
+- resources.html
+- contact.html
+- legal/privacy.html
+- legal/terms.html
+
+
+NOTE
+----
+Ye draft preview hai. Forms aur payments abhi demo mode mein hain.

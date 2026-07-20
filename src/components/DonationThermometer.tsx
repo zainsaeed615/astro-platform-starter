@@ -8,31 +8,29 @@ export default function DonationThermometer({ goal, raised, donors }: Props) {
     const percent = Math.min(100, Math.round((raised / goal) * 100));
 
     return (
-        <div className="card-surface p-8">
-            <div className="mb-2 flex items-end justify-between">
+        <div className="card-premium p-10">
+            <div className="mb-6 flex items-end justify-between">
                 <div>
-                    <p className="tagline mb-1">Live Fundraising Goal</p>
-                    <p className="font-display text-3xl font-bold text-brand-blue">${raised.toLocaleString()}</p>
-                    <p className="text-sm text-white/50">raised of ${goal.toLocaleString()} goal</p>
+                    <p className="font-display text-sm uppercase tracking-[0.3em] text-brand-blue">Live Goal</p>
+                    <p className="mt-2 font-display text-5xl tracking-wide text-brand-blue">${raised.toLocaleString()}</p>
+                    <p className="mt-1 text-sm text-white/45">raised of ${goal.toLocaleString()}</p>
                 </div>
                 <div className="text-right">
-                    <p className="font-display text-4xl font-bold">{percent}%</p>
-                    {donors && <p className="text-xs text-white/40">{donors} donors</p>}
+                    <p className="font-display text-6xl tracking-wide">{percent}%</p>
+                    {donors && <p className="text-xs uppercase tracking-widest text-white/35">{donors} donors</p>}
                 </div>
             </div>
 
-            <div className="relative mt-6 h-4 overflow-hidden rounded-full bg-white/5">
+            <div className="relative h-2 overflow-hidden rounded-sm bg-white/[0.06]">
                 <div
-                    className="absolute inset-y-0 left-0 rounded-full transition-all duration-1000"
+                    className="absolute inset-y-0 left-0 rounded-sm transition-all duration-1000"
                     style={{
                         width: `${percent}%`,
-                        background: 'linear-gradient(90deg, #0066cc, #00a3ff)',
-                        boxShadow: '0 0 20px rgba(0,163,255,0.5)'
+                        background: 'linear-gradient(90deg, #0077cc, #00c8ff)',
+                        boxShadow: '0 0 24px rgba(0,200,255,0.6)'
                     }}
                 />
             </div>
-
-            <p className="mt-4 text-xs text-white/40">Givebutter live goal widget — updates in real time at launch.</p>
         </div>
     );
 }
