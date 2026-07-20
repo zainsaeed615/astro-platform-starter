@@ -1,51 +1,58 @@
-# Astro on Netlify Platform Starter
+# Operation 17:2 — Website Redesign Draft
 
-[Live Demo](https://astro-platform-starter.netlify.app/)
+Bold, masculine, rugged redesign for [op17two.com](https://www.op17two.com/) built with Astro + Tailwind CSS + React.
 
-A modern starter based on Astro.js, Tailwind, and [Netlify Core Primitives](https://docs.netlify.com/core/overview/#develop) (Edge Functions, Image CDN, Blob Store).
+## Design
 
-## Astro Commands
+- **Colors:** Black background, white text, electric blue gradient accents (matching logo)
+- **Typography:** Oswald (display) + DM Sans (body)
+- **Style:** High-end, action-oriented, community-focused SaaS-quality layout
 
-All commands are run from the root of the project, from a terminal:
+## Pages
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Page | Route |
+|------|-------|
+| Home | `/` |
+| About Us | `/about` |
+| Mission | `/about/mission` |
+| How It Works | `/about/how-it-works` |
+| Statement of Faith | `/about/values` |
+| Leadership | `/about/leadership` |
+| Get Involved | `/get-involved` |
+| Apply | `/get-involved/apply` |
+| Role Pages | `/get-involved/*-team` |
+| Donate | `/donate` |
+| Live Prayer | `/live-prayer` |
+| Shop | `/shop` |
+| Product Detail | `/shop/product/[slug]` |
+| Resources | `/resources` |
+| Contact | `/contact` |
+| Legal | `/legal/*` |
 
-## Deploying to Netlify
+## Features (Draft)
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/astro-platform-starter)
+- E-commerce cart (localStorage) with product variants
+- Live donation thermometer (Givebutter-ready)
+- Volunteer application form (platform-ready)
+- Newsletter signup, contact form
+- Responsive mobile navigation
 
-## Developing Locally
+## Preview
 
-| Prerequisites                                                                |
-| :--------------------------------------------------------------------------- |
-| [Node.js](https://nodejs.org/) v18.14+.                                      |
-| (optional) [nvm](https://github.com/nvm-sh/nvm) for Node version management. |
-
-1. Clone this repository, then run `npm install` in its root directory.
-
-2. For the starter to have full functionality locally (e.g. edge functions, blob store), please ensure you have an up-to-date version of Netlify CLI. Run:
-
-```
-npm install netlify-cli@latest -g
-```
-
-3. Link your local repository to the deployed Netlify site. This will ensure you're using the same runtime version for both local development and your deployed site.
-
-```
-netlify link
-```
-
-4. Then, run the Astro.js development server via Netlify CLI:
-
-```
-netlify dev
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # static output in dist/
+npm run preview  # preview production build
 ```
 
-If your browser doesn't navigate to the site automatically, visit [localhost:8888](http://localhost:8888).
+## Launch Integrations (Not Connected in Draft)
+
+- **Shopify** — apparel store + checkout
+- **Givebutter** — donations, live goals, peer-to-peer fundraisers
+- **Volunteer Platform** — applications + background check gate
+- **Zoom** — live prayer call registration
+
+## Download
+
+See `op17two-website-redesign-draft.zip` for a portable preview package.

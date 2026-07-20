@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+
+<Layout title="Get Involved" description="Join Operation 17:2 — prayer, media, decoy, operations, and leadership roles available.">
+    <PageHero label="Get Involved" title="Join the Mission" description="Every role matters. From prayer warriors to field operations — the mission needs you." size="large" />
+
+    <section class="section-container py-16">
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {
+                [
+                    { title: 'Prayer Team', href: '/get-involved/prayer-team', desc: 'The spiritual foundation everything else is built on.', icon: '🙏' },
+                    { title: 'Media Team', href: '/get-involved/media-team', desc: 'Document the mission with clear, accurate footage.', icon: '🎥' },
+                    { title: 'Online Decoy Team', href: '/get-involved/decoy-team', desc: 'The first line in identifying offenders.', icon: '🛡️' },
+                    { title: 'Operations Team', href: '/get-involved/operations-team', desc: 'In-person presence with courage and restraint.', icon: '⚡' },
+                    { title: 'Leaders', href: '/get-involved/apply?role=leader', desc: 'Set apart for the mission. Held to the highest standard.', icon: '⭐' }
+                ].map((role) => (
+                    <a href={role.href} class="card-surface group p-8 no-underline transition-all hover:border-brand-blue/30 hover:shadow-[0_0_30px_rgba(0,163,255,0.08)]">
+                        <span class="text-3xl">{role.icon}</span>
+                        <h3 class="mt-4 font-display text-lg font-semibold uppercase group-hover:text-brand-blue">{role.title}</h3>
+                        <p class="mt-3 text-sm text-white/60">{role.desc}</p>
+                        <span class="mt-4 inline-block text-xs uppercase tracking-wider text-brand-blue">Learn More →</span>
+                    </a>
+                ))
+            }
+        </div>
+
+        <div class="card-surface mt-12 p-10 text-center">
+            <h3 class="font-display text-2xl font-bold uppercase">Ready to Serve?</h3>
+            <p class="mx-auto mt-4 max-w-xl text-white/60">All applicants undergo review, references, background check ($50, hardship fund available), and interview before approval.</p>
+            <a href="/get-involved/apply" class="btn-primary mt-8 inline-flex no-underline">Apply Now</a>
+        </div>
+    </section>
+</Layout>

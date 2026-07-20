@@ -1,0 +1,32 @@
+---
+interface Props {
+    product: import('../data/products').Product;
+}
+
+const { product } = Astro.props;
+---
+
+<a href={`/shop/product/${product.slug}`} class="group card-surface block overflow-hidden no-underline transition-all duration-300 hover:border-brand-blue/30 hover:shadow-[0_0_30px_rgba(0,163,255,0.1)]">
+    <div class="relative aspect-square overflow-hidden bg-brand-black">
+        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-brand-gray to-brand-black">
+            <img
+                src={product.image}
+                alt={product.name}
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+        </div>
+        {product.badge && (
+            <span class="absolute left-3 top-3 rounded-full bg-brand-blue px-3 py-1 font-display text-[10px] font-semibold uppercase tracking-wider text-white">
+                {product.badge}
+            </span>
+        )}
+    </div>
+    <div class="p-5">
+        <h3 class="font-display text-sm font-semibold uppercase tracking-wide text-white transition-colors group-hover:text-brand-blue">{product.name}</h3>
+        <p class="mt-2 line-clamp-2 text-sm text-white/50">{product.description.slice(0, 90)}...</p>
+        <div class="mt-4 flex items-center justify-between">
+            <span class="font-display text-lg font-bold text-brand-blue">${product.price.toFixed(2)}</span>
+            <span class="text-xs uppercase tracking-wider text-white/40 group-hover:text-brand-blue">View →</span>
+        </div>
+    </div>
+</a>

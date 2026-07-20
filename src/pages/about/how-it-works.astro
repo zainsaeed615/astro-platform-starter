@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+
+<Layout title="How It Works" description="How Operation 17:2 detects, protects, and defends — from online decoys to lawful confrontation.">
+    <PageHero label="About Us" title="How It Works" description="A disciplined, lawful process built on prayer, training, and accountability." />
+
+    <section class="section-container py-16 md:py-24">
+        <div class="space-y-12">
+            {
+                [
+                    {
+                        step: '01',
+                        title: 'Prayer & Covering',
+                        desc: 'Every operation begins with prayer. The Prayer Team provides spiritual covering for decoys, media, operations, and leadership before any action is taken.'
+                    },
+                    {
+                        step: '02',
+                        title: 'Online Detection',
+                        desc: 'Trained, supervised Online Decoy Team members identify suspected predators through lawful, documented online operations — never alone, always under leadership oversight.'
+                    },
+                    {
+                        step: '03',
+                        title: 'Evidence & Documentation',
+                        desc: 'All activity is meticulously documented. Evidence is preserved according to protocol and prepared for lawful handoff to law enforcement.'
+                    },
+                    {
+                        step: '04',
+                        title: 'Field Operations',
+                        desc: 'The Operations Team confronts suspected predators in person — calm, controlled, lawful, and on-camera. No violence. No detention. No weapons. Ever.'
+                    },
+                    {
+                        step: '05',
+                        title: 'Media Documentation',
+                        desc: 'The Media Team captures clear, accurate footage of every confrontation — documenting truth without interfering with operations or law enforcement.'
+                    },
+                    {
+                        step: '06',
+                        title: 'Lawful Handoff',
+                        desc: 'Evidence and documentation are handed to law enforcement. Our goal is exposure, accountability, and justice through proper legal channels.'
+                    }
+                ].map((item) => (
+                    <div class="card-surface flex gap-6 p-8 md:gap-10">
+                        <span class="font-display text-4xl font-bold text-brand-blue/30 md:text-5xl">{item.step}</span>
+                        <div>
+                            <h3 class="font-display text-xl font-semibold uppercase">{item.title}</h3>
+                            <p class="mt-3 leading-relaxed text-white/70">{item.desc}</p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+</Layout>

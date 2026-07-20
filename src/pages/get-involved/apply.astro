@@ -1,0 +1,80 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+
+<Layout title="Apply" description="Apply to join Operation 17:2 — volunteer application form.">
+    <PageHero label="Get Involved" title="Apply to Join" description="Complete the application below. All roles require a background check before approval." />
+
+    <section class="section-container py-16 md:py-24">
+        <form class="mx-auto max-w-2xl space-y-8" onsubmit="event.preventDefault(); alert('Application submitted — connect to volunteer platform (POINT/VolunteerHub) at launch.');">
+            <div class="card-surface p-8 space-y-6">
+                <h3 class="font-display text-lg font-semibold uppercase text-brand-blue">Personal Information</h3>
+                <div class="grid gap-4 sm:grid-cols-2">
+                    <div>
+                        <label class="mb-2 block text-xs uppercase tracking-wider text-white/60">First Name *</label>
+                        <input required type="text" class="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-sm focus:border-brand-blue/50 focus:outline-none" />
+                    </div>
+                    <div>
+                        <label class="mb-2 block text-xs uppercase tracking-wider text-white/60">Last Name *</label>
+                        <input required type="text" class="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-sm focus:border-brand-blue/50 focus:outline-none" />
+                    </div>
+                </div>
+                <div>
+                    <label class="mb-2 block text-xs uppercase tracking-wider text-white/60">Email *</label>
+                    <input required type="email" class="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-sm focus:border-brand-blue/50 focus:outline-none" />
+                </div>
+                <div>
+                    <label class="mb-2 block text-xs uppercase tracking-wider text-white/60">Phone *</label>
+                    <input required type="tel" class="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-sm focus:border-brand-blue/50 focus:outline-none" />
+                </div>
+                <div>
+                    <label class="mb-2 block text-xs uppercase tracking-wider text-white/60">City, State *</label>
+                    <input required type="text" class="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-sm focus:border-brand-blue/50 focus:outline-none" />
+                </div>
+            </div>
+
+            <div class="card-surface p-8 space-y-6">
+                <h3 class="font-display text-lg font-semibold uppercase text-brand-blue">Role Selection</h3>
+                <div>
+                    <label class="mb-2 block text-xs uppercase tracking-wider text-white/60">Which role(s) are you applying for? *</label>
+                    <select required class="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-sm focus:border-brand-blue/50 focus:outline-none">
+                        <option value="">Select a role...</option>
+                        <option>Prayer Team</option>
+                        <option>Media Team</option>
+                        <option>Online Decoy Team</option>
+                        <option>Operations Team</option>
+                        <option>Leadership</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="mb-2 block text-xs uppercase tracking-wider text-white/60">Why do you want to join Operation 17:2? *</label>
+                    <textarea required rows="4" class="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-sm focus:border-brand-blue/50 focus:outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="mb-2 block text-xs uppercase tracking-wider text-white/60">Describe your faith journey and why it matters to this mission *</label>
+                    <textarea required rows="4" class="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-sm focus:border-brand-blue/50 focus:outline-none"></textarea>
+                </div>
+            </div>
+
+            <div class="card-surface p-8 space-y-4">
+                <h3 class="font-display text-lg font-semibold uppercase text-brand-blue">Acknowledgments</h3>
+                <label class="flex items-start gap-3 text-sm text-white/70">
+                    <input required type="checkbox" class="mt-1" />
+                    I understand all roles require a background check ($50, hardship fund available) and no one is approved until it clears.
+                </label>
+                <label class="flex items-start gap-3 text-sm text-white/70">
+                    <input required type="checkbox" class="mt-1" />
+                    Everything I have provided is true and accurate.
+                </label>
+                <label class="flex items-start gap-3 text-sm text-white/70">
+                    <input required type="checkbox" class="mt-1" />
+                    I agree to the Code of Conduct and organizational policies.
+                </label>
+            </div>
+
+            <button type="submit" class="btn-primary w-full">Submit Application</button>
+            <p class="text-center text-xs text-white/40">After submission: review → references → background check → interview → decision</p>
+        </form>
+    </section>
+</Layout>

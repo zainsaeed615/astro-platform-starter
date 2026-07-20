@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+
+<Layout title="Leadership & Team" description="Meet the leadership team behind Operation 17:2.">
+    <PageHero label="About Us" title="Leadership & Team" description="Leadership here is not a title — it's a calling. Our leaders are set apart and held to a higher standard." />
+
+    <section class="section-container py-16 md:py-24">
+        <div class="mx-auto mb-12 max-w-3xl text-center">
+            <p class="text-white/70">
+                To lead here is to be the first held accountable and the last to seek credit. Our leaders shepherd people as much as they coordinate missions — making disciples on the mission field.
+            </p>
+        </div>
+
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {
+                [
+                    { name: 'Garrett Gross', role: 'Founder & Director', bio: 'Leading Operation 17:2 with unwavering biblical conviction and bold action against child exploitation.' },
+                    { name: 'Leadership Team', role: 'Regional Leaders', bio: 'Building, leading, and shepherding local teams across every role — prayer, decoy, media, and operations.' },
+                    { name: 'Advisory Board', role: 'Legal & Compliance', bio: 'Ensuring every operation stays within lawful boundaries and organizational policies.' }
+                ].map((leader) => (
+                    <div class="card-surface overflow-hidden">
+                        <div class="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-brand-gray to-brand-black">
+                            <img src="/logo.png" alt={leader.name} class="h-24 w-24 rounded-full opacity-60" />
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-display text-lg font-semibold uppercase">{leader.name}</h3>
+                            <p class="mt-1 text-sm text-brand-blue">{leader.role}</p>
+                            <p class="mt-3 text-sm text-white/60">{leader.bio}</p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="mt-16 text-center">
+            <p class="text-white/60">Interested in leadership? We hold leaders to the highest standard.</p>
+            <a href="/get-involved/apply" class="btn-primary mt-6 inline-flex no-underline">Apply for Leadership</a>
+        </div>
+    </section>
+</Layout>

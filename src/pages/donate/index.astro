@@ -1,0 +1,73 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import DonationThermometer from '../../components/DonationThermometer';
+import { siteConfig } from '../../data/site';
+---
+
+<Layout title="Donate" description="Support Operation 17:2 — every gift funds training, operations, and team expansion.">
+    <PageHero label="Donate" title="The Mission Doesn't Advance Without You" description="When you give, you are on the team." size="large" />
+
+    <section class="section-container py-16">
+        <div class="grid gap-12 lg:grid-cols-2">
+            <DonationThermometer client:load goal={siteConfig.donations.goal} raised={siteConfig.donations.raised} donors={siteConfig.donations.donors} />
+
+            <div class="space-y-6">
+                <div class="card-surface p-8">
+                    <h3 class="font-display text-lg font-semibold uppercase text-brand-blue">Ways to Give</h3>
+                    <div class="mt-6 space-y-4">
+                        <button class="btn-primary w-full" onclick="alert('Connect to Givebutter at launch')">Monthly Giving — Most Powerful</button>
+                        <button class="btn-outline w-full" onclick="alert('Connect to Givebutter at launch')">One-Time Gift</button>
+                        <button class="btn-outline w-full" onclick="alert('Connect to Givebutter at launch')">Case Giving — Direct Impact</button>
+                    </div>
+                </div>
+                <div class="card-surface p-6">
+                    <p class="text-sm text-white/60">Also accept:</p>
+                    <div class="mt-3 flex flex-wrap gap-4">
+                        <span class="rounded-lg border border-white/10 px-4 py-2 text-sm">Venmo: {siteConfig.donations.venmo}</span>
+                        <span class="rounded-lg border border-white/10 px-4 py-2 text-sm">PayPal: {siteConfig.donations.paypal}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="border-t border-white/5 bg-brand-dark/30 py-16">
+        <div class="section-container">
+            <h2 class="text-2xl font-bold md:text-3xl">Where Your Gift Goes</h2>
+            <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {
+                    [
+                        'Training for decoys, operations, and media',
+                        'Hardship fund for background checks',
+                        'Technology and field equipment',
+                        'Travel and operation logistics',
+                        'Legal review and compliance',
+                        'Live prayer call hosting',
+                        'Team expansion nationwide',
+                        'Fundraiser materials for supporters'
+                    ].map((item) => (
+                        <div class="card-surface p-5">
+                            <p class="text-sm text-white/70">{item}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section id="fundraiser" class="section-container py-16 md:py-24">
+        <div class="card-surface mx-auto max-w-3xl p-10 text-center">
+            <p class="tagline mb-3">Peer-to-Peer</p>
+            <h2 class="text-3xl font-bold">Start a Fundraiser</h2>
+            <p class="mx-auto mt-4 max-w-xl text-white/70">
+                Create your own fundraising page with organization-provided materials. Rally your community to fund the mission.
+            </p>
+            <button class="btn-primary mt-8" onclick="alert('Givebutter peer-to-peer fundraiser — connect at launch')">Start Your Fundraiser</button>
+        </div>
+    </section>
+</Layout>
+
+<script>
+    // noop - buttons use onclick for draft demo
+</script>

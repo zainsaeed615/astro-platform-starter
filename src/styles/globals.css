@@ -1,78 +1,92 @@
 @import 'tailwindcss';
 
 @theme {
-    --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --color-primary: #f67280;
-    --color-primary-content: #101828;
-    --color-complementary: #355c7d;
-    --background-image-noise: linear-gradient(
-            to bottom,
-            color-mix(in oklab, var(--color-gray-950) 0%, transparent),
-            color-mix(in oklab, var(--color-gray-950) 100%, transparent)
-        ),
-        url('/images/noise.png');
+    --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Oswald', ui-sans-serif, system-ui, sans-serif;
+    --color-brand-black: #050505;
+    --color-brand-dark: #0a0a0a;
+    --color-brand-gray: #141414;
+    --color-brand-muted: #888888;
+    --color-brand-silver: #c0c0c0;
+    --color-brand-blue: #00a3ff;
+    --color-brand-blue-dark: #0066cc;
+    --color-brand-white: #ffffff;
+    --background-image-hero-gradient: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0, 163, 255, 0.18), transparent),
+        radial-gradient(ellipse 50% 40% at 80% 60%, rgba(0, 102, 204, 0.08), transparent);
+    --background-image-blue-gradient: linear-gradient(135deg, #00a3ff 0%, #0066cc 50%, #0044aa 100%);
+    --background-image-card-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
 }
 
 @layer base {
-    h1 {
-        @apply text-4xl font-bold tracking-tight sm:text-5xl;
+    html {
+        scroll-behavior: smooth;
     }
 
-    h2 {
-        @apply text-2xl font-bold sm:text-3xl;
+    body {
+        @apply bg-brand-black text-brand-white font-sans antialiased;
     }
 
-    a:not(.btn) {
-        @apply underline transition hover:opacity-80;
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: var(--font-display);
+        @apply tracking-wide uppercase;
     }
 
-    pre {
-        @apply p-6 overflow-x-auto rounded-lg;
-    }
-
-    :not(pre) > code {
-        @apply px-1 py-0.5 font-mono rounded bg-gray-900 text-primary;
-        font-size: 0.9em;
+    a:not(.no-underline) {
+        @apply transition-colors duration-200;
     }
 }
 
 @layer components {
-    .markdown {
-        > * {
-            @apply my-6;
-        }
-
-        :where(h1, h2) {
-            @apply mt-12 mb-6;
-        }
-
-        > :first-child {
-            @apply mt-0;
-        }
-
-        > :last-child {
-            @apply mb-0;
-        }
-    }
-
-    .btn {
-        @apply inline-flex items-center justify-center gap-2 bg-primary text-primary-content cursor-pointer text-center font-semibold no-underline transition-colors;
-        padding: var(--btn-py, 0.875rem) var(--btn-px, 1.25rem);
-        font-size: var(--btn-font-size, 0.875rem);
-        border-radius: var(--btn-border-radius, 0.25rem);
+    .btn-primary {
+        @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-display text-sm font-semibold uppercase tracking-widest text-white no-underline transition-all duration-300;
+        background: var(--background-image-blue-gradient);
+        box-shadow: 0 0 24px rgba(0, 163, 255, 0.25);
 
         &:hover {
-            @apply bg-primary/85;
-        }
-
-        &:disabled {
-            @apply text-gray-400 bg-gray-700;
+            box-shadow: 0 0 32px rgba(0, 163, 255, 0.45);
+            transform: translateY(-1px);
         }
     }
 
-    .btn-lg {
-        --btn-font-size: 1.125rem;
-        --btn-px: 1.5rem;
-        --btn-py: 1.125rem;
+    .btn-outline {
+        @apply inline-flex items-center justify-center gap-2 border border-white/20 bg-white/5 px-6 py-3 font-display text-sm font-semibold uppercase tracking-widest text-white no-underline backdrop-blur-sm transition-all duration-300;
+
+        &:hover {
+            @apply border-brand-blue/50 bg-brand-blue/10;
+        }
+    }
+
+    .section-container {
+        @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    }
+
+    .card-surface {
+        @apply rounded-xl border border-white/10 bg-brand-gray/80 backdrop-blur-sm;
+        background-image: var(--background-image-card-gradient);
+    }
+
+    .gradient-text {
+        @apply bg-clip-text text-transparent;
+        background-image: var(--background-image-blue-gradient);
+    }
+
+    .tagline {
+        @apply font-display text-xs font-semibold uppercase tracking-[0.3em] text-brand-blue;
+    }
+
+    .hero-glow {
+        background-image: var(--background-image-hero-gradient);
+    }
+
+    .nav-link {
+        @apply font-display text-xs uppercase tracking-widest text-white/70 no-underline transition-colors duration-200;
+
+        &:hover,
+        &.active {
+            @apply text-brand-blue;
+        }
     }
 }

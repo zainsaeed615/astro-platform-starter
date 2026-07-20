@@ -1,21 +1,171 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
+import ProductCard from '../components/ProductCard.astro';
+import DonationThermometer from '../components/DonationThermometer';
+import { products } from '../data/products';
+import { siteConfig } from '../data/site';
 
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+const featuredProducts = products.filter((p) => p.featured);
 ---
 
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-8" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title="Home">
+    <!-- Hero -->
+    <section class="relative min-h-[90vh] overflow-hidden">
+        <div class="hero-glow absolute inset-0"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(0,163,255,0.08),transparent_50%)]"></div>
+        <div class="section-container relative flex min-h-[90vh] flex-col items-center justify-center py-20 text-center">
+            <img src="/logo.png" alt="Operation 17:2" class="mb-8 h-32 w-32 rounded-full object-cover ring-2 ring-brand-blue/30 shadow-[0_0_60px_rgba(0,163,255,0.3)] md:h-44 md:w-44" />
+            <p class="tagline mb-4">{siteConfig.tagline}</p>
+            <h1 class="max-w-5xl text-4xl font-bold leading-tight md:text-6xl lg:text-7xl">
+                Protecting Children.<br />
+                <span class="gradient-text">Hunting Predators.</span><br />
+                Bringing Justice.
+            </h1>
+            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-white/70">{siteConfig.mission}</p>
+            <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+                <a href="/get-involved/apply" class="btn-primary no-underline">Join the Mission</a>
+                <a href="/donate" class="btn-outline no-underline">Donate Now</a>
+                <a href="/shop" class="btn-outline no-underline">Shop Apparel</a>
+            </div>
+            <p class="mt-8 font-display text-xs uppercase tracking-[0.3em] text-white/40">{siteConfig.scripture.reference} — {siteConfig.scripture.text}</p>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="border-y border-white/5 bg-brand-dark/50">
+        <div class="section-container py-12">
+            <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+                <div class="text-center">
+                    <p class="font-display text-3xl font-bold text-brand-blue md:text-4xl">847</p>
+                    <p class="mt-1 text-xs uppercase tracking-widest text-white/50">Supporters</p>
+                </div>
+                <div class="text-center">
+                    <p class="font-display text-3xl font-bold text-brand-blue md:text-4xl">2x</p>
+                    <p class="mt-1 text-xs uppercase tracking-widest text-white/50">Monthly Prayer Calls</p>
+                </div>
+                <div class="text-center">
+                    <p class="font-display text-3xl font-bold text-brand-blue md:text-4xl">5</p>
+                    <p class="mt-1 text-xs uppercase tracking-widest text-white/50">Active Teams</p>
+                </div>
+                <div class="text-center">
+                    <p class="font-display text-3xl font-bold text-brand-blue md:text-4xl">100%</p>
+                    <p class="mt-1 text-xs uppercase tracking-widest text-white/50">Mission Driven</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="section-container py-20 md:py-28">
+        <div class="grid items-center gap-12 lg:grid-cols-2">
+            <div>
+                <p class="tagline mb-3">Our Mission</p>
+                <h2 class="text-3xl font-bold md:text-4xl">Protecting the Innocent</h2>
+                <p class="mt-6 leading-relaxed text-white/70">
+                    Welcome to Operation 17:2, where every purchase and every donation helps us in our critical mission: to protect our children and get child predators off the street. Join our community as we stand together against child exploitation.
+                </p>
+                <p class="mt-4 leading-relaxed text-white/70">
+                    We're grateful for your support in building a safer world. Every decoy trained, every predator confronted, every team launched — none of it happens without people like you.
+                </p>
+                <a href="/about/mission" class="btn-outline mt-8 inline-flex no-underline">Learn About Our Mission →</a>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="card-surface p-6">
+                    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="font-display text-sm font-semibold uppercase">Detect</h3>
+                    <p class="mt-2 text-sm text-white/50">Identify offenders through trained online decoy operations.</p>
+                </div>
+                <div class="card-surface p-6">
+                    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
+                    <h3 class="font-display text-sm font-semibold uppercase">Protect</h3>
+                    <p class="mt-2 text-sm text-white/50">Shield vulnerable children through prayer, action, and advocacy.</p>
+                </div>
+                <div class="card-surface p-6">
+                    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 17.5 3 6V3h3l11.5 11.5"/><path d="M13 19l6-6"/><path d="m16 16 5 5"/></svg>
+                    </div>
+                    <h3 class="font-display text-sm font-semibold uppercase">Defend</h3>
+                    <p class="mt-2 text-sm text-white/50">Confront predators lawfully and hand evidence to law enforcement.</p>
+                </div>
+                <div class="card-surface p-6">
+                    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                    </div>
+                    <h3 class="font-display text-sm font-semibold uppercase">Pray</h3>
+                    <p class="mt-2 text-sm text-white/50">Spiritual covering for every operation and every team member.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Goal -->
+    <section class="border-y border-white/5 bg-brand-dark/30 py-20">
+        <div class="section-container">
+            <div class="grid items-center gap-12 lg:grid-cols-2">
+                <div>
+                    <p class="tagline mb-3">Fund the Mission</p>
+                    <h2 class="text-3xl font-bold md:text-4xl">The Mission Doesn't Advance Without You</h2>
+                    <p class="mt-6 text-white/70">
+                        Every decoy trained, every predator confronted, every team launched in a new state — none of it happens without the people who fund it. When you give, you are on the team.
+                    </p>
+                    <a href="/donate" class="btn-primary mt-8 inline-flex no-underline">Give Today</a>
+                </div>
+                <DonationThermometer client:load goal={siteConfig.donations.goal} raised={siteConfig.donations.raised} donors={siteConfig.donations.donors} />
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section-container py-20 md:py-28">
+        <div class="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+                <p class="tagline mb-3">Mission-Driven Apparel</p>
+                <h2 class="text-3xl font-bold md:text-4xl">Wear Your Support</h2>
+                <p class="mt-4 max-w-xl text-white/60">Every purchase supports our commitment to child protection. Quality, functionality, and purpose in every piece.</p>
+            </div>
+            <a href="/shop" class="btn-outline no-underline">View All Products →</a>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredProducts.map((product) => <ProductCard product={product} />)}
+        </div>
+    </section>
+
+    <!-- Get Involved CTA -->
+    <section class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-blue/10 to-transparent"></div>
+        <div class="section-container relative py-20 md:py-28">
+            <div class="card-surface mx-auto max-w-4xl p-10 text-center md:p-16">
+                <p class="tagline mb-3">Get Involved</p>
+                <h2 class="text-3xl font-bold md:text-5xl">Stand With Us</h2>
+                <p class="mx-auto mt-6 max-w-2xl text-white/70">
+                    Prayer warriors, media documenters, online decoys, operations members, and leaders — the mission needs every role filled. Apply today and join a team that refuses to look away.
+                </p>
+                <div class="mt-10 flex flex-wrap justify-center gap-4">
+                    <a href="/get-involved/apply" class="btn-primary no-underline">Apply Now</a>
+                    <a href="/live-prayer" class="btn-outline no-underline">Join Prayer Calls</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram / Connect -->
+    <section class="border-t border-white/5 bg-brand-dark/50 py-20">
+        <div class="section-container text-center">
+            <p class="tagline mb-3">Follow the Mission</p>
+            <h2 class="text-3xl font-bold">Connect With Us</h2>
+            <p class="mx-auto mt-4 max-w-xl text-white/60">Stay updated on operations, prayer calls, and new merchandise.</p>
+            <a
+                href="https://www.instagram.com/officialgarrettgross"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-primary mt-8 inline-flex no-underline"
+            >
+                Follow on Instagram →
+            </a>
+        </div>
+    </section>
 </Layout>

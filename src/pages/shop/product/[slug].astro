@@ -1,0 +1,44 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import AddToCartButton from '../../../components/AddToCartButton';
+import { getProductBySlug, products } from '../../../data/products';
+
+export function getStaticPaths() {
+    return products.map((product) => ({ params: { slug: product.slug } }));
+}
+
+const { slug } = Astro.params;
+const product = getProductBySlug(slug!);
+---
+
+<Layout title={product.name} description={product.description}>
+    <section class="section-container py-12 md:py-20">
+        <nav class="mb-8 text-sm text-white/40">
+            <a href="/shop" class="no-underline hover:text-brand-blue">Shop</a>
+            <span class="mx-2">/</span>
+            <span class="text-white/70">{product.name}</span>
+        </nav>
+
+        <div class="grid gap-12 lg:grid-cols-2">
+            <div class="card-surface overflow-hidden">
+                <div class="aspect-square bg-gradient-to-br from-brand-gray to-brand-black">
+                    <img src={product.image} alt={product.name} class="h-full w-full object-cover" />
+                </div>
+            </div>
+
+            <div>
+                {product.badge && (
+                    <span class="rounded-full bg-brand-blue px-3 py-1 font-display text-[10px] font-semibold uppercase tracking-wider">{product.badge}</span>
+                )}
+                <h1 class="mt-4 text-3xl font-bold md:text-4xl">{product.name}</h1>
+                <p class="mt-2 font-display text-2xl font-bold text-brand-blue">${product.price.toFixed(2)}</p>
+                <p class="mt-6 leading-relaxed text-white/70">{product.description}</p>
+                <p class="mt-4 text-sm text-white/40">Every purchase directly supports Operation 17:2 child protection operations.</p>
+
+                <div class="mt-8">
+                    <AddToCartButton client:load product={product} />
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
