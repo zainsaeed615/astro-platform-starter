@@ -1,5 +1,11 @@
 # Operation 17:2 — Website Redesign Draft
 
+## Live Preview
+
+**[Open Preview →](https://sparkling-tanuki-9ce643.netlify.app/)**
+
+Password (if prompted): `My-Drop-Site`
+
 Bold, masculine, rugged redesign for [op17two.com](https://www.op17two.com/) built with Astro + Tailwind CSS + React.
 
 ## Design
