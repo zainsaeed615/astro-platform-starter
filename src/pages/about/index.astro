@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+
+<Layout title="About Us" description="Learn about Operation 17:2 — our mission, values, and leadership.">
+    <PageHero label="About Us" title="Who We Are" description="A Christ-centered organization standing against child exploitation with bold action, compassion, and biblical conviction." />
+
+    <section class="section-container py-16">
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <a href="/about/mission" class="card-surface group p-8 no-underline transition-all hover:border-brand-blue/30">
+                <h3 class="font-display text-lg font-semibold uppercase group-hover:text-brand-blue">Mission</h3>
+                <p class="mt-3 text-sm text-white/60">Our calling to protect children and bring predators to justice.</p>
+            </a>
+            <a href="/about/how-it-works" class="card-surface group p-8 no-underline transition-all hover:border-brand-blue/30">
+                <h3 class="font-display text-lg font-semibold uppercase group-hover:text-brand-blue">How It Works</h3>
+                <p class="mt-3 text-sm text-white/60">From detection to confrontation to lawful handoff.</p>
+            </a>
+            <a href="/about/values" class="card-surface group p-8 no-underline transition-all hover:border-brand-blue/30">
+                <h3 class="font-display text-lg font-semibold uppercase group-hover:text-brand-blue">Statement of Faith</h3>
+                <p class="mt-3 text-sm text-white/60">The biblical foundation that drives everything we do.</p>
+            </a>
+            <a href="/about/leadership" class="card-surface group p-8 no-underline transition-all hover:border-brand-blue/30">
+                <h3 class="font-display text-lg font-semibold uppercase group-hover:text-brand-blue">Leadership & Team</h3>
+                <p class="mt-3 text-sm text-white/60">Meet the people leading the mission forward.</p>
+            </a>
+        </div>
+    </section>
+</Layout>

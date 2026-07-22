@@ -1,0 +1,141 @@
+---
+import ProductCard from './ProductCard.astro';
+import type { Product } from '../data/products';
+
+interface Props {
+    products: Product[];
+}
+
+const { products } = Astro.props;
+const featuredProducts = products.filter((p) => p.featured);
+const heroProduct = featuredProducts[0] || products[0];
+const sideProducts = featuredProducts.slice(1);
+
+const categories = [
+    { name: 'Shirts & Tees', count: 3, image: '/products/protector-tee.jpg' },
+    { name: 'Hoodies', count: 1, image: '/products/hoodie.jpg' },
+    { name: 'Headwear', count: 3, image: '/products/snapback.jpg' },
+    { name: 'Accessories', count: 2, image: '/products/protector-tee.jpg' }
+];
+---
+
+<section class="mission-apparel-section relative overflow-hidden py-28 md:py-36">
+    <div class="absolute inset-0 bg-brand-black"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(0,200,255,0.05),transparent_60%)]"></div>
+
+    <div class="section-container relative">
+        <!-- Section header -->
+        <div class="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
+            <div class="max-w-2xl">
+                <p class="section-label">Mission Apparel</p>
+                <h2 class="text-5xl font-normal leading-[0.95] md:text-6xl lg:text-7xl">
+                    Wear The Mission.<br /><span class="gradient-text">Fund The Fight.</span>
+                </h2>
+                <p class="mt-5 text-lg leading-relaxed text-white/55">
+                    Premium apparel designed with purpose. Every garment carries the Operation 17:2 message — and 100% of proceeds fuel child protection operations.
+                </p>
+            </div>
+            <div class="flex items-center gap-6 rounded-sm border border-white/[0.08] bg-white/[0.02] px-8 py-5">
+                <div class="text-center">
+                    <p class="font-display text-3xl text-brand-blue">100%</p>
+                    <p class="text-[10px] uppercase tracking-widest text-white/35">To Mission</p>
+                </div>
+                <div class="h-10 w-px bg-white/10"></div>
+                <div class="text-center">
+                    <p class="font-display text-3xl text-white">8+</p>
+                    <p class="text-[10px] uppercase tracking-widest text-white/35">Products</p>
+                </div>
+                <div class="h-10 w-px bg-white/10"></div>
+                <div class="text-center">
+                    <p class="font-display text-3xl text-white">USA</p>
+                    <p class="text-[10px] uppercase tracking-widest text-white/35">Shipped</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category strip -->
+        <div class="mt-14 grid grid-cols-2 gap-3 md:grid-cols-4">
+            {
+                categories.map((cat) => (
+                    <a href="/shop" class="group relative overflow-hidden rounded-sm no-underline">
+                        <div class="relative aspect-[16/10] overflow-hidden">
+                            <img src={cat.image} alt={cat.name} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                        </div>
+                        <div class="absolute inset-x-0 bottom-0 p-4">
+                            <p class="font-display text-sm uppercase tracking-wider text-white">{cat.name}</p>
+                            <p class="text-[10px] uppercase tracking-widest text-brand-blue">{cat.count} items</p>
+                        </div>
+                    </a>
+                ))
+            }
+        </div>
+
+        <!-- Editorial product layout -->
+        <div class="mt-12 grid gap-4 lg:grid-cols-12 lg:grid-rows-2">
+            <!-- Hero product - large spotlight -->
+            <a href={`/shop/product/${heroProduct.slug}`} class="group relative overflow-hidden rounded-sm border border-white/[0.08] bg-brand-dark no-underline lg:col-span-7 lg:row-span-2">
+                <div class="grid h-full lg:grid-cols-2">
+                    <div class="relative aspect-square overflow-hidden lg:aspect-auto">
+                        <img src={heroProduct.image} alt={heroProduct.name} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        {heroProduct.badge && (
+                            <span class="absolute left-5 top-5 rounded-sm bg-brand-blue px-3 py-1.5 font-display text-xs uppercase tracking-widest shadow-lg shadow-brand-blue/40">{heroProduct.badge}</span>
+                        )}
+                    </div>
+                    <div class="flex flex-col justify-center p-8 md:p-10 lg:p-12">
+                        <p class="font-display text-xs uppercase tracking-[0.3em] text-brand-blue">Featured Drop</p>
+                        <h3 class="mt-4 font-display text-3xl uppercase leading-tight tracking-wide text-white md:text-4xl lg:text-5xl">{heroProduct.name}</h3>
+                        <p class="mt-4 text-sm leading-relaxed text-white/50 line-clamp-3">{heroProduct.description}</p>
+                        <div class="mt-8 flex items-center gap-6">
+                            <span class="font-display text-4xl tracking-wide text-brand-blue">${heroProduct.price.toFixed(2)}</span>
+                            <span class="inline-flex items-center gap-2 font-display text-sm uppercase tracking-widest text-white/40 transition-colors group-hover:text-brand-blue">
+                                Shop Now
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                        <div class="mt-8 rounded-sm border border-brand-blue/20 bg-brand-blue/[0.05] p-4">
+                            <p class="text-xs uppercase tracking-widest text-brand-blue/80">Your Purchase Impact</p>
+                            <p class="mt-1 text-sm text-white/55">Buying this tee funds 30 minutes of decoy training — directly protecting children.</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Side products -->
+            {
+                sideProducts.map((product) => (
+                    <a href={`/shop/product/${product.slug}`} class="group relative overflow-hidden rounded-sm border border-white/[0.08] bg-brand-dark no-underline lg:col-span-5">
+                        <div class="flex h-full items-center gap-0 sm:gap-0">
+                            <div class="relative h-full w-2/5 min-h-[180px] overflow-hidden sm:w-1/3">
+                                <img src={product.image} alt={product.name} class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                {product.badge && (
+                                    <span class="absolute left-3 top-3 rounded-sm bg-brand-blue/90 px-2 py-1 font-display text-[10px] uppercase tracking-wider">{product.badge}</span>
+                                )}
+                            </div>
+                            <div class="flex flex-1 flex-col justify-center p-5 md:p-6">
+                                <p class="font-display text-[10px] uppercase tracking-[0.25em] text-white/35">{product.category}</p>
+                                <h3 class="mt-2 font-display text-lg uppercase tracking-wide text-white group-hover:text-brand-blue md:text-xl">{product.name}</h3>
+                                <p class="mt-3 font-display text-2xl text-brand-blue">${product.price.toFixed(2)}</p>
+                            </div>
+                        </div>
+                    </a>
+                ))
+            }
+        </div>
+
+        <!-- Bottom CTA bar -->
+        <div class="relative mt-12 overflow-hidden rounded-sm">
+            <img src="/images/shop-banner.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" aria-hidden="true" />
+            <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/60"></div>
+            <div class="relative flex flex-col items-start justify-between gap-6 p-8 md:flex-row md:items-center md:p-12">
+                <div>
+                    <p class="font-display text-2xl uppercase tracking-wide text-white md:text-3xl">Every Garment. Every Dollar. Every Child.</p>
+                    <p class="mt-2 text-white/50">Browse the full collection — shirts, hoodies, hats, and accessories.</p>
+                </div>
+                <div class="flex shrink-0 gap-4">
+                    <a href="/shop" class="btn-primary no-underline">Shop Full Collection</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

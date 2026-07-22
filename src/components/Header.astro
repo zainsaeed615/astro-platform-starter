@@ -1,30 +1,83 @@
 ---
-import Logo from '../components/Logo.astro';
+import { mainNav } from '../data/navigation';
+import CartButton from './CartButton';
 
-const navItems = [
-    { linkText: 'Home', href: '/' },
-    { linkText: 'Revalidation', href: '/revalidation' },
-    { linkText: 'Image CDN', href: '/image-cdn' },
-    { linkText: 'Edge Function', href: '/edge' },
-    { linkText: 'Blobs', href: '/blobs' }
-];
+const currentPath = Astro.url.pathname;
 ---
 
-<nav class="flex flex-wrap items-center gap-4 pt-6 pb-16 sm:pt-12 sm:pb-24">
-    <a href="/">
-        <Logo />
-    </a>
-    {
-        !!navItems?.length && (
-            <ul class="flex flex-wrap gap-x-4 gap-y-1">
-                {navItems.map((item) => (
-                    <li>
-                        <a href={item.href} class="inline-block px-1.5 py-1 sm:px-3 sm:py-2">
-                            {item.linkText}
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        )
-    }
-</nav>
+<header class="sticky top-0 z-50 border-b border-white/[0.06] bg-brand-black/80 backdrop-blur-2xl">
+    <div class="section-container">
+        <div class="flex h-[72px] items-center justify-between gap-4 md:h-20">
+            <a href="/" class="no-underline flex shrink-0 items-center gap-3 group">
+                <img src="/logo.png" alt="Operation 17:2" class="h-11 w-11 rounded-full object-cover ring-1 ring-white/10 transition-all group-hover:ring-brand-blue/40 md:h-12 md:w-12" />
+                <div class="hidden sm:block">
+                    <div class="font-display text-base tracking-[0.12em] text-white md:text-lg">Operation 17:2</div>
+                    <div class="text-[9px] uppercase tracking-[0.3em] text-brand-blue/80">Detect · Protect · Defend</div>
+                </div>
+            </a>
+
+            <nav class="hidden items-center gap-8 xl:flex" aria-label="Main navigation">
+                {
+                    mainNav.map((item) => (
+                        <div class="group relative">
+                            <a
+                                href={item.href}
+                                class:list={[
+                                    'nav-link no-underline',
+                                    currentPath === item.href || currentPath.startsWith(item.href + '/') ? 'active !text-brand-blue' : ''
+                                ]}
+                            >
+                                {item.label}
+                            </a>
+                            {item.children && (
+                                <div class="invisible absolute left-0 top-full z-50 min-w-[240px] translate-y-3 rounded-sm border border-white/10 bg-brand-black/95 p-2 opacity-0 shadow-2xl backdrop-blur-2xl transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                                    {item.children.map((child) => (
+                                        <a
+                                            href={child.href}
+                                            class="block rounded-sm px-4 py-3 font-display text-sm uppercase tracking-wider text-white/60 no-underline transition-colors hover:bg-brand-blue/10 hover:text-brand-blue"
+                                        >
+                                            {child.label}
+                                        </a>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    ))
+                }
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="/donate" class="btn-primary hidden !px-5 !py-2.5 !text-sm md:inline-flex no-underline">Donate</a>
+                <CartButton client:load />
+                <button
+                    id="mobile-menu-btn"
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-white/10 text-white transition-colors hover:border-brand-blue/40 xl:hidden"
+                    aria-label="Open menu"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden border-t border-white/[0.06] xl:hidden">
+        <nav class="section-container space-y-1 py-4">
+            {mainNav.map((item) => (
+                <a href={item.href} class="block rounded-sm px-4 py-3 font-display text-sm uppercase tracking-wider text-white/70 no-underline hover:bg-white/5 hover:text-brand-blue">
+                    {item.label}
+                </a>
+            ))}
+            <a href="/donate" class="btn-primary mt-4 block text-center no-underline">Donate Now</a>
+        </nav>
+    </div>
+</header>
+
+<script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+</script>

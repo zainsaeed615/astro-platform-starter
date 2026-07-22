@@ -1,0 +1,51 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+
+<Layout title="Statement of Faith" description="The biblical values and statement of faith that guide Operation 17:2.">
+    <PageHero label="About Us" title="Statement of Faith & Values" description="Our work is rooted in Scripture, driven by conviction, and governed by integrity." />
+
+    <section class="section-container py-16 md:py-24">
+        <div class="mx-auto max-w-3xl space-y-10">
+            <div class="card-surface p-8">
+                <h3 class="font-display text-lg font-semibold uppercase text-brand-blue">We Believe</h3>
+                <ul class="mt-4 space-y-3 text-white/70">
+                    <li>• The Bible is the inspired, infallible Word of God and our ultimate authority.</li>
+                    <li>• Jesus Christ is Lord — His justice, mercy, and truth define our mission.</li>
+                    <li>• Every child is made in the image of God and deserves protection.</li>
+                    <li>• Predators will be held accountable — through lawful means and divine justice.</li>
+                    <li>• Prayer is not a last resort; it is where the mission starts.</li>
+                </ul>
+            </div>
+
+            <div class="card-surface p-8">
+                <h3 class="font-display text-lg font-semibold uppercase text-brand-blue">Our Values</h3>
+                <div class="mt-6 grid gap-6 sm:grid-cols-2">
+                    {
+                        [
+                            ['Integrity', 'Unimpeachable character on and off the field.'],
+                            ['Lawfulness', 'Every action documented, supervised, and within the law.'],
+                            ['Compassion', 'Protection for victims; prayer even for predators.'],
+                            ['Discipline', 'Restraint under pressure. Courage with control.'],
+                            ['Confidentiality', 'Sensitive matters handled with utmost care.'],
+                            ['Accountability', 'Leaders held to the highest standard.']
+                        ].map(([title, desc]) => (
+                            <div>
+                                <h4 class="font-display text-sm font-semibold uppercase">{title}</h4>
+                                <p class="mt-1 text-sm text-white/60">{desc}</p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <div class="card-surface border-brand-blue/20 p-8">
+                <h3 class="font-display text-lg font-semibold uppercase text-brand-blue">Code of Conduct</h3>
+                <p class="mt-4 text-white/70">
+                    All members operate under a strict code: non-violent, lawful, no detention, no weapons during operations. Nothing is published without leadership sign-off. Background checks are mandatory for every role. [Legal review required before launch.]
+                </p>
+            </div>
+        </div>
+    </section>
+</Layout>

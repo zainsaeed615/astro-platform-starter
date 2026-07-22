@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FundMissionSection from '../../components/FundMissionSection.astro';
+---
+
+<Layout title="Donate" description="Support Operation 17:2 — every gift funds training, operations, and team expansion.">
+    <FundMissionSection />
+
+    <section id="fundraiser" class="section-container py-16 md:py-24">
+        <div class="relative overflow-hidden rounded-sm border border-white/[0.08] bg-brand-dark p-10 text-center md:p-16">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(0,200,255,0.06),transparent_70%)]"></div>
+            <div class="relative">
+                <p class="section-label justify-center before:hidden">Peer-to-Peer</p>
+                <h2 class="text-4xl font-normal md:text-5xl">Start a Fundraiser</h2>
+                <p class="mx-auto mt-4 max-w-xl text-white/55">
+                    Create your own fundraising page with organization-provided materials. Rally your community to fund the mission.
+                </p>
+                <button class="btn-primary mt-8" onclick="alert('Givebutter peer-to-peer fundraiser — connect at launch')">Start Your Fundraiser</button>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<script></script>

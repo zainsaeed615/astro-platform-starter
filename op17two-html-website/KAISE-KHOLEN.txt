@@ -1,0 +1,10 @@
+OPERATION 17:2 — PREMIUM HTML DRAFT v3
+======================================
+
+1. Folder unzip karein
+2. index.html par DOUBLE-CLICK karein
+3. Website browser mein khul jayegi!
+
+NEW in v3:
+- Fund the Mission: live dashboard, impact cards, giving options
+- Mission Apparel: editorial product layout, category strip

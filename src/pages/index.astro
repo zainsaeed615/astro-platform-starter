@@ -1,21 +1,192 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
-
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+import FundMissionSection from '../components/FundMissionSection.astro';
+import MissionApparelSection from '../components/MissionApparelSection.astro';
+import { products } from '../data/products';
+import { siteConfig } from '../data/site';
 ---
 
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-8" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title="Home">
+    <!-- HERO -->
+    <section class="relative min-h-screen overflow-hidden">
+        <img
+            src="/images/hero-banner-team-protect.jpg"
+            alt=""
+            class="absolute inset-0 h-full w-full object-cover object-center"
+            aria-hidden="true"
+        />
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="hero-overlay-bottom absolute inset-x-0 bottom-0 h-48"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_20%,rgba(0,180,255,0.12),transparent_50%)]"></div>
+
+        <div class="section-container relative flex min-h-screen flex-col justify-center py-28 lg:py-32">
+            <div class="grid items-center gap-12 lg:grid-cols-12">
+                <div class="lg:col-span-7 animate-fade-up">
+                    <div class="mb-6 flex items-center gap-4">
+                        <img src="/logo.png" alt="Operation 17:2" class="h-16 w-16 rounded-full object-cover ring-2 ring-brand-blue/40 shadow-[0_0_40px_rgba(0,180,255,0.3)] md:h-20 md:w-20" />
+                        <div>
+                            <p class="font-display text-sm uppercase tracking-[0.35em] text-brand-blue">{siteConfig.tagline}</p>
+                            <p class="mt-1 text-xs uppercase tracking-widest text-white/40">Est. Illinois · Global Impact</p>
+                        </div>
+                    </div>
+
+                    <h1 class="max-w-4xl text-5xl font-normal leading-[0.95] md:text-7xl lg:text-8xl">
+                        Protecting<br />
+                        <span class="gradient-text">Children.</span><br />
+                        Hunting Predators.<br />
+                        <span class="text-white/90">Bringing Justice.</span>
+                    </h1>
+
+                    <p class="mt-8 max-w-xl text-lg leading-relaxed text-white/65 md:text-xl">
+                        {siteConfig.mission}
+                    </p>
+
+                    <div class="mt-10 flex flex-wrap gap-4">
+                        <a href="/get-involved/apply" class="btn-primary no-underline">Join the Mission</a>
+                        <a href="/donate" class="btn-outline no-underline">Donate Now</a>
+                    </div>
+
+                    <p class="mt-10 max-w-lg border-l-2 border-brand-blue/40 pl-5 text-sm italic leading-relaxed text-white/45">
+                        "{siteConfig.scripture.text}" — <span class="not-italic font-display uppercase tracking-wider text-brand-blue/80">{siteConfig.scripture.reference}</span>
+                    </p>
+                </div>
+
+                <div class="hidden lg:col-span-5 lg:block">
+                    <div class="relative">
+                        <div class="absolute -inset-4 rounded-sm bg-brand-blue/10 blur-3xl"></div>
+                        <div class="card-premium relative overflow-hidden p-1">
+                            <img src="/images/mission-team.jpg" alt="Operation 17:2 Team" class="aspect-[4/5] w-full object-cover" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <p class="font-display text-3xl uppercase tracking-wide">On the Front Line</p>
+                                <p class="mt-2 text-sm text-white/60">Detect · Protect · Defend</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="relative border-y border-white/[0.06] bg-brand-dark">
+        <div class="section-container py-16">
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {
+                    [
+                        ['847', 'Mission Supporters'],
+                        ['2x', 'Monthly Prayer Calls'],
+                        ['5', 'Active Field Teams'],
+                        ['100%', 'Mission Driven']
+                    ].map(([num, label]) => (
+                        <div class="stat-card">
+                            <p class="font-display text-5xl tracking-wide text-brand-blue md:text-6xl">{num}</p>
+                            <p class="mt-3 text-xs uppercase tracking-[0.25em] text-white/45">{label}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- MISSION -->
+    <section class="relative overflow-hidden py-24 md:py-32">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_0%_50%,rgba(0,180,255,0.06),transparent_50%)]"></div>
+        <div class="section-container relative">
+            <div class="grid items-center gap-16 lg:grid-cols-2">
+                <div class="relative order-2 lg:order-1">
+                    <div class="absolute -left-6 -top-6 h-24 w-24 border-l-2 border-t-2 border-brand-blue/30"></div>
+                    <div class="absolute -bottom-6 -right-6 h-24 w-24 border-b-2 border-r-2 border-brand-blue/30"></div>
+                    <div class="overflow-hidden rounded-sm">
+                        <img src="/images/mission-team.jpg" alt="Our Mission" class="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-105" />
+                    </div>
+                    <div class="absolute -bottom-8 -right-4 hidden max-w-xs card-surface p-6 md:block">
+                        <p class="font-display text-4xl text-brand-blue">17:2</p>
+                        <p class="mt-2 text-sm leading-relaxed text-white/55">Every child protected. Every predator held accountable. No exceptions.</p>
+                    </div>
+                </div>
+
+                <div class="order-1 lg:order-2">
+                    <p class="section-label">Our Mission</p>
+                    <h2 class="text-4xl font-normal leading-tight md:text-5xl lg:text-6xl">
+                        Protecting the<br /><span class="gradient-text">Innocent</span>
+                    </h2>
+                    <p class="mt-6 text-lg leading-relaxed text-white/65">
+                        Every purchase and every donation fuels our critical work — protecting children and getting predators off the street. We stand together against exploitation with bold action and biblical conviction.
+                    </p>
+                    <p class="mt-4 leading-relaxed text-white/50">
+                        Every decoy trained, every predator confronted, every team launched — none of it happens without people like you who refuse to look away.
+                    </p>
+                    <a href="/about/mission" class="btn-outline mt-10 inline-flex no-underline">Explore Our Mission</a>
+                </div>
+            </div>
+
+            <div class="mt-20 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="mission-pillar">
+                    <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-sm border border-brand-blue/20 bg-brand-blue/10 text-brand-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl uppercase tracking-wide">Detect</h3>
+                    <p class="mt-3 text-sm leading-relaxed text-white/50">Identify offenders through trained, supervised online decoy operations.</p>
+                </div>
+                <div class="mission-pillar">
+                    <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-sm border border-brand-blue/20 bg-brand-blue/10 text-brand-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl uppercase tracking-wide">Protect</h3>
+                    <p class="mt-3 text-sm leading-relaxed text-white/50">Shield vulnerable children through prayer, action, and unwavering advocacy.</p>
+                </div>
+                <div class="mission-pillar">
+                    <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-sm border border-brand-blue/20 bg-brand-blue/10 text-brand-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 17.5 3 6V3h3l11.5 11.5"/><path d="M13 19l6-6"/><path d="m16 16 5 5"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl uppercase tracking-wide">Defend</h3>
+                    <p class="mt-3 text-sm leading-relaxed text-white/50">Confront predators lawfully, document truth, and hand evidence to law enforcement.</p>
+                </div>
+                <div class="mission-pillar">
+                    <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-sm border border-brand-blue/20 bg-brand-blue/10 text-brand-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl uppercase tracking-wide">Pray</h3>
+                    <p class="mt-3 text-sm leading-relaxed text-white/50">Spiritual covering for every operation, every team member, every child at risk.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUND THE MISSION — Premium Section -->
+    <FundMissionSection />
+
+    <!-- MISSION APPAREL — Premium Section -->
+    <MissionApparelSection products={products} />
+
+    <!-- CTA -->
+    <section class="relative overflow-hidden py-24 md:py-32">
+        <img src="/images/mission-team.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" aria-hidden="true" />
+        <div class="absolute inset-0 bg-black/80"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-blue/10 to-transparent"></div>
+        <div class="section-container relative text-center">
+            <p class="section-label justify-center before:hidden">Get Involved</p>
+            <h2 class="mx-auto max-w-3xl text-4xl font-normal md:text-6xl lg:text-7xl">Stand With Us.<br />Join the Fight.</h2>
+            <p class="mx-auto mt-6 max-w-2xl text-lg text-white/60">
+                Prayer warriors, media documenters, online decoys, operations members, and leaders — the mission needs every role filled.
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-4">
+                <a href="/get-involved/apply" class="btn-primary no-underline">Apply Now</a>
+                <a href="/live-prayer" class="btn-outline no-underline">Join Prayer Calls</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONNECT -->
+    <section class="border-t border-white/[0.06] bg-brand-dark py-20">
+        <div class="section-container text-center">
+            <p class="section-label justify-center before:hidden">Follow the Mission</p>
+            <h2 class="text-3xl font-normal md:text-4xl">Stay Connected</h2>
+            <p class="mx-auto mt-4 max-w-lg text-white/50">Operations updates, prayer calls, and new drops — straight from the field.</p>
+            <a href="https://www.instagram.com/officialgarrettgross" target="_blank" rel="noopener noreferrer" class="btn-primary mt-8 inline-flex no-underline">
+                Follow @officialgarrettgross
+            </a>
+        </div>
+    </section>
 </Layout>

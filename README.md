@@ -1,51 +1,64 @@
-# Astro on Netlify Platform Starter
+# Operation 17:2 — Website Redesign Draft
 
-[Live Demo](https://astro-platform-starter.netlify.app/)
+## Live Preview
 
-A modern starter based on Astro.js, Tailwind, and [Netlify Core Primitives](https://docs.netlify.com/core/overview/#develop) (Edge Functions, Image CDN, Blob Store).
+**[Open Preview →](https://sparkling-tanuki-9ce643.netlify.app/)**
 
-## Astro Commands
+Password (if prompted): `My-Drop-Site`
 
-All commands are run from the root of the project, from a terminal:
+Bold, masculine, rugged redesign for [op17two.com](https://www.op17two.com/) built with Astro + Tailwind CSS + React.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Design
 
-## Deploying to Netlify
+- **Colors:** Black background, white text, electric blue gradient accents (matching logo)
+- **Typography:** Oswald (display) + DM Sans (body)
+- **Style:** High-end, action-oriented, community-focused SaaS-quality layout
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/astro-platform-starter)
+## Pages
 
-## Developing Locally
+| Page | Route |
+|------|-------|
+| Home | `/` |
+| About Us | `/about` |
+| Mission | `/about/mission` |
+| How It Works | `/about/how-it-works` |
+| Statement of Faith | `/about/values` |
+| Leadership | `/about/leadership` |
+| Get Involved | `/get-involved` |
+| Apply | `/get-involved/apply` |
+| Role Pages | `/get-involved/*-team` |
+| Donate | `/donate` |
+| Live Prayer | `/live-prayer` |
+| Shop | `/shop` |
+| Product Detail | `/shop/product/[slug]` |
+| Resources | `/resources` |
+| Contact | `/contact` |
+| Legal | `/legal/*` |
 
-| Prerequisites                                                                |
-| :--------------------------------------------------------------------------- |
-| [Node.js](https://nodejs.org/) v18.14+.                                      |
-| (optional) [nvm](https://github.com/nvm-sh/nvm) for Node version management. |
+## Features (Draft)
 
-1. Clone this repository, then run `npm install` in its root directory.
+- E-commerce cart (localStorage) with product variants
+- Live donation thermometer (Givebutter-ready)
+- Volunteer application form (platform-ready)
+- Newsletter signup, contact form
+- Responsive mobile navigation
 
-2. For the starter to have full functionality locally (e.g. edge functions, blob store), please ensure you have an up-to-date version of Netlify CLI. Run:
+## Preview
 
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # static output in dist/
+npm run preview  # preview production build
 ```
-npm install netlify-cli@latest -g
-```
 
-3. Link your local repository to the deployed Netlify site. This will ensure you're using the same runtime version for both local development and your deployed site.
+## Launch Integrations (Not Connected in Draft)
 
-```
-netlify link
-```
+- **Shopify** — apparel store + checkout
+- **Givebutter** — donations, live goals, peer-to-peer fundraisers
+- **Volunteer Platform** — applications + background check gate
+- **Zoom** — live prayer call registration
 
-4. Then, run the Astro.js development server via Netlify CLI:
+## Download
 
-```
-netlify dev
-```
-
-If your browser doesn't navigate to the site automatically, visit [localhost:8888](http://localhost:8888).
+See `op17two-website-redesign-draft.zip` for a portable preview package.

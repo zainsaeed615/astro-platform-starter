@@ -1,0 +1,118 @@
+---
+import DonationDashboard from './DonationDashboard';
+import { siteConfig } from '../data/site';
+
+const givingOptions = [
+    {
+        title: 'Monthly Partner',
+        amount: '$25/mo',
+        desc: 'Sustaining support that lets us plan, train, and grow with confidence.',
+        highlight: true,
+        icon: 'calendar'
+    },
+    {
+        title: 'One-Time Gift',
+        amount: 'Any Amount',
+        desc: 'Make an immediate impact today — every dollar goes directly to the mission.',
+        icon: 'star'
+    },
+    {
+        title: 'Case Giving',
+        amount: 'Direct Impact',
+        desc: 'Fund a specific operation and follow the impact of what you made possible.',
+        icon: 'shield'
+    }
+];
+
+const impactStats = [
+    { value: '$50', label: 'Background check for one volunteer' },
+    { value: '$250', label: 'Decoy training session' },
+    { value: '$1,000', label: 'Field operation deployment' },
+    { value: '$5,000', label: 'New team launch in a state' }
+];
+---
+
+<section class="fund-mission-section relative overflow-hidden py-28 md:py-36">
+    <div class="absolute inset-0 bg-[#020202]"></div>
+    <img src="/images/hero-bg.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-luminosity" aria-hidden="true" />
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-black via-brand-black/95 to-brand-black"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_30%,rgba(0,200,255,0.08),transparent_50%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_70%,rgba(0,119,204,0.06),transparent_50%)]"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 80px 80px;"></div>
+
+    <div class="section-container relative">
+        <div class="mx-auto max-w-3xl text-center">
+            <p class="section-label justify-center">Fund the Mission</p>
+            <h2 class="text-5xl font-normal leading-[0.95] md:text-6xl lg:text-7xl">
+                You May Never Be<br />In The Field — But<br /><span class="gradient-text">You Are On The Team</span>
+            </h2>
+            <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/55">
+                Every decoy trained, every predator confronted, every team launched — none of it happens without the people who fund it.
+            </p>
+        </div>
+
+        <div class="mt-16 grid gap-px overflow-hidden rounded-sm border border-white/[0.08] bg-white/[0.04] sm:grid-cols-2 lg:grid-cols-4">
+            {
+                impactStats.map((stat) => (
+                    <div class="group bg-brand-black/80 p-6 text-center transition-colors hover:bg-brand-blue/[0.04] md:p-8">
+                        <p class="font-display text-3xl tracking-wide text-brand-blue transition-transform group-hover:scale-105 md:text-4xl">{stat.value}</p>
+                        <p class="mt-2 text-xs leading-relaxed uppercase tracking-wider text-white/40">{stat.label}</p>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="mt-16 grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+            <div class="lg:col-span-5">
+                <p class="mb-6 font-display text-sm uppercase tracking-[0.3em] text-white/40">Choose Your Impact</p>
+                <div class="space-y-4">
+                    {
+                        givingOptions.map((opt) => (
+                            <a
+                                href="/donate"
+                                class:list={[
+                                    'group block rounded-sm border p-6 no-underline transition-all duration-500',
+                                    opt.highlight
+                                        ? 'border-brand-blue/40 bg-brand-blue/[0.06] hover:border-brand-blue hover:bg-brand-blue/10 hover:shadow-[0_0_40px_rgba(0,200,255,0.12)]'
+                                        : 'border-white/[0.08] bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04]'
+                                ]}
+                            >
+                                <div class="flex items-start gap-4">
+                                    <div class:list={['flex h-12 w-12 shrink-0 items-center justify-center rounded-sm border', opt.highlight ? 'border-brand-blue/30 bg-brand-blue/10 text-brand-blue' : 'border-white/10 bg-white/5 text-white/50']}>
+                                        {opt.icon === 'calendar' && (
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                        )}
+                                        {opt.icon === 'star' && (
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                        )}
+                                        {opt.icon === 'shield' && (
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                        )}
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between gap-2">
+                                            <h3 class="font-display text-xl uppercase tracking-wide text-white group-hover:text-brand-blue">{opt.title}</h3>
+                                            {opt.highlight && <span class="rounded-sm bg-brand-blue px-2 py-0.5 text-[10px] uppercase tracking-widest text-white">Most Impact</span>}
+                                        </div>
+                                        <p class="mt-1 font-display text-lg text-brand-blue">{opt.amount}</p>
+                                        <p class="mt-2 text-sm leading-relaxed text-white/45">{opt.desc}</p>
+                                    </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="mt-1 shrink-0 text-white/20 transition-all group-hover:translate-x-1 group-hover:text-brand-blue"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                </div>
+                            </a>
+                        ))
+                    }
+                </div>
+
+                <div class="mt-8 flex flex-wrap gap-4">
+                    <a href="/donate" class="btn-primary no-underline">Give Today</a>
+                    <a href="/donate#fundraiser" class="btn-outline no-underline">Start a Fundraiser</a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7">
+                <DonationDashboard client:load goal={siteConfig.donations.goal} raised={siteConfig.donations.raised} donors={siteConfig.donations.donors} />
+            </div>
+        </div>
+    </div>
+</section>

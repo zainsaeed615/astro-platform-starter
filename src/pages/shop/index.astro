@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { products, categories } from '../../data/products';
+
+const category = Astro.url.searchParams.get('category') || 'all';
+const filtered = category === 'all' ? products : products.filter((p) => p.category === category);
+const currentCategory = categories.find((c) => c.slug === category) || categories[0];
+---
+
+<Layout title="Shop" description="Operation 17:2 mission-driven apparel and accessories. Every purchase supports child protection.">
+    <!-- Shop Hero Banner -->
+    <section class="relative overflow-hidden">
+        <img src="/images/shop-banner.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" aria-hidden="true" />
+        <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-black/40"></div>
+        <div class="section-container relative py-24 md:py-32">
+            <p class="section-label">Official Store</p>
+            <h1 class="max-w-2xl text-5xl font-normal md:text-7xl">{currentCategory.name}</h1>
+            <p class="mt-4 max-w-lg text-lg text-white/60">{currentCategory.description}</p>
+        </div>
+    </section>
+
+    <section class="section-container pb-24 pt-12">
+        <div class="mb-12 flex flex-wrap gap-2">
+            {
+                categories.map((cat) => (
+                    <a
+                        href={cat.slug === 'all' ? '/shop' : `/shop?category=${cat.slug}`}
+                        class:list={[
+                            'rounded-sm border px-6 py-2.5 font-display text-sm uppercase tracking-widest no-underline transition-all duration-300',
+                            category === cat.slug
+                                ? 'border-brand-blue bg-brand-blue/15 text-brand-blue shadow-lg shadow-brand-blue/10'
+                                : 'border-white/10 text-white/50 hover:border-white/25 hover:text-white'
+                        ]}
+                    >
+                        {cat.name}
+                    </a>
+                ))
+            }
+        </div>
+
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {filtered.map((product) => <ProductCard product={product} />)}
+        </div>
+    </section>
+</Layout>

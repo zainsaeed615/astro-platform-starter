@@ -1,0 +1,44 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import AddToCartButton from '../../../components/AddToCartButton';
+import { getProductBySlug, products } from '../../../data/products';
+
+export function getStaticPaths() {
+    return products.map((product) => ({ params: { slug: product.slug } }));
+}
+
+const { slug } = Astro.params;
+const product = getProductBySlug(slug!);
+---
+
+<Layout title={product.name} description={product.description}>
+    <section class="section-container py-12 md:py-20">
+        <nav class="mb-10 text-sm uppercase tracking-widest text-white/35">
+            <a href="/shop" class="no-underline hover:text-brand-blue">Shop</a>
+            <span class="mx-3">/</span>
+            <span class="text-white/60">{product.name}</span>
+        </nav>
+
+        <div class="grid gap-16 lg:grid-cols-2">
+            <div class="relative overflow-hidden rounded-sm border border-white/[0.08] bg-black">
+                <img src={product.image} alt={product.name} class="aspect-square w-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+            </div>
+
+            <div class="flex flex-col justify-center">
+                {product.badge && (
+                    <span class="w-fit rounded-sm bg-brand-blue px-3 py-1 font-display text-xs uppercase tracking-widest">{product.badge}</span>
+                )}
+                <p class="mt-4 font-display text-sm uppercase tracking-[0.3em] text-white/35">{product.category}</p>
+                <h1 class="mt-2 text-4xl font-normal md:text-5xl">{product.name}</h1>
+                <p class="mt-4 font-display text-4xl tracking-wide text-brand-blue">${product.price.toFixed(2)}</p>
+                <p class="mt-6 text-lg leading-relaxed text-white/65">{product.description}</p>
+                <p class="mt-4 border-l-2 border-brand-blue/30 pl-4 text-sm text-white/40">100% of proceeds support Operation 17:2 child protection operations.</p>
+
+                <div class="mt-10">
+                    <AddToCartButton client:load product={product} />
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

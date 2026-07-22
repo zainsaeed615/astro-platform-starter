@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { siteConfig } from '../../data/site';
+---
+
+<Layout title="Mission" description="Operation 17:2 mission — protecting children, hunting predators, bringing justice.">
+    <PageHero label="About Us" title="Our Mission" description={siteConfig.mission} />
+
+    <section class="section-container py-16 md:py-24">
+        <div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/70">
+            <p>
+                Operation 17:2 exists because children deserve protection and predators deserve accountability. We are not vigilantes — we are a disciplined, Christ-centered organization that operates within the law, under leadership, and with prayer as our foundation.
+            </p>
+            <p>
+                Every purchase in our shop, every donation, and every volunteer hour directly supports our work: training decoys, documenting confrontations, coordinating with law enforcement, and expanding teams across the country.
+            </p>
+            <blockquote class="border-l-4 border-brand-blue pl-6 italic text-white/80">
+                "{siteConfig.scripture.text}" — {siteConfig.scripture.reference}
+            </blockquote>
+            <p>
+                We reflect the justice, mercy, and truth of Jesus Christ through bold action. We refuse to look away while children are exploited. We stand together — Detect, Protect, Defend.
+            </p>
+        </div>
+        <div class="mt-12 flex flex-wrap gap-4">
+            <a href="/get-involved/apply" class="btn-primary no-underline">Join the Mission</a>
+            <a href="/donate" class="btn-outline no-underline">Support Financially</a>
+        </div>
+    </section>
+</Layout>
