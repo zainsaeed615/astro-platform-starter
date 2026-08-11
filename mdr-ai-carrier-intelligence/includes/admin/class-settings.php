@@ -64,16 +64,38 @@ class Settings {
 		$output['eyebrow']             = sanitize_text_field( $output['eyebrow'] );
 		$output['headline']            = sanitize_text_field( $output['headline'] );
 		$output['description']         = sanitize_textarea_field( $output['description'] );
-		$output['primary_button_text']    = sanitize_text_field( $output['primary_button_text'] );
+		$output['primary_button_text']     = sanitize_text_field( $output['primary_button_text'] );
 		$output['primary_button_subtitle'] = sanitize_text_field( $output['primary_button_subtitle'] );
-		$output['demo_button_text']    = sanitize_text_field( $output['demo_button_text'] );
-		$output['signup_button_text']  = sanitize_text_field( $output['signup_button_text'] );
-		$output['signup_url']          = esc_url_raw( $output['signup_url'] );
-		$output['logo_url']            = esc_url_raw( $output['logo_url'] );
-		$output['accent_color']        = sanitize_hex_color( $output['accent_color'] ) ?: '#3388FF';
-		$output['cta_color']           = sanitize_hex_color( $output['cta_color'] ) ?: '#DA1121';
-		$output['background_color']    = sanitize_hex_color( $output['background_color'] ) ?: '#09090B';
-		$output['max_upload_mb']       = max( 1, min( 50, (int) $output['max_upload_mb'] ) );
+		$output['show_button_subtitle']    = empty( $output['show_button_subtitle'] ) ? 0 : 1;
+		$output['demo_button_text']        = sanitize_text_field( $output['demo_button_text'] );
+		$output['signup_button_text']      = sanitize_text_field( $output['signup_button_text'] );
+		$output['signup_url']              = esc_url_raw( $output['signup_url'] );
+		$output['logo_url']                = esc_url_raw( $output['logo_url'] );
+
+		$color_keys = array(
+			'button_color'           => '#DA1121',
+			'button_hover_color'     => '#911A1E',
+			'button_text_color'      => '#FFFFFF',
+			'accent_color'           => '#3388FF',
+			'background_color'       => '#09090B',
+			'text_color'             => '#F8FAFC',
+			'muted_text_color'       => '#8892A1',
+			'modal_background_color' => '#111827',
+			'modal_overlay_color'    => '#000000',
+			'card_background_color'  => '#FFFFFF',
+			'card_border_color'      => '#3388FF',
+			'progress_color'         => '#3388FF',
+			'signup_button_color'    => '#DA1121',
+			'demo_button_color'      => '#3388FF',
+			'loading_overlay_color'  => '#09090B',
+			'cta_color'              => '#DA1121',
+		);
+
+		foreach ( $color_keys as $key => $fallback ) {
+			$output[ $key ] = \MDR_ACI\Settings::sanitize_color( $output[ $key ] ?? '', $fallback );
+		}
+
+		$output['max_upload_mb']        = max( 1, min( 50, (int) $output['max_upload_mb'] ) );
 		$output['allowed_extensions']  = sanitize_text_field( $output['allowed_extensions'] );
 		$output['delete_after_process'] = empty( $output['delete_after_process'] ) ? 0 : 1;
 		$output['enable_ai_narrative'] = empty( $output['enable_ai_narrative'] ) ? 0 : 1;

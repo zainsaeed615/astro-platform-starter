@@ -3,7 +3,7 @@
  * Plugin Name:       MDR AI Carrier Intelligence
  * Plugin URI:        https://mydrayrate.com/
  * Description:       Above-the-fold AI Carrier Intelligence CTA with secure shipment upload and actionable carrier intelligence reports.
- * Version:           1.0.2
+ * Version:           1.0.3
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            My Dray Rate
@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'MDR_ACI_VERSION', '1.0.2' );
+define( 'MDR_ACI_VERSION', '1.0.3' );
 define( 'MDR_ACI_PLUGIN_FILE', __FILE__ );
 define( 'MDR_ACI_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MDR_ACI_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

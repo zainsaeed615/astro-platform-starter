@@ -4,7 +4,7 @@ Tags: drayage, logistics, ai, carrier intelligence, freight
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,17 @@ CSV, XLS, and XLSX files up to the configured upload size limit.
 No. Reports are generated using built-in analytics. OpenAI is optional for executive summary enrichment.
 
 == Changelog ==
+
+= 1.0.3 =
+* Single crimson upload button with cloud icon (matches MDR design)
+* Full process color customization in Settings → Process Colors
+* CSS variables drive button, modal, loading, report cards, and CTAs
+* Optional upload button subtitle (off by default for single-line button)
+
+= 1.0.2 =
+* Single hero button opens upload modal (matches Replit demo flow)
+* Drag-and-drop moved inside modal — no visible upload zone on page load
+* Upload CTA with title + optional subtitle styling
 
 = 1.0.1 =
 * Fix asset loading when shortcode renders after wp_enqueue_scripts

@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 
 $settings = MDR_ACI\Settings::get();
 ?>
-<div class="mdr-aci__modal mdr-aci-hidden" data-mdr-aci-modal hidden aria-hidden="true">
+<div class="mdr-aci mdr-aci__modal mdr-aci-hidden" data-mdr-aci-modal hidden aria-hidden="true" style="<?php echo esc_attr( MDR_ACI\Settings::css_vars_style() ); ?>">
 	<div class="mdr-aci__modal-overlay" data-mdr-aci-modal-overlay></div>
 	<div class="mdr-aci__modal-dialog" role="dialog" aria-modal="true" aria-labelledby="mdr-aci-modal-title">
 		<div class="mdr-aci__modal-header">

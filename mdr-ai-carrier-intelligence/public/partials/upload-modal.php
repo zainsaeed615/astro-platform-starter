@@ -17,7 +17,7 @@ $accept   = implode( ',', array_map(
 ) );
 $max_mb   = (int) $settings['max_upload_mb'];
 ?>
-<div class="mdr-aci__modal mdr-aci__modal--upload mdr-aci-hidden" data-mdr-aci-upload-modal hidden aria-hidden="true">
+<div class="mdr-aci mdr-aci__modal mdr-aci__modal--upload mdr-aci-hidden" data-mdr-aci-upload-modal hidden aria-hidden="true" style="<?php echo esc_attr( MDR_ACI\Settings::css_vars_style() ); ?>">
 	<div class="mdr-aci__modal-overlay" data-mdr-aci-upload-modal-overlay></div>
 	<div class="mdr-aci__modal-dialog mdr-aci__modal-dialog--upload" role="dialog" aria-modal="true" aria-labelledby="mdr-aci-upload-modal-title">
 		<div class="mdr-aci__modal-header">

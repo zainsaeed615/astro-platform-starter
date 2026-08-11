@@ -44,7 +44,7 @@ class Shortcode {
 		<div
 			class="mdr-aci"
 			id="mdr-aci-root"
-			style="--mdr-aci-accent: <?php echo esc_attr( $settings['accent_color'] ); ?>; --mdr-aci-cta: <?php echo esc_attr( $settings['cta_color'] ); ?>; --mdr-aci-bg: <?php echo esc_attr( $settings['background_color'] ); ?>;"
+			style="<?php echo esc_attr( Settings::css_vars_style() ); ?>"
 			data-mdr-aci-root
 		>
 			<div class="mdr-aci__grid-bg" aria-hidden="true"></div>
@@ -57,7 +57,7 @@ class Shortcode {
 				<?php include MDR_ACI_PLUGIN_DIR . 'public/partials/report.php'; ?>
 			</div>
 
-			<div class="mdr-aci__loading mdr-aci-hidden" data-mdr-aci-loading hidden>
+			<div class="mdr-aci__loading mdr-aci-hidden" data-mdr-aci-loading hidden style="<?php echo esc_attr( Settings::css_vars_style() ); ?>">
 				<div class="mdr-aci__loading-card">
 					<div class="mdr-aci__spinner" aria-hidden="true"></div>
 					<p class="mdr-aci__loading-text" data-mdr-aci-loading-text><?php esc_html_e( 'Analyzing your transportation network…', 'mdr-ai-carrier-intelligence' ); ?></p>

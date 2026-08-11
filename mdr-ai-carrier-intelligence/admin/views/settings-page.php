@@ -42,14 +42,67 @@ $settings = MDR_ACI\Settings::get();
 				<th scope="row"><label for="mdr_aci_logo_url"><?php esc_html_e( 'Logo URL', 'mdr-ai-carrier-intelligence' ); ?></label></th>
 				<td><input name="mdr_aci_settings[logo_url]" id="mdr_aci_logo_url" type="url" class="regular-text" value="<?php echo esc_url( $settings['logo_url'] ); ?>" placeholder="https://..." /></td>
 			</tr>
+		</table>
+
+		<h2 class="title"><?php esc_html_e( 'Process Colors', 'mdr-ai-carrier-intelligence' ); ?></h2>
+		<p class="description"><?php esc_html_e( 'Customize colors for the upload button, modal, loading screen, report cards, and CTAs.', 'mdr-ai-carrier-intelligence' ); ?></p>
+		<table class="form-table" role="presentation">
 			<tr>
-				<th scope="row"><?php esc_html_e( 'Colors', 'mdr-ai-carrier-intelligence' ); ?></th>
+				<th scope="row"><?php esc_html_e( 'Upload Button', 'mdr-ai-carrier-intelligence' ); ?></th>
+				<td>
+					<label><?php esc_html_e( 'Background', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[button_color]" type="color" value="<?php echo esc_attr( $settings['button_color'] ); ?>" /></label>
+					&nbsp;
+					<label><?php esc_html_e( 'Hover', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[button_hover_color]" type="color" value="<?php echo esc_attr( $settings['button_hover_color'] ); ?>" /></label>
+					&nbsp;
+					<label><?php esc_html_e( 'Text', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[button_text_color]" type="color" value="<?php echo esc_attr( $settings['button_text_color'] ); ?>" /></label>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><?php esc_html_e( 'Section & Text', 'mdr-ai-carrier-intelligence' ); ?></th>
+				<td>
+					<label><?php esc_html_e( 'Background', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[background_color]" type="color" value="<?php echo esc_attr( $settings['background_color'] ); ?>" /></label>
+					&nbsp;
+					<label><?php esc_html_e( 'Text', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[text_color]" type="color" value="<?php echo esc_attr( $settings['text_color'] ); ?>" /></label>
+					&nbsp;
+					<label><?php esc_html_e( 'Muted', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[muted_text_color]" type="color" value="<?php echo esc_attr( $settings['muted_text_color'] ); ?>" /></label>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><?php esc_html_e( 'Accent & Progress', 'mdr-ai-carrier-intelligence' ); ?></th>
 				<td>
 					<label><?php esc_html_e( 'Accent', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[accent_color]" type="color" value="<?php echo esc_attr( $settings['accent_color'] ); ?>" /></label>
 					&nbsp;
-					<label><?php esc_html_e( 'CTA', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[cta_color]" type="color" value="<?php echo esc_attr( $settings['cta_color'] ); ?>" /></label>
+					<label><?php esc_html_e( 'Progress Bar', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[progress_color]" type="color" value="<?php echo esc_attr( $settings['progress_color'] ); ?>" /></label>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><?php esc_html_e( 'Upload Modal', 'mdr-ai-carrier-intelligence' ); ?></th>
+				<td>
+					<label><?php esc_html_e( 'Background', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[modal_background_color]" type="color" value="<?php echo esc_attr( $settings['modal_background_color'] ); ?>" /></label>
 					&nbsp;
-					<label><?php esc_html_e( 'Background', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[background_color]" type="color" value="<?php echo esc_attr( $settings['background_color'] ); ?>" /></label>
+					<label><?php esc_html_e( 'Overlay', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[modal_overlay_color]" type="color" value="<?php echo esc_attr( $settings['modal_overlay_color'] ); ?>" /></label>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><?php esc_html_e( 'Report Cards', 'mdr-ai-carrier-intelligence' ); ?></th>
+				<td>
+					<label><?php esc_html_e( 'Tint', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[card_background_color]" type="color" value="<?php echo esc_attr( $settings['card_background_color'] ); ?>" /></label>
+					&nbsp;
+					<label><?php esc_html_e( 'Border', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[card_border_color]" type="color" value="<?php echo esc_attr( $settings['card_border_color'] ); ?>" /></label>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><?php esc_html_e( 'Report CTAs', 'mdr-ai-carrier-intelligence' ); ?></th>
+				<td>
+					<label><?php esc_html_e( 'Signup Button', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[signup_button_color]" type="color" value="<?php echo esc_attr( $settings['signup_button_color'] ); ?>" /></label>
+					&nbsp;
+					<label><?php esc_html_e( 'Demo Button', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[demo_button_color]" type="color" value="<?php echo esc_attr( $settings['demo_button_color'] ); ?>" /></label>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><?php esc_html_e( 'Loading Screen', 'mdr-ai-carrier-intelligence' ); ?></th>
+				<td>
+					<label><?php esc_html_e( 'Overlay', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[loading_overlay_color]" type="color" value="<?php echo esc_attr( $settings['loading_overlay_color'] ); ?>" /></label>
 				</td>
 			</tr>
 		</table>
@@ -62,7 +115,12 @@ $settings = MDR_ACI\Settings::get();
 			</tr>
 			<tr>
 				<th scope="row"><label for="mdr_aci_primary_button_subtitle"><?php esc_html_e( 'Upload Button Subtitle', 'mdr-ai-carrier-intelligence' ); ?></label></th>
-				<td><input name="mdr_aci_settings[primary_button_subtitle]" id="mdr_aci_primary_button_subtitle" type="text" class="regular-text" value="<?php echo esc_attr( $settings['primary_button_subtitle'] ?? '' ); ?>" /></td>
+				<td>
+					<input name="mdr_aci_settings[primary_button_subtitle]" id="mdr_aci_primary_button_subtitle" type="text" class="regular-text" value="<?php echo esc_attr( $settings['primary_button_subtitle'] ?? '' ); ?>" />
+					<p class="description">
+						<label><input name="mdr_aci_settings[show_button_subtitle]" type="checkbox" value="1" <?php checked( 1, (int) ( $settings['show_button_subtitle'] ?? 0 ) ); ?> /> <?php esc_html_e( 'Show subtitle under button text (off = single-line button)', 'mdr-ai-carrier-intelligence' ); ?></label>
+					</p>
+				</td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="mdr_aci_demo_button_text"><?php esc_html_e( 'Demo Button Text', 'mdr-ai-carrier-intelligence' ); ?></label></th>
