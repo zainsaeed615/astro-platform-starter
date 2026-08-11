@@ -51,7 +51,6 @@ class Shortcode {
 
 			<div class="mdr-aci__view mdr-aci__view--cta" data-mdr-aci-view="cta">
 				<?php include MDR_ACI_PLUGIN_DIR . 'public/partials/section-cta.php'; ?>
-				<?php include MDR_ACI_PLUGIN_DIR . 'public/partials/upload-zone.php'; ?>
 			</div>
 
 			<div class="mdr-aci__view mdr-aci__view--report mdr-aci-hidden" data-mdr-aci-view="report" hidden>
@@ -69,6 +68,7 @@ class Shortcode {
 				</div>
 			</div>
 
+			<?php include MDR_ACI_PLUGIN_DIR . 'public/partials/upload-modal.php'; ?>
 			<?php include MDR_ACI_PLUGIN_DIR . 'public/partials/demo-modal.php'; ?>
 		</div>
 		<?php

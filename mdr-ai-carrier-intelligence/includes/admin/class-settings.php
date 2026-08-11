@@ -64,7 +64,8 @@ class Settings {
 		$output['eyebrow']             = sanitize_text_field( $output['eyebrow'] );
 		$output['headline']            = sanitize_text_field( $output['headline'] );
 		$output['description']         = sanitize_textarea_field( $output['description'] );
-		$output['primary_button_text'] = sanitize_text_field( $output['primary_button_text'] );
+		$output['primary_button_text']    = sanitize_text_field( $output['primary_button_text'] );
+		$output['primary_button_subtitle'] = sanitize_text_field( $output['primary_button_subtitle'] );
 		$output['demo_button_text']    = sanitize_text_field( $output['demo_button_text'] );
 		$output['signup_button_text']  = sanitize_text_field( $output['signup_button_text'] );
 		$output['signup_url']          = esc_url_raw( $output['signup_url'] );

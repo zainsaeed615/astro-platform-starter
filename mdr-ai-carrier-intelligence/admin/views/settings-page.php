@@ -61,6 +61,10 @@ $settings = MDR_ACI\Settings::get();
 				<td><input name="mdr_aci_settings[primary_button_text]" id="mdr_aci_primary_button_text" type="text" class="large-text" value="<?php echo esc_attr( $settings['primary_button_text'] ); ?>" /></td>
 			</tr>
 			<tr>
+				<th scope="row"><label for="mdr_aci_primary_button_subtitle"><?php esc_html_e( 'Upload Button Subtitle', 'mdr-ai-carrier-intelligence' ); ?></label></th>
+				<td><input name="mdr_aci_settings[primary_button_subtitle]" id="mdr_aci_primary_button_subtitle" type="text" class="regular-text" value="<?php echo esc_attr( $settings['primary_button_subtitle'] ?? '' ); ?>" /></td>
+			</tr>
+			<tr>
 				<th scope="row"><label for="mdr_aci_demo_button_text"><?php esc_html_e( 'Demo Button Text', 'mdr-ai-carrier-intelligence' ); ?></label></th>
 				<td><input name="mdr_aci_settings[demo_button_text]" id="mdr_aci_demo_button_text" type="text" class="regular-text" value="<?php echo esc_attr( $settings['demo_button_text'] ); ?>" /></td>
 			</tr>
