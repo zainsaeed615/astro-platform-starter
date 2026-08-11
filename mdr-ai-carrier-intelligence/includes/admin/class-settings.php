@@ -88,6 +88,7 @@ class Settings {
 			'signup_button_color'    => '#DA1121',
 			'demo_button_color'      => '#3388FF',
 			'loading_overlay_color'  => '#09090B',
+			'calendar_modal_background_color' => '#FFFFFF',
 			'cta_color'              => '#DA1121',
 		);
 

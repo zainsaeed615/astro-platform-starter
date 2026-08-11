@@ -105,6 +105,13 @@ $settings = MDR_ACI\Settings::get();
 					<label><?php esc_html_e( 'Overlay', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[loading_overlay_color]" type="color" value="<?php echo esc_attr( $settings['loading_overlay_color'] ); ?>" /></label>
 				</td>
 			</tr>
+			<tr>
+				<th scope="row"><?php esc_html_e( 'Calendar Demo Modal', 'mdr-ai-carrier-intelligence' ); ?></th>
+				<td>
+					<label><?php esc_html_e( 'Background', 'mdr-ai-carrier-intelligence' ); ?> <input name="mdr_aci_settings[calendar_modal_background_color]" type="color" value="<?php echo esc_attr( $settings['calendar_modal_background_color'] ?? '#FFFFFF' ); ?>" /></label>
+					<p class="description"><?php esc_html_e( 'White background recommended so the Google Calendar embed displays in light mode.', 'mdr-ai-carrier-intelligence' ); ?></p>
+				</td>
+			</tr>
 		</table>
 
 		<h2 class="title"><?php esc_html_e( 'Call-to-Action Buttons', 'mdr-ai-carrier-intelligence' ); ?></h2>

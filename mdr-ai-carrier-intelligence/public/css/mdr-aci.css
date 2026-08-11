@@ -20,6 +20,7 @@
 	--mdr-aci-signup-bg: #da1121;
 	--mdr-aci-demo-border: #3388ff;
 	--mdr-aci-loading-overlay: #09090b;
+	--mdr-aci-calendar-modal-bg: #ffffff;
 	--mdr-aci-cta: #da1121;
 	--mdr-aci-surface: color-mix(in srgb, var(--mdr-aci-card-bg) 4%, transparent);
 	--mdr-aci-border: color-mix(in srgb, var(--mdr-aci-card-border) 35%, transparent);
@@ -831,6 +832,48 @@ body.mdr-aci-modal-open {
 	width: 100%;
 	min-height: 600px;
 	border: 0;
+}
+
+/* Demo / calendar modal — force light Google Calendar embed */
+.mdr-aci__modal--demo {
+	color-scheme: light;
+}
+
+.mdr-aci__modal--demo .mdr-aci__modal-dialog {
+	background: var(--mdr-aci-calendar-modal-bg, #ffffff);
+	color: #111827;
+	border-color: #e5e7eb;
+}
+
+.mdr-aci__modal--demo .mdr-aci__modal-header {
+	border-bottom-color: #e5e7eb;
+	background: var(--mdr-aci-calendar-modal-bg, #ffffff);
+}
+
+.mdr-aci__modal--demo .mdr-aci__modal-header h3 {
+	color: #111827;
+}
+
+.mdr-aci__modal--demo .mdr-aci__modal-close {
+	background: #f3f4f6;
+	color: #374151;
+}
+
+.mdr-aci__modal--demo .mdr-aci__modal-close:hover,
+.mdr-aci__modal--demo .mdr-aci__modal-close:focus-visible {
+	background: #e5e7eb;
+	color: #111827;
+}
+
+.mdr-aci__modal--demo .mdr-aci__modal-body--calendar {
+	background: var(--mdr-aci-calendar-modal-bg, #ffffff);
+	color-scheme: light;
+}
+
+.mdr-aci__modal--demo .mdr-aci__modal-body--calendar iframe {
+	color-scheme: light;
+	background: #ffffff;
+	min-height: 620px;
 }
 
 /* Animations */

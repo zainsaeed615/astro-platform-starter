@@ -48,6 +48,7 @@ class Settings {
 			'signup_button_color'     => '#DA1121',
 			'demo_button_color'       => '#3388FF',
 			'loading_overlay_color'   => '#09090B',
+			'calendar_modal_background_color' => '#FFFFFF',
 			'cta_color'               => '#DA1121',
 			'max_upload_mb'           => 10,
 			'allowed_extensions'      => 'csv,xls,xlsx',
@@ -122,6 +123,7 @@ class Settings {
 			'--mdr-aci-signup-bg'       => self::sanitize_color( $s['signup_button_color'], '#DA1121' ),
 			'--mdr-aci-demo-border'     => self::sanitize_color( $s['demo_button_color'], '#3388FF' ),
 			'--mdr-aci-loading-overlay' => self::sanitize_color( $s['loading_overlay_color'], '#09090B' ),
+			'--mdr-aci-calendar-modal-bg' => self::sanitize_color( $s['calendar_modal_background_color'], '#FFFFFF' ),
 			'--mdr-aci-cta'             => self::sanitize_color( $s['cta_color'], '#DA1121' ),
 		);
 
@@ -152,5 +154,47 @@ class Settings {
 	public static function max_upload_bytes() {
 		$mb = (int) self::get_option( 'max_upload_mb', 10 );
 		return max( 1, $mb ) * 1024 * 1024;
+	}
+
+	/**
+	 * Calendar embed HTML with light color-scheme for Google Calendar iframe.
+	 *
+	 * @return string
+	 */
+	public static function calendar_embed_html() {
+		$html = (string) self::get_option( 'calendar_embed', '' );
+		if ( '' === trim( $html ) ) {
+			return '';
+		}
+
+		return preg_replace_callback(
+			'/<iframe\b([^>]*)>/i',
+			function ( $matches ) {
+				$attrs = $matches[1];
+				$inject = 'color-scheme:light;background:#ffffff';
+
+				if ( preg_match( '/\sstyle=(["\'])(.*?)\1/i', $attrs, $style_match ) ) {
+					$quote  = $style_match[1];
+					$style  = rtrim( $style_match[2], '; ' );
+					if ( false === stripos( $style, 'color-scheme' ) ) {
+						$style .= ';' . $inject;
+					}
+					if ( false === stripos( $style, 'background' ) ) {
+						$style .= ';background:#ffffff';
+					}
+					$attrs = preg_replace(
+						'/\sstyle=(["\']).*?\1/i',
+						' style=' . $quote . esc_attr( $style ) . $quote,
+						$attrs,
+						1
+					);
+				} else {
+					$attrs .= ' style="border:0;' . esc_attr( $inject ) . '"';
+				}
+
+				return '<iframe' . $attrs . '>';
+			},
+			$html
+		);
 	}
 }
