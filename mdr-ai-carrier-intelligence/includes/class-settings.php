@@ -53,7 +53,7 @@ class Settings {
 			'max_upload_mb'           => 10,
 			'allowed_extensions'      => 'csv,xls,xlsx',
 			'delete_after_process'    => 1,
-			'calendar_embed'          => '<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1B94mQMBn-_iSHRanr1EvljFC4dxhLdSZvZjmyRWvImz-KR4L_u5Eo_IX43DUcMkBhuxOdbktS?gv=true" style="border:0;" width="100%" height="600" frameborder="0"></iframe>',
+			'calendar_embed'          => '<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1B94mQMBn-_iSHRanr1EvljFC4dxhLdSZvZjmyRWvImz-KR4L_u5Eo_IX43DUcMkBhuxOdbktS?gv=true" style="border:0;color-scheme:light;background:#ffffff;" width="100%" height="600" frameborder="0"></iframe>',
 			'enable_ai_narrative'     => 0,
 			'openai_api_key'          => '',
 			'openai_model'            => 'gpt-4o-mini',
