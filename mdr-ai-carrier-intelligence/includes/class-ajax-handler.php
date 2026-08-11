@@ -26,7 +26,12 @@ class Ajax_Handler {
 	 * Handle shipment file upload and report generation.
 	 */
 	public function handle_upload() {
-		check_ajax_referer( 'mdr_aci_upload', 'nonce' );
+		if ( ! check_ajax_referer( 'mdr_aci_upload', 'nonce', false ) ) {
+			wp_send_json_error(
+				array( 'message' => __( 'Security check failed. Please refresh the page and try again.', 'mdr-ai-carrier-intelligence' ) ),
+				403
+			);
+		}
 
 		if ( ! $this->check_rate_limit() ) {
 			wp_send_json_error(

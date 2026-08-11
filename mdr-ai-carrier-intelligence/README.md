@@ -32,3 +32,10 @@ Use `sample-data/sample-shipments.csv` to test the upload flow locally.
 
 - WordPress 6.0+
 - PHP 7.4+ with Zip extension (for XLSX)
+
+## Troubleshooting
+
+- **Upload fails with "File type verification failed"** — Update to v1.0.1+; ensures CSV/XLS/XLSX mime types are registered.
+- **Nothing happens on upload** — Confirm the page uses the **Shortcode** widget (not raw HTML). Hard-refresh to load JS.
+- **Session/security error** — Refresh the page to renew the nonce, then upload again.
+- **Modal hidden behind theme** — v1.0.1 moves the calendar modal to `document.body` with elevated z-index.

@@ -4,7 +4,7 @@ Tags: drayage, logistics, ai, carrier intelligence, freight
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,15 @@ CSV, XLS, and XLSX files up to the configured upload size limit.
 No. Reports are generated using built-in analytics. OpenAI is optional for executive summary enrichment.
 
 == Changelog ==
+
+= 1.0.1 =
+* Fix asset loading when shortcode renders after wp_enqueue_scripts
+* Fix CSV/XLS/XLSX upload validation on WordPress hosts
+* Fix AJAX nonce errors returning proper JSON messages
+* Fix XLSX parser namespace handling
+* Fix demo modal z-index and body scroll lock
+* Improve report empty-state messaging
+* Elementor editor/preview compatibility
 
 = 1.0.0 =
 * Initial release

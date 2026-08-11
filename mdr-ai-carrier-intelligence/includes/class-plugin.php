@@ -46,9 +46,12 @@ class Plugin {
 	private function init_hooks() {
 		add_action( 'init', array( $this, 'load_textdomain' ) );
 
+		new Mime_Types();
 		new Assets();
 		new Shortcode();
 		new Ajax_Handler();
+
+		add_action( 'elementor/loaded', array( $this, 'init_elementor' ) );
 
 		if ( is_admin() ) {
 			new Admin\Settings();
@@ -64,5 +67,12 @@ class Plugin {
 			false,
 			dirname( MDR_ACI_PLUGIN_BASENAME ) . '/languages'
 		);
+	}
+
+	/**
+	 * Bootstrap Elementor hooks when Elementor is active.
+	 */
+	public function init_elementor() {
+		new Elementor_Integration();
 	}
 }

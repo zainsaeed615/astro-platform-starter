@@ -44,7 +44,8 @@ class Spreadsheet_Parser {
 	 * @return array<int, array<string, string>>
 	 */
 	private function parse_csv( $file_path ) {
-		$handle = fopen( $file_path, 'r' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
+		$delimiter = $this->detect_csv_delimiter( $file_path );
+		$handle    = fopen( $file_path, 'r' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 		if ( false === $handle ) {
 			throw new \Exception( __( 'Unable to read CSV file.', 'mdr-ai-carrier-intelligence' ) );
 		}
@@ -52,7 +53,7 @@ class Spreadsheet_Parser {
 		$headers = null;
 		$rows    = array();
 
-		while ( ( $data = fgetcsv( $handle ) ) !== false ) { // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fgetcsv
+		while ( ( $data = fgetcsv( $handle, 0, $delimiter ) ) !== false ) { // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fgetcsv
 			if ( empty( array_filter( $data, 'strlen' ) ) ) {
 				continue;
 			}
@@ -103,13 +104,17 @@ class Spreadsheet_Parser {
 
 		$zip->close();
 
-		$sheet   = simplexml_load_string( $sheet_xml );
-		$matrix  = array();
-		$ns      = $sheet->getNamespaces( true );
-		$main_ns = isset( $ns[''] ) ? $ns[''] : 'http://schemas.openxmlformats.org/spreadsheetml/2006/main';
+		$sheet_xml = $this->strip_xml_namespaces( $sheet_xml );
+		$sheet     = simplexml_load_string( $sheet_xml );
+		if ( false === $sheet || ! isset( $sheet->sheetData ) ) {
+			throw new \Exception( __( 'Unable to parse XLSX worksheet.', 'mdr-ai-carrier-intelligence' ) );
+		}
 
-		foreach ( $sheet->children( $main_ns )->sheetData->row as $row ) {
-			$row_index = (int) $row['r'];
+		$matrix     = array();
+		$row_number = 1;
+
+		foreach ( $sheet->sheetData->row as $row ) {
+			$row_index = isset( $row['r'] ) ? (int) $row['r'] : $row_number;
 			foreach ( $row->c as $cell ) {
 				$ref   = (string) $cell['r'];
 				$col   = preg_replace( '/[0-9]+/', '', $ref );
@@ -130,6 +135,7 @@ class Spreadsheet_Parser {
 				}
 				$matrix[ $row_index ][ $col ] = $value;
 			}
+			++$row_number;
 		}
 
 		ksort( $matrix );
@@ -150,7 +156,11 @@ class Spreadsheet_Parser {
 			return array();
 		}
 
-		$doc     = simplexml_load_string( $xml );
+		$xml = $this->strip_xml_namespaces( $xml );
+		$doc = simplexml_load_string( $xml );
+		if ( false === $doc ) {
+			return array();
+		}
 		$strings = array();
 		$index   = 0;
 
@@ -341,5 +351,49 @@ class Spreadsheet_Parser {
 			$row[ $header ] = isset( $values[ $index ] ) ? trim( (string) $values[ $index ] ) : '';
 		}
 		return $row;
+	}
+
+	/**
+	 * Detect CSV delimiter from the first line.
+	 *
+	 * @param string $file_path File path.
+	 * @return string
+	 */
+	private function detect_csv_delimiter( $file_path ) {
+		$handle = fopen( $file_path, 'r' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
+		if ( false === $handle ) {
+			return ',';
+		}
+
+		$line = fgets( $handle );
+		fclose( $handle ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
+
+		if ( false === $line ) {
+			return ',';
+		}
+
+		$delimiters = array( ',', ';', "\t" );
+		$best       = ',';
+		$max        = 0;
+
+		foreach ( $delimiters as $delimiter ) {
+			$count = substr_count( $line, $delimiter );
+			if ( $count > $max ) {
+				$max  = $count;
+				$best = $delimiter;
+			}
+		}
+
+		return $best;
+	}
+
+	/**
+	 * Remove XML namespaces for simpler parsing.
+	 *
+	 * @param string $xml Raw XML.
+	 * @return string
+	 */
+	private function strip_xml_namespaces( $xml ) {
+		return preg_replace( '/xmlns[^=]+="[^"]+"/', '', $xml );
 	}
 }
