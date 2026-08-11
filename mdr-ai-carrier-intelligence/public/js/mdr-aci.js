@@ -15,27 +15,8 @@
 	});
 
 	function initInstance(root) {
-		const views = {
-			cta: root.querySelector('[data-mdr-aci-view="cta"]'),
-			report: root.querySelector('[data-mdr-aci-view="report"]'),
-		};
-		const loadingEl = root.querySelector('[data-mdr-aci-loading]');
-		const loadingText = root.querySelector('[data-mdr-aci-loading-text]');
-		const progressBar = root.querySelector('[data-mdr-aci-progress-bar]');
-		const progressPercent = root.querySelector('[data-mdr-aci-progress-percent]');
-		const dropzone = root.querySelector('[data-mdr-aci-dropzone]');
-		const fileInput = root.querySelector('[data-mdr-aci-file-input]');
-		const selectedFileEl = root.querySelector('[data-mdr-aci-selected-file]');
-		const errorEl = root.querySelector('[data-mdr-aci-error]');
-		const reportSections = root.querySelector('[data-mdr-aci-report-sections]');
-		const reportMeta = root.querySelector('[data-mdr-aci-report-meta]');
-		const executiveSummary = root.querySelector('[data-mdr-aci-executive-summary]');
-		const disclaimerEl = root.querySelector('[data-mdr-aci-disclaimer]');
-		const signupLink = root.querySelector('[data-mdr-aci-signup]');
 		let modal = root.querySelector('[data-mdr-aci-modal]');
 		let uploadModal = root.querySelector('[data-mdr-aci-upload-modal]');
-
-		let progressTimer = null;
 
 		if (uploadModal && uploadModal.parentElement !== document.body) {
 			document.body.appendChild(uploadModal);
@@ -43,6 +24,72 @@
 		if (modal && modal.parentElement !== document.body) {
 			document.body.appendChild(modal);
 		}
+
+		const modalDialog = uploadModal
+			? uploadModal.querySelector('.mdr-aci__modal-dialog--upload')
+			: null;
+		const modalTitle = uploadModal
+			? uploadModal.querySelector('[data-mdr-aci-modal-title]')
+			: null;
+		const steps = {
+			upload: uploadModal
+				? uploadModal.querySelector('[data-mdr-aci-step="upload"]')
+				: null,
+			processing: uploadModal
+				? uploadModal.querySelector('[data-mdr-aci-step="processing"]')
+				: null,
+			report: uploadModal
+				? uploadModal.querySelector('[data-mdr-aci-step="report"]')
+				: null,
+		};
+		const loadingText = uploadModal
+			? uploadModal.querySelector('[data-mdr-aci-loading-text]')
+			: null;
+		const progressBar = uploadModal
+			? uploadModal.querySelector('[data-mdr-aci-progress-bar]')
+			: null;
+		const progressPercent = uploadModal
+			? uploadModal.querySelector('[data-mdr-aci-progress-percent]')
+			: null;
+		const processingFileEl = uploadModal
+			? uploadModal.querySelector('[data-mdr-aci-processing-file]')
+			: null;
+		const dropzone = uploadModal
+			? uploadModal.querySelector('[data-mdr-aci-dropzone]')
+			: null;
+		const fileInput = uploadModal
+			? uploadModal.querySelector('[data-mdr-aci-file-input]')
+			: null;
+		const selectedFileEl = uploadModal
+			? uploadModal.querySelector('[data-mdr-aci-selected-file]')
+			: null;
+		const errorEl = uploadModal
+			? uploadModal.querySelector('[data-mdr-aci-error]')
+			: null;
+		const reportSections = uploadModal
+			? uploadModal.querySelector('[data-mdr-aci-report-sections]')
+			: null;
+		const reportMeta = uploadModal
+			? uploadModal.querySelector('[data-mdr-aci-report-meta]')
+			: null;
+		const executiveSummary = uploadModal
+			? uploadModal.querySelector('[data-mdr-aci-executive-summary]')
+			: null;
+		const disclaimerEl = uploadModal
+			? uploadModal.querySelector('[data-mdr-aci-disclaimer]')
+			: null;
+		const signupLink = uploadModal
+			? uploadModal.querySelector('[data-mdr-aci-signup]')
+			: null;
+
+		let progressTimer = null;
+		let currentStep = 'upload';
+
+		const stepTitles = {
+			upload: mdrAci.i18n.modalTitleUpload || 'Upload Shipment History',
+			processing: mdrAci.i18n.modalTitleProcessing || 'Analyzing Your Data',
+			report: mdrAci.i18n.modalTitleReport || 'Your Intelligence Report',
+		};
 
 		function show(el) {
 			if (!el) return;
@@ -68,17 +115,50 @@
 			hide(errorEl);
 		}
 
-		function setView(name) {
-			Object.keys(views).forEach(function (key) {
-				if (key === name) {
-					show(views[key]);
+		function setModalStep(step) {
+			currentStep = step;
+			Object.keys(steps).forEach(function (key) {
+				if (key === step) {
+					show(steps[key]);
 				} else {
-					hide(views[key]);
+					hide(steps[key]);
 				}
 			});
+
+			if (modalTitle && stepTitles[step]) {
+				modalTitle.textContent = stepTitles[step];
+			}
+
+			if (modalDialog) {
+				modalDialog.classList.toggle('mdr-aci__modal-dialog--report', step === 'report');
+				modalDialog.classList.toggle('mdr-aci__modal-dialog--processing', step === 'processing');
+			}
 		}
 
-		function startProgress() {
+		function resetFlow() {
+			if (progressTimer) {
+				window.clearInterval(progressTimer);
+				progressTimer = null;
+			}
+			if (fileInput) fileInput.value = '';
+			if (selectedFileEl) hide(selectedFileEl);
+			if (processingFileEl) hide(processingFileEl);
+			if (progressBar) progressBar.style.width = '0%';
+			if (progressPercent) progressPercent.textContent = '0%';
+			if (reportSections) reportSections.innerHTML = '';
+			clearError();
+			setModalStep('upload');
+		}
+
+		function startProgress(fileName) {
+			setModalStep('processing');
+			clearError();
+
+			if (processingFileEl && fileName) {
+				processingFileEl.textContent = fileName;
+				show(processingFileEl);
+			}
+
 			let value = 0;
 			const messages = [
 				mdrAci.i18n.uploading,
@@ -87,7 +167,6 @@
 			];
 			let msgIndex = 0;
 
-			show(loadingEl);
 			if (loadingText) loadingText.textContent = messages[0];
 
 			progressTimer = window.setInterval(function () {
@@ -113,11 +192,6 @@
 			}
 			if (progressBar) progressBar.style.width = '100%';
 			if (progressPercent) progressPercent.textContent = '100%';
-			window.setTimeout(function () {
-				hide(loadingEl);
-				if (progressBar) progressBar.style.width = '0%';
-				if (progressPercent) progressPercent.textContent = '0%';
-			}, 400);
 		}
 
 		function isAllowedFile(file) {
@@ -142,7 +216,6 @@
 
 		function handleFile(file) {
 			clearError();
-			closeUploadModal();
 
 			if (!isAllowedFile(file)) {
 				showError(mdrAci.i18n.invalidType);
@@ -163,7 +236,7 @@
 		}
 
 		function uploadFile(file) {
-			startProgress();
+			startProgress(file.name);
 
 			const formData = new FormData();
 			formData.append('action', 'mdr_aci_upload');
@@ -182,16 +255,22 @@
 					if (!data.success) {
 						const message =
 							(data.data && data.data.message) || mdrAci.i18n.genericError;
+						setModalStep('upload');
 						showError(message);
 						return;
 					}
 
 					renderReport(data.data.report);
-					setView('report');
-					root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					setModalStep('report');
+
+					const reportBody = steps.report;
+					if (reportBody) {
+						reportBody.scrollTop = 0;
+					}
 				})
 				.catch(function () {
 					finishProgress();
+					setModalStep('upload');
 					showError(mdrAci.i18n.genericError);
 				});
 		}
@@ -538,12 +617,14 @@
 			if (!modal) return;
 			hide(modal);
 			modal.setAttribute('aria-hidden', 'true');
-			unlockBodyScroll();
+			if (!uploadModal || uploadModal.hidden) {
+				unlockBodyScroll();
+			}
 		}
 
 		function openUploadModal() {
 			if (!uploadModal) return;
-			clearError();
+			resetFlow();
 			show(uploadModal);
 			uploadModal.setAttribute('aria-hidden', 'false');
 			lockBodyScroll();
@@ -555,6 +636,7 @@
 			if (!uploadModal) return;
 			hide(uploadModal);
 			uploadModal.setAttribute('aria-hidden', 'true');
+			resetFlow();
 			if (!modal || modal.hidden) {
 				unlockBodyScroll();
 			}
@@ -570,7 +652,6 @@
 			document.body.classList.remove('mdr-aci-modal-open');
 		}
 
-		// Event delegation for dynamic + static buttons.
 		root.addEventListener('click', function (e) {
 			const uploadTrigger = e.target.closest('[data-mdr-aci-upload-trigger]');
 			if (uploadTrigger) {
@@ -589,12 +670,36 @@
 			const resetBtn = e.target.closest('[data-mdr-aci-reset]');
 			if (resetBtn) {
 				e.preventDefault();
-				if (fileInput) fileInput.value = '';
-				if (selectedFileEl) hide(selectedFileEl);
-				clearError();
-				setView('cta');
+				resetFlow();
 			}
 		});
+
+		if (uploadModal) {
+			uploadModal.addEventListener('click', function (e) {
+				const demoBtn = e.target.closest('[data-mdr-aci-demo-open]');
+				if (demoBtn) {
+					e.preventDefault();
+					openDemoModal();
+					return;
+				}
+
+				const resetBtn = e.target.closest('[data-mdr-aci-reset]');
+				if (resetBtn) {
+					e.preventDefault();
+					resetFlow();
+					return;
+				}
+
+				if (
+					e.target.matches('[data-mdr-aci-upload-modal-overlay]') ||
+					e.target.closest('[data-mdr-aci-upload-modal-close]')
+				) {
+					if (currentStep !== 'processing') {
+						closeUploadModal();
+					}
+				}
+			});
+		}
 
 		if (dropzone && fileInput) {
 			dropzone.addEventListener('click', function (e) {
@@ -651,21 +756,12 @@
 			});
 		}
 
-		if (uploadModal) {
-			uploadModal.addEventListener('click', function (e) {
-				if (
-					e.target.matches('[data-mdr-aci-upload-modal-overlay]') ||
-					e.target.closest('[data-mdr-aci-upload-modal-close]')
-				) {
-					closeUploadModal();
-				}
-			});
-		}
-
 		document.addEventListener('keydown', function (e) {
 			if (e.key !== 'Escape') return;
 			if (uploadModal && !uploadModal.hidden) {
-				closeUploadModal();
+				if (currentStep !== 'processing') {
+					closeUploadModal();
+				}
 			} else if (modal && !modal.hidden) {
 				closeDemoModal();
 			}

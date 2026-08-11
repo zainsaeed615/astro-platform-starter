@@ -1,6 +1,6 @@
 <?php
 /**
- * Report shell partial (populated via JS).
+ * Report partial — rendered inside upload modal step 3.
  *
  * @package MDR_ACI
  */
@@ -9,9 +9,8 @@ defined( 'ABSPATH' ) || exit;
 
 $settings = MDR_ACI\Settings::get();
 ?>
-<section class="mdr-aci__report" data-mdr-aci-report aria-live="polite">
+<section class="mdr-aci__report mdr-aci__report--in-modal" data-mdr-aci-report aria-live="polite">
 	<header class="mdr-aci__report-header">
-		<p class="mdr-aci__eyebrow"><?php esc_html_e( 'Your AI Carrier Intelligence Report', 'mdr-ai-carrier-intelligence' ); ?></p>
 		<h2 class="mdr-aci__report-title" data-mdr-aci-report-title><?php esc_html_e( 'Network Analysis Complete', 'mdr-ai-carrier-intelligence' ); ?></h2>
 		<p class="mdr-aci__report-meta" data-mdr-aci-report-meta></p>
 		<p class="mdr-aci__report-summary mdr-aci-hidden" data-mdr-aci-executive-summary hidden></p>
