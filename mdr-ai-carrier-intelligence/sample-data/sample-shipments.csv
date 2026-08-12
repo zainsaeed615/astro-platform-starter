@@ -1,0 +1,11 @@
+carrier,origin,destination,cost,date,transit,status
+Pacific Haul Inc,Los Angeles,Phoenix,1250,2025-01-15,3,On Time
+Swift Drayage,Los Angeles,Phoenix,1180,2025-01-18,4,On Time
+Pacific Haul Inc,Long Beach,Dallas,2100,2025-01-20,5,Late
+Harbor Logistics,Long Beach,Dallas,1950,2025-01-22,4,On Time
+Coastal Carriers,Oakland,Seattle,980,2025-02-01,2,On Time
+Pacific Haul Inc,Oakland,Seattle,1050,2025-02-03,3,On Time
+Swift Drayage,Los Angeles,Phoenix,1320,2025-02-05,4,Late
+Harbor Logistics,Long Beach,Chicago,2400,2025-02-08,6,On Time
+Coastal Carriers,Long Beach,Chicago,2550,2025-02-10,7,Late
+Pacific Haul Inc,Los Angeles,Phoenix,1190,2025-02-12,3,On Time
