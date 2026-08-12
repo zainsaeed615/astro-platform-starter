@@ -23,7 +23,7 @@ $max_mb   = (int) $settings['max_upload_mb'];
 		<div class="mdr-aci__modal-header">
 			<h3 id="mdr-aci-upload-modal-title" data-mdr-aci-modal-title><?php esc_html_e( 'Upload Shipment History', 'mdr-ai-carrier-intelligence' ); ?></h3>
 			<button type="button" class="mdr-aci__modal-close mdr-aci__modal-close--upload" data-mdr-aci-upload-modal-close aria-label="<?php esc_attr_e( 'Close', 'mdr-ai-carrier-intelligence' ); ?>">
-				<svg class="mdr-aci__modal-close-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg>
+				<span class="mdr-aci__modal-close-x" aria-hidden="true"></span>
 			</button>
 		</div>
 

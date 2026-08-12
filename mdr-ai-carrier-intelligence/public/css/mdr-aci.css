@@ -833,42 +833,54 @@ body.mdr-aci-modal-open {
 	outline: none;
 }
 
-/* Upload / report modal — red close box with white cross */
-.mdr-aci__modal--upload .mdr-aci__modal-close,
-.mdr-aci__modal--upload .mdr-aci__modal-close--upload {
-	background: var(--mdr-aci-button-bg, #da1121) !important;
-	border-color: var(--mdr-aci-button-bg, #da1121) !important;
+/* Upload / report modal — red close box with CSS-drawn white cross (theme-proof) */
+.mdr-aci.mdr-aci__modal--upload button.mdr-aci__modal-close--upload {
+	position: relative;
+	background-color: var(--mdr-aci-button-bg, #da1121) !important;
+	background-image: none !important;
+	border: none !important;
+	border-radius: 8px !important;
+	box-shadow: none !important;
 	color: #ffffff !important;
-	-webkit-text-fill-color: #ffffff;
+	padding: 0 !important;
+	min-width: 36px;
+	min-height: 36px;
+	width: 36px;
+	height: 36px;
 }
 
-.mdr-aci__modal--upload .mdr-aci__modal-close svg,
-.mdr-aci__modal--upload .mdr-aci__modal-close-icon {
+.mdr-aci.mdr-aci__modal--upload button.mdr-aci__modal-close--upload:hover,
+.mdr-aci.mdr-aci__modal--upload button.mdr-aci__modal-close--upload:focus-visible {
+	background-color: var(--mdr-aci-button-hover, #911a1e) !important;
+	outline: none;
+}
+
+.mdr-aci__modal-close--upload .mdr-aci__modal-close-x {
 	display: block;
-	color: #ffffff !important;
-	fill: none !important;
+	position: relative;
+	width: 14px;
+	height: 14px;
+	pointer-events: none;
 }
 
-.mdr-aci__modal--upload .mdr-aci__modal-close svg path,
-.mdr-aci__modal--upload .mdr-aci__modal-close-icon path {
-	stroke: #ffffff !important;
-	color: #ffffff !important;
+.mdr-aci__modal-close--upload .mdr-aci__modal-close-x::before,
+.mdr-aci__modal-close--upload .mdr-aci__modal-close-x::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 14px;
+	height: 2px;
+	background-color: #ffffff;
+	border-radius: 1px;
 }
 
-.mdr-aci__modal--upload .mdr-aci__modal-close:hover,
-.mdr-aci__modal--upload .mdr-aci__modal-close:focus-visible,
-.mdr-aci__modal--upload .mdr-aci__modal-close--upload:hover,
-.mdr-aci__modal--upload .mdr-aci__modal-close--upload:focus-visible {
-	background: var(--mdr-aci-button-hover, #911a1e) !important;
-	border-color: var(--mdr-aci-button-hover, #911a1e) !important;
-	color: #ffffff !important;
+.mdr-aci__modal-close--upload .mdr-aci__modal-close-x::before {
+	transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.mdr-aci__modal--upload .mdr-aci__modal-close:hover svg path,
-.mdr-aci__modal--upload .mdr-aci__modal-close:focus-visible svg path,
-.mdr-aci__modal--upload .mdr-aci__modal-close--upload:hover svg path,
-.mdr-aci__modal--upload .mdr-aci__modal-close--upload:focus-visible svg path {
-	stroke: #ffffff !important;
+.mdr-aci__modal-close--upload .mdr-aci__modal-close-x::after {
+	transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .mdr-aci__modal-body {
