@@ -4,7 +4,7 @@ Tags: drayage, logistics, ai, carrier intelligence, freight
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.9
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,9 @@ CSV, XLS, and XLSX files up to the configured upload size limit.
 No. Reports are generated using built-in analytics. OpenAI is optional for executive summary enrichment.
 
 == Changelog ==
+
+= 1.1.0 =
+* Fix upload modal close cross: inline white bars + JS style enforcement (Elementor/theme override fix)
 
 = 1.0.9 =
 * Upload modal close: CSS-drawn white cross on red box (bypasses theme SVG overrides)

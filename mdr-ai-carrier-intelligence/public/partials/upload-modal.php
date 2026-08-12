@@ -16,14 +16,22 @@ $accept   = implode( ',', array_map(
 	$allowed
 ) );
 $max_mb   = (int) $settings['max_upload_mb'];
+$close_bg = esc_attr( $settings['button_color'] ?? '#DA1121' );
 ?>
 <div class="mdr-aci mdr-aci__modal mdr-aci__modal--upload mdr-aci-hidden" data-mdr-aci-upload-modal hidden aria-hidden="true" style="<?php echo esc_attr( MDR_ACI\Settings::css_vars_style() ); ?>">
 	<div class="mdr-aci__modal-overlay" data-mdr-aci-upload-modal-overlay></div>
 	<div class="mdr-aci__modal-dialog mdr-aci__modal-dialog--upload" role="dialog" aria-modal="true" aria-labelledby="mdr-aci-upload-modal-title">
 		<div class="mdr-aci__modal-header">
 			<h3 id="mdr-aci-upload-modal-title" data-mdr-aci-modal-title><?php esc_html_e( 'Upload Shipment History', 'mdr-ai-carrier-intelligence' ); ?></h3>
-			<button type="button" class="mdr-aci__modal-close mdr-aci__modal-close--upload" data-mdr-aci-upload-modal-close aria-label="<?php esc_attr_e( 'Close', 'mdr-ai-carrier-intelligence' ); ?>">
-				<span class="mdr-aci__modal-close-x" aria-hidden="true"></span>
+			<button
+				type="button"
+				class="mdr-aci__modal-close mdr-aci__modal-close--upload"
+				data-mdr-aci-upload-modal-close
+				aria-label="<?php esc_attr_e( 'Close', 'mdr-ai-carrier-intelligence' ); ?>"
+				style="background-color:<?php echo $close_bg; ?>;border:0;border-radius:8px;width:36px;height:36px;padding:0;display:inline-flex;align-items:center;justify-content:center;position:relative;cursor:pointer;flex-shrink:0;"
+			>
+				<span class="mdr-aci__modal-close-bar" aria-hidden="true" style="display:block;position:absolute;top:50%;left:50%;width:14px;height:2px;margin-top:-1px;margin-left:-7px;background-color:#ffffff;transform:rotate(45deg);border-radius:1px;pointer-events:none;"></span>
+				<span class="mdr-aci__modal-close-bar" aria-hidden="true" style="display:block;position:absolute;top:50%;left:50%;width:14px;height:2px;margin-top:-1px;margin-left:-7px;background-color:#ffffff;transform:rotate(-45deg);border-radius:1px;pointer-events:none;"></span>
 			</button>
 		</div>
 

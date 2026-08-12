@@ -622,9 +622,34 @@
 			}
 		}
 
+		function ensureUploadCloseButtonStyles() {
+			if (!uploadModal) return;
+			const closeBtn = uploadModal.querySelector('.mdr-aci__modal-close--upload');
+			if (!closeBtn) return;
+
+			const styles = window.getComputedStyle(uploadModal);
+			const red =
+				styles.getPropertyValue('--mdr-aci-button-bg').trim() || '#da1121';
+			const redHover =
+				styles.getPropertyValue('--mdr-aci-button-hover').trim() || '#911a1e';
+
+			closeBtn.style.setProperty('background-color', red, 'important');
+			closeBtn.style.setProperty('border', '0', 'important');
+			closeBtn.style.setProperty('color', '#ffffff', 'important');
+			closeBtn.dataset.mdrAciCloseHover = redHover;
+
+			closeBtn.querySelectorAll('.mdr-aci__modal-close-bar').forEach(function (bar) {
+				bar.style.setProperty('display', 'block', 'important');
+				bar.style.setProperty('background-color', '#ffffff', 'important');
+				bar.style.setProperty('opacity', '1', 'important');
+				bar.style.setProperty('visibility', 'visible', 'important');
+			});
+		}
+
 		function openUploadModal() {
 			if (!uploadModal) return;
 			resetFlow();
+			ensureUploadCloseButtonStyles();
 			show(uploadModal);
 			uploadModal.setAttribute('aria-hidden', 'false');
 			lockBodyScroll();
@@ -766,5 +791,7 @@
 				closeDemoModal();
 			}
 		});
+
+		ensureUploadCloseButtonStyles();
 	}
 })();
