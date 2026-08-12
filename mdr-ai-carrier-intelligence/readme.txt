@@ -4,7 +4,7 @@ Tags: drayage, logistics, ai, carrier intelligence, freight
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,9 @@ CSV, XLS, and XLSX files up to the configured upload size limit.
 No. Reports are generated using built-in analytics. OpenAI is optional for executive summary enrichment.
 
 == Changelog ==
+
+= 1.0.6 =
+* Fix upload modal close button contrast — visible white X on dark header
 
 = 1.0.5 =
 * Google Calendar demo modal uses white background and light color-scheme
