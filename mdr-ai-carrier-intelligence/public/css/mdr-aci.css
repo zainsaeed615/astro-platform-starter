@@ -834,23 +834,41 @@ body.mdr-aci-modal-open {
 }
 
 /* Upload / report modal — red close box with white cross */
-.mdr-aci__modal--upload .mdr-aci__modal-close {
-	background: var(--mdr-aci-button-bg, #da1121);
-	border-color: var(--mdr-aci-button-bg, #da1121);
-	color: #ffffff;
+.mdr-aci__modal--upload .mdr-aci__modal-close,
+.mdr-aci__modal--upload .mdr-aci__modal-close--upload {
+	background: var(--mdr-aci-button-bg, #da1121) !important;
+	border-color: var(--mdr-aci-button-bg, #da1121) !important;
+	color: #ffffff !important;
+	-webkit-text-fill-color: #ffffff;
 }
 
 .mdr-aci__modal--upload .mdr-aci__modal-close svg,
-.mdr-aci__modal--upload .mdr-aci__modal-close svg path {
-	color: #ffffff;
-	stroke: #ffffff;
+.mdr-aci__modal--upload .mdr-aci__modal-close-icon {
+	display: block;
+	color: #ffffff !important;
+	fill: none !important;
+}
+
+.mdr-aci__modal--upload .mdr-aci__modal-close svg path,
+.mdr-aci__modal--upload .mdr-aci__modal-close-icon path {
+	stroke: #ffffff !important;
+	color: #ffffff !important;
 }
 
 .mdr-aci__modal--upload .mdr-aci__modal-close:hover,
-.mdr-aci__modal--upload .mdr-aci__modal-close:focus-visible {
-	background: var(--mdr-aci-button-hover, #911a1e);
-	border-color: var(--mdr-aci-button-hover, #911a1e);
-	color: #ffffff;
+.mdr-aci__modal--upload .mdr-aci__modal-close:focus-visible,
+.mdr-aci__modal--upload .mdr-aci__modal-close--upload:hover,
+.mdr-aci__modal--upload .mdr-aci__modal-close--upload:focus-visible {
+	background: var(--mdr-aci-button-hover, #911a1e) !important;
+	border-color: var(--mdr-aci-button-hover, #911a1e) !important;
+	color: #ffffff !important;
+}
+
+.mdr-aci__modal--upload .mdr-aci__modal-close:hover svg path,
+.mdr-aci__modal--upload .mdr-aci__modal-close:focus-visible svg path,
+.mdr-aci__modal--upload .mdr-aci__modal-close--upload:hover svg path,
+.mdr-aci__modal--upload .mdr-aci__modal-close--upload:focus-visible svg path {
+	stroke: #ffffff !important;
 }
 
 .mdr-aci__modal-body {
