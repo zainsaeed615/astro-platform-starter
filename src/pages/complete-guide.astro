@@ -1,0 +1,53 @@
+---
+import BeautyGuidesLayout from '../layouts/BeautyGuidesLayout.astro';
+import PageHero from '../components/beauty-guides/PageHero.astro';
+import { guideTopics, productBenefits, site } from '../data/beauty-guides';
+---
+
+<BeautyGuidesLayout title="The Complete Vietnam Surgery Companion" description="Ten detailed guides, checklists and templates — $199 one-off payment.">
+    <PageHero
+        eyebrow="The Complete Vietnam Surgery Companion"
+        title="Feel prepared before you ever step on the plane."
+        subtitle="Ten detailed guides, practical checklists and real-life advice from my own experience."
+        image="/beauty-guides/mock2.png"
+        size="large"
+    />
+
+    <section id="included" class="mx-auto max-w-5xl px-4 py-16 md:px-6">
+        <h2 class="section-title mb-8 text-center">What's included</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+            {guideTopics.map((g) => (
+                <div class="flex gap-4 rounded-xl border border-[var(--color-peach)] bg-[var(--color-white-soft)] p-4">
+                    <span class="font-serif text-2xl text-[var(--color-taupe)]">{g.number}</span>
+                    <div>
+                        <h3 class="font-serif text-lg">{g.title}</h3>
+                        <p class="text-sm text-[var(--color-muted)]">{g.description}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+        <div class="mt-8 rounded-2xl border border-[var(--color-peach)] bg-[var(--color-cream)] p-6">
+            <h3 class="mb-2 font-serif text-xl">+ Checklists, Templates & Downloads</h3>
+            <p class="prose-tbg text-sm">Packing lists, question banks, timeline templates and downloadable resources for every stage of your journey.</p>
+        </div>
+    </section>
+
+    <section class="bg-[var(--color-white-soft)] py-16">
+        <div class="mx-auto max-w-3xl px-4 text-center md:px-6">
+            <ul class="mb-8 inline-block space-y-2 text-left">
+                {productBenefits.map((b) => (
+                    <li class="flex items-center gap-2 text-sm">
+                        <span class="text-[var(--color-taupe)]">✓</span> {b}
+                    </li>
+                ))}
+            </ul>
+            <p id="pricing" class="mb-6 font-serif text-4xl text-[var(--color-taupe)]">{site.price}</p>
+            <p class="prose-tbg mb-8">One-off payment. Secure checkout. Instant access to the customer portal.</p>
+            <div id="purchase" class="flex flex-wrap justify-center gap-3">
+                <a href="/account" class="btn-tbg-primary">Get the Complete Guide</a>
+                <a href="/account" class="btn-tbg-outline">Preview Customer Portal</a>
+            </div>
+            <p class="mt-6 text-xs text-[var(--color-muted)]">Mockup checkout — links to customer portal demo.</p>
+        </div>
+    </section>
+</BeautyGuidesLayout>

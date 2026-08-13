@@ -1,21 +1,214 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
-
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+import BeautyGuidesLayout from '../layouts/BeautyGuidesLayout.astro';
+import BeforeAfterSlider from '../components/beauty-guides/BeforeAfterSlider.astro';
+import GuideCard from '../components/beauty-guides/GuideCard.astro';
+import {
+    site,
+    guideTopics,
+    vietnamCards,
+    procedures,
+    realStories,
+    reviews,
+    productBenefits,
+} from '../data/beauty-guides';
 ---
 
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-8" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
-</Layout>
+<BeautyGuidesLayout title={site.name} description={site.tagline}>
+    <!-- Section 1: Hero -->
+    <section class="relative overflow-hidden bg-[var(--color-white-soft)]">
+        <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 md:grid-cols-2 md:px-6 md:py-20">
+            <div class="order-2 md:order-1">
+                <p class="script-note mb-2 text-[var(--color-taupe)]">Ask Kirsty</p>
+                <h1 class="section-title mb-4">I've already walked the path you're considering.</h1>
+                <p class="section-eyebrow mb-4">Real experience. Honest guidance. More confident decisions.</p>
+                <p class="prose-tbg mb-8 max-w-lg">
+                    I travelled to Vietnam for surgery, navigated the consultations, the hospital stay, the recovery and the journey home. Now I share what I learnt, what surprised me and everything I wish I had known beforehand.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="/my-story" class="btn-tbg-primary">Read My Story</a>
+                    <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-outline">Message Me on Messenger</a>
+                </div>
+                <p class="script-note mt-6 text-xl">Real stories. Honest guidance. More confident decisions.</p>
+            </div>
+            <div class="order-1 md:order-2">
+                <BeforeAfterSlider />
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Why listen -->
+    <section class="bg-[var(--color-cream)] py-16 md:py-24">
+        <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 md:grid-cols-2 md:px-6">
+            <div class="relative overflow-hidden rounded-3xl">
+                <img src="/beauty-guides/mock1.png" alt="Kirsty sharing her journey" class="h-full min-h-[400px] w-full object-cover object-top" />
+            </div>
+            <div>
+                <p class="section-eyebrow mb-3">Why should you listen to me?</p>
+                <h2 class="section-title mb-6">Because I've sat exactly where you're sitting now.</h2>
+                <ul class="prose-tbg space-y-3">
+                    <li class="flex gap-3"><span class="text-[var(--color-taupe)]">✓</span> I travelled to Vietnam for what began as one procedure.</li>
+                    <li class="flex gap-3"><span class="text-[var(--color-taupe)]">✓</span> I returned nine days later after several procedures that changed far more than my appearance.</li>
+                    <li class="flex gap-3"><span class="text-[var(--color-taupe)]">✓</span> I travelled alone, recovered in another country and learnt what matters when you do not know what to expect.</li>
+                    <li class="flex gap-3"><span class="text-[var(--color-taupe)]">✓</span> I made mistakes, asked awkward questions and discovered things no brochure had explained.</li>
+                    <li class="flex gap-3"><span class="text-[var(--color-taupe)]">✓</span> Now I share that experience so other women can feel better prepared.</li>
+                </ul>
+                <a href="/my-story" class="btn-tbg-primary mt-8 inline-flex">Read My Full Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: 10 guide topics -->
+    <section class="bg-[var(--color-white-soft)] py-16 md:py-24">
+        <div class="mx-auto max-w-7xl px-4 md:px-6">
+            <div class="mx-auto mb-12 max-w-3xl text-center">
+                <p class="section-eyebrow mb-3">The guides</p>
+                <h2 class="section-title">Everything I wish someone had told me before I got on the plane…</h2>
+                <p class="prose-tbg mt-4">Ten paid guide topics — each with a free preview. My Story and Why Vietnam are free website sections.</p>
+            </div>
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+                {guideTopics.map((guide) => <GuideCard {...guide} />)}
+            </div>
+            <div class="mt-10 text-center">
+                <a href="/complete-guide" class="btn-tbg-primary">See What's Included in the Complete Guide</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Nine days -->
+    <section class="relative overflow-hidden py-16 md:py-24">
+        <div class="absolute inset-0">
+            <img src="/beauty-guides/home-pages.png" alt="" class="h-full w-full object-cover" />
+            <div class="absolute inset-0 bg-[var(--color-charcoal)]/75"></div>
+        </div>
+        <div class="relative mx-auto max-w-7xl px-4 md:px-6">
+            <div class="max-w-2xl text-white">
+                <p class="section-eyebrow mb-3 text-[var(--color-peach)]">One trip became a much bigger journey</p>
+                <h2 class="section-title mb-4 text-white">Nine days that changed my life.</h2>
+                <p class="mb-6 text-white/85">What began as one planned procedure became a very different experience from the one I had imagined.</p>
+                <div class="mb-6 grid grid-cols-2 gap-2 text-sm text-white/80">
+                    {procedures.map((p) => <span class="rounded-full bg-white/10 px-3 py-1">{p}</span>)}
+                </div>
+                <p class="script-note mb-8 text-[var(--color-peach)]">And yes… knowing what I know now, I would still do it again.</p>
+                <a href="/my-story#journey" class="btn-tbg-primary">Read My Full Journey</a>
+                <p class="mt-4 text-xs text-white/50">Procedure names shown as mockup placeholders — pending Kirsty's approval.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Vietnam findings -->
+    <section class="bg-[var(--color-cream)] py-16 md:py-24">
+        <div class="mx-auto max-w-7xl px-4 md:px-6">
+            <div class="mb-12 text-center">
+                <p class="section-eyebrow mb-3">Personal observations</p>
+                <h2 class="section-title">What I found in Vietnam</h2>
+                <p class="prose-tbg mx-auto mt-4 max-w-2xl">Shared as personal experience — not universal promises or formal recommendations.</p>
+            </div>
+            <div class="grid gap-6 md:grid-cols-3">
+                {
+                    vietnamCards.map((card) => (
+                        <a href={card.href} class="card-tbg block no-underline">
+                            <img src={card.image} alt={card.title} class="h-48 w-full object-cover" loading="lazy" />
+                            <div class="p-6">
+                                <h3 class="mb-2 font-serif text-xl">{card.title}</h3>
+                                <p class="text-sm text-[var(--color-muted)]">{card.copy}</p>
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Product -->
+    <section class="bg-[var(--color-white-soft)] py-16 md:py-24" id="complete-guide">
+        <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 md:grid-cols-2 md:px-6">
+            <div class="relative">
+                <img src="/beauty-guides/mock2.png" alt="The Complete Vietnam Surgery Companion" class="rounded-3xl shadow-xl" />
+            </div>
+            <div>
+                <p class="section-eyebrow mb-3">The Complete Vietnam Surgery Companion</p>
+                <h2 class="section-title mb-4">Feel prepared before you ever step on the plane.</h2>
+                <p class="prose-tbg mb-6">Ten detailed guides, practical checklists and real-life advice from my own experience — from your first conversation to recovery at home.</p>
+                <ul class="mb-8 space-y-2">
+                    {productBenefits.map((b) => (
+                        <li class="flex items-center gap-2 text-sm text-[var(--color-charcoal)]">
+                            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--color-peach)] text-[var(--color-taupe)]">✓</span>
+                            {b}
+                        </li>
+                    ))}
+                </ul>
+                <p class="mb-6 font-serif text-3xl text-[var(--color-taupe)]">{site.price} <span class="text-base font-sans text-[var(--color-muted)]">— one-off payment</span></p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="/complete-guide" class="btn-tbg-outline">See Everything Included</a>
+                    <a href="/complete-guide#purchase" class="btn-tbg-primary">Get the Complete Guide</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Real stories -->
+    <section class="bg-[var(--color-cream)] py-16 md:py-24">
+        <div class="mx-auto max-w-7xl px-4 md:px-6">
+            <div class="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div>
+                    <p class="section-eyebrow mb-3">Community</p>
+                    <h2 class="section-title">Real stories from other women</h2>
+                    <p class="prose-tbg mt-2 max-w-xl">Individual lived experiences — not endorsements or guarantees.</p>
+                </div>
+                <a href="/real-stories" class="btn-tbg-outline shrink-0">View All Stories</a>
+            </div>
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {
+                    realStories.map((story) => (
+                        <a href={`/real-stories/${story.slug}`} class="card-tbg block no-underline">
+                            <img src={story.image} alt={story.displayName} class="h-56 w-full object-cover object-top" loading="lazy" />
+                            <div class="p-5">
+                                <h3 class="font-serif text-lg">{story.name}</h3>
+                                <p class="mt-1 text-xs uppercase tracking-wider text-[var(--color-taupe)]">{story.summary}</p>
+                                <p class="mt-3 text-sm text-[var(--color-muted)] line-clamp-3">{story.excerpt}</p>
+                                <span class="mt-3 inline-block text-xs font-semibold uppercase text-[var(--color-taupe)]">Read more →</span>
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Reviews -->
+    <section class="bg-[var(--color-white-soft)] py-16 md:py-24">
+        <div class="mx-auto max-w-7xl px-4 md:px-6">
+            <div class="mb-4 text-center">
+                <p class="section-eyebrow mb-3">Social proof</p>
+                <h2 class="section-title">What guide purchasers are saying</h2>
+                <p class="mt-2 text-xs text-[var(--color-muted)]">Mockup placeholder reviews — replace with verified purchaser feedback before launch.</p>
+            </div>
+            <div class="grid gap-6 md:grid-cols-3">
+                {
+                    reviews.map((review) => (
+                        <div class="card-tbg p-6">
+                            <div class="mb-3 flex gap-0.5 text-[var(--color-taupe)]">
+                                {Array.from({ length: review.rating }).map(() => <span>★</span>)}
+                            </div>
+                            <p class="mb-4 text-sm leading-relaxed text-[var(--color-charcoal)]">"{review.text}"</p>
+                            <p class="text-sm font-semibold">{review.name}</p>
+                            {review.verified && <p class="text-xs text-[var(--color-taupe)]">Verified Guide Purchaser</p>}
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 9: Messenger CTA -->
+    <section class="border-y border-[var(--color-peach)] bg-[var(--color-cream-dark)] py-16">
+        <div class="mx-auto max-w-3xl px-4 text-center md:px-6">
+            <p class="section-eyebrow mb-3">Ask Kirsty</p>
+            <h2 class="section-title mb-4">Still have questions?</h2>
+            <p class="prose-tbg mx-auto mb-8 max-w-xl">
+                Send me a message on Messenger and I'll get back to you. I'm happy to share my experience and point you towards information on the site that may help.
+            </p>
+            <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Message Me on Messenger</a>
+        </div>
+    </section>
+</BeautyGuidesLayout>

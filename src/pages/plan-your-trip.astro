@@ -1,0 +1,32 @@
+---
+import BeautyGuidesLayout from '../layouts/BeautyGuidesLayout.astro';
+import PageHero from '../components/beauty-guides/PageHero.astro';
+import GuideCard from '../components/beauty-guides/GuideCard.astro';
+import { guideTopics } from '../data/beauty-guides';
+---
+
+<BeautyGuidesLayout title="Plan Your Trip" description="Practical planning guidance for cosmetic surgery travel to Vietnam.">
+    <PageHero
+        eyebrow="Plan Your Trip"
+        title="Everything starts with preparation."
+        subtitle="Flights, timing, transfers, accommodation and the details people only think about once they're already packing."
+        image="/beauty-guides/home-pages.png"
+    />
+
+    <section class="mx-auto max-w-3xl px-4 py-16 md:px-6">
+        <div class="prose-tbg">
+            <p>
+                Planning a surgery trip overseas involves far more than booking a flight. These guides cover the timeline, packing, apps, accommodation and recovery logistics I navigated during my own journey.
+            </p>
+        </div>
+    </section>
+
+    <section class="bg-[var(--color-cream)] py-16">
+        <div class="mx-auto max-w-7xl px-4 md:px-6">
+            <h2 class="section-title mb-10 text-center">Planning guides</h2>
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {guideTopics.filter((g) => g.number >= 5).map((guide) => <GuideCard {...guide} />)}
+            </div>
+        </div>
+    </section>
+</BeautyGuidesLayout>

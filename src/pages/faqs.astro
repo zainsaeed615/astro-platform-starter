@@ -1,0 +1,29 @@
+---
+import BeautyGuidesLayout from '../layouts/BeautyGuidesLayout.astro';
+import PageHero from '../components/beauty-guides/PageHero.astro';
+import { faqs, site } from '../data/beauty-guides';
+---
+
+<BeautyGuidesLayout title="FAQs" description="Frequently asked questions about The Beauty Guides and the Complete Vietnam Surgery Companion.">
+    <PageHero eyebrow="FAQs" title="You ask. We answer." subtitle="Frequent questions, honest answers — framed as personal experience." image="/beauty-guides/gen1.png" />
+
+    <section class="mx-auto max-w-3xl px-4 py-16 md:px-6 md:py-24">
+        <div class="space-y-4">
+            {
+                faqs.map((faq) => (
+                    <details class="group rounded-2xl border border-[var(--color-peach)] bg-[var(--color-white-soft)]">
+                        <summary class="cursor-pointer list-none px-6 py-5 font-serif text-lg font-normal text-[var(--color-charcoal)] [&::-webkit-details-marker]:hidden">
+                            {faq.q}
+                            <span class="float-right text-[var(--color-taupe)] transition group-open:rotate-45">+</span>
+                        </summary>
+                        <div class="border-t border-[var(--color-peach)] px-6 py-4 prose-tbg">{faq.a}</div>
+                    </details>
+                ))
+            }
+        </div>
+        <div class="mt-12 rounded-2xl bg-[var(--color-cream-dark)] p-8 text-center">
+            <p class="mb-4 font-serif text-xl">Still have questions?</p>
+            <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Message Me on Messenger</a>
+        </div>
+    </section>
+</BeautyGuidesLayout>

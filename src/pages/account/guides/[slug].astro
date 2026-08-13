@@ -1,0 +1,80 @@
+---
+import BeautyGuidesLayout from '../../../layouts/BeautyGuidesLayout.astro';
+import { guideTopics } from '../../../data/beauty-guides';
+
+export function getStaticPaths() {
+    const guidePaths = guideTopics.map((guide) => ({
+        params: { slug: guide.slug },
+        props: { guide, isDownloads: false },
+    }));
+    return [...guidePaths, { params: { slug: 'downloads' }, props: { guide: null, isDownloads: true } }];
+}
+
+const { guide, isDownloads } = Astro.props;
+---
+
+<BeautyGuidesLayout
+    title={isDownloads ? 'Downloads' : guide!.title}
+    description="Customer portal chapter"
+    hideFooterCta
+>
+    <section class="border-b border-[var(--color-peach)] bg-[var(--color-cream-dark)] py-6">
+        <div class="mx-auto max-w-4xl px-4 md:px-6">
+            <a href="/account" class="text-sm text-[var(--color-taupe)] no-underline">← Back to Dashboard</a>
+        </div>
+    </section>
+
+    <article class="mx-auto max-w-4xl px-4 py-12 md:px-6">
+        {
+            isDownloads ? (
+                <>
+                    <h1 class="section-title mb-6">Checklists, Templates & Downloads</h1>
+                    <div class="space-y-3">
+                        {['Packing Checklist.pdf', 'Questions for Your Surgeon.pdf', 'Pre-Surgery Timeline Template.pdf', 'Recovery Day-by-Day Notes.pdf', 'Flight Home Comfort Checklist.pdf'].map(
+                            (file) => (
+                                <div class="flex items-center justify-between rounded-xl border border-[var(--color-peach)] bg-[var(--color-white-soft)] px-5 py-4">
+                                    <span class="text-sm font-medium">{file}</span>
+                                    <button type="button" class="btn-tbg-outline px-4 py-2 text-xs">
+                                        Download
+                                    </button>
+                                </div>
+                            ),
+                        )}
+                    </div>
+                </>
+            ) : (
+                <>
+                    <p class="section-eyebrow mb-2">Chapter {guide!.number}</p>
+                    <h1 class="section-title mb-6">{guide!.title}</h1>
+                    <div class="prose-tbg space-y-6">
+                        <p>{guide!.description}</p>
+                        <p>
+                            This is mockup portal content for the full paid chapter. In production, this page would contain the complete 130+ page guide section with navigation, progress tracking and mobile-friendly reading.
+                        </p>
+                        <h2 class="font-serif text-xl">Chapter contents (mockup)</h2>
+                        <ul>
+                            <li>Introduction and why this matters</li>
+                            <li>Kirsty's personal experience</li>
+                            <li>Step-by-step practical guidance</li>
+                            <li>Checklists and templates</li>
+                            <li>Questions to ask yourself and providers</li>
+                            <li>Common mistakes and how to avoid them</li>
+                        </ul>
+                    </div>
+                    <div class="mt-10 flex gap-3">
+                        {guide!.number > 1 && (
+                            <a href={`/account/guides/${guideTopics[guide!.number - 2].slug}`} class="btn-tbg-outline text-xs">
+                                ← Previous
+                            </a>
+                        )}
+                        {guide!.number < 10 && (
+                            <a href={`/account/guides/${guideTopics[guide!.number].slug}`} class="btn-tbg-primary text-xs">
+                                Next Chapter →
+                            </a>
+                        )}
+                    </div>
+                </>
+            )
+        }
+    </article>
+</BeautyGuidesLayout>
