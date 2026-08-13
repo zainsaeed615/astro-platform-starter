@@ -11,33 +11,40 @@ const content = getGuidePreviewContent(guide.slug)!;
 ---
 
 <BeautyGuidesLayout title={guide.title} description={guide.description}>
-    <section class="relative h-64 overflow-hidden md:h-80">
-        <img src={guide.image} alt="" class="h-full w-full object-cover" />
-        <div class="absolute inset-0 bg-[var(--color-charcoal)]/50"></div>
-        <div class="absolute bottom-0 left-0 p-8 text-white md:p-12">
-            <p class="section-eyebrow mb-2 text-[var(--color-peach)]">Guide {guide.number} · Free Preview</p>
-            <h1 class="font-serif text-3xl md:text-4xl">{guide.title}</h1>
+    <section class="relative min-h-[360px] overflow-hidden md:min-h-[440px]">
+        <img src={guide.image} alt="" class="absolute inset-0 h-full w-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-charcoal)]/88 via-[var(--color-charcoal)]/60 to-transparent"></div>
+        <div class="relative mx-auto flex min-h-[360px] max-w-7xl items-end px-4 pb-12 md:min-h-[440px] md:px-6 md:pb-16">
+            <div class="max-w-2xl text-white">
+                <p class="section-eyebrow mb-3 !text-[var(--color-peach-light)]">Guide {guide.number} · Free Preview</p>
+                <h1 class="font-serif text-4xl md:text-5xl">{guide.title}</h1>
+                <p class="mt-4 text-lg text-white/85">{guide.description}</p>
+            </div>
         </div>
     </section>
 
-    <article class="mx-auto max-w-3xl px-4 py-16 md:px-6">
-        <div class="prose-tbg space-y-6">
-            <p class="text-lg text-[var(--color-charcoal)]">{content.intro}</p>
-            <p>{content.experience}</p>
-            <h2 class="font-serif text-2xl text-[var(--color-charcoal)]">What this chapter covers</h2>
-            <ul>
-                {content.points.map((point) => <li>{point}</li>)}
-            </ul>
-            <p>{guide.description}</p>
-            <div class="rounded-2xl border border-[var(--color-peach)] bg-[var(--color-cream)] p-6">
-                <p class="mb-2 font-serif text-xl">Want the full chapter?</p>
-                <p class="mb-4 text-sm">Complete checklists, templates, question banks and step-by-step detail are inside the paid guide.</p>
-                <a href="/complete-guide" class="btn-tbg-primary">See What's Included in the Complete Guide</a>
+    <article class="section-inner py-16 md:py-24">
+        <div class="mx-auto grid max-w-5xl gap-12 lg:grid-cols-3">
+            <div class="prose-tbg space-y-6 lg:col-span-2">
+                <p class="text-lg text-[var(--color-charcoal)]">{content.intro}</p>
+                <p>{content.experience}</p>
+                <h2 class="font-serif text-2xl text-[var(--color-charcoal)]">What this chapter covers</h2>
+                <ul>
+                    {content.points.map((point) => <li>{point}</li>)}
+                </ul>
+                <p>{guide.description}</p>
+            </div>
+            <div class="lg:col-span-1">
+                <div class="glass-panel sticky top-28">
+                    <p class="mb-2 font-serif text-xl">Want the full chapter?</p>
+                    <p class="prose-tbg mb-5 text-sm">Complete checklists, templates, question banks and step-by-step detail are inside the paid guide portal.</p>
+                    <a href="/complete-guide" class="btn-tbg-primary mb-3 w-full">See What's Included</a>
+                    <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-outline w-full">Ask Kirsty</a>
+                </div>
             </div>
         </div>
-        <div class="mt-10 flex flex-wrap gap-3">
+        <div class="mt-12 flex flex-wrap gap-3">
             <a href="/the-guides" class="btn-tbg-outline">← All Guides</a>
-            <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Ask Kirsty</a>
         </div>
     </article>
 </BeautyGuidesLayout>

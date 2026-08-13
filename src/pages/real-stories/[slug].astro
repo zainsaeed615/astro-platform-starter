@@ -10,38 +10,45 @@ const { story } = Astro.props;
 ---
 
 <BeautyGuidesLayout title={story.name} description={story.excerpt}>
-    <section class="relative h-[50vh] min-h-[320px] overflow-hidden">
-        <img src={story.image} alt={story.displayName} class="h-full w-full object-cover object-top" />
-        <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-charcoal)]/80 to-transparent"></div>
-        <div class="absolute right-0 bottom-0 left-0 p-8 text-white md:p-12">
-            <p class="section-eyebrow mb-2 text-[var(--color-peach)]">Real Story</p>
-            <h1 class="font-serif text-4xl md:text-5xl">{story.name}</h1>
-            <p class="mt-2 text-sm uppercase tracking-wider text-white/80">{story.summary} · {story.destination}</p>
+    <section class="relative min-h-[50vh] overflow-hidden">
+        <img src={story.image} alt={story.displayName} class="absolute inset-0 h-full w-full object-cover object-top" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-charcoal)]/90 via-[var(--color-charcoal)]/40 to-transparent"></div>
+        <div class="relative mx-auto flex min-h-[50vh] max-w-7xl items-end px-4 pb-12 md:px-6 md:pb-16">
+            <div class="max-w-2xl text-white">
+                <p class="section-eyebrow mb-3 !text-[var(--color-peach-light)]">Real Story</p>
+                <h1 class="font-serif text-4xl md:text-5xl">{story.name}</h1>
+                <p class="mt-3 text-sm uppercase tracking-wider text-white/80">{story.summary} · {story.destination}</p>
+                {story.ageRange && <p class="mt-1 text-xs text-white/60">Age range: {story.ageRange} (with permission)</p>}
+            </div>
         </div>
     </section>
 
-    <article class="mx-auto max-w-3xl px-4 py-16 md:px-6">
-        <div class="prose-tbg space-y-6">
-            <p class="text-lg italic text-[var(--color-charcoal)]">"{story.excerpt}"</p>
-            <p>
-                This is a mockup story page for {story.displayName}. Full story content will be added with Kirsty's approval and each woman's publishing consent.
-            </p>
-            <p>
-                Every story on The Beauty Guides is shared as an individual lived experience. Nothing here should be read as a medical recommendation, referral or guarantee of results.
-            </p>
-            <h2 class="font-serif text-2xl text-[var(--color-charcoal)]">Why I shared my story</h2>
-            <p>
-                I wanted other women to feel less alone during the research phase. Reading Kirsty's guide helped me know what to ask and what to pack — and that made a real difference to how prepared I felt.
-            </p>
-            <h2 class="font-serif text-2xl text-[var(--color-charcoal)]">My advice for women researching now</h2>
-            <ul>
-                <li>Take your time with independent research</li>
-                <li>Ask every question — even the awkward ones</li>
-                <li>Use checklists and timelines so nothing gets missed</li>
-                <li>Remember that every journey is different</li>
-            </ul>
+    <article class="section-inner py-16 md:py-24">
+        <div class="mx-auto grid max-w-5xl gap-12 lg:grid-cols-3">
+            <div class="prose-tbg space-y-6 lg:col-span-2">
+                <blockquote class="border-l-4 border-[var(--color-taupe)] pl-6 text-xl italic text-[var(--color-charcoal)]">"{story.excerpt}"</blockquote>
+                <p>
+                    This is a mockup story page for {story.displayName}. Full story content will be added with Kirsty's approval and each woman's publishing consent.
+                </p>
+                <p>Every story on The Beauty Guides is shared as an individual lived experience. Nothing here should be read as a medical recommendation, referral or guarantee of results.</p>
+                <h2 class="font-serif text-2xl text-[var(--color-charcoal)]">Why I shared my story</h2>
+                <p>I wanted other women to feel less alone during the research phase. Reading Kirsty's guide helped me know what to ask and what to pack — and that made a real difference to how prepared I felt.</p>
+                <h2 class="font-serif text-2xl text-[var(--color-charcoal)]">My advice for women researching now</h2>
+                <ul>
+                    <li>Take your time with independent research</li>
+                    <li>Ask every question — even the awkward ones</li>
+                    <li>Use checklists and timelines so nothing gets missed</li>
+                    <li>Remember that every journey is different</li>
+                </ul>
+            </div>
+            <div class="glass-panel h-fit lg:sticky lg:top-28">
+                <img src={story.image} alt={story.displayName} class="mb-4 aspect-square w-full rounded-2xl object-cover object-top" />
+                <p class="text-sm font-bold">{story.displayName}</p>
+                <p class="text-xs text-[var(--color-muted)]">{story.summary}</p>
+                <p class="mt-1 text-xs text-[var(--color-muted)]">{story.destination}</p>
+            </div>
         </div>
-        <div class="mt-12 flex flex-wrap gap-3 border-t border-[var(--color-peach)] pt-8">
+        <div class="mx-auto mt-12 flex max-w-5xl flex-wrap gap-3 border-t border-[var(--color-peach)] pt-8">
             <a href="/real-stories" class="btn-tbg-outline">← All Stories</a>
             <a href="/complete-guide" class="btn-tbg-primary">Explore the Complete Guide</a>
             <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Message Kirsty</a>

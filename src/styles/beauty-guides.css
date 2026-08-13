@@ -8,60 +8,71 @@
     --color-cream-dark: #f0ebe3;
     --color-taupe: #9e7755;
     --color-taupe-dark: #7d5f43;
+    --color-taupe-light: #c4a882;
     --color-peach: #e8d5c4;
+    --color-peach-light: #f5ebe3;
     --color-charcoal: #2c2825;
     --color-muted: #6b6560;
     --color-white-soft: #fffcf8;
+    --color-gold: #b8956a;
 }
 
 @layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
     .bg-page {
         background-color: var(--color-cream);
         color: var(--color-charcoal);
     }
 
-    .bg-page a:not(.btn-tbg) {
+    .bg-page a:not(.btn-tbg-primary):not(.btn-tbg-outline):not(.btn-tbg-messenger):not(.card-tbg) {
         @apply no-underline transition-opacity hover:opacity-80;
     }
 }
 
 @layer components {
-    .btn-tbg {
-        @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide uppercase no-underline transition-all duration-200;
-    }
-
     .btn-tbg-primary {
-        @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide uppercase no-underline transition-all duration-200 bg-[var(--color-taupe)] text-white hover:bg-[var(--color-taupe-dark)] hover:scale-[1.02];
+        @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-7 py-3.5 text-xs font-bold tracking-[0.15em] uppercase no-underline transition-all duration-300 bg-[var(--color-taupe)] text-white shadow-[0_8px_24px_rgba(158,119,85,0.25)] hover:-translate-y-0.5 hover:bg-[var(--color-taupe-dark)] hover:shadow-[0_12px_32px_rgba(158,119,85,0.35)];
     }
 
     .btn-tbg-outline {
-        @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide uppercase no-underline transition-all duration-200 border-2 border-[var(--color-taupe)] bg-transparent text-[var(--color-taupe)] hover:bg-[var(--color-taupe)] hover:text-white;
+        @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full border-2 border-[var(--color-taupe)] bg-white/60 px-7 py-3.5 text-xs font-bold tracking-[0.15em] uppercase no-underline backdrop-blur-sm transition-all duration-300 text-[var(--color-taupe)] hover:-translate-y-0.5 hover:bg-[var(--color-taupe)] hover:text-white;
     }
 
     .btn-tbg-messenger {
-        @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide uppercase no-underline transition-all duration-200 bg-[#0084ff] text-white hover:bg-[#006fd6];
+        @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-7 py-3.5 text-xs font-bold tracking-[0.15em] uppercase no-underline transition-all duration-300 bg-[#0084ff] text-white shadow-[0_8px_24px_rgba(0,132,255,0.25)] hover:-translate-y-0.5 hover:bg-[#006fd6];
     }
 
     .section-eyebrow {
-        @apply text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-taupe)];
+        @apply text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--color-taupe)];
     }
 
     .section-title {
         font-family: var(--font-serif);
-        @apply text-3xl leading-tight font-normal md:text-4xl lg:text-5xl;
+        @apply text-[clamp(1.75rem,4vw,3rem)] leading-[1.15] font-normal text-[var(--color-charcoal)];
+    }
+
+    .section-shell {
+        @apply relative overflow-hidden;
+    }
+
+    .section-inner {
+        @apply relative mx-auto max-w-7xl px-4 md:px-6;
     }
 
     .card-tbg {
-        @apply overflow-hidden rounded-2xl border border-[var(--color-peach)] bg-[var(--color-white-soft)] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md;
+        @apply overflow-hidden rounded-2xl border border-[var(--color-peach)]/80 bg-[var(--color-white-soft)] shadow-[0_4px_24px_rgba(44,40,37,0.06)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--color-taupe-light)] hover:shadow-[0_16px_48px_rgba(44,40,37,0.12)];
     }
 
     .script-note {
         font-family: var(--font-script);
-        @apply text-2xl text-[var(--color-taupe-dark)] md:text-3xl;
+        @apply text-[clamp(1.25rem,2.5vw,1.75rem)] leading-snug text-[var(--color-taupe-dark)];
     }
 
     .prose-tbg {
-        @apply text-[var(--color-muted)] leading-relaxed;
+        @apply text-[var(--color-muted)] leading-[1.8];
     }
 
     .prose-tbg p {
@@ -69,6 +80,74 @@
     }
 
     .prose-tbg ul {
-        @apply mb-4 list-disc space-y-2 pl-5;
+        @apply mb-4 list-none space-y-3 pl-0;
+    }
+
+    .prose-tbg li {
+        @apply relative pl-7;
+    }
+
+    .prose-tbg li::before {
+        content: '✦';
+        @apply absolute left-0 text-[var(--color-taupe)];
+    }
+
+    .ornament-line {
+        @apply mx-auto h-px w-16 bg-gradient-to-r from-transparent via-[var(--color-taupe-light)] to-transparent;
+    }
+
+    .glass-panel {
+        @apply rounded-3xl border border-white/60 bg-white/70 p-8 shadow-[0_8px_40px_rgba(44,40,37,0.08)] backdrop-blur-md;
+    }
+
+    .hero-gradient {
+        background: linear-gradient(135deg, var(--color-white-soft) 0%, var(--color-cream) 50%, var(--color-peach-light) 100%);
+    }
+
+    .text-gradient-gold {
+        background: linear-gradient(135deg, var(--color-taupe) 0%, var(--color-gold) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .botanical-bg {
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c4a882' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .fade-up {
+        animation: fadeUp 0.8s ease-out both;
+    }
+
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+
+    .guide-number {
+        @apply flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-peach-light)] font-serif text-lg text-[var(--color-taupe-dark)];
+    }
+
+    .trust-check {
+        @apply flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-peach-light)] text-sm text-[var(--color-taupe)];
+    }
+
+    .review-stars {
+        @apply flex gap-0.5 text-[var(--color-gold)];
+    }
+
+    .product-benefit-icon {
+        @apply flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--color-peach-light)] text-xl;
     }
 }

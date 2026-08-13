@@ -2,6 +2,7 @@
 import BeautyGuidesLayout from '../layouts/BeautyGuidesLayout.astro';
 import BeforeAfterSlider from '../components/beauty-guides/BeforeAfterSlider.astro';
 import GuideCard from '../components/beauty-guides/GuideCard.astro';
+import SectionHeader from '../components/beauty-guides/SectionHeader.astro';
 import {
     site,
     guideTopics,
@@ -10,107 +11,125 @@ import {
     realStories,
     reviews,
     productBenefits,
+    trustPoints,
 } from '../data/beauty-guides';
 ---
 
 <BeautyGuidesLayout title={site.name} description={site.tagline}>
     <!-- Section 1: Hero -->
-    <section class="relative overflow-hidden bg-[var(--color-white-soft)]">
-        <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 md:grid-cols-2 md:px-6 md:py-20">
-            <div class="order-2 md:order-1">
-                <p class="script-note mb-2 text-[var(--color-taupe)]">Ask Kirsty</p>
-                <h1 class="section-title mb-4">I've already walked the path you're considering.</h1>
-                <p class="section-eyebrow mb-4">Real experience. Honest guidance. More confident decisions.</p>
-                <p class="prose-tbg mb-8 max-w-lg">
+    <section class="hero-gradient botanical-bg relative overflow-hidden">
+        <div class="absolute top-20 -right-20 h-96 w-96 rounded-full bg-[var(--color-peach)]/20 blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-20 h-80 w-80 rounded-full bg-[var(--color-taupe-light)]/15 blur-3xl"></div>
+        <div class="section-inner relative grid items-center gap-12 py-16 md:grid-cols-2 md:py-24 lg:gap-16">
+            <div class="fade-up order-2 md:order-1">
+                <p class="script-note mb-3 text-[var(--color-taupe)]">Ask Kirsty</p>
+                <h1 class="section-title mb-5">I've already walked the path you're considering.</h1>
+                <p class="section-eyebrow mb-5 !tracking-[0.18em]">Real experience. Honest guidance. More confident decisions.</p>
+                <p class="prose-tbg mb-8 max-w-lg text-base">
                     I travelled to Vietnam for surgery, navigated the consultations, the hospital stay, the recovery and the journey home. Now I share what I learnt, what surprised me and everything I wish I had known beforehand.
                 </p>
                 <div class="flex flex-wrap gap-3">
                     <a href="/my-story" class="btn-tbg-primary">Read My Story</a>
-                    <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-outline">Message Me on Messenger</a>
+                    <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Message Me on Messenger</a>
                 </div>
-                <p class="script-note mt-6 text-xl">Real stories. Honest guidance. More confident decisions.</p>
+                <p class="script-note mt-8 opacity-80">{site.taglineShort}</p>
             </div>
-            <div class="order-1 md:order-2">
+            <div class="fade-up stagger-2 order-1 md:order-2">
                 <BeforeAfterSlider />
             </div>
         </div>
     </section>
 
     <!-- Section 2: Why listen -->
-    <section class="bg-[var(--color-cream)] py-16 md:py-24">
-        <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 md:grid-cols-2 md:px-6">
-            <div class="relative overflow-hidden rounded-3xl">
-                <img src="/beauty-guides/mock1.png" alt="Kirsty sharing her journey" class="h-full min-h-[400px] w-full object-cover object-top" />
+    <section class="section-shell bg-[var(--color-cream)] py-20 md:py-28">
+        <div class="section-inner grid items-center gap-14 lg:grid-cols-2">
+            <div class="relative">
+                <div class="absolute -inset-3 rounded-[2rem] bg-[var(--color-peach-light)]/50"></div>
+                <div class="relative overflow-hidden rounded-[1.75rem] shadow-[0_20px_60px_rgba(44,40,37,0.12)]">
+                    <img src="/beauty-guides/sections/why-listen-portrait.png" alt="Kirsty sharing her journey" class="min-h-[440px] w-full object-cover object-top" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-charcoal)]/30 to-transparent"></div>
+                </div>
+                <div class="absolute -bottom-4 -right-4 hidden rounded-2xl bg-white px-5 py-4 shadow-lg md:block">
+                    <p class="script-note !text-xl">Because I've sat exactly where you're sitting now.</p>
+                </div>
             </div>
             <div>
-                <p class="section-eyebrow mb-3">Why should you listen to me?</p>
-                <h2 class="section-title mb-6">Because I've sat exactly where you're sitting now.</h2>
-                <ul class="prose-tbg space-y-3">
-                    <li class="flex gap-3"><span class="text-[var(--color-taupe)]">✓</span> I travelled to Vietnam for what began as one procedure.</li>
-                    <li class="flex gap-3"><span class="text-[var(--color-taupe)]">✓</span> I returned nine days later after several procedures that changed far more than my appearance.</li>
-                    <li class="flex gap-3"><span class="text-[var(--color-taupe)]">✓</span> I travelled alone, recovered in another country and learnt what matters when you do not know what to expect.</li>
-                    <li class="flex gap-3"><span class="text-[var(--color-taupe)]">✓</span> I made mistakes, asked awkward questions and discovered things no brochure had explained.</li>
-                    <li class="flex gap-3"><span class="text-[var(--color-taupe)]">✓</span> Now I share that experience so other women can feel better prepared.</li>
+                <SectionHeader eyebrow="Why should you listen to me?" title="Because I've sat exactly where you're sitting now." />
+                <ul class="space-y-4">
+                    {trustPoints.map((point) => (
+                        <li class="flex gap-4 rounded-2xl border border-[var(--color-peach)]/60 bg-[var(--color-white-soft)] p-4">
+                            <span class="trust-check">✓</span>
+                            <span class="text-sm leading-relaxed text-[var(--color-charcoal)]">{point}</span>
+                        </li>
+                    ))}
                 </ul>
-                <a href="/my-story" class="btn-tbg-primary mt-8 inline-flex">Read My Full Story</a>
+                <a href="/my-story" class="btn-tbg-primary mt-10 inline-flex">Read My Full Story</a>
             </div>
         </div>
     </section>
 
     <!-- Section 3: 10 guide topics -->
-    <section class="bg-[var(--color-white-soft)] py-16 md:py-24">
-        <div class="mx-auto max-w-7xl px-4 md:px-6">
-            <div class="mx-auto mb-12 max-w-3xl text-center">
-                <p class="section-eyebrow mb-3">The guides</p>
-                <h2 class="section-title">Everything I wish someone had told me before I got on the plane…</h2>
-                <p class="prose-tbg mt-4">Ten paid guide topics — each with a free preview. My Story and Why Vietnam are free website sections.</p>
-            </div>
+    <section class="section-shell bg-[var(--color-white-soft)] py-20 md:py-28">
+        <div class="section-inner">
+            <SectionHeader
+                centered
+                eyebrow="The guides"
+                title="Everything I wish someone had told me before I got on the plane…"
+                subtitle="Ten paid guide topics — each with a free preview. My Story and Why Vietnam remain free website sections and are not counted among the ten paid guides."
+            />
             <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
                 {guideTopics.map((guide) => <GuideCard {...guide} />)}
             </div>
-            <div class="mt-10 text-center">
+            <div class="mt-14 text-center">
                 <a href="/complete-guide" class="btn-tbg-primary">See What's Included in the Complete Guide</a>
             </div>
         </div>
     </section>
 
     <!-- Section 4: Nine days -->
-    <section class="relative overflow-hidden py-16 md:py-24">
+    <section class="section-shell relative min-h-[600px] overflow-hidden py-20 md:py-28">
         <div class="absolute inset-0">
-            <img src="/beauty-guides/home-pages.png" alt="" class="h-full w-full object-cover" />
-            <div class="absolute inset-0 bg-[var(--color-charcoal)]/75"></div>
+            <img src="/beauty-guides/sections/nine-days-journey.png" alt="" class="h-full w-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-charcoal)]/90 via-[var(--color-charcoal)]/75 to-[var(--color-charcoal)]/40"></div>
         </div>
-        <div class="relative mx-auto max-w-7xl px-4 md:px-6">
+        <div class="section-inner relative">
             <div class="max-w-2xl text-white">
-                <p class="section-eyebrow mb-3 text-[var(--color-peach)]">One trip became a much bigger journey</p>
-                <h2 class="section-title mb-4 text-white">Nine days that changed my life.</h2>
-                <p class="mb-6 text-white/85">What began as one planned procedure became a very different experience from the one I had imagined.</p>
-                <div class="mb-6 grid grid-cols-2 gap-2 text-sm text-white/80">
-                    {procedures.map((p) => <span class="rounded-full bg-white/10 px-3 py-1">{p}</span>)}
+                <p class="section-eyebrow mb-4 !text-[var(--color-peach-light)]">One trip became a much bigger journey</p>
+                <h2 class="section-title mb-5 !text-white">Nine days that changed my life.</h2>
+                <p class="mb-8 text-lg leading-relaxed text-white/88">What began as one planned procedure became a very different experience from the one I had imagined.</p>
+                <div class="mb-8 flex flex-wrap gap-2">
+                    {procedures.map((p) => (
+                        <span class="rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs backdrop-blur-sm">{p}</span>
+                    ))}
                 </div>
-                <p class="script-note mb-8 text-[var(--color-peach)]">And yes… knowing what I know now, I would still do it again.</p>
+                <p class="script-note mb-8 !text-[var(--color-peach-light)]">And yes… knowing what I know now, I would still do it again.</p>
                 <a href="/my-story#journey" class="btn-tbg-primary">Read My Full Journey</a>
-                <p class="mt-4 text-xs text-white/50">Procedure names shown as mockup placeholders — pending Kirsty's approval.</p>
+                <p class="mt-5 text-xs text-white/50">Procedure names shown as mockup placeholders — pending Kirsty's approval.</p>
             </div>
         </div>
     </section>
 
-    <!-- Section 5: Vietnam findings -->
-    <section class="bg-[var(--color-cream)] py-16 md:py-24">
-        <div class="mx-auto max-w-7xl px-4 md:px-6">
-            <div class="mb-12 text-center">
-                <p class="section-eyebrow mb-3">Personal observations</p>
-                <h2 class="section-title">What I found in Vietnam</h2>
-                <p class="prose-tbg mx-auto mt-4 max-w-2xl">Shared as personal experience — not universal promises or formal recommendations.</p>
-            </div>
-            <div class="grid gap-6 md:grid-cols-3">
+    <!-- Section 5: Vietnam -->
+    <section class="section-shell bg-[var(--color-cream)] py-20 md:py-28">
+        <div class="section-inner">
+            <SectionHeader
+                centered
+                eyebrow="Personal observations"
+                title="What I found in Vietnam"
+                subtitle="Shared as personal experience — not universal promises or formal recommendations."
+            />
+            <div class="grid gap-8 md:grid-cols-3">
                 {
                     vietnamCards.map((card) => (
-                        <a href={card.href} class="card-tbg block no-underline">
-                            <img src={card.image} alt={card.title} class="h-48 w-full object-cover" loading="lazy" />
-                            <div class="p-6">
-                                <h3 class="mb-2 font-serif text-xl">{card.title}</h3>
-                                <p class="text-sm text-[var(--color-muted)]">{card.copy}</p>
+                        <a href={card.href} class="card-tbg group block no-underline">
+                            <div class="relative aspect-[4/3] overflow-hidden">
+                                <img src={card.image} alt={card.title} class="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            </div>
+                            <div class="p-7">
+                                <h3 class="mb-3 font-serif text-2xl">{card.title}</h3>
+                                <p class="mb-3 text-sm leading-relaxed text-[var(--color-muted)]">{card.copy}</p>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-[var(--color-taupe)]">Read more →</span>
                             </div>
                         </a>
                     ))
@@ -120,24 +139,33 @@ import {
     </section>
 
     <!-- Section 6: Product -->
-    <section class="bg-[var(--color-white-soft)] py-16 md:py-24" id="complete-guide">
-        <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 md:grid-cols-2 md:px-6">
+    <section class="section-shell bg-gradient-to-b from-[var(--color-white-soft)] to-[var(--color-cream)] py-20 md:py-28" id="complete-guide">
+        <div class="section-inner grid items-center gap-14 lg:grid-cols-2">
             <div class="relative">
-                <img src="/beauty-guides/mock2.png" alt="The Complete Vietnam Surgery Companion" class="rounded-3xl shadow-xl" />
+                <div class="absolute -inset-4 rounded-[2rem] bg-[var(--color-taupe)]/10 blur-2xl"></div>
+                <img src="/beauty-guides/sections/product-companion.png" alt="The Complete Vietnam Surgery Companion" class="relative rounded-[1.75rem] shadow-[0_24px_64px_rgba(44,40,37,0.15)]" loading="lazy" />
             </div>
             <div>
-                <p class="section-eyebrow mb-3">The Complete Vietnam Surgery Companion</p>
-                <h2 class="section-title mb-4">Feel prepared before you ever step on the plane.</h2>
-                <p class="prose-tbg mb-6">Ten detailed guides, practical checklists and real-life advice from my own experience — from your first conversation to recovery at home.</p>
-                <ul class="mb-8 space-y-2">
+                <SectionHeader
+                    eyebrow="The Complete Vietnam Surgery Companion"
+                    title="Feel prepared before you ever step on the plane."
+                    subtitle="Ten detailed guides, practical checklists and real-life advice from my own experience — from your first conversation to recovery at home."
+                />
+                <div class="mb-8 grid gap-4 sm:grid-cols-2">
                     {productBenefits.map((b) => (
-                        <li class="flex items-center gap-2 text-sm text-[var(--color-charcoal)]">
-                            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--color-peach)] text-[var(--color-taupe)]">✓</span>
-                            {b}
-                        </li>
+                        <div class="flex gap-4 rounded-2xl border border-[var(--color-peach)]/60 bg-white/80 p-4">
+                            <span class="product-benefit-icon">{b.icon}</span>
+                            <div>
+                                <p class="text-sm font-bold text-[var(--color-charcoal)]">{b.label}</p>
+                                <p class="text-xs text-[var(--color-muted)]">{b.detail}</p>
+                            </div>
+                        </div>
                     ))}
-                </ul>
-                <p class="mb-6 font-serif text-3xl text-[var(--color-taupe)]">{site.price} <span class="text-base font-sans text-[var(--color-muted)]">— one-off payment</span></p>
+                </div>
+                <p class="mb-8 font-serif text-4xl text-[var(--color-taupe)]">
+                    {site.price}
+                    <span class="ml-2 text-base font-sans font-normal text-[var(--color-muted)]">— one-off payment</span>
+                </p>
                 <div class="flex flex-wrap gap-3">
                     <a href="/complete-guide" class="btn-tbg-outline">See Everything Included</a>
                     <a href="/complete-guide#purchase" class="btn-tbg-primary">Get the Complete Guide</a>
@@ -147,26 +175,32 @@ import {
     </section>
 
     <!-- Section 7: Real stories -->
-    <section class="bg-[var(--color-cream)] py-16 md:py-24">
-        <div class="mx-auto max-w-7xl px-4 md:px-6">
-            <div class="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-                <div>
-                    <p class="section-eyebrow mb-3">Community</p>
-                    <h2 class="section-title">Real stories from other women</h2>
-                    <p class="prose-tbg mt-2 max-w-xl">Individual lived experiences — not endorsements or guarantees.</p>
-                </div>
+    <section class="section-shell bg-[var(--color-cream)] py-20 md:py-28">
+        <div class="section-inner">
+            <div class="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+                <SectionHeader
+                    eyebrow="Community"
+                    title="Real stories from other women"
+                    subtitle="Individual lived experiences — not endorsements or guarantees. That's why the brand name is plural."
+                />
                 <a href="/real-stories" class="btn-tbg-outline shrink-0">View All Stories</a>
             </div>
-            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 {
                     realStories.map((story) => (
-                        <a href={`/real-stories/${story.slug}`} class="card-tbg block no-underline">
-                            <img src={story.image} alt={story.displayName} class="h-56 w-full object-cover object-top" loading="lazy" />
+                        <a href={`/real-stories/${story.slug}`} class="card-tbg group block no-underline">
+                            <div class="relative aspect-[3/4] overflow-hidden">
+                                <img src={story.image} alt={story.displayName} class="h-full w-full object-cover object-top transition duration-700 group-hover:scale-105" loading="lazy" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                                <div class="absolute right-0 bottom-0 left-0 p-5 text-white">
+                                    <h3 class="font-serif text-xl">{story.name}</h3>
+                                    <p class="mt-1 text-[10px] font-bold uppercase tracking-wider text-[var(--color-peach-light)]">{story.summary}</p>
+                                    <p class="mt-0.5 text-[10px] text-white/70">{story.destination}</p>
+                                </div>
+                            </div>
                             <div class="p-5">
-                                <h3 class="font-serif text-lg">{story.name}</h3>
-                                <p class="mt-1 text-xs uppercase tracking-wider text-[var(--color-taupe)]">{story.summary}</p>
-                                <p class="mt-3 text-sm text-[var(--color-muted)] line-clamp-3">{story.excerpt}</p>
-                                <span class="mt-3 inline-block text-xs font-semibold uppercase text-[var(--color-taupe)]">Read more →</span>
+                                <p class="text-sm leading-relaxed text-[var(--color-muted)] line-clamp-3">{story.excerpt}</p>
+                                <span class="mt-3 inline-block text-[11px] font-bold uppercase tracking-wider text-[var(--color-taupe)]">Read more →</span>
                             </div>
                         </a>
                     ))
@@ -176,23 +210,23 @@ import {
     </section>
 
     <!-- Section 8: Reviews -->
-    <section class="bg-[var(--color-white-soft)] py-16 md:py-24">
-        <div class="mx-auto max-w-7xl px-4 md:px-6">
-            <div class="mb-4 text-center">
-                <p class="section-eyebrow mb-3">Social proof</p>
-                <h2 class="section-title">What guide purchasers are saying</h2>
-                <p class="mt-2 text-xs text-[var(--color-muted)]">Mockup placeholder reviews — replace with verified purchaser feedback before launch.</p>
-            </div>
-            <div class="grid gap-6 md:grid-cols-3">
+    <section class="section-shell bg-[var(--color-white-soft)] py-20 md:py-28">
+        <div class="section-inner">
+            <SectionHeader centered eyebrow="Social proof" title="What guide purchasers are saying" />
+            <p class="-mt-8 mb-10 text-center text-xs text-[var(--color-muted)]">Mockup placeholder reviews — replace with verified purchaser feedback before launch.</p>
+            <div class="grid gap-8 md:grid-cols-3">
                 {
                     reviews.map((review) => (
-                        <div class="card-tbg p-6">
-                            <div class="mb-3 flex gap-0.5 text-[var(--color-taupe)]">
+                        <div class="glass-panel flex flex-col">
+                            <div class="review-stars mb-4">
                                 {Array.from({ length: review.rating }).map(() => <span>★</span>)}
                             </div>
-                            <p class="mb-4 text-sm leading-relaxed text-[var(--color-charcoal)]">"{review.text}"</p>
-                            <p class="text-sm font-semibold">{review.name}</p>
-                            {review.verified && <p class="text-xs text-[var(--color-taupe)]">Verified Guide Purchaser</p>}
+                            <p class="mb-6 flex-1 text-sm leading-relaxed text-[var(--color-charcoal)]">"{review.text}"</p>
+                            <div class="border-t border-[var(--color-peach)]/50 pt-4">
+                                <p class="font-bold text-[var(--color-charcoal)]">{review.name}</p>
+                                {review.verified && <p class="text-xs font-bold uppercase tracking-wider text-[var(--color-taupe)]">Verified Guide Purchaser</p>}
+                                <p class="mt-1 text-xs text-[var(--color-muted)]">{review.theme}</p>
+                            </div>
                         </div>
                     ))
                 }
@@ -200,15 +234,19 @@ import {
         </div>
     </section>
 
-    <!-- Section 9: Messenger CTA -->
-    <section class="border-y border-[var(--color-peach)] bg-[var(--color-cream-dark)] py-16">
-        <div class="mx-auto max-w-3xl px-4 text-center md:px-6">
-            <p class="section-eyebrow mb-3">Ask Kirsty</p>
-            <h2 class="section-title mb-4">Still have questions?</h2>
-            <p class="prose-tbg mx-auto mb-8 max-w-xl">
-                Send me a message on Messenger and I'll get back to you. I'm happy to share my experience and point you towards information on the site that may help.
-            </p>
-            <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Message Me on Messenger</a>
+    <!-- Section 9: Messenger -->
+    <section class="section-shell border-y border-[var(--color-peach)]/50 bg-[var(--color-cream-dark)] py-20 md:py-24">
+        <div class="section-inner grid items-center gap-12 md:grid-cols-2">
+            <div>
+                <SectionHeader eyebrow="Ask Kirsty" title="Still have questions?" subtitle="Send me a message on Messenger and I'll get back to you. I'm happy to share my experience and point you towards information on the site that may help." />
+                <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Message Me on Messenger</a>
+                <p class="mt-6 text-xs leading-relaxed text-[var(--color-muted)]">
+                    No booked consultations, no medical recommendations, no surgeon selection on your behalf. Personal experience only.
+                </p>
+            </div>
+            <div class="overflow-hidden rounded-[1.75rem] shadow-[0_20px_60px_rgba(44,40,37,0.12)]">
+                <img src="/beauty-guides/sections/messenger-section.png" alt="" class="h-80 w-full object-cover md:h-96" loading="lazy" />
+            </div>
         </div>
     </section>
 </BeautyGuidesLayout>

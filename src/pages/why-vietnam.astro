@@ -1,48 +1,51 @@
 ---
 import BeautyGuidesLayout from '../layouts/BeautyGuidesLayout.astro';
 import PageHero from '../components/beauty-guides/PageHero.astro';
-import { vietnamCards } from '../data/beauty-guides';
+import SectionHeader from '../components/beauty-guides/SectionHeader.astro';
+import { pageHeroes, vietnamCards, whyVietnamSections } from '../data/beauty-guides';
+
+const hero = pageHeroes['why-vietnam'];
 ---
 
-<BeautyGuidesLayout title="Why Vietnam" description="Kirsty's personal observations about cosmetic surgery in Vietnam — facilities, costs and care.">
-    <PageHero
-        eyebrow="Why Vietnam"
-        title="Why Vietnam?"
-        subtitle="World-class care. A different cost equation. An experience I'll never forget — shared as my personal journey, not a promise for everyone."
-        image="/beauty-guides/mock2.png"
-    />
+<BeautyGuidesLayout title="Why Vietnam" description="Kirsty's personal observations about cosmetic surgery in Vietnam.">
+    <PageHero {...hero} />
 
-    <section class="mx-auto max-w-3xl px-4 py-16 md:px-6">
-        <div class="prose-tbg">
-            <p>
-                I chose Vietnam after extensive independent research. This page shares what I personally experienced — not universal guarantees. Every person's journey, outcomes and costs are different.
-            </p>
+    <section class="section-inner py-16 md:py-20">
+        <div class="mx-auto max-w-3xl prose-tbg text-lg">
+            <p>I chose Vietnam after extensive independent research. This page shares what I personally experienced — not universal guarantees. Every person's journey, outcomes and costs are different.</p>
         </div>
     </section>
 
     {
+        whyVietnamSections.map((section, i) => (
+            <section class={`py-16 md:py-20 ${i % 2 === 0 ? 'bg-[var(--color-cream)]' : 'bg-[var(--color-white-soft)]'}`}>
+                <div class="section-inner mx-auto max-w-3xl">
+                    <h2 class="mb-5 font-serif text-2xl md:text-3xl">{section.title}</h2>
+                    <p class="prose-tbg leading-relaxed">{section.body}</p>
+                </div>
+            </section>
+        ))
+    }
+
+    {
         vietnamCards.map((card, i) => (
-            <section id={['facilities', 'costs', 'care'][i]} class={`py-16 ${i % 2 === 0 ? 'bg-[var(--color-cream)]' : 'bg-[var(--color-white-soft)]'}`}>
-                <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 md:grid-cols-2 md:px-6">
-                    <div class={i % 2 === 1 ? 'md:order-2' : ''}>
-                        <img src={card.image} alt={card.title} class="rounded-3xl shadow-lg" loading="lazy" />
+            <section id={card.id} class={`py-20 md:py-24 ${i % 2 === 0 ? 'bg-[var(--color-white-soft)]' : 'bg-[var(--color-cream)]'}`}>
+                <div class="section-inner grid items-center gap-12 lg:grid-cols-2">
+                    <div class={i % 2 === 1 ? 'lg:order-2' : ''}>
+                        <div class="overflow-hidden rounded-[1.75rem] shadow-[0_20px_60px_rgba(44,40,37,0.12)]">
+                            <img src={card.image} alt={card.title} class="aspect-[4/3] w-full object-cover" loading="lazy" />
+                        </div>
                     </div>
-                    <div class={i % 2 === 1 ? 'md:order-1' : ''}>
-                        <p class="section-eyebrow mb-3">Personal observation</p>
-                        <h2 class="section-title mb-4">{card.title}</h2>
-                        <p class="prose-tbg mb-6">{card.copy}</p>
-                        <p class="prose-tbg text-sm">
-                            {i === 0 && 'I describe the facilities, equipment and hospital environment I personally saw, with photographs where approved.'}
-                            {i === 1 && 'A dated personal cost comparison covering procedures, travel, accommodation and recovery — not a quote or offer.'}
-                            {i === 2 && 'The people who cared for me during recovery. Your experience may differ.'}
-                        </p>
+                    <div class={i % 2 === 1 ? 'lg:order-1' : ''}>
+                        <SectionHeader eyebrow="Personal observation" title={card.title} subtitle={card.copy} />
+                        <p class="prose-tbg">{card.detail}</p>
                     </div>
                 </div>
             </section>
         ))
     }
 
-    <section class="py-16 text-center">
+    <section class="section-inner py-16 text-center">
         <a href="/plan-your-trip" class="btn-tbg-primary">Plan Your Trip</a>
     </section>
 </BeautyGuidesLayout>

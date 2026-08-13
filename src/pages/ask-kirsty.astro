@@ -1,45 +1,46 @@
 ---
 import BeautyGuidesLayout from '../layouts/BeautyGuidesLayout.astro';
 import PageHero from '../components/beauty-guides/PageHero.astro';
-import { site } from '../data/beauty-guides';
+import { pageHeroes, site } from '../data/beauty-guides';
+
+const hero = pageHeroes['ask-kirsty'];
 ---
 
 <BeautyGuidesLayout title="Ask Kirsty" description="Message Kirsty on Messenger to ask about her personal Vietnam surgery journey.">
-    <PageHero
-        eyebrow="Ask Kirsty"
-        title="Questions? I'd love to hear from you."
-        subtitle="I'm not a broker or medical adviser — but I am someone who has walked this path and I'm happy to share what I learnt."
-        image="/beauty-guides/gen1.png"
-    />
+    <PageHero {...hero} />
 
-    <section class="mx-auto max-w-3xl px-4 py-16 md:px-6 md:py-24">
-        <div class="prose-tbg space-y-6">
-            <p>
-                The Beauty Guides exists because I wished someone had told me the practical things — not just the glossy brochure version. If you're researching cosmetic surgery in Vietnam, I'm here to share my personal experience.
-            </p>
-            <p>
-                Please message me on Messenger. I can point you towards guides, stories and articles on this site that might help with where you are in your journey.
-            </p>
-            <div class="rounded-2xl border border-[var(--color-peach)] bg-[var(--color-white-soft)] p-8 text-center">
-                <p class="mb-4 font-serif text-xl">The best way to reach me</p>
-                <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Message Me on Messenger</a>
-                <p class="mt-6 text-xs text-[var(--color-muted)]">
-                    I do not book consultations, recommend surgeons or choose procedures on your behalf. All guidance is framed as personal experience.
+    <section class="section-inner py-16 md:py-24">
+        <div class="mx-auto grid max-w-5xl gap-12 lg:grid-cols-5">
+            <div class="prose-tbg lg:col-span-3 space-y-6">
+                <p class="text-lg text-[var(--color-charcoal)]">
+                    The Beauty Guides exists because I wished someone had told me the practical things — not just the glossy brochure version. If you're researching cosmetic surgery in Vietnam, I'm here to share my personal experience.
                 </p>
+                <p>Please message me on Messenger. I can point you towards guides, stories and articles on this site that might help with where you are in your journey.</p>
+                <h2 class="font-serif text-2xl text-[var(--color-charcoal)]">What I can help with</h2>
+                <ul>
+                    <li>Pointing you to the right free preview guides for your stage of research</li>
+                    <li>Sharing what surprised me during planning, surgery and recovery</li>
+                    <li>Answering questions about what's included in the Complete Vietnam Surgery Companion</li>
+                    <li>Directing you to Real Stories from other women</li>
+                </ul>
+                <h2 class="font-serif text-2xl text-[var(--color-charcoal)]">What this is not</h2>
+                <ul>
+                    <li>Medical advice or surgical recommendations</li>
+                    <li>Patient coordination or hospital booking on your behalf</li>
+                    <li>A guarantee of outcomes or experiences</li>
+                    <li>Booking a free call or consultation</li>
+                </ul>
             </div>
-            <h2 class="font-serif text-2xl text-[var(--color-charcoal)]">What I can help with</h2>
-            <ul>
-                <li>Pointing you to the right free preview guides for your stage of research</li>
-                <li>Sharing what surprised me during planning, surgery and recovery</li>
-                <li>Answering questions about what's included in the Complete Vietnam Surgery Companion</li>
-                <li>Directing you to Real Stories from other women</li>
-            </ul>
-            <h2 class="font-serif text-2xl text-[var(--color-charcoal)]">What this is not</h2>
-            <ul>
-                <li>Medical advice or surgical recommendations</li>
-                <li>Patient coordination or hospital booking on your behalf</li>
-                <li>A guarantee of outcomes or experiences</li>
-            </ul>
+            <div class="lg:col-span-2">
+                <div class="glass-panel sticky top-28 text-center">
+                    <p class="mb-2 font-serif text-2xl">The best way to reach me</p>
+                    <p class="prose-tbg mb-6 text-sm">Messenger is the only prominent contact action on this site — by design.</p>
+                    <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger w-full">Message Me on Messenger</a>
+                    <p class="mt-6 text-xs leading-relaxed text-[var(--color-muted)]">
+                        I do not book consultations, recommend surgeons or choose procedures on your behalf.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 </BeautyGuidesLayout>

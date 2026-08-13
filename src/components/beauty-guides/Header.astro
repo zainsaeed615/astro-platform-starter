@@ -2,29 +2,27 @@
 import { site, navLinks } from '../../data/beauty-guides';
 ---
 
-<header class="sticky top-0 z-50 border-b border-[var(--color-peach)] bg-[var(--color-cream)]/95 backdrop-blur-md">
-    <div class="hidden border-b border-[var(--color-peach)]/60 bg-[var(--color-white-soft)] py-2 text-center text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--color-muted)] md:block">
-        Real stories. Real guidance. Real confidence.
+<header class="sticky top-0 z-50 border-b border-[var(--color-peach)]/50 bg-[var(--color-cream)]/90 backdrop-blur-xl">
+    <div class="hidden border-b border-[var(--color-peach)]/40 bg-gradient-to-r from-[var(--color-white-soft)] via-[var(--color-cream)] to-[var(--color-white-soft)] py-2.5 text-center text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--color-muted)] md:block">
+        {site.taglineShort}
     </div>
     <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6 md:py-4">
-        <a href="/" class="flex shrink-0 items-center gap-3 no-underline">
-            <img src="/beauty-guides/logo.png" alt={site.name} class="hidden h-10 w-auto md:block lg:h-12" />
-            <div class="md:hidden">
-                <p class="font-serif text-lg leading-none text-[var(--color-charcoal)]">The Beauty Guides</p>
-                <p class="text-[10px] uppercase tracking-widest text-[var(--color-taupe)]">Ask Kirsty</p>
+        <a href="/" class="group flex shrink-0 items-center gap-3 no-underline">
+            <div class="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border-2 border-[var(--color-taupe-light)] bg-[var(--color-white-soft)] shadow-sm transition group-hover:border-[var(--color-taupe)]">
+                <img src="/beauty-guides/logo.png" alt="" class="h-9 w-9 object-contain object-center opacity-90" />
             </div>
-            <div class="hidden md:block">
-                <p class="font-serif text-xl leading-none text-[var(--color-charcoal)]">The Beauty Guides</p>
-                <p class="mt-0.5 text-[11px] uppercase tracking-[0.2em] text-[var(--color-taupe)]">Ask Kirsty</p>
+            <div>
+                <p class="font-serif text-lg leading-none tracking-wide text-[var(--color-charcoal)] md:text-xl">The Beauty Guides</p>
+                <p class="mt-0.5 text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--color-taupe)]">Ask Kirsty</p>
             </div>
         </a>
 
-        <nav class="hidden items-center gap-6 lg:flex">
+        <nav class="hidden items-center gap-1 lg:flex">
             {
                 navLinks.map((link) => (
                     <a
                         href={link.href}
-                        class="text-xs font-semibold uppercase tracking-wider text-[var(--color-charcoal)] no-underline transition hover:text-[var(--color-taupe)]"
+                        class="rounded-full px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-[var(--color-charcoal)] no-underline transition hover:bg-[var(--color-peach-light)] hover:text-[var(--color-taupe-dark)]"
                     >
                         {link.label}
                     </a>
@@ -33,33 +31,36 @@ import { site, navLinks } from '../../data/beauty-guides';
         </nav>
 
         <div class="flex items-center gap-2">
-            <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger hidden px-4 py-2 text-[10px] sm:inline-flex">
+            <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger hidden !px-4 !py-2.5 !text-[10px] sm:inline-flex">
                 Message Me
             </a>
-            <a href="/complete-guide" class="btn-tbg-primary hidden px-4 py-2 text-[10px] md:inline-flex"> Get the Guide </a>
+            <a href="/complete-guide" class="btn-tbg-primary hidden !px-4 !py-2.5 !text-[10px] md:inline-flex">Get the Guide</a>
             <button
                 type="button"
                 id="mobile-menu-btn"
-                class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-peach)] lg:hidden"
+                class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-peach)] bg-white/70 lg:hidden"
                 aria-label="Open menu"
             >
-                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="h-5 w-5 text-[var(--color-charcoal)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </div>
     </div>
 
-    <div id="mobile-menu" class="hidden border-t border-[var(--color-peach)] bg-[var(--color-cream)] px-4 py-4 lg:hidden">
-        <nav class="flex flex-col gap-3">
+    <div id="mobile-menu" class="hidden border-t border-[var(--color-peach)]/50 bg-[var(--color-cream)]/95 px-4 py-5 backdrop-blur-xl lg:hidden">
+        <nav class="flex flex-col gap-1">
             {
                 navLinks.map((link) => (
-                    <a href={link.href} class="py-2 text-sm font-semibold uppercase tracking-wider text-[var(--color-charcoal)] no-underline">
+                    <a href={link.href} class="rounded-xl px-4 py-3 text-sm font-bold uppercase tracking-wider text-[var(--color-charcoal)] no-underline hover:bg-[var(--color-peach-light)]">
                         {link.label}
                     </a>
                 ))
             }
-            <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger mt-2 w-full text-xs"> Message Me on Messenger </a>
+            <div class="mt-4 flex flex-col gap-2">
+                <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger w-full !text-[10px]">Message Me on Messenger</a>
+                <a href="/complete-guide" class="btn-tbg-primary w-full !text-[10px]">Get the Guide</a>
+            </div>
         </nav>
     </div>
 </header>

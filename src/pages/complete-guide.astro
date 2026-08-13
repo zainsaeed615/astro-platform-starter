@@ -1,53 +1,55 @@
 ---
 import BeautyGuidesLayout from '../layouts/BeautyGuidesLayout.astro';
 import PageHero from '../components/beauty-guides/PageHero.astro';
-import { guideTopics, productBenefits, site } from '../data/beauty-guides';
+import SectionHeader from '../components/beauty-guides/SectionHeader.astro';
+import { pageHeroes, guideTopics, productBenefits, site } from '../data/beauty-guides';
+
+const hero = pageHeroes['complete-guide'];
 ---
 
 <BeautyGuidesLayout title="The Complete Vietnam Surgery Companion" description="Ten detailed guides, checklists and templates — $199 one-off payment.">
-    <PageHero
-        eyebrow="The Complete Vietnam Surgery Companion"
-        title="Feel prepared before you ever step on the plane."
-        subtitle="Ten detailed guides, practical checklists and real-life advice from my own experience."
-        image="/beauty-guides/mock2.png"
-        size="large"
-    />
+    <PageHero {...hero} size="large" />
 
-    <section id="included" class="mx-auto max-w-5xl px-4 py-16 md:px-6">
-        <h2 class="section-title mb-8 text-center">What's included</h2>
-        <div class="grid gap-4 sm:grid-cols-2">
+    <section id="included" class="section-inner py-16 md:py-24">
+        <SectionHeader centered title="What's included" subtitle="130+ pages of content organised into ten chapters plus checklists, templates and downloads — presented through a premium customer portal." />
+        <div class="grid gap-5 sm:grid-cols-2">
             {guideTopics.map((g) => (
-                <div class="flex gap-4 rounded-xl border border-[var(--color-peach)] bg-[var(--color-white-soft)] p-4">
-                    <span class="font-serif text-2xl text-[var(--color-taupe)]">{g.number}</span>
+                <div class="flex gap-5 rounded-2xl border border-[var(--color-peach)]/70 bg-[var(--color-white-soft)] p-5 shadow-sm transition hover:shadow-md">
+                    <img src={g.image} alt="" class="h-20 w-20 shrink-0 rounded-xl object-cover" loading="lazy" />
                     <div>
+                        <p class="text-xs font-bold uppercase tracking-wider text-[var(--color-taupe)]">Chapter {g.number}</p>
                         <h3 class="font-serif text-lg">{g.title}</h3>
-                        <p class="text-sm text-[var(--color-muted)]">{g.description}</p>
+                        <p class="mt-1 text-sm text-[var(--color-muted)]">{g.description}</p>
                     </div>
                 </div>
             ))}
         </div>
-        <div class="mt-8 rounded-2xl border border-[var(--color-peach)] bg-[var(--color-cream)] p-6">
+        <div class="mt-8 rounded-2xl border-2 border-dashed border-[var(--color-taupe-light)] bg-[var(--color-cream)] p-8">
             <h3 class="mb-2 font-serif text-xl">+ Checklists, Templates & Downloads</h3>
             <p class="prose-tbg text-sm">Packing lists, question banks, timeline templates and downloadable resources for every stage of your journey.</p>
         </div>
     </section>
 
-    <section class="bg-[var(--color-white-soft)] py-16">
-        <div class="mx-auto max-w-3xl px-4 text-center md:px-6">
-            <ul class="mb-8 inline-block space-y-2 text-left">
+    <section class="bg-gradient-to-b from-[var(--color-white-soft)] to-[var(--color-cream)] py-20">
+        <div class="section-inner mx-auto max-w-4xl">
+            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {productBenefits.map((b) => (
-                    <li class="flex items-center gap-2 text-sm">
-                        <span class="text-[var(--color-taupe)]">✓</span> {b}
-                    </li>
+                    <div class="glass-panel text-center">
+                        <span class="product-benefit-icon mx-auto mb-3">{b.icon}</span>
+                        <p class="text-sm font-bold">{b.label}</p>
+                        <p class="mt-1 text-xs text-[var(--color-muted)]">{b.detail}</p>
+                    </div>
                 ))}
-            </ul>
-            <p id="pricing" class="mb-6 font-serif text-4xl text-[var(--color-taupe)]">{site.price}</p>
-            <p class="prose-tbg mb-8">One-off payment. Secure checkout. Instant access to the customer portal.</p>
-            <div id="purchase" class="flex flex-wrap justify-center gap-3">
-                <a href="/account" class="btn-tbg-primary">Get the Complete Guide</a>
-                <a href="/account" class="btn-tbg-outline">Preview Customer Portal</a>
             </div>
-            <p class="mt-6 text-xs text-[var(--color-muted)]">Mockup checkout — links to customer portal demo.</p>
+            <div id="pricing" class="mt-14 text-center">
+                <p class="font-serif text-5xl text-[var(--color-taupe)]">{site.price}</p>
+                <p class="prose-tbg mt-3">One-off payment · Secure checkout · Instant portal access</p>
+                <div id="purchase" class="mt-8 flex flex-wrap justify-center gap-3">
+                    <a href="/account" class="btn-tbg-primary">Get the Complete Guide</a>
+                    <a href="/account" class="btn-tbg-outline">Preview Customer Portal</a>
+                </div>
+                <p class="mt-6 text-xs text-[var(--color-muted)]">Mockup checkout — links to customer portal demo.</p>
+            </div>
         </div>
     </section>
 </BeautyGuidesLayout>

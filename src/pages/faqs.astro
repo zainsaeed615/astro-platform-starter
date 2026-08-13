@@ -1,28 +1,33 @@
 ---
 import BeautyGuidesLayout from '../layouts/BeautyGuidesLayout.astro';
 import PageHero from '../components/beauty-guides/PageHero.astro';
-import { faqs, site } from '../data/beauty-guides';
+import { pageHeroes, faqs, site } from '../data/beauty-guides';
+
+const hero = pageHeroes.faqs;
 ---
 
-<BeautyGuidesLayout title="FAQs" description="Frequently asked questions about The Beauty Guides and the Complete Vietnam Surgery Companion.">
-    <PageHero eyebrow="FAQs" title="You ask. We answer." subtitle="Frequent questions, honest answers — framed as personal experience." image="/beauty-guides/gen1.png" />
+<BeautyGuidesLayout title="FAQs" description="Frequently asked questions about The Beauty Guides.">
+    <PageHero {...hero} />
 
-    <section class="mx-auto max-w-3xl px-4 py-16 md:px-6 md:py-24">
-        <div class="space-y-4">
+    <section class="section-inner py-16 md:py-24">
+        <div class="mx-auto max-w-3xl space-y-4">
             {
                 faqs.map((faq) => (
-                    <details class="group rounded-2xl border border-[var(--color-peach)] bg-[var(--color-white-soft)]">
-                        <summary class="cursor-pointer list-none px-6 py-5 font-serif text-lg font-normal text-[var(--color-charcoal)] [&::-webkit-details-marker]:hidden">
-                            {faq.q}
-                            <span class="float-right text-[var(--color-taupe)] transition group-open:rotate-45">+</span>
+                    <details class="group overflow-hidden rounded-2xl border border-[var(--color-peach)]/70 bg-[var(--color-white-soft)] shadow-sm transition hover:shadow-md">
+                        <summary class="cursor-pointer list-none px-6 py-5 font-serif text-lg text-[var(--color-charcoal)] [&::-webkit-details-marker]:hidden">
+                            <span class="flex items-start justify-between gap-4">
+                                {faq.q}
+                                <span class="mt-1 shrink-0 text-[var(--color-taupe)] transition group-open:rotate-45">+</span>
+                            </span>
                         </summary>
-                        <div class="border-t border-[var(--color-peach)] px-6 py-4 prose-tbg">{faq.a}</div>
+                        <div class="border-t border-[var(--color-peach)]/50 px-6 py-5 prose-tbg">{faq.a}</div>
                     </details>
                 ))
             }
         </div>
-        <div class="mt-12 rounded-2xl bg-[var(--color-cream-dark)] p-8 text-center">
-            <p class="mb-4 font-serif text-xl">Still have questions?</p>
+        <div class="mx-auto mt-14 max-w-xl glass-panel text-center">
+            <p class="mb-2 font-serif text-2xl">Still have questions?</p>
+            <p class="prose-tbg mb-6 text-sm">There is no separate Contact page — Ask Kirsty and Messenger handle enquiries.</p>
             <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Message Me on Messenger</a>
         </div>
     </section>

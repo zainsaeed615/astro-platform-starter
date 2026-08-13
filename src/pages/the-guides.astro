@@ -2,29 +2,27 @@
 import BeautyGuidesLayout from '../layouts/BeautyGuidesLayout.astro';
 import PageHero from '../components/beauty-guides/PageHero.astro';
 import GuideCard from '../components/beauty-guides/GuideCard.astro';
-import { guideTopics, site } from '../data/beauty-guides';
+import SectionHeader from '../components/beauty-guides/SectionHeader.astro';
+import { pageHeroes, guideTopics, site } from '../data/beauty-guides';
+
+const hero = pageHeroes['the-guides'];
 ---
 
 <BeautyGuidesLayout title="The Guides" description="Ten detailed guides covering every stage of cosmetic surgery travel to Vietnam.">
-    <PageHero
-        eyebrow="The Guides"
-        title="Your guide to confident choices."
-        subtitle="Everything you need to know before, during and after surgery in Vietnam — from someone who has done it."
-        image="/beauty-guides/mock2.png"
-    />
+    <PageHero {...hero} />
 
-    <section class="mx-auto max-w-3xl px-4 py-12 text-center md:px-6">
-        <p class="prose-tbg">
-            Each guide includes a free preview with genuine value. Complete checklists, templates and step-by-step detail sit inside the paid Complete Vietnam Surgery Companion.
-        </p>
+    <section class="section-inner py-12 md:py-16">
+        <div class="mx-auto max-w-3xl text-center prose-tbg text-lg">
+            <p>Each guide includes a free preview with genuine value. Complete checklists, templates and step-by-step detail sit inside the paid Complete Vietnam Surgery Companion.</p>
+        </div>
     </section>
 
-    <section class="bg-[var(--color-white-soft)] pb-20 pt-4">
-        <div class="mx-auto max-w-7xl px-4 md:px-6">
-            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+    <section class="bg-[var(--color-white-soft)] pb-24 pt-4">
+        <div class="section-inner">
+            <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
                 {guideTopics.map((guide) => <GuideCard {...guide} />)}
             </div>
-            <div class="mt-12 text-center">
+            <div class="mt-16 text-center">
                 <a href="/complete-guide" class="btn-tbg-primary">Get the Complete Guide — {site.price}</a>
             </div>
         </div>
