@@ -5,7 +5,6 @@ import StorySection from '../components/beauty-guides/StorySection.astro';
 import StoryStatsBar from '../components/beauty-guides/StoryStatsBar.astro';
 import StoryPullQuote from '../components/beauty-guides/StoryPullQuote.astro';
 import StoryInsightCards from '../components/beauty-guides/StoryInsightCards.astro';
-import StorySidebar from '../components/beauty-guides/StorySidebar.astro';
 import { myStoryPageSections } from '../data/story-pages';
 import { site } from '../data/beauty-guides';
 
@@ -54,63 +53,58 @@ const displaySections = myStoryPageSections.filter((s) => s.paragraphs.length > 
     </nav>
 
     <div class="section-inner py-12 lg:py-16">
-        <div class="grid gap-12 xl:grid-cols-[1fr_280px]">
-            <div class="min-w-0">
-                {
-                    displaySections.map((section, index) => (
-                        <>
-                            <StorySection {...section} index={index} variant={variants[index] || 'default'} />
-                            {index === 1 && (
-                                <StoryPullQuote
-                                    quote="They still looked like themselves — just refreshed, natural, rested and beautiful. Not overdone. Not plastic."
-                                    attribution="What changed my thinking"
-                                    image="/beauty-guides/my-story/mystory-trust.png"
-                                />
-                            )}
-                            {index === 2 && (
-                                <StoryInsightCards
-                                    title="Why Vietnam appealed to me"
-                                    items={[
-                                        { icon: '✈️', title: 'Already loved the country', body: 'I had holidayed in Vietnam before and watched it change enormously — Ho Chi Minh City had developed incredibly quickly.' },
-                                        { icon: '🇰🇷', title: 'Korean techniques', body: 'References to Korean training and approaches kept appearing — softer repositioning, not the stretched facelift look I did not want.' },
-                                        { icon: '👩', title: 'Real results from real women', body: 'Friends I knew came home looking refreshed and natural. That was exactly what I wanted — to look like Kirsty, just fresher.' },
-                                    ]}
-                                />
-                            )}
-                            {index === 4 && (
-                                <StoryStatsBar
-                                    dark
-                                    items={[
-                                        { value: '1', label: 'Procedure planned' },
-                                        { value: '9', label: 'Days of surgery' },
-                                        { value: '5', label: 'Surgeries total' },
-                                        { value: '16', label: 'Days in Vietnam' },
-                                    ]}
-                                />
-                            )}
-                            {index === 6 && (
-                                <StoryPullQuote
-                                    quote="Grab became my version of Uber, Uber Eats and everything else rolled into one."
-                                    attribution="Travelling alone"
-                                    image="/beauty-guides/my-story/mystory-solo-travel.png"
-                                />
-                            )}
-                            {index === 7 && (
-                                <StoryInsightCards
-                                    title="What I learnt about cost"
-                                    items={[
-                                        { icon: '💰', title: 'Cost got my attention', body: 'The difference between Australian quotes and Vietnam was substantial — but that alone was never enough.' },
-                                        { icon: '✨', title: 'Results made me go', body: 'If the women I knew had come home unhappy, I would not have gone. The results made me get on the plane.' },
-                                        { icon: '⚖️', title: 'Price ≠ value', body: 'The cheapest option is not necessarily the best, and the most expensive is not automatically the best either.' },
-                                    ]}
-                                />
-                            )}
-                        </>
-                    ))
-                }
-            </div>
-            <StorySidebar sections={displaySections} currentPage="my-story" />
-        </div>
+        {
+            displaySections.map((section, index) => (
+                <>
+                    <StorySection {...section} index={index} variant={variants[index] || 'default'} />
+                    {index === 1 && (
+                        <StoryPullQuote
+                            quote="They still looked like themselves — just refreshed, natural, rested and beautiful. Not overdone. Not plastic."
+                            attribution="What changed my thinking"
+                            image="/beauty-guides/my-story/mystory-trust.png"
+                        />
+                    )}
+                    {index === 2 && (
+                        <StoryInsightCards
+                            title="Why Vietnam appealed to me"
+                            items={[
+                                { icon: '✈️', title: 'Already loved the country', body: 'I had holidayed in Vietnam before and watched it change enormously — Ho Chi Minh City had developed incredibly quickly.' },
+                                { icon: '🇰🇷', title: 'Korean techniques', body: 'References to Korean training and approaches kept appearing — softer repositioning, not the stretched facelift look I did not want.' },
+                                { icon: '👩', title: 'Real results from real women', body: 'Friends I knew came home looking refreshed and natural. That was exactly what I wanted — to look like Kirsty, just fresher.' },
+                            ]}
+                        />
+                    )}
+                    {index === 4 && (
+                        <StoryStatsBar
+                            dark
+                            items={[
+                                { value: '1', label: 'Procedure planned' },
+                                { value: '9', label: 'Days of surgery' },
+                                { value: '5', label: 'Surgeries total' },
+                                { value: '16', label: 'Days in Vietnam' },
+                            ]}
+                        />
+                    )}
+                    {index === 6 && (
+                        <StoryPullQuote
+                            quote="Grab became my version of Uber, Uber Eats and everything else rolled into one."
+                            attribution="Travelling alone"
+                            image="/beauty-guides/my-story/mystory-solo-travel.png"
+                        />
+                    )}
+                    {index === 7 && (
+                        <StoryInsightCards
+                            title="What I learnt about cost"
+                            items={[
+                                { icon: '💰', title: 'Cost got my attention', body: 'The difference between Australian quotes and Vietnam was substantial — but that alone was never enough.' },
+                                { icon: '✨', title: 'Results made me go', body: 'If the women I knew had come home unhappy, I would not have gone. The results made me get on the plane.' },
+                                { icon: '⚖️', title: 'Price ≠ value', body: 'The cheapest option is not necessarily the best, and the most expensive is not automatically the best either.' },
+                            ]}
+                        />
+                    )}
+                </>
+            ))
+        }
     </div>
 
     <!-- Bridge to Nine Days -->

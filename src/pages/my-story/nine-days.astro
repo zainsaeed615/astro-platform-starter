@@ -6,7 +6,6 @@ import StoryStatsBar from '../../components/beauty-guides/StoryStatsBar.astro';
 import StoryPullQuote from '../../components/beauty-guides/StoryPullQuote.astro';
 import StoryInsightCards from '../../components/beauty-guides/StoryInsightCards.astro';
 import StoryTimeline from '../../components/beauty-guides/StoryTimeline.astro';
-import StorySidebar from '../../components/beauty-guides/StorySidebar.astro';
 import { nineDaysPageSections } from '../../data/story-pages';
 import { procedures, site } from '../../data/beauty-guides';
 
@@ -97,73 +96,68 @@ const timelineSteps = [
     />
 
     <div class="section-inner py-12 lg:py-16">
-        <div class="grid gap-12 xl:grid-cols-[1fr_280px]">
-            <div class="min-w-0">
-                {
-                    displaySections.map((section, index) => (
-                        <>
-                            <StorySection {...section} index={index} variant={variants[index] || 'default'} />
-                            {index === 2 && (
-                                <StoryInsightCards
-                                    title="What I'd already learnt"
-                                    items={[
-                                        { icon: '🌏', title: 'Overseas wasn\'t new', body: 'I\'d had cosmetic surgery overseas at 40 and spent 20+ years around the beauty industry — the plane didn\'t frighten me.' },
-                                        { icon: '🇦🇺', title: 'Australia ≠ guarantee', body: 'Two disappointing tummy tucks on the Gold Coast taught me that country alone doesn\'t determine outcome.' },
-                                        { icon: '🔍', title: 'Look at results', body: 'I learnt to look beyond the country and pay attention to the surgeon, technique and what was actually proposed.' },
-                                    ]}
-                                />
-                            )}
-                            {index === 5 && (
-                                <StoryPullQuote
-                                    quote="The last thing I wanted was a surgeon telling me what I wanted to hear simply because that's what I'd arrived asking for."
-                                    attribution="Deep plane facelift recommendation"
-                                    image="/beauty-guides/nine-days/ninedays-surgery-day.png"
-                                />
-                            )}
-                            {index === 8 && (
-                                <StoryStatsBar
-                                    dark
-                                    items={[
-                                        { value: 'BBL', label: 'Added from a photo' },
-                                        { value: '3rd', label: 'Tummy tuck' },
-                                        { value: '7', label: 'Days after facelift' },
-                                        { value: '0', label: 'Regrets' },
-                                    ]}
-                                />
-                            )}
-                            {index === 10 && (
-                                <StoryInsightCards
-                                    title="Honest recovery notes"
-                                    items={[
-                                        { icon: '📅', title: 'Staged, not stacked', body: 'Five surgeries in nine days doesn\'t mean everything at once — procedures were spaced around recovery needs.' },
-                                        { icon: '💜', title: 'Emotional wobbles happen', body: 'Around day six or seven I cried for no logical reason. Recovery isn\'t purely physical — that\'s worth talking about.' },
-                                        { icon: '📝', title: 'Research everything', body: 'Intimate rejuvenation was worth it for me, but the recovery was the hardest — I wish I\'d researched it more thoroughly.' },
-                                    ]}
-                                />
-                            )}
-                            {index === 12 && (
-                                <StoryPullQuote
-                                    quote="Recovery didn't mean staring at four hotel walls for two weeks. We just did everything more slowly. Very slowly."
-                                    attribution="Sixteen days in Vietnam"
-                                    image="/beauty-guides/nine-days/ninedays-living.png"
-                                />
-                            )}
-                            {index === 15 && (
-                                <StoryInsightCards
-                                    title="What surprised me most"
-                                    items={[
-                                        { icon: '☕', title: 'Life continued', body: 'Coffee, shopping, rooftop bars, postcards — surgery became part of the trip, not the entire trip.' },
-                                        { icon: '💪', title: 'Confidence was the goal', body: 'Surgery was the vehicle. What I was really looking for was confidence — and I found it.' },
-                                        { icon: '👓', title: 'Glasses sorted', body: 'Five pairs of prescription glasses for around $1,200 — versus $5,000–$6,000 in Australia.' },
-                                    ]}
-                                />
-                            )}
-                        </>
-                    ))
-                }
-            </div>
-            <StorySidebar sections={displaySections} currentPage="nine-days" />
-        </div>
+        {
+            displaySections.map((section, index) => (
+                <>
+                    <StorySection {...section} index={index} variant={variants[index] || 'default'} />
+                    {index === 2 && (
+                        <StoryInsightCards
+                            title="What I'd already learnt"
+                            items={[
+                                { icon: '🌏', title: 'Overseas wasn\'t new', body: 'I\'d had cosmetic surgery overseas at 40 and spent 20+ years around the beauty industry — the plane didn\'t frighten me.' },
+                                { icon: '🇦🇺', title: 'Australia ≠ guarantee', body: 'Two disappointing tummy tucks on the Gold Coast taught me that country alone doesn\'t determine outcome.' },
+                                { icon: '🔍', title: 'Look at results', body: 'I learnt to look beyond the country and pay attention to the surgeon, technique and what was actually proposed.' },
+                            ]}
+                        />
+                    )}
+                    {index === 5 && (
+                        <StoryPullQuote
+                            quote="The last thing I wanted was a surgeon telling me what I wanted to hear simply because that's what I'd arrived asking for."
+                            attribution="Deep plane facelift recommendation"
+                            image="/beauty-guides/nine-days/ninedays-surgery-day.png"
+                        />
+                    )}
+                    {index === 8 && (
+                        <StoryStatsBar
+                            dark
+                            items={[
+                                { value: 'BBL', label: 'Added from a photo' },
+                                { value: '3rd', label: 'Tummy tuck' },
+                                { value: '7', label: 'Days after facelift' },
+                                { value: '0', label: 'Regrets' },
+                            ]}
+                        />
+                    )}
+                    {index === 10 && (
+                        <StoryInsightCards
+                            title="Honest recovery notes"
+                            items={[
+                                { icon: '📅', title: 'Staged, not stacked', body: 'Five surgeries in nine days doesn\'t mean everything at once — procedures were spaced around recovery needs.' },
+                                { icon: '💜', title: 'Emotional wobbles happen', body: 'Around day six or seven I cried for no logical reason. Recovery isn\'t purely physical — that\'s worth talking about.' },
+                                { icon: '📝', title: 'Research everything', body: 'Intimate rejuvenation was worth it for me, but the recovery was the hardest — I wish I\'d researched it more thoroughly.' },
+                            ]}
+                        />
+                    )}
+                    {index === 12 && (
+                        <StoryPullQuote
+                            quote="Recovery didn't mean staring at four hotel walls for two weeks. We just did everything more slowly. Very slowly."
+                            attribution="Sixteen days in Vietnam"
+                            image="/beauty-guides/nine-days/ninedays-living.png"
+                        />
+                    )}
+                    {index === 15 && (
+                        <StoryInsightCards
+                            title="What surprised me most"
+                            items={[
+                                { icon: '☕', title: 'Life continued', body: 'Coffee, shopping, rooftop bars, postcards — surgery became part of the trip, not the entire trip.' },
+                                { icon: '💪', title: 'Confidence was the goal', body: 'Surgery was the vehicle. What I was really looking for was confidence — and I found it.' },
+                                { icon: '👓', title: 'Glasses sorted', body: 'Five pairs of prescription glasses for around $1,200 — versus $5,000–$6,000 in Australia.' },
+                            ]}
+                        />
+                    )}
+                </>
+            ))
+        }
     </div>
 
     <!-- Closing CTA -->
