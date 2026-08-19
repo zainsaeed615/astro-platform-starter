@@ -1,0 +1,40 @@
+---
+interface Props {
+    sections: readonly { slug: string; title: string }[];
+    currentPage: 'my-story' | 'nine-days';
+}
+
+const { sections, currentPage } = Astro.props;
+---
+
+<aside class="hidden xl:block">
+    <div class="sticky top-32 rounded-3xl border border-[var(--color-peach)]/60 bg-[var(--color-white-soft)]/90 p-6 shadow-[0_8px_32px_rgba(44,40,37,0.08)] backdrop-blur-sm">
+        <p class="section-eyebrow mb-4">On this page</p>
+        <nav class="max-h-[60vh] space-y-1 overflow-y-auto">
+            {
+                sections.map((s, i) => (
+                    <a
+                        href={`#${s.slug}`}
+                        class="group flex items-start gap-3 rounded-xl px-3 py-2.5 text-sm text-[var(--color-muted)] no-underline transition hover:bg-[var(--color-peach-light)]/50 hover:text-[var(--color-charcoal)]"
+                    >
+                        <span class="mt-0.5 shrink-0 font-serif text-xs text-[var(--color-taupe-light)] group-hover:text-[var(--color-taupe)]">{String(i + 1).padStart(2, '0')}</span>
+                        <span class="leading-snug">{s.title.length > 42 ? s.title.slice(0, 42) + '…' : s.title}</span>
+                    </a>
+                ))
+            }
+        </nav>
+        <div class="mt-6 border-t border-[var(--color-peach)]/50 pt-4">
+            {
+                currentPage === 'my-story' ? (
+                    <a href="/my-story/nine-days" class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--color-taupe)] no-underline hover:opacity-80">
+                        Continue: Nine Days →
+                    </a>
+                ) : (
+                    <a href="/my-story" class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--color-taupe)] no-underline hover:opacity-80">
+                        ← Back: Why I Did It
+                    </a>
+                )
+            }
+        </div>
+    </div>
+</aside>

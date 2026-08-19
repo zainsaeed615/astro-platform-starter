@@ -1,0 +1,41 @@
+---
+interface Step {
+    day: string;
+    title: string;
+    description: string;
+}
+
+interface Props {
+    title: string;
+    steps: Step[];
+}
+
+const { title, steps } = Astro.props;
+---
+
+<section class="bg-[var(--color-white-soft)] py-16 md:py-24">
+    <div class="section-inner">
+        <h3 class="section-title mb-12 text-center">{title}</h3>
+        <div class="relative mx-auto max-w-3xl">
+            <div class="absolute top-0 bottom-0 left-6 w-px bg-gradient-to-b from-[var(--color-taupe-light)] via-[var(--color-taupe)] to-[var(--color-peach)] md:left-1/2 md:-translate-x-px"></div>
+            <div class="space-y-10">
+                {
+                    steps.map((step, i) => (
+                        <div class={`relative flex gap-8 md:gap-0 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                            <div class="hidden flex-1 md:block"></div>
+                            <div class="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-4 border-[var(--color-white-soft)] bg-[var(--color-taupe)] font-serif text-sm font-bold text-white shadow-lg md:absolute md:left-1/2 md:-translate-x-1/2">
+                                {step.day}
+                            </div>
+                            <div class={`flex-1 pl-16 md:pl-0 ${i % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'}`}>
+                                <div class="rounded-2xl border border-[var(--color-peach)]/60 bg-[var(--color-cream)] p-6 shadow-sm">
+                                    <h4 class="font-serif text-lg">{step.title}</h4>
+                                    <p class="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">{step.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,25 @@
+---
+interface Props {
+    quote: string;
+    attribution?: string;
+    image?: string;
+}
+
+const { quote, attribution, image } = Astro.props;
+---
+
+<section class="relative overflow-hidden py-20 md:py-28">
+    {image && (
+        <>
+            <img src={image} alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-[var(--color-charcoal)]/78"></div>
+        </>
+    )}
+    {!image && <div class="absolute inset-0 bg-[var(--color-charcoal)]"></div>}
+    <div class="botanical-bg absolute inset-0 opacity-10"></div>
+    <div class="section-inner relative mx-auto max-w-4xl text-center">
+        <span class="mb-6 inline-block text-5xl text-[var(--color-peach-light)] opacity-60">"</span>
+        <blockquote class="font-serif text-2xl leading-relaxed text-white md:text-4xl md:leading-snug">{quote}</blockquote>
+        {attribution && <p class="mt-8 text-sm font-bold uppercase tracking-[0.25em] text-[var(--color-peach-light)]">{attribution}</p>}
+    </div>
+</section>
