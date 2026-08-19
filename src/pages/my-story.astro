@@ -1,60 +1,66 @@
 ---
 import BeautyGuidesLayout from '../layouts/BeautyGuidesLayout.astro';
-import PageHero from '../components/beauty-guides/PageHero.astro';
-import SectionHeader from '../components/beauty-guides/SectionHeader.astro';
-import { pageHeroes, procedures, myStorySections, site } from '../data/beauty-guides';
-
-const hero = pageHeroes['my-story'];
+import StoryPageHero from '../components/beauty-guides/StoryPageHero.astro';
+import StorySection from '../components/beauty-guides/StorySection.astro';
+import { myStoryPageSections } from '../data/story-pages';
+import { site } from '../data/beauty-guides';
 ---
 
-<BeautyGuidesLayout title="My Story" description="Kirsty Strowger's personal cosmetic surgery journey in Vietnam.">
-    <PageHero {...hero} size="large" />
+<BeautyGuidesLayout title="My Story — Why I Did It" description="Kirsty Strowger's full personal story — why she chose Vietnam, what surprised her, and why she created The Beauty Guides.">
+    <StoryPageHero
+        eyebrow="My Story"
+        title="Why I Did It"
+        subtitle="I'm not a clinic salesperson. I'm not an influencer selling you a dream. I'm just a woman in her 50s who travelled to Vietnam expecting one procedure — and came home after a journey that changed far more than my appearance."
+        image="/beauty-guides/my-story/mystory-intro.png"
+        badge="Section 2 · Full Story"
+    />
 
-    <section class="section-inner py-16 md:py-24">
-        <div class="mx-auto max-w-3xl">
-            <div class="prose-tbg space-y-6 text-lg">
-                <p>
-                    I travelled to Vietnam alone. I had researched for months, but nothing fully prepared me for the reality of consultations, hospital stays, recovery in another country and the emotional side of returning home changed.
-                </p>
-                <p>This site is not here to tell you what decision to make. It's here so you can learn from someone who has already lived through the decision you're considering.</p>
-            </div>
+    <!-- Sticky chapter nav -->
+    <nav class="sticky top-[72px] z-40 border-b border-[var(--color-peach)]/50 bg-[var(--color-cream)]/95 backdrop-blur-xl">
+        <div class="section-inner flex items-center gap-4 overflow-x-auto py-3 no-scrollbar">
+            <a href="/my-story" class="shrink-0 text-[11px] font-bold uppercase tracking-wider text-[var(--color-taupe)]">Why I Did It</a>
+            <span class="text-[var(--color-peach)]">|</span>
+            <a href="/my-story/nine-days" class="shrink-0 text-[11px] font-bold uppercase tracking-wider text-[var(--color-muted)] hover:text-[var(--color-taupe)]">Nine Days →</a>
+            {
+                myStoryPageSections.slice(0, 6).map((s) => (
+                    <a href={`#${s.slug}`} class="shrink-0 rounded-full border border-[var(--color-peach)]/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-muted)] transition hover:border-[var(--color-taupe)] hover:text-[var(--color-taupe)]">
+                        {s.title.length > 28 ? s.title.slice(0, 28) + '…' : s.title}
+                    </a>
+                ))
+            }
         </div>
-    </section>
+    </nav>
 
     {
-        myStorySections.map((section, i) => (
-            <section class={`py-16 md:py-20 ${i % 2 === 0 ? 'bg-[var(--color-white-soft)]' : 'bg-[var(--color-cream)]'}`}>
-                <div class="section-inner mx-auto max-w-3xl">
-                    <h2 class="mb-5 font-serif text-2xl md:text-3xl">{section.title}</h2>
-                    <p class="prose-tbg text-base leading-relaxed">{section.body}</p>
-                </div>
-            </section>
-        ))
+        myStoryPageSections.map((section, index) => <StorySection {...section} index={index} />)
     }
 
-    <section id="journey" class="relative overflow-hidden py-20 md:py-28">
-        <div class="absolute inset-0">
-            <img src="/beauty-guides/sections/nine-days-journey.png" alt="" class="h-full w-full object-cover" loading="lazy" />
-            <div class="absolute inset-0 bg-[var(--color-charcoal)]/82"></div>
-        </div>
-        <div class="section-inner relative mx-auto max-w-4xl text-center text-white">
-            <SectionHeader centered eyebrow="The journey" title="What happened in nine days" subtitle="I went to Vietnam for a facelift. Two weeks later, I came home after a journey that had turned into something far bigger than I ever expected." />
-            <div class="mb-8 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                {procedures.map((p, i) => (
-                    <div class="rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-sm backdrop-blur-sm">
-                        <span class="font-bold text-[var(--color-peach-light)]">{i + 1}.</span> {p}
-                    </div>
-                ))}
-            </div>
-            <p class="script-note !text-[var(--color-peach-light)]">And yes… knowing what I know now, I would still do it again.</p>
-            <p class="mt-4 text-xs text-white/50">Procedure names pending Kirsty's final approval.</p>
+    <!-- Bridge to Nine Days -->
+    <section class="relative overflow-hidden py-24 md:py-32">
+        <img src="/beauty-guides/nine-days/ninedays-hero.png" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-[var(--color-charcoal)]/80"></div>
+        <div class="section-inner relative text-center text-white">
+            <p class="section-eyebrow mb-4 !text-[var(--color-peach-light)]">Continue reading</p>
+            <h2 class="font-serif text-4xl md:text-5xl">Nine days that changed my life</h2>
+            <p class="mx-auto mt-5 max-w-2xl text-lg text-white/85">
+                My one planned facelift became a much bigger nine-day surgical journey. That story deserves its own page.
+            </p>
+            <a href="/my-story/nine-days" class="btn-tbg-primary mt-10 inline-flex">Read What Really Happened →</a>
         </div>
     </section>
 
-    <section class="section-inner py-16 text-center">
-        <div class="flex flex-wrap justify-center gap-3">
-            <a href="/complete-guide" class="btn-tbg-primary">Explore the Complete Guide</a>
-            <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Message Me</a>
+    <section class="bg-[var(--color-white-soft)] py-16">
+        <div class="section-inner text-center">
+            <p class="script-note mb-6">Real experience. Honest guidance. More confident decisions.</p>
+            <div class="flex flex-wrap justify-center gap-3">
+                <a href="/complete-guide" class="btn-tbg-primary">Explore the Complete Guide</a>
+                <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Message Me on Messenger</a>
+            </div>
         </div>
     </section>
 </BeautyGuidesLayout>
+
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>

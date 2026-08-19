@@ -1,0 +1,27 @@
+---
+interface Props {
+    eyebrow: string;
+    title: string;
+    subtitle?: string;
+    image: string;
+    badge?: string;
+}
+
+const { eyebrow, title, subtitle, image, badge } = Astro.props;
+---
+
+<section class="relative min-h-[70vh] overflow-hidden">
+    <img src={image} alt="" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-charcoal)]/92 via-[var(--color-charcoal)]/70 to-[var(--color-charcoal)]/35"></div>
+    <div class="botanical-bg absolute inset-0 opacity-20"></div>
+    <div class="relative mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-end px-4 pb-16 pt-32 md:px-6 md:pb-24">
+        {badge && (
+            <span class="mb-6 inline-flex w-fit rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm">
+                {badge}
+            </span>
+        )}
+        <p class="section-eyebrow mb-4 !text-[var(--color-peach-light)]">{eyebrow}</p>
+        <h1 class="max-w-4xl font-serif text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.1] text-white">{title}</h1>
+        {subtitle && <p class="mt-6 max-w-2xl text-lg leading-relaxed text-white/88">{subtitle}</p>}
+    </div>
+</section>

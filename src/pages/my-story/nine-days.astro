@@ -1,0 +1,66 @@
+---
+import BeautyGuidesLayout from '../../layouts/BeautyGuidesLayout.astro';
+import StoryPageHero from '../../components/beauty-guides/StoryPageHero.astro';
+import StorySection from '../../components/beauty-guides/StorySection.astro';
+import { nineDaysPageSections } from '../../data/story-pages';
+import { procedures, site } from '../../data/beauty-guides';
+---
+
+<BeautyGuidesLayout title="Nine Days That Changed My Life" description="Kirsty's full nine-day surgical journey in Vietnam — five surgeries, unexpected decisions, and what she wishes she'd known.">
+    <StoryPageHero
+        eyebrow="One trip became a much bigger journey"
+        title="Nine days that changed my life."
+        subtitle="I went to Vietnam for a facelift. Two weeks later, I came home after a journey that had turned into something far bigger than I ever expected — five surgeries within nine days, plus treatments I never planned."
+        image="/beauty-guides/nine-days/ninedays-hero.png"
+        badge="Section 4 · Full Journey"
+    />
+
+    <nav class="sticky top-[72px] z-40 border-b border-[var(--color-peach)]/50 bg-[var(--color-cream)]/95 backdrop-blur-xl">
+        <div class="section-inner flex items-center gap-4 overflow-x-auto py-3 no-scrollbar">
+            <a href="/my-story" class="shrink-0 text-[11px] font-bold uppercase tracking-wider text-[var(--color-muted)] hover:text-[var(--color-taupe)]">← Why I Did It</a>
+            <span class="text-[var(--color-peach)]">|</span>
+            <span class="shrink-0 text-[11px] font-bold uppercase tracking-wider text-[var(--color-taupe)]">Nine Days</span>
+        </div>
+    </nav>
+
+    <!-- Procedures overview -->
+    <section class="border-b border-[var(--color-peach)]/50 bg-[var(--color-charcoal)] py-14 text-white">
+        <div class="section-inner">
+            <p class="section-eyebrow mb-4 text-center !text-[var(--color-peach-light)]">Procedures during the journey</p>
+            <div class="flex flex-wrap justify-center gap-2">
+                {procedures.map((p) => (
+                    <span class="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs backdrop-blur-sm">{p}</span>
+                ))}
+            </div>
+            <p class="mt-4 text-center text-xs text-white/45">Procedure names pending Kirsty's final approval.</p>
+        </div>
+    </section>
+
+    {
+        nineDaysPageSections
+            .filter((s) => s.title !== 'SECTION 4 — NINE DAYS THAT CHANGED MY LIFE' && s.paragraphs.length > 0)
+            .map((section, index) => <StorySection {...section} index={index} />)
+    }
+
+    <!-- Closing CTA from docx -->
+    <section class="relative overflow-hidden py-24 md:py-32">
+        <img src="/beauty-guides/my-story/mystory-confidence.png" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-charcoal)]/95 via-[var(--color-charcoal)]/80 to-[var(--color-charcoal)]/60"></div>
+        <div class="section-inner relative mx-auto max-w-3xl text-center text-white">
+            <p class="section-eyebrow mb-4 !text-[var(--color-peach-light)]">The short version</p>
+            <p class="text-lg leading-relaxed text-white/90">
+                I went to Vietnam for a facelift. I spent 16 days there. Within nine of those days, I had five surgeries — and somehow still found time for sightseeing, fine dining, glasses, hair extensions, coffee and rooftop bars.
+            </p>
+            <p class="script-note mt-8 !text-[var(--color-peach-light)]">And yes… knowing what I know now, I'd still do it all again.</p>
+            <div class="mt-10 flex flex-wrap justify-center gap-3">
+                <a href="/complete-guide" class="btn-tbg-primary">Explore the Complete Vietnam Surgery Companion</a>
+                <a href="/my-story" class="btn-tbg-outline !border-white/40 !text-white hover:!bg-white hover:!text-[var(--color-charcoal)]">← Back to My Story</a>
+            </div>
+        </div>
+    </section>
+</BeautyGuidesLayout>
+
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
