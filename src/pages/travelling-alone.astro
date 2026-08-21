@@ -49,69 +49,69 @@ const variants = ['full-bleed', 'magazine', 'split-reverse', 'default', 'quote-h
         </div>
     </nav>
 
-    <div class="section-inner py-12 lg:py-16">
-        {
-            travellingAloneSections.map((section, index) => (
-                <>
+    {
+        travellingAloneSections.map((section, index) => (
+            <>
+                <div class="section-inner py-8 lg:py-10">
                     <StorySection {...section} index={index} variant={variants[index] || 'default'} />
-                    {index === 0 && (
-                        <StoryPullQuote
-                            quote="Would I need a carer? That was probably the biggest question."
-                            attribution="Before I left Australia"
-                            image="/beauty-guides/travelling-alone/travel-intro.png"
-                        />
-                    )}
-                    {index === 1 && (
-                        <StoryInsightCards
-                            title="What I organised — and what I actually needed"
-                            items={[
-                                { icon: '👥', title: 'Expat community groups', body: 'I joined Ho Chi Minh City groups before leaving and found carer recommendations — around $25 a day for four hours of help.' },
-                                { icon: '✅', title: 'Tried it for two days', body: 'She could get groceries and help around the apartment. For me personally, it was completely unnecessary.' },
-                                { icon: '💡', title: 'Your recovery may differ', body: 'That doesn\'t mean nobody will need help. Your procedure, recovery and circumstances may be completely different to mine.' },
-                            ]}
-                        />
-                    )}
-                    {index === 2 && (
-                        <StoryStatsBar
-                            dark
-                            items={[
-                                { value: 'Grab', label: 'Transport & food' },
-                                { value: 'ChatGPT', label: 'Travel assistant' },
-                                { value: 'Maps', label: 'Getting around' },
-                                { value: 'WhatsApp', label: 'Stay connected' },
-                            ]}
-                        />
-                    )}
-                    {index === 4 && (
-                        <StoryPullQuote
-                            quote="After a couple of days, what initially feels very foreign starts feeling surprisingly normal."
-                            attribution="The language barrier"
-                            image="/beauty-guides/travelling-alone/travel-language.png"
-                        />
-                    )}
-                    {index === 5 && (
-                        <StoryInsightCards
-                            title="The fear vs the reality"
-                            items={[
-                                { icon: '🧠', title: 'Fear before you leave', body: 'The hardest part wasn\'t being there alone — it was what people imagine before they go.' },
-                                { icon: '📱', title: 'Solve as you go', body: 'Download the apps, learn how Grab works, find your favourite café — each little problem becomes easy to solve.' },
-                                { icon: '✈️', title: 'Don\'t assume the worst', body: 'The version of travelling alone you\'re imagining might be considerably harder than the reality. Mine certainly was.' },
-                            ]}
-                        />
-                    )}
-                </>
-            ))
-        }
-    </div>
+                </div>
+                {index === 0 && (
+                    <StoryPullQuote
+                        quote="Would I need a carer? That was probably the biggest question."
+                        attribution="Before I left Australia"
+                        image="/beauty-guides/travelling-alone/travel-intro.png"
+                    />
+                )}
+                {index === 1 && (
+                    <StoryInsightCards
+                        title="What I organised — and what I actually needed"
+                        items={[
+                            { icon: '👥', title: 'Expat community groups', body: 'I joined Ho Chi Minh City groups before leaving and found carer recommendations — around $25 a day for four hours of help.' },
+                            { icon: '✅', title: 'Tried it for two days', body: 'She could get groceries and help around the apartment. For me personally, it was completely unnecessary.' },
+                            { icon: '💡', title: 'Your recovery may differ', body: 'That doesn\'t mean nobody will need help. Your procedure, recovery and circumstances may be completely different to mine.' },
+                        ]}
+                    />
+                )}
+                {index === 2 && (
+                    <StoryStatsBar
+                        dark
+                        items={[
+                            { value: 'Grab', label: 'Transport & food' },
+                            { value: 'ChatGPT', label: 'Travel assistant' },
+                            { value: 'Maps', label: 'Getting around' },
+                            { value: 'WhatsApp', label: 'Stay connected' },
+                        ]}
+                    />
+                )}
+                {index === 4 && (
+                    <StoryPullQuote
+                        quote="After a couple of days, what initially feels very foreign starts feeling surprisingly normal."
+                        attribution="The language barrier"
+                        image="/beauty-guides/travelling-alone/travel-language.png"
+                    />
+                )}
+                {index === 5 && (
+                    <StoryInsightCards
+                        title="The fear vs the reality"
+                        items={[
+                            { icon: '🧠', title: 'Fear before you leave', body: 'The hardest part wasn\'t being there alone — it was what people imagine before they go.' },
+                            { icon: '📱', title: 'Solve as you go', body: 'Download the apps, learn how Grab works, find your favourite café — each little problem becomes easy to solve.' },
+                            { icon: '✈️', title: 'Don\'t assume the worst', body: 'The version of travelling alone you\'re imagining might be considerably harder than the reality. Mine certainly was.' },
+                        ]}
+                    />
+                )}
+            </>
+        ))
+    }
 
-    <section class="relative overflow-hidden py-24 md:py-32">
+    <section class="relative w-full overflow-hidden py-20 md:py-28">
         <img src="/beauty-guides/travelling-alone/travel-again.png" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
         <div class="absolute inset-0 bg-[var(--color-charcoal)]/82"></div>
         <div class="botanical-bg absolute inset-0 opacity-10"></div>
         <div class="section-inner relative text-center text-white">
-            <p class="section-eyebrow mb-4 !text-[var(--color-peach-light)]">Ready to plan?</p>
-            <h2 class="font-serif text-4xl md:text-5xl">Don't let solo travel stop your research</h2>
-            <p class="mx-auto mt-5 max-w-2xl text-lg text-white/85">
+            <p class="section-eyebrow mb-3 !text-[var(--color-peach-light)]">Ready to plan?</p>
+            <h2 class="section-title !text-white">Don't let solo travel stop your research</h2>
+            <p class="mx-auto mt-4 max-w-2xl text-base text-white/85">
                 If you're sitting at home thinking you'd love to do this but couldn't go alone — don't let that thought stop you from at least doing your research.
             </p>
             <div class="mt-10 flex flex-wrap justify-center gap-3">

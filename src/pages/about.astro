@@ -40,15 +40,15 @@ const variants = [
     />
 
     <!-- Founder highlight band -->
-    <section class="border-b border-[var(--color-peach)]/50 bg-gradient-to-r from-[var(--color-peach-light)] via-[var(--color-cream)] to-[var(--color-peach-light)] py-14">
-        <div class="section-inner grid items-center gap-10 lg:grid-cols-2">
-            <div class="overflow-hidden rounded-3xl shadow-xl">
+    <section class="section-breakout w-full border-b border-[var(--color-peach)]/50 bg-gradient-to-r from-[var(--color-peach-light)] via-[var(--color-cream)] to-[var(--color-peach-light)] py-12 md:py-16">
+        <div class="section-inner grid items-center gap-8 lg:grid-cols-2">
+            <div class="overflow-hidden rounded-2xl shadow-lg">
                 <img src="/beauty-guides/about/about-meet-kirsty.png" alt="Kirsty Strowger" class="aspect-[4/5] w-full object-cover" loading="lazy" />
             </div>
             <div>
-                <p class="section-eyebrow mb-3">Founder, The Beauty Guides</p>
-                <h2 class="font-serif text-3xl md:text-4xl">Real women. Real experiences.</h2>
-                <p class="mt-5 text-lg leading-relaxed text-[var(--color-muted)]">
+                <p class="section-eyebrow mb-2">Founder, The Beauty Guides</p>
+                <h2 class="section-title">Real women. Real experiences.</h2>
+                <p class="story-body mt-4 max-w-xl">
                     The Beauty Guides isn't a hospital, a surgeon or a medical provider. We share lived experience so you can make your own decisions — with your eyes open.
                 </p>
                 <div class="mt-8 flex flex-wrap gap-3">
@@ -73,69 +73,69 @@ const variants = [
         </div>
     </nav>
 
-    <div class="section-inner py-12 lg:py-16">
-        {
-            displaySections.map((section, index) => (
-                <>
+    {
+        displaySections.map((section, index) => (
+            <>
+                <div class="section-inner py-8 lg:py-10">
                     <StorySection {...section} index={index} variant={variants[index] || 'default'} />
-                    {index === 1 && (
-                        <StoryPullQuote
-                            quote="Women are incredibly good at looking after everybody else. We just have a funny habit of putting ourselves last."
-                            attribution="My background"
-                            image="/beauty-guides/about/about-background.png"
-                        />
-                    )}
-                    {index === 2 && (
-                        <StoryInsightCards
-                            title="What women really wanted to know"
-                            items={[
-                                { icon: '✈️', title: 'Was I frightened?', body: 'Women wanted to know what Vietnam was really like, whether I felt frightened travelling alone, and what recovery actually felt like.' },
-                                { icon: '💬', title: 'Not a decision-maker', body: 'They weren\'t looking for somebody to make the decision for them — they wanted to hear from somebody who had already been there.' },
-                                { icon: '📖', title: 'The full picture', body: 'The good, the challenging, the funny, the emotional — and everything in between. Not a glossy brochure.' },
-                            ]}
-                        />
-                    )}
-                    {index === 4 && (
-                        <StoryStatsBar
-                            dark
-                            items={[
-                                { value: 'Share', label: 'Our stories' },
-                                { value: 'Never', label: 'Choose for you' },
-                                { value: 'Your', label: 'Body & decision' },
-                                { value: 'Always', label: 'In your control' },
-                            ]}
-                        />
-                    )}
-                    {index === 5 && (
-                        <StoryPullQuote
-                            quote="I wish somebody had told me this before I left. So eventually I wrote it all down."
-                            attribution="The Complete Vietnam Surgery Companion"
-                            image="/beauty-guides/about/about-companion.png"
-                        />
-                    )}
-                    {index === 7 && (
-                        <StoryInsightCards
-                            title="You stay in control"
-                            items={[
-                                { icon: '🔍', title: 'Research freely', body: 'Reading my story doesn\'t mean you should do what I did. You are allowed to research, ask questions and change your mind.' },
-                                { icon: '🤝', title: 'Connect, not commit', body: 'Contacting a provider doesn\'t mean you\'re committed to anything. Speaking to somebody I know doesn\'t mean you should use them.' },
-                                { icon: '💛', title: 'About confidence', body: 'This isn\'t about convincing women to have surgery. It\'s about confidence, choice, transparency and women sharing what they\'ve learnt.' },
-                            ]}
-                        />
-                    )}
-                </>
-            ))
-        }
-    </div>
+                </div>
+                {index === 1 && (
+                    <StoryPullQuote
+                        quote="Women are incredibly good at looking after everybody else. We just have a funny habit of putting ourselves last."
+                        attribution="My background"
+                        image="/beauty-guides/about/about-background.png"
+                    />
+                )}
+                {index === 2 && (
+                    <StoryInsightCards
+                        title="What women really wanted to know"
+                        items={[
+                            { icon: '✈️', title: 'Was I frightened?', body: 'Women wanted to know what Vietnam was really like, whether I felt frightened travelling alone, and what recovery actually felt like.' },
+                            { icon: '💬', title: 'Not a decision-maker', body: 'They weren\'t looking for somebody to make the decision for them — they wanted to hear from somebody who had already been there.' },
+                            { icon: '📖', title: 'The full picture', body: 'The good, the challenging, the funny, the emotional — and everything in between. Not a glossy brochure.' },
+                        ]}
+                    />
+                )}
+                {index === 4 && (
+                    <StoryStatsBar
+                        dark
+                        items={[
+                            { value: 'Share', label: 'Our stories' },
+                            { value: 'Never', label: 'Choose for you' },
+                            { value: 'Your', label: 'Body & decision' },
+                            { value: 'Always', label: 'In your control' },
+                        ]}
+                    />
+                )}
+                {index === 5 && (
+                    <StoryPullQuote
+                        quote="I wish somebody had told me this before I left. So eventually I wrote it all down."
+                        attribution="The Complete Vietnam Surgery Companion"
+                        image="/beauty-guides/about/about-companion.png"
+                    />
+                )}
+                {index === 7 && (
+                    <StoryInsightCards
+                        title="You stay in control"
+                        items={[
+                            { icon: '🔍', title: 'Research freely', body: 'Reading my story doesn\'t mean you should do what I did. You are allowed to research, ask questions and change your mind.' },
+                            { icon: '🤝', title: 'Connect, not commit', body: 'Contacting a provider doesn\'t mean you\'re committed to anything. Speaking to somebody I know doesn\'t mean you should use them.' },
+                            { icon: '💛', title: 'About confidence', body: 'This isn\'t about convincing women to have surgery. It\'s about confidence, choice, transparency and women sharing what they\'ve learnt.' },
+                        ]}
+                    />
+                )}
+            </>
+        ))
+    }
 
     <!-- Closing CTAs from docx -->
-    <section class="relative overflow-hidden py-24 md:py-32">
+    <section class="relative w-full overflow-hidden py-20 md:py-28">
         <img src="/beauty-guides/about/about-control.png" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
         <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-charcoal)]/95 via-[var(--color-charcoal)]/80 to-[var(--color-charcoal)]/55"></div>
         <div class="botanical-bg absolute inset-0 opacity-10"></div>
         <div class="section-inner relative mx-auto max-w-3xl text-center text-white">
-            <p class="section-eyebrow mb-4 !text-[var(--color-peach-light)]">Want to know the full story?</p>
-            <p class="text-lg leading-relaxed text-white/90">
+            <p class="section-eyebrow mb-3 !text-[var(--color-peach-light)]">Want to know the full story?</p>
+            <p class="text-base leading-relaxed text-white/90">
                 Read how I went to Vietnam for a facelift and ended up having five surgeries in nine days — what surprised me, what everything cost, and why I'd still do it all again.
             </p>
             <div class="mt-10 flex flex-wrap justify-center gap-3">

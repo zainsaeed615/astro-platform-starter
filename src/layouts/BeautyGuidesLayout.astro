@@ -32,7 +32,7 @@ const fullTitle = title === site.name ? title : `${title} — ${site.name}`;
     </head>
     <body class="bg-page antialiased" style="font-family: var(--font-sans);">
         <Header />
-        <main>
+        <main class="w-full">
             <slot />
         </main>
         <Footer hideCta={hideFooterCta} />

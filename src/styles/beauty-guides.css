@@ -51,15 +51,22 @@
 
     .section-title {
         font-family: var(--font-serif);
-        @apply text-[clamp(1.75rem,4vw,3rem)] leading-[1.15] font-normal text-[var(--color-charcoal)];
+        @apply text-[clamp(1.375rem,2.8vw,2.125rem)] leading-[1.2] font-normal text-[var(--color-charcoal)];
     }
 
     .section-shell {
-        @apply relative overflow-hidden;
+        @apply relative w-full overflow-hidden;
     }
 
     .section-inner {
-        @apply relative mx-auto max-w-7xl px-4 md:px-6;
+        @apply relative mx-auto w-full max-w-7xl px-4 md:px-6;
+    }
+
+    .section-breakout {
+        width: 100vw;
+        max-width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
     }
 
     .card-tbg {
@@ -68,11 +75,20 @@
 
     .script-note {
         font-family: var(--font-script);
-        @apply text-[clamp(1.25rem,2.5vw,1.75rem)] leading-snug text-[var(--color-taupe-dark)];
+        @apply text-[clamp(1.125rem,2vw,1.5rem)] leading-snug text-[var(--color-taupe-dark)];
     }
 
     .prose-tbg {
-        @apply text-[var(--color-muted)] leading-[1.8];
+        @apply text-[15px] text-[var(--color-muted)] leading-[1.75];
+    }
+
+    .story-heading {
+        font-family: var(--font-serif);
+        @apply text-[clamp(1.375rem,2.5vw,1.875rem)] leading-[1.25] text-[var(--color-charcoal)];
+    }
+
+    .story-body {
+        @apply text-[15px] leading-[1.75] text-[var(--color-muted)];
     }
 
     .prose-tbg p {
