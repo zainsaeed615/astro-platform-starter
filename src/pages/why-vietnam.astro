@@ -1,51 +1,167 @@
 ---
 import BeautyGuidesLayout from '../layouts/BeautyGuidesLayout.astro';
-import PageHero from '../components/beauty-guides/PageHero.astro';
-import SectionHeader from '../components/beauty-guides/SectionHeader.astro';
-import { pageHeroes, vietnamCards, whyVietnamSections } from '../data/beauty-guides';
+import StoryPageHero from '../components/beauty-guides/StoryPageHero.astro';
+import StorySection from '../components/beauty-guides/StorySection.astro';
+import StoryStatsBar from '../components/beauty-guides/StoryStatsBar.astro';
+import StoryPullQuote from '../components/beauty-guides/StoryPullQuote.astro';
+import StoryInsightCards from '../components/beauty-guides/StoryInsightCards.astro';
+import { whyVietnamPageSections } from '../data/content-pages';
+import { vietnamCards, site } from '../data/beauty-guides';
 
-const hero = pageHeroes['why-vietnam'];
+const variants = ['full-bleed', 'magazine', 'split-reverse', 'quote-hero', 'default', 'full-bleed'] as const;
 ---
 
-<BeautyGuidesLayout title="Why Vietnam" description="Kirsty's personal observations about cosmetic surgery in Vietnam.">
-    <PageHero {...hero} />
+<BeautyGuidesLayout title="Why Vietnam" description="Kirsty's personal observations on why she chose Vietnam for cosmetic surgery — results, Korean techniques, cost and accessibility.">
+    <StoryPageHero
+        eyebrow="Section 5.1 · Personal experience"
+        title="Why Vietnam?"
+        subtitle="If you'd asked me a few years ago where I'd go overseas for cosmetic surgery, Vietnam probably wouldn't have been the first place that came to mind. This is what changed my thinking."
+        image="/beauty-guides/why-vietnam/whyvietnam-hero.png"
+        badge="Not universal promises"
+        stats={[
+            { value: 'Real', label: 'Results I saw' },
+            { value: 'KR', label: 'Technique influence' },
+            { value: 'HCMC', label: 'Modern city' },
+        ]}
+    />
 
-    <section class="section-inner py-16 md:py-20">
-        <div class="mx-auto max-w-3xl prose-tbg text-lg">
-            <p>I chose Vietnam after extensive independent research. This page shares what I personally experienced — not universal guarantees. Every person's journey, outcomes and costs are different.</p>
+    <StoryStatsBar
+        items={[
+            { value: '53', label: 'Age when I went' },
+            { value: '5', label: 'Surgeries in 9 days' },
+            { value: '3', label: 'Countries compared' },
+            { value: '1', label: 'Facelift planned' },
+        ]}
+    />
+
+    <nav class="sticky top-[72px] z-40 border-b border-[var(--color-peach)]/50 bg-[var(--color-cream)]/95 backdrop-blur-xl">
+        <div class="section-inner flex items-center gap-4 overflow-x-auto py-3 no-scrollbar">
+            <span class="shrink-0 text-[11px] font-bold uppercase tracking-wider text-[var(--color-taupe)]">Why Vietnam</span>
+            {
+                whyVietnamPageSections.map((s) => (
+                    <a href={`#${s.slug}`} class="shrink-0 rounded-full border border-[var(--color-peach)]/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-muted)] transition hover:border-[var(--color-taupe)] hover:text-[var(--color-taupe)]">
+                        {s.title.length > 24 ? s.title.slice(0, 24) + '…' : s.title}
+                    </a>
+                ))
+            }
+        </div>
+    </nav>
+
+    <!-- Disclaimer band -->
+    <section class="section-breakout w-full border-b border-[var(--color-peach)]/50 bg-[var(--color-white-soft)] py-8">
+        <div class="section-inner mx-auto max-w-3xl text-center">
+            <p class="story-body">
+                I chose Vietnam after extensive independent research. This page shares what I personally experienced — not universal guarantees. Every person's journey, outcomes and costs are different.
+            </p>
         </div>
     </section>
 
     {
-        whyVietnamSections.map((section, i) => (
-            <section class={`py-16 md:py-20 ${i % 2 === 0 ? 'bg-[var(--color-cream)]' : 'bg-[var(--color-white-soft)]'}`}>
-                <div class="section-inner mx-auto max-w-3xl">
-                    <h2 class="mb-5 font-serif text-2xl md:text-3xl">{section.title}</h2>
-                    <p class="prose-tbg leading-relaxed">{section.body}</p>
+        whyVietnamPageSections.map((section, index) => (
+            <>
+                <div class="section-inner py-8 lg:py-10">
+                    <StorySection {...section} index={index} variant={variants[index] || 'default'} />
                 </div>
-            </section>
+                {index === 0 && (
+                    <StoryPullQuote
+                        quote="I wasn't hearing about it through advertising. I was seeing actual results."
+                        attribution="What initially got my attention"
+                        image="/beauty-guides/why-vietnam/whyvietnam-intro.png"
+                    />
+                )}
+                {index === 1 && (
+                    <StoryInsightCards
+                        title="Vietnam today"
+                        items={[
+                            { icon: '🏙️', title: 'Modern HCMC', body: 'Ho Chi Minh City is a huge, modern international city — very different to what many Australians may still picture.' },
+                            { icon: '🏥', title: 'Medical tourism growth', body: 'Healthcare and medical tourism sectors have been developing rapidly, with competitive treatment costs and increasing expertise.' },
+                            { icon: '🌏', title: 'Like Bali once was', body: 'There was a time when Bali wasn\'t the automatic destination — then everybody knew somebody who\'d been. Vietnam feels similar now.' },
+                        ]}
+                    />
+                )}
+                {index === 2 && (
+                    <StoryStatsBar
+                        dark
+                        items={[
+                            { value: 'Dongan', label: 'Youthful softness' },
+                            { value: 'Not', label: 'Stretched look' },
+                            { value: 'KR', label: 'Technique influence' },
+                            { value: 'Me', label: 'Still look like me' },
+                        ]}
+                    />
+                )}
+                {index === 3 && (
+                    <StoryPullQuote
+                        quote="I didn't choose Vietnam simply because it was cheaper. I chose it because I liked the results I'd seen."
+                        attribution="Price vs value"
+                        image="/beauty-guides/why-vietnam/whyvietnam-cost.png"
+                    />
+                )}
+                {index === 4 && (
+                    <StoryInsightCards
+                        title="Surprisingly accessible"
+                        items={[
+                            { icon: '✈️', title: 'Not a distant expedition', body: 'Vietnam isn\'t the other side of the world — Ho Chi Minh City is a major international destination.' },
+                            { icon: '📱', title: 'Everything manageable', body: 'Flights, accommodation, Grab, food delivery, translation apps and international hospitals — all remarkably manageable.' },
+                            { icon: '👤', title: 'Travelling alone', body: 'I\'ll talk much more about that in Travelling Alone — it became one of the biggest surprises of my entire trip.' },
+                        ]}
+                    />
+                )}
+            </>
         ))
     }
 
-    {
-        vietnamCards.map((card, i) => (
-            <section id={card.id} class={`py-20 md:py-24 ${i % 2 === 0 ? 'bg-[var(--color-white-soft)]' : 'bg-[var(--color-cream)]'}`}>
-                <div class="section-inner grid items-center gap-12 lg:grid-cols-2">
-                    <div class={i % 2 === 1 ? 'lg:order-2' : ''}>
-                        <div class="overflow-hidden rounded-[1.75rem] shadow-[0_20px_60px_rgba(44,40,37,0.12)]">
-                            <img src={card.image} alt={card.title} class="aspect-[4/3] w-full object-cover" loading="lazy" />
-                        </div>
-                    </div>
-                    <div class={i % 2 === 1 ? 'lg:order-1' : ''}>
-                        <SectionHeader eyebrow="Personal observation" title={card.title} subtitle={card.copy} />
-                        <p class="prose-tbg">{card.detail}</p>
-                    </div>
-                </div>
-            </section>
-        ))
-    }
+    <!-- Personal observation cards -->
+    <section class="section-breakout w-full bg-[var(--color-cream)] py-12 md:py-20">
+        <div class="section-inner">
+            <p class="section-eyebrow mb-2 text-center">What I personally experienced</p>
+            <h2 class="section-title mb-10 text-center">Facilities, costs & care</h2>
+            <div class="grid gap-8 lg:grid-cols-3">
+                {
+                    vietnamCards.map((card) => (
+                        <article id={card.id} class="overflow-hidden rounded-2xl border border-[var(--color-peach)]/60 bg-[var(--color-white-soft)] shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                            <div class="aspect-[4/3] overflow-hidden">
+                                <img src={card.image} alt={card.title} class="h-full w-full object-cover" loading="lazy" />
+                            </div>
+                            <div class="p-6">
+                                <h3 class="mb-2 font-serif text-lg text-[var(--color-charcoal)]">{card.title}</h3>
+                                <p class="story-body mb-3">{card.copy}</p>
+                                <p class="text-xs leading-relaxed text-[var(--color-muted)]">{card.detail}</p>
+                            </div>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
 
-    <section class="section-inner py-16 text-center">
-        <a href="/plan-your-trip" class="btn-tbg-primary">Plan Your Trip</a>
+    <!-- Closing CTA -->
+    <section class="relative w-full overflow-hidden py-20 md:py-28">
+        <img src="/beauty-guides/why-vietnam/whyvietnam-summary.png" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-[var(--color-charcoal)]/82"></div>
+        <div class="botanical-bg absolute inset-0 opacity-10"></div>
+        <div class="section-inner relative mx-auto max-w-3xl text-center text-white">
+            <p class="section-eyebrow mb-3 !text-[var(--color-peach-light)]">So why Vietnam?</p>
+            <p class="text-base leading-relaxed text-white/90">
+                I went expecting one facelift. Having now actually experienced cosmetic surgery in Vietnam rather than simply reading about it online, I understand why more people are starting to look at it. Vietnam may not be the first place Australians traditionally think of — but I don't think that's going to be the case for much longer.
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-3">
+                <a href="/my-story" class="btn-tbg-primary">Read My Full Story →</a>
+                <a href="/travelling-alone" class="btn-tbg-outline !border-white/40 !text-white hover:!bg-white hover:!text-[var(--color-charcoal)]">Travelling Alone</a>
+                <a href="/plan-your-trip" class="btn-tbg-outline !border-white/40 !text-white hover:!bg-white hover:!text-[var(--color-charcoal)]">Plan Your Trip</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[var(--color-white-soft)] py-16">
+        <div class="section-inner text-center">
+            <p class="script-note mb-6">{site.tagline}</p>
+            <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Message Me on Messenger</a>
+        </div>
     </section>
 </BeautyGuidesLayout>
+
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>

@@ -387,10 +387,10 @@ export const pageHeroes: Record<string, { eyebrow: string; title: string; subtit
         image: '/beauty-guides/pages/my-story.png',
     },
     'why-vietnam': {
-        eyebrow: 'Why Vietnam',
+        eyebrow: 'Section 5.1 · Why Vietnam',
         title: 'Why Vietnam?',
-        subtitle: 'Personal observations from my journey — not universal promises.',
-        image: '/beauty-guides/pages/why-vietnam.png',
+        subtitle: 'Personal observations from my journey — results, Korean techniques, cost and accessibility.',
+        image: '/beauty-guides/why-vietnam/whyvietnam-hero.png',
     },
     'plan-your-trip': {
         eyebrow: 'Plan Your Trip',
