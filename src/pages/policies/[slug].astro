@@ -1,0 +1,22 @@
+---
+import BeautyGuidesLayout from '../../layouts/BeautyGuidesLayout.astro';
+import { policies } from '../../data/beauty-guides';
+
+export function getStaticPaths() {
+    return Object.keys(policies).map((slug) => ({ params: { slug }, props: { policy: policies[slug] } }));
+}
+
+const { policy } = Astro.props;
+---
+
+<BeautyGuidesLayout title={policy.title} description={`${policy.title} for The Beauty Guides.`} hideFooterCta>
+    <section class="mx-auto max-w-3xl px-4 py-16 md:px-6 md:py-24">
+        <p class="section-eyebrow mb-3">Legal</p>
+        <h1 class="section-title mb-8">{policy.title}</h1>
+        <div class="prose-tbg space-y-4">
+            {policy.content.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+        <p class="mt-10 text-xs text-[var(--color-muted)]">Mockup policy text — replace with Kirsty's approved legal documents before launch.</p>
+        <a href="/" class="btn-tbg-outline mt-8 inline-flex">← Back to Home</a>
+    </section>
+</BeautyGuidesLayout>

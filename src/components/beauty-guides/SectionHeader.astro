@@ -1,0 +1,23 @@
+---
+interface Props {
+    id?: string;
+    eyebrow?: string;
+    title: string;
+    subtitle?: string;
+    class?: string;
+    centered?: boolean;
+}
+
+const { id, eyebrow, title, subtitle, class: className = '', centered = false } = Astro.props;
+---
+
+<div id={id} class={`mb-12 md:mb-16 ${centered ? 'mx-auto max-w-3xl text-center' : 'max-w-2xl'} ${className}`}>
+    {eyebrow && (
+        <>
+            <p class="section-eyebrow mb-4">{eyebrow}</p>
+            <div class={`ornament-line mb-6 ${centered ? '' : ''}`}></div>
+        </>
+    )}
+    <h2 class="section-title">{title}</h2>
+    {subtitle && <p class={`prose-tbg mt-5 text-base md:text-lg ${centered ? 'mx-auto' : ''}`}>{subtitle}</p>}
+</div>

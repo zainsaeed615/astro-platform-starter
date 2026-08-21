@@ -1,0 +1,81 @@
+---
+import { site, footerColumns } from '../../data/beauty-guides';
+
+interface Props {
+    hideCta?: boolean;
+}
+
+const { hideCta = false } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+{
+    !hideCta && (
+        <section class="relative overflow-hidden border-t border-[var(--color-peach)]/50 bg-gradient-to-br from-[var(--color-white-soft)] via-[var(--color-cream)] to-[var(--color-peach-light)] py-20">
+            <div class="section-inner grid items-center gap-10 md:grid-cols-2">
+                <div>
+                    <p class="section-eyebrow mb-3">Ready to take the first step?</p>
+                    <h2 class="section-title mb-4">Feel informed, understood and better prepared.</h2>
+                    <p class="prose-tbg mb-8 max-w-md">
+                        Every story here is a personal experience — not a decision made for you. Explore the guides, read the stories, or message me on Messenger.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Message Me on Messenger</a>
+                        <a href="/complete-guide" class="btn-tbg-primary">Get the Guide — {site.price}</a>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-[1.75rem] shadow-xl">
+                    <img src="/beauty-guides/sections/messenger-section.png" alt="" class="h-72 w-full object-cover md:h-80" loading="lazy" />
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<footer class="bg-[var(--color-charcoal)] text-[var(--color-cream)]">
+    <div class="section-inner py-16 md:py-20">
+        <div class="mb-12 flex flex-col gap-8 border-b border-white/10 pb-12 md:flex-row md:items-center md:justify-between">
+            <div>
+                <p class="font-serif text-3xl">{site.name}</p>
+                <p class="mt-2 max-w-md text-sm leading-relaxed text-white/70">{site.tagline}</p>
+            </div>
+            <div class="flex gap-3">
+                <a href={site.messengerUrl} target="_blank" rel="noopener" class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white no-underline transition hover:bg-white/15" aria-label="Messenger">💬</a>
+                <a href="#" class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white no-underline transition hover:bg-white/15" aria-label="Instagram">📷</a>
+                <a href={`mailto:${site.email}`} class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white no-underline transition hover:bg-white/15" aria-label="Email">✉</a>
+            </div>
+        </div>
+
+        <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+            {
+                footerColumns.map((col) => (
+                    <div>
+                        <p class="mb-5 text-[11px] font-bold uppercase tracking-[0.2em] text-white/45">{col.title}</p>
+                        <ul class="space-y-3">
+                            {col.links.map((link) => (
+                                <li>
+                                    <a href={link.href} class="text-sm text-white/75 no-underline transition hover:text-white">
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="mt-12 flex flex-wrap items-center justify-center gap-6 border-t border-white/10 pt-8 text-[11px] text-white/45">
+            <span>🔒 Secure Checkout</span>
+            <span>⚡ Instant Access</span>
+            <span>✓ Trusted by Women Across Australia</span>
+        </div>
+
+        <div class="mt-8 flex flex-col gap-4 text-xs text-white/45 md:flex-row md:items-center md:justify-between">
+            <p>&copy; {year} The Beauty Guides. All rights reserved.</p>
+            <p class="max-w-xl text-center md:text-right">
+                Personal experience only — not medical advice. Kirsty is not a broker, adviser, consultant or patient coordinator.
+            </p>
+        </div>
+    </div>
+</footer>

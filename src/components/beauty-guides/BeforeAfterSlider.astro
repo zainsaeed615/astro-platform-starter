@@ -1,0 +1,60 @@
+---
+interface Props {
+    beforeSrc?: string;
+    afterSrc?: string;
+}
+
+const {
+    beforeSrc = '/beauty-guides/sections/hero-before.png',
+    afterSrc = '/beauty-guides/sections/hero-after.png',
+} = Astro.props;
+---
+
+<div class="relative">
+    <div class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-[var(--color-peach-light)] to-[var(--color-taupe-light)]/30 opacity-60 blur-2xl"></div>
+    <div class="before-after-slider relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[1.75rem] border-4 border-white shadow-[0_24px_64px_rgba(44,40,37,0.18)]" data-before-after>
+        <img src={afterSrc} alt="After" class="absolute inset-0 h-full w-full object-cover object-top" />
+        <div class="after-clip absolute inset-0 overflow-hidden" style="clip-path: inset(0 50% 0 0);">
+            <img src={beforeSrc} alt="Before" class="absolute inset-0 h-full w-full object-cover object-top" />
+        </div>
+        <div class="pointer-events-none absolute inset-0">
+            <div class="slider-handle absolute top-0 bottom-0 w-0.5 bg-white/90 shadow-lg" style="left: 50%;">
+                <div class="absolute top-1/2 left-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[3px] border-white bg-[var(--color-taupe)] shadow-[0_8px_24px_rgba(0,0,0,0.2)]">
+                    <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    <svg class="absolute right-2 h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <span class="absolute top-5 left-5 rounded-full bg-black/55 px-3.5 py-1.5 text-[10px] font-bold tracking-[0.2em] text-white uppercase backdrop-blur-sm">Before</span>
+        <span class="absolute top-5 right-5 rounded-full bg-black/55 px-3.5 py-1.5 text-[10px] font-bold tracking-[0.2em] text-white uppercase backdrop-blur-sm">After</span>
+        <input type="range" min="0" max="100" value="50" class="slider-input absolute inset-0 z-10 h-full w-full cursor-ew-resize opacity-0" aria-label="Before and after comparison slider" />
+    </div>
+    <p class="mt-4 text-center text-xs text-[var(--color-muted)]">Drag to compare · Real results from Kirsty's journey</p>
+</div>
+
+<script>
+    document.querySelectorAll('[data-before-after]').forEach((root) => {
+        const input = root.querySelector('.slider-input') as HTMLInputElement;
+        const clip = root.querySelector('.after-clip') as HTMLElement;
+        const handle = root.querySelector('.slider-handle') as HTMLElement;
+        if (!input || !clip || !handle) return;
+        const update = (val: number) => {
+            clip.style.clipPath = `inset(0 ${100 - val}% 0 0)`;
+            handle.style.left = `${val}%`;
+        };
+        input.addEventListener('input', () => update(Number(input.value)));
+        update(Number(input.value));
+    });
+</script>
+
+<style>
+    .slider-input {
+        -webkit-appearance: none;
+        appearance: none;
+        background: transparent;
+    }
+</style>

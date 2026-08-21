@@ -1,0 +1,185 @@
+---
+import BeautyGuidesLayout from '../../layouts/BeautyGuidesLayout.astro';
+import StoryPageHero from '../../components/beauty-guides/StoryPageHero.astro';
+import StorySection from '../../components/beauty-guides/StorySection.astro';
+import StoryStatsBar from '../../components/beauty-guides/StoryStatsBar.astro';
+import StoryPullQuote from '../../components/beauty-guides/StoryPullQuote.astro';
+import StoryInsightCards from '../../components/beauty-guides/StoryInsightCards.astro';
+import StoryTimeline from '../../components/beauty-guides/StoryTimeline.astro';
+import { nineDaysPageSections } from '../../data/story-pages';
+import { procedures, site } from '../../data/beauty-guides';
+
+const displaySections = nineDaysPageSections.filter(
+    (s) => s.title !== 'SECTION 4 — NINE DAYS THAT CHANGED MY LIFE' && s.paragraphs.length > 0
+);
+
+const variants = [
+    'full-bleed', 'magazine', 'default', 'split-reverse', 'quote-hero', 'default',
+    'magazine', 'full-bleed', 'split-reverse', 'quote-hero', 'default', 'magazine',
+    'full-bleed', 'split-reverse', 'default', 'quote-hero', 'magazine', 'split-reverse',
+    'default', 'magazine', 'quote-hero',
+] as const;
+
+const timelineSteps = [
+    { day: '1', title: 'Arrival & assessments', description: 'Medical testing, blood work, ECGs and ultrasounds. Met my interpreter Tim and started consultations.' },
+    { day: '2', title: 'The plan changes', description: 'SMAS facelift became deep plane. Eyes, tummy tuck and more entered the conversation.' },
+    { day: '3', title: 'Facelift day', description: 'Collected at 9am, cleared by late morning, facelift done by around 4pm.' },
+    { day: '4–6', title: 'Recovery & decisions', description: 'Staged recovery between procedures. Back lipo and BBL planned for when I could lie face down again.' },
+    { day: '7', title: 'Back lipo & BBL', description: 'Fat transferred from back to hips and buttocks — not quite what had been on the original itinerary.' },
+    { day: '8–9', title: 'Varicose veins & more', description: 'Both legs treated in about two hours. Skin treatments, Botox and fillers followed.' },
+    { day: '10–16', title: 'Living in HCMC', description: 'Sightseeing, fine dining, glasses, hair extensions, postcards — surgery became part of the trip, not the whole trip.' },
+];
+---
+
+<BeautyGuidesLayout title="Nine Days That Changed My Life" description="Kirsty's full nine-day surgical journey in Vietnam — five surgeries, unexpected decisions, and what she wishes she'd known.">
+    <StoryPageHero
+        eyebrow="One trip became a much bigger journey"
+        title="Nine days that changed my life."
+        subtitle="I went to Vietnam for a facelift. Two weeks later, I came home after a journey that had turned into something far bigger than I ever expected — five surgeries within nine days, plus treatments I never planned."
+        image="/beauty-guides/nine-days/ninedays-hero.png"
+        badge="Section 4 · Full Journey"
+        stats={[
+            { value: '9', label: 'Days of surgery' },
+            { value: '5', label: 'Major surgeries' },
+            { value: '16', label: 'Days in Vietnam' },
+        ]}
+    />
+
+    <StoryStatsBar
+        items={[
+            { value: '1', label: 'Procedure planned' },
+            { value: '5', label: 'Surgeries performed' },
+            { value: '5', label: 'Pairs of glasses' },
+            { value: '$30k+', label: 'Total medical spend' },
+        ]}
+    />
+
+    <nav class="sticky top-[72px] z-40 border-b border-[var(--color-peach)]/50 bg-[var(--color-cream)]/95 backdrop-blur-xl">
+        <div class="section-inner flex items-center gap-4 overflow-x-auto py-3 no-scrollbar">
+            <a href="/my-story" class="shrink-0 text-[11px] font-bold uppercase tracking-wider text-[var(--color-muted)] hover:text-[var(--color-taupe)]">← Why I Did It</a>
+            <span class="text-[var(--color-peach)]">|</span>
+            <span class="shrink-0 text-[11px] font-bold uppercase tracking-wider text-[var(--color-taupe)]">Nine Days</span>
+            {
+                displaySections.slice(0, 6).map((s) => (
+                    <a href={`#${s.slug}`} class="shrink-0 rounded-full border border-[var(--color-peach)]/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-muted)] transition hover:border-[var(--color-taupe)] hover:text-[var(--color-taupe)]">
+                        {s.title.length > 24 ? s.title.slice(0, 24) + '…' : s.title}
+                    </a>
+                ))
+            }
+        </div>
+    </nav>
+
+    <!-- Enhanced procedures overview -->
+    <section class="section-breakout relative w-full overflow-hidden border-b border-[var(--color-peach)]/50 bg-[var(--color-charcoal)] py-12 text-white md:py-16">
+        <div class="botanical-bg absolute inset-0 opacity-10"></div>
+        <div class="section-inner relative">
+            <p class="section-eyebrow mb-2 text-center !text-[var(--color-peach-light)]">The journey at a glance</p>
+            <h2 class="section-title mb-8 text-center !text-white">Procedures during the trip</h2>
+            <div class="flex flex-wrap justify-center gap-3">
+                {procedures.map((p, i) => (
+                    <span class="group rounded-full border border-white/15 bg-white/10 px-5 py-2.5 text-sm backdrop-blur-sm transition hover:border-[var(--color-taupe-light)]/50 hover:bg-white/15">
+                        <span class="mr-2 text-[var(--color-taupe-light)] opacity-60">{String(i + 1).padStart(2, '0')}</span>
+                        {p}
+                    </span>
+                ))}
+            </div>
+            <p class="mt-6 text-center text-xs text-white/45">Procedure names pending Kirsty's final approval.</p>
+        </div>
+    </section>
+
+    <StoryTimeline title="Nine days — how it unfolded" steps={timelineSteps} />
+
+    <StoryPullQuote
+        quote="Good news: you can absolutely have a facelift. Bad news: you can't have the one you came here for."
+        attribution="Then my very simple plan started changing"
+        image="/beauty-guides/nine-days/ninedays-consultation.png"
+    />
+
+    {
+        displaySections.map((section, index) => (
+            <>
+                <div class="section-inner py-8 lg:py-10">
+                    <StorySection {...section} index={index} variant={variants[index] || 'default'} />
+                </div>
+                {index === 2 && (
+                    <StoryInsightCards
+                        title="What I'd already learnt"
+                        items={[
+                            { icon: '🌏', title: 'Overseas wasn\'t new', body: 'I\'d had cosmetic surgery overseas at 40 and spent 20+ years around the beauty industry — the plane didn\'t frighten me.' },
+                            { icon: '🇦🇺', title: 'Australia ≠ guarantee', body: 'Two disappointing tummy tucks on the Gold Coast taught me that country alone doesn\'t determine outcome.' },
+                            { icon: '🔍', title: 'Look at results', body: 'I learnt to look beyond the country and pay attention to the surgeon, technique and what was actually proposed.' },
+                        ]}
+                    />
+                )}
+                {index === 5 && (
+                    <StoryPullQuote
+                        quote="The last thing I wanted was a surgeon telling me what I wanted to hear simply because that's what I'd arrived asking for."
+                        attribution="Deep plane facelift recommendation"
+                        image="/beauty-guides/nine-days/ninedays-surgery-day.png"
+                    />
+                )}
+                {index === 8 && (
+                    <StoryStatsBar
+                        dark
+                        items={[
+                            { value: 'BBL', label: 'Added from a photo' },
+                            { value: '3rd', label: 'Tummy tuck' },
+                            { value: '7', label: 'Days after facelift' },
+                            { value: '0', label: 'Regrets' },
+                        ]}
+                    />
+                )}
+                {index === 10 && (
+                    <StoryInsightCards
+                        title="Honest recovery notes"
+                        items={[
+                            { icon: '📅', title: 'Staged, not stacked', body: 'Five surgeries in nine days doesn\'t mean everything at once — procedures were spaced around recovery needs.' },
+                            { icon: '💜', title: 'Emotional wobbles happen', body: 'Around day six or seven I cried for no logical reason. Recovery isn\'t purely physical — that\'s worth talking about.' },
+                            { icon: '📝', title: 'Research everything', body: 'Intimate rejuvenation was worth it for me, but the recovery was the hardest — I wish I\'d researched it more thoroughly.' },
+                        ]}
+                    />
+                )}
+                {index === 12 && (
+                    <StoryPullQuote
+                        quote="Recovery didn't mean staring at four hotel walls for two weeks. We just did everything more slowly. Very slowly."
+                        attribution="Sixteen days in Vietnam"
+                        image="/beauty-guides/nine-days/ninedays-living.png"
+                    />
+                )}
+                {index === 15 && (
+                    <StoryInsightCards
+                        title="What surprised me most"
+                        items={[
+                            { icon: '☕', title: 'Life continued', body: 'Coffee, shopping, rooftop bars, postcards — surgery became part of the trip, not the entire trip.' },
+                            { icon: '💪', title: 'Confidence was the goal', body: 'Surgery was the vehicle. What I was really looking for was confidence — and I found it.' },
+                            { icon: '👓', title: 'Glasses sorted', body: 'Five pairs of prescription glasses for around $1,200 — versus $5,000–$6,000 in Australia.' },
+                        ]}
+                    />
+                )}
+            </>
+        ))
+    }
+
+    <!-- Closing CTA -->
+    <section class="relative w-full overflow-hidden py-20 md:py-28">
+        <img src="/beauty-guides/my-story/mystory-confidence.png" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-charcoal)]/95 via-[var(--color-charcoal)]/80 to-[var(--color-charcoal)]/60"></div>
+        <div class="botanical-bg absolute inset-0 opacity-10"></div>
+        <div class="section-inner relative mx-auto max-w-3xl text-center text-white">
+            <p class="section-eyebrow mb-4 !text-[var(--color-peach-light)]">The short version</p>
+            <p class="text-lg leading-relaxed text-white/90">
+                I went to Vietnam for a facelift. I spent 16 days there. Within nine of those days, I had five surgeries — and somehow still found time for sightseeing, fine dining, glasses, hair extensions, coffee and rooftop bars.
+            </p>
+            <p class="script-note mt-8 !text-[var(--color-peach-light)]">And yes… knowing what I know now, I'd still do it all again.</p>
+            <div class="mt-10 flex flex-wrap justify-center gap-3">
+                <a href="/complete-guide" class="btn-tbg-primary">Explore the Complete Vietnam Surgery Companion</a>
+                <a href="/my-story" class="btn-tbg-outline !border-white/40 !text-white hover:!bg-white hover:!text-[var(--color-charcoal)]">← Back to My Story</a>
+            </div>
+        </div>
+    </section>
+</BeautyGuidesLayout>
+
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>

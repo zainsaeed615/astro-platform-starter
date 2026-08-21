@@ -1,0 +1,139 @@
+---
+import BeautyGuidesLayout from '../layouts/BeautyGuidesLayout.astro';
+import StoryPageHero from '../components/beauty-guides/StoryPageHero.astro';
+import StorySection from '../components/beauty-guides/StorySection.astro';
+import StoryStatsBar from '../components/beauty-guides/StoryStatsBar.astro';
+import StoryPullQuote from '../components/beauty-guides/StoryPullQuote.astro';
+import StoryInsightCards from '../components/beauty-guides/StoryInsightCards.astro';
+import { myStoryPageSections } from '../data/story-pages';
+import { site } from '../data/beauty-guides';
+
+const variants = ['full-bleed', 'default', 'magazine', 'split-reverse', 'quote-hero', 'default', 'split-reverse', 'magazine', 'full-bleed', 'quote-hero', 'default', 'split-reverse'] as const;
+
+const displaySections = myStoryPageSections.filter((s) => s.paragraphs.length > 0);
+---
+
+<BeautyGuidesLayout title="My Story — Why I Did It" description="Kirsty Strowger's full personal story — why she chose Vietnam, what surprised her, and why she created The Beauty Guides.">
+    <StoryPageHero
+        eyebrow="My Story"
+        title="Why I Did It"
+        subtitle="I'm not a clinic salesperson. I'm not an influencer selling you a dream. I'm just a woman in her 50s who travelled to Vietnam expecting one procedure — and came home after a journey that changed far more than my appearance."
+        image="/beauty-guides/my-story/mystory-intro.png"
+        badge="Section 2 · Full Story"
+        stats={[
+            { value: '53', label: 'Age when I went' },
+            { value: '13 yrs', label: 'Since first surgery' },
+            { value: '1 → 9', label: 'Planned vs actual days' },
+        ]}
+    />
+
+    <StoryStatsBar
+        items={[
+            { value: '40', label: 'First surgery at age' },
+            { value: '3', label: 'Countries for surgery' },
+            { value: '100%', label: 'Open about my journey' },
+            { value: '0', label: 'Regrets' },
+        ]}
+    />
+
+    <!-- Sticky chapter nav -->
+    <nav class="sticky top-[72px] z-40 border-b border-[var(--color-peach)]/50 bg-[var(--color-cream)]/95 backdrop-blur-xl">
+        <div class="section-inner flex items-center gap-4 overflow-x-auto py-3 no-scrollbar">
+            <a href="/my-story" class="shrink-0 text-[11px] font-bold uppercase tracking-wider text-[var(--color-taupe)]">Why I Did It</a>
+            <span class="text-[var(--color-peach)]">|</span>
+            <a href="/my-story/nine-days" class="shrink-0 text-[11px] font-bold uppercase tracking-wider text-[var(--color-muted)] hover:text-[var(--color-taupe)]">Nine Days →</a>
+            {
+                displaySections.slice(0, 8).map((s) => (
+                    <a href={`#${s.slug}`} class="shrink-0 rounded-full border border-[var(--color-peach)]/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-muted)] transition hover:border-[var(--color-taupe)] hover:text-[var(--color-taupe)]">
+                        {s.title.length > 28 ? s.title.slice(0, 28) + '…' : s.title}
+                    </a>
+                ))
+            }
+        </div>
+    </nav>
+
+    {
+        displaySections.map((section, index) => (
+            <>
+                <div class="section-inner py-8 lg:py-10">
+                    <StorySection {...section} index={index} variant={variants[index] || 'default'} />
+                </div>
+                {index === 1 && (
+                    <StoryPullQuote
+                        quote="They still looked like themselves — just refreshed, natural, rested and beautiful. Not overdone. Not plastic."
+                        attribution="What changed my thinking"
+                        image="/beauty-guides/my-story/mystory-trust.png"
+                    />
+                )}
+                {index === 2 && (
+                    <StoryInsightCards
+                        title="Why Vietnam appealed to me"
+                        items={[
+                            { icon: '✈️', title: 'Already loved the country', body: 'I had holidayed in Vietnam before and watched it change enormously — Ho Chi Minh City had developed incredibly quickly.' },
+                            { icon: '🇰🇷', title: 'Korean techniques', body: 'References to Korean training and approaches kept appearing — softer repositioning, not the stretched facelift look I did not want.' },
+                            { icon: '👩', title: 'Real results from real women', body: 'Friends I knew came home looking refreshed and natural. That was exactly what I wanted — to look like Kirsty, just fresher.' },
+                        ]}
+                    />
+                )}
+                {index === 4 && (
+                    <StoryStatsBar
+                        dark
+                        items={[
+                            { value: '1', label: 'Procedure planned' },
+                            { value: '9', label: 'Days of surgery' },
+                            { value: '5', label: 'Surgeries total' },
+                            { value: '16', label: 'Days in Vietnam' },
+                        ]}
+                    />
+                )}
+                {index === 6 && (
+                    <StoryPullQuote
+                        quote="Grab became my version of Uber, Uber Eats and everything else rolled into one."
+                        attribution="Travelling alone"
+                        image="/beauty-guides/my-story/mystory-solo-travel.png"
+                    />
+                )}
+                {index === 7 && (
+                    <StoryInsightCards
+                        title="What I learnt about cost"
+                        items={[
+                            { icon: '💰', title: 'Cost got my attention', body: 'The difference between Australian quotes and Vietnam was substantial — but that alone was never enough.' },
+                            { icon: '✨', title: 'Results made me go', body: 'If the women I knew had come home unhappy, I would not have gone. The results made me get on the plane.' },
+                            { icon: '⚖️', title: 'Price ≠ value', body: 'The cheapest option is not necessarily the best, and the most expensive is not automatically the best either.' },
+                        ]}
+                    />
+                )}
+            </>
+        ))
+    }
+
+    <!-- Bridge to Nine Days -->
+    <section class="relative w-full overflow-hidden py-20 md:py-28">
+        <img src="/beauty-guides/nine-days/ninedays-hero.png" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-[var(--color-charcoal)]/80"></div>
+        <div class="botanical-bg absolute inset-0 opacity-10"></div>
+        <div class="section-inner relative text-center text-white">
+            <p class="section-eyebrow mb-3 !text-[var(--color-peach-light)]">Continue reading</p>
+            <h2 class="section-title !text-white">Nine days that changed my life</h2>
+            <p class="mx-auto mt-4 max-w-2xl text-base text-white/85">
+                My one planned facelift became a much bigger nine-day surgical journey. That story deserves its own page.
+            </p>
+            <a href="/my-story/nine-days" class="btn-tbg-primary mt-10 inline-flex">Read What Really Happened →</a>
+        </div>
+    </section>
+
+    <section class="bg-[var(--color-white-soft)] py-16">
+        <div class="section-inner text-center">
+            <p class="script-note mb-6">Real experience. Honest guidance. More confident decisions.</p>
+            <div class="flex flex-wrap justify-center gap-3">
+                <a href="/complete-guide" class="btn-tbg-primary">Explore the Complete Guide</a>
+                <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Message Me on Messenger</a>
+            </div>
+        </div>
+    </section>
+</BeautyGuidesLayout>
+
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>

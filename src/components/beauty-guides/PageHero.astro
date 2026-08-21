@@ -1,0 +1,33 @@
+---
+interface Props {
+    eyebrow?: string;
+    title: string;
+    subtitle?: string;
+    image?: string;
+    align?: 'left' | 'center';
+    size?: 'default' | 'large';
+}
+
+const { eyebrow, title, subtitle, image = '/beauty-guides/mock2.png', align = 'center', size = 'default' } = Astro.props;
+---
+
+<section class="relative min-h-[420px] overflow-hidden md:min-h-[520px]">
+    <div class="absolute inset-0">
+        <img src={image} alt="" class="h-full w-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-charcoal)]/88 via-[var(--color-charcoal)]/65 to-[var(--color-charcoal)]/35"></div>
+        <div class="botanical-bg absolute inset-0 opacity-30"></div>
+    </div>
+    <div class="relative mx-auto flex min-h-[420px] max-w-7xl items-center px-4 py-20 md:min-h-[520px] md:px-6 md:py-28">
+        <div class={`max-w-2xl ${align === 'center' ? 'mx-auto text-center' : 'text-left'}`}>
+            {eyebrow && (
+                <div class={`mb-5 flex items-center gap-3 ${align === 'center' ? 'justify-center' : ''}`}>
+                    <span class="h-px w-8 bg-[var(--color-gold)]"></span>
+                    <p class="section-eyebrow !text-[var(--color-peach-light)]">{eyebrow}</p>
+                    <span class="h-px w-8 bg-[var(--color-gold)]"></span>
+                </div>
+            )}
+            <h1 class={`font-serif font-normal text-white ${size === 'large' ? 'text-[clamp(2rem,5vw,3.75rem)]' : 'text-[clamp(1.75rem,4vw,3rem)]'}`}>{title}</h1>
+            {subtitle && <p class={`mt-5 text-lg leading-relaxed text-white/88 ${align === 'center' ? 'mx-auto' : ''} max-w-xl`}>{subtitle}</p>}
+        </div>
+    </div>
+</section>

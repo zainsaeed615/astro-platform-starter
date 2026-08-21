@@ -1,0 +1,38 @@
+---
+import BeautyGuidesLayout from '../../layouts/BeautyGuidesLayout.astro';
+import PageHero from '../../components/beauty-guides/PageHero.astro';
+import SectionHeader from '../../components/beauty-guides/SectionHeader.astro';
+import { pageHeroes, realStories } from '../../data/beauty-guides';
+
+const hero = pageHeroes['real-stories'];
+---
+
+<BeautyGuidesLayout title="Real Stories" description="Real women sharing their cosmetic surgery journeys in Vietnam.">
+    <PageHero {...hero} />
+
+    <section class="section-inner py-16 md:py-24">
+        <SectionHeader
+            centered
+            title="Why the brand name is plural"
+            subtitle="The Beauty Guides is about real stories from real women — individual lived experiences, not endorsements, referrals or guarantees of outcomes."
+        />
+        <div class="grid gap-8 md:grid-cols-2">
+            {
+                realStories.map((story) => (
+                    <a href={`/real-stories/${story.slug}`} class="card-tbg flex flex-col overflow-hidden no-underline md:flex-row">
+                        <div class="relative md:w-2/5">
+                            <img src={story.image} alt={story.displayName} class="h-72 w-full object-cover object-top md:h-full" loading="lazy" />
+                        </div>
+                        <div class="flex flex-1 flex-col p-7">
+                            <h2 class="font-serif text-2xl">{story.name}</h2>
+                            <p class="mt-2 text-[11px] font-bold uppercase tracking-wider text-[var(--color-taupe)]">{story.summary} · {story.destination}</p>
+                            {story.ageRange && <p class="mt-1 text-xs text-[var(--color-muted)]">Age range: {story.ageRange}</p>}
+                            <p class="prose-tbg mt-4 flex-1 italic">"{story.excerpt}"</p>
+                            <span class="mt-5 text-sm font-bold uppercase tracking-wider text-[var(--color-taupe)]">Read full story →</span>
+                        </div>
+                    </a>
+                ))
+            }
+        </div>
+    </section>
+</BeautyGuidesLayout>
