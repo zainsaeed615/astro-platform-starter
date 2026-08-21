@@ -1,0 +1,135 @@
+---
+import BeautyGuidesLayout from '../layouts/BeautyGuidesLayout.astro';
+import StoryPageHero from '../components/beauty-guides/StoryPageHero.astro';
+import StorySection from '../components/beauty-guides/StorySection.astro';
+import StoryStatsBar from '../components/beauty-guides/StoryStatsBar.astro';
+import StoryPullQuote from '../components/beauty-guides/StoryPullQuote.astro';
+import StoryInsightCards from '../components/beauty-guides/StoryInsightCards.astro';
+import { travellingAloneSections } from '../data/content-pages';
+import { site } from '../data/beauty-guides';
+
+const variants = ['full-bleed', 'magazine', 'split-reverse', 'default', 'quote-hero', 'magazine', 'full-bleed'] as const;
+---
+
+<BeautyGuidesLayout title="Travelling Alone" description="Kirsty's honest guide to travelling alone for cosmetic surgery in Vietnam — carers, apps, accommodation and what she wishes she'd known.">
+    <StoryPageHero
+        eyebrow="Section 5.3 · Plan Your Trip"
+        title="Travelling alone"
+        subtitle="When you're considering surgery overseas, one of the biggest questions is whether you can travel alone. I did — and this is what actually happened."
+        image="/beauty-guides/travelling-alone/travel-hero.png"
+        badge="Personal experience only"
+        stats={[
+            { value: 'Solo', label: 'How I travelled' },
+            { value: '$25', label: 'Daily carer cost' },
+            { value: '0', label: 'Days I needed help' },
+        ]}
+    />
+
+    <StoryStatsBar
+        items={[
+            { value: 'Grab', label: 'Rides & deliveries' },
+            { value: 'Apps', label: 'Translation & maps' },
+            { value: '24/7', label: 'Room service option' },
+            { value: '100%', label: 'Would go again solo' },
+        ]}
+    />
+
+    <nav class="sticky top-[72px] z-40 border-b border-[var(--color-peach)]/50 bg-[var(--color-cream)]/95 backdrop-blur-xl">
+        <div class="section-inner flex items-center gap-4 overflow-x-auto py-3 no-scrollbar">
+            <a href="/plan-your-trip" class="shrink-0 text-[11px] font-bold uppercase tracking-wider text-[var(--color-muted)] hover:text-[var(--color-taupe)]">← Plan Your Trip</a>
+            <span class="text-[var(--color-peach)]">|</span>
+            <span class="shrink-0 text-[11px] font-bold uppercase tracking-wider text-[var(--color-taupe)]">Travelling Alone</span>
+            {
+                travellingAloneSections.map((s) => (
+                    <a href={`#${s.slug}`} class="shrink-0 rounded-full border border-[var(--color-peach)]/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-muted)] transition hover:border-[var(--color-taupe)] hover:text-[var(--color-taupe)]">
+                        {s.title.length > 26 ? s.title.slice(0, 26) + '…' : s.title}
+                    </a>
+                ))
+            }
+        </div>
+    </nav>
+
+    <div class="section-inner py-12 lg:py-16">
+        {
+            travellingAloneSections.map((section, index) => (
+                <>
+                    <StorySection {...section} index={index} variant={variants[index] || 'default'} />
+                    {index === 0 && (
+                        <StoryPullQuote
+                            quote="Would I need a carer? That was probably the biggest question."
+                            attribution="Before I left Australia"
+                            image="/beauty-guides/travelling-alone/travel-intro.png"
+                        />
+                    )}
+                    {index === 1 && (
+                        <StoryInsightCards
+                            title="What I organised — and what I actually needed"
+                            items={[
+                                { icon: '👥', title: 'Expat community groups', body: 'I joined Ho Chi Minh City groups before leaving and found carer recommendations — around $25 a day for four hours of help.' },
+                                { icon: '✅', title: 'Tried it for two days', body: 'She could get groceries and help around the apartment. For me personally, it was completely unnecessary.' },
+                                { icon: '💡', title: 'Your recovery may differ', body: 'That doesn\'t mean nobody will need help. Your procedure, recovery and circumstances may be completely different to mine.' },
+                            ]}
+                        />
+                    )}
+                    {index === 2 && (
+                        <StoryStatsBar
+                            dark
+                            items={[
+                                { value: 'Grab', label: 'Transport & food' },
+                                { value: 'ChatGPT', label: 'Travel assistant' },
+                                { value: 'Maps', label: 'Getting around' },
+                                { value: 'WhatsApp', label: 'Stay connected' },
+                            ]}
+                        />
+                    )}
+                    {index === 4 && (
+                        <StoryPullQuote
+                            quote="After a couple of days, what initially feels very foreign starts feeling surprisingly normal."
+                            attribution="The language barrier"
+                            image="/beauty-guides/travelling-alone/travel-language.png"
+                        />
+                    )}
+                    {index === 5 && (
+                        <StoryInsightCards
+                            title="The fear vs the reality"
+                            items={[
+                                { icon: '🧠', title: 'Fear before you leave', body: 'The hardest part wasn\'t being there alone — it was what people imagine before they go.' },
+                                { icon: '📱', title: 'Solve as you go', body: 'Download the apps, learn how Grab works, find your favourite café — each little problem becomes easy to solve.' },
+                                { icon: '✈️', title: 'Don\'t assume the worst', body: 'The version of travelling alone you\'re imagining might be considerably harder than the reality. Mine certainly was.' },
+                            ]}
+                        />
+                    )}
+                </>
+            ))
+        }
+    </div>
+
+    <section class="relative overflow-hidden py-24 md:py-32">
+        <img src="/beauty-guides/travelling-alone/travel-again.png" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-[var(--color-charcoal)]/82"></div>
+        <div class="botanical-bg absolute inset-0 opacity-10"></div>
+        <div class="section-inner relative text-center text-white">
+            <p class="section-eyebrow mb-4 !text-[var(--color-peach-light)]">Ready to plan?</p>
+            <h2 class="font-serif text-4xl md:text-5xl">Don't let solo travel stop your research</h2>
+            <p class="mx-auto mt-5 max-w-2xl text-lg text-white/85">
+                If you're sitting at home thinking you'd love to do this but couldn't go alone — don't let that thought stop you from at least doing your research.
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-3">
+                <a href="/plan-your-trip" class="btn-tbg-primary">Explore Plan Your Trip</a>
+                <a href="/complete-guide" class="btn-tbg-outline !border-white/40 !text-white hover:!bg-white hover:!text-[var(--color-charcoal)]">Complete Vietnam Surgery Companion</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[var(--color-white-soft)] py-16">
+        <div class="section-inner text-center">
+            <p class="script-note mb-6">{site.tagline}</p>
+            <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Message Me on Messenger</a>
+        </div>
+    </section>
+</BeautyGuidesLayout>
+
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>

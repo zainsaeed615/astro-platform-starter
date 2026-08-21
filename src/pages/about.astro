@@ -1,0 +1,162 @@
+---
+import BeautyGuidesLayout from '../layouts/BeautyGuidesLayout.astro';
+import StoryPageHero from '../components/beauty-guides/StoryPageHero.astro';
+import StorySection from '../components/beauty-guides/StorySection.astro';
+import StoryStatsBar from '../components/beauty-guides/StoryStatsBar.astro';
+import StoryPullQuote from '../components/beauty-guides/StoryPullQuote.astro';
+import StoryInsightCards from '../components/beauty-guides/StoryInsightCards.astro';
+import { aboutUsSections } from '../data/content-pages';
+import { site } from '../data/beauty-guides';
+
+const displaySections = aboutUsSections.filter((s) => s.slug !== 'want-to-know-the-full-story');
+
+const variants = [
+    'full-bleed', 'magazine', 'split-reverse', 'default', 'quote-hero',
+    'magazine', 'full-bleed', 'split-reverse', 'quote-hero',
+] as const;
+---
+
+<BeautyGuidesLayout title="About Us" description="Meet Kirsty Strowger, founder of The Beauty Guides — real women, real experiences, and honest guidance for cosmetic surgery decisions.">
+    <StoryPageHero
+        eyebrow="About The Beauty Guides"
+        title="Meet Kirsty Strowger"
+        subtitle="Founder, The Beauty Guides. At 53, I travelled to Vietnam for a facelift and came home with far more than I expected — and a mission to share what I learnt."
+        image="/beauty-guides/about/about-hero.png"
+        badge="Real experience · Your decision"
+        stats={[
+            { value: '53', label: 'Age on my journey' },
+            { value: '20+', label: 'Years in wellness' },
+            { value: '10', label: 'Guide chapters' },
+        ]}
+    />
+
+    <StoryStatsBar
+        items={[
+            { value: '5', label: 'Surgeries in 9 days' },
+            { value: '0', label: 'Medical advice given' },
+            { value: '100%', label: 'Lived experience' },
+            { value: '∞', label: 'Questions welcomed' },
+        ]}
+    />
+
+    <!-- Founder highlight band -->
+    <section class="border-b border-[var(--color-peach)]/50 bg-gradient-to-r from-[var(--color-peach-light)] via-[var(--color-cream)] to-[var(--color-peach-light)] py-14">
+        <div class="section-inner grid items-center gap-10 lg:grid-cols-2">
+            <div class="overflow-hidden rounded-3xl shadow-xl">
+                <img src="/beauty-guides/about/about-meet-kirsty.png" alt="Kirsty Strowger" class="aspect-[4/5] w-full object-cover" loading="lazy" />
+            </div>
+            <div>
+                <p class="section-eyebrow mb-3">Founder, The Beauty Guides</p>
+                <h2 class="font-serif text-3xl md:text-4xl">Real women. Real experiences.</h2>
+                <p class="mt-5 text-lg leading-relaxed text-[var(--color-muted)]">
+                    The Beauty Guides isn't a hospital, a surgeon or a medical provider. We share lived experience so you can make your own decisions — with your eyes open.
+                </p>
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <span class="rounded-full border border-[var(--color-peach)] bg-[var(--color-white-soft)] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-[var(--color-taupe)]">Not a broker</span>
+                    <span class="rounded-full border border-[var(--color-peach)] bg-[var(--color-white-soft)] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-[var(--color-taupe)]">Not medical advice</span>
+                    <span class="rounded-full border border-[var(--color-peach)] bg-[var(--color-white-soft)] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-[var(--color-taupe)]">Your decision always</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <nav class="sticky top-[72px] z-40 border-b border-[var(--color-peach)]/50 bg-[var(--color-cream)]/95 backdrop-blur-xl">
+        <div class="section-inner flex items-center gap-4 overflow-x-auto py-3 no-scrollbar">
+            <span class="shrink-0 text-[11px] font-bold uppercase tracking-wider text-[var(--color-taupe)]">About Us</span>
+            {
+                displaySections.slice(0, 6).map((s) => (
+                    <a href={`#${s.slug}`} class="shrink-0 rounded-full border border-[var(--color-peach)]/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-muted)] transition hover:border-[var(--color-taupe)] hover:text-[var(--color-taupe)]">
+                        {s.title.length > 24 ? s.title.slice(0, 24) + '…' : s.title}
+                    </a>
+                ))
+            }
+        </div>
+    </nav>
+
+    <div class="section-inner py-12 lg:py-16">
+        {
+            displaySections.map((section, index) => (
+                <>
+                    <StorySection {...section} index={index} variant={variants[index] || 'default'} />
+                    {index === 1 && (
+                        <StoryPullQuote
+                            quote="Women are incredibly good at looking after everybody else. We just have a funny habit of putting ourselves last."
+                            attribution="My background"
+                            image="/beauty-guides/about/about-background.png"
+                        />
+                    )}
+                    {index === 2 && (
+                        <StoryInsightCards
+                            title="What women really wanted to know"
+                            items={[
+                                { icon: '✈️', title: 'Was I frightened?', body: 'Women wanted to know what Vietnam was really like, whether I felt frightened travelling alone, and what recovery actually felt like.' },
+                                { icon: '💬', title: 'Not a decision-maker', body: 'They weren\'t looking for somebody to make the decision for them — they wanted to hear from somebody who had already been there.' },
+                                { icon: '📖', title: 'The full picture', body: 'The good, the challenging, the funny, the emotional — and everything in between. Not a glossy brochure.' },
+                            ]}
+                        />
+                    )}
+                    {index === 4 && (
+                        <StoryStatsBar
+                            dark
+                            items={[
+                                { value: 'Share', label: 'Our stories' },
+                                { value: 'Never', label: 'Choose for you' },
+                                { value: 'Your', label: 'Body & decision' },
+                                { value: 'Always', label: 'In your control' },
+                            ]}
+                        />
+                    )}
+                    {index === 5 && (
+                        <StoryPullQuote
+                            quote="I wish somebody had told me this before I left. So eventually I wrote it all down."
+                            attribution="The Complete Vietnam Surgery Companion"
+                            image="/beauty-guides/about/about-companion.png"
+                        />
+                    )}
+                    {index === 7 && (
+                        <StoryInsightCards
+                            title="You stay in control"
+                            items={[
+                                { icon: '🔍', title: 'Research freely', body: 'Reading my story doesn\'t mean you should do what I did. You are allowed to research, ask questions and change your mind.' },
+                                { icon: '🤝', title: 'Connect, not commit', body: 'Contacting a provider doesn\'t mean you\'re committed to anything. Speaking to somebody I know doesn\'t mean you should use them.' },
+                                { icon: '💛', title: 'About confidence', body: 'This isn\'t about convincing women to have surgery. It\'s about confidence, choice, transparency and women sharing what they\'ve learnt.' },
+                            ]}
+                        />
+                    )}
+                </>
+            ))
+        }
+    </div>
+
+    <!-- Closing CTAs from docx -->
+    <section class="relative overflow-hidden py-24 md:py-32">
+        <img src="/beauty-guides/about/about-control.png" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-charcoal)]/95 via-[var(--color-charcoal)]/80 to-[var(--color-charcoal)]/55"></div>
+        <div class="botanical-bg absolute inset-0 opacity-10"></div>
+        <div class="section-inner relative mx-auto max-w-3xl text-center text-white">
+            <p class="section-eyebrow mb-4 !text-[var(--color-peach-light)]">Want to know the full story?</p>
+            <p class="text-lg leading-relaxed text-white/90">
+                Read how I went to Vietnam for a facelift and ended up having five surgeries in nine days — what surprised me, what everything cost, and why I'd still do it all again.
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-3">
+                <a href="/my-story" class="btn-tbg-primary">Read My Full Story →</a>
+                <a href="/complete-guide" class="btn-tbg-outline !border-white/40 !text-white hover:!bg-white hover:!text-[var(--color-charcoal)]">Explore the Complete Companion</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[var(--color-white-soft)] py-16">
+        <div class="section-inner text-center">
+            <p class="script-note mb-6">{site.tagline}</p>
+            <div class="flex flex-wrap justify-center gap-3">
+                <a href="/ask-kirsty" class="btn-tbg-primary">Ask Kirsty</a>
+                <a href={site.messengerUrl} target="_blank" rel="noopener" class="btn-tbg-messenger">Message Me on Messenger</a>
+            </div>
+        </div>
+    </section>
+</BeautyGuidesLayout>
+
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>

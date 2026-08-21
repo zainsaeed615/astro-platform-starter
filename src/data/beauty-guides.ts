@@ -247,6 +247,7 @@ export const footerColumns = [
     {
         title: 'About',
         links: [
+            { label: 'About Us', href: '/about' },
             { label: 'My Story', href: '/my-story' },
             { label: 'Why Vietnam', href: '/why-vietnam' },
             { label: 'Ask Kirsty', href: '/ask-kirsty' },
@@ -264,6 +265,7 @@ export const footerColumns = [
         title: 'Resources',
         links: [
             { label: 'Plan Your Trip', href: '/plan-your-trip' },
+            { label: 'Travelling Alone', href: '/travelling-alone' },
             { label: 'Packing Checklist', href: '/guides/packing-surgery-and-recovery-in-vietnam' },
             { label: 'Recovery Tips', href: '/guides/flying-home-and-recovering-at-home' },
         ],
@@ -419,6 +421,18 @@ export const pageHeroes: Record<string, { eyebrow: string; title: string; subtit
         title: 'Feel prepared before you ever step on the plane.',
         subtitle: 'Ten detailed guides, practical checklists and real-life advice from my own experience.',
         image: '/beauty-guides/pages/complete-guide.png',
+    },
+    'travelling-alone': {
+        eyebrow: 'Section 5.3 · Plan Your Trip',
+        title: 'Travelling alone',
+        subtitle: 'Can you go to Vietnam for surgery by yourself? I did — and this is what actually happened.',
+        image: '/beauty-guides/pages/travelling-alone.png',
+    },
+    'about-us': {
+        eyebrow: 'About The Beauty Guides',
+        title: 'Meet Kirsty Strowger',
+        subtitle: 'Real women, real experiences — and honest guidance so you can make your own decisions.',
+        image: '/beauty-guides/pages/about-us.png',
     },
 };
 
