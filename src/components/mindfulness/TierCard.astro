@@ -7,19 +7,36 @@ interface Props {
     image: string;
     imageAlt: string;
     featured?: boolean;
+    index?: number;
 }
 
-const { name, price, tagline, description, image, imageAlt, featured = false } = Astro.props;
+const { name, price, tagline, description, image, imageAlt, featured = false, index = 0 } = Astro.props;
 ---
 
-<article class={`card flex flex-col h-full ${featured ? 'ring-2 ring-sage' : ''}`}>
-    <div class="aspect-[4/3] overflow-hidden">
-        <img src={image} alt={imageAlt} class="w-full h-full object-cover" loading="lazy" />
+<article class={`card flex flex-col h-full group ${featured ? 'card-featured lg:-mt-4 lg:mb-4' : ''}`}>
+    {featured && (
+        <div class="bg-gradient-to-r from-gold-dark to-gold text-white text-[0.625rem] uppercase tracking-[0.2em] font-semibold text-center py-2.5">
+            Most Popular
+        </div>
+    )}
+    <div class="aspect-[4/3] overflow-hidden relative">
+        <img
+            src={image}
+            alt={imageAlt}
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
     </div>
-    <div class="p-6 sm:p-8 flex flex-col flex-1">
-        <p class="eyebrow mb-2">{name}</p>
-        <p class="text-2xl font-serif text-charcoal mb-1">{price}</p>
-        <p class="text-sage-dark italic mb-4">{tagline}</p>
-        <p class="text-warm-gray leading-relaxed flex-1">{description}</p>
+    <div class="p-7 sm:p-9 flex flex-col flex-1">
+        <div class="flex items-baseline justify-between mb-3">
+            <p class="eyebrow !mb-0 !text-sage-dark">{name}</p>
+            <span class="text-[0.625rem] uppercase tracking-wider text-muted">Tier {index + 1}</span>
+        </div>
+        <p class="text-3xl font-serif text-charcoal mb-2 font-light">{price}</p>
+        <p class="text-gold-dark italic font-serif text-lg mb-5">{tagline}</p>
+        <div class="w-8 h-px bg-sand mb-5"></div>
+        <p class="text-warm-gray leading-relaxed flex-1 text-[0.9375rem]">{description}</p>
+        <a href="#contact" class="btn mt-8 w-full justify-center text-[0.6875rem]">Get Started</a>
     </div>
 </article>

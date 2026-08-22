@@ -4,6 +4,7 @@ import HeroSection from '../components/mindfulness/HeroSection.astro';
 import SectionHeading from '../components/mindfulness/SectionHeading.astro';
 import AudienceGrid from '../components/mindfulness/AudienceGrid.astro';
 import ImageTextSplit from '../components/mindfulness/ImageTextSplit.astro';
+import QuoteBlock from '../components/mindfulness/QuoteBlock.astro';
 import CTABand from '../components/mindfulness/CTABand.astro';
 import { images } from '../data/images';
 
@@ -32,8 +33,14 @@ const industries = [
 ];
 
 const scaleFeatures = [
-    'Volume Pricing', 'Bulk Ordering', 'Multi-Location Shipping', 'Custom Packaging',
-    'Recurring Gifting Programs', 'Annual Corporate Gifting Plans', 'Employee Wellness Programs', 'Event & Conference Fulfillment',
+    { title: 'Volume Pricing', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+    { title: 'Bulk Ordering', icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4' },
+    { title: 'Multi-Location Shipping', icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z' },
+    { title: 'Custom Packaging', icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4' },
+    { title: 'Recurring Gifting Programs', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
+    { title: 'Annual Corporate Plans', icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' },
+    { title: 'Employee Wellness Programs', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
+    { title: 'Event & Conference Fulfillment', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
 ];
 ---
 
@@ -50,19 +57,19 @@ const scaleFeatures = [
         align="center"
     >
         <div slot="actions" class="flex flex-wrap gap-4 justify-center">
-            <a href="#contact" class="btn btn-lg">Request a Corporate Gifting Proposal</a>
+            <a href="#contact" class="btn btn-lg btn-gold">Request a Corporate Gifting Proposal</a>
         </div>
     </HeroSection>
 
     <section class="section-padding bg-cream">
         <div class="container-narrow max-w-3xl mx-auto text-center">
-            <p class="text-lg leading-relaxed text-warm-gray">
+            <p class="lead">
                 Mindfulness Corporate Gifting helps organizations transform traditional gifting into thoughtfully curated experiences centered around appreciation, wellness, reflection, comfort, and connection. Whether you're recognizing one extraordinary leader or thanking thousands of employees, clients, partners, or guests, we create elevated gifting experiences designed to make people feel genuinely valued.
             </p>
         </div>
     </section>
 
-    <section class="section-padding bg-stone">
+    <section class="section-padding section-bg-stone">
         <div class="container-narrow">
             <SectionHeading eyebrow="Thoughtful Gifting. Meaningful Connections." title="Programs Customized for Every Occasion" align="center" />
             <AudienceGrid items={useCases} columns={4} />
@@ -72,20 +79,22 @@ const scaleFeatures = [
     <section class="section-padding bg-cream">
         <div class="container-narrow">
             <SectionHeading eyebrow="Made for Your Brand" title="Your Vision. Your Brand. The Mindfulness Experience." description="Select corporate programs can be customized to create an experience unique to your organization." align="center" />
-            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto">
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
                 {customization.map((item) => (
-                    <div class="card p-5 text-center"><p class="text-sm font-medium">{item}</p></div>
+                    <div class="card-static p-6 text-center group hover:shadow-lg transition-all duration-500">
+                        <p class="text-sm font-medium group-hover:text-sage-dark transition-colors">{item}</p>
+                    </div>
                 ))}
             </div>
         </div>
     </section>
 
-    <section class="section-padding bg-stone">
+    <section class="section-padding section-bg-stone">
         <div class="container-narrow">
             <SectionHeading eyebrow="Who We Serve" title="Organizations Across Industries" align="center" />
-            <div class="flex flex-wrap gap-3 justify-center max-w-4xl mx-auto">
+            <div class="flex flex-wrap gap-3 justify-center max-w-5xl mx-auto">
                 {industries.map((industry) => (
-                    <span class="px-4 py-2 bg-white border border-sand/60 rounded-sm text-sm text-warm-gray">{industry}</span>
+                    <span class="pill">{industry}</span>
                 ))}
             </div>
         </div>
@@ -94,21 +103,27 @@ const scaleFeatures = [
     <section class="section-padding bg-cream">
         <div class="container-narrow">
             <SectionHeading eyebrow="From 25 Gifts to 25,000+" title="Built for Moments Big and Small" description="Whether you're sending 25 executive gifts or coordinating thousands of packages across multiple locations, Mindfulness Corporate Gifting is designed to grow with your organization." align="center" />
-            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 max-w-4xl mx-auto">
+            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
                 {scaleFeatures.map((feature) => (
-                    <div class="card p-5 text-center"><p class="text-sm font-medium">{feature}</p></div>
+                    <div class="card-static p-6 text-center group hover:shadow-lg transition-all duration-500">
+                        <div class="w-10 h-10 rounded-full bg-sage-dark/8 flex items-center justify-center mx-auto mb-4 group-hover:bg-sage-dark/15 transition-colors">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="text-sage-dark">
+                                <path d={feature.icon} stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <p class="text-sm font-medium">{feature.title}</p>
+                    </div>
                 ))}
             </div>
         </div>
     </section>
 
-    <section class="section-padding bg-stone">
-        <div class="container-narrow max-w-3xl mx-auto text-center">
-            <h2 class="mb-6">Create a Signature Corporate Experience</h2>
-            <p class="text-warm-gray leading-relaxed mb-4">
-                Imagine opening an elegant Mindfulness gift box containing a beautifully curated combination of fragrance, reflection, comfort, and inspiration—all accompanied by a personalized message from your organization.
-            </p>
-            <p class="font-serif text-xl italic text-charcoal">That's more than promotional merchandise. That's an experience. And experiences are remembered.</p>
+    <section class="section-padding section-bg-stone">
+        <div class="container-narrow">
+            <QuoteBlock
+                quote="Imagine opening an elegant Mindfulness gift box containing a beautifully curated combination of fragrance, reflection, comfort, and inspiration — all accompanied by a personalized message from your organization. That's more than promotional merchandise. That's an experience."
+                author="Create a Signature Corporate Experience"
+            />
         </div>
     </section>
 
@@ -119,7 +134,7 @@ const scaleFeatures = [
         image={images.corporate.experience}
         imageAlt="Professionals opening Mindfulness gift boxes"
     >
-        <p>A diverse group of professionals discovering thoughtfully curated wellness gifts—genuine smiles and meaningful moments, not staged corporate photography.</p>
+        <p>A diverse group of professionals discovering thoughtfully curated wellness gifts — genuine smiles and meaningful moments, not staged corporate photography.</p>
     </ImageTextSplit>
 
     <ImageTextSplit
@@ -130,13 +145,12 @@ const scaleFeatures = [
         imageAlt="Conference with Mindfulness gifts at each seat"
         reverse={true}
     >
-        <p>Beautifully packaged Mindfulness gifts placed at each attendee's seat—turning traditional conference swag into something they'll actually want to keep.</p>
+        <p>Beautifully packaged Mindfulness gifts placed at each attendee's seat — turning traditional conference swag into something they'll actually want to keep.</p>
     </ImageTextSplit>
 
     <CTABand title="Let's Create Something Meaningful." subtitle="Thoughtfully Curated. Beautifully Presented. Meaningfully Remembered.">
-        <a href="#contact" class="btn btn-lg">Request a Corporate Gifting Proposal</a>
-        <a href="#contact" class="btn btn-lg btn-outline text-cream border-cream hover:bg-cream hover:text-charcoal">Build Your Custom Gift</a>
-        <a href="#contact" class="btn btn-lg btn-accent">Request a Sample</a>
-        <a href="#contact" class="btn btn-lg btn-outline text-cream border-cream hover:bg-cream hover:text-charcoal">Speak with Corporate Sales</a>
+        <a href="#contact" class="btn btn-lg btn-gold">Request a Corporate Gifting Proposal</a>
+        <a href="#contact" class="btn btn-lg btn-outline text-cream border-cream/60 hover:bg-cream/10 hover:text-cream">Build Your Custom Gift</a>
+        <a href="#contact" class="btn btn-lg btn-white !text-charcoal">Request a Sample</a>
     </CTABand>
 </Layout>

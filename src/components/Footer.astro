@@ -2,42 +2,61 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-stone border-t border-sand/60 section-padding">
-    <div class="container-narrow">
-        <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 mb-12">
-            <div>
-                <p class="font-serif text-xl mb-4">Mindfulness</p>
-                <p class="text-warm-gray text-sm leading-relaxed">
-                    Creating intentional moments of comfort, reflection, and connection—one experience at a time.
+<footer class="section-bg-dark text-cream grain-overlay">
+    <div class="relative z-10 container-narrow">
+        <!-- Top section -->
+        <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-12 pb-16 border-b border-white/10">
+            <div class="lg:col-span-4">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-full bg-white/10">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-gold">
+                            <path d="M12 2C8 6 4 8 4 13c0 4.4 3.6 8 8 8s8-3.6 8-8c0-5-4-7-8-11z" fill="currentColor" opacity="0.8"/>
+                        </svg>
+                    </span>
+                    <span class="font-serif text-2xl font-light tracking-wide">Mindfulness</span>
+                </div>
+                <p class="text-cream/60 text-sm leading-relaxed max-w-xs">
+                    Creating intentional moments of comfort, reflection, and connection — one experience at a time.
                 </p>
             </div>
-            <div>
-                <p class="eyebrow mb-4">Explore</p>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="/membership" class="text-warm-gray no-underline hover:text-charcoal">Membership</a></li>
-                    <li><a href="/healthcare" class="text-warm-gray no-underline hover:text-charcoal">Healthcare</a></li>
-                    <li><a href="/corporate" class="text-warm-gray no-underline hover:text-charcoal">Corporate Gifting</a></li>
-                    <li><a href="/fundraising" class="text-warm-gray no-underline hover:text-charcoal">Fundraising</a></li>
+
+            <div class="lg:col-span-2 lg:col-start-6">
+                <p class="eyebrow eyebrow-light mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/membership" class="text-cream/60 no-underline hover:text-cream transition-colors">Membership</a></li>
+                    <li><a href="/healthcare" class="text-cream/60 no-underline hover:text-cream transition-colors">Healthcare</a></li>
+                    <li><a href="/corporate" class="text-cream/60 no-underline hover:text-cream transition-colors">Corporate Gifting</a></li>
+                    <li><a href="/fundraising" class="text-cream/60 no-underline hover:text-cream transition-colors">Fundraising</a></li>
                 </ul>
             </div>
-            <div>
-                <p class="eyebrow mb-4">Shop</p>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="https://mindfulnesscandle.store/" target="_blank" rel="noopener noreferrer" class="text-warm-gray no-underline hover:text-charcoal">Visit Store</a></li>
-                    <li><a href="https://mindfulnesscandle.store/pages/about" target="_blank" rel="noopener noreferrer" class="text-warm-gray no-underline hover:text-charcoal">About</a></li>
-                    <li><a href="https://mindfulnesscandle.store/pages/contact" target="_blank" rel="noopener noreferrer" class="text-warm-gray no-underline hover:text-charcoal">Contact</a></li>
+
+            <div class="lg:col-span-2">
+                <p class="eyebrow eyebrow-light mb-5">Shop</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="https://mindfulnesscandle.store/" target="_blank" rel="noopener noreferrer" class="text-cream/60 no-underline hover:text-cream transition-colors">Visit Store</a></li>
+                    <li><a href="https://mindfulnesscandle.store/pages/about" target="_blank" rel="noopener noreferrer" class="text-cream/60 no-underline hover:text-cream transition-colors">About</a></li>
+                    <li><a href="https://mindfulnesscandle.store/pages/contact" target="_blank" rel="noopener noreferrer" class="text-cream/60 no-underline hover:text-cream transition-colors">Contact</a></li>
                 </ul>
             </div>
-            <div>
-                <p class="eyebrow mb-4">Inquiries</p>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="mailto:info@mindfulnesscandle.store" class="text-warm-gray no-underline hover:text-charcoal">Corporate & Healthcare</a></li>
-                    <li><a href="mailto:info@mindfulnesscandle.store" class="text-warm-gray no-underline hover:text-charcoal">Fundraising Partners</a></li>
+
+            <div class="lg:col-span-3">
+                <p class="eyebrow eyebrow-light mb-5">Partner With Us</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:info@mindfulnesscandle.store" class="text-cream/60 no-underline hover:text-cream transition-colors">Corporate & Healthcare Inquiries</a></li>
+                    <li><a href="mailto:info@mindfulnesscandle.store" class="text-cream/60 no-underline hover:text-cream transition-colors">Fundraising Partners</a></li>
+                    <li><a href="mailto:info@mindfulnesscandle.store" class="text-cream/60 no-underline hover:text-cream transition-colors">Custom Programs</a></li>
                 </ul>
             </div>
         </div>
-        <p class="text-warm-gray text-xs text-center pt-8 border-t border-sand/60">
-            &copy; {year} Mindfulness Candle Collection. All rights reserved.
-        </p>
+
+        <!-- Bottom bar -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-8">
+            <p class="text-cream/40 text-xs tracking-wide">
+                &copy; {year} Mindfulness Candle Collection. All rights reserved.
+            </p>
+            <p class="text-cream/40 text-xs italic font-serif">
+                Wellness should be a way of life.
+            </p>
+        </div>
     </div>
 </footer>

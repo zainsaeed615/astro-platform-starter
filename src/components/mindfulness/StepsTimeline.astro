@@ -11,17 +11,18 @@ interface Props {
 const { steps } = Astro.props;
 ---
 
-<ol class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+<ol class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 relative">
     {steps.map((step, index) => (
-        <li class="relative pl-0">
-            <div class="flex items-start gap-4">
-                <span class="flex-shrink-0 w-10 h-10 rounded-full bg-sage-dark text-cream flex items-center justify-center font-semibold text-sm">
-                    {index + 1}
-                </span>
-                <div>
-                    <h3 class="text-lg mb-2">{step.title}</h3>
-                    <p class="text-warm-gray text-sm leading-relaxed">{step.description}</p>
+        <li class="relative group">
+            <div class="card-static p-7 sm:p-8 h-full transition-all duration-500 group-hover:shadow-lg group-hover:-translate-y-1">
+                <div class="flex items-center gap-4 mb-5">
+                    <span class="flex-shrink-0 w-11 h-11 rounded-full bg-gradient-to-br from-sage-dark to-sage text-cream flex items-center justify-center font-serif text-lg font-light">
+                        {index + 1}
+                    </span>
+                    <div class="flex-1 h-px bg-sand/60 hidden sm:block"></div>
                 </div>
+                <h3 class="text-lg mb-3 group-hover:text-sage-dark transition-colors">{step.title}</h3>
+                <p class="text-warm-gray text-sm leading-relaxed">{step.description}</p>
             </div>
         </li>
     ))}

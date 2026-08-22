@@ -21,8 +21,10 @@ const currentPath = Astro.url.pathname;
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="generator" content={Astro.generator} />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
-    <body>
+    <body class="overflow-x-hidden">
         <Header currentPath={currentPath} />
         <main><slot /></main>
         <Footer />
@@ -31,5 +33,9 @@ const currentPath = Astro.url.pathname;
 
 <style is:global>
     @import '../../src/styles/globals.css';
-    @import '@fontsource-variable/inter/wght.css';
+    @import '@fontsource-variable/dm-sans/wght.css';
+    @import '@fontsource/cormorant-garamond/400.css';
+    @import '@fontsource/cormorant-garamond/400-italic.css';
+    @import '@fontsource/cormorant-garamond/300.css';
+    @import '@fontsource/cormorant-garamond/600.css';
 </style>

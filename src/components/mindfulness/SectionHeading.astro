@@ -9,8 +9,14 @@ interface Props {
 const { eyebrow, title, description, align = 'left' } = Astro.props;
 ---
 
-<div class={`mb-12 ${align === 'center' ? 'text-center max-w-3xl mx-auto' : 'max-w-3xl'}`}>
-    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-    <h2 class="mb-4">{title}</h2>
-    {description && <p class="text-warm-gray text-lg leading-relaxed">{description}</p>}
+<div class={`mb-14 sm:mb-16 ${align === 'center' ? 'text-center max-w-3xl mx-auto' : 'max-w-3xl'}`}>
+    {eyebrow && (
+        <div class={`flex items-center gap-4 mb-5 ${align === 'center' ? 'justify-center' : ''}`}>
+            <span class="w-8 h-px bg-gold"></span>
+            <p class="eyebrow !mb-0">{eyebrow}</p>
+            {align === 'center' && <span class="w-8 h-px bg-gold"></span>}
+        </div>
+    )}
+    <h2 class="mb-5 font-light">{title}</h2>
+    {description && <p class="lead">{description}</p>}
 </div>

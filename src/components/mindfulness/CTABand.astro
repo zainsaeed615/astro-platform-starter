@@ -8,10 +8,21 @@ interface Props {
 const { title, subtitle, dark = true } = Astro.props;
 ---
 
-<section class={`section-padding ${dark ? 'bg-charcoal text-cream' : 'bg-stone'}`}>
-    <div class="container-narrow text-center max-w-3xl mx-auto">
-        <h2 class={`mb-4 ${dark ? 'text-cream' : ''}`}>{title}</h2>
-        {subtitle && <p class={`text-lg mb-8 leading-relaxed ${dark ? 'text-cream/80' : 'text-warm-gray'}`}>{subtitle}</p>}
+<section class={`section-padding relative overflow-hidden ${dark ? 'section-bg-dark text-cream grain-overlay' : 'section-bg-stone'}`}>
+    {dark && (
+        <>
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-sage/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-gold/5 rounded-full blur-3xl"></div>
+        </>
+    )}
+    <div class="relative z-10 container-narrow text-center max-w-3xl mx-auto">
+        <div class="divider-gold"></div>
+        <h2 class={`mb-5 font-light ${dark ? 'text-cream' : ''}`}>{title}</h2>
+        {subtitle && (
+            <p class={`text-lg mb-10 leading-relaxed font-light ${dark ? 'text-cream/70' : 'text-warm-gray'}`}>
+                {subtitle}
+            </p>
+        )}
         <div class="flex flex-wrap gap-4 justify-center">
             <slot />
         </div>

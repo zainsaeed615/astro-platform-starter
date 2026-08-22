@@ -4,6 +4,7 @@ import HeroSection from '../components/mindfulness/HeroSection.astro';
 import SectionHeading from '../components/mindfulness/SectionHeading.astro';
 import AudienceGrid from '../components/mindfulness/AudienceGrid.astro';
 import ImageTextSplit from '../components/mindfulness/ImageTextSplit.astro';
+import QuoteBlock from '../components/mindfulness/QuoteBlock.astro';
 import CTABand from '../components/mindfulness/CTABand.astro';
 import { images } from '../data/images';
 
@@ -19,41 +20,22 @@ const audiences = [
 ];
 
 const organizations = [
-    'Hospitals & Health Systems',
-    'Pharmaceutical & Biotechnology Companies',
-    'Health Plans',
-    'Patient Advocacy Organizations',
-    'Rare-Disease Organizations',
-    'Cancer Centers',
-    'Senior Living Communities',
-    'Caregiver Programs',
-    'Employee Wellness Programs',
-    'Clinical & Healthcare Conferences',
-    'Hospital Foundations',
-    'Community Health Organizations',
+    'Hospitals & Health Systems', 'Pharmaceutical & Biotechnology Companies', 'Health Plans',
+    'Patient Advocacy Organizations', 'Rare-Disease Organizations', 'Cancer Centers',
+    'Senior Living Communities', 'Caregiver Programs', 'Employee Wellness Programs',
+    'Clinical & Healthcare Conferences', 'Hospital Foundations', 'Community Health Organizations',
 ];
 
 const customPrograms = [
-    'Custom Packaging',
-    'Co-Branded Wellness Kits',
-    'Patient & Caregiver Welcome Boxes',
-    'Hospital-to-Home Wellness Kits',
-    'Healthcare Professional Appreciation Gifts',
-    'Conference & Patient Summit Gifts',
-    'Employee Wellness Programs',
-    'Rare-Disease Community Programs',
-    'Seasonal Gifting Programs',
-    'Bulk & Enterprise Ordering',
+    'Custom Packaging', 'Co-Branded Wellness Kits', 'Patient & Caregiver Welcome Boxes',
+    'Hospital-to-Home Wellness Kits', 'Healthcare Professional Appreciation Gifts',
+    'Conference & Patient Summit Gifts', 'Employee Wellness Programs',
+    'Rare-Disease Community Programs', 'Seasonal Gifting Programs', 'Bulk & Enterprise Ordering',
 ];
 
 const flameFreeProducts = [
-    'Reed Diffusers',
-    'Vehicle Diffusers',
-    'Guided Journals',
-    'Affirmation Cards',
-    'Comfort Blankets',
-    'Reflection Experiences',
-    'Mindfulness Gifts',
+    'Reed Diffusers', 'Vehicle Diffusers', 'Guided Journals', 'Affirmation Cards',
+    'Comfort Blankets', 'Reflection Experiences', 'Mindfulness Gifts',
 ];
 ---
 
@@ -67,25 +49,31 @@ const flameFreeProducts = [
         subtitle="Intentional moments of comfort for individuals, families, and healthcare communities navigating life's most challenging seasons."
         image={images.healthcare.hero}
         imageAlt="Person in sunlit setting with journal and reed diffuser"
-    />
+    >
+        <div slot="actions">
+            <a href="#contact" class="btn btn-lg btn-gold">Explore Healthcare Wellness</a>
+            <a href="#flame-free" class="btn btn-lg btn-outline text-cream border-cream/60 hover:bg-cream/10 hover:text-cream">Flame-Free Collection</a>
+        </div>
+    </HeroSection>
 
     <section class="section-padding bg-cream">
-        <div class="container-narrow max-w-3xl mx-auto">
-            <p class="text-lg leading-relaxed text-warm-gray mb-6">
+        <div class="container-narrow max-w-3xl mx-auto text-center">
+            <p class="lead mb-8">
                 A healthcare journey affects more than the body. It can affect our emotions, our families, our caregivers, our routines, and the way we experience everyday life.
             </p>
-            <p class="text-lg leading-relaxed text-warm-gray">
-                <em>Mindfulness Healthcare</em> was created to bring intentional moments of comfort, reflection, encouragement, and connection to individuals and families navigating life's most challenging seasons. Our thoughtfully curated wellness experiences extend beyond traditional self-care—we create products and gifting solutions designed to support the <em>whole person</em>.
+            <p class="text-warm-gray leading-relaxed font-light">
+                <em class="text-charcoal font-serif text-lg">Mindfulness Healthcare</em> was created to bring intentional moments of comfort, reflection, encouragement, and connection to individuals and families navigating life's most challenging seasons. Our thoughtfully curated wellness experiences extend beyond traditional self-care — we create products and gifting solutions designed to support the <em>whole person</em>.
             </p>
         </div>
     </section>
 
-    <section class="section-padding bg-stone">
+    <section class="section-padding section-bg-stone">
         <div class="container-narrow">
             <SectionHeading
                 eyebrow="Wellness Designed Around Real Life"
                 title="Supporting Every Journey"
                 description="Every healthcare experience is different. Mindfulness Healthcare creates meaningful wellness experiences for communities across the care continuum."
+                align="center"
             />
             <AudienceGrid items={audiences} columns={4} />
         </div>
@@ -98,36 +86,41 @@ const flameFreeProducts = [
         image={images.healthcare.caregiver}
         imageAlt="Intergenerational moment between caregiver and loved one"
     >
-        <p>Caregivers carry extraordinary responsibility. Mindfulness creates intentional moments for those who give the most—helping them pause, restore, and reconnect with themselves.</p>
+        <p>Caregivers carry extraordinary responsibility. Mindfulness creates intentional moments for those who give the most — helping them pause, restore, and reconnect with themselves.</p>
     </ImageTextSplit>
 
-    <section class="section-padding bg-stone">
+    <section id="flame-free" class="section-padding section-bg-stone">
         <div class="container-narrow">
-            <div class="grid gap-12 lg:grid-cols-2 items-center">
+            <div class="grid gap-14 lg:grid-cols-2 items-center">
                 <div>
-                    <p class="eyebrow">The Flame-Free Wellness Experience</p>
-                    <h2 class="mb-6">Wellness Without the Flame.</h2>
-                    <p class="text-warm-gray leading-relaxed mb-6">
+                    <div class="flex items-center gap-4 mb-5">
+                        <span class="w-8 h-px bg-gold"></span>
+                        <p class="eyebrow !mb-0">The Flame-Free Wellness Experience</p>
+                    </div>
+                    <h2 class="mb-7 font-light">Wellness Without the Flame.</h2>
+                    <p class="text-warm-gray leading-relaxed mb-6 font-light">
                         Certain healthcare and senior-care environments restrict open flames. Mindfulness believes that shouldn't prevent individuals from experiencing beautiful, intentional moments of comfort.
                     </p>
-                    <p class="text-warm-gray leading-relaxed mb-8">
-                        Our <em>Flame-Free Wellness Collection</em> brings the Mindfulness experience into healthcare-friendly environments through carefully curated products.
+                    <p class="text-warm-gray leading-relaxed mb-8 font-light">
+                        Our <em class="text-charcoal font-serif">Flame-Free Wellness Collection</em> brings the Mindfulness experience into healthcare-friendly environments.
                     </p>
-                    <ul class="grid grid-cols-2 gap-3 mb-8">
+                    <ul class="grid grid-cols-2 gap-3 mb-10">
                         {flameFreeProducts.map((product) => (
-                            <li class="text-sm text-charcoal flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 rounded-full bg-sage-dark"></span>
+                            <li class="text-sm text-charcoal flex items-center gap-2.5">
+                                <span class="flex-shrink-0 w-5 h-5 rounded-full bg-sage-dark/10 flex items-center justify-center">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="text-sage-dark"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
                                 {product}
                             </li>
                         ))}
                     </ul>
-                    <div class="card p-6 bg-white inline-block">
-                        <p class="eyebrow mb-2">Featured Bundle</p>
-                        <p class="font-serif text-xl mb-1">Flame-Free Healthcare Bundle</p>
-                        <p class="text-sage-dark text-2xl font-serif">$120</p>
+                    <div class="card-static p-7 inline-block">
+                        <p class="eyebrow !mb-2">Featured Bundle</p>
+                        <p class="font-serif text-xl mb-1 font-light">Flame-Free Healthcare Bundle</p>
+                        <p class="text-gold-dark text-3xl font-serif font-light">$120</p>
                     </div>
                 </div>
-                <div class="aspect-square overflow-hidden rounded-sm shadow-lg">
+                <div class="image-frame aspect-square">
                     <img src={images.healthcare.flameFree} alt="Flame-free wellness products arranged in premium gift box" class="w-full h-full object-cover" loading="lazy" />
                 </div>
             </div>
@@ -142,45 +135,39 @@ const flameFreeProducts = [
         imageAlt="Healthcare professionals with Mindfulness gift boxes"
         reverse={true}
     >
-        <p class="mb-6">Mindfulness Healthcare partners with organizations seeking meaningful ways to engage, encourage, recognize, and support the communities they serve.</p>
-        <ul class="grid grid-cols-2 gap-2 text-sm">
+        <p class="mb-8">Mindfulness Healthcare partners with organizations seeking meaningful ways to engage, encourage, recognize, and support the communities they serve.</p>
+        <div class="grid grid-cols-2 gap-3">
             {organizations.map((org) => (
-                <li class="flex items-start gap-2">
-                    <span class="text-sage-dark mt-1">•</span>
-                    {org}
-                </li>
+                <span class="pill text-xs !py-2 !px-3">{org}</span>
             ))}
-        </ul>
+        </div>
     </ImageTextSplit>
 
     <section class="section-padding bg-cream">
         <div class="container-narrow">
             <SectionHeading eyebrow="Custom Wellness Experiences" title="Your Organization. Your Community. A Meaningful Mindfulness Experience." align="center" />
-            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto">
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
                 {customPrograms.map((program) => (
-                    <div class="card p-5 text-center">
-                        <p class="text-sm font-medium">{program}</p>
+                    <div class="card-static p-6 text-center group hover:shadow-lg transition-all duration-500">
+                        <p class="text-sm font-medium group-hover:text-sage-dark transition-colors">{program}</p>
                     </div>
                 ))}
             </div>
         </div>
     </section>
 
-    <section class="section-padding bg-stone">
-        <div class="container-narrow max-w-3xl mx-auto text-center">
-            <p class="eyebrow">The Mindfulness Promise</p>
-            <h2 class="mb-8">Creating Moments That Belong to You</h2>
-            <div class="space-y-4 text-warm-gray leading-relaxed">
-                <p>We don't believe wellness is limited to a diagnosis, treatment plan, appointment, or hospital room.</p>
-                <p>Sometimes wellness begins with something much simpler:</p>
-                <p class="font-serif text-charcoal text-lg italic">A quiet moment. A warm blanket. A meaningful affirmation. A page in a journal. A familiar fragrance. A reminder that someone cares.</p>
-            </div>
+    <section class="section-padding section-bg-stone">
+        <div class="container-narrow">
+            <QuoteBlock
+                quote="A quiet moment. A warm blanket. A meaningful affirmation. A page in a journal. A familiar fragrance. A reminder that someone cares."
+                author="The Mindfulness Promise"
+            />
         </div>
     </section>
 
-    <CTABand title="Mindfulness Healthcare" subtitle="Creating intentional moments of comfort, reflection, and connection—one experience at a time.">
-        <a href="#contact" class="btn btn-lg">Explore Healthcare Wellness</a>
-        <a href="#contact" class="btn btn-lg btn-outline text-cream border-cream hover:bg-cream hover:text-charcoal">Request a Custom Program</a>
-        <a href="/corporate" class="btn btn-lg btn-accent">Corporate & Healthcare Inquiries</a>
+    <CTABand title="Mindfulness Healthcare" subtitle="Creating intentional moments of comfort, reflection, and connection — one experience at a time.">
+        <a href="#contact" class="btn btn-lg btn-gold">Explore Healthcare Wellness</a>
+        <a href="#contact" class="btn btn-lg btn-outline text-cream border-cream/60 hover:bg-cream/10 hover:text-cream">Request a Custom Program</a>
+        <a href="/corporate" class="btn btn-lg btn-white !text-charcoal">Corporate & Healthcare Inquiries</a>
     </CTABand>
 </Layout>
