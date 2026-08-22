@@ -1,21 +1,73 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
+import HeroSection from '../components/mindfulness/HeroSection.astro';
+import { images } from '../data/images';
 
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+const pages = [
+    {
+        title: 'The Mindfulness Membership',
+        description: 'Belong to a wellness community designed for intentional living—not a subscription box.',
+        href: '/membership',
+        image: images.membership.hero,
+    },
+    {
+        title: 'Mindfulness Healthcare',
+        description: 'Comfort, reflection, and flame-free wellness for patients, caregivers, and healthcare organizations.',
+        href: '/healthcare',
+        image: images.healthcare.hero,
+    },
+    {
+        title: 'Corporate Gifting',
+        description: 'Transform traditional gifting into meaningful wellness experiences for your people.',
+        href: '/corporate',
+        image: images.corporate.hero,
+    },
+    {
+        title: 'Fundraising Partnerships',
+        description: 'Raise funds while inspiring wellness in your community.',
+        href: '/fundraising',
+        image: images.fundraising.hero,
+    },
+];
 ---
 
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-8" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title="Home" description="Mindfulness Candle Collection — premium wellness experiences for membership, healthcare, corporate gifting, and fundraising.">
+    <HeroSection
+        eyebrow="Mindfulness Candle Collection"
+        title="Wellness Should Be a Way of Life"
+        subtitle="Explore our membership community, healthcare wellness programs, corporate gifting, and fundraising partnerships."
+        image={images.home.hero}
+        imageAlt="Premium wellness lifestyle with Mindfulness products"
+        align="center"
+    >
+        <div slot="actions" class="flex flex-wrap gap-4 justify-center">
+            <a href="/membership" class="btn btn-lg">Explore Membership</a>
+            <a href="https://mindfulnesscandle.store/" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-outline text-cream border-cream hover:bg-cream hover:text-charcoal">Shop the Collection</a>
+        </div>
+    </HeroSection>
+
+    <section class="section-padding bg-cream">
+        <div class="container-narrow">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <p class="eyebrow">Discover Mindfulness</p>
+                <h2>More Than Products. Meaningful Experiences.</h2>
+            </div>
+            <div class="grid gap-8 sm:grid-cols-2">
+                {
+                    pages.map((page) => (
+                        <a href={page.href} class="card group no-underline block">
+                            <div class="aspect-[16/10] overflow-hidden">
+                                <img src={page.image} alt={page.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-charcoal mb-3 group-hover:text-sage-dark transition-colors">{page.title}</h3>
+                                <p class="text-warm-gray leading-relaxed">{page.description}</p>
+                                <span class="inline-block mt-4 text-sm uppercase tracking-wider text-sage-dark font-semibold">Learn more →</span>
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
 </Layout>

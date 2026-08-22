@@ -1,30 +1,39 @@
 ---
-import Logo from '../components/Logo.astro';
+interface Props {
+    currentPath: string;
+}
+
+const { currentPath } = Astro.props;
 
 const navItems = [
     { linkText: 'Home', href: '/' },
-    { linkText: 'Revalidation', href: '/revalidation' },
-    { linkText: 'Image CDN', href: '/image-cdn' },
-    { linkText: 'Edge Function', href: '/edge' },
-    { linkText: 'Blobs', href: '/blobs' }
+    { linkText: 'Membership', href: '/membership' },
+    { linkText: 'Healthcare', href: '/healthcare' },
+    { linkText: 'Corporate', href: '/corporate' },
+    { linkText: 'Fundraising', href: '/fundraising' },
+    { linkText: 'Shop', href: 'https://mindfulnesscandle.store/', external: true },
 ];
 ---
 
-<nav class="flex flex-wrap items-center gap-4 pt-6 pb-16 sm:pt-12 sm:pb-24">
-    <a href="/">
-        <Logo />
-    </a>
-    {
-        !!navItems?.length && (
-            <ul class="flex flex-wrap gap-x-4 gap-y-1">
-                {navItems.map((item) => (
+<header class="sticky top-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-sand/60">
+    <nav class="container-narrow flex flex-wrap items-center justify-between gap-4 py-4 sm:py-5">
+        <a href="/" class="no-underline">
+            <span class="font-serif text-xl sm:text-2xl text-charcoal tracking-wide">Mindfulness</span>
+        </a>
+        <ul class="flex flex-wrap items-center gap-x-5 gap-y-2">
+            {
+                navItems.map((item) => (
                     <li>
-                        <a href={item.href} class="inline-block px-1.5 py-1 sm:px-3 sm:py-2">
+                        <a
+                            href={item.href}
+                            class={`nav-link ${currentPath === item.href ? 'nav-link-active' : ''}`}
+                            {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                        >
                             {item.linkText}
                         </a>
                     </li>
-                ))}
-            </ul>
-        )
-    }
-</nav>
+                ))
+            }
+        </ul>
+    </nav>
+</header>

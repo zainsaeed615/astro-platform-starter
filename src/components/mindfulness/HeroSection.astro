@@ -1,0 +1,34 @@
+---
+interface Props {
+    eyebrow?: string;
+    title: string;
+    subtitle?: string;
+    image: string;
+    imageAlt: string;
+    align?: 'left' | 'center';
+    overlay?: boolean;
+    minHeight?: string;
+}
+
+const { eyebrow, title, subtitle, image, imageAlt, align = 'left', overlay = true, minHeight = 'min-h-[70vh]' } = Astro.props;
+---
+
+<section class={`relative ${minHeight} flex items-end overflow-hidden`}>
+    <img
+        src={image}
+        alt={imageAlt}
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+    />
+    {overlay && <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/40 to-charcoal/20"></div>}
+    <div class={`relative container-narrow pb-16 pt-32 sm:pb-20 ${align === 'center' ? 'text-center mx-auto' : ''}`}>
+        {eyebrow && <p class="eyebrow text-cream/90">{eyebrow}</p>}
+        <h1 class="text-cream max-w-4xl mb-6">{title}</h1>
+        {subtitle && <p class={`text-cream/90 text-lg sm:text-xl max-w-2xl leading-relaxed ${align === 'center' ? 'mx-auto' : ''}`}>{subtitle}</p>}
+        {Astro.slots.has('actions') && (
+            <div class={`mt-8 flex flex-wrap gap-4 ${align === 'center' ? 'justify-center' : ''}`}>
+                <slot name="actions" />
+            </div>
+        )}
+    </div>
+</section>

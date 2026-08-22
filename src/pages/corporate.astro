@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/mindfulness/HeroSection.astro';
+import SectionHeading from '../components/mindfulness/SectionHeading.astro';
+import AudienceGrid from '../components/mindfulness/AudienceGrid.astro';
+import ImageTextSplit from '../components/mindfulness/ImageTextSplit.astro';
+import CTABand from '../components/mindfulness/CTABand.astro';
+import { images } from '../data/images';
+
+const useCases = [
+    { title: 'Employee Appreciation', description: 'Recognize the people who make your organization possible.' },
+    { title: 'Client & Executive Gifting', description: 'Create memorable experiences for clients, executives, board members, and strategic partners.' },
+    { title: 'Conferences & Events', description: 'Transform traditional conference gifts into meaningful wellness experiences attendees will actually want to keep.' },
+    { title: 'Employee Wellness', description: 'Support intentional moments of reflection, restoration, and mindfulness throughout the workplace.' },
+    { title: 'Holiday Gifting', description: 'Make Thanksgiving, Christmas, New Year\'s, and other seasonal celebrations more meaningful.' },
+    { title: 'Milestones & Celebrations', description: 'Celebrate promotions, anniversaries, retirements, achievements, new hires, and organizational milestones.' },
+    { title: 'Welcome & Hospitality Gifts', description: 'Create elevated experiences for hotels, resorts, corporate retreats, VIP guests, and special events.' },
+    { title: 'Community & Social Impact Programs', description: 'Develop customized gifting experiences for nonprofit initiatives, community engagement programs, and special campaigns.' },
+];
+
+const customization = [
+    'Custom Gift Boxes', 'Branded Packaging', 'Personalized Message Cards', 'Custom Journals',
+    'Affirmation Cards', 'Candles & Home Fragrance', 'Flame-Free Wellness Products', 'Comfort & Lifestyle Products',
+    'Executive Gift Sets', 'Seasonal Collections', 'Bulk & Multi-Location Distribution',
+];
+
+const industries = [
+    'Fortune 500 & Emerging Companies', 'Financial Institutions', 'Law Firms', 'Universities & Colleges',
+    'Professional Associations', 'Hotels & Hospitality Groups', 'Sports & Entertainment Organizations',
+    'Airlines & Travel Companies', 'Real Estate & Property Management', 'Healthcare Organizations',
+    'Government & Civic Organizations', 'Nonprofit Organizations', 'Conference & Event Producers',
+];
+
+const scaleFeatures = [
+    'Volume Pricing', 'Bulk Ordering', 'Multi-Location Shipping', 'Custom Packaging',
+    'Recurring Gifting Programs', 'Annual Corporate Gifting Plans', 'Employee Wellness Programs', 'Event & Conference Fulfillment',
+];
+---
+
+<Layout
+    title="Corporate Gifting"
+    description="Mindfulness Corporate Gifting — transform traditional gifting into thoughtfully curated wellness experiences."
+>
+    <HeroSection
+        eyebrow="Mindfulness Corporate Gifting"
+        title="Give More Than a Gift. Create a Moment."
+        subtitle="The most memorable gifts aren't simply opened. They're experienced."
+        image={images.corporate.hero}
+        imageAlt="Premium Mindfulness gift box on executive desk"
+        align="center"
+    >
+        <div slot="actions" class="flex flex-wrap gap-4 justify-center">
+            <a href="#contact" class="btn btn-lg">Request a Corporate Gifting Proposal</a>
+        </div>
+    </HeroSection>
+
+    <section class="section-padding bg-cream">
+        <div class="container-narrow max-w-3xl mx-auto text-center">
+            <p class="text-lg leading-relaxed text-warm-gray">
+                Mindfulness Corporate Gifting helps organizations transform traditional gifting into thoughtfully curated experiences centered around appreciation, wellness, reflection, comfort, and connection. Whether you're recognizing one extraordinary leader or thanking thousands of employees, clients, partners, or guests, we create elevated gifting experiences designed to make people feel genuinely valued.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-padding bg-stone">
+        <div class="container-narrow">
+            <SectionHeading eyebrow="Thoughtful Gifting. Meaningful Connections." title="Programs Customized for Every Occasion" align="center" />
+            <AudienceGrid items={useCases} columns={4} />
+        </div>
+    </section>
+
+    <section class="section-padding bg-cream">
+        <div class="container-narrow">
+            <SectionHeading eyebrow="Made for Your Brand" title="Your Vision. Your Brand. The Mindfulness Experience." description="Select corporate programs can be customized to create an experience unique to your organization." align="center" />
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto">
+                {customization.map((item) => (
+                    <div class="card p-5 text-center"><p class="text-sm font-medium">{item}</p></div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-stone">
+        <div class="container-narrow">
+            <SectionHeading eyebrow="Who We Serve" title="Organizations Across Industries" align="center" />
+            <div class="flex flex-wrap gap-3 justify-center max-w-4xl mx-auto">
+                {industries.map((industry) => (
+                    <span class="px-4 py-2 bg-white border border-sand/60 rounded-sm text-sm text-warm-gray">{industry}</span>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-cream">
+        <div class="container-narrow">
+            <SectionHeading eyebrow="From 25 Gifts to 25,000+" title="Built for Moments Big and Small" description="Whether you're sending 25 executive gifts or coordinating thousands of packages across multiple locations, Mindfulness Corporate Gifting is designed to grow with your organization." align="center" />
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 max-w-4xl mx-auto">
+                {scaleFeatures.map((feature) => (
+                    <div class="card p-5 text-center"><p class="text-sm font-medium">{feature}</p></div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-stone">
+        <div class="container-narrow max-w-3xl mx-auto text-center">
+            <h2 class="mb-6">Create a Signature Corporate Experience</h2>
+            <p class="text-warm-gray leading-relaxed mb-4">
+                Imagine opening an elegant Mindfulness gift box containing a beautifully curated combination of fragrance, reflection, comfort, and inspiration—all accompanied by a personalized message from your organization.
+            </p>
+            <p class="font-serif text-xl italic text-charcoal">That's more than promotional merchandise. That's an experience. And experiences are remembered.</p>
+        </div>
+    </section>
+
+    <ImageTextSplit
+        eyebrow="The Human Experience"
+        title="Gifts That Feel Genuinely Valued"
+        description=""
+        image={images.corporate.experience}
+        imageAlt="Professionals opening Mindfulness gift boxes"
+    >
+        <p>A diverse group of professionals discovering thoughtfully curated wellness gifts—genuine smiles and meaningful moments, not staged corporate photography.</p>
+    </ImageTextSplit>
+
+    <ImageTextSplit
+        eyebrow="Conferences & Events"
+        title="Transform Event Gifts Into Wellness Experiences"
+        description=""
+        image={images.corporate.conference}
+        imageAlt="Conference with Mindfulness gifts at each seat"
+        reverse={true}
+    >
+        <p>Beautifully packaged Mindfulness gifts placed at each attendee's seat—turning traditional conference swag into something they'll actually want to keep.</p>
+    </ImageTextSplit>
+
+    <CTABand title="Let's Create Something Meaningful." subtitle="Thoughtfully Curated. Beautifully Presented. Meaningfully Remembered.">
+        <a href="#contact" class="btn btn-lg">Request a Corporate Gifting Proposal</a>
+        <a href="#contact" class="btn btn-lg btn-outline text-cream border-cream hover:bg-cream hover:text-charcoal">Build Your Custom Gift</a>
+        <a href="#contact" class="btn btn-lg btn-accent">Request a Sample</a>
+        <a href="#contact" class="btn btn-lg btn-outline text-cream border-cream hover:bg-cream hover:text-charcoal">Speak with Corporate Sales</a>
+    </CTABand>
+</Layout>

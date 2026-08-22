@@ -1,0 +1,157 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/mindfulness/HeroSection.astro';
+import SectionHeading from '../components/mindfulness/SectionHeading.astro';
+import StepsTimeline from '../components/mindfulness/StepsTimeline.astro';
+import CTABand from '../components/mindfulness/CTABand.astro';
+import { images } from '../data/images';
+
+const steps = [
+    { title: 'Start Your Campaign', description: 'Tell us about your organization, your fundraising goal, and the impact you hope to make.' },
+    { title: 'Receive Your Fundraising Link', description: 'Approved organizations receive a dedicated campaign link or online fundraising experience that can be shared with supporters.' },
+    { title: 'Share With Your Community', description: 'Promote your campaign through email, text messaging, social media, events, newsletters, alumni networks, congregations, family, friends, and community partners.' },
+    { title: 'Supporters Shop', description: 'Supporters purchase eligible Mindfulness products through your fundraising experience.' },
+    { title: 'We Handle Fulfillment', description: 'Mindfulness processes qualifying online orders and coordinates product fulfillment and shipping.' },
+    { title: 'Your Organization Earns', description: 'Your organization receives fundraising proceeds based on eligible, verified campaign sales and the terms of your fundraising partnership.' },
+];
+
+const whoCanFundraise = [
+    'Schools & Student Organizations', 'HBCUs, Colleges & Universities', 'Churches & Faith-Based Organizations',
+    'Fraternities & Sororities', 'Athletic Teams & Booster Organizations', 'Youth & Mentoring Programs',
+    'Nonprofit Organizations', 'Civic & Community Organizations', 'Alumni Associations',
+    'Patient Advocacy Organizations', 'Health & Wellness Initiatives', 'Scholarship Programs', 'Community Service Projects',
+];
+
+const products = [
+    'Signature Candles', 'Reed Diffusers', 'Vehicle Diffusers', 'Guided Journals', 'Affirmation Cards',
+    'Wellness & Comfort Products', 'Seasonal Collections', 'Gift Sets', 'Flame-Free Wellness Products', 'Special Fundraising Bundles',
+];
+
+const impactAreas = [
+    'Scholarships', 'Mission trips', 'Student experiences', 'Youth programs', 'Community outreach',
+    'Patient advocacy', 'Health education', 'Athletic programs', 'Emergency assistance', 'Programs that change lives',
+];
+---
+
+<Layout
+    title="Fundraising Partnerships"
+    description="Mindfulness Fundraising Partnerships — raise funds while inspiring wellness in your community."
+>
+    <HeroSection
+        eyebrow="Mindfulness Fundraising Partnerships"
+        title="Raise Funds. Inspire Wellness. Make an Impact."
+        subtitle="What if every purchase could also encourage someone to pause, reflect, recharge, and create a meaningful moment?"
+        image={images.fundraising.hero}
+        imageAlt="Community fundraising with Mindfulness wellness products"
+        align="center"
+    >
+        <div slot="actions" class="flex flex-wrap gap-4 justify-center">
+            <a href="#contact" class="btn btn-lg">Start a Fundraiser</a>
+            <a href="#shop-support" class="btn btn-lg btn-outline text-cream border-cream hover:bg-cream hover:text-charcoal">Shop to Support a Cause</a>
+        </div>
+    </HeroSection>
+
+    <section class="section-padding bg-cream">
+        <div class="container-narrow max-w-3xl mx-auto text-center">
+            <p class="text-lg leading-relaxed text-warm-gray mb-6">
+                Welcome to <strong>Mindfulness Fundraising Partnerships</strong>—a fresh approach to fundraising that combines thoughtfully curated wellness products with opportunities for organizations to generate meaningful revenue.
+            </p>
+            <p class="text-xl font-serif text-charcoal">Your community shops. We manage the experience. Your organization earns.</p>
+        </div>
+    </section>
+
+    <section class="section-padding bg-stone">
+        <div class="container-narrow">
+            <SectionHeading
+                eyebrow="Fundraising Made Simple"
+                title="No Door-to-Door. No Hassle."
+                description="Whether you're raising money for scholarships, student activities, community programs, ministry initiatives, athletics, patient advocacy, youth development, travel, or another important cause, Mindfulness makes it easier to engage your supporters."
+            />
+            <div class="grid gap-6 sm:grid-cols-3 max-w-3xl mx-auto text-center">
+                <div class="card p-6"><p class="text-sm text-warm-gray">No traditional door-to-door fundraising</p></div>
+                <div class="card p-6"><p class="text-sm text-warm-gray">No collecting individual payments</p></div>
+                <div class="card p-6"><p class="text-sm text-warm-gray">No boxes sitting in someone's living room</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-cream">
+        <div class="container-narrow">
+            <SectionHeading eyebrow="How It Works" title="Six Simple Steps" align="center" />
+            <StepsTimeline steps={steps} />
+        </div>
+    </section>
+
+    <section class="section-padding bg-stone">
+        <div class="container-narrow">
+            <SectionHeading eyebrow="Who Can Fundraise?" title="Organizations & Causes We Support" align="center" />
+            <div class="flex flex-wrap gap-3 justify-center max-w-4xl mx-auto">
+                {whoCanFundraise.map((org) => (
+                    <span class="px-4 py-2 bg-white border border-sand/60 rounded-sm text-sm text-warm-gray">{org}</span>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-cream">
+        <div class="container-narrow">
+            <SectionHeading eyebrow="Products People Will Actually Want" title="Fundraising Meets Wellness" description="Great fundraising begins with products people are excited to purchase, enjoy, use, and give." align="center" />
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto">
+                {products.map((product) => (
+                    <div class="card p-5 text-center"><p class="text-sm font-medium">{product}</p></div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-stone">
+        <div class="container-narrow">
+            <SectionHeading eyebrow="Three Ways to Fundraise" title="Choose Your Path" align="center" />
+            <div class="grid gap-8 lg:grid-cols-3">
+                <div class="card p-8">
+                    <p class="eyebrow mb-2">Digital Fundraising</p>
+                    <h3 class="mb-4">Share. Shop. Earn.</h3>
+                    <p class="text-warm-gray text-sm leading-relaxed">Perfect for organizations that want a simple, scalable fundraising solution. Your organization promotes its unique campaign link, supporters shop online, and Mindfulness manages qualifying order processing and fulfillment.</p>
+                </div>
+                <div class="card p-8 ring-2 ring-sage">
+                    <p class="eyebrow mb-2">Product Fundraising</p>
+                    <h3 class="mb-4">Turn Great Products Into Greater Impact</h3>
+                    <p class="text-warm-gray text-sm leading-relaxed">Organizations can select from designated Mindfulness fundraising products and collections to support specific campaigns, programs, trips, scholarships, or initiatives.</p>
+                </div>
+                <div class="card p-8">
+                    <p class="eyebrow mb-2">Signature Partnerships</p>
+                    <h3 class="mb-4">Your Community. Your Story.</h3>
+                    <p class="text-warm-gray text-sm leading-relaxed">Designed for larger organizations, universities, national associations, nonprofits, fraternities and sororities, and other strategic partners seeking customized or potentially co-branded fundraising experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-cream">
+        <div class="container-narrow text-center max-w-3xl mx-auto">
+            <SectionHeading eyebrow="Fundraising With Purpose" title="What Impact Are You Trying to Make?" align="center" />
+            <div class="flex flex-wrap gap-3 justify-center mb-8">
+                {impactAreas.map((area) => (
+                    <span class="px-4 py-2 bg-stone border border-sand/60 rounded-sm text-sm italic text-charcoal">{area}</span>
+                ))}
+            </div>
+            <p class="text-warm-gray leading-relaxed">A successful campaign isn't measured only by the products sold. It's measured by what those sales make possible.</p>
+        </div>
+    </section>
+
+    <section id="shop-support" class="section-padding bg-stone">
+        <div class="container-narrow text-center max-w-2xl mx-auto">
+            <h2 class="mb-4">Shop to Support a Cause</h2>
+            <p class="text-warm-gray leading-relaxed mb-8">
+                Already shopping Mindfulness? Discover participating fundraising campaigns and support an organization that matters to you. Choose an eligible campaign, shop participating Mindfulness products, and your qualifying purchase can help that organization move closer to its fundraising goal.
+            </p>
+            <a href="https://mindfulnesscandle.store/" target="_blank" rel="noopener noreferrer" class="btn btn-lg">Shop & Support a Cause</a>
+        </div>
+    </section>
+
+    <CTABand title="Ready to Start Fundraising?" subtitle="Whether your goal is $1,000, $10,000, $100,000 or beyond, we're ready to help you explore what's possible.">
+        <a href="#contact" class="btn btn-lg">Start a Fundraiser</a>
+        <a href="#contact" class="btn btn-lg btn-outline text-cream border-cream hover:bg-cream hover:text-charcoal">Request Fundraising Information</a>
+        <a href="#contact" class="btn btn-lg btn-accent">Become a Fundraising Partner</a>
+    </CTABand>
+</Layout>

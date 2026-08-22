@@ -1,0 +1,19 @@
+---
+interface Props {
+    title: string;
+    subtitle?: string;
+    dark?: boolean;
+}
+
+const { title, subtitle, dark = true } = Astro.props;
+---
+
+<section class={`section-padding ${dark ? 'bg-charcoal text-cream' : 'bg-stone'}`}>
+    <div class="container-narrow text-center max-w-3xl mx-auto">
+        <h2 class={`mb-4 ${dark ? 'text-cream' : ''}`}>{title}</h2>
+        {subtitle && <p class={`text-lg mb-8 leading-relaxed ${dark ? 'text-cream/80' : 'text-warm-gray'}`}>{subtitle}</p>}
+        <div class="flex flex-wrap gap-4 justify-center">
+            <slot />
+        </div>
+    </div>
+</section>

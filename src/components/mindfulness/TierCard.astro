@@ -1,0 +1,25 @@
+---
+interface Props {
+    name: string;
+    price: string;
+    tagline: string;
+    description: string;
+    image: string;
+    imageAlt: string;
+    featured?: boolean;
+}
+
+const { name, price, tagline, description, image, imageAlt, featured = false } = Astro.props;
+---
+
+<article class={`card flex flex-col h-full ${featured ? 'ring-2 ring-sage' : ''}`}>
+    <div class="aspect-[4/3] overflow-hidden">
+        <img src={image} alt={imageAlt} class="w-full h-full object-cover" loading="lazy" />
+    </div>
+    <div class="p-6 sm:p-8 flex flex-col flex-1">
+        <p class="eyebrow mb-2">{name}</p>
+        <p class="text-2xl font-serif text-charcoal mb-1">{price}</p>
+        <p class="text-sage-dark italic mb-4">{tagline}</p>
+        <p class="text-warm-gray leading-relaxed flex-1">{description}</p>
+    </div>
+</article>

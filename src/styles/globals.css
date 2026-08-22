@@ -1,78 +1,103 @@
 @import 'tailwindcss';
 
 @theme {
-    --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --color-primary: #f67280;
-    --color-primary-content: #101828;
-    --color-complementary: #355c7d;
-    --background-image-noise: linear-gradient(
-            to bottom,
-            color-mix(in oklab, var(--color-gray-950) 0%, transparent),
-            color-mix(in oklab, var(--color-gray-950) 100%, transparent)
-        ),
-        url('/images/noise.png');
+    --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+    --font-serif: 'Georgia', 'Times New Roman', serif;
+    --color-cream: #faf8f5;
+    --color-stone: #f3ede6;
+    --color-sand: #e8dfd4;
+    --color-charcoal: #2c2a28;
+    --color-warm-gray: #6b6560;
+    --color-sage: #8b9a7d;
+    --color-sage-dark: #6d7d62;
+    --color-taupe: #a69080;
+    --color-taupe-dark: #8a7568;
+    --color-primary: #6d7d62;
+    --color-primary-content: #faf8f5;
+    --color-accent: #a69080;
 }
 
 @layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply text-charcoal bg-cream antialiased;
+    }
+
     h1 {
-        @apply text-4xl font-bold tracking-tight sm:text-5xl;
+        @apply text-4xl font-serif font-normal tracking-tight sm:text-5xl lg:text-6xl leading-tight;
     }
 
     h2 {
-        @apply text-2xl font-bold sm:text-3xl;
+        @apply text-2xl font-serif font-normal sm:text-3xl lg:text-4xl leading-snug;
     }
 
-    a:not(.btn) {
-        @apply underline transition hover:opacity-80;
+    h3 {
+        @apply text-xl font-serif font-normal sm:text-2xl;
     }
 
-    pre {
-        @apply p-6 overflow-x-auto rounded-lg;
-    }
-
-    :not(pre) > code {
-        @apply px-1 py-0.5 font-mono rounded bg-gray-900 text-primary;
-        font-size: 0.9em;
+    a:not(.btn):not(.nav-link) {
+        @apply transition hover:opacity-80;
     }
 }
 
 @layer components {
-    .markdown {
-        > * {
-            @apply my-6;
-        }
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 bg-sage-dark text-primary-content cursor-pointer text-center font-semibold no-underline transition-all uppercase tracking-wider;
+        padding: var(--btn-py, 0.875rem) var(--btn-px, 1.5rem);
+        font-size: var(--btn-font-size, 0.8125rem);
+        border-radius: var(--btn-border-radius, 0.125rem);
 
-        :where(h1, h2) {
-            @apply mt-12 mb-6;
-        }
-
-        > :first-child {
-            @apply mt-0;
-        }
-
-        > :last-child {
-            @apply mb-0;
+        &:hover {
+            @apply bg-sage opacity-95;
         }
     }
 
-    .btn {
-        @apply inline-flex items-center justify-center gap-2 bg-primary text-primary-content cursor-pointer text-center font-semibold no-underline transition-colors;
-        padding: var(--btn-py, 0.875rem) var(--btn-px, 1.25rem);
-        font-size: var(--btn-font-size, 0.875rem);
-        border-radius: var(--btn-border-radius, 0.25rem);
+    .btn-outline {
+        @apply bg-transparent border-2 border-charcoal text-charcoal;
 
         &:hover {
-            @apply bg-primary/85;
+            @apply bg-charcoal text-cream opacity-100;
         }
+    }
 
-        &:disabled {
-            @apply text-gray-400 bg-gray-700;
+    .btn-accent {
+        @apply bg-taupe-dark;
+
+        &:hover {
+            @apply bg-taupe opacity-95;
         }
     }
 
     .btn-lg {
-        --btn-font-size: 1.125rem;
-        --btn-px: 1.5rem;
+        --btn-font-size: 0.875rem;
+        --btn-px: 2rem;
         --btn-py: 1.125rem;
+    }
+
+    .section-padding {
+        @apply py-16 sm:py-20 lg:py-24;
+    }
+
+    .container-narrow {
+        @apply max-w-6xl mx-auto px-6 sm:px-8;
+    }
+
+    .eyebrow {
+        @apply text-xs sm:text-sm uppercase tracking-[0.2em] text-sage-dark font-semibold mb-4;
+    }
+
+    .card {
+        @apply bg-white rounded-sm shadow-sm border border-sand/60 overflow-hidden transition-shadow hover:shadow-md;
+    }
+
+    .nav-link {
+        @apply no-underline text-charcoal/80 hover:text-charcoal transition text-sm uppercase tracking-wider;
+    }
+
+    .nav-link-active {
+        @apply text-charcoal font-semibold;
     }
 }
