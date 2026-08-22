@@ -234,49 +234,97 @@
       .line-item-img,
       .line-item-details,
       .line-item-price {
-        display: block !important;
-        width: 100% !important;
-        max-width: 100% !important;
+        display: table-cell !important;
+        width: auto !important;
+        max-width: none !important;
+      }
+
+      .line-item-row td {
+        display: table-cell !important;
       }
 
       .line-item-img {
-        text-align: center !important;
-        padding: 0 0 12px 0 !important;
+        width: 90px !important;
+        text-align: left !important;
+        padding: 0 12px 0 0 !important;
+        vertical-align: top !important;
       }
 
       .line-item-img img {
-        width: 120px !important;
-        max-width: 100% !important;
+        width: 90px !important;
+        max-width: 90px !important;
         height: auto !important;
-        margin: 0 auto !important;
+        margin: 0 !important;
       }
 
       .line-item-details {
         text-align: left !important;
-        padding: 0 0 8px 0 !important;
+        padding: 0 8px 0 0 !important;
+        vertical-align: top !important;
       }
 
       .line-item-price {
-        text-align: left !important;
+        width: 80px !important;
+        text-align: right !important;
         padding: 0 !important;
+        vertical-align: top !important;
+        white-space: nowrap !important;
       }
 
       .line-item-price p {
+        text-align: right !important;
+      }
+
+      .info-icon-cell {
+        width: 48px !important;
+        padding-right: 14px !important;
+        vertical-align: top !important;
         text-align: left !important;
       }
 
+      .info-icon-cell svg {
+        margin: 0 !important;
+        display: block !important;
+      }
+
+      .support-icon-cell {
+        width: 62px !important;
+        padding-right: 14px !important;
+        vertical-align: top !important;
+        text-align: left !important;
+      }
+
+      .support-icon-wrap {
+        margin: 0 !important;
+      }
+
+      .info-text-cell {
+        text-align: left !important;
+        vertical-align: top !important;
+        padding: 0 !important;
+      }
+
+      .info-block-table {
+        margin: 0 !important;
+      }
+
+      .line-items-wrap {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+
       .stack-mobile-center {
-        text-align: center !important;
-        padding-right: 0 !important;
+        text-align: left !important;
+        padding-right: 14px !important;
       }
 
       .stack-mobile-center svg {
-        margin: 0 auto !important;
+        margin: 0 !important;
       }
 
       .stack-mobile-left {
         text-align: left !important;
-        padding-top: 12px !important;
+        padding-top: 0 !important;
         padding-left: 0 !important;
         padding-right: 0 !important;
       }
@@ -289,7 +337,7 @@
       }
 
       .support-icon-circle {
-        margin: 0 auto !important;
+        margin: 0 !important;
       }
 
       .stack-mobile-icon {
@@ -319,15 +367,13 @@
       }
 
       .support-icon-cell {
-        width: 100% !important;
-        padding-right: 0 !important;
-        padding-bottom: 14px !important;
+        width: 62px !important;
+        padding-right: 14px !important;
       }
 
       .location-icon-cell {
-        width: 100% !important;
-        padding-right: 0 !important;
-        padding-bottom: 12px !important;
+        width: 48px !important;
+        padding-right: 14px !important;
       }
 
       .social-icon-link {
@@ -693,11 +739,11 @@
 
                         <tr>
                           <td style="padding: 14px 0; border-bottom: 1px solid #ECE6DC;">
-                            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse: collapse;">
+                            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="line-item-row" style="border-collapse: collapse;">
                               <tr>
                                 <td class="line-item-img" width="120" valign="top" style="width: 120px; padding: 0 12px 0 0; vertical-align: top;">
                                   <a data-component="LineItems" href="https://api.uporder.com/api/spently/click?id={{ order_number }}&store=n88nm1-zy&type=SC&cid={{ customer.id }}&url={{ shop.url }}{{ line.url }}&s={{ "n88nm1-zypantastic" | append: "" | append: shop.url | append: "" | append: line.url | append: "" | url_decode | sha256 }}&component=LineItems" target="_blank" style="text-decoration: none;">
-                                    <img src="{{ line | img_url: '100x100', scale: 2, crop: 'center' }}" width="120" alt="{{ line.title | escape }}" style="display: block; max-width: 100%; width: 120px; height: auto; border: 0; margin: 0 auto;" />
+                                    <img src="{{ line | img_url: '100x100', scale: 2, crop: 'center' }}" width="120" alt="{{ line.title | escape }}" style="display: block; max-width: 120px; width: 120px; height: auto; border: 0; margin: 0;" />
                                   </a>
                                 </td>
                                 <td class="line-item-details" valign="top" style="padding: 0 8px 0 0; vertical-align: top;">
@@ -754,13 +800,13 @@
                       <td class="section-padding-lg" style="padding: 28px 24px;">
                         <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse: collapse; max-width: 520px; margin: 0 auto;">
                           <tr>
-                            <td class="stack-mobile location-icon-cell stack-mobile-center" width="48" valign="top" style="width: 48px; padding-right: 16px; vertical-align: top;">
-                              <svg viewBox="0 0 32 32" width="42" height="42" style="display: block; margin: 0 auto;" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <td class="info-icon-cell location-icon-cell" width="48" valign="top" style="width: 48px; padding-right: 16px; vertical-align: top; text-align: left;">
+                              <svg viewBox="0 0 32 32" width="42" height="42" style="display: block; margin: 0;" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path d="M16 29 C16 29 7 19.6 7 13 A9 9 0 0 1 25 13 C25 19.6 16 29 16 29Z" fill="none" stroke="#BC9C70" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
                                 <circle cx="16" cy="13" r="3.8" fill="none" stroke="#BC9C70" stroke-width="2.4" />
                               </svg>
                             </td>
-                            <td class="stack-mobile stack-mobile-left" valign="top" style="vertical-align: top; text-align: left;">
+                            <td class="info-text-cell" valign="top" style="vertical-align: top; text-align: left;">
                               <p class="shipping-heading" style="margin: 0 0 16px; font-family: Lato, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; font-weight: 900; letter-spacing: 2px; color: #222222; text-transform: uppercase;">
                                 SHIPPING TO
                               </p>
@@ -794,14 +840,14 @@
                       <td class="section-padding-lg" style="padding: 32px 24px;">
                         <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse: collapse; max-width: 520px; margin: 0 auto;">
                           <tr>
-                            <td class="stack-mobile support-icon-cell stack-mobile-center" width="62" valign="top" style="width: 62px; padding-right: 18px; vertical-align: top;">
-                              <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="border-collapse: collapse; margin: 0 auto;">
+                            <td class="info-icon-cell support-icon-cell" width="62" valign="top" style="width: 62px; padding-right: 18px; vertical-align: top; text-align: left;">
+                              <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="support-icon-wrap" style="border-collapse: collapse; margin: 0;">
                                 <tr>
                                   <td class="support-icon-circle" width="62" height="62" align="center" valign="middle" bgcolor="#747853" style="width: 62px; height: 62px; min-width: 62px; border-radius: 50%; background-color: #747853; text-align: center; vertical-align: middle; font-size: 26px; line-height: 62px; color: #ffffff;" aria-hidden="true">✉</td>
                                 </tr>
                               </table>
                             </td>
-                            <td class="stack-mobile stack-mobile-left" valign="top" style="vertical-align: top; text-align: left;">
+                            <td class="info-text-cell" valign="top" style="vertical-align: top; text-align: left;">
                               <p class="support-heading" style="margin: 0 0 8px; font-family: Lato, Helvetica, Arial, sans-serif; font-size: 24px; line-height: 30px; font-weight: 700; color: #222222; letter-spacing: -0.5px;">
                                 NEED HELP?
                               </p>
