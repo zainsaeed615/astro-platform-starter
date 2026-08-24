@@ -7,6 +7,7 @@ import ImageTextSplit from '../components/mindfulness/ImageTextSplit.astro';
 import QuoteBlock from '../components/mindfulness/QuoteBlock.astro';
 import CTABand from '../components/mindfulness/CTABand.astro';
 import { images } from '../data/images';
+import { pathTo } from '../utils/paths';
 
 const audiences = [
     { title: 'Patients Living With Chronic Illness', description: 'Moments of encouragement, reflection, comfort, and intentional living throughout the healthcare journey.' },
@@ -168,6 +169,6 @@ const flameFreeProducts = [
     <CTABand title="Mindfulness Healthcare" subtitle="Creating intentional moments of comfort, reflection, and connection — one experience at a time.">
         <a href="#contact" class="btn btn-lg btn-gold">Explore Healthcare Wellness</a>
         <a href="#contact" class="btn btn-lg btn-outline text-cream border-cream/60 hover:bg-cream/10 hover:text-cream">Request a Custom Program</a>
-        <a href="/corporate" class="btn btn-lg btn-white !text-charcoal">Corporate & Healthcare Inquiries</a>
+        <a href={pathTo('/corporate')} class="btn btn-lg btn-white !text-charcoal">Corporate & Healthcare Inquiries</a>
     </CTABand>
 </Layout>

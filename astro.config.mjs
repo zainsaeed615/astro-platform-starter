@@ -7,6 +7,8 @@ const isStaticDeploy = process.env.STATIC_DEPLOY === 'true';
 
 // https://astro.build/config
 export default defineConfig({
+    site: isStaticDeploy ? 'https://zainsaeed615.github.io' : undefined,
+    base: isStaticDeploy ? '/astro-platform-starter/' : undefined,
     vite: {
         plugins: [tailwindcss()]
     },

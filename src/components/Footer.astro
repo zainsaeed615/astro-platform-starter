@@ -1,4 +1,6 @@
 ---
+import { pathTo } from '../utils/paths';
+
 const year = new Date().getFullYear();
 ---
 
@@ -23,10 +25,10 @@ const year = new Date().getFullYear();
             <div class="lg:col-span-2 lg:col-start-6">
                 <p class="eyebrow eyebrow-light mb-5">Explore</p>
                 <ul class="space-y-3 text-sm">
-                    <li><a href="/membership" class="text-cream/60 no-underline hover:text-cream transition-colors">Membership</a></li>
-                    <li><a href="/healthcare" class="text-cream/60 no-underline hover:text-cream transition-colors">Healthcare</a></li>
-                    <li><a href="/corporate" class="text-cream/60 no-underline hover:text-cream transition-colors">Corporate Gifting</a></li>
-                    <li><a href="/fundraising" class="text-cream/60 no-underline hover:text-cream transition-colors">Fundraising</a></li>
+                    <li><a href={pathTo('/membership')} class="text-cream/60 no-underline hover:text-cream transition-colors">Membership</a></li>
+                    <li><a href={pathTo('/healthcare')} class="text-cream/60 no-underline hover:text-cream transition-colors">Healthcare</a></li>
+                    <li><a href={pathTo('/corporate')} class="text-cream/60 no-underline hover:text-cream transition-colors">Corporate Gifting</a></li>
+                    <li><a href={pathTo('/fundraising')} class="text-cream/60 no-underline hover:text-cream transition-colors">Fundraising</a></li>
                 </ul>
             </div>
 

@@ -5,6 +5,7 @@ import SectionHeading from '../components/mindfulness/SectionHeading.astro';
 import QuoteBlock from '../components/mindfulness/QuoteBlock.astro';
 import StatsRow from '../components/mindfulness/StatsRow.astro';
 import { images } from '../data/images';
+import { pathTo } from '../utils/paths';
 
 const pages = [
     {
@@ -55,7 +56,7 @@ const stats = [
         align="center"
     >
         <div slot="actions" class="flex flex-wrap gap-4 justify-center">
-            <a href="/membership" class="btn btn-lg btn-gold">Explore Membership</a>
+            <a href={pathTo('/membership')} class="btn btn-lg btn-gold">Explore Membership</a>
             <a href="https://mindfulnesscandle.store/" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-outline text-cream border-cream/60 hover:bg-cream/10 hover:text-cream">Shop the Collection</a>
         </div>
     </HeroSection>
@@ -79,7 +80,7 @@ const stats = [
             <div class="grid gap-8 sm:grid-cols-2">
                 {
                     pages.map((page) => (
-                        <a href={page.href} class="card group no-underline block">
+                        <a href={pathTo(page.href)} class="card group no-underline block">
                             <div class="aspect-[16/10] overflow-hidden relative">
                                 <img src={page.image} alt={page.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                                 <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
@@ -116,28 +117,28 @@ const stats = [
     <section class="section-padding bg-cream">
         <div class="container-narrow">
             <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                <a href="/membership" class="card-static p-8 text-center no-underline group hover:shadow-lg transition-all duration-500">
+                <a href={pathTo('/membership')} class="card-static p-8 text-center no-underline group hover:shadow-lg transition-all duration-500">
                     <div class="w-14 h-14 rounded-full bg-sage-dark/8 flex items-center justify-center mx-auto mb-5 group-hover:bg-sage-dark/15 transition-colors">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-sage-dark"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="currentColor" stroke-width="1.5"/></svg>
                     </div>
                     <h3 class="text-base mb-2">Join the Community</h3>
                     <p class="text-warm-gray text-sm">Membership from $29/mo</p>
                 </a>
-                <a href="/healthcare" class="card-static p-8 text-center no-underline group hover:shadow-lg transition-all duration-500">
+                <a href={pathTo('/healthcare')} class="card-static p-8 text-center no-underline group hover:shadow-lg transition-all duration-500">
                     <div class="w-14 h-14 rounded-full bg-sage-dark/8 flex items-center justify-center mx-auto mb-5 group-hover:bg-sage-dark/15 transition-colors">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-sage-dark"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                     </div>
                     <h3 class="text-base mb-2">Healthcare Wellness</h3>
                     <p class="text-warm-gray text-sm">Flame-free comfort</p>
                 </a>
-                <a href="/corporate" class="card-static p-8 text-center no-underline group hover:shadow-lg transition-all duration-500">
+                <a href={pathTo('/corporate')} class="card-static p-8 text-center no-underline group hover:shadow-lg transition-all duration-500">
                     <div class="w-14 h-14 rounded-full bg-sage-dark/8 flex items-center justify-center mx-auto mb-5 group-hover:bg-sage-dark/15 transition-colors">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-sage-dark"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m8 0H8m8 0v6a2 2 0 01-2 2H10a2 2 0 01-2-2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                     </div>
                     <h3 class="text-base mb-2">Corporate Gifting</h3>
                     <p class="text-warm-gray text-sm">25 to 25,000+ gifts</p>
                 </a>
-                <a href="/fundraising" class="card-static p-8 text-center no-underline group hover:shadow-lg transition-all duration-500">
+                <a href={pathTo('/fundraising')} class="card-static p-8 text-center no-underline group hover:shadow-lg transition-all duration-500">
                     <div class="w-14 h-14 rounded-full bg-sage-dark/8 flex items-center justify-center mx-auto mb-5 group-hover:bg-sage-dark/15 transition-colors">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-sage-dark"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                     </div>

@@ -6,6 +6,7 @@ import TierCard from '../components/mindfulness/TierCard.astro';
 import QuoteBlock from '../components/mindfulness/QuoteBlock.astro';
 import CTABand from '../components/mindfulness/CTABand.astro';
 import { images } from '../data/images';
+import { pathTo } from '../utils/paths';
 ---
 
 <Layout
@@ -89,6 +90,6 @@ import { images } from '../data/images';
 
     <CTABand title="Create Your Sanctuary" subtitle="Join a community that makes wellness a way of life.">
         <a href="#contact" class="btn btn-lg btn-gold">Create Your Sanctuary →</a>
-        <a href="/healthcare" class="btn btn-lg btn-outline text-cream border-cream/60 hover:bg-cream/10 hover:text-cream">Explore Healthcare Wellness</a>
+        <a href={pathTo('/healthcare')} class="btn btn-lg btn-outline text-cream border-cream/60 hover:bg-cream/10 hover:text-cream">Explore Healthcare Wellness</a>
     </CTABand>
 </Layout>
