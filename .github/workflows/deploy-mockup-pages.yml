@@ -37,6 +37,8 @@ jobs:
         run: npm run build
         env:
           STATIC_DEPLOY: true
+          DEPLOY_BASE: /astro-platform-starter/
+          DEPLOY_SITE: https://zainsaeed615.github.io
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
