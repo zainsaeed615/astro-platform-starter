@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "export:wxr": "python3 scripts/csv-to-wxr.py"
   },
   "dependencies": {
     "@astrojs/netlify": "^6.2.3",

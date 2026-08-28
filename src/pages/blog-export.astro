@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const wxrPath = '/desteia-blog-export.wxr';
+const wxrFileName = 'desteia-blog-export.wxr';
+
+const stats = {
+    totalPosts: 127,
+    publishedPosts: 124,
+    draftPosts: 3,
+    categories: 5,
+    dateRange: '2024-03-22 to 2026-08-27',
+};
+---
+
+<Layout title="Blog WXR Export">
+    <section class="py-10 sm:py-16">
+        <div class="max-w-3xl">
+            <p class="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">WordPress Import</p>
+            <h1 class="mb-4">Download Blog WXR Export</h1>
+            <p class="mb-8 text-lg text-white/80">
+                Converted from <code>Blog.csv</code> into WordPress eXtended RSS (WXR) format. Import this file in
+                WordPress under <strong>Tools → Import → WordPress</strong>.
+            </p>
+        </div>
+
+        <div class="grid gap-6 mb-10 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="p-5 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
+                <p class="text-sm text-white/60">Total posts</p>
+                <p class="mt-1 text-3xl font-bold">{stats.totalPosts}</p>
+            </div>
+            <div class="p-5 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
+                <p class="text-sm text-white/60">Published</p>
+                <p class="mt-1 text-3xl font-bold text-emerald-300">{stats.publishedPosts}</p>
+            </div>
+            <div class="p-5 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
+                <p class="text-sm text-white/60">Drafts</p>
+                <p class="mt-1 text-3xl font-bold text-amber-300">{stats.draftPosts}</p>
+            </div>
+            <div class="p-5 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
+                <p class="text-sm text-white/60">Date range</p>
+                <p class="mt-1 text-base font-semibold leading-snug">{stats.dateRange}</p>
+            </div>
+        </div>
+
+        <div class="p-6 sm:p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+            <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                    <h2 class="mb-2 text-xl font-bold">desteia-blog-export.wxr</h2>
+                    <p class="text-white/70">
+                        Includes titles, slugs, authors, categories, tags, excerpts, HTML content, hero images, and
+                        draft status.
+                    </p>
+                </div>
+                <a
+                    href={wxrPath}
+                    download={wxrFileName}
+                    class="btn btn-lg shrink-0 no-underline shadow-lg shadow-primary/20 hover:shadow-primary/30"
+                >
+                    Download WXR
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-10 p-6 rounded-2xl border border-white/10 bg-black/20">
+            <h2 class="mb-4 text-xl font-bold">What's included</h2>
+            <ul class="grid gap-3 text-white/80 sm:grid-cols-2">
+                <li>Post titles, slugs, and publication dates</li>
+                <li>Full HTML body content</li>
+                <li>Excerpts and author attribution</li>
+                <li>Categories and tags</li>
+                <li>Draft vs. published status</li>
+                <li>Hero image URLs as custom post meta</li>
+            </ul>
+        </div>
+
+        <p class="mt-8 text-sm text-white/50">
+            Regenerate the export with <code>npm run export:wxr</code> after updating <code>data/Blog.csv</code>.
+        </p>
+    </section>
+</Layout>
