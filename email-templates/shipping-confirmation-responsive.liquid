@@ -737,18 +737,36 @@
                           {% endfor %}
                         {% endif %}
 
+                        {% assign line_image_src = '' %}
+                        {% if line.image %}
+                          {% assign line_image_src = line.image | img_url: '120x120', scale: 2, crop: 'center' %}
+                        {% elsif line.variant.image %}
+                          {% assign line_image_src = line.variant.image | img_url: '120x120', scale: 2, crop: 'center' %}
+                        {% elsif line.product.featured_image %}
+                          {% assign line_image_src = line.product.featured_image | img_url: '120x120', scale: 2, crop: 'center' %}
+                        {% endif %}
+
+                        {% assign line_display_qty = fulfillment_item.quantity %}
+                        {% if line_display_qty == blank or line_display_qty == 0 %}
+                          {% assign line_display_qty = line.quantity %}
+                        {% endif %}
+
                         <tr>
                           <td style="padding: 14px 0; border-bottom: 1px solid #ECE6DC;">
                             <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="line-item-row" style="border-collapse: collapse;">
                               <tr>
                                 <td class="line-item-img" width="120" valign="top" style="width: 120px; padding: 0 12px 0 0; vertical-align: top;">
                                   <a data-component="LineItems" href="https://api.uporder.com/api/spently/click?id={{ order_number }}&store=n88nm1-zy&type=SC&cid={{ customer.id }}&url={{ shop.url }}{{ line.url }}&s={{ "n88nm1-zypantastic" | append: "" | append: shop.url | append: "" | append: line.url | append: "" | url_decode | sha256 }}&component=LineItems" target="_blank" style="text-decoration: none;">
-                                    <img src="{{ line | img_url: '100x100', scale: 2, crop: 'center' }}" width="120" alt="{{ line.title | escape }}" style="display: block; max-width: 120px; width: 120px; height: auto; border: 0; margin: 0;" />
+                                    {% if line_image_src != blank %}
+                                      <img src="{{ line_image_src }}" width="120" height="120" alt="{{ line.title | escape }}" style="display: block; max-width: 120px; width: 120px; height: auto; border: 0; margin: 0; object-fit: cover;" />
+                                    {% else %}
+                                      <img src="{{ 'notifications/no-image.png' | shopify_asset_url }}" width="120" height="120" alt="{{ line.title | escape }}" style="display: block; max-width: 120px; width: 120px; height: auto; border: 0; margin: 0;" />
+                                    {% endif %}
                                   </a>
                                 </td>
                                 <td class="line-item-details" valign="top" style="padding: 0 8px 0 0; vertical-align: top;">
                                   <p style="margin: 0 0 6px; font-family: Lato, Helvetica, Tahoma, Verdana, Segoe, sans-serif; font-size: 16px; line-height: 22px; font-weight: 700; color: #080808; text-align: left; letter-spacing: 1px; text-transform: uppercase;">
-                                    {{ line.title }} x {{ line.quantity }}
+                                    {{ line.title }} x {{ line_display_qty }}
                                   </p>
                                   {% if product_attributes != blank %}
                                     <p style="margin: 0 0 6px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Fira Sans', Droid Sans, 'Helvetica Neue', sans-serif; font-size: 14px; line-height: 20px; font-weight: 400; color: #000000; text-align: left;">
