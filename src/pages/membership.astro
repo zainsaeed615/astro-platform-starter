@@ -2,79 +2,87 @@
 import Layout from '../layouts/Layout.astro';
 import HeroSection from '../components/mindfulness/HeroSection.astro';
 import SectionHeading from '../components/mindfulness/SectionHeading.astro';
-import TierCard from '../components/mindfulness/TierCard.astro';
+import SubscriptionCard from '../components/mindfulness/SubscriptionCard.astro';
 import QuoteBlock from '../components/mindfulness/QuoteBlock.astro';
 import CTABand from '../components/mindfulness/CTABand.astro';
+import InquiryForm from '../components/mindfulness/InquiryForm.astro';
 import { images } from '../data/images';
 import { pathTo } from '../utils/paths';
 ---
 
 <Layout
-    title="The Mindfulness Membership"
-    description="Join The Mindfulness Membership — a thoughtfully curated wellness community with Mindful, Restore, and Sanctuary tiers."
+    title="Mindfulness Membership"
+    description="Mindfulness Monthly and Premium Mindfulness Monthly — recurring wellness experiences designed to make self-care a standing commitment."
 >
     <HeroSection
-        eyebrow="The Mindfulness Membership"
-        title="The Mindfulness Membership"
-        subtitle="Wellness shouldn't be an occasional moment. It should be a way of life."
+        eyebrow="Mindfulness Membership"
+        title="Make Self-Care a Standing Commitment"
+        subtitle="Mindfulness Monthly brings an intentional wellness experience directly to your door each month—designed to help you pause, reset, and create space for reflection, gratitude, prayer, and renewal."
         image={images.membership.hero}
         imageAlt="Upscale home sanctuary with candle, diffuser, journal, and blanket"
+        align="center"
     >
-        <div slot="actions">
-            <a href="#tiers" class="btn btn-lg btn-gold">Create Your Sanctuary →</a>
+        <div slot="actions" class="flex flex-wrap gap-4 justify-center">
+            <a href="#plans" class="btn btn-lg btn-gold">Begin Your Membership</a>
+            <a href={pathTo('/policies/subscription')} class="btn btn-lg btn-outline text-cream border-cream/60 hover:bg-cream/10 hover:text-cream">Subscription Policy</a>
         </div>
     </HeroSection>
 
     <section class="section-padding bg-cream">
         <div class="container-narrow max-w-3xl mx-auto text-center">
             <p class="lead mb-8">
-                Welcome to <em class="text-charcoal not-italic font-serif text-xl">The Mindfulness Membership</em> — a thoughtfully curated wellness experience designed to help you create intentional moments of peace, reflection, restoration, and self-care throughout the year.
+                This is more than a monthly delivery. It is a recurring reminder that your well-being deserves time, attention, and intention.
             </p>
             <div class="divider-gold"></div>
-            <p class="text-2xl font-serif text-charcoal mb-3 font-light">This is more than a subscription.</p>
-            <p class="text-xl italic text-gold-dark font-serif">It's an invitation to make yourself a priority.</p>
-            <p class="mt-10 text-warm-gray leading-relaxed font-light">
-                Whether you are beginning your wellness journey, caring for someone you love, navigating a demanding season of life, or simply creating more peaceful moments in your everyday routine, there is a Mindfulness experience designed for you.
+            <p class="text-warm-gray leading-relaxed font-light">
+                Whether you are beginning your wellness journey, caring for someone you love, navigating a demanding season of life, or simply creating more peaceful moments in your everyday routine, Mindfulness Membership is designed to meet you where you are.
             </p>
         </div>
     </section>
 
-    <section id="tiers" class="section-padding section-bg-stone">
+    <section id="plans" class="section-padding section-bg-stone">
         <div class="container-narrow">
             <SectionHeading
                 eyebrow="Choose Your Experience"
-                title="Three Paths to Intentional Living"
-                description="Each tier offers a progressively richer wellness experience — from digital reflections to a full personal sanctuary."
+                title="Two Paths to Intentional Living"
+                description="Select the membership experience that best supports your wellness rhythm and lifestyle."
                 align="center"
             />
-            <div class="grid gap-8 lg:grid-cols-3 lg:items-end">
-                <TierCard
-                    name="Mindful"
-                    price="$29/month"
-                    tagline="Begin with intention."
-                    description="Enjoy exclusive digital reflections, affirmations, mindfulness content, member privileges, and special quarterly product experiences designed to encourage you to pause, reflect, and reset."
-                    image={images.membership.mindful}
-                    imageAlt="Mindful membership lifestyle"
-                    index={0}
+            <div class="grid gap-8 lg:grid-cols-2 lg:items-start max-w-5xl mx-auto">
+                <SubscriptionCard
+                    name="Mindfulness Monthly Membership"
+                    price="$59 per month"
+                    tagline="Make self-care a standing commitment."
+                    description="Every delivery is designed to help you pause, reset, and create space for reflection, gratitude, prayer, and renewal."
+                    benefits={[
+                        'One rotating Signature Candle',
+                        'Monthly affirmations',
+                        'Exclusive wellness content',
+                        'Member-only product discounts',
+                        'Early access to select collections and experiences',
+                    ]}
+                    disclaimer="Subscription automatically renews monthly until canceled in accordance with our Subscription and Cancellation Policy."
+                    ctaText="Begin Your Membership"
+                    ctaHref="https://mindfulnesscandle.store/"
                 />
-                <TierCard
-                    name="Restore"
-                    price="$59/month"
-                    tagline="Create your moment."
-                    description="Receive a signature Mindfulness Candle Collection product paired with a thoughtfully selected wellness or reflection experience. From journals and affirmation cards to seasonal surprises, each delivery creates another opportunity to reconnect with yourself."
-                    image={images.membership.restore}
-                    imageAlt="Restore membership lifestyle"
+                <SubscriptionCard
+                    name="Premium Mindfulness Membership"
+                    price="$79 per month"
+                    tagline="An elevated monthly wellness experience."
+                    description="Created for individuals who want to make mindfulness, faith, and intentional self-care part of their everyday lifestyle—wherever life takes you."
+                    benefits={[
+                        'One rotating Signature Candle each month',
+                        'One Vehicle Diffuser each month',
+                        'Exclusive guided journal content',
+                        'Monthly affirmations and wellness resources',
+                        'One Reed Diffuser every quarter',
+                        'Premium member discounts',
+                        'Early access to new and limited-edition collections',
+                    ]}
+                    disclaimer="Subscription automatically renews monthly until canceled in accordance with our Subscription and Cancellation Policy."
+                    ctaText="Choose Premium Mindfulness"
+                    ctaHref="https://mindfulnesscandle.store/"
                     featured={true}
-                    index={1}
-                />
-                <TierCard
-                    name="Sanctuary"
-                    price="$99/month"
-                    tagline="Bring the Mindfulness experience home."
-                    description="Our premium membership transforms ordinary moments into intentional experiences. Discover curated combinations of fragrance, comfort, reflection, and wellness products designed to create your personal sanctuary."
-                    image={images.membership.sanctuary}
-                    imageAlt="Sanctuary membership lifestyle"
-                    index={2}
                 />
             </div>
         </div>
@@ -88,8 +96,10 @@ import { pathTo } from '../utils/paths';
         </div>
     </section>
 
-    <CTABand title="Create Your Sanctuary" subtitle="Join a community that makes wellness a way of life.">
-        <a href="#contact" class="btn btn-lg btn-gold">Create Your Sanctuary →</a>
+    <CTABand title="Your Well-Being Deserves Intention" subtitle="Join a community that makes wellness a way of life.">
+        <a href="https://mindfulnesscandle.store/" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-gold">Begin Your Membership</a>
         <a href={pathTo('/healthcare')} class="btn btn-lg btn-outline text-cream border-cream/60 hover:bg-cream/10 hover:text-cream">Explore Healthcare Wellness</a>
     </CTABand>
+
+    <InquiryForm showIntro={false} />
 </Layout>

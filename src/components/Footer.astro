@@ -6,7 +6,6 @@ const year = new Date().getFullYear();
 
 <footer class="section-bg-dark text-cream grain-overlay">
     <div class="relative z-10 container-narrow">
-        <!-- Top section -->
         <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-12 pb-16 border-b border-white/10">
             <div class="lg:col-span-4">
                 <div class="flex items-center gap-3 mb-6">
@@ -17,9 +16,10 @@ const year = new Date().getFullYear();
                     </span>
                     <span class="font-serif text-2xl font-light tracking-wide">Mindfulness</span>
                 </div>
-                <p class="text-cream/60 text-sm leading-relaxed max-w-xs">
-                    Creating intentional moments of comfort, reflection, and connection — one experience at a time.
+                <p class="text-cream/60 text-sm leading-relaxed max-w-xs mb-6">
+                    Faith-centered wellness experiences designed to bring peace, reflection, and renewal into every season of life.
                 </p>
+                <a href="https://mindfulnesscandle.store/" target="_blank" rel="noopener noreferrer" class="btn btn-gold text-[0.625rem] !py-2.5 !px-5">Shop the Collection</a>
             </div>
 
             <div class="lg:col-span-2 lg:col-start-6">
@@ -29,6 +29,8 @@ const year = new Date().getFullYear();
                     <li><a href={pathTo('/healthcare')} class="text-cream/60 no-underline hover:text-cream transition-colors">Healthcare</a></li>
                     <li><a href={pathTo('/corporate')} class="text-cream/60 no-underline hover:text-cream transition-colors">Corporate Gifting</a></li>
                     <li><a href={pathTo('/fundraising')} class="text-cream/60 no-underline hover:text-cream transition-colors">Fundraising</a></li>
+                    <li><a href={pathTo('/wholesale')} class="text-cream/60 no-underline hover:text-cream transition-colors">Wholesale</a></li>
+                    <li><a href={pathTo('/stories')} class="text-cream/60 no-underline hover:text-cream transition-colors">Customer Stories</a></li>
                 </ul>
             </div>
 
@@ -36,28 +38,30 @@ const year = new Date().getFullYear();
                 <p class="eyebrow eyebrow-light mb-5">Shop</p>
                 <ul class="space-y-3 text-sm">
                     <li><a href="https://mindfulnesscandle.store/" target="_blank" rel="noopener noreferrer" class="text-cream/60 no-underline hover:text-cream transition-colors">Visit Store</a></li>
-                    <li><a href="https://mindfulnesscandle.store/pages/about" target="_blank" rel="noopener noreferrer" class="text-cream/60 no-underline hover:text-cream transition-colors">About</a></li>
-                    <li><a href="https://mindfulnesscandle.store/pages/contact" target="_blank" rel="noopener noreferrer" class="text-cream/60 no-underline hover:text-cream transition-colors">Contact</a></li>
+                    <li><a href={pathTo('/refocus-bundle')} class="text-cream/60 no-underline hover:text-cream transition-colors">Refocus Bundle</a></li>
+                    <li><a href={pathTo('/#bundles')} class="text-cream/60 no-underline hover:text-cream transition-colors">Wellness Bundles</a></li>
+                    <li><a href={pathTo('/#collections')} class="text-cream/60 no-underline hover:text-cream transition-colors">Collections</a></li>
                 </ul>
             </div>
 
             <div class="lg:col-span-3">
-                <p class="eyebrow eyebrow-light mb-5">Partner With Us</p>
+                <p class="eyebrow eyebrow-light mb-5">Support & Policies</p>
                 <ul class="space-y-3 text-sm">
-                    <li><a href="mailto:info@mindfulnesscandle.store" class="text-cream/60 no-underline hover:text-cream transition-colors">Corporate & Healthcare Inquiries</a></li>
-                    <li><a href="mailto:info@mindfulnesscandle.store" class="text-cream/60 no-underline hover:text-cream transition-colors">Fundraising Partners</a></li>
-                    <li><a href="mailto:info@mindfulnesscandle.store" class="text-cream/60 no-underline hover:text-cream transition-colors">Custom Programs</a></li>
+                    <li><a href={pathTo('/contact')} class="text-cream/60 no-underline hover:text-cream transition-colors">Contact & Inquiries</a></li>
+                    <li><a href={pathTo('/policies/shipping')} class="text-cream/60 no-underline hover:text-cream transition-colors">Shipping Policy</a></li>
+                    <li><a href={pathTo('/policies/returns')} class="text-cream/60 no-underline hover:text-cream transition-colors">Return & Refund Policy</a></li>
+                    <li><a href={pathTo('/policies/subscription')} class="text-cream/60 no-underline hover:text-cream transition-colors">Subscription Policy</a></li>
+                    <li><a href="mailto:info@mindfulnesscandle.store" class="text-cream/60 no-underline hover:text-cream transition-colors">info@mindfulnesscandle.store</a></li>
                 </ul>
             </div>
         </div>
 
-        <!-- Bottom bar -->
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-8">
             <p class="text-cream/40 text-xs tracking-wide">
                 &copy; {year} Mindfulness Candle Collection. All rights reserved.
             </p>
             <p class="text-cream/40 text-xs italic font-serif">
-                Wellness should be a way of life.
+                Mindfulness begins with a single flame.
             </p>
         </div>
     </div>

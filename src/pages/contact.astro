@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeading from '../components/mindfulness/SectionHeading.astro';
+import InquiryForm from '../components/mindfulness/InquiryForm.astro';
+---
+
+<Layout title="Contact" description="Partner with Mindfulness Candle Collection — let's create a meaningful experience together.">
+    <section class="section-padding section-bg-stone pt-32">
+        <div class="container-narrow text-center max-w-3xl mx-auto">
+            <SectionHeading
+                eyebrow="Get In Touch"
+                title="Let's Create a Meaningful Experience"
+                description="Thank you for your interest in partnering with Mindfulness Candle Collection. Whether you're exploring healthcare programs, corporate gifting, fundraising partnerships, or wholesale opportunities, we're here to help."
+                align="center"
+            />
+            <div class="flex flex-wrap gap-4 justify-center mb-4">
+                <a href="mailto:info@mindfulnesscandle.store" class="btn">Email Us Directly</a>
+                <a href="https://mindfulnesscandle.store/pages/contact" target="_blank" rel="noopener noreferrer" class="btn btn-outline text-charcoal border-charcoal/30">Visit Store Contact</a>
+            </div>
+        </div>
+    </section>
+
+    <InquiryForm />
+</Layout>

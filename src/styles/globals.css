@@ -276,4 +276,40 @@
     .animate-float {
         animation: float 4s ease-in-out infinite;
     }
+
+    /* ── Form inputs ── */
+    .form-input {
+        @apply w-full bg-cream border border-sand/60 text-charcoal placeholder:text-muted/70 transition-all duration-300;
+        padding: 0.875rem 1.125rem;
+        border-radius: 0.75rem;
+        font-size: 0.9375rem;
+
+        &:focus {
+            @apply outline-none border-sage/50 ring-2 ring-sage/20 bg-white;
+        }
+    }
+
+    /* ── Intention pills ── */
+    .intention-pill {
+        @apply inline-flex items-center px-4 py-2 text-xs uppercase tracking-[0.12em] font-medium text-charcoal bg-white/80 backdrop-blur-sm;
+        border-radius: 9999px;
+        border: 1px solid rgba(217, 207, 194, 0.5);
+    }
+
+    /* ── Hero accent line ── */
+    .hero-accent {
+        background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+        height: 1px;
+        width: 120px;
+    }
+
+    /* ── Feature list ── */
+    .feature-list li {
+        @apply flex items-start gap-3 text-sm text-warm-gray leading-relaxed;
+    }
+
+    .feature-list li::before {
+        content: '';
+        @apply flex-shrink-0 w-1.5 h-1.5 rounded-full bg-gold mt-2;
+    }
 }

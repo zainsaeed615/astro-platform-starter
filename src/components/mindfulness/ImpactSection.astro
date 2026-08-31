@@ -1,0 +1,56 @@
+---
+import { pathTo } from '../../utils/paths';
+
+interface Props {
+    id?: string;
+}
+
+const { id = 'impact' } = Astro.props;
+---
+
+<section id={id} class="section-padding section-bg-dark text-cream grain-overlay relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-sage/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/5 rounded-full blur-3xl"></div>
+
+    <div class="relative z-10 container-narrow">
+        <div class="grid gap-14 lg:grid-cols-2 items-center">
+            <div>
+                <div class="flex items-center gap-4 mb-5">
+                    <span class="w-8 h-px bg-gold"></span>
+                    <p class="eyebrow eyebrow-light !mb-0">Community Impact</p>
+                </div>
+                <h2 class="text-cream mb-7 font-light">Wellness That Creates Community Impact</h2>
+                <p class="text-cream/70 leading-relaxed font-light mb-6">
+                    Every qualifying purchase helps extend the impact of mindfulness beyond the individual.
+                </p>
+                <p class="text-cream/70 leading-relaxed font-light mb-6">
+                    Mindfulness Candle Collection contributes <strong class="text-gold-light font-normal">10% of qualifying product sales</strong> to Friendship That Gives, a 501(c)(3) nonprofit organization advancing health education, patient advocacy, caregiver wellness, and community empowerment.
+                </p>
+                <p class="text-cream/70 leading-relaxed font-light mb-8">
+                    Through this partnership, your purchase helps support historically underserved individuals and families affected by chronic illnesses, rare diseases, caregiving responsibilities, mental-health challenges, and barriers to equitable care.
+                </p>
+                <p class="text-cream/60 text-sm italic font-serif mb-8">
+                    When you choose Mindfulness Candle Collection, you are not simply purchasing a product. You are helping create moments of restoration while supporting a broader movement of education, advocacy, hope, and healing.
+                </p>
+                <a href="https://friendshipthatgives.org/" target="_blank" rel="noopener noreferrer" class="btn btn-gold">Learn About Our Impact</a>
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-2">
+                <div class="card-static p-8 bg-white/5 border-white/10 backdrop-blur-sm">
+                    <p class="text-4xl font-serif text-gold-light mb-2 font-light">10%</p>
+                    <p class="text-cream/60 text-sm leading-relaxed">Of qualifying product sales support Friendship That Gives</p>
+                </div>
+                <div class="card-static p-8 bg-white/5 border-white/10 backdrop-blur-sm">
+                    <p class="text-4xl font-serif text-gold-light mb-2 font-light">501(c)(3)</p>
+                    <p class="text-cream/60 text-sm leading-relaxed">Nonprofit partnership advancing health education and advocacy</p>
+                </div>
+                <div class="card-static p-8 bg-white/5 border-white/10 backdrop-blur-sm sm:col-span-2">
+                    <p class="text-cream/80 font-serif text-xl mb-3 font-light italic">Purposeful giving, built into every purchase.</p>
+                    <p class="text-cream/60 text-sm leading-relaxed">
+                        Your wellness ritual becomes part of something larger — supporting caregivers, patients, and communities navigating life's most challenging seasons.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

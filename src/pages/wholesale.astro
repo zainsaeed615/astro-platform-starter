@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/mindfulness/HeroSection.astro';
+import SectionHeading from '../components/mindfulness/SectionHeading.astro';
+import CTABand from '../components/mindfulness/CTABand.astro';
+import InquiryForm from '../components/mindfulness/InquiryForm.astro';
+import { images } from '../data/images';
+
+const categories = [
+    'Signature soy candles',
+    'Reed diffusers',
+    'Vehicle diffusers',
+    'Mindfulness journals',
+    '180 Days of Hope™ Affirmation Cards',
+    'Curated wellness bundles',
+    'Caregiver gifts',
+    'Seasonal and limited-edition collections',
+];
+
+const partnerBenefits = [
+    'Approved wholesale pricing',
+    'Product imagery and descriptions',
+    'Brand and merchandising guidance',
+    'Access to eligible seasonal releases',
+    'Reordering opportunities',
+    'Retailer support materials',
+];
+---
+
+<Layout
+    title="Wholesale"
+    description="Become a Mindfulness wholesale partner — bring purposeful wellness to your customers."
+>
+    <HeroSection
+        eyebrow="Wholesale Partnership"
+        title="Become a Mindfulness Wholesale Partner"
+        subtitle="Bring purposeful wellness to your customers. Mindfulness Candle Collection partners with select retailers, boutiques, gift shops, bookstores, spas, wellness centers, healthcare gift shops, hotels, faith-based retailers, and specialty stores."
+        image={images.corporate.conference}
+        imageAlt="Mindfulness products displayed in a premium retail setting"
+        align="center"
+    >
+        <div slot="actions" class="flex flex-wrap gap-4 justify-center">
+            <a href="#contact" class="btn btn-lg btn-gold">Apply for Wholesale</a>
+        </div>
+    </HeroSection>
+
+    <section class="section-padding bg-cream">
+        <div class="container-narrow max-w-3xl mx-auto text-center">
+            <p class="lead">
+                Our wholesale collection offers products that combine premium fragrance, faith, reflection, emotional wellness, and purposeful giving — designed to help your customers transform ordinary moments into meaningful rituals.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-padding section-bg-stone">
+        <div class="container-narrow">
+            <SectionHeading eyebrow="Wholesale Product Categories" title="Products Your Customers Will Love" align="center" />
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
+                {categories.map((item) => (
+                    <div class="card-static p-6 text-center group hover:shadow-lg transition-all duration-500">
+                        <p class="text-sm font-medium group-hover:text-sage-dark transition-colors">{item}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-cream">
+        <div class="container-narrow">
+            <SectionHeading eyebrow="Wholesale Partners May Receive" title="Support for Your Success" align="center" />
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto">
+                {partnerBenefits.map((item) => (
+                    <div class="card-static p-6 flex items-center gap-3 group hover:shadow-lg transition-all duration-500">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-sage-dark/10 flex items-center justify-center">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-sage-dark"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                        <p class="text-sm font-medium">{item}</p>
+                    </div>
+                ))}
+            </div>
+            <p class="text-center text-warm-gray text-sm leading-relaxed font-light max-w-2xl mx-auto mt-10 italic">
+                Wholesale approval, minimum opening orders, reordering requirements, payment terms, product availability, and territorial considerations are determined individually.
+            </p>
+        </div>
+    </section>
+
+    <CTABand title="Apply for a Wholesale Account" subtitle="Please provide your business name, website, store location, resale information, product interests, anticipated opening order, and preferred launch date. A member of the Mindfulness Team will respond within three business days.">
+        <a href="#contact" class="btn btn-lg btn-gold">Apply for Wholesale</a>
+    </CTABand>
+
+    <InquiryForm id="contact" showIntro={false} />
+</Layout>

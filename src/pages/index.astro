@@ -2,150 +2,255 @@
 import Layout from '../layouts/Layout.astro';
 import HeroSection from '../components/mindfulness/HeroSection.astro';
 import SectionHeading from '../components/mindfulness/SectionHeading.astro';
-import QuoteBlock from '../components/mindfulness/QuoteBlock.astro';
-import StatsRow from '../components/mindfulness/StatsRow.astro';
+import CollectionCard from '../components/mindfulness/CollectionCard.astro';
+import BundleCard from '../components/mindfulness/BundleCard.astro';
+import SubscriptionCard from '../components/mindfulness/SubscriptionCard.astro';
+import ImpactSection from '../components/mindfulness/ImpactSection.astro';
+import TestimonialSection from '../components/mindfulness/TestimonialSection.astro';
+import CTABand from '../components/mindfulness/CTABand.astro';
 import { images } from '../data/images';
 import { pathTo } from '../utils/paths';
 
-const pages = [
-    {
-        title: 'The Mindfulness Membership',
-        description: 'Belong to a wellness community designed for intentional living — not a subscription box.',
-        href: '/membership',
-        image: images.membership.hero,
-        tag: 'Community',
-    },
-    {
-        title: 'Mindfulness Healthcare',
-        description: 'Comfort, reflection, and flame-free wellness for patients, caregivers, and healthcare organizations.',
-        href: '/healthcare',
-        image: images.healthcare.hero,
-        tag: 'Healthcare',
-    },
-    {
-        title: 'Corporate Gifting',
-        description: 'Transform traditional gifting into meaningful wellness experiences for your people.',
-        href: '/corporate',
-        image: images.corporate.hero,
-        tag: 'Enterprise',
-    },
-    {
-        title: 'Fundraising Partnerships',
-        description: 'Raise funds while inspiring wellness in your community.',
-        href: '/fundraising',
-        image: images.fundraising.hero,
-        tag: 'Community Impact',
-    },
+const intentions = [
+    'Empower', 'Reboot', 'Rebound', 'Revive', 'Reclaim',
+    'Recharge', 'Refocus', 'Rebuild', 'Reflect', 'Recommit',
 ];
 
-const stats = [
-    { value: '3', label: 'Membership Tiers' },
-    { value: '8+', label: 'Healthcare Audiences' },
-    { value: '25–25K+', label: 'Corporate Scale' },
-    { value: '100%', label: 'Flame-Free Options' },
+const wellnessFragrances = ['Breathe Easy', 'Peace Within', 'Grounded Soul', 'Caregiver Reset'];
+
+const partnerLinks = [
+    { title: 'Healthcare', description: 'Flame-free wellness for patients, caregivers, and organizations.', href: '/healthcare', tag: 'B2B' },
+    { title: 'Corporate Gifting', description: 'Meaningful appreciation gifts that create lasting impressions.', href: '/corporate', tag: 'Enterprise' },
+    { title: 'Fundraising', description: 'Raise funds with purpose-driven wellness products.', href: '/fundraising', tag: 'Community' },
+    { title: 'Wholesale', description: 'Bring purposeful wellness to your retail customers.', href: '/wholesale', tag: 'Retail' },
 ];
 ---
 
-<Layout title="Home" description="Mindfulness Candle Collection — premium wellness experiences for membership, healthcare, corporate gifting, and fundraising.">
+<Layout
+    title="Home"
+    description="Mindfulness Candle Collection — faith-centered candles, wellness essentials, and thoughtfully curated gifts designed to bring peace, reflection, and renewal."
+>
+    <!-- 1. Hero -->
     <HeroSection
         eyebrow="Mindfulness Candle Collection"
-        title="Wellness Should Be a Way of Life"
-        subtitle="Premium wellness experiences designed for intentional living — from personal sanctuary to healthcare comfort, corporate gifting, and community fundraising."
+        title="Mindfulness Begins With a Single Flame"
+        subtitle="Faith-centered candles, wellness essentials, and thoughtfully curated gifts designed to bring peace, reflection, and renewal into every season of life."
         image={images.home.hero}
-        imageAlt="Premium wellness lifestyle with Mindfulness products"
+        imageAlt="Premium Mindfulness candle creating a warm, peaceful atmosphere"
         align="center"
+        minHeight="min-h-[92vh]"
     >
-        <div slot="actions" class="flex flex-wrap gap-4 justify-center">
-            <a href={pathTo('/membership')} class="btn btn-lg btn-gold">Explore Membership</a>
-            <a href="https://mindfulnesscandle.store/" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-outline text-cream border-cream/60 hover:bg-cream/10 hover:text-cream">Shop the Collection</a>
+        <div slot="actions" class="flex flex-col items-center gap-6">
+            <p class="text-cream/70 text-base sm:text-lg max-w-2xl leading-relaxed font-light text-center -mt-2 mb-2">
+                More than products—meaningful experiences created to nurture the mind, restore the spirit, and encourage intentional self-care.
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a href="https://mindfulnesscandle.store/" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-gold">Shop the Collection</a>
+                <a href="#bundles" class="btn btn-lg btn-outline text-cream border-cream/60 hover:bg-cream/10 hover:text-cream">Explore Wellness Bundles</a>
+            </div>
         </div>
     </HeroSection>
 
-    <!-- Stats bar -->
-    <section class="section-padding-sm bg-white border-y border-sand/40">
+    <!-- 2. Brand Introduction -->
+    <section class="section-padding bg-cream">
         <div class="container-narrow">
-            <StatsRow stats={stats} />
+            <div class="grid gap-14 lg:grid-cols-2 items-center">
+                <div class="image-frame aspect-[4/5] lg:aspect-auto lg:min-h-[560px]">
+                    <img src={images.membership.sanctuary} alt="Mindfulness wellness ritual with candle, journal, and blanket" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div>
+                    <SectionHeading
+                        eyebrow="Our Story"
+                        title="More Than a Candle. A Moment Created for You."
+                    />
+                    <div class="space-y-5 text-warm-gray leading-relaxed font-light">
+                        <p>
+                            Life can be demanding. Between professional responsibilities, caregiving, health challenges, grief, family obligations, and everyday uncertainty, we often forget to pause and care for ourselves.
+                        </p>
+                        <p>
+                            <em class="text-charcoal font-serif text-lg not-italic">Mindfulness Candle Collection</em> creates faith-centered wellness experiences that invite you to slow down, breathe deeply, reflect intentionally, and reconnect with what matters most.
+                        </p>
+                        <p>
+                            From our clean-burning soy candles and flame-free fragrance products to our journals, affirmation cards, comforting blankets, and curated wellness bundles, every item is designed to help transform ordinary moments into meaningful rituals of peace, prayer, restoration, and renewal.
+                        </p>
+                    </div>
+                    <a href="https://mindfulnesscandle.store/pages/about" target="_blank" rel="noopener noreferrer" class="btn mt-10">Discover Mindfulness</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Experience cards -->
+    <!-- 3. Product Collections -->
+    <section id="collections" class="section-padding section-bg-stone">
+        <div class="container-narrow">
+            <SectionHeading
+                eyebrow="Shop by Experience"
+                title="Collections Designed for Every Season"
+                description="Each collection represents an invitation to move forward with faith, clarity, resilience, and purpose."
+                align="center"
+            />
+            <div class="grid gap-8 lg:grid-cols-3">
+                <CollectionCard
+                    title="The Signature Journey Collection"
+                    subtitle="Ten Intentions"
+                    description="Ten intentions. Ten stages of personal renewal. Each fragrance represents an invitation to move forward with faith, clarity, resilience, and purpose."
+                    highlights={intentions}
+                    ctaText="Shop the Signature Journey"
+                    ctaHref="https://mindfulnesscandle.store/collections/signature-journey"
+                    image={images.membership.restore}
+                    imageAlt="Signature Journey candle collection"
+                />
+                <CollectionCard
+                    title="The Wellness Collection"
+                    subtitle="Room to Breathe"
+                    description="Fragrances created for the moments when your mind, body, and spirit need room to breathe—designed to complement prayer, reflection, rest, and everyday self-care."
+                    highlights={wellnessFragrances}
+                    ctaText="Shop the Wellness Collection"
+                    ctaHref="https://mindfulnesscandle.store/collections/wellness"
+                    image={images.healthcare.hero}
+                    imageAlt="Wellness collection fragrances"
+                />
+                <CollectionCard
+                    title="The Seasonal Collection"
+                    subtitle="Life's Important Moments"
+                    description="Meaningful fragrances and gifts for holidays, celebrations, encouragement, remembrance, and life's most important moments. Limited-edition collections help you give more than a gift."
+                    highlights={['Holidays', 'Encouragement', 'Remembrance', 'Celebrations']}
+                    ctaText="Explore Seasonal Collections"
+                    ctaHref="https://mindfulnesscandle.store/collections/seasonal"
+                    image={images.corporate.hero}
+                    imageAlt="Seasonal Mindfulness gift collections"
+                />
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Bundles -->
+    <section id="bundles" class="section-padding bg-cream">
+        <div class="container-narrow">
+            <SectionHeading
+                eyebrow="Curated Wellness Experiences"
+                title="Bundle, Save, and Give With Purpose"
+                description="Every Mindfulness bundle is thoughtfully assembled to make self-care, gifting, and caregiving more meaningful."
+                align="center"
+            />
+            <div class="grid gap-8 lg:grid-cols-3 lg:items-start">
+                <BundleCard
+                    name="The Refocus Bundle"
+                    price="$75"
+                    tagline="Return to what matters."
+                    description="Create a continuous fragrance experience at home, at work, and while traveling. Designed for anyone seeking greater clarity, focus, and intentionality throughout the day."
+                    includes={['One Signature Candle', 'One Reed Diffuser', 'One Vehicle Diffuser']}
+                    ctaText="Shop the Refocus Bundle"
+                    ctaHref={pathTo('/refocus-bundle')}
+                />
+                <BundleCard
+                    name="The Renew Bundle"
+                    price="$110"
+                    tagline="Refresh your surroundings."
+                    description="An immersive sensory experience created to refresh your surroundings and renew your spirit. An ideal choice for personal renewal, celebrations, encouragement, or thoughtful gifting."
+                    includes={['Two Signature Candles', 'One Reed Diffuser', 'One Vehicle Diffuser']}
+                    ctaText="Shop the Renew Bundle"
+                    ctaHref="https://mindfulnesscandle.store/"
+                    featured={true}
+                />
+                <BundleCard
+                    name="The Caregiver Wellness Bundle"
+                    price="$165"
+                    tagline="Crafted for those who give."
+                    description="A meaningful expression of appreciation, encouragement, comfort, and restoration for family caregivers and professional care partners."
+                    includes={[
+                        'Two Signature Candles',
+                        'One Reed Diffuser',
+                        'One Vehicle Diffuser',
+                        'One Mindfulness Journal',
+                        'One Comfort Blanket',
+                        'One Set of 180 Days of Hope™ Affirmation Cards',
+                    ]}
+                    ctaText="Shop the Caregiver Wellness Bundle"
+                    ctaHref="https://mindfulnesscandle.store/"
+                />
+            </div>
+        </div>
+    </section>
+
+    <!-- 5 & 6. Subscriptions -->
+    <section id="membership" class="section-padding section-bg-stone">
+        <div class="container-narrow">
+            <SectionHeading
+                eyebrow="Mindfulness Membership"
+                title="Make Self-Care a Standing Commitment"
+                description="More than a monthly delivery—it is a recurring reminder that your well-being deserves time, attention, and intention."
+                align="center"
+            />
+            <div class="grid gap-8 lg:grid-cols-2 lg:items-start max-w-5xl mx-auto">
+                <SubscriptionCard
+                    name="Mindfulness Monthly"
+                    price="$59 per month"
+                    tagline="Make self-care a standing commitment."
+                    description="Mindfulness Monthly brings an intentional wellness experience directly to your door each month. Every delivery is designed to help you pause, reset, and create space for reflection, gratitude, prayer, and renewal."
+                    benefits={[
+                        'One rotating Signature Candle',
+                        'Monthly affirmations',
+                        'Exclusive wellness content',
+                        'Member-only product discounts',
+                        'Early access to select collections and experiences',
+                    ]}
+                    disclaimer="Subscription automatically renews monthly until canceled in accordance with our Subscription and Cancellation Policy."
+                    ctaText="Begin Your Membership"
+                    ctaHref={pathTo('/membership')}
+                />
+                <SubscriptionCard
+                    name="Premium Mindfulness Monthly"
+                    price="$79 per month"
+                    tagline="An elevated monthly wellness experience."
+                    description="Premium Mindfulness Monthly surrounds you with intentional fragrance, reflection, and renewal—wherever life takes you. Created for individuals who want to make mindfulness, faith, and intentional self-care part of their everyday lifestyle."
+                    benefits={[
+                        'One rotating Signature Candle each month',
+                        'One Vehicle Diffuser each month',
+                        'Exclusive guided journal content',
+                        'Monthly affirmations and wellness resources',
+                        'One Reed Diffuser every quarter',
+                        'Premium member discounts',
+                        'Early access to new and limited-edition collections',
+                    ]}
+                    disclaimer="Subscription automatically renews monthly until canceled in accordance with our Subscription and Cancellation Policy."
+                    ctaText="Choose Premium Mindfulness"
+                    ctaHref={pathTo('/membership')}
+                    featured={true}
+                />
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Programs -->
     <section class="section-padding bg-cream">
         <div class="container-narrow">
             <SectionHeading
-                eyebrow="Discover Mindfulness"
-                title="More Than Products. Meaningful Experiences."
-                description="Every Mindfulness experience is thoughtfully designed to create moments of peace, reflection, and connection."
+                eyebrow="Beyond the Store"
+                title="Wellness Experiences for Organizations & Communities"
                 align="center"
             />
-            <div class="grid gap-8 sm:grid-cols-2">
-                {
-                    pages.map((page) => (
-                        <a href={pathTo(page.href)} class="card group no-underline block">
-                            <div class="aspect-[16/10] overflow-hidden relative">
-                                <img src={page.image} alt={page.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
-                                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
-                                <span class="absolute top-5 left-5 px-4 py-1.5 bg-white/90 backdrop-blur-sm text-[0.625rem] uppercase tracking-[0.15em] text-charcoal font-semibold rounded-full">
-                                    {page.tag}
-                                </span>
-                            </div>
-                            <div class="p-8 sm:p-10">
-                                <h3 class="text-charcoal mb-3 group-hover:text-sage-dark transition-colors duration-300">{page.title}</h3>
-                                <p class="text-warm-gray leading-relaxed font-light">{page.description}</p>
-                                <span class="inline-flex items-center gap-2 mt-6 text-[0.6875rem] uppercase tracking-[0.15em] text-gold-dark font-semibold group-hover:gap-3 transition-all duration-300">
-                                    Learn more
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </span>
-                            </div>
-                        </a>
-                    ))
-                }
-            </div>
-        </div>
-    </section>
-
-    <!-- Quote section -->
-    <section class="section-padding section-bg-stone">
-        <div class="container-narrow">
-            <QuoteBlock
-                quote="Because sometimes the most important appointment on your calendar is the one you make with yourself."
-                author="The Mindfulness Promise"
-            />
-        </div>
-    </section>
-
-    <!-- Quick links -->
-    <section class="section-padding bg-cream">
-        <div class="container-narrow">
             <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                <a href={pathTo('/membership')} class="card-static p-8 text-center no-underline group hover:shadow-lg transition-all duration-500">
-                    <div class="w-14 h-14 rounded-full bg-sage-dark/8 flex items-center justify-center mx-auto mb-5 group-hover:bg-sage-dark/15 transition-colors">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-sage-dark"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="currentColor" stroke-width="1.5"/></svg>
-                    </div>
-                    <h3 class="text-base mb-2">Join the Community</h3>
-                    <p class="text-warm-gray text-sm">Membership from $29/mo</p>
-                </a>
-                <a href={pathTo('/healthcare')} class="card-static p-8 text-center no-underline group hover:shadow-lg transition-all duration-500">
-                    <div class="w-14 h-14 rounded-full bg-sage-dark/8 flex items-center justify-center mx-auto mb-5 group-hover:bg-sage-dark/15 transition-colors">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-sage-dark"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                    </div>
-                    <h3 class="text-base mb-2">Healthcare Wellness</h3>
-                    <p class="text-warm-gray text-sm">Flame-free comfort</p>
-                </a>
-                <a href={pathTo('/corporate')} class="card-static p-8 text-center no-underline group hover:shadow-lg transition-all duration-500">
-                    <div class="w-14 h-14 rounded-full bg-sage-dark/8 flex items-center justify-center mx-auto mb-5 group-hover:bg-sage-dark/15 transition-colors">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-sage-dark"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m8 0H8m8 0v6a2 2 0 01-2 2H10a2 2 0 01-2-2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                    </div>
-                    <h3 class="text-base mb-2">Corporate Gifting</h3>
-                    <p class="text-warm-gray text-sm">25 to 25,000+ gifts</p>
-                </a>
-                <a href={pathTo('/fundraising')} class="card-static p-8 text-center no-underline group hover:shadow-lg transition-all duration-500">
-                    <div class="w-14 h-14 rounded-full bg-sage-dark/8 flex items-center justify-center mx-auto mb-5 group-hover:bg-sage-dark/15 transition-colors">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-sage-dark"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                    </div>
-                    <h3 class="text-base mb-2">Fundraising</h3>
-                    <p class="text-warm-gray text-sm">Shop to support a cause</p>
-                </a>
+                {partnerLinks.map((link) => (
+                    <a href={pathTo(link.href)} class="card-static p-8 no-underline group hover:shadow-lg transition-all duration-500 text-center">
+                        <span class="inline-block px-3 py-1 text-[0.625rem] uppercase tracking-[0.15em] bg-sage-dark/8 text-sage-dark rounded-full mb-4 font-semibold">{link.tag}</span>
+                        <h3 class="text-charcoal mb-3 group-hover:text-sage-dark transition-colors">{link.title}</h3>
+                        <p class="text-warm-gray text-sm leading-relaxed font-light">{link.description}</p>
+                    </a>
+                ))}
             </div>
         </div>
     </section>
+
+    <!-- 11. Impact -->
+    <ImpactSection />
+
+    <!-- 12. Testimonials -->
+    <TestimonialSection />
+
+    <!-- Final CTA -->
+    <CTABand title="Begin Your Mindfulness Journey" subtitle="Faith-centered wellness experiences designed to bring peace, reflection, and renewal into every season of life.">
+        <a href="https://mindfulnesscandle.store/" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-gold">Shop the Collection</a>
+        <a href={pathTo('/contact')} class="btn btn-lg btn-outline text-cream border-cream/60 hover:bg-cream/10 hover:text-cream">Partner With Us</a>
+    </CTABand>
 </Layout>

@@ -1,0 +1,44 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SectionHeading from '../../components/mindfulness/SectionHeading.astro';
+import { pathTo } from '../../utils/paths';
+---
+
+<Layout title="Subscription and Cancellation Policy" description="Mindfulness Monthly and Premium Mindfulness Monthly subscription and cancellation policy.">
+    <section class="section-padding bg-cream pt-32">
+        <div class="container-narrow max-w-3xl mx-auto">
+            <SectionHeading
+                eyebrow="Policies"
+                title="Subscription and Cancellation Policy"
+                align="center"
+            />
+
+            <div class="card-static p-8 sm:p-12 space-y-6 text-warm-gray leading-relaxed font-light">
+                <p>
+                    Mindfulness Monthly and Premium Mindfulness Monthly are recurring subscription programs.
+                </p>
+                <p>
+                    By enrolling, you authorize Mindfulness Candle Collection to charge your selected payment method automatically at the beginning of each billing period until your subscription is canceled.
+                </p>
+                <p>
+                    You may cancel your subscription before the next scheduled billing date by accessing your customer account or contacting our customer-care team at <a href="mailto:info@mindfulnesscandle.store" class="text-sage-dark font-medium">info@mindfulnesscandle.store</a>.
+                </p>
+                <p>
+                    Cancellation requests received after an order has been processed may apply to the following billing period. Orders that have already entered fulfillment cannot ordinarily be canceled.
+                </p>
+                <p>
+                    Subscription products, fragrances, and benefits may vary based on availability. Any material changes to pricing or subscription terms will be communicated before they take effect.
+                </p>
+                <p>
+                    For assistance, contact us at <a href="mailto:info@mindfulnesscandle.store" class="text-sage-dark font-medium">info@mindfulnesscandle.store</a>.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap gap-4 justify-center mt-10">
+                <a href={pathTo('/membership')} class="btn">View Membership</a>
+                <a href={pathTo('/policies/shipping')} class="btn btn-outline text-charcoal border-charcoal/30">Shipping Policy</a>
+                <a href={pathTo('/policies/returns')} class="btn btn-outline text-charcoal border-charcoal/30">Return Policy</a>
+            </div>
+        </div>
+    </section>
+</Layout>

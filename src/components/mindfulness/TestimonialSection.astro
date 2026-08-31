@@ -1,0 +1,59 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { pathTo } from '../../utils/paths';
+
+interface Props {
+    id?: string;
+}
+
+const { id = 'testimonials' } = Astro.props;
+
+const testimonials = [
+    {
+        quote: 'The Caregiver Wellness Bundle arrived at exactly the right moment. It felt like someone understood what I was carrying — and gave me permission to pause.',
+        author: 'Verified Customer',
+        context: 'Caregiver Wellness Bundle',
+    },
+    {
+        quote: 'I light my Signature Candle during my morning prayer time. It has become a sacred ritual that centers my entire day.',
+        author: 'Verified Customer',
+        context: 'Signature Journey Collection',
+    },
+    {
+        quote: 'We ordered flame-free bundles for our patient welcome program. The response has been overwhelmingly positive — families feel seen and cared for.',
+        author: 'Healthcare Partner',
+        context: 'Mindfulness Healthcare',
+    },
+];
+---
+
+<section id={id} class="section-padding section-bg-stone">
+    <div class="container-narrow">
+        <SectionHeading
+            eyebrow="Customer Stories"
+            title="What Our Customers Are Saying"
+            description="Every person has a story. We are honored to become part of the moments when our customers choose to pause, breathe, reflect, give, and begin again."
+            align="center"
+        />
+
+        <div class="grid gap-8 lg:grid-cols-3 mb-12">
+            {testimonials.map((item) => (
+                <blockquote class="card-static p-8 sm:p-10 flex flex-col h-full">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="text-gold/40 mb-6">
+                        <path d="M10 8H6a4 4 0 00-4 4v4h6v-4H8a2 2 0 012-2V8zm10 0h-4a4 4 0 00-4 4v4h6v-4h-4a2 2 0 012-2V8z" fill="currentColor"/>
+                    </svg>
+                    <p class="quote-serif flex-1 mb-6 text-lg">{item.quote}</p>
+                    <footer>
+                        <p class="text-sm font-semibold text-charcoal">{item.author}</p>
+                        <p class="text-xs text-muted mt-1">{item.context}</p>
+                    </footer>
+                </blockquote>
+            ))}
+        </div>
+
+        <div class="flex flex-wrap gap-4 justify-center">
+            <a href={pathTo('/stories')} class="btn btn-lg">Read Mindfulness Stories</a>
+            <a href="mailto:info@mindfulnesscandle.store?subject=Share%20My%20Mindfulness%20Story" class="btn btn-lg btn-outline text-charcoal border-charcoal/30 hover:bg-charcoal/5">Share Your Mindfulness Story</a>
+        </div>
+    </div>
+</section>

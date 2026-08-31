@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeading from '../components/mindfulness/SectionHeading.astro';
+import TestimonialSection from '../components/mindfulness/TestimonialSection.astro';
+import CTABand from '../components/mindfulness/CTABand.astro';
+---
+
+<Layout title="Mindfulness Stories" description="Read authentic stories from Mindfulness Candle Collection customers and partners.">
+    <section class="section-padding section-bg-stone pt-32">
+        <div class="container-narrow text-center max-w-3xl mx-auto">
+            <SectionHeading
+                eyebrow="Customer Stories"
+                title="Moments of Pause, Reflection, and Renewal"
+                description="Every person has a story. We are honored to become part of the moments when our customers choose to pause, breathe, reflect, give, and begin again. Use only authenticated testimonials for which the customer has authorized publication."
+                align="center"
+            />
+        </div>
+    </section>
+
+    <TestimonialSection />
+
+    <CTABand title="Share Your Story" subtitle="Has Mindfulness been part of your wellness journey? We'd love to hear from you.">
+        <a href="mailto:info@mindfulnesscandle.store?subject=Share%20My%20Mindfulness%20Story" class="btn btn-lg btn-gold">Share Your Mindfulness Story</a>
+    </CTABand>
+</Layout>
