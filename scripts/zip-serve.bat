@@ -11,19 +11,18 @@ echo.
 
 if not exist "index.html" (
   echo   ERROR: index.html not found in this folder.
-  echo   Make sure you unzipped fully and run this file from the mockup root.
   pause
   exit /b 1
 )
 
-echo   Opening mockup in your default browser...
-echo.
-echo   OPTION A: Opening index.html directly (styles are embedded)
-start "" "%CD%\index.html"
+if not exist "images\mindfulness\hero-home.jpg" (
+  echo   ERROR: images folder missing. Re-download the latest zip and unzip fully.
+  pause
+  exit /b 1
+)
 
-echo.
-echo   OPTION B: Starting local server at http://127.0.0.1:%PORT%/
-echo   (Better for full navigation between pages)
+echo   Starting preview at http://127.0.0.1:%PORT%/
+echo   Keep this window open while viewing.
 echo.
 
 where py >nul 2>nul
@@ -31,8 +30,8 @@ if %ERRORLEVEL%==0 (
   start /MIN "Mindfulness Server" cmd /c "py -m http.server %PORT% --bind 127.0.0.1"
   timeout /t 2 /nobreak > nul
   start "" "http://127.0.0.1:%PORT%/"
-  echo   Server running in minimized window. Close it when finished.
-  pause
+  echo   Server running. Press any key to stop...
+  pause > nul
   goto :eof
 )
 
@@ -41,10 +40,11 @@ if %ERRORLEVEL%==0 (
   start /MIN "Mindfulness Server" cmd /c "python -m http.server %PORT% --bind 127.0.0.1"
   timeout /t 2 /nobreak > nul
   start "" "http://127.0.0.1:%PORT%/"
-  echo   Server running in minimized window. Close it when finished.
-  pause
+  echo   Server running. Press any key to stop...
+  pause > nul
   goto :eof
 )
 
-echo   Python not found. index.html was opened directly with embedded styles.
+echo   Python not found. Opening index.html directly instead...
+start "" "%CD%\index.html"
 pause

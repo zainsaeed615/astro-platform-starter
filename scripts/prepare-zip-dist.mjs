@@ -81,6 +81,12 @@ function rewriteLinks(html, prefix, onRootPage) {
         .replace(/href="\/favicon\.svg"/g, `href="${prefix}favicon.svg"`);
 }
 
+function rewriteAssetSources(html, prefix) {
+    return html
+        .replace(/src="\/images\//g, `src="${prefix}images/`)
+        .replace(/src="\/favicon\.svg"/g, `src="${prefix}favicon.svg"`);
+}
+
 const htmlFiles = await walk(distDir);
 
 for (const file of htmlFiles) {
@@ -89,6 +95,7 @@ for (const file of htmlFiles) {
     const original = await readFile(file, 'utf8');
     let updated = await inlineStylesheets(original);
     updated = rewriteLinks(updated, prefix, onRootPage);
+    updated = rewriteAssetSources(updated, prefix);
 
     await writeFile(file, updated);
     console.log(`prepared ${path.relative(distDir, file)}`);
