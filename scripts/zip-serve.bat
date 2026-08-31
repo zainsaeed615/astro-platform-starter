@@ -16,36 +16,35 @@ if not exist "index.html" (
   exit /b 1
 )
 
-if not exist "_astro" (
-  echo   ERROR: _astro folder not found. Re-download the latest zip file.
-  pause
-  exit /b 1
-)
-
-echo   Starting local preview server...
-echo   Open: http://127.0.0.1:%PORT%/
-echo   Press Ctrl+C to stop.
+echo   Opening mockup in your default browser...
 echo.
+echo   OPTION A: Opening index.html directly (styles are embedded)
+start "" "%CD%\index.html"
 
-start "" "http://127.0.0.1:%PORT%/"
+echo.
+echo   OPTION B: Starting local server at http://127.0.0.1:%PORT%/
+echo   (Better for full navigation between pages)
+echo.
 
 where py >nul 2>nul
 if %ERRORLEVEL%==0 (
-  py -m http.server %PORT% --bind 127.0.0.1
+  start /MIN "Mindfulness Server" cmd /c "py -m http.server %PORT% --bind 127.0.0.1"
+  timeout /t 2 /nobreak > nul
+  start "" "http://127.0.0.1:%PORT%/"
+  echo   Server running in minimized window. Close it when finished.
+  pause
   goto :eof
 )
 
 where python >nul 2>nul
 if %ERRORLEVEL%==0 (
-  python -m http.server %PORT% --bind 127.0.0.1
+  start /MIN "Mindfulness Server" cmd /c "python -m http.server %PORT% --bind 127.0.0.1"
+  timeout /t 2 /nobreak > nul
+  start "" "http://127.0.0.1:%PORT%/"
+  echo   Server running in minimized window. Close it when finished.
+  pause
   goto :eof
 )
 
-where npx >nul 2>nul
-if %ERRORLEVEL%==0 (
-  npx --yes serve -l %PORT% .
-  goto :eof
-)
-
-echo   ERROR: Install Python 3 or Node.js, then double-click this file again.
+echo   Python not found. index.html was opened directly with embedded styles.
 pause

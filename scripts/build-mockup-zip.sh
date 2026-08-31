@@ -17,6 +17,7 @@ rm -rf src/pages/api src/pages/blobs src/pages/edge src/pages/image-cdn src/page
 
 npm ci --silent
 ZIP_DEPLOY=true npm run build --silent
+node "$ROOT/scripts/prepare-zip-dist.mjs" dist
 
 cp "$ROOT/scripts/zip-README.txt" dist/README.txt
 cp "$ROOT/scripts/zip-serve.bat" dist/START-MOCKUP.bat
