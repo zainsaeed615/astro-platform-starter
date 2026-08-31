@@ -6,6 +6,10 @@ export function pathTo(href: string): string {
     const base = import.meta.env.BASE_URL;
     const normalized = href.replace(/^\//, '');
 
+    if (base === '/') {
+        return normalized ? `/${normalized}` : '/';
+    }
+
     if (base === './') {
         return normalized ? `./${normalized}` : './';
     }

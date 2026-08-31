@@ -2,7 +2,7 @@
 # Start a local server to preview the Mindfulness mockup.
 # Requires Python 3 (preinstalled on macOS/Linux) or Node.js.
 
-PORT="${1:-8080}"
+PORT="${1:-5500}"
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
 echo ""

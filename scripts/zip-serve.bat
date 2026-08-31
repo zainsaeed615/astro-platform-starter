@@ -1,44 +1,51 @@
 @echo off
 setlocal
-set PORT=8080
+set PORT=5500
 cd /d "%~dp0"
 
 echo.
 echo   Mindfulness Candle Collection Mockup
 echo   ------------------------------------
-echo   Starting local preview server...
+echo   Folder: %CD%
 echo.
 
-where python >nul 2>nul
-if %ERRORLEVEL%==0 (
-  echo   Open in your browser: http://localhost:%PORT%
-  echo   Press Ctrl+C to stop.
-  echo.
-  start http://localhost:%PORT%
-  python -m http.server %PORT%
-  goto :eof
+if not exist "index.html" (
+  echo   ERROR: index.html not found in this folder.
+  echo   Make sure you unzipped fully and run this file from the mockup root.
+  pause
+  exit /b 1
 )
+
+if not exist "_astro" (
+  echo   ERROR: _astro folder not found. Re-download the latest zip file.
+  pause
+  exit /b 1
+)
+
+echo   Starting local preview server...
+echo   Open: http://127.0.0.1:%PORT%/
+echo   Press Ctrl+C to stop.
+echo.
+
+start "" "http://127.0.0.1:%PORT%/"
 
 where py >nul 2>nul
 if %ERRORLEVEL%==0 (
-  echo   Open in your browser: http://localhost:%PORT%
-  echo   Press Ctrl+C to stop.
-  echo.
-  start http://localhost:%PORT%
-  py -m http.server %PORT%
+  py -m http.server %PORT% --bind 127.0.0.1
+  goto :eof
+)
+
+where python >nul 2>nul
+if %ERRORLEVEL%==0 (
+  python -m http.server %PORT% --bind 127.0.0.1
   goto :eof
 )
 
 where npx >nul 2>nul
 if %ERRORLEVEL%==0 (
-  echo   Open in your browser: http://localhost:%PORT%
-  echo   Press Ctrl+C to stop.
-  echo.
-  start http://localhost:%PORT%
   npx --yes serve -l %PORT% .
   goto :eof
 )
 
-echo   ERROR: Install Python or Node.js, then double-click this file again.
-echo   Or open index.html directly (styles use relative paths).
+echo   ERROR: Install Python 3 or Node.js, then double-click this file again.
 pause

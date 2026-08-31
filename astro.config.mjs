@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 const isStaticDeploy = process.env.STATIC_DEPLOY === 'true';
 const isZipDeploy = process.env.ZIP_DEPLOY === 'true';
-const deployBase = isZipDeploy ? './' : (process.env.DEPLOY_BASE || '/astro-platform-starter/');
+const deployBase = isZipDeploy ? '/' : (process.env.DEPLOY_BASE || '/astro-platform-starter/');
 
 // https://astro.build/config
 export default defineConfig({
