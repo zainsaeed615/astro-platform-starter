@@ -1,0 +1,625 @@
+{% comment %}
+  LittleJoy & Co. — Out for delivery notification
+  Paste this into Shopify Admin → Settings → Notifications → Customer notifications → Out for delivery.
+
+  Brand: hellolittlejoy.com
+  Palette: sand #F3EEE6, taupe #A89887, bronze #AB794E, sage #9BAF9A
+  Headings: Cinzel  ·  Body: Noto Sans
+{% endcomment %}
+
+{% if fulfillment.item_count == item_count %}
+  {% capture email_title %}Your order is out for delivery{% endcapture %}
+  {% capture email_body %}Your order is out for delivery. Track your shipment to see the delivery status.{% endcapture %}
+{% elsif fulfillment.item_count > 1 %}
+  {% if fulfillment_status == 'fulfilled' %}
+    {% capture email_title %}The last items in your order are out for delivery{% endcapture %}
+    {% capture email_body %}The last items in your order are out for delivery. Track your shipment to see the delivery status.{% endcapture %}
+  {% else %}
+    {% capture email_title %}Some items in your order are out for delivery{% endcapture %}
+    {% capture email_body %}Some items in your order are out for delivery. Track your shipment to see the delivery status.{% endcapture %}
+  {% endif %}
+{% else %}
+  {% if fulfillment_status == 'fulfilled' %}
+    {% capture email_title %}The last item in your order is out for delivery{% endcapture %}
+    {% capture email_body %}The last item in your order is out for delivery. Track your shipment to see the delivery status.{% endcapture %}
+  {% else %}
+    {% capture email_title %}One item in your order is out for delivery{% endcapture %}
+    {% capture email_body %}One item in your order is out for delivery. Track your shipment to see the delivery status.{% endcapture %}
+  {% endif %}
+{% endif %}
+
+{% capture email_emphasis %}Estimated delivery date: <strong>{{ fulfillment.estimated_delivery_at | date: format: 'date' }}</strong>{% endcapture %}
+
+{% capture accent %}{{ shop.email_accent_color | default: '#A89887' }}{% endcapture %}
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <title>{{ email_title }}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Noto+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <style type="text/css" data-premailer="ignore">
+    :root { color-scheme: light; supported-color-schemes: light; }
+    html, body { margin: 0 !important; padding: 0 !important; height: 100% !important; width: 100% !important; }
+    * { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; display: block; }
+    a { text-decoration: none; }
+    a[x-apple-data-detectors],
+    #MessageViewBody a { color: inherit !important; text-decoration: none !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important; }
+    u + #body a { color: inherit; text-decoration: none; font-size: inherit; font-family: inherit; font-weight: inherit; line-height: inherit; }
+
+    .hover-btn:hover { opacity: 0.92 !important; }
+    .hover-link:hover { text-decoration: underline !important; }
+
+    @media only screen and (max-width: 620px) {
+      .email-shell { width: 100% !important; max-width: 100% !important; }
+      .email-card { width: 100% !important; border-radius: 0 !important; }
+      .px { padding-left: 22px !important; padding-right: 22px !important; }
+      .hero-title { font-size: 26px !important; line-height: 34px !important; }
+      .stack,
+      .stack-td {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .stack-td { border-right: 0 !important; padding-bottom: 16px !important; }
+      .cta-td { padding-right: 0 !important; padding-bottom: 12px !important; }
+      .btn-link { display: block !important; width: 100% !important; text-align: center !important; }
+      .item-img { padding-right: 14px !important; }
+      .item-img img { width: 64px !important; height: 64px !important; }
+      .hide-mobile { display: none !important; }
+      .center-mobile { text-align: center !important; }
+      .step-label { font-size: 9px !important; letter-spacing: 0.6px !important; }
+    }
+  </style>
+  <!--[if mso]>
+  <style type="text/css">
+    body, table, td, a, p, span, h1, h2, h3 { font-family: Georgia, serif !important; }
+    .btn-link { padding: 16px 28px !important; }
+  </style>
+  <![endif]-->
+</head>
+<body id="body" style="margin:0;padding:0;background-color:#F3EEE6;width:100%;">
+  <div style="display:none;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;mso-hide:all;">
+    {{ email_body }}{% if fulfillment.estimated_delivery_at %} {{ email_emphasis | strip_html }}{% endif %}
+  </div>
+
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#F3EEE6;margin:0;padding:0;width:100%;">
+    <tr>
+      <td align="center" style="padding:32px 12px 48px;">
+        <!--[if mso]>
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" align="center"><tr><td>
+        <![endif]-->
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" class="email-shell" style="width:100%;max-width:600px;margin:0 auto;">
+
+          <!-- Wordmark header -->
+          <tr>
+            <td align="center" class="px" style="padding:8px 40px 20px;">
+              <p style="margin:0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:2.8px;text-transform:uppercase;color:#A89887;">
+                Premium modern baby bags
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="email-card" style="background-color:#ffffff;border:1px solid #E6DDD2;border-radius:4px;overflow:hidden;">
+
+                <!-- Logo -->
+                <tr>
+                  <td align="center" class="px" style="padding:36px 40px 20px;background-color:#ffffff;">
+                    {%- if shop.email_logo_url %}
+                      <a href="{{ shop.url }}" target="_blank" style="text-decoration:none;">
+                        <img src="{{ shop.email_logo_url }}" alt="{{ shop.name }}" width="{{ shop.email_logo_width }}" style="width:{{ shop.email_logo_width }}px;max-width:180px;height:auto;margin:0 auto;">
+                      </a>
+                    {%- else %}
+                      <h1 style="margin:0;font-family:Cinzel,Georgia,'Times New Roman',serif;font-size:22px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:#3A322C;">
+                        <a href="{{ shop.url }}" target="_blank" style="color:#3A322C;text-decoration:none;">{{ shop.name }}</a>
+                      </h1>
+                    {%- endif %}
+                  </td>
+                </tr>
+
+                <!-- Order chip -->
+                <tr>
+                  <td align="center" class="px" style="padding:0 40px 28px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="border:1px solid #E6DDD2;border-radius:20px;padding:6px 16px;">
+                          <p style="margin:0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:#7A6F66;">
+                            Order {{ order_name }}{% if po_number %} · PO #{{ po_number }}{% endif %}
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <!-- Sage status banner -->
+                <tr>
+                  <td style="background-color:#9BAF9A;padding:0;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                      <tr>
+                        <td align="center" class="px" style="padding:18px 40px;">
+                          <p style="margin:0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:3.2px;text-transform:uppercase;color:#ffffff;">
+                            Out for delivery
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <!-- Hero copy -->
+                <tr>
+                  <td class="px" style="padding:40px 48px 8px;background-color:#FAF7F2;">
+                    {% if customer.first_name %}
+                      <p style="margin:0 0 14px;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:14px;line-height:22px;color:#7A6F66;">
+                        Hi {{ customer.first_name }},
+                      </p>
+                    {% endif %}
+                    <h2 class="hero-title" style="margin:0 0 14px;font-family:Cinzel,Georgia,'Times New Roman',serif;font-size:32px;line-height:40px;font-weight:500;letter-spacing:0.4px;color:#3A322C;">
+                      {{ email_title }}
+                    </h2>
+                    <p style="margin:0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:16px;line-height:26px;color:#7A6F66;">
+                      {{ email_body }}
+                    </p>
+                  </td>
+                </tr>
+
+                <!-- Progress -->
+                <tr>
+                  <td class="px" style="padding:28px 48px 8px;background-color:#FAF7F2;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                      <tr>
+                        <td style="padding:0 4px 10px;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                              <td width="12" valign="middle">
+                                <div style="width:10px;height:10px;background-color:#9BAF9A;border-radius:10px;line-height:10px;font-size:10px;">&nbsp;</div>
+                              </td>
+                              <td valign="middle" style="padding:0 4px;">
+                                <div style="height:2px;background-color:#9BAF9A;line-height:2px;font-size:2px;">&nbsp;</div>
+                              </td>
+                              <td width="12" valign="middle">
+                                <div style="width:10px;height:10px;background-color:#9BAF9A;border-radius:10px;line-height:10px;font-size:10px;">&nbsp;</div>
+                              </td>
+                              <td valign="middle" style="padding:0 4px;">
+                                <div style="height:2px;background-color:#9BAF9A;line-height:2px;font-size:2px;">&nbsp;</div>
+                              </td>
+                              <td width="14" valign="middle">
+                                <div style="width:12px;height:12px;background-color:#AB794E;border-radius:12px;border:2px solid #AB794E;line-height:12px;font-size:10px;">&nbsp;</div>
+                              </td>
+                              <td valign="middle" style="padding:0 4px;">
+                                <div style="height:2px;background-color:#E6DDD2;line-height:2px;font-size:2px;">&nbsp;</div>
+                              </td>
+                              <td width="12" valign="middle">
+                                <div style="width:10px;height:10px;background-color:#ffffff;border:2px solid #E6DDD2;border-radius:10px;line-height:10px;font-size:10px;">&nbsp;</div>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                              <td width="25%" align="left" class="step-label" style="font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#9BAF9A;">Ordered</td>
+                              <td width="25%" align="center" class="step-label" style="font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#9BAF9A;">Shipped</td>
+                              <td width="25%" align="center" class="step-label" style="font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:1.1px;text-transform:uppercase;color:#AB794E;font-weight:600;">On the way</td>
+                              <td width="25%" align="right" class="step-label" style="font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#C4BBB2;">Delivered</td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                {% if fulfillment.estimated_delivery_at %}
+                <!-- Estimated delivery -->
+                <tr>
+                  <td class="px" style="padding:28px 48px 8px;background-color:#FAF7F2;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#ffffff;border:1px solid #E6DDD2;">
+                      <tr>
+                        <td class="stack-td" style="padding:22px 24px;border-right:1px solid #E6DDD2;" width="50%" valign="top">
+                          <p style="margin:0 0 6px;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#A89887;">
+                            Estimated arrival
+                          </p>
+                          <p style="margin:0;font-family:Cinzel,Georgia,'Times New Roman',serif;font-size:18px;line-height:26px;font-weight:500;color:#3A322C;">
+                            {{ fulfillment.estimated_delivery_at | date: format: 'date' }}
+                          </p>
+                        </td>
+                        <td class="stack-td" style="padding:22px 24px;" width="50%" valign="top">
+                          <p style="margin:0 0 6px;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#A89887;">
+                            {% if fulfillment.tracking_company %}Carrier{% else %}Status{% endif %}
+                          </p>
+                          <p style="margin:0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:15px;line-height:24px;color:#3A322C;">
+                            {% if fulfillment.tracking_company %}
+                              {{ fulfillment.tracking_company }}
+                            {% else %}
+                              {{ email_emphasis }}
+                            {% endif %}
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                {% endif %}
+
+                <!-- Actions -->
+                <tr>
+                  <td class="px" style="padding:28px 48px 12px;background-color:#FAF7F2;">
+                    {% if order_status_url %}
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                        <tr>
+                          <td class="cta-td" align="left" valign="middle" style="padding-right:16px;">
+                            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                              <tr>
+                                <td align="center" class="hover-btn" style="background-color:{{ accent }};border-radius:2px;">
+                                  <!--[if mso]>
+                                  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{ order_status_url }}" style="height:50px;v-text-anchor:middle;width:220px;" arcsize="4%" stroke="f" fillcolor="{{ accent }}">
+                                  <w:anchorlock/>
+                                  <center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;letter-spacing:1.5px;">TRACK MY SHIPMENT</center>
+                                  </v:roundrect>
+                                  <![endif]-->
+                                  <!--[if !mso]><!-->
+                                  <a href="{{ order_status_url }}" target="_blank" class="btn-link" style="display:inline-block;padding:16px 28px;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:#ffffff;text-decoration:none;">
+                                    Track my shipment
+                                  </a>
+                                  <!--<![endif]-->
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          {% if shop.url %}
+                          <td class="stack-td" align="left" valign="middle">
+                            <p style="margin:0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:14px;color:#7A6F66;">
+                              or <a href="{{ shop.url }}" target="_blank" class="hover-link" style="color:{{ accent }};text-decoration:underline;">Visit our store</a>
+                            </p>
+                          </td>
+                          {% endif %}
+                        </tr>
+                      </table>
+                    {% elsif shop.url %}
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td align="center" class="hover-btn" style="background-color:{{ accent }};border-radius:2px;">
+                            <a href="{{ shop.url }}" target="_blank" class="btn-link" style="display:inline-block;padding:16px 28px;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:#ffffff;text-decoration:none;">
+                              Visit our store
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    {% endif %}
+                  </td>
+                </tr>
+
+                {% if fulfillment.tracking_numbers.size > 0 %}
+                <!-- Tracking -->
+                <tr>
+                  <td class="px" style="padding:8px 48px 36px;background-color:#FAF7F2;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#F3EEE6;border:1px dashed #D4C8B8;">
+                      <tr>
+                        <td style="padding:18px 22px;">
+                          <p style="margin:0 0 6px;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#A89887;">
+                            Tracking
+                          </p>
+                          {% if fulfillment.tracking_numbers.size == 1 and fulfillment.tracking_company and fulfillment.tracking_url %}
+                            <p style="margin:0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:14px;line-height:22px;color:#3A322C;">
+                              {{ fulfillment.tracking_company }}
+                              ·
+                              <a href="{{ fulfillment.tracking_url }}" target="_blank" class="hover-link" style="color:{{ accent }};font-weight:600;letter-spacing:0.3px;text-decoration:underline;">{{ fulfillment.tracking_numbers.first }}</a>
+                            </p>
+                          {% elsif fulfillment.tracking_numbers.size == 1 %}
+                            <p style="margin:0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:14px;line-height:22px;color:#3A322C;">
+                              Tracking number:
+                              <span style="font-weight:600;">{{ fulfillment.tracking_numbers.first }}</span>
+                            </p>
+                          {% else %}
+                            <p style="margin:0 0 8px;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:14px;line-height:22px;color:#3A322C;">
+                              {{ fulfillment.tracking_company }} tracking numbers
+                            </p>
+                            {% for tracking_number in fulfillment.tracking_numbers %}
+                              <p style="margin:0 0 4px;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:14px;line-height:22px;">
+                                {% if fulfillment.tracking_urls[forloop.index0] %}
+                                  <a href="{{ fulfillment.tracking_urls[forloop.index0] }}" target="_blank" class="hover-link" style="color:{{ accent }};font-weight:600;text-decoration:underline;">{{ tracking_number }}</a>
+                                {% else %}
+                                  <span style="color:#3A322C;font-weight:600;">{{ tracking_number }}</span>
+                                {% endif %}
+                              </p>
+                            {% endfor %}
+                          {% endif %}
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                {% else %}
+                <tr>
+                  <td style="background-color:#FAF7F2;font-size:1px;line-height:24px;">&nbsp;</td>
+                </tr>
+                {% endif %}
+
+                {% if shipping_address %}
+                <!-- Delivering to -->
+                <tr>
+                  <td class="px" style="padding:0 48px 8px;background-color:#ffffff;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                      <tr>
+                        <td style="padding:32px 0 16px;border-top:1px solid #E6DDD2;">
+                          <p style="margin:0 0 10px;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:2.2px;text-transform:uppercase;color:#A89887;">
+                            Delivering to
+                          </p>
+                          <p style="margin:0;font-family:Cinzel,Georgia,'Times New Roman',serif;font-size:16px;line-height:24px;font-weight:500;color:#3A322C;">
+                            {{ shipping_address.name }}
+                          </p>
+                          <p style="margin:6px 0 0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:14px;line-height:22px;color:#7A6F66;">
+                            {{ shipping_address.street }}<br>
+                            {{ shipping_address.city }}{% if shipping_address.province %}, {{ shipping_address.province }}{% endif %} {{ shipping_address.zip }}<br>
+                            {{ shipping_address.country }}
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                {% endif %}
+
+                <!-- Items -->
+                <tr>
+                  <td class="px" style="padding:24px 48px 8px;background-color:#ffffff;">
+                    <p style="margin:0 0 6px;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:2.2px;text-transform:uppercase;color:#A89887;">
+                      This shipment
+                    </p>
+                    <h3 style="margin:0 0 20px;font-family:Cinzel,Georgia,'Times New Roman',serif;font-size:22px;line-height:28px;font-weight:500;color:#3A322C;">
+                      Items on the way
+                    </h3>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="px" style="padding:0 48px 16px;background-color:#ffffff;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                      {% for line in fulfillment.fulfillment_line_items %}
+                        {% comment %} Skip child add-ons since they will be rendered under the parent line item {% endcomment %}
+                        {% unless line.line_item.nested_line_child? %}
+
+                          {% assign is_parent = false %}
+                          {% assign is_nested_line_parent = line.line_item.nested_line_parent? %}
+                          {% if line.line_item.bundle_parent? or line.line_item.nested_line_parent? %}
+                            {% assign is_parent = true %}
+                          {% endif %}
+
+                          {% if line.line_item.presentment_title %}
+                            {% assign line_title = line.line_item.presentment_title %}
+                          {% elsif line.line_item.title %}
+                            {% assign line_title = line.line_item.title %}
+                          {% else %}
+                            {% assign line_title = line.line_item.product.title %}
+                          {% endif %}
+                          {% if line.quantity < line.line_item.quantity %}
+                            {% capture line_display %}{{ line.quantity }} of {{ line.line_item.quantity }}{% endcapture %}
+                          {% else %}
+                            {% assign line_display = line.line_item.quantity %}
+                          {% endif %}
+
+                          <tr>
+                            <td style="padding:0 0 18px;">
+                              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border:1px solid #E6DDD2;background-color:#FAF7F2;">
+                                <tr>
+                                  <td class="item-img" valign="top" width="92" style="padding:16px 0 16px 16px;">
+                                    {% if line.line_item.image %}
+                                      <img src="{{ line.line_item | img_url: 'compact_cropped' }}" alt="{{ line_title }}" width="72" height="72" style="width:72px;height:72px;object-fit:cover;border:1px solid #E6DDD2;background-color:#ffffff;">
+                                    {% else %}
+                                      <img src="{{ 'notifications/no-image.png' | shopify_asset_url }}" alt="" width="72" height="72" style="width:72px;height:72px;border:1px solid #E6DDD2;background-color:#ffffff;">
+                                    {% endif %}
+                                  </td>
+                                  <td valign="middle" style="padding:16px 18px 16px 12px;">
+                                    <p style="margin:0 0 4px;font-family:Cinzel,Georgia,'Times New Roman',serif;font-size:16px;line-height:22px;font-weight:500;color:#3A322C;">
+                                      {{ line_title }}
+                                    </p>
+                                    <p style="margin:0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:13px;line-height:20px;color:#7A6F66;">
+                                      Qty {{ line_display }}
+                                      {% if line.line_item.variant.title != 'Default Title' and is_parent == false %}
+                                        · {{ line.line_item.variant.title }}
+                                      {% elsif line.line_item.variant.title != 'Default Title' and line.line_item.nested_line_parent? %}
+                                        · {{ line.line_item.variant.title }}
+                                      {% elsif line.line_item.variant.title != 'Default Title' and line.line_item.bundle_parent? and false == false %}
+                                        · {{ line.line_item.variant.title }}
+                                      {% endif %}
+                                    </p>
+
+                                    {% if false %}
+                                      {% for child_line in line.line_item.bundle_components %}
+                                        {% if child_line.product.title %}
+                                          {% assign item_title = child_line.product.title %}
+                                        {% else %}
+                                          {% assign item_title = child_line.title %}
+                                        {% endif %}
+                                        {% assign item_display = child_line.quantity %}
+                                        <p style="margin:8px 0 0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:13px;line-height:20px;color:#7A6F66;">
+                                          {{ item_display }} × {{ item_title }}
+                                          {% if child_line.variant.title != 'Default Title' %} · {{ child_line.variant.title }}{% endif %}
+                                          {% if child_line.selling_plan_allocation %} · {{ child_line.selling_plan_allocation.selling_plan.name }}{% endif %}
+                                        </p>
+                                      {% endfor %}
+                                    {% else %}
+                                      {% for group in line.line_item.groups %}
+                                        {% if group.deliverable? %}
+                                          <p style="margin:6px 0 0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:12px;color:#A89887;">For: {{ group.display_title }}</p>
+                                        {% else %}
+                                          <p style="margin:6px 0 0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:12px;color:#A89887;">Part of: {{ group.display_title }}</p>
+                                        {% endif %}
+                                      {% endfor %}
+                                    {% endif %}
+
+                                    {% if line.line_item.selling_plan_allocation %}
+                                      <p style="margin:6px 0 0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:12px;color:#A89887;">
+                                        {{ line.line_item.selling_plan_allocation.selling_plan.name }}
+                                      </p>
+                                    {% endif %}
+
+                                    {% if line.line_item.refunded_quantity > 0 %}
+                                      <p style="margin:8px 0 0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:#AB794E;">
+                                        Refunded
+                                      </p>
+                                    {% endif %}
+
+                                    {% if line.line_item.discount_allocations %}
+                                      {% for discount_allocation in line.line_item.discount_allocations %}
+                                        {% if discount_allocation.discount_application.target_selection != 'all' %}
+                                          <p style="margin:8px 0 0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:12px;color:#6F846E;">
+                                            {{ discount_allocation.discount_application.title | upcase }}
+                                            (−{{ discount_allocation.amount | money }})
+                                          </p>
+                                        {% endif %}
+                                      {% endfor %}
+                                    {% endif %}
+                                  </td>
+                                </tr>
+
+                                {% if line.line_item.nested_line_parent? %}
+                                  {% for child_line in line.line_item.nested_lines %}
+                                    {% if child_line.product.title %}
+                                      {% assign item_title = child_line.product.title %}
+                                    {% else %}
+                                      {% assign item_title = child_line.title %}
+                                    {% endif %}
+                                    {% assign item_display = child_line.quantity %}
+                                    <tr>
+                                      <td colspan="2" style="padding:0 16px 14px 16px;border-top:1px solid #E6DDD2;">
+                                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:14px;">
+                                          <tr>
+                                            <td valign="top" width="48" style="padding-right:12px;">
+                                              {% if child_line.image %}
+                                                <img src="{{ child_line | img_url: 'compact_cropped' }}" alt="{{ item_title }}" width="40" height="40" style="width:40px;height:40px;object-fit:cover;border:1px solid #E6DDD2;background-color:#ffffff;">
+                                              {% else %}
+                                                <img src="{{ 'notifications/no-image.png' | shopify_asset_url }}" alt="" width="40" height="40" style="width:40px;height:40px;border:1px solid #E6DDD2;background-color:#ffffff;">
+                                              {% endif %}
+                                            </td>
+                                            <td valign="middle">
+                                              <p style="margin:0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:13px;line-height:20px;color:#3A322C;">
+                                                {{ item_title }} × {{ item_display }}
+                                              </p>
+                                              {% if child_line.variant.title != 'Default Title' %}
+                                                <p style="margin:2px 0 0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:12px;color:#7A6F66;">{{ child_line.variant.title }}</p>
+                                              {% endif %}
+                                              {% if child_line.selling_plan_allocation %}
+                                                <p style="margin:2px 0 0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:12px;color:#A89887;">{{ child_line.selling_plan_allocation.selling_plan.name }}</p>
+                                              {% endif %}
+                                            </td>
+                                          </tr>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                  {% endfor %}
+                                {% endif %}
+                              </table>
+                            </td>
+                          </tr>
+                        {% endunless %}
+                      {% endfor %}
+                    </table>
+                  </td>
+                </tr>
+
+                <!-- Care note -->
+                <tr>
+                  <td class="px" style="padding:8px 48px 40px;background-color:#ffffff;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#F3EEE6;">
+                      <tr>
+                        <td style="padding:22px 24px;">
+                          <p style="margin:0 0 6px;font-family:Cinzel,Georgia,'Times New Roman',serif;font-size:15px;color:#3A322C;">
+                            Made for every journey
+                          </p>
+                          <p style="margin:0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:13px;line-height:21px;color:#7A6F66;">
+                            Your JoyPack is almost home. Keep this email close so you can follow along until it arrives.
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <!-- Footer inside card -->
+                <tr>
+                  <td class="px" style="padding:0 48px 36px;background-color:#ffffff;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                      <tr>
+                        <td style="border-top:1px solid #E6DDD2;padding-top:28px;">
+                          <p style="margin:0 0 10px;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:2.2px;text-transform:uppercase;color:#A89887;">
+                            Need a hand?
+                          </p>
+                          <p style="margin:0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:14px;line-height:22px;color:#7A6F66;">
+                            Reply to this email or write us at
+                            <a href="mailto:{{ shop.email }}" class="hover-link" style="color:{{ accent }};text-decoration:underline;">{{ shop.email }}</a>.
+                            We typically reply within one business day.
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+
+          <!-- Outer footer -->
+          <tr>
+            <td align="center" class="px" style="padding:32px 24px 8px;">
+              <p style="margin:0 0 14px;font-family:Cinzel,Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:2.4px;text-transform:uppercase;color:#A89887;">
+                LittleJoy &amp; Co.
+              </p>
+              <p style="margin:0 0 18px;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:13px;line-height:20px;color:#7A6F66;">
+                Thoughtfully crafted parenting essentials.
+              </p>
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding:0 10px;">
+                    <a href="https://www.instagram.com/shop.littlejoyco/" target="_blank" class="hover-link" style="font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:#AB794E;text-decoration:none;">Instagram</a>
+                  </td>
+                  <td style="color:#D4C8B8;font-size:11px;">·</td>
+                  <td style="padding:0 10px;">
+                    <a href="https://www.facebook.com/people/LittleJoy-Co/61584756785816/" target="_blank" class="hover-link" style="font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:#AB794E;text-decoration:none;">Facebook</a>
+                  </td>
+                  <td style="color:#D4C8B8;font-size:11px;">·</td>
+                  <td style="padding:0 10px;">
+                    <a href="{{ shop.url }}" target="_blank" class="hover-link" style="font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:#AB794E;text-decoration:none;">Shop</a>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:20px 0 0;font-family:'Noto Sans',Helvetica,Arial,sans-serif;font-size:11px;line-height:18px;color:#C4BBB2;">
+                © {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.<br>
+                14-day hassle-free returns · Free shipping on orders $175+
+              </p>
+            </td>
+          </tr>
+
+        </table>
+        <!--[if mso]>
+        </td></tr></table>
+        <![endif]-->
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
