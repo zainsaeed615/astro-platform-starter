@@ -4,7 +4,13 @@ export function pathTo(href: string): string {
     }
 
     const base = import.meta.env.BASE_URL;
-    return `${base}${href.replace(/^\//, '')}`;
+    const normalized = href.replace(/^\//, '');
+
+    if (base === './') {
+        return normalized ? `./${normalized}` : './';
+    }
+
+    return `${base}${normalized}`;
 }
 
 export function normalizePath(pathname: string): string {
