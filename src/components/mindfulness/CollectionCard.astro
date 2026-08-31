@@ -13,34 +13,41 @@ interface Props {
 const { title, subtitle, description, highlights = [], ctaText, ctaHref, image, imageAlt } = Astro.props;
 ---
 
-<article class="card group flex flex-col h-full overflow-hidden">
-    <div class="aspect-[16/10] overflow-hidden relative">
+<article class="card-luxe group flex flex-col h-full overflow-hidden">
+    <div class="aspect-[4/5] sm:aspect-[16/11] overflow-hidden relative">
         <img
             src={image}
             alt={imageAlt}
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            class="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
             loading="lazy"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-transparent"></div>
-        <div class="absolute bottom-6 left-6 right-6">
-            <p class="text-gold-light text-[0.625rem] uppercase tracking-[0.2em] font-semibold mb-2">{subtitle}</p>
-            <h3 class="text-cream text-2xl font-light">{title}</h3>
+        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/25 to-charcoal/5"></div>
+        <div class="absolute top-5 left-5">
+            <span class="inline-flex px-4 py-1.5 text-[0.5625rem] uppercase tracking-[0.25em] font-semibold text-cream/90 bg-charcoal/30 backdrop-blur-md rounded-full border border-white/10">
+                Collection
+            </span>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
+            <p class="text-gold-light text-[0.625rem] uppercase tracking-[0.28em] font-semibold mb-3">{subtitle}</p>
+            <h3 class="text-cream text-2xl sm:text-3xl font-light leading-tight">{title}</h3>
         </div>
     </div>
-    <div class="p-8 sm:p-10 flex flex-col flex-1">
-        <p class="text-warm-gray leading-relaxed text-[0.9375rem] mb-6 flex-1">{description}</p>
+    <div class="p-8 sm:p-10 lg:p-12 flex flex-col flex-1 bg-gradient-to-b from-white to-cream/50">
+        <p class="text-warm-gray leading-relaxed text-[0.975rem] mb-8 flex-1">{description}</p>
         {highlights.length > 0 && (
-            <div class="flex flex-wrap gap-2 mb-8">
+            <div class="flex flex-wrap gap-2 mb-10">
                 {highlights.map((item) => (
-                    <span class="pill text-xs !py-1.5 !px-3">{item}</span>
+                    <span class="pill text-[0.6875rem] !py-1.5 !px-3.5">{item}</span>
                 ))}
             </div>
         )}
-        <a href={ctaHref} class="inline-flex items-center gap-2 text-[0.6875rem] uppercase tracking-[0.15em] text-gold-dark font-semibold no-underline group-hover:gap-3 transition-all duration-300">
+        <a href={ctaHref} class="inline-flex items-center gap-3 text-[0.6875rem] uppercase tracking-[0.18em] text-gold-dark font-semibold no-underline group-hover:gap-4 transition-all duration-500">
             {ctaText}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-gold/10 group-hover:bg-gold/20 transition-colors">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
         </a>
     </div>
 </article>

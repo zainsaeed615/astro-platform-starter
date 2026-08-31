@@ -10,47 +10,50 @@ interface Props {
     minHeight?: string;
 }
 
-const { eyebrow, title, subtitle, image, imageAlt, align = 'left', overlay = true, minHeight = 'min-h-[85vh]' } = Astro.props;
+const { eyebrow, title, subtitle, image, imageAlt, align = 'left', overlay = true, minHeight = 'min-h-[90vh]' } = Astro.props;
 ---
 
 <section class={`relative ${minHeight} flex items-end overflow-hidden`}>
-    <img
-        src={image}
-        alt={imageAlt}
-        class="absolute inset-0 w-full h-full object-cover scale-105"
-        loading="eager"
-    />
-    {overlay && (
-        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/50 to-charcoal/20"></div>
-    )}
-    <div class="absolute inset-0 bg-gradient-to-r from-charcoal/30 to-transparent"></div>
+    <div class="absolute inset-0 overflow-hidden">
+        <img
+            src={image}
+            alt={imageAlt}
+            class="absolute inset-0 w-full h-full object-cover animate-ken-burns"
+            loading="eager"
+        />
+    </div>
 
-    <div class={`relative z-10 container-narrow pb-20 pt-40 sm:pb-28 animate-fade-up ${align === 'center' ? 'text-center mx-auto' : ''}`}>
+    {overlay && (
+        <>
+            <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/55 to-charcoal/15"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-charcoal/50 via-transparent to-charcoal/20"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(23,21,19,0.25)_100%)]"></div>
+        </>
+    )}
+
+    <div class={`relative z-10 container-narrow pb-24 pt-44 sm:pb-32 sm:pt-52 animate-fade-up ${align === 'center' ? 'text-center mx-auto' : ''}`}>
         {eyebrow && (
-            <div class={`flex items-center gap-4 mb-6 ${align === 'center' ? 'justify-center' : ''}`}>
-                <span class="w-8 h-px bg-gold"></span>
+            <div class={`flex items-center gap-5 mb-8 ${align === 'center' ? 'justify-center' : ''}`}>
+                <span class="w-12 h-px bg-gradient-to-r from-transparent to-gold"></span>
                 <p class="eyebrow eyebrow-light !mb-0">{eyebrow}</p>
-                {align === 'center' && <span class="w-8 h-px bg-gold"></span>}
+                {align === 'center' && <span class="w-12 h-px bg-gradient-to-l from-transparent to-gold"></span>}
             </div>
         )}
-        <h1 class="text-cream max-w-4xl mb-8 font-light">{title}</h1>
+        <h1 class={`text-cream max-w-5xl mb-8 font-light display-title ${align === 'center' ? 'mx-auto' : ''}`}>{title}</h1>
         {subtitle && (
-            <p class={`text-cream/80 text-lg sm:text-xl max-w-2xl leading-relaxed font-light ${align === 'center' ? 'mx-auto' : ''}`}>
+            <p class={`text-cream/85 text-lg sm:text-xl lg:text-2xl max-w-2xl leading-relaxed font-light ${align === 'center' ? 'mx-auto' : ''}`}>
                 {subtitle}
             </p>
         )}
         {Astro.slots.has('actions') && (
-            <div class={`mt-10 flex flex-wrap gap-4 ${align === 'center' ? 'justify-center' : ''}`}>
+            <div class={`mt-12 flex flex-wrap gap-4 ${align === 'center' ? 'justify-center' : ''}`}>
                 <slot name="actions" />
             </div>
         )}
     </div>
 
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-2 animate-float">
-        <span class="text-cream/40 text-[0.625rem] uppercase tracking-[0.2em]">Scroll</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-cream/40">
-            <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-3 animate-float">
+        <span class="text-cream/35 text-[0.5625rem] uppercase tracking-[0.35em]">Discover</span>
+        <span class="w-px h-10 bg-gradient-to-b from-gold/60 to-transparent"></span>
     </div>
 </section>

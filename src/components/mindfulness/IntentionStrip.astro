@@ -1,0 +1,18 @@
+---
+const intentions = [
+    'Empower', 'Reboot', 'Rebound', 'Revive', 'Reclaim',
+    'Recharge', 'Refocus', 'Rebuild', 'Reflect', 'Recommit',
+];
+const doubled = [...intentions, ...intentions];
+---
+
+<div class="intention-strip" aria-hidden="true">
+    <div class="intention-strip-inner">
+        {doubled.map((item) => (
+            <span class="flex items-center gap-10">
+                <span>{item}</span>
+                <span class="text-gold/50">✦</span>
+            </span>
+        ))}
+    </div>
+</div>

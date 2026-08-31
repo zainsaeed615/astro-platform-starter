@@ -17,19 +17,21 @@ const navItems = [
 ];
 ---
 
-<header class="sticky top-0 z-50 bg-cream/85 backdrop-blur-lg border-b border-sand/40">
-    <nav class="container-narrow flex items-center justify-between gap-4 py-4 lg:py-5">
-        <a href={pathTo('/')} class="no-underline group flex items-center gap-3 shrink-0">
-            <span class="flex items-center justify-center w-9 h-9 rounded-full bg-sage-dark/10 group-hover:bg-sage-dark/20 transition-colors duration-300">
+<header class="sticky top-0 z-50 glass-header">
+    <nav class="container-narrow flex items-center justify-between gap-4 py-5 lg:py-6">
+        <a href={pathTo('/')} class="no-underline group flex items-center gap-3.5 shrink-0">
+            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-sage-dark/15 to-gold/10 ring-1 ring-gold/20 group-hover:ring-gold/40 transition-all duration-500">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="text-sage-dark">
-                    <path d="M12 2C8 6 4 8 4 13c0 4.4 3.6 8 8 8s8-3.6 8-8c0-5-4-7-8-11z" fill="currentColor" opacity="0.7"/>
-                    <path d="M12 22c0-4 2-6 4-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                    <path d="M12 2C8 6 4 8 4 13c0 4.4 3.6 8 8 8s8-3.6 8-8c0-5-4-7-8-11z" fill="currentColor" opacity="0.75"/>
                 </svg>
             </span>
-            <span class="font-serif text-lg sm:text-xl text-charcoal tracking-wide font-light hidden xs:block">Mindfulness</span>
+            <div class="hidden sm:block">
+                <span class="font-serif text-xl text-charcoal tracking-[0.04em] font-light block leading-none">Mindfulness</span>
+                <span class="text-[0.5625rem] uppercase tracking-[0.28em] text-muted mt-1 block">Candle Collection</span>
+            </div>
         </a>
 
-        <ul class="hidden xl:flex items-center gap-x-5">
+        <ul class="hidden xl:flex items-center gap-x-8">
             {
                 navItems.map((item) => (
                     <li>
@@ -46,24 +48,24 @@ const navItems = [
         </ul>
 
         <div class="flex items-center gap-3">
-            <a href="https://mindfulnesscandle.store/" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex btn text-[0.625rem] !py-2.5 !px-4 btn-gold">Shop Now</a>
-            <a href={pathTo('/membership')} class="hidden sm:inline-flex btn text-[0.625rem] !py-2.5 !px-4">Membership</a>
+            <a href="https://mindfulnesscandle.store/" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex btn text-[0.625rem] !py-3 !px-5 btn-gold">Shop Now</a>
+            <a href={pathTo('/membership')} class="hidden lg:inline-flex btn text-[0.625rem] !py-3 !px-5">Membership</a>
 
-            <button id="mobile-menu-btn" class="xl:hidden p-2 text-charcoal" aria-label="Toggle menu">
-                <svg id="menu-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <button id="mobile-menu-btn" class="xl:hidden p-2.5 rounded-full hover:bg-stone/40 transition-colors text-charcoal" aria-label="Toggle menu">
+                <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
                 </svg>
-                <svg id="menu-icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="hidden">
+                <svg id="menu-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="hidden">
                     <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/>
                 </svg>
             </button>
         </div>
     </nav>
 
-    <div id="mobile-menu" class="xl:hidden hidden border-t border-sand/40 bg-cream/95 backdrop-blur-md max-h-[80vh] overflow-y-auto">
-        <ul class="container-narrow py-6 space-y-1">
+    <div id="mobile-menu" class="xl:hidden hidden border-t border-sand/30 bg-cream/95 backdrop-blur-xl max-h-[80vh] overflow-y-auto">
+        <ul class="container-narrow py-8 space-y-1">
             <li>
-                <a href={pathTo('/')} class={`block py-3 px-4 rounded-lg no-underline text-sm uppercase tracking-wider transition-colors ${currentPath === '/' ? 'bg-sage-dark/10 text-charcoal font-semibold' : 'text-warm-gray hover:bg-stone/50 hover:text-charcoal'}`}>
+                <a href={pathTo('/')} class={`block py-3.5 px-4 rounded-xl no-underline text-sm uppercase tracking-wider transition-colors ${currentPath === '/' ? 'bg-sage-dark/10 text-charcoal font-semibold' : 'text-warm-gray hover:bg-stone/50 hover:text-charcoal'}`}>
                     Home
                 </a>
             </li>
@@ -72,7 +74,7 @@ const navItems = [
                     <li>
                         <a
                             href={item.external ? item.href : pathTo(item.href)}
-                            class={`block py-3 px-4 rounded-lg no-underline text-sm uppercase tracking-wider transition-colors ${currentPath === item.href ? 'bg-sage-dark/10 text-charcoal font-semibold' : 'text-warm-gray hover:bg-stone/50 hover:text-charcoal'}`}
+                            class={`block py-3.5 px-4 rounded-xl no-underline text-sm uppercase tracking-wider transition-colors ${currentPath === item.href ? 'bg-sage-dark/10 text-charcoal font-semibold' : 'text-warm-gray hover:bg-stone/50 hover:text-charcoal'}`}
                             {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                         >
                             {item.linkText}
@@ -80,9 +82,9 @@ const navItems = [
                     </li>
                 ))
             }
-            <li class="pt-4 grid gap-3">
+            <li class="pt-5 grid gap-3">
                 <a href="https://mindfulnesscandle.store/" target="_blank" rel="noopener noreferrer" class="btn w-full justify-center btn-gold">Shop the Collection</a>
-                <a href={pathTo('/contact')} class="btn w-full justify-center btn-outline text-charcoal border-charcoal/30">Partner With Us</a>
+                <a href={pathTo('/contact')} class="btn w-full justify-center btn-outline text-charcoal border-charcoal/25">Partner With Us</a>
             </li>
         </ul>
     </div>

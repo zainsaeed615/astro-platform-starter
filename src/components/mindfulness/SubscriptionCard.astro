@@ -9,28 +9,34 @@ interface Props {
     ctaHref: string;
     featured?: boolean;
     disclaimer?: string;
+    image?: string;
 }
 
-const { name, price, tagline, description, benefits, ctaText, ctaHref, featured = false, disclaimer } = Astro.props;
+const { name, price, tagline, description, benefits, ctaText, ctaHref, featured = false, disclaimer, image } = Astro.props;
 ---
 
-<article class={`card flex flex-col h-full ${featured ? 'card-featured lg:-mt-4 lg:mb-4' : ''}`}>
+<article class={`card-luxe flex flex-col h-full overflow-hidden ${featured ? 'card-featured lg:-mt-6 lg:mb-6' : ''}`}>
     {featured && (
-        <div class="bg-gradient-to-r from-gold-dark to-gold text-white text-[0.625rem] uppercase tracking-[0.2em] font-semibold text-center py-2.5">
+        <div class="bg-gradient-to-r from-charcoal via-charcoal/95 to-charcoal text-gold-light text-[0.625rem] uppercase tracking-[0.22em] font-semibold text-center py-3">
             Elevated Experience
         </div>
     )}
-    <div class="p-8 sm:p-10 flex flex-col flex-1">
-        <p class="eyebrow !mb-2 !text-sage-dark">{name}</p>
-        <p class="text-3xl font-serif text-charcoal mb-1 font-light">{price}</p>
-        <p class="text-gold-dark italic font-serif text-lg mb-5">{tagline}</p>
-        <div class="w-8 h-px bg-sand mb-5"></div>
-        <p class="text-warm-gray leading-relaxed text-[0.9375rem] mb-6">{description}</p>
-        <p class="text-xs uppercase tracking-[0.15em] text-muted font-semibold mb-3">Your experience includes</p>
-        <ul class="space-y-2.5 mb-8 flex-1">
+    {image && (
+        <div class="aspect-[16/9] overflow-hidden">
+            <img src={image} alt={name} class="w-full h-full object-cover" loading="lazy" />
+        </div>
+    )}
+    <div class="p-8 sm:p-10 lg:p-12 flex flex-col flex-1 bg-gradient-to-b from-white to-cream/40">
+        <p class="eyebrow !mb-3 !text-sage-dark">{name}</p>
+        <p class="text-4xl font-serif text-charcoal mb-2 font-light">{price}</p>
+        <p class="text-gold-dark italic font-serif text-xl mb-6">{tagline}</p>
+        <div class="w-12 h-px bg-gradient-to-r from-gold to-transparent mb-6"></div>
+        <p class="text-warm-gray leading-relaxed text-[0.975rem] mb-8">{description}</p>
+        <p class="text-[0.625rem] uppercase tracking-[0.22em] text-muted font-semibold mb-4">Your experience includes</p>
+        <ul class="space-y-3 mb-10 flex-1">
             {benefits.map((item) => (
-                <li class="text-sm text-charcoal flex items-start gap-2.5">
-                    <span class="flex-shrink-0 w-5 h-5 rounded-full bg-sage-dark/10 flex items-center justify-center mt-0.5">
+                <li class="text-sm text-charcoal flex items-start gap-3">
+                    <span class="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-br from-sage-dark/15 to-gold/10 flex items-center justify-center mt-0.5 ring-1 ring-gold/15">
                         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="text-sage-dark">
                             <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -40,7 +46,7 @@ const { name, price, tagline, description, benefits, ctaText, ctaHref, featured 
             ))}
         </ul>
         {disclaimer && (
-            <p class="text-xs text-muted leading-relaxed mb-6 italic">{disclaimer}</p>
+            <p class="text-xs text-muted leading-relaxed mb-8 italic border-l-2 border-gold/30 pl-4">{disclaimer}</p>
         )}
         <a href={ctaHref} class="btn w-full justify-center text-[0.6875rem]">{ctaText}</a>
     </div>

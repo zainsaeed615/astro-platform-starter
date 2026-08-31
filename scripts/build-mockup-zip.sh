@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 STAGING="/tmp/mindfulness-zip-staging"
-OUT="/opt/cursor/artifacts/mindfulness-candle-mockup.zip"
+OUT="/workspace/mindfulness-candle-mockup.zip"
 
 echo "Building Mindfulness mockup zip..."
 
@@ -33,4 +33,4 @@ echo "Zip created: $OUT"
 ls -lh "$OUT"
 echo ""
 echo "Quick verify:"
-grep -o 'stylesheet href="[^"]*"' dist/index.html | head -1
+grep -o 'data-inlined' dist/index.html | head -1 || true
