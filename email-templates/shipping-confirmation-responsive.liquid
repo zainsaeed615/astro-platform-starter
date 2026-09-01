@@ -1,9 +1,11 @@
 {% comment %}
   Hello Little Joy — Shipping confirmation (SC)
 
-  Product images now prefer the live variant/product catalog photo, then fall
-  back to the order line-item snapshot. After saving in UpOrder, publish this
-  HTML into Shopify: Settings → Notifications → Shipping confirmation →
+  Product images prefer the live variant/product catalog photo, then the
+  order line-item snapshot. The Track button links directly to the carrier
+  tracking URL (UPS/USPS/etc.), then Shopify order status — not UpOrder.
+
+  Publish into Shopify: Settings → Notifications → Shipping confirmation →
   replace Email body (HTML) → Save. Test with a new fulfillment.
 {% endcomment %}
 {% capture recType %}SC{% endcapture %}
@@ -506,12 +508,26 @@
   {% elsif gateway %}{{ gateway }}{% endif %}
 {% endcapture %}
 
-{% capture tracking_link %}
-  {% if order_status_url %}{{ order_status_url }}
-  {% elsif fulfillment.tracking_link %}{{ fulfillment.tracking_link }}
-  {% elsif fulfillment.tracking_url %}{{ fulfillment.tracking_url }}
-  {% else %}{{ shop.url }}{% endif %}
-{% endcapture %}
+{% assign tracking_link = '' %}
+{% if fulfillment.tracking_urls %}
+  {% for tracking_url in fulfillment.tracking_urls %}
+    {% if tracking_link == blank and tracking_url != blank %}
+      {% assign tracking_link = tracking_url | strip %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% if tracking_link == blank and fulfillment.tracking_url != blank %}
+  {% assign tracking_link = fulfillment.tracking_url | strip %}
+{% endif %}
+{% if tracking_link == blank and fulfillment.tracking_link != blank %}
+  {% assign tracking_link = fulfillment.tracking_link | strip %}
+{% endif %}
+{% if tracking_link == blank and order_status_url != blank %}
+  {% assign tracking_link = order_status_url | strip %}
+{% endif %}
+{% if tracking_link == blank %}
+  {% assign tracking_link = shop.url %}
+{% endif %}
 
 {% if fulfillment.items_count == item_count %}
   {% capture shipment_name %}Your order is{% endcapture %}
@@ -653,7 +669,7 @@
                   <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" class="track-button-inner" width="280" style="border-collapse: collapse; margin: 0 auto; width: 280px; max-width: 100%;">
                     <tr>
                       <td class="track-button-cell" align="center" bgcolor="#747853" style="border-radius: 0; background-color: #747853; padding: 12px 24px; mso-padding-alt: 12px 24px;">
-                        <a data-component="Button" class="track-button-link ql-font-oswald" href="https://api.uporder.com/api/spently/click?id={{ order_number }}&store=n88nm1-zy&type=SC&cid={{ customer.id }}&url={{ tracking_link }}&s={{ "n88nm1-zypantastic" | append: "" | append: tracking_link | append: "" | url_decode | sha256 }}&component=Button" target="_blank" style="display: inline-block; text-decoration: none; text-align: center; color: #ffffff; font-family: Oswald, Arial, sans-serif; font-weight: bold; font-size: 18px; line-height: 22px; text-transform: uppercase; letter-spacing: 0.5px; mso-line-height-rule: exactly;">
+                        <a data-component="Button" class="track-button-link ql-font-oswald" href="{{ tracking_link }}" target="_blank" style="display: inline-block; text-decoration: none; text-align: center; color: #ffffff; font-family: Oswald, Arial, sans-serif; font-weight: bold; font-size: 18px; line-height: 22px; text-transform: uppercase; letter-spacing: 0.5px; mso-line-height-rule: exactly;">
                           <strong class="ql-font-oswald">TRACK YOUR PACKAGE</strong>
                         </a>
                       </td>
