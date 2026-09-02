@@ -1,27 +1,19 @@
 {% comment %}
   Hello Little Joy — Delivered (DEL)
 
-  WHY REAL CUSTOMERS SAW SHOPIFY'S GENERIC EMAIL
-  Preview and "Send test email" use sample products that still exist, so this
-  layout looks correct there. Live orders often include deleted variants,
-  unpublished products, gift cards, or custom line items. Those objects are
-  EmptyDrop — and EmptyDrop is not blank. The previous image code still ran
-  `variant | img_url` / `product | img_url`, Liquid aborted, and Shopify sent
-  the default Delivered template instead of this one.
+  VERIFY THIS IS THE LIVE TEMPLATE: after save, Shopify preview must show
+  olive (#747853) "View your order" and the heading "Items in delivery".
+  If you still see a blue button and "Items in this shipment", this HTML
+  is not what Shopify is sending (wrong notification, not saved, or a
+  language override in Translate & Adapt).
 
-  Product images still prefer the live variant/product catalog photo, then the
-  order line-item snapshot. Catalog lookups now require `!= empty` before
-  img_url. View your order links to Shopify's customer order status page
-  (order_status_url), not an UpOrder click wrapper. Tracking numbers still
-  use the carrier URL first.
+  Line-item images use only the order snapshot (line.line_item.image) with
+  Shopify's notification img_url sizes. Live catalog variant/product
+  img_url calls abort the render on deleted items and Shopify then sends
+  the default generic Delivered email.
 
-  Publish into Shopify: Settings → Notifications → Delivered →
-  replace Email body (HTML) → Save.
-
-  If a customer email is From shop.app (not your store), that is a separate
-  Shop tracking message and cannot use this template. Also customize
-  Shipping update and Out for delivery if those are the events your carrier
-  actually triggers.
+  Publish: Settings → Notifications → Customer notifications → Delivered
+  → Edit code → replace Email body (HTML) → Save.
 {% endcomment %}
 {% capture recType %}DEL{% endcapture %}
 
@@ -847,17 +839,10 @@
                   <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse: collapse; min-width: 100%;">
                     <tbody>
                       {% for line in fulfillment.fulfillment_line_items %}
-                        {% unless line.line_item.nested_line_child? %}
-                          {% assign li = line.line_item %}
-
-                          {% if li.presentment_title %}
-                            {% assign line_title = li.presentment_title %}
-                          {% elsif li.title %}
-                            {% assign line_title = li.title %}
-                          {% elsif li.product != empty and li.product.title %}
-                            {% assign line_title = li.product.title %}
+                          {% if line.line_item.product.title %}
+                            {% assign line_title = line.line_item.product.title %}
                           {% else %}
-                            {% assign line_title = 'Item' %}
+                            {% assign line_title = line.line_item.title %}
                           {% endif %}
 
                           {% if line.quantity < line.line_item.quantity %}
@@ -866,34 +851,13 @@
                             {% assign line_display = line.line_item.quantity %}
                           {% endif %}
 
-                          {% comment %}
-                            Prefer live catalog photos so updated variant/product images
-                            appear in sent emails. line.line_item.image is the order snapshot
-                            and is only a fallback.
-
-                            Never call img_url on a deleted product/variant. EmptyDrop is not
-                            blank, so `!= blank` is not enough — use `!= empty` first.
-                            Pipe the image object (not the variant/product drop). Size-only
-                            img_url (no crop) avoids stale Shopify CDN crop derivatives.
-                          {% endcomment %}
-                          {% assign line_image_src = '' %}
-                          {% if li.variant != empty and li.variant.image != empty %}
-                            {% assign line_image_src = li.variant.image | img_url: '240x' %}
-                          {% endif %}
-                          {% if line_image_src == blank and li.product != empty and li.product.featured_image != empty %}
-                            {% assign line_image_src = li.product.featured_image | img_url: '240x' %}
-                          {% endif %}
-                          {% if line_image_src == blank and li.image and li.image != empty %}
-                            {% assign line_image_src = li.image | img_url: 'medium' %}
-                          {% endif %}
-
                           <tr>
                             <td class="order-list__item__cell" style="padding: 14px 0; border-bottom: 1px solid #ECE6DC;">
                               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="line-item-row" style="border-collapse: collapse;">
                                 <tr>
                                   <td class="line-item-img" width="120" valign="top" style="width: 120px; padding: 0 12px 0 0; vertical-align: top;">
-                                    {% if line_image_src != blank %}
-                                      <img src="{{ line_image_src }}" width="120" height="120" alt="{{ line_title | escape }}" class="order-list__product-image" style="display: block; max-width: 120px; width: 120px; height: auto; border: 0; margin: 0;" />
+                                    {% if line.line_item.image %}
+                                      <img src="{{ line.line_item.image | img_url: 'medium' }}" width="120" height="120" alt="{{ line_title | escape }}" class="order-list__product-image" style="display: block; max-width: 120px; width: 120px; height: auto; border: 0; margin: 0;" />
                                     {% else %}
                                       <img src="{{ 'notifications/no-image.png' | shopify_asset_url }}" width="120" height="120" alt="{{ line_title | escape }}" class="order-list__product-image" style="display: block; max-width: 120px; width: 120px; height: auto; border: 0; margin: 0;" />
                                     {% endif %}
@@ -901,18 +865,8 @@
                                   <td class="line-item-details" valign="top" style="padding: 0 8px 0 0; vertical-align: top; text-align: left;">
                                     <span class="order-list__item-title" style="display: block; margin: 0 0 6px; font-family: Lato, Helvetica, Tahoma, Verdana, Segoe, sans-serif; font-size: 16px; line-height: 22px; font-weight: 700; color: #080808; letter-spacing: 1px; text-transform: uppercase;">{{ line_title }}&nbsp;&times;&nbsp;{{ line_display }}</span>
 
-                                    {% if li.variant != empty and li.variant.title != 'Default Title' %}
-                                      <span class="order-list__item-variant" style="display: block; margin: 0 0 4px;">{{ li.variant.title }}</span>
-                                    {% endif %}
-
-                                    {% if line.line_item.groups %}
-                                      {% for group in line.line_item.groups %}
-                                        {% if group.deliverable? %}
-                                          <span class="order-list__item-variant" style="display: block; margin: 0 0 4px;">For: {{ group.display_title }}</span>
-                                        {% else %}
-                                          <span class="order-list__item-variant" style="display: block; margin: 0 0 4px;">Part of: {{ group.display_title }}</span>
-                                        {% endif %}
-                                      {% endfor %}
+                                    {% if line.line_item.variant.title != 'Default Title' %}
+                                      <span class="order-list__item-variant" style="display: block; margin: 0 0 4px;">{{ line.line_item.variant.title }}</span>
                                     {% endif %}
 
                                     {% if line.line_item.selling_plan_allocation %}
@@ -937,53 +891,9 @@
                                     {% endif %}
                                   </td>
                                 </tr>
-
-                                {% if line.line_item.nested_line_parent? %}
-                                  {% for child_line in line.line_item.nested_lines %}
-                                    {% assign child_image_src = '' %}
-                                    {% if child_line.variant != empty and child_line.variant.image != empty %}
-                                      {% assign child_image_src = child_line.variant.image | img_url: '160x' %}
-                                    {% endif %}
-                                    {% if child_image_src == blank and child_line.product != empty and child_line.product.featured_image != empty %}
-                                      {% assign child_image_src = child_line.product.featured_image | img_url: '160x' %}
-                                    {% endif %}
-                                    {% if child_image_src == blank and child_line.image and child_line.image != empty %}
-                                      {% assign child_image_src = child_line.image | img_url: 'compact' %}
-                                    {% endif %}
-
-                                    {% if child_line.product != empty and child_line.product.title %}
-                                      {% assign item_title = child_line.product.title %}
-                                    {% elsif child_line.title %}
-                                      {% assign item_title = child_line.title %}
-                                    {% else %}
-                                      {% assign item_title = 'Item' %}
-                                    {% endif %}
-                                    {% assign item_display = child_line.quantity %}
-
-                                    <tr>
-                                      <td class="line-item-img" width="80" valign="top" style="width: 80px; padding: 12px 12px 0 24px; vertical-align: top;">
-                                        {% if child_image_src != blank %}
-                                          <img src="{{ child_image_src }}" width="80" height="80" alt="{{ item_title | escape }}" class="order-list__product-image" style="display: block; max-width: 80px; width: 80px; height: auto; border: 0; margin: 0;" />
-                                        {% else %}
-                                          <img src="{{ 'notifications/no-image.png' | shopify_asset_url }}" width="80" height="80" alt="{{ item_title | escape }}" style="display: block; max-width: 80px; width: 80px; height: auto; border: 0; margin: 0;" />
-                                        {% endif %}
-                                      </td>
-                                      <td class="line-item-details" valign="top" style="padding: 12px 0 0; vertical-align: top; text-align: left;">
-                                        <span class="order-list__item-title" style="display: block; margin: 0 0 4px; font-family: Lato, Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; font-weight: 700; color: #080808; text-transform: uppercase;">{{ item_title }}&nbsp;&times;&nbsp;{{ item_display }}</span>
-                                        {% if child_line.variant != empty and child_line.variant.title != 'Default Title' %}
-                                          <span class="order-list__item-variant" style="display: block; margin: 0 0 4px;">{{ child_line.variant.title }}</span>
-                                        {% endif %}
-                                        {% if child_line.selling_plan_allocation %}
-                                          <span class="order-list__item-variant" style="display: block; margin: 0 0 4px;">{{ child_line.selling_plan_allocation.selling_plan.name }}</span>
-                                        {% endif %}
-                                      </td>
-                                    </tr>
-                                  {% endfor %}
-                                {% endif %}
                               </table>
                             </td>
                           </tr>
-                        {% endunless %}
                       {% endfor %}
                     </tbody>
                   </table>
