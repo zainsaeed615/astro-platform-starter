@@ -2,898 +2,1121 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ELV Hub — Website Hierarchy & Visitor Journey (Structure Document)</title>
+<title>ELV HUB — Website Sitemap &amp; Wireframe Structure</title>
 <style>
-  @page {
-    size: A4;
-    margin: 18mm 16mm 20mm 16mm;
-  }
+  @page { size: A4; margin: 14mm 12mm 16mm 12mm; }
   * { box-sizing: border-box; }
-  html, body {
+  body {
     margin: 0;
-    padding: 0;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 10.5pt;
-    line-height: 1.45;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.4;
     color: #111;
     background: #fff;
   }
-  h1, h2, h3, h4 {
-    margin: 0 0 8px;
-    font-weight: 700;
-    color: #000;
-    page-break-after: avoid;
-  }
+  h1, h2, h3, h4 { margin: 0 0 6px; font-weight: 700; page-break-after: avoid; }
   h1 { font-size: 22pt; letter-spacing: -0.02em; }
   h2 {
-    font-size: 14pt;
+    font-size: 13pt;
     border-bottom: 2px solid #000;
     padding-bottom: 4px;
-    margin-top: 22px;
-    margin-bottom: 10px;
+    margin: 0 0 12px;
   }
-  h3 {
-    font-size: 11.5pt;
-    margin-top: 14px;
-    border-left: 3px solid #000;
-    padding-left: 8px;
-  }
-  h4 { font-size: 10.5pt; margin-top: 10px; }
+  h3 { font-size: 11pt; margin: 12px 0 6px; }
   p { margin: 0 0 8px; }
-  ul, ol { margin: 4px 0 10px; padding-left: 18px; }
-  li { margin-bottom: 3px; }
+  .page { page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
   .cover {
-    page-break-after: always;
-    min-height: 240mm;
+    min-height: 250mm;
+    border: 2px solid #000;
+    padding: 36px 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 2px solid #000;
-    padding: 28px;
   }
-  .cover-top { }
-  .cover-badge {
+  .cover-label {
     display: inline-block;
-    border: 1.5px solid #000;
+    border: 1px solid #000;
     padding: 4px 10px;
-    font-size: 8.5pt;
-    letter-spacing: 0.08em;
+    font-size: 8pt;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-bottom: 28px;
   }
-  .cover h1 { font-size: 28pt; margin-bottom: 12px; }
-  .cover .subtitle {
-    font-size: 13pt;
-    font-weight: 400;
-    max-width: 480px;
-    margin-bottom: 24px;
-  }
-  .meta-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 24px;
+  .cover h1 { font-size: 36pt; margin: 28px 0 8px; }
+  .cover .sub { font-size: 14pt; margin-bottom: 20px; }
+  .cover .desc {
     border-top: 1px solid #000;
     padding-top: 16px;
-    font-size: 9.5pt;
+    max-width: 420px;
+    font-size: 10pt;
   }
-  .meta-grid strong { display: block; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
-  .cover-note {
+  .cover-meta {
+    border-top: 1px solid #000;
+    padding-top: 12px;
+    font-size: 9pt;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 20px;
+  }
+  .cover-meta strong { display: block; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* Sitemap tree */
+  .tree {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 9pt;
+    line-height: 1.45;
+    border: 1.5px solid #000;
+    padding: 16px 18px;
+    background: #fafafa;
+    white-space: pre;
+  }
+  .node-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 8px 0 14px;
+  }
+  .box {
+    border: 1.5px solid #000;
+    background: #fff;
+    padding: 8px 12px;
+    text-align: center;
+    min-width: 140px;
+    page-break-inside: avoid;
+  }
+  .box.dark { background: #111; color: #fff; font-weight: 700; }
+  .box.sm { min-width: 110px; padding: 6px 8px; font-size: 8.5pt; }
+  .box.md { min-width: 160px; }
+  .arrow { font-size: 14pt; line-height: 1; padding: 2px 0; }
+  .row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 6px 0;
+  }
+  .col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .note {
+    font-size: 8.5pt;
+    color: #333;
+    margin: 6px 0 10px;
+  }
+  .wire {
+    border: 1.5px solid #000;
+    margin: 0 0 12px;
+    page-break-inside: avoid;
+  }
+  .wire-h {
+    background: #111;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 8.5pt;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .wire-b { padding: 10px 12px; }
+  .placeholder {
+    border: 1px dashed #000;
+    background: #f3f3f3;
+    padding: 10px;
+    text-align: center;
+    font-size: 8.5pt;
+    margin: 4px 0 6px;
+    color: #333;
+  }
+  .placeholder.tall { min-height: 54px; display: flex; align-items: center; justify-content: center; }
+  .placeholder.mid { min-height: 36px; display: flex; align-items: center; justify-content: center; }
+  .cta-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0; }
+  .cta-btn {
+    border: 1.5px solid #000;
+    padding: 4px 10px;
+    font-size: 8pt;
+    font-weight: 700;
+    background: #fff;
+  }
+  .cta-btn.fill { background: #111; color: #fff; }
+  .meta-line { font-size: 8.5pt; margin: 3px 0; }
+  .meta-line strong { font-weight: 700; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .four { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6px; }
+  .five { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
+  .card {
     border: 1px solid #000;
-    padding: 14px 16px;
-    font-size: 9.5pt;
-    margin-top: 24px;
+    padding: 6px;
+    font-size: 8pt;
+    text-align: center;
+    min-height: 42px;
   }
-  .toc { page-break-after: always; }
-  .toc ol { font-size: 11pt; line-height: 1.8; }
-  .page-break { page-break-before: always; }
-  .avoid-break { page-break-inside: avoid; }
+  .flow {
+    border: 1.5px solid #000;
+    padding: 14px 16px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 9pt;
+    line-height: 1.5;
+    white-space: pre;
+    background: #fafafa;
+    page-break-inside: avoid;
+  }
+  .header-wire {
+    border: 1.5px solid #000;
+    margin-bottom: 10px;
+  }
+  .topbar {
+    border-bottom: 1px solid #000;
+    padding: 6px 10px;
+    font-size: 7.5pt;
+    display: flex;
+    justify-content: space-between;
+    background: #f5f5f5;
+  }
+  .mainnav {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .nav-items { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 8pt; }
+  .nav-item { border: 1px solid #000; padding: 3px 7px; }
+  .logo-box { border: 1.5px solid #000; padding: 6px 10px; font-weight: 700; font-size: 10pt; }
   table {
     width: 100%;
     border-collapse: collapse;
-    margin: 8px 0 14px;
-    font-size: 9.5pt;
-  }
-  th, td {
-    border: 1px solid #000;
-    padding: 6px 8px;
-    text-align: left;
-    vertical-align: top;
-  }
-  th {
-    background: #111;
-    color: #fff;
-    font-weight: 600;
     font-size: 8.5pt;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-  tr:nth-child(even) td { background: #f5f5f5; }
-  .wire {
-    border: 1.5px solid #000;
-    margin: 10px 0 16px;
-    page-break-inside: avoid;
-  }
-  .wire-head {
-    background: #111;
-    color: #fff;
-    padding: 6px 10px;
-    font-size: 9pt;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  .wire-body { padding: 0; }
-  .wire-row {
-    display: grid;
-    grid-template-columns: 52px 1fr;
-    border-top: 1px solid #000;
-    min-height: 48px;
-  }
-  .wire-row:first-child { border-top: none; }
-  .wire-label {
-    border-right: 1px solid #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 9pt;
-    background: #eee;
-  }
-  .wire-content { padding: 8px 10px; font-size: 9pt; }
-  .wire-content strong { display: block; margin-bottom: 2px; }
-  .wire-content .purpose { color: #333; }
-  .wire-content .cta { margin-top: 4px; font-style: italic; }
-  .box {
-    border: 1px solid #000;
-    padding: 10px 12px;
     margin: 8px 0 12px;
-    page-break-inside: avoid;
   }
-  .box-title {
-    font-weight: 700;
-    font-size: 9pt;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 6px;
-  }
-  .option {
-    border: 1.5px dashed #000;
-    padding: 10px 12px;
-    margin: 8px 0;
-    page-break-inside: avoid;
-  }
-  .option-tag {
-    display: inline-block;
-    border: 1px solid #000;
-    padding: 1px 6px;
-    font-size: 8pt;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .diagram {
-    border: 1.5px solid #000;
-    padding: 14px;
-    margin: 10px 0 16px;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 8.5pt;
-    line-height: 1.35;
-    white-space: pre;
-    overflow: hidden;
-    page-break-inside: avoid;
-    background: #fafafa;
-  }
-  .decision {
-    border-left: 4px solid #000;
-    background: #f3f3f3;
-    padding: 8px 12px;
-    margin: 8px 0 12px;
-    font-size: 9.5pt;
-  }
-  .decision strong { display: block; margin-bottom: 2px; }
-  .footer-note {
-    margin-top: 20px;
+  th, td { border: 1px solid #000; padding: 5px 7px; vertical-align: top; text-align: left; }
+  th { background: #111; color: #fff; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.03em; }
+  tr:nth-child(even) td { background: #f6f6f6; }
+  .tiny { font-size: 8pt; color: #333; }
+  .section-num { font-weight: 700; }
+  ul.compact { margin: 4px 0 8px; padding-left: 16px; }
+  ul.compact li { margin-bottom: 2px; }
+  .footer-doc {
+    margin-top: 10px;
     border-top: 1px solid #000;
-    padding-top: 8px;
-    font-size: 8.5pt;
+    padding-top: 6px;
+    font-size: 7.5pt;
     color: #444;
-  }
-  .small { font-size: 9pt; }
-  .muted { color: #444; }
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .check-list li { list-style: none; margin-left: -18px; }
-  .check-list li::before { content: "☐  "; font-weight: 700; }
-  .status-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 10px; }
-  .pill {
-    border: 1px solid #000;
-    padding: 2px 8px;
-    font-size: 8pt;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
   }
 </style>
 </head>
 <body>
 
-<!-- ===================== COVER ===================== -->
-<section class="cover">
-  <div class="cover-top">
-    <div class="cover-badge">Structure Document · Not a Visual Mock-up</div>
-    <h1>ELV Hub Middle East</h1>
-    <p class="subtitle">Website Hierarchy, Section Wireframes &amp; Visitor Journey Plan</p>
-    <p class="muted small">Black-and-white structural blueprint prepared for client review and priority alignment — before visual design and content writing.</p>
-    <div class="cover-note">
-      <strong>What this document is</strong><br />
-      A complete site skeleton: page index, every section’s purpose, call-to-action destinations, and recommended visitor journeys. It is intentionally without colours, banners, copy, or finished layout. Visual design and wording come only after this structure is approved.
+<!-- ===================== PAGE 1: COVER ===================== -->
+<section class="page">
+  <div class="cover">
+    <div>
+      <div class="cover-label">Low-Fidelity Wireframe Document</div>
+      <h1>ELV HUB</h1>
+      <p class="sub">Website Sitemap &amp; Wireframe Structure</p>
+      <p style="font-size:13pt; margin-bottom:24px;">Website Structure, Page Hierarchy &amp; User Flow</p>
+      <div class="desc">
+        Black-and-white structural blueprint of the current website draft.
+        This document maps existing pages, navigation, homepage sections,
+        and CTA destinations — for clarity of structure and user journey.
+      </div>
     </div>
-  </div>
-  <div>
-    <div class="meta-grid">
-      <div><strong>Prepared for</strong> Abdulsalam / ELV Hub Middle East</div>
-      <div><strong>Prepared by</strong> Project design lead (structure phase)</div>
-      <div><strong>Document type</strong> Hierarchy + Block Wireframe + Journey Map</div>
-      <div><strong>Version</strong> 1.0 — Draft for review</div>
-      <div><strong>References studied</strong> elv-hub.com · AVI-SPL · SMERK · Granteq · Draft: elvhub.appointics.com</div>
-      <div><strong>Next step after approval</strong> Visual design concepts → Development</div>
+    <div class="cover-meta">
+      <div><strong>Website draft</strong> elvhub.appointics.com</div>
+      <div><strong>Document type</strong> Sitemap + Low-Fidelity Wireframes</div>
+      <div><strong>Version</strong> 2.0</div>
+      <div><strong>Scope</strong> Current draft structure only</div>
     </div>
   </div>
 </section>
 
-<!-- ===================== TOC ===================== -->
-<section class="toc">
-  <h2>Contents</h2>
-  <ol>
-    <li>Document purpose &amp; working method</li>
-    <li>What we heard in the meeting (requirements extracted)</li>
-    <li>Who visits &amp; what they need (personas)</li>
-    <li>Recommended visitor journey (homepage scroll path)</li>
-    <li>Full site map / hierarchy (all pages)</li>
-    <li>Global navigation &amp; header options</li>
-    <li>Homepage section wireframes (with priority options A / B / C)</li>
-    <li>Inner page wireframes (Solutions hub + each solution + Projects + About + Contact)</li>
-    <li>Call-to-action (CTA) map — every button destination</li>
-    <li>Design-system notes deferred (recorded, not decided here)</li>
-    <li>Open decisions checklist for client</li>
-    <li>Proposed next steps after this review</li>
-  </ol>
+<!-- ===================== PAGE 2: SITEMAP ===================== -->
+<section class="page">
+  <h2>01 — Full Website Sitemap</h2>
+  <p class="note">Hierarchy below reflects the pages and relationships present in the current draft website.</p>
+
+  <div class="node-grid">
+    <div class="box dark md">HOME</div>
+    <div class="arrow">↓</div>
+  </div>
+
+  <div class="row" style="align-items:flex-start; gap:14px;">
+    <div class="col">
+      <div class="box dark sm">SOLUTIONS</div>
+      <div class="arrow">↓</div>
+      <div class="box sm">Audiovisual Solutions</div>
+      <div class="arrow">↓</div>
+      <div class="box sm">IT / ELV Solutions</div>
+      <div class="arrow">↓</div>
+      <div class="box sm">Video Conferencing Solutions</div>
+      <div class="arrow">↓</div>
+      <div class="box sm">Energy Saving Solutions</div>
+    </div>
+    <div class="col">
+      <div class="box dark sm">PROJECTS</div>
+      <div class="arrow">↓</div>
+      <div class="box sm">Mohammed Bin Rashid Space Center</div>
+      <div class="arrow">↓</div>
+      <div class="box sm">Wego Middle East</div>
+      <div class="arrow">↓</div>
+      <div class="box sm">Huawei Dubai Offices</div>
+    </div>
+    <div class="col">
+      <div class="box dark sm">BLOG</div>
+      <div class="arrow">↓</div>
+      <div class="box sm">Article / Post</div>
+    </div>
+    <div class="col">
+      <div class="box dark sm">ABOUT US</div>
+      <div style="height:18px"></div>
+      <div class="box dark sm">CONTACT US</div>
+    </div>
+  </div>
+
+  <div class="tree" style="margin-top:14px;">HOME  (/)
+│
+├── SOLUTIONS  (/solutions/)
+│   ├── Audiovisual Solutions  (/audiovisual-solutions/)
+│   ├── IT / ELV Solutions  (/it-elv-solutions/)
+│   ├── Video Conferencing Solutions  (/video-conferencing-solutions/)
+│   └── Energy Saving Solutions  (/energy-saving-solutions/)
+│
+├── PROJECTS  (/projects/)
+│   ├── Mohammed Bin Rashid Space Center  (/ip-telephony/)
+│   ├── Wego Middle East  (/networking-products/)
+│   └── Huawei Dubai Offices  (/huawei-dubai-offices/)
+│
+├── BLOG  (/cisco-2/)
+│   └── Article posts (e.g. project / insight articles)
+│
+├── ABOUT US  (/about-us/)
+│
+└── CONTACT US  (/contact-us/)
+
+Note: “Trusted brands” appears as a section on pages (not a separate main page).
+Note: Homepage also lists “Security &amp; Surveillance” as a solution card;
+      it currently links to the Solutions overview (no separate detail page).</div>
 </section>
 
-<!-- ===================== 1 ===================== -->
-<h2>1. Document purpose &amp; working method</h2>
-<p>This document answers the request raised in the client call: <strong>agree the skeleton before building the house</strong>. We are not proposing colours, banner sizes, final wording, or a live mock-up at this stage.</p>
-<div class="box">
-  <div class="box-title">Agreed sequence of work</div>
-  <ol>
-    <li><strong>Structure</strong> — hierarchy, sections, journey, CTAs (this document)</li>
-    <li><strong>Priorities</strong> — client selects section order and options</li>
-    <li><strong>Visual design</strong> — black/white layout concepts → then brand colours</li>
-    <li><strong>Content</strong> — final wording, photography / compressed hero video</li>
-    <li><strong>Development</strong> — build the approved structure into the live site</li>
-  </ol>
-</div>
-<p class="small muted">Note: The existing developed draft at elvhub.appointics.com remains a temporary reference only. It is not the approved structure. Layout decisions in that draft do not lock priorities.</p>
+<!-- ===================== PAGE 3: HEADER ===================== -->
+<section class="page">
+  <h2>02 — Header / Navigation Wireframe</h2>
+  <p class="note">Based on the header structure of the current draft.</p>
 
-<!-- ===================== 2 ===================== -->
-<h2>2. What we heard in the meeting (requirements extracted)</h2>
-<p>These points are structural or journey-related. Visual polish items are logged in Section 10 for later.</p>
-<table>
-  <thead>
-    <tr><th style="width:28%">Theme</th><th>Client requirement (paraphrased)</th><th style="width:22%">Impact on structure</th></tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Process</td>
-      <td>Do not rush into a live mock-up. First deliver hierarchy / block diagram / visitor journey. Agree skeleton, then design, then build.</td>
-      <td>This document exists</td>
-    </tr>
-    <tr>
-      <td>Visitor-first thinking</td>
-      <td>Design for a customer who arrives, checks solutions, judges credibility, then inquires — not for internal org chart navigation.</td>
-      <td>Journey-led homepage</td>
-    </tr>
-    <tr>
-      <td>Message speed</td>
-      <td>Like current elv-hub.com: say what you do in the first 1–2 sentences. Then show solution icons (less text). Then deeper solution cards with images + Read more.</td>
-      <td>Homepage H1 → Icons → Detail cards</td>
-    </tr>
-    <tr>
-      <td>Credibility early</td>
-      <td>Reference SMERK: “Trusted by” / client logos as an early impression (priority can be adjusted).</td>
-      <td>Partners / clients block near top</td>
-    </tr>
-    <tr>
-      <td>Navigation</td>
-      <td>No need for “Home” in the menu. “About Us” as primary nav feels legacy. Prefer Solutions-led nav. Remove search. Prefer “Contact Us” over cluttered top utility bar (bar kept as optional).</td>
-      <td>Nav redesign options</td>
-    </tr>
-    <tr>
-      <td>Header</td>
-      <td>Like AVI-SPL: transparent header over hero; becomes solid on scroll. Current white bar feels too tall / wastes space. Nav labels should use available width (larger).</td>
-      <td>Header behaviour options</td>
-    </tr>
-    <tr>
-      <td>Tone of surface</td>
-      <td>Too much pure white is hard on the eyes. Prefer softer, logo-aligned light blue tones later — not decided in this doc.</td>
-      <td>Logged for design phase</td>
-    </tr>
-    <tr>
-      <td>Hero media</td>
-      <td>Control-room / high-tech atmosphere; short compressed video preferred; replaceable mock footage OK for now.</td>
-      <td>Hero media placeholder only</td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- ===================== 3 ===================== -->
-<div class="page-break"></div>
-<h2>3. Who visits &amp; what they need</h2>
-<p>Structure is built around three primary visitor types. Secondary audiences (job seekers, vendors) are not homepage priorities.</p>
-<table>
-  <thead>
-    <tr><th>Visitor</th><th>What they need in first 30 seconds</th><th>Primary path</th><th>Success CTA</th></tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Facilities / IT decision maker</strong> (corporate, hotel, campus)</td>
-      <td>“Do they do what I need?” + “Have they done this for people like me?”</td>
-      <td>Hero → Solution icons → Solution detail → Projects → Contact</td>
-      <td>Contact Us / Request consultation</td>
-    </tr>
-    <tr>
-      <td><strong>Consultant / architect / main contractor</strong></td>
-      <td>Scope coverage, certifications, delivery method (design–supply–install–maintain)</td>
-      <td>Hero → How we work → Solutions → About certifications → Contact</td>
-      <td>Contact Us</td>
-    </tr>
-    <tr>
-      <td><strong>Existing client / AMC inquiry</strong></td>
-      <td>Fast access to phone / WhatsApp / support path</td>
-      <td>Header Contact / Contact page</td>
-      <td>Call / WhatsApp / Form</td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- ===================== 4 ===================== -->
-<h2>4. Recommended visitor journey (homepage scroll path)</h2>
-<p>Below is the <strong>recommended default journey</strong> (Option A). Options B and C swap block order so the client can set priorities without changing page inventory.</p>
-
-<div class="diagram">VISITOR LANDS ON HOMEPAGE
-        |
-        v
-+---------------------------+
-|  H1. HERO                 |  Instant clarity: who we are + what we do
-|  (video/control room)     |  ONE primary CTA → Contact
-+-------------+-------------+
-              |
-              v
-+---------------------------+
-|  H2. TRUSTED BY / CLIENTS |  Credibility in &lt; 5 seconds (SMERK-style)
-|  logo strip               |
-+-------------+-------------+
-              |
-              v
-+---------------------------+
-|  H3. SOLUTIONS OVERVIEW   |  Icon grid = fast understanding (old-site lesson)
-|  (icons only)             |  Each icon → Solution detail page
-+-------------+-------------+
-              |
-              v
-+---------------------------+
-|  H4. SOLUTIONS IN DEPTH   |  Image + short line + Read more (one by one)
-|  cards / rows             |  Read more → /solutions/[slug]/
-+-------------+-------------+
-              |
-              v
-+---------------------------+
-|  H5. HOW WE WORK          |  Design → Supply → Install → Maintain
-|  4 steps                  |  Builds process confidence
-+-------------+-------------+
-              |
-              v
-+---------------------------+
-|  H6. SELECTED PROJECTS    |  Proof (MBRSC, Huawei, Wego, Habtoor…)
-|                           |  View project → /projects/[slug]/ All → /projects/
-+-------------+-------------+
-              |
-              v
-+---------------------------+
-|  H7. SECTORS WE SERVE     |  Education / Hospitality / Oil &amp; Gas /
-|                           |  Corporate / Government
-+-------------+-------------+
-              |
-              v
-+---------------------------+
-|  H8. WHY ELV HUB          |  Certifications + partnerships (short)
-+-------------+-------------+
-              |
-              v
-+---------------------------+
-|  H9. FINAL CTA BAND       |  Contact Us / Call / WhatsApp
-+---------------------------+</div>
-
-<div class="two-col">
-  <div class="option">
-    <span class="option-tag">Option B — Proof first</span>
-    <p class="small">Hero → <strong>Projects / References</strong> → Trusted by → Solutions icons → Solutions depth → How we work → Sectors → Why us → CTA</p>
-    <p class="small muted">Use if client wants landmark projects before explaining offerings.</p>
+  <div class="header-wire">
+    <div class="topbar">
+      <span>[ Phone: +971 50 736 3959 ]</span>
+      <span>[ Email: Sales@elv-hub.com ]</span>
+      <span>[ Address: Golden Business Building, Dubai ]</span>
+      <span>[ Chat on WhatsApp ]</span>
+    </div>
+    <div class="mainnav">
+      <div class="logo-box">ELV HUB LOGO</div>
+      <div class="nav-items">
+        <span class="nav-item">Solutions ▾</span>
+        <span class="nav-item">Projects ▾</span>
+        <span class="nav-item">Blog</span>
+        <span class="nav-item">About Us</span>
+        <span class="nav-item">Contact Us</span>
+      </div>
+      <div class="cta-btn fill">Request A Quote</div>
+    </div>
   </div>
-  <div class="option">
-    <span class="option-tag">Option C — Solutions only, then trust</span>
-    <p class="small">Hero → Solutions icons → Solutions depth → Trusted by → How we work → Projects → Sectors → Why us → CTA</p>
-    <p class="small muted">Closest to current elv-hub.com emphasis on “what we do” first.</p>
-  </div>
-</div>
-<div class="decision">
-  <strong>Client decision needed</strong>
-  Choose Option A, B, or C for homepage section order. Inventory of sections stays the same; only sequence changes.
-</div>
 
-<!-- ===================== 5 ===================== -->
-<div class="page-break"></div>
-<h2>5. Full site map / hierarchy (all pages)</h2>
-<p>Proposed page inventory. Pages marked ★ are primary navigation destinations. Pages marked ○ are reachable from hubs / CTAs but not necessarily in the top nav.</p>
+  <h3>Navigation destinations</h3>
+  <table>
+    <thead>
+      <tr><th>Element</th><th>Destination</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Logo</td><td>HOME (/)</td></tr>
+      <tr><td>Solutions</td><td>SOLUTIONS overview (/solutions/)</td></tr>
+      <tr><td>↳ Audiovisual Solutions</td><td>/audiovisual-solutions/</td></tr>
+      <tr><td>↳ IT / ELV Solutions</td><td>/it-elv-solutions/</td></tr>
+      <tr><td>↳ Video Conferencing Solutions</td><td>/video-conferencing-solutions/</td></tr>
+      <tr><td>↳ Energy Saving Solutions</td><td>/energy-saving-solutions/</td></tr>
+      <tr><td>Projects</td><td>PROJECTS (/projects/)</td></tr>
+      <tr><td>↳ Mohammed Bin Rashid Space Center</td><td>/ip-telephony/</td></tr>
+      <tr><td>↳ Wego Middle East</td><td>/networking-products/</td></tr>
+      <tr><td>↳ Huawei Dubai Offices</td><td>/huawei-dubai-offices/</td></tr>
+      <tr><td>Blog</td><td>BLOG (/cisco-2/)</td></tr>
+      <tr><td>About Us</td><td>ABOUT US (/about-us/)</td></tr>
+      <tr><td>Contact Us</td><td>CONTACT US (/contact-us/)</td></tr>
+      <tr><td>Request A Quote</td><td>Quote modal popup (on-page)</td></tr>
+      <tr><td>Phone / Email / WhatsApp (top bar)</td><td>tel: / mailto: / WhatsApp chat</td></tr>
+    </tbody>
+  </table>
 
-<div class="diagram">ELV HUB SITE MAP
-|
-|-- ★ Home .......................... /
-|
-|-- ★ Solutions (hub) ............... /solutions/
-|     |-- ○ Audiovisual ............. /solutions/audiovisual/
-|     |-- ○ IT / ELV ................ /solutions/it-elv/
-|     |-- ○ Video Conferencing ...... /solutions/video-conferencing/
-|     |-- ○ Energy Saving ........... /solutions/energy-saving/
-|     |-- ○ Security &amp; Surveillance . /solutions/security/   [NEW — optional]
-|
-|-- ★ Projects (hub) ................ /projects/
-|     |-- ○ Project detail .......... /projects/[slug]/
-|
-|-- ○ About ......................... /about/     (footer + soft nav; not “Home/About” legacy pair)
-|
-|-- ★ Contact ....................... /contact/
-|
-|-- ○ Legal (footer only)
-|     |-- Privacy ................... /privacy/
-|     |-- Terms ..................... /terms/
-|
-|-- ○ Blog / Insights ............... /insights/   [OPTIONAL — phase 2]
-      |-- Article ................... /insights/[slug]/</div>
-
-<table>
-  <thead>
-    <tr><th>Page</th><th>Purpose</th><th>Primary entry points</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Home</td><td>Orient visitor in &lt;10 seconds; route them into Solutions, proof, or Contact</td><td>Direct URL, ads, Google brand search</td></tr>
-    <tr><td>Solutions hub</td><td>Overview of all solution families; gateway to detail pages</td><td>Main nav, hero secondary CTA, footer</td></tr>
-    <tr><td>Solution detail (×4–5)</td><td>Deep dive: applications, capability list, related projects, CTA</td><td>Icons, cards, Solutions hub, search engines</td></tr>
-    <tr><td>Projects hub</td><td>Credibility gallery filtered by sector / solution type</td><td>Main nav, homepage projects block</td></tr>
-    <tr><td>Project detail</td><td>Case story: challenge → solution → outcome → related CTA</td><td>Projects hub, homepage cards</td></tr>
-    <tr><td>About</td><td>Company story, certifications, partners, values — for visitors already interested</td><td>Footer, soft nav, Why us links</td></tr>
-    <tr><td>Contact</td><td>Single conversion page: form + phone + email + WhatsApp + map</td><td>Header CTA, all page end-bands, nav</td></tr>
-  </tbody>
-</table>
-
-<div class="decision">
-  <strong>Client decision needed</strong>
-  Confirm whether Security &amp; Surveillance is a 5th public solution (it appears in the draft homepage) or stays under IT/ELV. Confirm whether Insights/Blog is Phase 1 or Phase 2.
-</div>
-
-<!-- ===================== 6 ===================== -->
-<h2>6. Global navigation &amp; header options</h2>
-
-<h3>6.1 Recommended primary navigation</h3>
-<p>Remove “Home”. Do not lead with “About Us”. Prefer visitor tasks.</p>
-<div class="box">
-  <div class="box-title">Proposed top navigation</div>
-  <p><strong>Solutions</strong> (mega or simple dropdown) · <strong>Projects</strong> · <strong>About</strong> (optional in top nav or footer-only) · <strong>Contact Us</strong> (button-style CTA)</p>
-  <p class="small muted">Search: removed. Phone/email/location utility bar: optional (see 6.3).</p>
-</div>
-
-<table>
-  <thead>
-    <tr><th>Nav item</th><th>Leads to</th><th>Notes</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Logo</td><td>/</td><td>Only “home” affordance needed</td></tr>
-    <tr><td>Solutions</td><td>/solutions/ + dropdown to each solution page</td><td>Primary discovery path</td></tr>
-    <tr><td>Projects</td><td>/projects/</td><td>Credibility path</td></tr>
-    <tr><td>About</td><td>/about/</td><td>Can live in footer only if client wants leaner nav</td></tr>
-    <tr><td>Contact Us</td><td>/contact/</td><td>Replaces “Request a Quote” as the single primary header action</td></tr>
-  </tbody>
-</table>
-
-<h3>6.2 Header behaviour (AVI-SPL inspired)</h3>
-<div class="option">
-  <span class="option-tag">Recommended</span>
-  <p class="small"><strong>Transparent over homepage hero</strong> → on scroll, solid/blurred bar. Inner pages: solid from load (no hero video). Nav labels sized to use available width after search removal. Slim height — no oversized white bar.</p>
-</div>
-
-<h3>6.3 Top utility bar (phone / email / location)</h3>
-<div class="two-col">
-  <div class="option">
-    <span class="option-tag">Option U1 — Remove (recommended default)</span>
-    <p class="small">Cleaner, modern. Contact details live in Contact Us, footer, and WhatsApp float. Matches client preference for non-legacy feel.</p>
-  </div>
-  <div class="option">
-    <span class="option-tag">Option U2 — Keep slim utility bar</span>
-    <p class="small">Helps older visitors find a phone number immediately without scrolling. Client said this remains undecided — keep as toggleable option.</p>
-  </div>
-</div>
-
-<!-- ===================== 7 ===================== -->
-<div class="page-break"></div>
-<h2>7. Homepage section wireframes</h2>
-<p>Blocks below follow <strong>Option A</strong> order. Each block states: what it is, why it exists, and where CTAs go. No visual styling implied.</p>
-
-<div class="wire avoid-break">
-  <div class="wire-head">Global — Header (all pages)</div>
-  <div class="wire-body">
-    <div class="wire-row">
-      <div class="wire-label">HDR</div>
-      <div class="wire-content">
-        <strong>Elements:</strong> Logo · Solutions · Projects · [About] · Contact Us button · [optional utility bar] · [optional WhatsApp icon]
-        <div class="purpose"><strong>Purpose:</strong> Persistent wayfinding + one clear conversion action.</div>
-        <div class="cta"><strong>CTAs:</strong> Logo → / · Solutions → /solutions/ · Projects → /projects/ · About → /about/ · Contact Us → /contact/</div>
+  <div class="wire">
+    <div class="wire-h">Solutions dropdown</div>
+    <div class="wire-b">
+      <div class="four">
+        <div class="card">Audiovisual Solutions</div>
+        <div class="card">IT / ELV Solutions</div>
+        <div class="card">Video Conferencing Solutions</div>
+        <div class="card">Energy Saving Solutions</div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="wire avoid-break">
-  <div class="wire-head">H1 — Hero</div>
-  <div class="wire-body">
-    <div class="wire-row">
-      <div class="wire-label">H1</div>
-      <div class="wire-content">
-        <strong>Elements:</strong> Full-bleed media (compressed control-room / high-tech video or still) · Brand presence · One headline that states what ELV Hub does · One short supporting line · One primary CTA · Optional secondary CTA
-        <div class="purpose"><strong>Purpose:</strong> In one glance, visitor knows: Audiovisual + IT/ELV + Security · Design, supply, install · UAE / Middle East. Matches the clarity of the current elv-hub.com opening statement.</div>
-        <div class="cta"><strong>CTAs:</strong> Primary “Contact Us” → /contact/ · Secondary “Explore Solutions” → #solutions-overview or /solutions/</div>
+  <div class="wire">
+    <div class="wire-h">Projects dropdown</div>
+    <div class="wire-b">
+      <div class="three">
+        <div class="card">Mohammed Bin Rashid Space Center</div>
+        <div class="card">Wego Middle East</div>
+        <div class="card">Huawei Dubai Offices</div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="wire avoid-break">
-  <div class="wire-head">H2 — Trusted by / Client &amp; partner logos</div>
-  <div class="wire-body">
-    <div class="wire-row">
-      <div class="wire-label">H2</div>
-      <div class="wire-content">
-        <strong>Elements:</strong> Short label (“Trusted by”) · Logo strip (clients and/or manufacturer partners — client to choose mix)
-        <div class="purpose"><strong>Purpose:</strong> Instant credibility (SMERK pattern). No long text. First impression after hero.</div>
-        <div class="cta"><strong>CTAs:</strong> Optional: logos link to related project or stay non-clickable. “View projects” → /projects/</div>
+<!-- ===================== PAGE 4: HOMEPAGE 01–07 ===================== -->
+<section class="page">
+  <h2>03 — Homepage Wireframe (Part 1)</h2>
+  <p class="note">Sections follow the top-to-bottom order of the current draft homepage.</p>
+
+  <div class="wire">
+    <div class="wire-h">01 — Hero</div>
+    <div class="wire-b">
+      <div class="placeholder tall">[ Background Video / Image Area ]</div>
+      <div class="placeholder">[ Main Heading ]</div>
+      <div class="placeholder mid">[ Supporting Text ]</div>
+      <div class="cta-row">
+        <span class="cta-btn fill">Explore Solutions</span>
+        <span class="cta-btn">Get a Free Consultation</span>
       </div>
+      <div class="four" style="margin-top:8px;">
+        <div class="card">Stat<br>Years in the UAE</div>
+        <div class="card">Stat<br>Projects delivered</div>
+        <div class="card">Stat<br>Technology partners</div>
+        <div class="card">Stat<br>Certified engineers</div>
+      </div>
+      <p class="meta-line"><strong>Purpose:</strong> Introduce ELV Hub and state what the company does (AV, IT/ELV, Security — design, supply, install, maintain).</p>
+      <p class="meta-line"><strong>CTA flow:</strong> Explore Solutions → SOLUTIONS (/solutions/) · Get a Free Consultation → CONTACT US (/contact-us/)</p>
     </div>
   </div>
-</div>
 
-<div class="wire avoid-break">
-  <div class="wire-head">H3 — Solutions overview (icons)</div>
-  <div class="wire-body">
-    <div class="wire-row">
-      <div class="wire-label">H3</div>
-      <div class="wire-content">
-        <strong>Elements:</strong> Section title · 4–5 icons with short labels only (AV · IT/ELV · Video Conferencing · Energy Saving · [Security])
-        <div class="purpose"><strong>Purpose:</strong> Fast mental model of offerings — the “old site icons” lesson. Less text, faster recognition even for non-technical visitors.</div>
-        <div class="cta"><strong>CTAs:</strong> Each icon → matching /solutions/[slug]/</div>
+  <div class="wire">
+    <div class="wire-h">02 — Who We Are</div>
+    <div class="wire-b">
+      <div class="two">
+        <div>
+          <div class="placeholder mid">[ Heading: region’s leader… ]</div>
+          <div class="placeholder tall">[ Company introduction text ]</div>
+          <div class="cta-row">
+            <span class="cta-btn fill">Our Story</span>
+            <span class="cta-btn">See our work</span>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="min-height:28px;margin-bottom:4px;">BICSI Certified</div>
+          <div class="card" style="min-height:28px;margin-bottom:4px;">AVIXA Members</div>
+          <div class="card" style="min-height:28px;margin-bottom:4px;">USGBC LEED Professionals</div>
+          <div class="card" style="min-height:28px;">Manufacturer Authorised Partner</div>
+        </div>
       </div>
+      <p class="meta-line"><strong>Purpose:</strong> Establish company credibility and certifications.</p>
+      <p class="meta-line"><strong>CTA flow:</strong> Our Story → ABOUT US · See our work → PROJECTS</p>
     </div>
   </div>
-</div>
 
-<div class="wire avoid-break">
-  <div class="wire-head">H4 — Solutions in depth (image rows / cards)</div>
-  <div class="wire-body">
-    <div class="wire-row">
-      <div class="wire-label">H4</div>
-      <div class="wire-content">
-        <strong>Elements:</strong> For each solution: image · title · 1–2 line description · “Read more”
-        <div class="purpose"><strong>Purpose:</strong> After the overview, give a slightly deeper picture without dumping full capability lists on the homepage. Detail lives on solution pages.</div>
-        <div class="cta"><strong>CTAs:</strong> Read more → /solutions/[slug]/ Section end link “All solutions” → /solutions/</div>
+  <div class="wire">
+    <div class="wire-h">03 — Solutions Overview</div>
+    <div class="wire-b">
+      <div class="placeholder">[ Section heading: AV, IT &amp; Security technology… ]</div>
+      <div class="five">
+        <div class="card">01<br>Audio Visual Solutions</div>
+        <div class="card">02<br>IT / ELV Solutions</div>
+        <div class="card">03<br>Video Conferencing</div>
+        <div class="card">04<br>Energy Saving Solutions</div>
+        <div class="card">05<br>Security &amp; Surveillance</div>
       </div>
+      <p class="meta-line"><strong>Purpose:</strong> Show the main solution categories at a glance.</p>
+      <p class="meta-line"><strong>CTA flow:</strong> Cards 01–04 → matching Solution detail pages · Card 05 Security → SOLUTIONS overview (/solutions/)</p>
     </div>
   </div>
-</div>
 
-<div class="wire avoid-break">
-  <div class="wire-head">H5 — How we work (4 steps)</div>
-  <div class="wire-body">
-    <div class="wire-row">
-      <div class="wire-label">H5</div>
-      <div class="wire-content">
-        <strong>Elements:</strong> 1 Consultancy &amp; Design · 2 Project Management · 3 Implementation · 4 Annual Maintenance / Support
-        <div class="purpose"><strong>Purpose:</strong> Show end-to-end accountability (AVI-SPL Design/Build/Manage pattern, adapted to ELV Hub’s service list). Builds trust before project stories.</div>
-        <div class="cta"><strong>CTAs:</strong> Optional “Talk to a specialist” → /contact/</div>
+  <div class="wire">
+    <div class="wire-h">04 — Spaces / Applications</div>
+    <div class="wire-b">
+      <div class="placeholder">[ Heading: Every space. One integrated experience. ]</div>
+      <div class="placeholder mid">[ Supporting text ]</div>
+      <div class="four">
+        <div class="card">Boardrooms</div>
+        <div class="card">Auditoriums</div>
+        <div class="card">Lecture Halls</div>
+        <div class="card">Command &amp; Control Rooms</div>
+        <div class="card">Conference Centres</div>
+        <div class="card">Hotel Ballrooms</div>
+        <div class="card">Training Centres</div>
+        <div class="card">… + more space types</div>
       </div>
+      <p class="meta-line"><strong>Purpose:</strong> Show where solutions are applied (room / venue types).</p>
+      <p class="meta-line"><strong>CTA flow:</strong> No page-level CTA confirmed in this block (informational).</p>
     </div>
   </div>
-</div>
+</section>
 
-<div class="wire avoid-break">
-  <div class="wire-head">H6 — Selected projects</div>
-  <div class="wire-body">
-    <div class="wire-row">
-      <div class="wire-label">H6</div>
-      <div class="wire-content">
-        <strong>Elements:</strong> 3–5 featured projects (image, name, sector tag, one-line outcome)
-        <div class="purpose"><strong>Purpose:</strong> Proof. Landmark names (e.g. MBRSC, Huawei, Wego, Habtoor) do the selling.</div>
-        <div class="cta"><strong>CTAs:</strong> Project card → /projects/[slug]/ “View all projects” → /projects/</div>
+<!-- ===================== PAGE 5: HOMEPAGE 05–14 ===================== -->
+<section class="page">
+  <h2>03 — Homepage Wireframe (Part 2)</h2>
+
+  <div class="wire">
+    <div class="wire-h">05 — How We Work</div>
+    <div class="wire-b">
+      <div class="placeholder">[ Heading: Design. Supply. Install. Maintain. ]</div>
+      <div class="four">
+        <div class="card">01 Consultancy &amp; Design</div>
+        <div class="card">02 Project Management</div>
+        <div class="card">03 Implementation</div>
+        <div class="card">04 Annual Maintenance</div>
       </div>
+      <div class="cta-row"><span class="cta-btn fill">Plan Your Space</span></div>
+      <p class="meta-line"><strong>Purpose:</strong> Explain the delivery process end-to-end.</p>
+      <p class="meta-line"><strong>CTA flow:</strong> Plan Your Space → CONTACT US</p>
     </div>
   </div>
-</div>
 
-<div class="wire avoid-break">
-  <div class="wire-head">H7 — Sectors we serve</div>
-  <div class="wire-body">
-    <div class="wire-row">
-      <div class="wire-label">H7</div>
-      <div class="wire-content">
-        <strong>Elements:</strong> Education · Hospitality · Oil &amp; Gas · Corporate · Government (icons or simple labels)
-        <div class="purpose"><strong>Purpose:</strong> Help visitor self-identify. Optional later: each sector links to filtered projects.</div>
-        <div class="cta"><strong>CTAs:</strong> Sector → /projects/?sector=… (if filters exist) or stay informational in Phase 1</div>
-      </div>
+  <div class="wire">
+    <div class="wire-h">06 — Trusted Brands</div>
+    <div class="wire-b">
+      <div class="placeholder">[ Heading: Trusted brands, expertly integrated ]</div>
+      <div class="placeholder mid">[ Manufacturer / partner logo strip ]</div>
+      <p class="meta-line"><strong>Purpose:</strong> Show technology brand partnerships.</p>
+      <p class="meta-line"><strong>CTA flow:</strong> Logo strip — no separate Partners page in current draft.</p>
     </div>
   </div>
-</div>
 
-<div class="wire avoid-break">
-  <div class="wire-head">H8 — Why ELV Hub (short)</div>
-  <div class="wire-body">
-    <div class="wire-row">
-      <div class="wire-label">H8</div>
-      <div class="wire-content">
-        <strong>Elements:</strong> 3–4 points max (certifications BICSI / AVIXA / USGBC · manufacturer partnerships · end-to-end delivery · UAE track record)
-        <div class="purpose"><strong>Purpose:</strong> Reinforce trust without turning homepage into an About page.</div>
-        <div class="cta"><strong>CTAs:</strong> “About the company” → /about/</div>
+  <div class="wire">
+    <div class="wire-h">07 — Featured Projects</div>
+    <div class="wire-b">
+      <div class="placeholder">[ Heading: Work that keeps the region connected ]</div>
+      <div class="five">
+        <div class="card">MBRSC</div>
+        <div class="card">Wego Middle East</div>
+        <div class="card">Huawei Dubai Offices</div>
+        <div class="card">Habtoor Grand Resort &amp; Spa</div>
+        <div class="card">Smart Classrooms</div>
       </div>
+      <div class="cta-row"><span class="cta-btn fill">View All Projects</span></div>
+      <p class="meta-line"><strong>Purpose:</strong> Present selected project proof points.</p>
+      <p class="meta-line"><strong>CTA flow:</strong> Project cards → related Project detail pages (where linked) · View All Projects → PROJECTS · Wego card → /networking-products/</p>
     </div>
   </div>
-</div>
 
-<div class="wire avoid-break">
-  <div class="wire-head">H9 — Final CTA band</div>
-  <div class="wire-body">
-    <div class="wire-row">
-      <div class="wire-label">H9</div>
-      <div class="wire-content">
-        <strong>Elements:</strong> Short invitation · Contact Us · Phone · WhatsApp
-        <div class="purpose"><strong>Purpose:</strong> Capture the inquiry after the journey is complete.</div>
-        <div class="cta"><strong>CTAs:</strong> Contact Us → /contact/ · tel: link · WhatsApp deep link</div>
+  <div class="wire">
+    <div class="wire-h">08 — Sectors</div>
+    <div class="wire-b">
+      <div class="placeholder">[ Heading: Sector expertise you can build on ]</div>
+      <div class="five">
+        <div class="card">Education</div>
+        <div class="card">Hospitality</div>
+        <div class="card">Oil &amp; Gas</div>
+        <div class="card">Corporate</div>
+        <div class="card">Government</div>
       </div>
+      <p class="meta-line"><strong>Purpose:</strong> Show industries served.</p>
+      <p class="meta-line"><strong>CTA flow:</strong> Informational sector cards (no separate sector pages in current draft).</p>
     </div>
   </div>
-</div>
 
-<div class="wire avoid-break">
-  <div class="wire-head">Global — Footer (all pages)</div>
-  <div class="wire-body">
-    <div class="wire-row">
-      <div class="wire-label">FTR</div>
-      <div class="wire-content">
-        <strong>Elements:</strong> Logo · short positioning line · Solutions links · Projects · About · Contact · Address · Phone · Email · Social · Legal
-        <div class="purpose"><strong>Purpose:</strong> Secondary navigation + contact details always available.</div>
-        <div class="cta"><strong>CTAs:</strong> Same destinations as nav; email mailto:; phone tel:</div>
+  <div class="wire">
+    <div class="wire-h">09 — Why ELV Hub</div>
+    <div class="wire-b">
+      <div class="placeholder">[ Heading: Innovative, reliable and future-proof ]</div>
+      <div class="four">
+        <div class="card">Certified specialist team</div>
+        <div class="card">Manufacturer-direct partnerships</div>
+        <div class="card">End-to-end accountability</div>
+        <div class="card">Proven UAE landmark projects</div>
       </div>
+      <p class="meta-line"><strong>Purpose:</strong> Summarize key reasons to choose ELV Hub.</p>
     </div>
   </div>
-</div>
 
-<p class="small muted">Removed from homepage vs current draft (recommended): large FAQ block (move to Contact or Phase 2), heavy “stats counters” unless real numbers are confirmed, duplicate contact forms (keep one primary form on Contact page; homepage can deep-link).</p>
-
-<!-- ===================== 8 ===================== -->
-<div class="page-break"></div>
-<h2>8. Inner page wireframes</h2>
-
-<h3>8.1 Solutions hub — /solutions/</h3>
-<div class="wire">
-  <div class="wire-head">Solutions hub sections</div>
-  <div class="wire-body">
-    <div class="wire-row"><div class="wire-label">S1</div><div class="wire-content"><strong>Page hero (static)</strong> — Title + one line: integrated AV / IT / Security partner.<div class="cta">CTA → Contact</div></div></div>
-    <div class="wire-row"><div class="wire-label">S2</div><div class="wire-content"><strong>Solution index</strong> — All solution families as large entries (image + title + short line + Explore).<div class="purpose">Purpose: let visitor choose a path quickly.</div><div class="cta">Each → /solutions/[slug]/</div></div></div>
-    <div class="wire-row"><div class="wire-label">S3</div><div class="wire-content"><strong>How we deliver</strong> — Short reminder of Design → Install → Maintain (optional if already strong on home).</div></div>
-    <div class="wire-row"><div class="wire-label">S4</div><div class="wire-content"><strong>End CTA</strong> — Contact band.<div class="cta">→ /contact/</div></div></div>
+  <div class="wire">
+    <div class="wire-h">10 — Testimonials</div>
+    <div class="wire-b">
+      <div class="placeholder">[ Heading: Trusted by the best in the region ]</div>
+      <div class="three">
+        <div class="card">Testimonial 1</div>
+        <div class="card">Testimonial 2</div>
+        <div class="card">Testimonial 3</div>
+      </div>
+      <p class="meta-line"><strong>Purpose:</strong> Social proof from clients.</p>
+    </div>
   </div>
-</div>
 
-<h3>8.2 Solution detail page — template for each solution</h3>
-<p class="small">Applies to: Audiovisual · IT/ELV · Video Conferencing · Energy Saving · [Security if approved]</p>
-<div class="wire">
-  <div class="wire-head">Solution detail template</div>
-  <div class="wire-body">
-    <div class="wire-row"><div class="wire-label">D1</div><div class="wire-content"><strong>Hero</strong> — Solution name + one clarifying sentence + primary CTA (Contact) + secondary (Related projects).</div></div>
-    <div class="wire-row"><div class="wire-label">D2</div><div class="wire-content"><strong>What this covers</strong> — Bullet capability groups (from current site lists, refined later in content phase). Keep scannable.</div></div>
-    <div class="wire-row"><div class="wire-label">D3</div><div class="wire-content"><strong>Typical spaces / applications</strong> — e.g. boardrooms, auditoriums, command centres (for AV).</div></div>
-    <div class="wire-row"><div class="wire-label">D4</div><div class="wire-content"><strong>Related projects</strong> — 2–3 cards filtered to this solution.<div class="cta">→ project detail · → /projects/</div></div></div>
-    <div class="wire-row"><div class="wire-label">D5</div><div class="wire-content"><strong>Partners for this solution</strong> — Manufacturer logos relevant to this category (optional).</div></div>
-    <div class="wire-row"><div class="wire-label">D6</div><div class="wire-content"><strong>End CTA</strong> — “Discuss this solution” → /contact/?topic=[solution]</div></div>
+  <div class="wire">
+    <div class="wire-h">11 — Latest from ELV Hub (Blog)</div>
+    <div class="wire-b">
+      <div class="placeholder">[ Heading: Latest from ELV Hub ]</div>
+      <div class="three">
+        <div class="card">Article card + Read More</div>
+        <div class="card">Article card + Read More</div>
+        <div class="card">Article card + Read More</div>
+      </div>
+      <div class="cta-row"><span class="cta-btn">View all articles</span></div>
+      <p class="meta-line"><strong>Purpose:</strong> Surface recent articles / project stories.</p>
+      <p class="meta-line"><strong>CTA flow:</strong> Read More → Article URLs · View all articles → Destination to be confirmed (#)</p>
+    </div>
   </div>
-</div>
 
-<h3>8.3 Projects hub — /projects/</h3>
-<div class="wire">
-  <div class="wire-head">Projects hub</div>
-  <div class="wire-body">
-    <div class="wire-row"><div class="wire-label">P1</div><div class="wire-content"><strong>Hero</strong> — Title + short proof statement.</div></div>
-    <div class="wire-row"><div class="wire-label">P2</div><div class="wire-content"><strong>Filters</strong> — Sector and/or Solution type (simple chips). Phase 1 can be static grouping if filters are heavy.</div></div>
-    <div class="wire-row"><div class="wire-label">P3</div><div class="wire-content"><strong>Project grid</strong> — Image, name, sector, one line.<div class="cta">Card → /projects/[slug]/</div></div></div>
-    <div class="wire-row"><div class="wire-label">P4</div><div class="wire-content"><strong>End CTA</strong> → /contact/</div></div>
+  <div class="wire">
+    <div class="wire-h">12 — FAQ</div>
+    <div class="wire-b">
+      <div class="placeholder">[ Heading: Got Questions? We Have All The Answers ]</div>
+      <div class="placeholder mid">[ Accordion question / answer list ]</div>
+      <p class="meta-line"><strong>Purpose:</strong> Answer common pre-sales questions on the same page.</p>
+      <p class="meta-line"><strong>CTA flow:</strong> Accordion expands on same page section.</p>
+    </div>
   </div>
-</div>
 
-<h3>8.4 Project detail — /projects/[slug]/</h3>
-<div class="wire">
-  <div class="wire-head">Project detail</div>
-  <div class="wire-body">
-    <div class="wire-row"><div class="wire-label">PD1</div><div class="wire-content"><strong>Hero</strong> — Project name, client, sector tags, key image.</div></div>
-    <div class="wire-row"><div class="wire-label">PD2</div><div class="wire-content"><strong>Challenge → Solution → Outcome</strong> — Structured story blocks (content later).</div></div>
-    <div class="wire-row"><div class="wire-label">PD3</div><div class="wire-content"><strong>Systems delivered</strong> — Tags linking back to solution pages.</div></div>
-    <div class="wire-row"><div class="wire-label">PD4</div><div class="wire-content"><strong>Gallery</strong> — Additional images.</div></div>
-    <div class="wire-row"><div class="wire-label">PD5</div><div class="wire-content"><strong>Related projects</strong> + <strong>CTA</strong> → /contact/</div></div>
+  <div class="wire">
+    <div class="wire-h">13 — Contact / Consultation Band + Form</div>
+    <div class="wire-b">
+      <div class="placeholder">[ Heading: Let’s bring your vision to life ]</div>
+      <div class="two">
+        <div>
+          <div class="card" style="margin-bottom:4px;">Call</div>
+          <div class="card" style="margin-bottom:4px;">Email</div>
+          <div class="card" style="margin-bottom:4px;">WhatsApp Business</div>
+          <div class="card">Office address</div>
+        </div>
+        <div>
+          <div class="placeholder tall">[ Request a Free Consultation form ]<br>[ Name / Contact fields ]<br>[ Send Enquiry ]</div>
+        </div>
+      </div>
+      <p class="meta-line"><strong>Purpose:</strong> Convert the visitor into an inquiry.</p>
+      <p class="meta-line"><strong>CTA flow:</strong> Call / Email / WhatsApp → direct contact channels · Form submit → enquiry submission (same page form)</p>
+    </div>
   </div>
-</div>
 
-<h3>8.5 About — /about/</h3>
-<div class="wire">
-  <div class="wire-head">About</div>
-  <div class="wire-body">
-    <div class="wire-row"><div class="wire-label">A1</div><div class="wire-content"><strong>Hero</strong> — Company positioning (not homepage duplicate).</div></div>
-    <div class="wire-row"><div class="wire-label">A2</div><div class="wire-content"><strong>Story / mission</strong> — Who ELV Hub is (since 2010, Dubai).</div></div>
-    <div class="wire-row"><div class="wire-label">A3</div><div class="wire-content"><strong>Certifications &amp; memberships</strong> — BICSI, AVIXA, USGBC, etc.</div></div>
-    <div class="wire-row"><div class="wire-label">A4</div><div class="wire-content"><strong>Manufacturer partnerships</strong> — Logo grid.</div></div>
-    <div class="wire-row"><div class="wire-label">A5</div><div class="wire-content"><strong>Services summary</strong> — Design, PM, Implementation, AMC (links to How we work on home or Contact).</div></div>
-    <div class="wire-row"><div class="wire-label">A6</div><div class="wire-content"><strong>End CTA</strong> → /contact/</div></div>
+  <div class="wire">
+    <div class="wire-h">14 — Footer (global)</div>
+    <div class="wire-b">
+      <div class="four">
+        <div class="card">Logo + address + phone + email</div>
+        <div class="card">Solutions links</div>
+        <div class="card">Company links<br>(About, Projects, Blog, Contact)</div>
+        <div class="card">Business hours</div>
+      </div>
+      <p class="meta-line"><strong>CTA flow:</strong> Footer links → matching pages listed in sitemap.</p>
+    </div>
   </div>
-</div>
+</section>
 
-<h3>8.6 Contact — /contact/</h3>
-<div class="wire">
-  <div class="wire-head">Contact</div>
-  <div class="wire-body">
-    <div class="wire-row"><div class="wire-label">C1</div><div class="wire-content"><strong>Hero</strong> — “Let’s talk about your next project”.</div></div>
-    <div class="wire-row"><div class="wire-label">C2</div><div class="wire-content"><strong>Contact channels</strong> — Phone · Email · WhatsApp · Office address (not buried in a legacy top bar).</div></div>
-    <div class="wire-row"><div class="wire-label">C3</div><div class="wire-content"><strong>Inquiry form</strong> — Name, company, email, phone, solution interest, message. Optional topic prefill from URL.</div></div>
-    <div class="wire-row"><div class="wire-label">C4</div><div class="wire-content"><strong>Map / location</strong> — Office location block.</div></div>
+<!-- ===================== PAGE 6: HOMEPAGE USER FLOW ===================== -->
+<section class="page">
+  <h2>04 — Homepage User Flow</h2>
+  <p class="note">How a visitor moves through the current draft homepage, top to bottom.</p>
+
+  <div class="flow">Visitor enters HOME
+        │
+        ▼
+01  Hero / First message
+        │  Explore Solutions ──────────────► SOLUTIONS
+        │  Get a Free Consultation ────────► CONTACT US
+        ▼
+02  Who We Are
+        │  Our Story ──────────────────────► ABOUT US
+        │  See our work ───────────────────► PROJECTS
+        ▼
+03  Solutions Overview (5 categories)
+        │  AV / IT / VC / Energy ──────────► Solution detail pages
+        │  Security &amp; Surveillance ────────► SOLUTIONS overview
+        ▼
+04  Spaces / Applications
+        ▼
+05  How We Work (4 steps)
+        │  Plan Your Space ────────────────► CONTACT US
+        ▼
+06  Trusted Brands
+        ▼
+07  Featured Projects
+        │  Project cards ──────────────────► Project detail pages
+        │  View All Projects ──────────────► PROJECTS
+        ▼
+08  Sectors
+        ▼
+09  Why ELV Hub
+        ▼
+10  Testimonials
+        ▼
+11  Latest from ELV Hub
+        │  Read More ──────────────────────► Article pages
+        ▼
+12  FAQ (same-page accordion)
+        ▼
+13  Contact band + Form
+        │  Call / Email / WhatsApp / Submit ► Contact channels / enquiry
+        ▼
+    Conversion (enquiry / call / WhatsApp)</div>
+
+  <h3 style="margin-top:16px;">Primary conversion paths from Home</h3>
+  <div class="row" style="justify-content:flex-start; gap:16px; margin-top:10px;">
+    <div class="col">
+      <div class="box sm">HOME</div><div class="arrow">↓</div>
+      <div class="box sm">SOLUTIONS</div><div class="arrow">↓</div>
+      <div class="box sm">Solution Detail</div><div class="arrow">↓</div>
+      <div class="box sm dark">CONTACT US</div>
+    </div>
+    <div class="col">
+      <div class="box sm">HOME</div><div class="arrow">↓</div>
+      <div class="box sm">PROJECTS</div><div class="arrow">↓</div>
+      <div class="box sm">Project Detail</div><div class="arrow">↓</div>
+      <div class="box sm dark">CONTACT US</div>
+    </div>
+    <div class="col">
+      <div class="box sm">HOME</div><div class="arrow">↓</div>
+      <div class="box sm">ABOUT US</div><div class="arrow">↓</div>
+      <div class="box sm dark">CONTACT US</div>
+    </div>
+    <div class="col">
+      <div class="box sm">HOME Hero</div><div class="arrow">↓</div>
+      <div class="box sm dark">CONTACT US</div>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- ===================== 9 ===================== -->
-<div class="page-break"></div>
-<h2>9. Call-to-action (CTA) map</h2>
-<p>Every interactive action should lead to a known destination. This reduces dead ends and keeps the journey intentional.</p>
-<table>
-  <thead>
-    <tr><th>Location</th><th>CTA label (working)</th><th>Destination</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Header</td><td>Contact Us</td><td>/contact/</td></tr>
-    <tr><td>Header</td><td>Solutions / Projects / About</td><td>Matching pages</td></tr>
-    <tr><td>Header logo</td><td>—</td><td>/</td></tr>
-    <tr><td>Home H1</td><td>Contact Us</td><td>/contact/</td></tr>
-    <tr><td>Home H1</td><td>Explore Solutions</td><td>#solutions-overview or /solutions/</td></tr>
-    <tr><td>Home H2</td><td>View projects</td><td>/projects/</td></tr>
-    <tr><td>Home H3 icons</td><td>Icon click</td><td>/solutions/[slug]/</td></tr>
-    <tr><td>Home H4 cards</td><td>Read more</td><td>/solutions/[slug]/</td></tr>
-    <tr><td>Home H5</td><td>Talk to a specialist</td><td>/contact/</td></tr>
-    <tr><td>Home H6 cards</td><td>Project name / View</td><td>/projects/[slug]/</td></tr>
-    <tr><td>Home H6</td><td>View all projects</td><td>/projects/</td></tr>
-    <tr><td>Home H8</td><td>About the company</td><td>/about/</td></tr>
-    <tr><td>Home H9</td><td>Contact / Call / WhatsApp</td><td>/contact/ · tel: · wa.me</td></tr>
-    <tr><td>Solutions hub</td><td>Explore [solution]</td><td>/solutions/[slug]/</td></tr>
-    <tr><td>Solution detail</td><td>Discuss this solution</td><td>/contact/?topic=[slug]</td></tr>
-    <tr><td>Solution detail</td><td>Related project</td><td>/projects/[slug]/</td></tr>
-    <tr><td>Projects hub</td><td>Project card</td><td>/projects/[slug]/</td></tr>
-    <tr><td>Project detail</td><td>Related solution tag</td><td>/solutions/[slug]/</td></tr>
-    <tr><td>Project / About end</td><td>Contact Us</td><td>/contact/</td></tr>
-    <tr><td>Floating (optional)</td><td>WhatsApp</td><td>wa.me/971507363959</td></tr>
-    <tr><td>Footer</td><td>All nav + contact links</td><td>As listed</td></tr>
-  </tbody>
-</table>
+<!-- ===================== PAGE 7: SOLUTIONS ===================== -->
+<section class="page">
+  <h2>05 — Solutions Overview Page</h2>
+  <p class="tiny">Page: /solutions/</p>
 
-<div class="diagram">CTA FLOW (SIMPLIFIED)
+  <div class="node-grid" style="margin-bottom:12px;">
+    <div class="box sm">HOME</div>
+    <div class="arrow">↓</div>
+    <div class="box dark sm">SOLUTIONS</div>
+    <div class="arrow">↓</div>
+    <div class="box sm">Individual Solution Pages</div>
+    <div class="arrow">↓</div>
+    <div class="box sm">CONTACT US</div>
+  </div>
 
-  Discover                Prove                   Convert
-  --------                -----                   -------
-  Solutions icons  --->  Projects / logos  --->  Contact Us
-       |                      |                      |
-       v                      v                      v
-  Solution pages         Project pages          Form / Call / WA
-       |                      |
-       +----------+-----------+
-                  |
-                  v
-              Contact Us</div>
+  <div class="wire">
+    <div class="wire-h">[HEADER] — same global header</div>
+    <div class="wire-b tiny">Logo · Solutions · Projects · Blog · About Us · Contact Us · Request A Quote</div>
+  </div>
 
-<!-- ===================== 10 ===================== -->
-<h2>10. Design-system notes deferred (recorded, not decided here)</h2>
-<p>These were raised in the meeting but intentionally belong to the <strong>visual design phase</strong>, after structure approval:</p>
-<ul>
-  <li>Reduce pure-white section backgrounds; prefer soft light-blue tones aligned with logo.</li>
-  <li>Keep professional blue gradient treatments where they already feel strong.</li>
-  <li>Transparent sticky header; reduce header height; enlarge nav label weight/size.</li>
-  <li>Avoid all-caps overload in headings (content/typography rule later).</li>
-  <li>Hero: short compressed high-tech / control-room video; replaceable mock footage OK.</li>
-  <li>Mobile experience: same journey, stacked sections, large tap targets on Contact.</li>
-</ul>
+  <div class="wire">
+    <div class="wire-h">01 — Page Hero</div>
+    <div class="wire-b">
+      <div class="placeholder mid">[ Heading: We provide the best technology solutions ]</div>
+      <div class="placeholder">[ Supporting line about integrated AV / IT / VC / Energy ]</div>
+      <p class="meta-line"><strong>Purpose:</strong> Introduce the Solutions hub.</p>
+    </div>
+  </div>
 
-<!-- ===================== 11 ===================== -->
-<div class="page-break"></div>
-<h2>11. Open decisions checklist for client</h2>
-<p>Please mark preferences before visual design starts. No content writing required yet.</p>
+  <div class="wire">
+    <div class="wire-h">02 — Solution Category Cards</div>
+    <div class="wire-b">
+      <div class="two">
+        <div class="card" style="min-height:70px;">Audiovisual Solutions<br><span class="tiny">→ /audiovisual-solutions/</span></div>
+        <div class="card" style="min-height:70px;">IT / ELV Solutions<br><span class="tiny">→ /it-elv-solutions/</span></div>
+        <div class="card" style="min-height:70px;">Video Conferencing Solutions<br><span class="tiny">→ /video-conferencing-solutions/</span></div>
+        <div class="card" style="min-height:70px;">Energy Saving Solutions<br><span class="tiny">→ /energy-saving-solutions/</span></div>
+      </div>
+      <p class="meta-line"><strong>Purpose:</strong> Route visitors into each solution detail page.</p>
+    </div>
+  </div>
 
-<div class="box">
-  <div class="box-title">A. Homepage section order</div>
-  <ul class="check-list">
-    <li>Option A — Hero → Trusted by → Solutions icons → Solutions depth → How we work → Projects → Sectors → Why us → CTA (recommended)</li>
-    <li>Option B — Hero → Projects first → Trusted by → Solutions…</li>
-    <li>Option C — Hero → Solutions first → Trusted by later…</li>
-  </ul>
-</div>
+  <div class="wire">
+    <div class="wire-h">03 — Trusted Brands</div>
+    <div class="wire-b">
+      <div class="placeholder mid">[ Logo strip: Trusted brands, expertly integrated ]</div>
+      <p class="meta-line"><strong>Purpose:</strong> Reinforce manufacturer partnerships on the Solutions hub.</p>
+    </div>
+  </div>
 
-<div class="box">
-  <div class="box-title">B. Navigation</div>
-  <ul class="check-list">
-    <li>Approve: Solutions · Projects · About · Contact Us (no Home, no Search)</li>
-    <li>Move About to footer only (leaner top nav)</li>
-    <li>Utility top bar: Remove (U1) / Keep slim (U2)</li>
-  </ul>
-</div>
+  <div class="wire">
+    <div class="wire-h">04 — End CTA Band</div>
+    <div class="wire-b">
+      <div class="placeholder">[ Ready to bring your vision to life? ]</div>
+      <div class="three">
+        <div class="card">Call us</div>
+        <div class="card">Email us</div>
+        <div class="card">Visit us</div>
+      </div>
+      <p class="meta-line"><strong>CTA flow:</strong> Call / Email / Visit → contact channels · path continues to CONTACT US via header / footer.</p>
+    </div>
+  </div>
+</section>
 
-<div class="box">
-  <div class="box-title">C. Solution inventory</div>
-  <ul class="check-list">
-    <li>Keep four solutions only (AV, IT/ELV, Video Conferencing, Energy Saving)</li>
-    <li>Add Security &amp; Surveillance as fifth public solution</li>
-    <li>Insights / Blog: Phase 1 / Phase 2 / Not needed</li>
-  </ul>
-</div>
+<!-- ===================== PAGE 8: SOLUTION DETAIL TEMPLATE ===================== -->
+<section class="page">
+  <h2>06 — Individual Solution Page Structure</h2>
+  <p class="note">Shared structure used across solution detail pages in the current draft (example pattern from Audiovisual / IT-ELV / Video Conferencing / Energy Saving).</p>
 
-<div class="box">
-  <div class="box-title">D. Trust strip content</div>
-  <ul class="check-list">
-    <li>Client logos (MBRSC, Huawei, Wego, Habtoor, …)</li>
-    <li>Manufacturer partner logos</li>
-    <li>Mix of both</li>
-  </ul>
-</div>
+  <div class="flow">HOME → SOLUTIONS → [SOLUTION DETAIL] → CONTACT US / Form enquiry</div>
 
-<div class="box">
-  <div class="box-title">E. Conversion label</div>
-  <ul class="check-list">
-    <li>Contact Us (recommended)</li>
-    <li>Request a Quote</li>
-    <li>Book a Consultation</li>
-  </ul>
-</div>
+  <div class="wire" style="margin-top:10px;">
+    <div class="wire-h">01 — Solution Hero</div>
+    <div class="wire-b">
+      <div class="placeholder mid">[ Solution name ]</div>
+      <div class="placeholder">[ Short solution summary ]</div>
+      <p class="meta-line"><strong>Purpose:</strong> Confirm which solution the visitor is viewing.</p>
+    </div>
+  </div>
 
-<!-- ===================== 12 ===================== -->
-<h2>12. Proposed next steps after this review</h2>
-<ol>
-  <li>Client returns this checklist with selections (or annotates the PDF).</li>
-  <li>We lock the approved hierarchy and homepage sequence.</li>
-  <li>We produce black-and-white layout wireframes (page compositions) matching the locked skeleton.</li>
-  <li>We apply brand colours / typography / motion direction.</li>
-  <li>Content and real media replace placeholders.</li>
-  <li>Development rebuilds against the approved structure (draft site is not treated as final).</li>
-</ol>
+  <div class="wire">
+    <div class="wire-h">02 — Overview / Introduction</div>
+    <div class="wire-b">
+      <div class="placeholder tall">[ Longer description of the solution and delivery approach ]</div>
+      <p class="meta-line"><strong>Purpose:</strong> Explain scope and value of this solution.</p>
+    </div>
+  </div>
 
-<div class="status-row">
-  <span class="pill">Structure phase</span>
-  <span class="pill">Awaiting client priorities</span>
-  <span class="pill">No visual mock-up in this file</span>
-</div>
+  <div class="wire">
+    <div class="wire-h">03 — Applications / Room Types / Key Areas</div>
+    <div class="wire-b">
+      <div class="three">
+        <div class="card">Application card</div>
+        <div class="card">Application card</div>
+        <div class="card">Application card</div>
+      </div>
+      <p class="meta-line"><strong>Purpose:</strong> Show where / how the solution is used.</p>
+      <p class="tiny">Examples in draft: Auditoriums, Lecture Halls, Boardrooms (AV) · Structured Cabling, Data Center, IP Telephony (IT/ELV) · Desk / Huddle / Medium / Large rooms (VC) · Lighting, HVAC, Solar (Energy).</p>
+    </div>
+  </div>
 
-<div class="footer-note">
-  ELV Hub Middle East — Website Hierarchy &amp; Visitor Journey · Version 1.0<br />
-  Sources reviewed: https://elv-hub.com/ · https://elvhub.appointics.com/ · https://avispl.com/ · https://www.smerktech.com/ · https://granteq.com/ · Client meeting transcript (structure &amp; methodology discussion).<br />
-  This document is a planning artefact. It is not a visual design, not a content draft, and not a live website.
-</div>
+  <div class="wire">
+    <div class="wire-h">04 — Capabilities / Features List</div>
+    <div class="wire-b">
+      <div class="placeholder mid">[ Bullet capability list / feature grid ]</div>
+      <p class="meta-line"><strong>Purpose:</strong> Detail what can be delivered under this solution.</p>
+    </div>
+  </div>
+
+  <div class="wire">
+    <div class="wire-h">05 — Brands We Integrate</div>
+    <div class="wire-b">
+      <div class="placeholder mid">[ Brand logos for this solution ]</div>
+      <p class="meta-line"><strong>Purpose:</strong> Show relevant technology partners for this category.</p>
+    </div>
+  </div>
+
+  <div class="wire">
+    <div class="wire-h">06 — Interested in this solution? + Form</div>
+    <div class="wire-b">
+      <div class="placeholder">[ CTA heading ]</div>
+      <div class="placeholder mid">[ Request a Free Consultation form ]</div>
+      <p class="meta-line"><strong>CTA flow:</strong> Form enquiry · Request a consultation / Get a quote → CONTACT US (where linked)</p>
+    </div>
+  </div>
+
+  <div class="wire">
+    <div class="wire-h">07 — End CTA Band + Footer</div>
+    <div class="wire-b">
+      <div class="placeholder">[ Ready to bring your vision to life? — Call / Email / Visit ]</div>
+      <p class="meta-line"><strong>CTA flow:</strong> Contact channels → phone / email / office · Header Contact Us → CONTACT US page</p>
+    </div>
+  </div>
+
+  <h3>Solution pages in current draft</h3>
+  <table>
+    <thead><tr><th>Page</th><th>URL</th></tr></thead>
+    <tbody>
+      <tr><td>Audiovisual Solutions</td><td>/audiovisual-solutions/</td></tr>
+      <tr><td>IT / ELV Solutions</td><td>/it-elv-solutions/</td></tr>
+      <tr><td>Video Conferencing Solutions</td><td>/video-conferencing-solutions/</td></tr>
+      <tr><td>Energy Saving Solutions</td><td>/energy-saving-solutions/</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ===================== PAGE 9: PROJECTS ===================== -->
+<section class="page">
+  <h2>07 — Projects Structure</h2>
+  <div class="flow">HOME → PROJECTS → PROJECT DETAIL → CONTACT US</div>
+
+  <h3>Projects overview — /projects/</h3>
+  <div class="wire">
+    <div class="wire-h">[HEADER]</div>
+    <div class="wire-b tiny">Global header (same as other pages)</div>
+  </div>
+  <div class="wire">
+    <div class="wire-h">01 — Page Hero</div>
+    <div class="wire-b">
+      <div class="placeholder mid">[ Heading: Delivering ICT/ELV projects… ]</div>
+      <div class="placeholder">[ Supporting text about standards, warranty, maintenance ]</div>
+      <p class="meta-line"><strong>Purpose:</strong> Introduce the projects portfolio.</p>
+    </div>
+  </div>
+  <div class="wire">
+    <div class="wire-h">02 — Featured Project Blocks</div>
+    <div class="wire-b">
+      <div class="card" style="margin-bottom:6px;text-align:left;">
+        01 — Ground Station / Command &amp; Control Room (MBRSC)<br>
+        <span class="tiny">CTA: View Project Details → /ip-telephony/</span>
+      </div>
+      <div class="card" style="margin-bottom:6px;text-align:left;">
+        02 — Wego Middle East full AV and IT Infrastructure<br>
+        <span class="tiny">CTA: View Project Details → /networking-products/</span>
+      </div>
+      <div class="card" style="text-align:left;">
+        03 — Huawei Dubai Offices in BayGate Towers<br>
+        <span class="tiny">CTA: View Project Details → /huawei-dubai-offices/</span>
+      </div>
+      <p class="meta-line"><strong>Purpose:</strong> Showcase key projects with links to detail pages.</p>
+    </div>
+  </div>
+  <div class="wire">
+    <div class="wire-h">03 — Trusted Brands</div>
+    <div class="wire-b">
+      <div class="placeholder mid">[ Brand logo strip ]</div>
+    </div>
+  </div>
+  <div class="wire">
+    <div class="wire-h">04 — End CTA + Footer</div>
+    <div class="wire-b">
+      <div class="placeholder">[ Ready to bring your vision to life? — Call / Email / Visit ]</div>
+      <div class="cta-row"><span class="cta-btn fill">Get a Free Consultation</span></div>
+      <p class="meta-line"><strong>CTA flow:</strong> Get a Free Consultation → CONTACT US</p>
+    </div>
+  </div>
+
+  <h3>Project detail page pattern (example: Huawei Dubai Offices)</h3>
+  <div class="wire">
+    <div class="wire-h">Project Detail Sections</div>
+    <div class="wire-b">
+      <ul class="compact">
+        <li><strong>01 Hero</strong> — Project name, client, location, tags</li>
+        <li><strong>02 Overview</strong> — Project story / summary</li>
+        <li><strong>03 Key metrics</strong> — Highlight numbers (rooms, video wall, etc.)</li>
+        <li><strong>04 What we delivered</strong> — Deliverable cards / list</li>
+        <li><strong>05 Delivery process</strong> — Consult → Supply → Install → Commission → Support</li>
+        <li><strong>CTA</strong> — Get a Free Consultation / Back to all projects / Contact channels</li>
+      </ul>
+      <p class="meta-line"><strong>CTA flow:</strong> Get a Free Consultation → CONTACT US (or Destination to be confirmed where link is #) · Back to all projects → PROJECTS (where linked)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 10: ABOUT + BLOG + CONTACT ===================== -->
+<section class="page">
+  <h2>08 — About Us Page</h2>
+  <p class="tiny">Page: /about-us/</p>
+  <div class="flow">HOME → ABOUT US → CONTACT US / PROJECTS</div>
+
+  <div class="wire" style="margin-top:8px;">
+    <div class="wire-h">01 — Hero</div>
+    <div class="wire-b">
+      <div class="placeholder mid">[ Leaders in Audio Visual and IT/ELV technology solutions ]</div>
+      <div class="placeholder">[ Short positioning + Since 2010 · Dubai + 24/7 support note ]</div>
+      <p class="meta-line"><strong>Purpose:</strong> Open the company page with positioning.</p>
+    </div>
+  </div>
+  <div class="wire">
+    <div class="wire-h">02 — Company Story</div>
+    <div class="wire-b">
+      <div class="placeholder tall">[ Empowering customers… company description, certifications, services list ]</div>
+      <div class="cta-row">
+        <span class="cta-btn">See our work</span>
+        <span class="cta-btn fill">Get a Free Consultation</span>
+      </div>
+      <p class="meta-line"><strong>Purpose:</strong> Explain who ELV Hub is and what services are offered.</p>
+      <p class="meta-line"><strong>CTA flow:</strong> See our work → PROJECTS · Get a Free Consultation → CONTACT US</p>
+    </div>
+  </div>
+  <div class="wire">
+    <div class="wire-h">03 — Location / Presence</div>
+    <div class="wire-b">
+      <div class="placeholder mid">[ Empire Heights / Business Bay location block ]</div>
+      <p class="meta-line"><strong>Purpose:</strong> Show local Dubai presence.</p>
+    </div>
+  </div>
+  <div class="wire">
+    <div class="wire-h">04 — Strengths / Commitments</div>
+    <div class="wire-b">
+      <div class="four">
+        <div class="card">Certified Expertise</div>
+        <div class="card">Trusted Partnerships</div>
+        <div class="card">End-to-End Delivery</div>
+        <div class="card">Future-Proof Engineering</div>
+      </div>
+      <p class="meta-line"><strong>Purpose:</strong> Highlight company strengths.</p>
+    </div>
+  </div>
+  <div class="wire">
+    <div class="wire-h">05 — End CTA + Footer</div>
+    <div class="wire-b">
+      <div class="placeholder">[ Ready to bring your vision to life? — Call / Email / Visit ]</div>
+    </div>
+  </div>
+
+  <h2 style="margin-top:18px;">09 — Blog Page</h2>
+  <p class="tiny">Page: /cisco-2/ (labeled “Blog” in navigation)</p>
+  <div class="wire">
+    <div class="wire-h">Blog sections in current draft</div>
+    <div class="wire-b">
+      <ul class="compact">
+        <li><strong>01 Partner / intro block</strong> — Featured partner content (Cisco)</li>
+        <li><strong>02 Latest from ELV Hub</strong> — Article cards with Read More</li>
+        <li><strong>03 End CTA band</strong> — Call / Email / Visit + Get a Free Consultation → CONTACT US</li>
+      </ul>
+      <p class="meta-line"><strong>CTA flow:</strong> Read More → Article URLs · Get a Free Consultation → CONTACT US</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top:18px;">10 — Contact Us Page</h2>
+  <p class="tiny">Page: /contact-us/</p>
+  <div class="wire">
+    <div class="wire-h">Contact Us structure</div>
+    <div class="wire-b">
+      <div class="placeholder mid">[ Hero: Let’s talk about your next project ]</div>
+      <div class="two" style="margin-top:6px;">
+        <div>
+          <div class="card" style="margin-bottom:4px;">Call — +971 50 736 3959</div>
+          <div class="card" style="margin-bottom:4px;">Email — Sales@elv-hub.com</div>
+          <div class="card" style="margin-bottom:4px;">WhatsApp Business</div>
+          <div class="card">Office address — Dubai</div>
+        </div>
+        <div class="placeholder tall">[ Request a Free Consultation form ]<br>[ Fields + Submit / Send Enquiry ]</div>
+      </div>
+      <p class="meta-line"><strong>Purpose:</strong> Primary conversion page for inquiries.</p>
+      <p class="meta-line"><strong>After action:</strong> Call/Email/WhatsApp open direct channels · Form submit sends enquiry to the team.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 11: CTA MAP ===================== -->
+<section class="page">
+  <h2>11 — CTA Connection Map</h2>
+  <p class="note">Important CTA relationships from the current draft. Destinations marked only when confirmed.</p>
+
+  <h3>From HOME</h3>
+  <div class="flow">HOME
+├── Explore Solutions ──────────────► SOLUTIONS (/solutions/)
+├── Get a Free Consultation ────────► CONTACT US (/contact-us/)
+├── Our Story ──────────────────────► ABOUT US (/about-us/)
+├── See our work ───────────────────► PROJECTS (/projects/)
+├── Solution cards (AV / IT / VC / Energy) ► Matching Solution detail pages
+├── Security &amp; Surveillance card ───► SOLUTIONS (/solutions/)
+├── Plan Your Space ────────────────► CONTACT US (/contact-us/)
+├── View All Projects ──────────────► PROJECTS (/projects/)
+├── Project cards ──────────────────► Project detail pages (where linked)
+├── Read More (articles) ───────────► Article pages
+├── View all articles ──────────────► Destination to be confirmed (#)
+├── FAQ items ──────────────────────► Same page section (accordion)
+├── Send Enquiry (form) ────────────► Form submission (same page)
+├── Call / Email / WhatsApp ────────► Direct contact channels
+└── Header: Request A Quote ────────► Quote modal (on-page popup)</div>
+
+  <h3>From SOLUTIONS / Solution Detail</h3>
+  <div class="flow">SOLUTIONS
+├── Solution category cards ────────► Individual Solution pages
+└── Call / Email / Visit ───────────► Contact channels
+
+SOLUTION DETAIL
+├── Request a consultation / Get a quote ► CONTACT US (/contact-us/)
+├── Request a Free Consultation form ───► Form submission
+└── End CTA Call / Email / Visit ───────► Contact channels</div>
+
+  <h3>From PROJECTS / Project Detail / ABOUT / BLOG</h3>
+  <div class="flow">PROJECTS
+├── View Project Details ───────────► Project detail pages
+└── Get a Free Consultation ────────► CONTACT US
+
+PROJECT DETAIL
+├── Get a Free Consultation ────────► CONTACT US (or Destination to be confirmed if #)
+└── Back to all projects ───────────► PROJECTS (or Destination to be confirmed if #)
+
+ABOUT US
+├── See our work ───────────────────► PROJECTS
+└── Get a Free Consultation ────────► CONTACT US
+
+BLOG
+├── Read More ──────────────────────► Article pages
+└── Get a Free Consultation ────────► CONTACT US
+
+HEADER / FOOTER (all pages)
+├── Solutions / Projects / Blog / About Us / Contact Us ► Matching pages
+├── Request A Quote ────────────────► Quote modal
+└── Phone / Email / WhatsApp ───────► Direct contact channels</div>
+</section>
+
+<!-- ===================== PAGE 12: COMPLETE SITE FLOW ===================== -->
+<section class="page">
+  <h2>12 — Complete Site Flow</h2>
+  <p class="note">Master view of how the main pages connect in the current draft.</p>
+
+  <div class="two">
+    <div class="flow">HOME
+  │
+  ▼
+SOLUTIONS
+  │
+  ▼
+SOLUTION DETAIL
+  │
+  ▼
+CONTACT US</div>
+    <div class="flow">HOME
+  │
+  ▼
+PROJECTS
+  │
+  ▼
+PROJECT DETAIL
+  │
+  ▼
+CONTACT US</div>
+    <div class="flow">HOME
+  │
+  ▼
+ABOUT US
+  │
+  ▼
+CONTACT US</div>
+    <div class="flow">HOME
+  │
+  ▼
+BLOG
+  │
+  ▼
+ARTICLE
+  │
+  ▼
+CONTACT US</div>
+  </div>
+
+  <h3 style="margin-top:14px;">Full hierarchy (quick reference)</h3>
+  <div class="tree">HOME
+├── SOLUTIONS
+│   ├── Audiovisual Solutions ──► Contact / Form
+│   ├── IT / ELV Solutions ──► Contact / Form
+│   ├── Video Conferencing Solutions ──► Contact / Form
+│   └── Energy Saving Solutions ──► Contact / Form
+├── PROJECTS
+│   ├── Mohammed Bin Rashid Space Center ──► Contact
+│   ├── Wego Middle East ──► Contact
+│   └── Huawei Dubai Offices ──► Contact
+├── BLOG ──► Articles ──► Contact
+├── ABOUT US ──► Contact / Projects
+└── CONTACT US ──► Call / Email / WhatsApp / Form enquiry</div>
+
+  <div class="wire" style="margin-top:14px;">
+    <div class="wire-h">Document summary</div>
+    <div class="wire-b">
+      <ul class="compact">
+        <li>This wireframe documents the <strong>current draft</strong> at elvhub.appointics.com.</li>
+        <li>It shows pages, section order, navigation, and CTA destinations only.</li>
+        <li>It is not a visual design mock-up and does not define final colours, copy, or animations.</li>
+        <li>Trusted Brands appears as a section inside pages; it is not a separate main page in the draft.</li>
+        <li>Where a link target is unclear in the draft, it is labeled “Destination to be confirmed”.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-doc">
+    ELV HUB — Website Sitemap &amp; Wireframe Structure · Version 2.0<br />
+    Based on current website draft: https://elvhub.appointics.com/
+  </div>
+</section>
 
 </body>
 </html>
