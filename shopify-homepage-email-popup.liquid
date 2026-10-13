@@ -1,0 +1,190 @@
+{% comment %}
+  2Posh Beauty — FREE homepage-only email / subscribe popup
+  ========================================================
+  Replaces POWR Sales Popup Email Popup for the client request:
+  - Show on FRONT PAGE (homepage) only
+  - Do NOT keep popping on product / other pages
+  - Do NOT show again after the customer submits email (or closes)
+  - Do NOT show for logged-in customers who already accept marketing
+
+  INSTALL
+  -------
+  A) Turn OFF POWR (required — otherwise POWR still opens on products):
+     Online Store → Themes → Customize → Theme settings (left gear / App embeds)
+     → turn OFF "POWR Popup" (or "POWR Sales Popup") → Save
+     Also in Apps → POWR → unpublish / pause the live popup if needed.
+
+  B) Add this free popup on the homepage only:
+     Online Store → Themes → Customize → Home page
+     → Add section → Custom liquid
+     → Paste this ENTIRE file → Save
+     (Do NOT put this in the Header group — put it on the Home page template.)
+
+  Optional: change DELAY_MS below (default 4 seconds).
+{% endcomment %}
+
+{% if template.name == 'index' %}
+  {% unless customer and customer.accepts_marketing %}
+<style>
+  .posh-ep {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(20, 4, 121, 0.45);
+  }
+  .posh-ep.is-open { display: flex; }
+  .posh-ep__panel {
+    width: min(420px, 100%);
+    background: #fff;
+    color: #222;
+    border-radius: 16px;
+    padding: 28px 24px 22px;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0,0,0,.25);
+    font-family: "DM Sans", sans-serif;
+  }
+  .posh-ep__close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    border: 0;
+    background: transparent;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    color: #666;
+  }
+  .posh-ep__brand {
+    margin: 0 0 6px;
+    font-family: "DM Serif Display", Georgia, serif;
+    font-size: 28px;
+    color: #140479;
+  }
+  .posh-ep__text {
+    margin: 0 0 16px;
+    font-size: 15px;
+    line-height: 1.45;
+    color: #444;
+  }
+  .posh-ep__row {
+    display: flex;
+    gap: 8px;
+  }
+  .posh-ep__row input[type="email"] {
+    flex: 1;
+    min-width: 0;
+    height: 46px;
+    border: 1px solid #e3e3e3;
+    border-radius: 8px;
+    padding: 0 12px;
+    font: inherit;
+  }
+  .posh-ep__row button {
+    height: 46px;
+    border: 0;
+    border-radius: 8px;
+    padding: 0 16px;
+    background: #ff007a;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .posh-ep__note {
+    margin: 10px 0 0;
+    font-size: 12px;
+    color: #888;
+  }
+  .posh-ep__success {
+    display: none;
+    margin: 0;
+    font-size: 15px;
+    color: #140479;
+    font-weight: 600;
+  }
+  .posh-ep.is-done .posh-ep__form,
+  .posh-ep.is-done .posh-ep__text { display: none; }
+  .posh-ep.is-done .posh-ep__success { display: block; }
+</style>
+
+<div class="posh-ep" id="poshEmailPopup" role="dialog" aria-modal="true" aria-labelledby="poshEpTitle" hidden>
+  <div class="posh-ep__panel">
+    <button type="button" class="posh-ep__close" aria-label="Close" data-posh-ep-close>&times;</button>
+    <h2 class="posh-ep__brand" id="poshEpTitle">2Posh Beauty</h2>
+    <p class="posh-ep__text">Get updates, offers &amp; new arrivals — join our list.</p>
+    {% form 'customer', class: 'posh-ep__form', id: 'poshEpForm' %}
+      <input type="hidden" name="contact[tags]" value="newsletter, homepage-popup">
+      <div class="posh-ep__row">
+        <input
+          type="email"
+          name="contact[email]"
+          placeholder="Email address"
+          required
+          autocomplete="email"
+          aria-label="Email address"
+        >
+        <button type="submit">Subscribe</button>
+      </div>
+      <p class="posh-ep__note">We only email store news. Unsubscribe anytime.</p>
+    {% endform %}
+    <p class="posh-ep__success">Thanks — you’re on the list.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var KEY = 'posh_ep_done_v1';
+  var DELAY_MS = 4000;
+  var root = document.getElementById('poshEmailPopup');
+  if (!root) return;
+
+  // Already dismissed / subscribed on this browser
+  try {
+    if (localStorage.getItem(KEY) === '1') return;
+  } catch (e) {}
+
+  function markDone() {
+    try { localStorage.setItem(KEY, '1'); } catch (e) {}
+  }
+
+  function openPopup() {
+    root.hidden = false;
+    root.classList.add('is-open');
+    document.documentElement.style.overflow = 'hidden';
+  }
+
+  function closePopup() {
+    root.classList.remove('is-open');
+    root.hidden = true;
+    document.documentElement.style.overflow = '';
+    markDone();
+  }
+
+  root.querySelectorAll('[data-posh-ep-close]').forEach(function (btn) {
+    btn.addEventListener('click', closePopup);
+  });
+  root.addEventListener('click', function (e) {
+    if (e.target === root) closePopup();
+  });
+
+  var form = document.getElementById('poshEpForm');
+  if (form) {
+    form.addEventListener('submit', function () {
+      // Native Shopify customer/newsletter form will submit.
+      // Mark done immediately so return visits / product pages never re-open it.
+      markDone();
+      root.classList.add('is-done');
+      setTimeout(closePopup, 1200);
+    });
+  }
+
+  // Homepage only is already enforced by Liquid (template.name == index)
+  setTimeout(openPopup, DELAY_MS);
+})();
+</script>
+  {% endunless %}
+{% endif %}
