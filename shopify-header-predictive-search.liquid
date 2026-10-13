@@ -1,0 +1,272 @@
+{% comment %}
+  2Posh Beauty — Predictive search for the custom AI header
+  ========================================================
+  WHY THIS IS NEEDED:
+  Theme settings (Enable predictive search, Show products, Show price, etc.)
+  are already ON, and /search/suggest.json returns products.
+  But the live header is a custom AI block (ai-beauty-header-...) with a
+  plain <form action="/search">. It is NOT connected to Minimog's
+  <predictive-search> / [data-search-popup], so no popup can appear.
+
+  HOW TO INSTALL (Shopify Admin):
+  1. Online Store → Themes → Customize (live theme "2Posh Beauty")
+  2. Left sidebar → Header group (top of page)
+  3. Add section → Custom liquid (or "Custom Liquid")
+  4. Paste THIS ENTIRE file into the Custom liquid box
+  5. Save
+  6. Hard refresh the storefront (Ctrl/Cmd+Shift+R)
+  7. Type "lip" in the header search — product dropdown should appear
+
+  Optional: if Custom liquid is not available in Header group, use:
+  Online Store → Themes → … → Edit code → Sections → add a new section
+  file named `ai-header-predictive-search.liquid` with the same contents,
+  then add that section in the Header group in the theme editor.
+{% endcomment %}
+
+<style>
+  .ai-beauty-header-arkxky3dxmvnxwenxwaigenblockc286d9febmvjl__search {
+    position: relative;
+  }
+  .posh-ps {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 6px);
+    z-index: 80;
+    background: #fff;
+    border: 1px solid #e8e0e6;
+    box-shadow: 0 16px 40px rgba(20, 4, 121, 0.12);
+    max-height: min(70vh, 480px);
+    overflow: auto;
+    display: none;
+    text-align: left;
+  }
+  .posh-ps.is-open { display: block; }
+  .posh-ps__section {
+    padding: 12px 14px 6px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888;
+    font-family: "DM Sans", sans-serif;
+  }
+  .posh-ps__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #222;
+    border-top: 1px solid #f3eef2;
+  }
+  .posh-ps__item:hover,
+  .posh-ps__item.is-active {
+    background: #fdf5f9;
+  }
+  .posh-ps__thumb {
+    width: 52px;
+    height: 52px;
+    object-fit: cover;
+    background: #f6f6f6;
+    flex: 0 0 52px;
+  }
+  .posh-ps__meta { min-width: 0; flex: 1; }
+  .posh-ps__title {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.3;
+    font-family: "DM Sans", sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .posh-ps__price {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: #ff007a;
+    font-weight: 600;
+  }
+  .posh-ps__collection {
+    display: block;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #140479;
+    font-size: 14px;
+    border-top: 1px solid #f3eef2;
+  }
+  .posh-ps__collection:hover { background: #f7f1f5; }
+  .posh-ps__empty,
+  .posh-ps__more {
+    padding: 14px;
+    font-size: 13px;
+    color: #666;
+    font-family: "DM Sans", sans-serif;
+  }
+  .posh-ps__more a {
+    color: #ff007a;
+    font-weight: 600;
+    text-decoration: none;
+  }
+</style>
+
+<script>
+(function () {
+  if (window.__poshPredictiveSearchBound) return;
+  window.__poshPredictiveSearchBound = true;
+
+  var ROOT = (window.Shopify && Shopify.routes && Shopify.routes.root) || '/';
+  var MONEY = (window.MinimogSettings && MinimogSettings.money_format) || '₦{{amount}}';
+  var LIMIT = 6;
+  // Show collections/categories in the dropdown (matches theme setting intent)
+  var SHOW_COLLECTIONS = true;
+
+  function money(amount) {
+    var n = Number(amount);
+    if (isNaN(n)) return '';
+    var formatted = n.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return String(MONEY).replace(/\{\{\s*amount\s*\}\}/g, formatted);
+  }
+
+  function debounce(fn, wait) {
+    var t;
+    return function () {
+      var args = arguments, ctx = this;
+      clearTimeout(t);
+      t = setTimeout(function () { fn.apply(ctx, args); }, wait);
+    };
+  }
+
+  function findForms() {
+    return Array.prototype.slice.call(
+      document.querySelectorAll(
+        'form.ai-beauty-header-arkxky3dxmvnxwenxwaigenblockc286d9febmvjl__search, form[action="/search"][method="get"]'
+      )
+    ).filter(function (form) {
+      return form.querySelector('input[name="q"], input[type="search"]');
+    });
+  }
+
+  function ensureDropdown(form) {
+    var box = form.querySelector('.posh-ps');
+    if (box) return box;
+    box = document.createElement('div');
+    box.className = 'posh-ps';
+    box.setAttribute('role', 'listbox');
+    box.setAttribute('aria-label', 'Search suggestions');
+    form.appendChild(box);
+    return box;
+  }
+
+  function buildUrl(q) {
+    var params = new URLSearchParams();
+    params.set('q', q);
+    params.set('resources[type]', SHOW_COLLECTIONS ? 'product,collection' : 'product');
+    params.set('resources[limit]', String(LIMIT));
+    params.set('resources[options][unavailable_products]', 'last');
+    params.set('resources[options][fields]', 'title,product_type,vendor,variants.title,tag');
+    return ROOT + 'search/suggest.json?' + params.toString();
+  }
+
+  function render(box, data, q) {
+    var products = (((data || {}).resources || {}).results || {}).products || [];
+    var collections = (((data || {}).resources || {}).results || {}).collections || [];
+    var html = '';
+
+    if (products.length) {
+      html += '<div class="posh-ps__section">Products</div>';
+      products.forEach(function (p, i) {
+        var img = (p.featured_image && p.featured_image.url) || p.image || '';
+        html +=
+          '<a class="posh-ps__item" role="option" href="' + p.url + '" data-idx="' + i + '">' +
+            (img ? '<img class="posh-ps__thumb" src="' + img + (img.indexOf('?') >= 0 ? '&' : '?') + 'width=104" width="52" height="52" alt="" loading="lazy">' : '<span class="posh-ps__thumb"></span>') +
+            '<span class="posh-ps__meta">' +
+              '<p class="posh-ps__title">' + escapeHtml(p.title) + '</p>' +
+              '<p class="posh-ps__price">' + money(p.price) + '</p>' +
+            '</span>' +
+          '</a>';
+      });
+    }
+
+    if (SHOW_COLLECTIONS && collections.length) {
+      html += '<div class="posh-ps__section">Collections</div>';
+      collections.slice(0, 4).forEach(function (c) {
+        html +=
+          '<a class="posh-ps__collection" href="' + c.url + '">' +
+            escapeHtml(c.title) +
+          '</a>';
+      });
+    }
+
+    if (!products.length && !collections.length) {
+      html = '<div class="posh-ps__empty">No matches for “' + escapeHtml(q) + '”</div>';
+    } else {
+      html +=
+        '<div class="posh-ps__more"><a href="' + ROOT + 'search?q=' + encodeURIComponent(q) + '">View all results</a></div>';
+    }
+
+    box.innerHTML = html;
+    box.classList.add('is-open');
+  }
+
+  function escapeHtml(str) {
+    return String(str || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function bindForm(form) {
+    if (form.dataset.poshPs === '1') return;
+    form.dataset.poshPs = '1';
+
+    var input = form.querySelector('input[name="q"], input[type="search"]');
+    if (!input) return;
+    var box = ensureDropdown(form);
+    var controller = null;
+
+    var run = debounce(function () {
+      var q = (input.value || '').trim();
+      if (q.length < 2) {
+        box.classList.remove('is-open');
+        box.innerHTML = '';
+        return;
+      }
+      if (controller) controller.abort();
+      controller = new AbortController();
+      fetch(buildUrl(q), { signal: controller.signal, headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (data) { render(box, data, q); })
+        .catch(function (err) {
+          if (err && err.name === 'AbortError') return;
+          box.classList.remove('is-open');
+        });
+    }, 220);
+
+    input.setAttribute('autocomplete', 'off');
+    input.addEventListener('input', run);
+    input.addEventListener('focus', run);
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        box.classList.remove('is-open');
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!form.contains(e.target)) box.classList.remove('is-open');
+    });
+  }
+
+  function init() {
+    findForms().forEach(bindForm);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  // Theme editor / late DOM
+  setTimeout(init, 800);
+})();
+</script>
