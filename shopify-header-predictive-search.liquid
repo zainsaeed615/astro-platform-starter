@@ -24,15 +24,23 @@
 {% endcomment %}
 
 <style>
+  /* Header form is height:48px + overflow:hidden — that was clipping the dropdown */
   .ai-beauty-header-arkxky3dxmvnxwenxwaigenblockc286d9febmvjl__search {
-    position: relative;
+    position: relative !important;
+    overflow: visible !important;
+  }
+  .ai-beauty-header-arkxky3dxmvnxwenxwaigenblockc286d9febmvjl__top {
+    overflow: visible !important;
+  }
+  .ai-beauty-header-arkxky3dxmvnxwenxwaigenblockc286d9febmvjl {
+    overflow: visible !important;
   }
   .posh-ps {
     position: absolute;
     left: 0;
     right: 0;
     top: calc(100% + 6px);
-    z-index: 80;
+    z-index: 9999;
     background: #fff;
     border: 1px solid #e8e0e6;
     box-shadow: 0 16px 40px rgba(20, 4, 121, 0.12);
@@ -40,6 +48,7 @@
     overflow: auto;
     display: none;
     text-align: left;
+    border-radius: 12px;
   }
   .posh-ps.is-open { display: block; }
   .posh-ps__section {
@@ -115,7 +124,7 @@
   window.__poshPredictiveSearchBound = true;
 
   var ROOT = (window.Shopify && Shopify.routes && Shopify.routes.root) || '/';
-  var MONEY = (window.MinimogSettings && MinimogSettings.money_format) || '₦{{amount}}';
+  // Do NOT put Liquid {{amount}} in this JS — Custom liquid strips it and can break the script.
   var LIMIT = 6;
   // Show collections/categories in the dropdown (matches theme setting intent)
   var SHOW_COLLECTIONS = true;
@@ -124,7 +133,14 @@
     var n = Number(amount);
     if (isNaN(n)) return '';
     var formatted = n.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    return String(MONEY).replace(/\{\{\s*amount\s*\}\}/g, formatted);
+    var fmt = (window.MinimogSettings && MinimogSettings.money_format) || '';
+    if (fmt && fmt.indexOf('amount') !== -1) {
+      return String(fmt)
+        .replace(/\{\{\s*amount_with_comma_separator\s*\}\}/g, formatted)
+        .replace(/\{\{\s*amount_no_decimals\s*\}\}/g, String(Math.round(n)))
+        .replace(/\{\{\s*amount\s*\}\}/g, formatted);
+    }
+    return '₦' + formatted;
   }
 
   function debounce(fn, wait) {
@@ -153,6 +169,7 @@
     box.className = 'posh-ps';
     box.setAttribute('role', 'listbox');
     box.setAttribute('aria-label', 'Search suggestions');
+    // Keep inside the form (position:relative + overflow:visible) so it aligns under the input
     form.appendChild(box);
     return box;
   }

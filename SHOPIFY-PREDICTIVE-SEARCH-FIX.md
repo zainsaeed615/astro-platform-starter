@@ -25,11 +25,16 @@ Shopify API also works (`/search/suggest.json` returns products).
 
 You should see a dropdown with product image, title, and price (and collections if returned).
 
+### If dropdown still does not show
+The AI header search form uses `overflow: hidden` + fixed height, which clips absolute menus. The latest snippet forces `overflow: visible` on that form. **Re-paste the full updated file** into the existing Custom liquid section (replace old code) → Save → hard refresh.
+
 ## Roman Urdu
 
 Settings ON hone se popup nahi aata — kyunki header AI custom hai, Minimog search se connect nahi.
 
 Custom Liquid section header mein paste karo (`shopify-header-predictive-search.liquid`). Uske baad search box ke neeche products + price ka dropdown aa jayega.
+
+Agar pehle wala paste kiya tha aur phir bhi nahi aaya: search bar `overflow:hidden` se dropdown cut ho raha tha. **Updated file dubara poora paste** karo → Save → hard refresh → `lip` type karo.
 
 ## Do not do
 
