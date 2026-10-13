@@ -1,0 +1,215 @@
+{% comment %}
+  2Posh Beauty — FREE homepage-only email popup (matches "Get 5% off" design)
+  ==========================================================================
+  Look:
+  - Logo
+  - "Get 5% off your first order"
+  - "Subscribe to our newsletter and save on your next purchase."
+  - Email + "Get my discount"
+  - "No thanks" + X close
+
+  Behavior:
+  - Homepage (index) only
+  - Hidden for logged-in customers who already accept marketing
+  - After submit / No thanks / X → does not show again on that browser
+
+  INSTALL
+  1) Turn OFF POWR app embed (Theme settings → App embeds)
+  2) Customize → Home page → Add section → Custom liquid → paste THIS file → Save
+{% endcomment %}
+
+{% if template.name == 'index' %}
+  {% unless customer and customer.accepts_marketing %}
+<style>
+  .posh-ep {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.55);
+  }
+  .posh-ep.is-open { display: flex; }
+  .posh-ep__panel {
+    width: min(400px, 100%);
+    background: #fff;
+    color: #111;
+    border-radius: 10px;
+    padding: 36px 28px 24px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,.28);
+    font-family: "DM Sans", system-ui, sans-serif;
+    text-align: center;
+  }
+  .posh-ep__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    color: #666;
+  }
+  .posh-ep__logo {
+    display: block;
+    width: 150px;
+    max-width: 55%;
+    height: auto;
+    margin: 0 auto 18px;
+  }
+  .posh-ep__title {
+    margin: 0 0 8px;
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: #111;
+  }
+  .posh-ep__text {
+    margin: 0 0 20px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: #333;
+    font-weight: 400;
+  }
+  .posh-ep__form { margin: 0; }
+  .posh-ep__input {
+    width: 100%;
+    height: 46px;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    padding: 0 14px;
+    font: inherit;
+    font-size: 14px;
+    margin: 0 0 12px;
+    box-sizing: border-box;
+  }
+  .posh-ep__input:focus {
+    outline: 2px solid rgba(255, 0, 122, 0.25);
+    border-color: #ff007a;
+  }
+  .posh-ep__submit {
+    width: 100%;
+    height: 48px;
+    border: 0;
+    border-radius: 6px;
+    background: #ff007a;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 0 0 10px;
+  }
+  .posh-ep__submit:hover { filter: brightness(0.96); }
+  .posh-ep__dismiss {
+    width: 100%;
+    height: 44px;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    background: #fff;
+    color: #111;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .posh-ep__dismiss:hover { background: #fafafa; }
+  .posh-ep__success {
+    display: none;
+    margin: 8px 0 0;
+    font-size: 15px;
+    color: #140479;
+    font-weight: 600;
+  }
+  .posh-ep.is-done .posh-ep__form,
+  .posh-ep.is-done .posh-ep__text,
+  .posh-ep.is-done .posh-ep__title,
+  .posh-ep.is-done .posh-ep__dismiss { display: none; }
+  .posh-ep.is-done .posh-ep__success { display: block; }
+</style>
+
+<div class="posh-ep" id="poshEmailPopup" role="dialog" aria-modal="true" aria-labelledby="poshEpTitle" hidden>
+  <div class="posh-ep__panel">
+    <button type="button" class="posh-ep__close" aria-label="Close" data-posh-ep-close>&times;</button>
+    <img
+      class="posh-ep__logo"
+      src="https://2poshbeauty.com/cdn/shop/files/2posh-2.webp?v=1789987733&width=300"
+      alt="2posh BEAUTY"
+      width="150"
+      height="60"
+      loading="eager"
+    >
+    <h2 class="posh-ep__title" id="poshEpTitle">Get 5% off your first order</h2>
+    <p class="posh-ep__text">Subscribe to our newsletter and save on your next purchase.</p>
+    {% form 'customer', class: 'posh-ep__form', id: 'poshEpForm' %}
+      <input type="hidden" name="contact[tags]" value="newsletter, homepage-popup, first-order-5">
+      <input
+        class="posh-ep__input"
+        type="email"
+        name="contact[email]"
+        placeholder="you@example.com"
+        required
+        autocomplete="email"
+        aria-label="Email address"
+      >
+      <button class="posh-ep__submit" type="submit">Get my discount</button>
+    {% endform %}
+    <button type="button" class="posh-ep__dismiss" data-posh-ep-close>No thanks</button>
+    <p class="posh-ep__success">Thanks! Check your inbox for your discount.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var KEY = 'posh_ep_done_v1';
+  var DELAY_MS = 2500;
+  var root = document.getElementById('poshEmailPopup');
+  if (!root) return;
+
+  try {
+    if (localStorage.getItem(KEY) === '1') return;
+  } catch (e) {}
+
+  function markDone() {
+    try { localStorage.setItem(KEY, '1'); } catch (e) {}
+  }
+
+  function openPopup() {
+    root.hidden = false;
+    root.classList.add('is-open');
+    document.documentElement.style.overflow = 'hidden';
+  }
+
+  function closePopup() {
+    root.classList.remove('is-open');
+    root.hidden = true;
+    document.documentElement.style.overflow = '';
+    markDone();
+  }
+
+  root.querySelectorAll('[data-posh-ep-close]').forEach(function (btn) {
+    btn.addEventListener('click', closePopup);
+  });
+  root.addEventListener('click', function (e) {
+    if (e.target === root) closePopup();
+  });
+
+  var form = document.getElementById('poshEpForm');
+  if (form) {
+    form.addEventListener('submit', function () {
+      markDone();
+      root.classList.add('is-done');
+      setTimeout(closePopup, 1400);
+    });
+  }
+
+  setTimeout(openPopup, DELAY_MS);
+})();
+</script>
+  {% endunless %}
+{% endif %}
