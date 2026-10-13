@@ -31,10 +31,16 @@ Free POWR is also limited (e.g. ~25 submissions/month; some display controls are
 | Front page only | Liquid `{% if template.name == 'index' %}` |
 | Not on product pages | Section is only on Home page + Liquid guard |
 | Not again after email | `localStorage` flag set on submit |
-| Not again after close | Same flag on close (X / overlay) |
+| Not again after close / No thanks | Same flag on close (X / overlay / No thanks) |
 | Not for subscribed logged-in customers | Skips if `customer.accepts_marketing` |
 
-Emails land in **Shopify Customers** with tags `newsletter, homepage-popup` (can sync to Klaviyo if you already connect Shopify → Klaviyo).
+Design matches the client mock: logo, **Get 5% off your first order**, email field, pink **Get my discount**, **No thanks**.
+
+Emails land in **Shopify Customers** with tags `newsletter, homepage-popup, first-order-5` (can sync to Klaviyo).
+
+**Discount code:** create a Shopify discount (e.g. `WELCOME5` = 5% first order) and tell subscribers in email / after submit. The popup copy assumes that offer exists.
+
+**Testing again in same browser:** DevTools Console → `localStorage.removeItem('posh_ep_done_v1')` → refresh, or use Incognito.
 
 ## If you insist on keeping POWR
 In POWR editor publish screen: install on **homepage only** (not Everywhere), and set display frequency to **once per visitor** / do not show after submission.  
